@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRATAP MATHS - PREMIUM EDTECH PORTAL</title>
+    <title>EXAMEDGE INSTITUTE X AP MATHEMATICS</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
             --text-light: #ffffff;
             --text-dim: #a3a3a3;
             --border-dark: #262626;
+            --red-grad: linear-gradient(135deg, #ef4444, #dc2626, #991b1b);
         }
 
         /* UPPERCASE APPLIED GLOBALLY */
@@ -37,7 +38,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Splash Screen --- */
+        /* --- Animated Splash Screen --- */
         .splash-screen {
             position: fixed; inset: 0; z-index: 9999;
             background: #000000;
@@ -165,32 +166,89 @@
         .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
         .review-dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 20px; padding: 0 5%; flex-wrap: wrap; }
 
-        /* --- Faculty Section (Slider Format with Premium Glowing Border) --- */
-        .faculty-section { padding: 40px 0 60px; background: #0a0a0a; border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); }
-        .faculty-section .section-title { margin-left: 5%; }
-        .faculty-wrapper { display: flex; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 10px 5% 20px; scrollbar-width: none; scroll-behavior: smooth; }
+        /* --- NEW PREMIUM FACULTY LAYOUT (Gradient Red & Badhiya Layout) --- */
+        .faculty-section { 
+            padding: 80px 0 60px; 
+            background: #070000; /* Deep red-black background */
+            border-top: 2px solid #450a0a; 
+            border-bottom: 2px solid #450a0a; 
+        }
+        .faculty-section .section-title { margin-left: 5%; color: #fff; border-left-color: #ef4444; }
+        .faculty-section .section-title span { color: #ef4444; }
+        
+        .faculty-wrapper { 
+            display: flex; justify-content: flex-start; overflow-x: auto; 
+            scroll-snap-type: x mandatory; gap: 30px; 
+            padding: 70px 5% 40px; /* Extra top padding for overlapping avatar */
+            scrollbar-width: none; scroll-behavior: smooth; 
+        }
         .faculty-wrapper::-webkit-scrollbar { display: none; }
-        .faculty-card { width: 320px; scroll-snap-align: start; flex-shrink: 0; background: var(--bg-card); border-radius: 15px; border: 1px solid var(--border-dark); padding: 30px 20px; text-align: center; transition: 0.3s; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
-        .faculty-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(234, 179, 8, 0.15); }
-        .faculty-img-wrapper { width: 140px; height: 140px; margin: 0 auto 20px; border-radius: 50%; padding: 5px; background: linear-gradient(135deg, var(--gold), #ef4444, #3b82f6); box-shadow: 0 0 15px rgba(234, 179, 8, 0.6); display: flex; align-items: center; justify-content: center; }
-        .faculty-img-wrapper img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid #000; }
-        .faculty-name { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 5px; letter-spacing: 1px;}
-        .faculty-subject { color: var(--gold); font-size: 0.9rem; font-weight: 700; margin-bottom: 15px; letter-spacing: 1px; }
-        .faculty-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 20px; font-weight: 500; }
-        .faculty-socials { display: flex; justify-content: center; gap: 15px; border-top: 1px dashed #333; padding-top: 20px; }
-        .faculty-socials a { color: var(--text-dim); font-size: 1.2rem; transition: 0.3s; background: #1a1a1a; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;}
-        .faculty-socials a:hover { color: #000; background: var(--gold); transform: scale(1.1); box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);}
-        .faculty-dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 15px; padding: 0 5%; flex-wrap: wrap; }
+        
+        .faculty-card { 
+            width: 320px; scroll-snap-align: start; flex-shrink: 0; 
+            background: linear-gradient(145deg, #170505, #0a0000); /* Dark Red Gradient Card */
+            border-radius: 20px; border: 1px solid #7f1d1d; 
+            padding: 70px 20px 30px; text-align: center; transition: 0.4s; position: relative; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); 
+        }
+        .faculty-card:hover { 
+            transform: translateY(-15px); 
+            border-color: #ef4444; 
+            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.3); 
+        }
+        
+        /* Overlapping Red Gradient Avatar */
+        .faculty-img-wrapper { 
+            width: 130px; height: 130px; border-radius: 50%; 
+            padding: 5px; 
+            background: var(--red-grad);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+            position: absolute; top: -65px; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+        }
+        .faculty-img-wrapper img { 
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
+            border: 4px solid #0a0000; 
+        }
+        
+        .faculty-name { font-size: 1.5rem; font-weight: 900; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px;}
+        .faculty-subject { 
+            display: inline-block; background: rgba(239, 68, 68, 0.1); 
+            color: #ef4444; font-size: 0.85rem; font-weight: 800; 
+            padding: 6px 15px; border-radius: 20px; margin-bottom: 20px; 
+            letter-spacing: 1px; border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .faculty-desc { font-size: 0.9rem; color: #d4d4d4; line-height: 1.6; margin-bottom: 25px; font-weight: 500; }
+        
+        .faculty-socials { display: flex; justify-content: center; gap: 15px; }
+        .faculty-socials a { 
+            color: #ef4444; font-size: 1.2rem; transition: 0.3s; 
+            background: rgba(239, 68, 68, 0.1); width: 45px; height: 45px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .faculty-socials a:hover { 
+            color: #fff; background: var(--red-grad); 
+            transform: scale(1.1) translateY(-3px); box-shadow: 0 8px 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .faculty-dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 10px; padding: 0 5%; flex-wrap: wrap; }
+        .faculty-dots-container .dot.active { background: #ef4444; }
 
         /* --- Global Modals --- */
         .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .global-modal.show { opacity: 1; visibility: visible; }
+        
         .modal-content { background: linear-gradient(145deg, #111111, #050505); border: 1px solid #333; border-top: 4px solid var(--gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 95%; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(234, 179, 8, 0.15); transform: scale(0.8) translateY(30px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto; }
         .global-modal.show .modal-content { transform: scale(1) translateY(0); }
+        
         .modal-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(234, 179, 8, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse-icon 2s infinite; }
         @keyframes pulse-icon { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
         .modal-icon-wrapper i { font-size: 2.5rem; color: var(--gold); }
+        
         .modal-content h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+        
         .modal-btn { background: var(--gold); color: #000; font-weight: 800; font-size: 1rem; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(234, 179, 8, 0.3); display: inline-block; width: 100%; outline: none; margin-top: 10px; }
         .modal-btn:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(234, 179, 8, 0.4); }
         .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #666; cursor: pointer; transition: 0.2s; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #1a1a1a; z-index: 10; }
@@ -203,7 +261,8 @@
         .input-field:focus { border-color: var(--gold); }
         .qr-area { text-align: center; margin: 15px 0; display: none; }
         .qr-area img { width: 180px; height: 180px; border: 3px solid var(--gold); border-radius: 10px; padding: 5px; background: #fff; margin: 0 auto; display: block; }
-        
+
+        /* Success Animation Box */
         .success-checkmark { color: #22c55e; font-size: 4rem; margin-bottom: 15px; animation: bounce 1s ease infinite alternate; }
         @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
 
@@ -215,34 +274,39 @@
         .timed-banner-close { position: absolute; top: -15px; right: -15px; cursor: pointer; background: var(--gold); border: 2px solid #000; color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.2s; z-index: 10; }
         .timed-banner-close:hover { background: #fff; transform: scale(1.1); }
 
-        .toast-alert { position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); background: rgba(17, 17, 17, 0.95); backdrop-filter: blur(8px); border: 1px solid var(--gold); padding: 8px 18px; border-radius: 8px; color: #fff; font-weight: 500; font-size: 0.85rem; z-index: 3000; box-shadow: 0 5px 25px rgba(234, 179, 8, 0.25); display: flex; align-items: center; gap: 8px; transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .toast-alert.show { bottom: 30px; }
-        .toast-alert i { color: var(--gold); font-size: 1.1rem; }
-
-        /* --- A4 PDF RECEIPT CSS (HIDDEN FROM WEB) --- */
-        #receiptWrapper { position: absolute; left: -9999px; top: 0; background: #ffffff; color: #000000; width: 800px; min-height: 1130px; padding: 50px; font-family: Arial, sans-serif; box-sizing: border-box; text-transform: uppercase; }
+        /* --- A4 PDF RECEIPT CSS (Fixed for Print) --- */
+        #receiptWrapper {
+            display: none; 
+            background: #ffffff; color: #000000; 
+            width: 800px; min-height: 1130px; padding: 50px; font-family: Arial, sans-serif; 
+            box-sizing: border-box; text-transform: uppercase;
+        }
+        #receiptWrapper * { color: #000000; } 
         .receipt-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
-        .receipt-header h1 { font-size: 30px; color: #000; margin: 0; font-weight: 900; letter-spacing: 1px; }
-        .receipt-header p { font-size: 16px; color: #333; margin: 8px 0 0 0; font-weight: bold; }
+        .receipt-header h1 { font-size: 30px; margin: 0; font-weight: 900; letter-spacing: 1px; }
+        .receipt-header p { font-size: 16px; margin: 8px 0 0 0; font-weight: bold; }
         .receipt-meta { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+        #recEnroll { color: #d97706 !important; }
         .receipt-section { border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px; }
-        .receipt-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; color: #000; font-weight: 900; }
+        .receipt-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; }
         .receipt-table { width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; }
-        .receipt-table td { border-bottom: 1px dashed #eee; font-weight: 600;}
-        .receipt-table td:first-child { font-weight: 800; width: 40%; color: #333; }
-        .receipt-table td:last-child { font-weight: 800; color: #000; text-align: right; }
-        .net-amount-row { background: #f3f4f6; font-size: 20px; border-top: 2px solid #000 !important; }
+        .receipt-table td { border-bottom: 1px dashed #ccc; font-weight: 600;}
+        .receipt-table td:first-child { font-weight: 800; width: 40%; }
+        .receipt-table td:last-child { font-weight: 800; text-align: right; }
+        .net-amount-row { background: #f3f4f6 !important; font-size: 20px; border-top: 2px solid #000 !important; }
         .net-amount-row td { border-bottom: none !important; padding: 15px 10px; font-weight: 900 !important;}
+        #recAmount, #recDiscount { color: #16a34a !important; }
+        #recCourse { color: #d97706 !important; }
         .signatures { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; }
         .sig-box { text-align: center; width: 250px; }
-        .sig-font { font-family: 'Dancing Script', cursive; font-size: 34px; color: #1e3a8a; text-transform: capitalize; margin-bottom: 5px; }
-        .sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px; color:#000;}
+        .sig-font { font-family: 'Dancing Script', cursive; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
+        .sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;}
         .receipt-footer { position: absolute; bottom: 40px; left: 50px; right: 50px; border-top: 3px solid #000; padding-top: 20px; }
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; color: #000; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; }
         .footer-grid i { font-size: 16px; width: 25px; text-align: center; }
-        .f-red { color: #dc2626; } .f-blue { color: #2563eb; } .f-green { color: #16a34a; } .f-gray { color: #4b5563; }
+        .f-red { color: #dc2626 !important; } .f-blue { color: #2563eb !important; } .f-green { color: #16a34a !important; } .f-gray { color: #4b5563 !important; }
         
-        /* --- Footer Layout Fix --- */
+        /* --- Footer Layout --- */
         footer { background: var(--bg-card); padding: 50px 5% 20px; border-top: 1px solid var(--gold); }
         .footer-wrapper { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 30px; }
         .footer-links-container { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
@@ -279,7 +343,7 @@
                 <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
-        <div class="logo-box" onclick="alert('WELCOME TO PRATAP MATHS SUPPORT!\nHOW CAN WE ASSIST YOU TODAY?')"></div>
+        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO PRATAP MATHS SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
     <!-- Floating WhatsApp -->
@@ -525,98 +589,67 @@
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED FOUNDATION CLASSES!"</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>ABHISHEK YADAV</h5><span>NAVODAYA SELECTED</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>ABHISHEK YADAV</h5><span>NAVODAYA SELECTED</span></div></div>
             </div>
             
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"BHOLU SIR KI GS AUR SCIENCE CLASSES BILKUL POINT-TO-POINT NOTES KE SATH MILTI HAIN JO RAILWAY EXAMS KE LIYE SOLID HAIN."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>VIKAS TIWARI</h5><span>KENDRIYA VIDYALAYA SELECTED</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>VIKAS TIWARI</h5><span>KENDRIYA VIDYALAYA SELECTED</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
                 <p class="review-desc">"BEST PLATFORM FOR BOARDS EXAM PREPARATION. PDF NOTES AND MOCK TESTS ARE EXACTLY MATCHING THE EXAM PATTERN."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>RAHUL SHUKLA</h5><span>BOARD EXAM TOPPER</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>BOARD EXAM TOPPER</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"TARGET NVS 2027 BATCH IS A GAME CHANGER. THE LEVEL OF MATHEMATICS TAUGHT HERE IS COMPLETELY UNMATCHABLE."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>POOJA MISHRA</h5><span>KENDRIYA VIDYALAYA SELECTED</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>POOJA MISHRA</h5><span>KENDRIYA VIDYALAYA SELECTED</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"FORMULA SHEETS AUR SHORT TRICKS BAHUT HELPFUL HAIN. EXAM TIME ME REVISION KARNA BAHUT ASAAN HO GAYA HAI AB."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>MANISH KUMAR</h5><span>NAVODAYA SELECTED</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>MANISH KUMAR</h5><span>NAVODAYA SELECTED</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"TEST PASS PRO HAS EXACTLY EXAM LEVEL QUESTIONS. ANALYSIS FEATURE SHOWS EXACTLY WHERE I NEED TO IMPROVE MY SPEED."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>SAURABH DUBEY</h5><span>KENDRIYA VIDYALAYA SELECTED</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>SAURABH DUBEY</h5><span>KENDRIYA VIDYALAYA SELECTED</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
                 <p class="review-desc">"LIVE CLASSES ARE HIGHLY INTERACTIVE. SIR DOUBTS KO BAHUT PATIENCE KE SATH CLEAR KARTE HAIN. COMPLETELY SATISFIED."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>NEHA RAI</h5><span>FOUNDATION BATCH STUDENT</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>NEHA RAI</h5><span>FOUNDATION BATCH STUDENT</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"PRAKRAM BATCH HAS STRUCTURED MY PREPARATION. THE PDF MATERIALS GIVEN AFTER EVERY CLASS ARE TOP NOTCH QUALITY."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>KARAN JHA</h5><span>RAILWAY ASPIRANT</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>KARAN JHA</h5><span>RAILWAY ASPIRANT</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"SCIENCE NOTES IN HINDI AND ENGLISH BOTH ARE SUPERB. IT SAVES A LOT OF TIME WHILE REVISING FOR THE EXAMS."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>DEEPAK CHAUHAN</h5><span>BOARD EXAM STUDENT</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>DEEPAK CHAUHAN</h5><span>BOARD EXAM STUDENT</span></div></div>
             </div>
 
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"THE MENTORSHIP BY SELECTED CANDIDATES IN THIS PLATFORM GAVE ME THE EXACT ROADMAP TO CRACK MY UPCOMING ENTRANCE."</p>
-                <div class="reviewer-meta">
-                    <div class="rev-avatar"><img src="t2.png" alt="Student"></div>
-                    <div class="rev-name"><h5>ANJALI SINGH</h5><span>NAVODAYA SELECTED</span></div>
-                </div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>ANJALI SINGH</h5><span>NAVODAYA SELECTED</span></div></div>
             </div>
         </div>
-
         <div class="review-dots-container" id="reviewDotsContainer"></div>
     </section>
 
-    <!-- Expert Faculty Section -->
+    <!-- Expert Faculty Section (Premium Red Gradient) -->
     <section class="faculty-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
         
@@ -627,11 +660,7 @@
                 <h3 class="faculty-name">ABHINAY CHAUBEY</h3>
                 <p class="faculty-subject">FOUNDER & MATHS EXPERT</p>
                 <p class="faculty-desc">MASTER OF SHORT TRICKS & ADVANCED MATHEMATICS. 5+ YEARS OF TEACHING EXPERIENCE FOR SSC, NAVODAYA & KVS.</p>
-                <div class="faculty-socials">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
             </div>
 
             <div class="faculty-card">
@@ -639,51 +668,34 @@
                 <h3 class="faculty-name">BHOLU CHAUBEY</h3>
                 <p class="faculty-subject">CHAIRMAN & GS EXPERT</p>
                 <p class="faculty-desc">SPECIALIST IN GENERAL STUDIES & STATIC GK. GUIDING STUDENTS FOR RAILWAY, DEFENCE & STATE LEVEL EXAMS.</p>
-                <div class="faculty-socials">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
             </div>
 
             <div class="faculty-card">
-                <div class="faculty-img-wrapper"><img src="t2.png" alt="Akshit Sir"></div>
+                <div class="faculty-img-wrapper"><img src="t3.png" alt="Akshit Sir"></div>
                 <h3 class="faculty-name">AKSHIT SIR</h3>
                 <p class="faculty-subject">SENIOR SCIENCE FACULTY</p>
                 <p class="faculty-desc">MAKING PHYSICS, CHEMISTRY & BIOLOGY EASY TO UNDERSTAND WITH REAL-LIFE EXAMPLES AND CONCEPTUAL CLARITY.</p>
-                <div class="faculty-socials">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
             </div>
 
             <div class="faculty-card">
-                <div class="faculty-img-wrapper"><img src="t2.png" alt="Rahul Sir"></div>
+                <div class="faculty-img-wrapper"><img src="t4.png" alt="Rahul Sir"></div>
                 <h3 class="faculty-name">RAHUL SIR</h3>
                 <p class="faculty-subject">REASONING EXPERT</p>
                 <p class="faculty-desc">EXPERT IN LOGICAL AND ANALYTICAL REASONING. MAKING COMPLEX PUZZLES EASY IN SECONDS FOR COMPETITIVE EXAMS.</p>
-                <div class="faculty-socials">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
             </div>
 
             <div class="faculty-card">
-                <div class="faculty-img-wrapper"><img src="t2.png" alt="Sneha Ma'am"></div>
+                <div class="faculty-img-wrapper"><img src="t5.png" alt="Sneha Ma'am"></div>
                 <h3 class="faculty-name">SNEHA MA'AM</h3>
                 <p class="faculty-subject">ENGLISH FACULTY</p>
                 <p class="faculty-desc">GRAMMAR AND VOCABULARY EXPERT. HELPING STUDENTS SCORE 100% IN COMPREHENSION AND ADVANCED ENGLISH RULES.</p>
-                <div class="faculty-socials">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
             </div>
 
         </div>
-
         <div class="faculty-dots-container" id="facultyDotsContainer"></div>
     </section>
 
@@ -731,9 +743,7 @@
                 <label style="color: #fff; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 12px;">PAYMENT VERIFICATION</label>
                 <label>1. UPLOAD PAYMENT SCREENSHOT</label>
                 <input type="file" id="paymentScreenshot" class="input-field" accept="image/*" style="padding: 8px; background: #222; cursor: pointer;">
-                
                 <div style="text-align: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 700; margin: 10px 0;">OR</div>
-
                 <label>2. ENTER 14-DIGIT UTR NO</label>
                 <input type="text" id="utrInput" class="input-field" placeholder="E.G. PM123456789012" maxlength="14" style="margin-bottom:0;">
             </div>
@@ -742,13 +752,15 @@
         </div>
     </div>
 
-    <!-- Success Modal -->
-    <div class="global-modal" id="successModal">
-        <div class="modal-content" style="text-align: center;">
-            <i class="fas fa-check-circle success-checkmark"></i>
-            <h3 style="color: #22c55e;">REGISTRATION SUCCESSFULLY COMPLETED!</h3>
-            <p>YOUR PAYMENT VERIFICATION IS RECEIVED. PLEASE FILL YOUR DETAILS BELOW TO GENERATE YOUR REGISTRATION RECEIPT.</p>
-            <button class="modal-btn" onclick="openDetailsForm()">CONTINUE TO DETAILS</button>
+    <!-- PREMIUM CUSTOM ALERT MODAL -->
+    <div class="global-modal" id="customAlertModal">
+        <div class="modal-content" style="text-align: center; max-width: 350px;">
+            <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
+                <i class="fas fa-bell" id="customAlertIcon" style="color: var(--gold);"></i>
+            </div>
+            <h3 id="customAlertTitle" style="color: var(--gold); font-size: 1.4rem; margin-bottom: 10px;">TITLE</h3>
+            <p id="customAlertText" style="color: #fff; font-size: 0.95rem; font-weight: 600; line-height: 1.5;"></p>
+            <button class="modal-btn" onclick="document.getElementById('customAlertModal').classList.remove('show')" style="margin-top: 20px;">OKAY, GOT IT!</button>
         </div>
     </div>
 
@@ -774,47 +786,31 @@
         <div class="modal-content" style="max-width: 400px; text-align: left;">
             <div class="modal-close-btn" onclick="closeProfileModal()">&times;</div>
             <h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 10px;">MY PROFILE DASHBOARD</h3>
-            
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #333;">
-                <div style="width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #000; font-weight: bold; flex-shrink: 0;">
-                    <i class="fas fa-user"></i>
-                </div>
+                <div style="width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #000; font-weight: bold; flex-shrink: 0;"><i class="fas fa-user"></i></div>
                 <div>
                     <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">STUDENT LOGIN</h4>
                     <p style="color: var(--gold); font-size: 0.75rem; font-weight: 600;">STATUS: GUEST (NOT ENROLLED)</p>
                 </div>
             </div>
-
             <h4 style="color: #fff; margin-bottom: 15px; font-size: 1rem;"><i class="fas fa-book-reader" style="color: var(--gold);"></i> MY ENROLLED COURSES</h4>
             <div style="background: #000; padding: 25px 20px; border: 1px dashed #444; border-radius: 10px; text-align: center;">
                 <i class="fas fa-folder-open" style="font-size: 2.5rem; color: #444; margin-bottom: 10px;"></i>
                 <p style="color: var(--text-dim); font-size: 0.9rem; font-weight: 600;">NO ACTIVE COURSES FOUND.</p>
                 <button class="modal-btn" style="width: auto; padding: 8px 20px; margin-top: 15px; font-size: 0.85rem;" onclick="closeProfileModal(); document.getElementById('courses').scrollIntoView({behavior: 'smooth'});">EXPLORE COURSES NOW</button>
             </div>
-
-            <button class="modal-btn" style="background: transparent; color: #ef4444; border: 1px solid #ef4444; margin-top: 20px;" onclick="alert('LOGGED OUT SUCCESSFULLY!')"><i class="fas fa-sign-out-alt"></i> SECURE LOGOUT</button>
-        </div>
-    </div>
-
-    <!-- Coming Soon Modal -->
-    <div class="global-modal" id="comingSoonModal">
-        <div class="modal-content" style="text-align: center;">
-            <div class="modal-close-btn" onclick="closeComingSoonModal()">&times;</div>
-            <div class="modal-icon-wrapper"><i class="fas fa-rocket"></i></div>
-            <h3>COMING SOON!</h3>
-            <p>YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. JALD HI PRATAP MATHS PAR LIVE HOGA. STAY TUNED!</p>
-            <button class="modal-btn" onclick="closeComingSoonModal()">GOT IT!</button>
+            <button class="modal-btn" style="background: transparent; color: #ef4444; border: 1px solid #ef4444; margin-top: 20px;" onclick="showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.')"><i class="fas fa-sign-out-alt"></i> SECURE LOGOUT</button>
         </div>
     </div>
 
     <!-- --- HIDDEN A4 RECEIPT TEMPLATE FOR PDF GENERATION --- -->
     <div id="receiptWrapper">
         <div class="receipt-header">
-            <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHS</h1>
+            <h1>EXAMEDGE INSTITUTE X AP MATHEMATICS</h1>
             <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
         </div>
         <div class="receipt-meta">
-            <div>ENROLLMENT NO: <span id="recEnroll" style="color: #d97706;"></span></div>
+            <div>ENROLLMENT NO: <span id="recEnroll"></span></div>
             <div>DATE & TIME: <span id="recDate"></span></div>
         </div>
         <div class="receipt-section">
@@ -829,14 +825,14 @@
         <div class="receipt-section">
             <h3>PAYMENT DETAILS</h3>
             <table class="receipt-table">
-                <tr><td>COURSE ENROLLED:</td><td id="recCourse" style="color:#d97706;"></td></tr>
+                <tr><td>COURSE ENROLLED:</td><td id="recCourse"></td></tr>
                 <tr><td>TRANSACTION UTR NO:</td><td id="recUtr"></td></tr>
                 <tr><td>BASE COURSE FEE:</td><td id="recBaseFee"></td></tr>
-                <tr><td>DISCOUNT APPLIED:</td><td id="recDiscount" style="color: #16a34a;">-₹0.00</td></tr>
+                <tr><td>DISCOUNT APPLIED:</td><td id="recDiscount"></td></tr>
                 <tr><td>GST (18% INCLUSIVE):</td><td id="recGst"></td></tr>
                 <tr class="net-amount-row">
                     <td>TOTAL AMOUNT PAID:</td>
-                    <td id="recAmount" style="color: #16a34a;"></td>
+                    <td id="recAmount"></td>
                 </tr>
             </table>
         </div>
@@ -852,19 +848,14 @@
         </div>
         <div class="receipt-footer">
             <div class="footer-grid">
-                <div><i class="fab fa-youtube f-red"></i> YOUTUBE: @ABHINAY_PRATAP_MATHS</div>
-                <div style="text-align: right;"><i class="fab fa-telegram f-blue"></i> TELEGRAM: ABHINAY_PRATAP_MATHS</div>
-                <div><i class="fab fa-whatsapp f-green"></i> WHATSAPP: ABHINAY_PRATAP_EXAMEDGE</div>
-                <div style="text-align: right;"><i class="fas fa-globe f-gray"></i> WEB: WWW.EXAMEDGEINSTITUTE.IN</div>
-                <div><i class="fas fa-globe f-gray"></i> WEB: WWW.PRATAPMATHS.IN</div>
-                <div class="f-red" style="text-align: right;"><i class="fas fa-headset"></i> CONTACT US: 9670078465 FOR ANY HELP</div>
+                <div><i class="fab fa-youtube f-red"></i> @ABHINAY_PRATAP_MATHS</div>
+                <div style="text-align: right;"><i class="fab fa-telegram f-blue"></i> ABHINAY_PRATAP_MATHS</div>
+                <div><i class="fab fa-whatsapp f-green"></i> ABHINAY_PRATAP_EXAMEDGE</div>
+                <div style="text-align: right;"><i class="fas fa-globe f-gray"></i> WWW.EXAMEDGEINSTITUTE.IN</div>
+                <div><i class="fas fa-globe f-gray"></i> WWW.PRATAPMATHS.IN</div>
+                <div class="f-red" style="text-align: right;"><i class="fas fa-headset"></i> 9670078465 FOR ANY HELP</div>
             </div>
         </div>
-    </div>
-
-    <!-- Toast Alert -->
-    <div class="toast-alert" id="toastAlert">
-        <i class="fas fa-info-circle"></i> <span id="toastMessage">LINK NOT AVAILABLE</span>
     </div>
 
     <!-- Footer -->
@@ -874,13 +865,11 @@
                 <div class="footer-col">
                     <h3>QUICK LINKS</h3>
                     <a href="#"><i class="fas fa-angle-right"></i> HOME PORTAL</a>
-                    <a href="#" onclick="openComingSoonModal()"><i class="fas fa-angle-right"></i> ACTIVE PREMIUM BATCHES</a>
-                    <a href="#" onclick="openComingSoonModal()"><i class="fas fa-angle-right"></i> JAWAHAR NAVODAYA 2027</a>
-                    <a href="#" onclick="openComingSoonModal()"><i class="fas fa-angle-right"></i> TERMS & CONDITIONS</a>
+                    <a href="#" onclick="showCustomAlert('COMING SOON', 'PREMIUM BATCHES WILL BE LIVE SHORTLY.')"><i class="fas fa-angle-right"></i> ACTIVE PREMIUM BATCHES</a>
+                    <a href="#" onclick="showCustomAlert('COMING SOON', 'JAWAHAR NAVODAYA BATCH WILL BE LIVE SHORTLY.')"><i class="fas fa-angle-right"></i> JAWAHAR NAVODAYA 2027</a>
+                    <a href="#" onclick="showCustomAlert('INFO', 'TERMS AND CONDITIONS APPLY.')"><i class="fas fa-angle-right"></i> TERMS & CONDITIONS</a>
                 </div>
-                <div class="footer-right-logo">
-                    <img src="m.png" alt="AP Maths Logo">
-                </div>
+                <div class="footer-right-logo"><img src="m.png" alt="AP Maths Logo"></div>
             </div>
             <div class="footer-col">
                 <h3>CONTACT & SUPPORT</h3>
@@ -901,77 +890,57 @@
             setTimeout(() => { 
                 document.getElementById('splashScreen').style.opacity = '0'; 
                 document.getElementById('splashScreen').style.visibility = 'hidden'; 
-            }, 5000); 
+            }, 3000); 
         });
 
         // Menu Toggle
         const sidebar = document.getElementById('sidebar'); 
         const overlay = document.getElementById('overlay');
-        function toggleMenu() { 
-            sidebar.classList.toggle('active'); 
-            overlay.classList.toggle('active'); 
+        function toggleMenu() { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); }
+
+        // Premium Custom Alert Logic
+        function showCustomAlert(title, text, isSuccess = false) {
+            const modal = document.getElementById('customAlertModal');
+            document.getElementById('customAlertTitle').innerText = title;
+            document.getElementById('customAlertText').innerHTML = text;
+            const iconBox = document.getElementById('customAlertIconBox');
+            const icon = document.getElementById('customAlertIcon');
+
+            if(isSuccess) {
+                iconBox.style.background = "rgba(34, 197, 94, 0.1)";
+                document.getElementById('customAlertTitle').style.color = "#22c55e";
+                icon.className = "fas fa-gift"; icon.style.color = "#22c55e";
+            } else {
+                iconBox.style.background = "rgba(234, 179, 8, 0.1)";
+                document.getElementById('customAlertTitle').style.color = "var(--gold)";
+                icon.className = "fas fa-bell"; icon.style.color = "var(--gold)";
+            }
+            modal.classList.add('show');
         }
 
-        // Coming Soon Modal
-        function triggerComingSoon(e) { 
-            e.preventDefault(); 
-            toggleMenu(); 
-            openComingSoonModal(); 
-        }
-        const comingSoonModal = document.getElementById('comingSoonModal');
-        function openComingSoonModal() { comingSoonModal.classList.add('show'); }
-        function closeComingSoonModal() { comingSoonModal.classList.remove('show'); }
+        // Profile & Sidebar Links
+        function triggerComingSoon(e) { e.preventDefault(); toggleMenu(); showCustomAlert('COMING SOON!', 'YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. STAY TUNED!'); }
+        function openProfileModal(e) { if(e) e.preventDefault(); toggleMenu(); document.getElementById('profileModal').classList.add('show'); }
+        function closeProfileModal() { document.getElementById('profileModal').classList.remove('show'); }
 
-        // --- MY PROFILE MODAL LOGIC ---
-        const profileModal = document.getElementById('profileModal');
-        function openProfileModal(e) {
-            if(e) e.preventDefault();
-            toggleMenu(); // Close Sidebar
-            profileModal.classList.add('show');
-        }
-        function closeProfileModal() {
-            profileModal.classList.remove('show');
-        }
-
-        // --- UPDATED PAYMENT MODAL LOGIC WITH COUPON CODES ---
-        let currentCourseName = "";
-        let originalCoursePrice = 0;
-        let currentCoursePrice = 0;
-        let appliedDiscountAmt = 0;
-        let finalUtr = "";
-
+        // --- PAYMENT MODAL LOGIC WITH COUPON CODES ---
+        let currentCourseName = ""; let originalCoursePrice = 0; let currentCoursePrice = 0; let appliedDiscountAmt = 0; let finalUtr = "";
         const paymentModal = document.getElementById('paymentModal');
-        const successModal = document.getElementById('successModal');
         const detailsModal = document.getElementById('detailsModal');
         const qrContainer = document.getElementById('qrContainer');
         const qrImage = document.getElementById('qrImage');
 
-        // Discount Coupons (4 Codes)
-        const coupons = {
-            "ABHINAY50": 0.50, // 50% Off
-            "SUPER30": 0.30,   // 30% Off
-            "FESTIVAL20": 0.20, // 20% Off
-            "MATHS10": 0.10    // 10% Off
-        };
+        const coupons = { "ABHINAY50": 0.50, "SUPER30": 0.30, "FESTIVAL20": 0.20, "MATHS10": 0.10 };
 
         function openPaymentModal(cName, price) {
-            currentCourseName = cName;
-            originalCoursePrice = price;
-            currentCoursePrice = price;
-            appliedDiscountAmt = 0;
-
-            // Set UI details
+            currentCourseName = cName; originalCoursePrice = price; currentCoursePrice = price; appliedDiscountAmt = 0;
             document.getElementById('modalCourseName').innerText = cName;
             document.getElementById('modalOriginalFee').innerText = "₹" + price;
             document.getElementById('modalDiscountRow').style.display = "none";
             document.getElementById('modalPayableAmount').innerText = "₹" + price;
-
-            // Reset inputs
             document.getElementById('paymentScreenshot').value = "";
-            document.getElementById('utrInput').value = "";
-            document.getElementById('couponInput').value = "";
+            document.getElementById('utrInput').value = ""; document.getElementById('couponInput').value = "";
             qrContainer.style.display = "none";
-
             paymentModal.classList.add('show');
         }
 
@@ -979,31 +948,16 @@
 
         function applyCoupon() {
             let code = document.getElementById('couponInput').value.trim().toUpperCase();
-            
-            if(appliedDiscountAmt > 0) {
-                alert("A COUPON IS ALREADY APPLIED!");
-                return;
-            }
-
+            if(appliedDiscountAmt > 0) { showCustomAlert("WAIT!", "A COUPON IS ALREADY APPLIED TO THIS COURSE."); return; }
             if(coupons[code]) {
-                let discountPercent = coupons[code];
-                appliedDiscountAmt = Math.floor(originalCoursePrice * discountPercent);
+                appliedDiscountAmt = Math.floor(originalCoursePrice * coupons[code]);
                 currentCoursePrice = originalCoursePrice - appliedDiscountAmt;
-
-                // Update UI
                 document.getElementById('modalDiscountRow').style.display = "flex";
                 document.getElementById('modalDiscountAmount').innerText = "-₹" + appliedDiscountAmt;
                 document.getElementById('modalPayableAmount').innerText = "₹" + currentCoursePrice;
-
-                alert("COUPON '" + code + "' APPLIED SUCCESSFULLY!\nYOU GOT ₹" + appliedDiscountAmt + " DISCOUNT.");
-
-                // Automatically regenerate QR if it is currently visible
-                if(qrContainer.style.display === "block") {
-                    generateQR();
-                }
-            } else {
-                alert("INVALID COUPON CODE!");
-            }
+                showCustomAlert("🎉 COUPON APPLIED!", `CONGRATULATIONS! CODE '${code}' APPLIED SUCCESSFULLY.<br>YOU GOT ₹${appliedDiscountAmt} DISCOUNT!`, true);
+                if(qrContainer.style.display === "block") generateQR();
+            } else { showCustomAlert("INVALID CODE", "PLEASE ENTER A VALID COUPON CODE."); }
         }
 
         function generateQR() {
@@ -1015,22 +969,21 @@
         function verifyPaymentSubmit() {
             const fileInput = document.getElementById('paymentScreenshot');
             const utrValue = document.getElementById('utrInput').value.trim().toUpperCase();
-            
             const isFileUploaded = fileInput.files.length > 0;
-            const utrRegex = /^PM\d{12}$/;
-            const isUtrValid = utrRegex.test(utrValue);
+            const utrRegex = /^PM\d{12}$/; const isUtrValid = utrRegex.test(utrValue);
 
             if (isFileUploaded || isUtrValid) {
                 finalUtr = isUtrValid ? utrValue : "VERIFIED_VIA_SCREENSHOT";
                 closePaymentModal();
-                setTimeout(() => { successModal.classList.add('show'); }, 300);
+                showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED SUCCESSFULLY.<br>PLEASE FILL YOUR DETAILS TO DOWNLOAD THE RECEIPT.", true);
+                setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500);
             } else {
-                alert("PAYMENT VERIFICATION FAILED!\n\nPLEASE UPLOAD A PAYMENT SCREENSHOT OR ENTER A VALID 14-DIGIT UTR NUMBER (MUST START WITH 'PM' FOLLOWED BY 12 DIGITS).");
+                showCustomAlert("VERIFICATION FAILED", "PLEASE UPLOAD A SCREENSHOT OR ENTER A VALID 14-DIGIT UTR NUMBER (STARTS WITH 'PM').");
             }
         }
 
         function openDetailsForm() {
-            successModal.classList.remove('show');
+            document.getElementById('customAlertModal').classList.remove('show');
             setTimeout(() => { detailsModal.classList.add('show'); }, 300);
         }
 
@@ -1041,20 +994,14 @@
             const father = document.getElementById('stuFather').value.trim();
             const address = document.getElementById('stuAddress').value.trim();
 
-            if(!name || !mobile || !father || !address) {
-                alert("PLEASE FILL ALL THE DETAILS TO GENERATE RECEIPT.");
-                return;
-            }
+            if(!name || !mobile || !father || !address) { showCustomAlert("DETAILS MISSING", "PLEASE FILL ALL THE DETAILS TO GENERATE YOUR RECEIPT."); return; }
 
-            // Calculations based on Final Payable Amount (currentCoursePrice)
             const finalPayable = currentCoursePrice;
             const base = (finalPayable / 1.18).toFixed(2);
             const gst = (finalPayable - base).toFixed(2);
             const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000);
 
-            // Populate Hidden Template
-            const d = new Date();
-            document.getElementById('recDate').innerText = d.toLocaleString('en-IN');
+            document.getElementById('recDate').innerText = new Date().toLocaleString('en-IN');
             document.getElementById('recEnroll').innerText = enrollNo;
             document.getElementById('recUtr').innerText = finalUtr;
             document.getElementById('recName').innerText = name.toUpperCase();
@@ -1062,138 +1009,32 @@
             document.getElementById('recMobile').innerText = mobile;
             document.getElementById('recAddress').innerText = address.toUpperCase();
             document.getElementById('recCourse').innerText = currentCourseName;
-            
             document.getElementById('recBaseFee').innerText = "₹" + base;
             document.getElementById('recDiscount').innerText = "-₹" + appliedDiscountAmt + ".00";
             document.getElementById('recGst').innerText = "₹" + gst;
             document.getElementById('recAmount').innerText = "₹" + finalPayable + ".00";
 
             const element = document.getElementById('receiptWrapper');
-            const opt = {
-                margin:       [0, 0, 0, 0],
-                filename:     `Enrollment_Receipt_${enrollNo}.pdf`,
-                image:        { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2, useCORS: true },
-                jsPDF:        { unit: 'px', format: [800, 1130], orientation: 'portrait' }
-            };
+            element.style.display = 'block'; 
+            element.style.position = 'fixed'; element.style.top = '0'; element.style.left = '0'; element.style.zIndex = '-9999';
 
-            // Expose element for PDF capture
-            element.style.left = '0';
-            element.style.top = '0';
-            element.style.zIndex = '-1';
+            const opt = { margin: 0, filename: `Receipt_${enrollNo}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, scrollY: 0 }, jsPDF: { unit: 'px', format: [800, 1130], orientation: 'portrait' } };
 
             html2pdf().set(opt).from(element).save().then(() => {
-                element.style.left = '-9999px'; // Hide again
-                detailsModal.classList.remove('show');
-                setTimeout(() => {
-                    alert("RECEIPT DOWNLOADED SUCCESSFULLY TO YOUR LOCAL STORAGE!\nWELCOME TO EXAMEDGE INSTITUTE X AP MATHEMATICS HELPLINE.");
-                }, 500);
+                element.style.display = 'none'; detailsModal.classList.remove('show');
+                setTimeout(() => { showCustomAlert("✅ RECEIPT DOWNLOADED", "YOUR RECEIPT HAS BEEN SAVED TO CHROME DOWNLOADS.<br>WELCOME TO EXAMEDGE X AP MATHS!", true); }, 500);
             });
         }
 
-        // Features Toggle
-        function toggleFeatures(btn) {
-            let box = btn.parentElement.nextElementSibling; 
-            let icon = btn.querySelector('i');
-            if(box.style.display === "block") { 
-                box.style.display = "none"; 
-                icon.className = "fas fa-chevron-down"; 
-                btn.style.background = "#222"; 
-                btn.style.color = "var(--text-light)"; 
-            } else { 
-                box.style.display = "block"; 
-                icon.className = "fas fa-chevron-up"; 
-                btn.style.background = "var(--gold)"; 
-                btn.style.color = "#000"; 
-            }
-        }
-
-        // Banner Slider Sync
-        const sliderWrapper = document.getElementById('sliderWrapper'); 
-        const dotsContainer = document.getElementById('dotsContainer'); 
-        const slides = document.querySelectorAll('.banner-slide');
+        // Feature Toggle, Sliders & Timed Banners
+        function toggleFeatures(btn) { let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; btn.style.background = "#222"; btn.style.color = "var(--text-light)"; } else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; btn.style.background = "var(--gold)"; btn.style.color = "#000"; } }
         
-        for(let i=0; i<slides.length; i++) {
-            let dot = document.createElement('div'); 
-            dot.className = 'dot'; 
-            if(i===0) dot.classList.add('active');
-            dot.addEventListener('click', () => { 
-                const slideWidth = slides[0].clientWidth + 15; 
-                sliderWrapper.scrollTo({ left: slideWidth * i, behavior: 'smooth' }); 
-            }); 
-            dotsContainer.appendChild(dot);
-        }
-        
-        const bannerDots = document.querySelectorAll('.dots-container .dot');
-        sliderWrapper.addEventListener('scroll', () => { 
-            const slideWidth = slides[0].clientWidth + 15; 
-            const currentIndex = Math.round(sliderWrapper.scrollLeft / slideWidth); 
-            bannerDots.forEach(d => d.classList.remove('active')); 
-            if(bannerDots[currentIndex]) bannerDots[currentIndex].classList.add('active'); 
+        ['sliderWrapper', 'reviewsWrapper', 'facultyWrapper'].forEach(id => {
+            const wrapper = document.getElementById(id); const dotsContainer = wrapper.nextElementSibling; const items = wrapper.children;
+            for(let i=0; i<items.length; i++) { let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active'); dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 15) * i, behavior: 'smooth' }); }); dotsContainer.appendChild(dot); }
+            wrapper.addEventListener('scroll', () => { const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 15)); const dots = dotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
         });
 
-        const toastAlert = document.getElementById('toastAlert');
-        slides.forEach(slide => {
-            slide.addEventListener('click', () => {
-                const destination = slide.getAttribute('data-link');
-                if(destination && destination.trim() !== "") { 
-                    window.open(destination, '_blank'); 
-                } else { 
-                    toastAlert.classList.add('show'); 
-                    setTimeout(() => { toastAlert.classList.remove('show'); }, 3000); 
-                }
-            });
-        });
-
-        // Reviews Slider Sync
-        const reviewsWrapper = document.getElementById('reviewsWrapper'); 
-        const reviewDotsContainer = document.getElementById('reviewDotsContainer'); 
-        const reviewCards = document.querySelectorAll('.review-card');
-        
-        for(let i=0; i<reviewCards.length; i++) {
-            let dot = document.createElement('div'); 
-            dot.className = 'dot'; 
-            if(i===0) dot.classList.add('active');
-            dot.addEventListener('click', () => { 
-                const cardWidth = reviewCards[0].clientWidth + 15; 
-                reviewsWrapper.scrollTo({ left: cardWidth * i, behavior: 'smooth' }); 
-            }); 
-            reviewDotsContainer.appendChild(dot);
-        }
-        
-        const reviewDots = reviewDotsContainer.querySelectorAll('.dot');
-        reviewsWrapper.addEventListener('scroll', () => { 
-            const cardWidth = reviewCards[0].clientWidth + 15; 
-            const currentIndex = Math.round(reviewsWrapper.scrollLeft / cardWidth); 
-            reviewDots.forEach(d => d.classList.remove('active')); 
-            if(reviewDots[currentIndex]) reviewDots[currentIndex].classList.add('active'); 
-        });
-
-        // Faculty Slider Sync
-        const facultyWrapper = document.getElementById('facultyWrapper'); 
-        const facultyDotsContainer = document.getElementById('facultyDotsContainer'); 
-        const facultyCards = document.querySelectorAll('.faculty-card');
-        
-        for(let i=0; i<facultyCards.length; i++) {
-            let dot = document.createElement('div'); 
-            dot.className = 'dot'; 
-            if(i===0) dot.classList.add('active');
-            dot.addEventListener('click', () => { 
-                const cardWidth = facultyCards[0].clientWidth + 20; 
-                facultyWrapper.scrollTo({ left: cardWidth * i, behavior: 'smooth' }); 
-            }); 
-            facultyDotsContainer.appendChild(dot);
-        }
-        
-        const facultyDots = facultyDotsContainer.querySelectorAll('.dot');
-        facultyWrapper.addEventListener('scroll', () => { 
-            const cardWidth = facultyCards[0].clientWidth + 20; 
-            const currentIndex = Math.round(facultyWrapper.scrollLeft / cardWidth); 
-            facultyDots.forEach(d => d.classList.remove('active')); 
-            if(facultyDots[currentIndex]) facultyDots[currentIndex].classList.add('active'); 
-        });
-
-        // Timed Notification Banners
         function closeTimedBanner(id) { document.getElementById(id).classList.remove('show'); }
         setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 120000); 
         setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 300000); 
