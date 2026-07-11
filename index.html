@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Library for PDF Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
@@ -22,7 +21,6 @@
             --text-light: #ffffff;
             --text-dim: #a3a3a3;
             --border-dark: #262626;
-            --red-grad: linear-gradient(135deg, #ef4444, #dc2626, #991b1b);
         }
 
         /* UPPERCASE APPLIED GLOBALLY */
@@ -141,7 +139,6 @@
         .btn-features { background: #222; color: var(--text-light); border: 1px solid var(--gold); }
         .btn-features:hover { background: #333; }
         
-        /* Vibrant Yellow Buy Now Course Button */
         .btn-buy { background: var(--gold); color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
         .btn-buy:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5); }
 
@@ -166,75 +163,66 @@
         .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
         .review-dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 20px; padding: 0 5%; flex-wrap: wrap; }
 
-        /* --- NEW PREMIUM FACULTY LAYOUT (Gradient Red & Badhiya Layout) --- */
-        .faculty-section { 
-            padding: 80px 0 60px; 
-            background: #070000; 
-            border-top: 2px solid #450a0a; 
-            border-bottom: 2px solid #450a0a; 
-        }
-        .faculty-section .section-title { margin-left: 5%; color: #fff; border-left-color: #ef4444; }
-        .faculty-section .section-title span { color: #ef4444; }
+        /* --- PREMIUM FACULTY LAYOUT (Yellow Border & White Inner Circle) --- */
+        .faculty-section { padding: 80px 0 60px; background: #0a0a0a; border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); }
+        .faculty-section .section-title { margin-left: 5%; color: #fff; border-left-color: var(--gold); }
+        .faculty-section .section-title span { color: var(--gold); }
         
-        .faculty-wrapper { 
-            display: flex; justify-content: flex-start; overflow-x: auto; 
-            scroll-snap-type: x mandatory; gap: 30px; 
-            padding: 70px 5% 40px; 
-            scrollbar-width: none; scroll-behavior: smooth; 
-        }
+        .faculty-wrapper { display: flex; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 30px; padding: 70px 5% 40px; scrollbar-width: none; scroll-behavior: smooth; }
         .faculty-wrapper::-webkit-scrollbar { display: none; }
         
         .faculty-card { 
             width: 320px; scroll-snap-align: start; flex-shrink: 0; 
-            background: linear-gradient(145deg, #170505, #0a0000); 
-            border-radius: 20px; border: 1px solid #7f1d1d; 
+            background: var(--bg-card); 
+            border-radius: 20px; border: 1px solid var(--border-dark); 
             padding: 70px 20px 30px; text-align: center; transition: 0.4s; position: relative; 
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); 
         }
         .faculty-card:hover { 
             transform: translateY(-15px); 
-            border-color: #ef4444; 
-            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.3); 
+            border-color: var(--gold); 
+            box-shadow: 0 15px 40px rgba(234, 179, 8, 0.15); 
         }
         
-        /* Overlapping Red Gradient Avatar */
+        /* Overlapping Yellow Gradient Avatar with White Border */
         .faculty-img-wrapper { 
-            width: 130px; height: 130px; border-radius: 50%; 
+            width: 140px; height: 140px; border-radius: 50%; 
             padding: 5px; 
-            background: var(--red-grad);
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
-            position: absolute; top: -65px; left: 50%; transform: translateX(-50%);
+            background: var(--gold); /* YELLOW BACKGROUND/GLOW */
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.6); /* YELLOW SHADOW */
+            position: absolute; top: -70px; left: 50%; transform: translateX(-50%);
             display: flex; align-items: center; justify-content: center;
             z-index: 2;
         }
         .faculty-img-wrapper img { 
             width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
-            border: 4px solid #0a0000; 
+            border: 4px solid #ffffff; /* WHITE INNER BORDER */
         }
         
         .faculty-name { font-size: 1.5rem; font-weight: 900; color: #ffffff; margin-bottom: 5px; letter-spacing: 1px;}
         .faculty-subject { 
-            display: inline-block; background: rgba(239, 68, 68, 0.1); 
-            color: #ef4444; font-size: 0.85rem; font-weight: 800; 
+            display: inline-block; background: rgba(234, 179, 8, 0.1); 
+            color: var(--gold); font-size: 0.85rem; font-weight: 800; 
             padding: 6px 15px; border-radius: 20px; margin-bottom: 20px; 
-            letter-spacing: 1px; border: 1px solid rgba(239, 68, 68, 0.3);
+            letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3);
         }
         .faculty-desc { font-size: 0.9rem; color: #d4d4d4; line-height: 1.6; margin-bottom: 25px; font-weight: 500; }
         
-        .faculty-socials { display: flex; justify-content: center; gap: 15px; }
+        /* Updated 4 Social Icons Setup */
+        .faculty-socials { display: flex; justify-content: center; gap: 15px; border-top: 1px dashed #333; padding-top: 20px; }
         .faculty-socials a { 
-            color: #ef4444; font-size: 1.2rem; transition: 0.3s; 
-            background: rgba(239, 68, 68, 0.1); width: 45px; height: 45px; 
+            color: var(--text-light); font-size: 1.2rem; transition: 0.3s; 
+            background: rgba(234, 179, 8, 0.1); width: 45px; height: 45px; 
             border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(234, 179, 8, 0.2);
         }
         .faculty-socials a:hover { 
-            color: #fff; background: var(--red-grad); 
-            transform: scale(1.1) translateY(-3px); box-shadow: 0 8px 20px rgba(239, 68, 68, 0.5);
+            color: #000; background: var(--gold); 
+            transform: scale(1.1) translateY(-3px); box-shadow: 0 8px 20px rgba(234, 179, 8, 0.5);
         }
 
         .faculty-dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 10px; padding: 0 5%; flex-wrap: wrap; }
-        .faculty-dots-container .dot.active { background: #ef4444; }
+        .faculty-dots-container .dot.active { background: var(--gold); }
 
         /* --- Global Modals --- */
         .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
@@ -274,14 +262,18 @@
         .timed-banner-close { position: absolute; top: -15px; right: -15px; cursor: pointer; background: var(--gold); border: 2px solid #000; color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.2s; z-index: 10; }
         .timed-banner-close:hover { background: #fff; transform: scale(1.1); }
 
+        /* Sleek Toast Notification */
+        .toast-alert { position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); background: rgba(17, 17, 17, 0.95); backdrop-filter: blur(8px); border: 1px solid var(--gold); padding: 8px 18px; border-radius: 8px; color: #fff; font-weight: 500; font-size: 0.85rem; z-index: 3000; box-shadow: 0 5px 25px rgba(234, 179, 8, 0.25); display: flex; align-items: center; gap: 8px; transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .toast-alert.show { bottom: 30px; }
+        .toast-alert i { color: var(--gold); font-size: 1.1rem; }
+
         /* --- A4 PDF RECEIPT CSS (FIXED FOR BLANK ISSUE) --- */
-        /* PDF ko off-screen render karwayenge taaki wo screen se dabe na aur clearly generate ho */
         #receiptWrapper {
             position: absolute; 
             top: -20000px; 
             left: 0;
-            background: #ffffff; 
-            color: #000000; 
+            background: #ffffff !important; 
+            color: #000000 !important; 
             width: 800px; 
             min-height: 1130px; 
             padding: 50px; 
@@ -289,7 +281,7 @@
             box-sizing: border-box; 
             text-transform: uppercase;
         }
-        #receiptWrapper * { color: #000000; } 
+        #receiptWrapper * { color: #000000 !important; font-family: Arial, sans-serif !important; } 
         .receipt-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
         .receipt-header h1 { font-size: 30px; margin: 0; font-weight: 900; letter-spacing: 1px; }
         .receipt-header p { font-size: 16px; margin: 8px 0 0 0; font-weight: bold; }
@@ -307,7 +299,7 @@
         #recCourse { color: #d97706 !important; }
         .signatures { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; }
         .sig-box { text-align: center; width: 250px; }
-        .sig-font { font-family: 'Dancing Script', cursive; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
+        .sig-font { font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
         .sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;}
         .receipt-footer { position: absolute; bottom: 40px; left: 50px; right: 50px; border-top: 3px solid #000; padding-top: 20px; }
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; }
@@ -333,12 +325,10 @@
 </head>
 <body>
 
-    <!-- Splash Screen with Zoom In/Out Banner -->
     <div class="splash-screen" id="splashScreen">
         <img src="z.png" alt="PRATAP MATHS" class="splash-banner">
     </div>
 
-    <!-- Navbar -->
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
@@ -354,12 +344,10 @@
         <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO PRATAP MATHS SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
-    <!-- Floating WhatsApp -->
     <a href="https://wa.me/919670078465" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Sidebar -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <ul>
@@ -376,7 +364,6 @@
         </ul>
     </div>
 
-    <!-- 1000x1000px Timed Banners -->
     <div class="timed-banner" id="timedBanner2min">
         <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner2min')"><i class="fas fa-times"></i></div>
         <img src="al1.png" alt="SPECIAL ALERT" class="timed-banner-img">
@@ -386,7 +373,6 @@
         <img src="al2.png" alt="SPECIAL ALERT 5 MIN" class="timed-banner-img">
     </div>
 
-    <!-- Banner Slider -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths.com/batch1" style="background-image: url('i1.png');"></div>
@@ -403,7 +389,6 @@
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
-    <!-- Courses Section (7 Courses) -->
     <section class="courses-section" id="courses">
         <h2 class="section-title">PREMIUM COURSES</h2>
         <div class="course-list">
@@ -589,7 +574,6 @@
         </div>
     </section>
 
-    <!-- Reviews Section (10 Full Reviews with t2.png) -->
     <section class="reviews-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="reviews-wrapper" id="reviewsWrapper">
@@ -657,9 +641,9 @@
         <div class="review-dots-container" id="reviewDotsContainer"></div>
     </section>
 
-    <!-- Expert Faculty Section -->
     <section class="faculty-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
+        
         <div class="faculty-wrapper" id="facultyWrapper">
             
             <div class="faculty-card">
@@ -667,7 +651,12 @@
                 <h3 class="faculty-name">ABHINAY CHAUBEY</h3>
                 <p class="faculty-subject">FOUNDER & MATHS EXPERT</p>
                 <p class="faculty-desc">MASTER OF SHORT TRICKS & ADVANCED MATHEMATICS. 5+ YEARS OF TEACHING EXPERIENCE FOR SSC, NAVODAYA & KVS.</p>
-                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                <div class="faculty-socials">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="tel:9670078465"><i class="fas fa-phone-alt"></i></a>
+                    <a href="mailto:pratapmaths2026@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
 
             <div class="faculty-card">
@@ -675,7 +664,12 @@
                 <h3 class="faculty-name">BHOLU CHAUBEY</h3>
                 <p class="faculty-subject">CHAIRMAN & GS EXPERT</p>
                 <p class="faculty-desc">SPECIALIST IN GENERAL STUDIES & STATIC GK. GUIDING STUDENTS FOR RAILWAY, DEFENCE & STATE LEVEL EXAMS.</p>
-                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                <div class="faculty-socials">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="tel:9670078465"><i class="fas fa-phone-alt"></i></a>
+                    <a href="mailto:pratapmaths2026@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
 
             <div class="faculty-card">
@@ -683,7 +677,12 @@
                 <h3 class="faculty-name">AKSHIT SIR</h3>
                 <p class="faculty-subject">SENIOR SCIENCE FACULTY</p>
                 <p class="faculty-desc">MAKING PHYSICS, CHEMISTRY & BIOLOGY EASY TO UNDERSTAND WITH REAL-LIFE EXAMPLES AND CONCEPTUAL CLARITY.</p>
-                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                <div class="faculty-socials">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="tel:9670078465"><i class="fas fa-phone-alt"></i></a>
+                    <a href="mailto:pratapmaths2026@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
 
             <div class="faculty-card">
@@ -691,7 +690,12 @@
                 <h3 class="faculty-name">RAHUL SIR</h3>
                 <p class="faculty-subject">REASONING EXPERT</p>
                 <p class="faculty-desc">EXPERT IN LOGICAL AND ANALYTICAL REASONING. MAKING COMPLEX PUZZLES EASY IN SECONDS FOR COMPETITIVE EXAMS.</p>
-                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                <div class="faculty-socials">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="tel:9670078465"><i class="fas fa-phone-alt"></i></a>
+                    <a href="mailto:pratapmaths2026@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
 
             <div class="faculty-card">
@@ -699,14 +703,18 @@
                 <h3 class="faculty-name">SNEHA MA'AM</h3>
                 <p class="faculty-subject">ENGLISH FACULTY</p>
                 <p class="faculty-desc">GRAMMAR AND VOCABULARY EXPERT. HELPING STUDENTS SCORE 100% IN COMPREHENSION AND ADVANCED ENGLISH RULES.</p>
-                <div class="faculty-socials"><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                <div class="faculty-socials">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="tel:9670078465"><i class="fas fa-phone-alt"></i></a>
+                    <a href="mailto:pratapmaths2026@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
 
         </div>
         <div class="faculty-dots-container" id="facultyDotsContainer"></div>
     </section>
 
-    <!-- NEW Updated Detailed Payment Modal -->
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
@@ -759,7 +767,6 @@
         </div>
     </div>
 
-    <!-- PREMIUM CUSTOM ALERT MODAL -->
     <div class="global-modal" id="customAlertModal">
         <div class="modal-content" style="text-align: center; max-width: 350px;">
             <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
@@ -771,7 +778,6 @@
         </div>
     </div>
 
-    <!-- Student Details Form Modal -->
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
             <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
@@ -788,7 +794,6 @@
         </div>
     </div>
 
-    <!-- MY PROFILE MODAL -->
     <div class="global-modal" id="profileModal">
         <div class="modal-content" style="max-width: 400px; text-align: left;">
             <div class="modal-close-btn" onclick="closeProfileModal()">&times;</div>
@@ -810,62 +815,50 @@
         </div>
     </div>
 
-    <!-- --- HIDDEN A4 RECEIPT TEMPLATE FOR PDF GENERATION --- -->
-    <div id="receiptWrapper">
-        <div class="receipt-header">
-            <h1>EXAMEDGE INSTITUTE X AP MATHEMATICS</h1>
-            <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
+    <div id="receiptWrapper" style="position: absolute; left: -9999px; top: 0; width: 800px; background: #ffffff !important; color: #000000 !important; padding: 50px; font-family: Arial, sans-serif; box-sizing: border-box; text-transform: uppercase;">
+        <div style="text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px;">
+            <h1 style="font-size: 30px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000000 !important;">EXAMEDGE INSTITUTE X AP MATHEMATICS</h1>
+            <p style="font-size: 16px; margin: 8px 0 0 0; font-weight: bold; color: #000000 !important;">OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
         </div>
-        <div class="receipt-meta">
-            <div>ENROLLMENT NO: <span id="recEnroll"></span></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 15px; color: #000000 !important;">
+            <div>ENROLLMENT NO: <span id="recEnroll" style="color: #d97706 !important;"></span></div>
             <div>DATE & TIME: <span id="recDate"></span></div>
         </div>
-        <div class="receipt-section">
-            <h3>STUDENT INFORMATION</h3>
-            <table class="receipt-table">
-                <tr><td>STUDENT FULL NAME:</td><td id="recName"></td></tr>
-                <tr><td>FATHER'S NAME:</td><td id="recFather"></td></tr>
-                <tr><td>CONTACT NUMBER:</td><td id="recMobile"></td></tr>
-                <tr><td>ADDRESS:</td><td id="recAddress"></td></tr>
+        <div style="border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px;">
+            <h3 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000000 !important;">STUDENT INFORMATION</h3>
+            <table style="width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000000 !important;">
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">STUDENT FULL NAME:</td><td id="recName" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">FATHER'S NAME:</td><td id="recFather" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">CONTACT NUMBER:</td><td id="recMobile" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">ADDRESS:</td><td id="recAddress" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
             </table>
         </div>
-        <div class="receipt-section">
-            <h3>PAYMENT DETAILS</h3>
-            <table class="receipt-table">
-                <tr><td>COURSE ENROLLED:</td><td id="recCourse"></td></tr>
-                <tr><td>TRANSACTION UTR NO:</td><td id="recUtr"></td></tr>
-                <tr><td>BASE COURSE FEE:</td><td id="recBaseFee"></td></tr>
-                <tr><td>DISCOUNT APPLIED:</td><td id="recDiscount"></td></tr>
-                <tr><td>GST (18% INCLUSIVE):</td><td id="recGst"></td></tr>
-                <tr class="net-amount-row">
-                    <td>TOTAL AMOUNT PAID:</td>
-                    <td id="recAmount"></td>
+        <div style="border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px;">
+            <h3 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000000 !important;">PAYMENT DETAILS</h3>
+            <table style="width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000000 !important;">
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">COURSE ENROLLED:</td><td id="recCourse" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc; color: #d97706 !important;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">TRANSACTION UTR NO:</td><td id="recUtr" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">BASE COURSE FEE:</td><td id="recBaseFee" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">DISCOUNT APPLIED:</td><td id="recDiscount" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc; color: #16a34a !important;"></td></tr>
+                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">GST (18% INCLUSIVE):</td><td id="recGst" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+                <tr style="background: #f3f4f6 !important; font-size: 20px; border-top: 2px solid #000 !important;">
+                    <td style="padding: 15px 10px; font-weight: 900 !important; border-bottom: none !important;">TOTAL AMOUNT PAID:</td>
+                    <td id="recAmount" style="padding: 15px 10px; font-weight: 900 !important; text-align: right; border-bottom: none !important; color: #16a34a !important;"></td>
                 </tr>
             </table>
         </div>
-        <div class="signatures">
-            <div class="sig-box">
-                <div class="sig-font">Abhinay Chaubey</div>
-                <div class="sig-line">ABHINAY CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(FOUNDER)</span></div>
+        <div style="display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; color: #000000 !important;">
+            <div style="text-align: center; width: 250px;">
+                <div style="font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px;">Abhinay Chaubey</div>
+                <div style="border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;">ABHINAY CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(FOUNDER)</span></div>
             </div>
-            <div class="sig-box">
-                <div class="sig-font">B. P. Chaubey</div>
-                <div class="sig-line">B.P CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(CHAIRMAN)</span></div>
-            </div>
-        </div>
-        <div class="receipt-footer">
-            <div class="footer-grid">
-                <div><i class="fab fa-youtube f-red"></i> @ABHINAY_PRATAP_MATHS</div>
-                <div style="text-align: right;"><i class="fab fa-telegram f-blue"></i> ABHINAY_PRATAP_MATHS</div>
-                <div><i class="fab fa-whatsapp f-green"></i> ABHINAY_PRATAP_EXAMEDGE</div>
-                <div style="text-align: right;"><i class="fas fa-globe f-gray"></i> WWW.EXAMEDGEINSTITUTE.IN</div>
-                <div><i class="fas fa-globe f-gray"></i> WWW.PRATAPMATHS.IN</div>
-                <div class="f-red" style="text-align: right;"><i class="fas fa-headset"></i> 9670078465 FOR ANY HELP</div>
+            <div style="text-align: center; width: 250px;">
+                <div style="font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px;">B. P. Chaubey</div>
+                <div style="border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;">B.P CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(CHAIRMAN)</span></div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-wrapper">
             <div class="footer-links-container">
@@ -897,7 +890,7 @@
             setTimeout(() => { 
                 document.getElementById('splashScreen').style.opacity = '0'; 
                 document.getElementById('splashScreen').style.visibility = 'hidden'; 
-            }, 3000); // 3 seconds zoom animation
+            }, 3000); 
         });
 
         // Menu Toggle
@@ -938,7 +931,7 @@
         const qrContainer = document.getElementById('qrContainer');
         const qrImage = document.getElementById('qrImage');
 
-        // Discount Coupons (4 Codes)
+        // Discount Coupons
         const coupons = { "ABHINAY50": 0.50, "SUPER30": 0.30, "FESTIVAL20": 0.20, "MATHS10": 0.10 };
 
         function openPaymentModal(cName, price) {
@@ -1024,6 +1017,7 @@
             document.getElementById('recAmount').innerText = "₹" + finalPayable + ".00";
 
             const element = document.getElementById('receiptWrapper');
+            element.style.display = 'block'; 
 
             const opt = { 
                 margin: 0, 
@@ -1034,6 +1028,7 @@
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none';
                 detailsModal.classList.remove('show');
                 setTimeout(() => { showCustomAlert("✅ RECEIPT DOWNLOADED", "YOUR RECEIPT HAS BEEN SAVED TO CHROME DOWNLOADS.<br>WELCOME TO EXAMEDGE X AP MATHS!", true); }, 500);
             });
