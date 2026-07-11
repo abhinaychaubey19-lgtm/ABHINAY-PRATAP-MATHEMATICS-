@@ -169,7 +169,7 @@
         /* --- NEW PREMIUM FACULTY LAYOUT (Gradient Red & Badhiya Layout) --- */
         .faculty-section { 
             padding: 80px 0 60px; 
-            background: #070000; /* Deep red-black background */
+            background: #070000; 
             border-top: 2px solid #450a0a; 
             border-bottom: 2px solid #450a0a; 
         }
@@ -179,14 +179,14 @@
         .faculty-wrapper { 
             display: flex; justify-content: flex-start; overflow-x: auto; 
             scroll-snap-type: x mandatory; gap: 30px; 
-            padding: 70px 5% 40px; /* Extra top padding for overlapping avatar */
+            padding: 70px 5% 40px; 
             scrollbar-width: none; scroll-behavior: smooth; 
         }
         .faculty-wrapper::-webkit-scrollbar { display: none; }
         
         .faculty-card { 
             width: 320px; scroll-snap-align: start; flex-shrink: 0; 
-            background: linear-gradient(145deg, #170505, #0a0000); /* Dark Red Gradient Card */
+            background: linear-gradient(145deg, #170505, #0a0000); 
             border-radius: 20px; border: 1px solid #7f1d1d; 
             padding: 70px 20px 30px; text-align: center; transition: 0.4s; position: relative; 
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); 
@@ -274,12 +274,20 @@
         .timed-banner-close { position: absolute; top: -15px; right: -15px; cursor: pointer; background: var(--gold); border: 2px solid #000; color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.2s; z-index: 10; }
         .timed-banner-close:hover { background: #fff; transform: scale(1.1); }
 
-        /* --- A4 PDF RECEIPT CSS (Fixed for Print) --- */
+        /* --- A4 PDF RECEIPT CSS (FIXED FOR BLANK ISSUE) --- */
+        /* PDF ko off-screen render karwayenge taaki wo screen se dabe na aur clearly generate ho */
         #receiptWrapper {
-            display: none; 
-            background: #ffffff; color: #000000; 
-            width: 800px; min-height: 1130px; padding: 50px; font-family: Arial, sans-serif; 
-            box-sizing: border-box; text-transform: uppercase;
+            position: absolute; 
+            top: -20000px; 
+            left: 0;
+            background: #ffffff; 
+            color: #000000; 
+            width: 800px; 
+            min-height: 1130px; 
+            padding: 50px; 
+            font-family: Arial, sans-serif; 
+            box-sizing: border-box; 
+            text-transform: uppercase;
         }
         #receiptWrapper * { color: #000000; } 
         .receipt-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
@@ -649,10 +657,9 @@
         <div class="review-dots-container" id="reviewDotsContainer"></div>
     </section>
 
-    <!-- Expert Faculty Section (Premium Red Gradient) -->
+    <!-- Expert Faculty Section -->
     <section class="faculty-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
-        
         <div class="faculty-wrapper" id="facultyWrapper">
             
             <div class="faculty-card">
@@ -890,7 +897,7 @@
             setTimeout(() => { 
                 document.getElementById('splashScreen').style.opacity = '0'; 
                 document.getElementById('splashScreen').style.visibility = 'hidden'; 
-            }, 3000); 
+            }, 3000); // 3 seconds zoom animation
         });
 
         // Menu Toggle
@@ -903,6 +910,7 @@
             const modal = document.getElementById('customAlertModal');
             document.getElementById('customAlertTitle').innerText = title;
             document.getElementById('customAlertText').innerHTML = text;
+            
             const iconBox = document.getElementById('customAlertIconBox');
             const icon = document.getElementById('customAlertIcon');
 
@@ -930,6 +938,7 @@
         const qrContainer = document.getElementById('qrContainer');
         const qrImage = document.getElementById('qrImage');
 
+        // Discount Coupons (4 Codes)
         const coupons = { "ABHINAY50": 0.50, "SUPER30": 0.30, "FESTIVAL20": 0.20, "MATHS10": 0.10 };
 
         function openPaymentModal(cName, price) {
@@ -1015,13 +1024,17 @@
             document.getElementById('recAmount').innerText = "₹" + finalPayable + ".00";
 
             const element = document.getElementById('receiptWrapper');
-            element.style.display = 'block'; 
-            element.style.position = 'fixed'; element.style.top = '0'; element.style.left = '0'; element.style.zIndex = '-9999';
 
-            const opt = { margin: 0, filename: `Receipt_${enrollNo}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, scrollY: 0 }, jsPDF: { unit: 'px', format: [800, 1130], orientation: 'portrait' } };
+            const opt = { 
+                margin: 0, 
+                filename: `Receipt_${enrollNo}.pdf`, 
+                image: { type: 'jpeg', quality: 1 }, 
+                html2canvas: { scale: 2, useCORS: true, scrollY: 0 }, 
+                jsPDF: { unit: 'px', format: [800, 1130], orientation: 'portrait' } 
+            };
 
             html2pdf().set(opt).from(element).save().then(() => {
-                element.style.display = 'none'; detailsModal.classList.remove('show');
+                detailsModal.classList.remove('show');
                 setTimeout(() => { showCustomAlert("✅ RECEIPT DOWNLOADED", "YOUR RECEIPT HAS BEEN SAVED TO CHROME DOWNLOADS.<br>WELCOME TO EXAMEDGE X AP MATHS!", true); }, 500);
             });
         }
