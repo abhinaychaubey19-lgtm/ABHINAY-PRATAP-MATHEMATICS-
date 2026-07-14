@@ -28,13 +28,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
         body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* --- Simple Splash Screen --- */
+        /* --- Full Screen Splash Screen --- */
         .splash-screen {
             position: fixed; inset: 0; z-index: 9999; background: #000000;
             display: flex; align-items: center; justify-content: center;
             transition: opacity 1s ease, visibility 1s ease;
         }
-        .splash-banner { width: 85%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(234, 179, 8, 0.4); }
+        .splash-banner { width: 100vw; height: 100vh; object-fit: cover; }
 
         /* --- Navbar --- */
         nav {
@@ -139,20 +139,21 @@
         .course-card { position: relative; background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); overflow: visible; transition: 0.3s; }
         .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(234, 179, 8, 0.4); }
         
-        /* New Mini Play Button on Banner */
-        .course-img-box { position: relative; width: 100%; aspect-ratio: 2/1; background-color: #111; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; overflow: hidden; }
-        .course-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        /* Interactive Video Thumbnail */
+        .course-img-box { position: relative; width: 100%; aspect-ratio: 2/1; background-color: #111; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; overflow: hidden; cursor: pointer; }
+        .course-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.4s; }
+        .course-img-box:hover .course-img { transform: scale(1.05); filter: brightness(0.8); }
+        
+        /* Yellow Play Button (Icon Only) */
         .mini-play-btn {
             position: absolute; bottom: 12px; right: 12px;
-            background: var(--red-brand); color: #fff;
-            padding: 6px 14px; border-radius: 25px;
-            font-size: 0.8rem; font-weight: 800;
-            cursor: pointer; display: flex; align-items: center; gap: 6px;
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.8);
-            border: 1px solid rgba(255,255,255,0.3); transition: 0.3s; z-index: 5;
+            background: var(--gold); color: #000;
+            padding: 12px 14px 12px 16px; /* Offset for perfect visual center */
+            border-radius: 50%; font-size: 1.1rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.6); border: 2px solid #fff; transition: 0.3s; z-index: 5;
         }
-        .mini-play-btn:hover { background: #ef4444; transform: scale(1.05); box-shadow: 0 6px 15px rgba(239, 68, 68, 1); }
-        .mini-play-btn i { font-size: 1rem; }
+        .mini-play-btn:hover { background: #fff; transform: scale(1.1); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.8); }
 
         .course-info { padding: 20px; }
         .course-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
@@ -192,7 +193,7 @@
         .features-box ul li i { color: var(--gold); margin-top: 3px; font-size: 1.1rem; }
 
         /* --- UNIFORM LAYOUT FOR REVIEWS AND FACULTIES --- */
-        .uniform-section { padding: 40px 0; }
+        .uniform-section { padding: 40px 0 20px; }
         .uniform-section .section-title { margin-left: 5%; }
         .uniform-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; justify-content: flex-start; }
         .uniform-wrapper::-webkit-scrollbar { display: none; }
@@ -209,6 +210,13 @@
         .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
         .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
 
+        /* --- SLIM BANNER SLIDER (BELOW REVIEWS) --- */
+        .slim-slider { padding: 10px 0 40px; }
+        .slim-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; }
+        .slim-wrapper::-webkit-scrollbar { display: none; }
+        .slim-slide { min-width: 85vw; aspect-ratio: 4/1; border-radius: 10px; scroll-snap-align: center; background-color: #111; border: 1px solid var(--border-dark); display: block; flex-shrink: 0; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        @media(min-width: 768px) { .slim-slide { min-width: 45vw; } }
+
         /* Faculty Content */
         .fac-avatar-container { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid #ffffff; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
         .fac-avatar-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -216,7 +224,6 @@
         .fac-subject { text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3); padding: 4px 10px; border-radius: 20px; background: rgba(234, 179, 8, 0.05); }
         .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px; font-weight: 500; min-height: 60px; }
         
-        /* Teacher Icons Updated to White */
         .fac-socials { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 15px; border-top: 1px dashed #222; }
         .fac-socials a { color: #ffffff; font-size: 1.2rem; background: #111; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s; }
         .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); box-shadow: 0 0 12px var(--gold); border-color: var(--gold); }
@@ -272,7 +279,6 @@
         .footer-col a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-weight: 600; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
         
-        /* Premium Examedge Button */
         .btn-examedge { 
             display: inline-block; background: linear-gradient(135deg, #ff2a75, #ff0055); color: #fff !important; 
             padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; 
@@ -289,29 +295,36 @@
 
         /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (100% SINGLE PAGE + WATERMARK FIX) --- */
         @media print {
-            @page { size: A4 portrait; margin: 10mm; }
+            @page { size: A4 portrait; margin: 15mm; }
             body > *:not(#receiptArea) { display: none !important; }
             #receiptArea { 
-                display: flex !important; flex-direction: column; position: relative !important; 
-                width: 100% !important; min-height: 95vh !important; background: #ffffff !important; 
-                color: #000000 !important; padding: 15px !important; 
+                display: block !important; position: relative !important; 
+                width: 100% !important; background: #ffffff !important; 
+                color: #000000 !important; padding: 20px !important; 
                 box-sizing: border-box !important; margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             body, html { background: #ffffff !important; color: #000000 !important; height: 100% !important; overflow: hidden !important; }
-            
-            /* Watermark Overlay Setup */
-            #receiptArea::before {
-                content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='550' height='250'%3E%3Ctext x='-50' y='150' transform='rotate(-25)' font-family='Arial' font-size='20' font-weight='900' fill='%23000000' opacity='0.08'%3EEXAMEDGE INSTITUTE X ABHINAYPRATAPCHAUBEYMATHS%3C/text%3E%3C/svg%3E");
-                background-repeat: repeat; pointer-events: none; z-index: 0;
-            }
-            .r-content { z-index: 1; position: relative; flex-grow: 1; display: flex; flex-direction: column;}
         }
         
         #receiptArea { display: none; }
-        .r-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 15px; margin-bottom: 20px; }
-        .r-header h1 { font-size: 21px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000 !important; white-space: nowrap; }
-        .r-header p { font-size: 14px; margin: 5px 0 0 0; font-weight: bold; color: #000 !important; }
+        
+        .r-watermark {
+            position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 36px; font-weight: 900; color: rgba(0, 0, 0, 0.06) !important;
+            text-align: center; white-space: nowrap; z-index: 0; pointer-events: none;
+            -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+        }
+
+        .r-content { position: relative; z-index: 1; }
+        
+        .r-header { display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 3px solid #111; padding-bottom: 15px; margin-bottom: 25px; }
+        .r-logo { width: 75px; height: 75px; border-radius: 50%; object-fit: contain; }
+        .r-header-text { text-align: left; }
+        .r-header-text h1 { font-size: 20px; margin: 0; font-weight: 900; letter-spacing: 0.5px; color: #000 !important; white-space: nowrap; }
+        .r-header-text p { font-size: 14px; margin: 4px 0 0 0; font-weight: bold; color: #000 !important; }
+
         .r-meta { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 10px; color: #000 !important; }
         .r-section { border: 2px solid #000; padding: 15px 20px; margin-bottom: 20px; border-radius: 5px; background: rgba(255,255,255,0.85); }
         .r-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-bottom: 12px; font-size: 16px; font-weight: 900; color: #000 !important; }
@@ -322,15 +335,14 @@
         .r-total { background: #f3f4f6 !important; font-size: 18px; border-top: 2px solid #000 !important; }
         .r-total td { border-bottom: none !important; padding: 10px 10px; font-weight: 900 !important; }
         
-        /* New Digital Signature Box */
-        .r-digital-note { text-align: center; font-weight: 800; font-size: 13px; margin-top: 25px; border: 2px dashed #000; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.85); color: #000 !important;}
+        .r-digital-note { text-align: center; margin-top: 30px; font-size: 12px; font-weight: 900; color: #333 !important; border-top: 2px dashed #ccc; padding-top: 15px; }
         
-        .r-footer { margin-top: auto; border-top: 3px solid #000; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; font-weight: 900; color: #000 !important; background: rgba(255,255,255,0.85);}
+        .r-footer { margin-top: 20px; border-top: 3px solid #000; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; font-weight: 900; color: #000 !important; background: rgba(255,255,255,0.85);}
     </style>
 </head>
 <body>
 
-    <!-- Simple Splash Screen -->
+    <!-- Full Screen Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <img src="z.png" alt="PRATAP MATHS" class="splash-banner">
     </div>
@@ -344,7 +356,7 @@
                 <div class="line line3"></div>
             </div>
             <div class="brand-container">
-                <div class="brand-name">ABHINAY PRATAP MATHEMATICS</div>
+                <div class="brand-name">ABHINAY PRATAP MATHS</div>
                 <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
@@ -380,7 +392,6 @@
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-bolt"></i> WATCH VIDEO</div>
             <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner5min')"><i class="fas fa-times"></i></div>
-            <!-- Video Player -->
             <video id="promoVideo" controls class="timed-banner-img">
                 <source src="promo.mp4" type="video/mp4">
                 YOUR BROWSER DOES NOT SUPPORT THE VIDEO TAG.
@@ -398,9 +409,9 @@
             <div class="banner-slide" data-link="" style="background-image: url('i5.png');"></div>
             <div class="banner-slide" data-link="" style="background-image: url('i6.png');"></div>
             <div class="banner-slide" data-link="" style="background-image: url('i7.png');"></div>
-            <div class="banner-slide" data-link="" style="background-image: url('i8.png');"></div>
-            <div class="banner-slide" data-link="" style="background-image: url('i9.png');"></div>
-            <div class="banner-slide" data-link="" style="background-image: url('i10.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('cab.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('sb.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('sb.png');"></div>
         </div>
         <div class="dots-container" id="dotsContainer"></div>
     </section>
@@ -420,9 +431,9 @@
                     <div class="time-sep">:</div>
                     <div class="time-block"><div class="time-val" id="cd-s">59</div><div class="time-lbl">SEC</div></div>
                 </div>
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor1.mp4')">
                     <img src="ca1.png" alt="MATHS BATCH" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor1.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">MATHEMATICS SPECIAL</h3>
@@ -446,9 +457,9 @@
 
             <!-- VANDE BHARAT BATCH -->
             <div class="course-card">
-                <div class="course-img-box">
-                    <img src="caa.png" alt="VANDE BHARAT BATCH" class="course-img" onerror="this.src='ca1.png'">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor2.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                <div class="course-img-box" onclick="playCourseVideo('cor2.mp4')">
+                    <img src="cab.png" alt="VANDE BHARAT BATCH" class="course-img" onerror="this.src='ca1.png'">
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">VANDE BHARAT BATCH</h3>
@@ -472,9 +483,9 @@
 
             <!-- SCIENCE GS -->
             <div class="course-card">
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor3.mp4')">
                     <img src="ca2.png" alt="SCIENCE GS" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor3.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">COMPLETE SCIENCE SPECIAL</h3>
@@ -498,9 +509,9 @@
 
             <!-- NAVODAYA -->
             <div class="course-card">
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor4.mp4')">
                     <img src="ca3.png" alt="TARGET CGL" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor4.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">JAWAHAR NAVODAYA ENTRANCE</h3>
@@ -524,9 +535,9 @@
 
             <!-- RAILWAY/KVS -->
             <div class="course-card">
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor5.mp4')">
                     <img src="ca4.png" alt="RAILWAY" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor5.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">KENDRIYA VIDYALAYA</h3>
@@ -550,9 +561,9 @@
 
             <!-- TEST PASS -->
             <div class="course-card">
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor6.mp4')">
                     <img src="ca5.png" alt="TEST PASS" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor6.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">ULTIMATE TEST PASS PRO</h3>
@@ -576,9 +587,9 @@
 
             <!-- REASONING -->
             <div class="course-card">
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor7.mp4')">
                     <img src="ca6.png" alt="REASONING SPECIAL" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor7.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">REASONING SPECIAL BATCH</h3>
@@ -602,9 +613,9 @@
 
             <!-- GS SPECIAL -->
             <div class="course-card">
-                <div class="course-img-box">
+                <div class="course-img-box" onclick="playCourseVideo('cor8.mp4')">
                     <img src="ca7.png" alt="GS SPECIAL" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('cor8.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">G.S SPECIAL BATCH</h3>
@@ -634,6 +645,17 @@
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper"></div>
         <div class="dots-container" id="reviewDotsContainer"></div>
+    </section>
+
+    <!-- SLIM BANNER SLIDER (Below Reviews) -->
+    <section class="slim-slider">
+        <div class="slim-wrapper" id="slimSliderWrapper">
+            <div class="slim-slide" style="background-image: url('sa.jpg');"></div>
+            <div class="slim-slide" style="background-image: url('sb.png');"></div>
+            <div class="slim-slide" style="background-image: url('sb.png');"></div>
+            <div class="slim-slide" style="background-image: url('sb.png');"></div>
+            <div class="slim-slide" style="background-image: url('sb.png');"></div>
+        </div>
     </section>
 
     <!-- Expert Faculties Slider -->
@@ -668,7 +690,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t3.png" alt="Akshit"></div>
+                <div class="fac-avatar-container"><img src="t2.png" alt="Akshit"></div>
                 <h3 class="fac-name">AKSHIT SIR</h3>
                 <p class="fac-subject">SENIOR SCIENCE FACULTY</p>
                 <p class="fac-desc">MAKING PHYSICS, CHEMISTRY & BIOLOGY EASY TO UNDERSTAND. 2+ YEARS OF TEACHING PRACTICAL CONCEPTS.</p>
@@ -681,7 +703,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t4.png" alt="Rahul"></div>
+                <div class="fac-avatar-container"><img src="t2.png" alt="Rahul"></div>
                 <h3 class="fac-name">RAHUL SIR</h3>
                 <p class="fac-subject">REASONING EXPERT</p>
                 <p class="fac-desc">EXPERT IN LOGICAL AND ANALYTICAL REASONING. 2+ YEARS PUZZLE CRACKING SPECIALIST.</p>
@@ -694,7 +716,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t5.png" alt="Sneha"></div>
+                <div class="fac-avatar-container"><img src="t2.png" alt="Sneha"></div>
                 <h3 class="fac-name">SNEHA MA'AM</h3>
                 <p class="fac-subject">ENGLISH FACULTY</p>
                 <p class="fac-desc">GRAMMAR AND VOCABULARY MENTOR. 2+ YEARS TEACHING COMPREHENSION TRICKS PROFESSOR.</p>
@@ -710,10 +732,10 @@
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
-    <!-- Global Course Video Player Modal with Cancel/Close -->
+    <!-- Global Course Video Player Modal -->
     <div class="global-modal" id="courseVideoModal">
         <div class="modal-content" style="padding: 15px; max-width: 650px; background: #000; border: 2px solid var(--gold); border-radius: 15px;">
-            <div class="modal-close-btn" onclick="closeCourseVideoModal()" style="top: -15px; right: -15px; background: var(--red-brand); border: 2px solid #fff; color: #fff;">&times;</div>
+            <div class="modal-close-btn" onclick="closeCourseVideoModal()" style="top: -15px; right: -15px; background: var(--red-brand); border: 2px solid #fff; color: #fff; z-index: 10;">&times;</div>
             <video id="courseVideoPlayer" controls style="width: 100%; border-radius: 10px; outline: none; background: #111;">
                 <source id="cvSource" src="" type="video/mp4">
                 YOUR BROWSER DOES NOT SUPPORT THE VIDEO TAG.
@@ -827,10 +849,14 @@
 
     <!-- --- RECEIPT PRINT AREA (100% FIXED BROWSER NATIVE PRINT) --- -->
     <div id="receiptArea">
+        <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAYPRATAPCHAUBEYMATHS</div>
         <div class="r-content">
             <div class="r-header">
-                <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHEMATICS</h1>
-                <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
+                <img src="m.png" alt="Logo" class="r-logo">
+                <div class="r-header-text">
+                    <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHS</h1>
+                    <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
+                </div>
             </div>
             <div class="r-meta">
                 <div>ENROLLMENT NO: <span id="rEnroll" style="color: #d97706 !important;"></span></div>
@@ -861,7 +887,7 @@
             </div>
             
             <div class="r-digital-note">
-                THIS IS A COMPUTER GENERATED DIGITAL RECEIPT.<br>NO PHYSICAL SIGNATURE IS REQUIRED.
+                * THIS IS A COMPUTER GENERATED DIGITAL RECEIPT. NO PHYSICAL SIGNATURE IS REQUIRED. *
             </div>
 
             <div class="r-footer">
@@ -905,7 +931,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ABHINAY PRATAP MATHEMATICS. ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">TEAM AAJAD</span></p>
+            <p>&copy; 2026 ABHINAY PRATAP MATHEMATICS. ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">EXAMEDGE INSTITUTE</span></p>
         </div>
     </footer>
 
@@ -1180,6 +1206,19 @@
                 const slideWidth = bannerSlides[0].clientWidth + 15;
                 sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' });
             }, 4000);
+        }
+
+        // --- SLIM SLIDER LOGIC ---
+        const slimWrapper = document.getElementById('slimSliderWrapper');
+        if (slimWrapper) {
+            const slimSlides = document.querySelectorAll('.slim-slide');
+            let currentSlimSlide = 0;
+            setInterval(() => {
+                currentSlimSlide++;
+                if (currentSlimSlide >= slimSlides.length) { currentSlimSlide = 0; }
+                const slimSlideWidth = slimSlides[0].clientWidth + 15;
+                slimWrapper.scrollTo({ left: slimSlideWidth * currentSlimSlide, behavior: 'smooth' });
+            }, 3000); // Scrolls every 3 seconds
         }
 
         // Live 24-Hour Countdown Timer Logic
