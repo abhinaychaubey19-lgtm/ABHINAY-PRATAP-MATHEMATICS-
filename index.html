@@ -287,43 +287,55 @@
         .contact-item a:hover { color: var(--pink); padding-left: 0; }
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; width: 100%;}
 
-        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (100% BLANK PAGE FIX) --- */
+        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (100% SINGLE PAGE + WATERMARK FIX) --- */
         @media print {
+            @page { size: A4 portrait; margin: 10mm; }
             body > *:not(#receiptArea) { display: none !important; }
             #receiptArea { 
-                display: block !important; position: relative !important; 
-                width: 100% !important; background: #ffffff !important; 
-                color: #000000 !important; padding: 20px !important; 
+                display: flex !important; flex-direction: column; position: relative !important; 
+                width: 100% !important; min-height: 95vh !important; background: #ffffff !important; 
+                color: #000000 !important; padding: 15px !important; 
                 box-sizing: border-box !important; margin: 0 !important;
             }
-            body, html { background: #ffffff !important; color: #000000 !important; height: auto !important; overflow: visible !important; }
+            body, html { background: #ffffff !important; color: #000000 !important; height: 100% !important; overflow: hidden !important; }
+            
+            /* Watermark Overlay Setup */
+            #receiptArea::before {
+                content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='550' height='250'%3E%3Ctext x='-50' y='150' transform='rotate(-25)' font-family='Arial' font-size='20' font-weight='900' fill='%23000000' opacity='0.08'%3EEXAMEDGE INSTITUTE X ABHINAYPRATAPCHAUBEYMATHS%3C/text%3E%3C/svg%3E");
+                background-repeat: repeat; pointer-events: none; z-index: 0;
+            }
+            .r-content { z-index: 1; position: relative; flex-grow: 1; display: flex; flex-direction: column;}
         }
+        
         #receiptArea { display: none; }
-        .r-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
-        .r-header h1 { font-size: 28px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000 !important; }
-        .r-header p { font-size: 16px; margin: 8px 0 0 0; font-weight: bold; color: #000 !important; }
-        .r-meta { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 15px; color: #000 !important; }
-        .r-section { border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px; }
-        .r-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000 !important; }
-        .r-table { width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000 !important; }
+        .r-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 15px; margin-bottom: 20px; }
+        .r-header h1 { font-size: 21px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000 !important; white-space: nowrap; }
+        .r-header p { font-size: 14px; margin: 5px 0 0 0; font-weight: bold; color: #000 !important; }
+        .r-meta { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 10px; color: #000 !important; }
+        .r-section { border: 2px solid #000; padding: 15px 20px; margin-bottom: 20px; border-radius: 5px; background: rgba(255,255,255,0.85); }
+        .r-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-bottom: 12px; font-size: 16px; font-weight: 900; color: #000 !important; }
+        .r-table { width: 100%; font-size: 14px; line-height: 2; border-collapse: collapse; color: #000 !important; }
         .r-table td { border-bottom: 1px dashed #ccc; font-weight: 600; }
         .r-table td:first-child { font-weight: 800; width: 40%; }
         .r-table td:last-child { font-weight: 800; text-align: right; }
-        .r-total { background: #f3f4f6 !important; font-size: 20px; border-top: 2px solid #000 !important; }
-        .r-total td { border-bottom: none !important; padding: 15px 10px; font-weight: 900 !important; }
-        .r-sigs { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; color: #000 !important; }
-        .r-sig-box { text-align: center; width: 250px; }
-        .r-sig-font { font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
-        .r-sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px; }
-        .r-footer { margin-top: 40px; border-top: 3px solid #000; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; color: #000 !important;}
+        .r-total { background: #f3f4f6 !important; font-size: 18px; border-top: 2px solid #000 !important; }
+        .r-total td { border-bottom: none !important; padding: 10px 10px; font-weight: 900 !important; }
+        
+        /* New Digital Signature Box */
+        .r-digital-note { text-align: center; font-weight: 800; font-size: 13px; margin-top: 25px; border: 2px dashed #000; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.85); color: #000 !important;}
+        
+        .r-footer { margin-top: auto; border-top: 3px solid #000; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; font-weight: 900; color: #000 !important; background: rgba(255,255,255,0.85);}
     </style>
 </head>
 <body>
 
+    <!-- Simple Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <img src="z.png" alt="PRATAP MATHS" class="splash-banner">
     </div>
 
+    <!-- Navbar -->
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
@@ -332,13 +344,14 @@
                 <div class="line line3"></div>
             </div>
             <div class="brand-container">
-                <div class="brand-name">ABHINAY PRATAP MATHS</div>
+                <div class="brand-name">ABHINAY PRATAP MATHEMATICS</div>
                 <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
         <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP MATHEMATICS SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
+    <!-- Sidebar -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <ul>
@@ -355,6 +368,7 @@
         </ul>
     </div>
 
+    <!-- PREMIUM TIMED BANNERS -->
     <div class="timed-banner" id="timedBanner2min">
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-fire"></i> SPECIAL OFFER</div>
@@ -366,6 +380,7 @@
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-bolt"></i> WATCH VIDEO</div>
             <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner5min')"><i class="fas fa-times"></i></div>
+            <!-- Video Player -->
             <video id="promoVideo" controls class="timed-banner-img">
                 <source src="promo.mp4" type="video/mp4">
                 YOUR BROWSER DOES NOT SUPPORT THE VIDEO TAG.
@@ -373,6 +388,7 @@
         </div>
     </div>
 
+    <!-- Banner Slider -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
@@ -389,10 +405,12 @@
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
+    <!-- Courses Section -->
     <section class="courses-section" id="courses">
         <h2 class="section-title">PREMIUM COURSES</h2>
         <div class="course-list">
             
+            <!-- Mathematics Special Card -->
             <div class="course-card">
                 <div class="countdown-badge">
                     <div class="countdown-text">ENDS IN</div>
@@ -404,7 +422,7 @@
                 </div>
                 <div class="course-img-box">
                     <img src="ca1.png" alt="MATHS BATCH" class="course-img">
-                    <div class="mini-play-btn" onclick="playCourseVideo('promo.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor1.mp4')"><i class="fas fa-play"></i> DEMO</div>
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">MATHEMATICS SPECIAL</h3>
@@ -426,37 +444,33 @@
                 </div>
             </div>
 
-     <!-- UPDATED VANDE BHARAT BATCH CARD WITH VISIBLE DEMO BUTTON -->
-<div class="course-card">
-    <div class="course-img-box">
-        <img src="caa.png" alt="VANDE BHARAT BATCH" class="course-img">
-        <!-- DEMO BUTTON (FIXED POSITION & Z-INDEX) -->
-        <div class="mini-play-btn" onclick="playCourseVideo('cor2.mp4')" style="position: absolute; bottom: 15px; right: 15px; background: #dc2626; color: #fff; padding: 8px 16px; border-radius: 25px; font-size: 0.85rem; font-weight: 800; cursor: pointer; z-index: 10; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-            <i class="fas fa-play"></i> DEMO
-        </div>
-        <div class="play-overlay" onclick="playCourseVideo('cor2.mp4')"><i class="fas fa-play-circle"></i></div>
-    </div>
-    <div class="course-info">
-        <h3 class="course-title">VANDE BHARAT BATCH</h3>
-        <p class="course-faculty" style="color: var(--green);">FREE FOR GOVT SCHOOL STUDENTS</p>
-        <div class="btn-group">
-            <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-            <button class="btn btn-free" onclick="openPaymentModal('VANDE BHARAT BATCH', 0)">ENROLL FOR FREE</button>
-        </div>
-        <div class="features-box">
-            <ul>
-                <li><i class="fas fa-check-circle"></i> 100% FREE FOR GOVT STUDENTS</li>
-                <li><i class="fas fa-check-circle"></i> COMPLETE NCERT SYLLABUS</li>
-                <li><i class="fas fa-check-circle"></i> DAILY LIVE CLASSES</li>
-                <li><i class="fas fa-check-circle"></i> BILINGUAL (HINDI/ENGLISH)</li>
-                <li><i class="fas fa-check-circle"></i> FREE PDF NOTES & TESTS</li>
-                <li><i class="fas fa-check-circle"></i> DEDICATED DOUBT SESSIONS</li>
-            </ul>
-        </div>
-    </div>
-</div>
+            <!-- VANDE BHARAT BATCH -->
+            <div class="course-card">
+                <div class="course-img-box">
+                    <img src="caa.png" alt="VANDE BHARAT BATCH" class="course-img" onerror="this.src='ca1.png'">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor2.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
+                <div class="course-info">
+                    <h3 class="course-title">VANDE BHARAT BATCH</h3>
+                    <p class="course-faculty" style="color: var(--green);">FREE FOR GOVT SCHOOL STUDENTS</p>
+                    <div class="btn-group">
+                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
+                        <button class="btn btn-free" onclick="openPaymentModal('VANDE BHARAT BATCH', 0)">ENROLL FOR FREE</button>
+                    </div>
+                    <div class="features-box">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> 100% FREE FOR GOVT STUDENTS</li>
+                            <li><i class="fas fa-check-circle"></i> COMPLETE NCERT SYLLABUS</li>
+                            <li><i class="fas fa-check-circle"></i> DAILY LIVE CLASSES</li>
+                            <li><i class="fas fa-check-circle"></i> BILINGUAL (HINDI/ENGLISH)</li>
+                            <li><i class="fas fa-check-circle"></i> FREE PDF NOTES & TESTS</li>
+                            <li><i class="fas fa-check-circle"></i> DEDICATED DOUBT SESSIONS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-
+            <!-- SCIENCE GS -->
             <div class="course-card">
                 <div class="course-img-box">
                     <img src="ca2.png" alt="SCIENCE GS" class="course-img">
@@ -482,6 +496,7 @@
                 </div>
             </div>
 
+            <!-- NAVODAYA -->
             <div class="course-card">
                 <div class="course-img-box">
                     <img src="ca3.png" alt="TARGET CGL" class="course-img">
@@ -507,6 +522,7 @@
                 </div>
             </div>
 
+            <!-- RAILWAY/KVS -->
             <div class="course-card">
                 <div class="course-img-box">
                     <img src="ca4.png" alt="RAILWAY" class="course-img">
@@ -532,6 +548,7 @@
                 </div>
             </div>
 
+            <!-- TEST PASS -->
             <div class="course-card">
                 <div class="course-img-box">
                     <img src="ca5.png" alt="TEST PASS" class="course-img">
@@ -557,6 +574,7 @@
                 </div>
             </div>
 
+            <!-- REASONING -->
             <div class="course-card">
                 <div class="course-img-box">
                     <img src="ca6.png" alt="REASONING SPECIAL" class="course-img">
@@ -582,6 +600,7 @@
                 </div>
             </div>
 
+            <!-- GS SPECIAL -->
             <div class="course-card">
                 <div class="course-img-box">
                     <img src="ca7.png" alt="GS SPECIAL" class="course-img">
@@ -610,12 +629,14 @@
         </div>
     </section>
 
+    <!-- Student Reviews Slider -->
     <section class="uniform-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper"></div>
         <div class="dots-container" id="reviewDotsContainer"></div>
     </section>
 
+    <!-- Expert Faculties Slider -->
     <section class="uniform-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
         <div class="uniform-wrapper" id="facultyWrapper">
@@ -689,6 +710,7 @@
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
+    <!-- Global Course Video Player Modal with Cancel/Close -->
     <div class="global-modal" id="courseVideoModal">
         <div class="modal-content" style="padding: 15px; max-width: 650px; background: #000; border: 2px solid var(--gold); border-radius: 15px;">
             <div class="modal-close-btn" onclick="closeCourseVideoModal()" style="top: -15px; right: -15px; background: var(--red-brand); border: 2px solid #fff; color: #fff;">&times;</div>
@@ -699,6 +721,7 @@
         </div>
     </div>
 
+    <!-- Payment Verification Modal -->
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
@@ -759,6 +782,7 @@
         </div>
     </div>
 
+    <!-- Custom Alert Modal -->
     <div class="global-modal" id="customAlertModal">
         <div class="modal-content" style="text-align: center; max-width: 350px;">
             <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
@@ -770,6 +794,7 @@
         </div>
     </div>
 
+    <!-- Student Details Form Modal -->
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
             <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
@@ -784,6 +809,7 @@
         </div>
     </div>
 
+    <!-- MY PROFILE MODAL -->
     <div class="global-modal" id="profileModal">
         <div class="modal-content" style="max-width: 400px; text-align: left;">
             <div class="modal-close-btn" onclick="closeProfileModal()">&times;</div>
@@ -799,60 +825,60 @@
         </div>
     </div>
 
+    <!-- --- RECEIPT PRINT AREA (100% FIXED BROWSER NATIVE PRINT) --- -->
     <div id="receiptArea">
-        <div class="r-header">
-            <h1>ABHINAY PRATAP MATHEMATICS</h1>
-            <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
-        </div>
-        <div class="r-meta">
-            <div>ENROLLMENT NO: <span id="rEnroll" style="color: #d97706 !important;"></span></div>
-            <div>DATE & TIME: <span id="rDate"></span></div>
-        </div>
-        <div class="r-section">
-            <h3>STUDENT INFORMATION</h3>
-            <table class="r-table">
-                <tr><td>STUDENT FULL NAME:</td><td id="rName"></td></tr>
-                <tr><td>FATHER'S NAME:</td><td id="rFather"></td></tr>
-                <tr><td>CONTACT NUMBER:</td><td id="rMobile"></td></tr>
-                <tr><td>ADDRESS:</td><td id="rAddress"></td></tr>
-            </table>
-        </div>
-        <div class="r-section">
-            <h3>PAYMENT DETAILS</h3>
-            <table class="r-table">
-                <tr><td>COURSE ENROLLED:</td><td id="rCourse" style="color: #d97706 !important;"></td></tr>
-                <tr><td>TRANSACTION UTR NO:</td><td id="rUtr"></td></tr>
-                <tr><td>BASE COURSE FEE:</td><td id="rBaseFee"></td></tr>
-                <tr><td>DISCOUNT APPLIED:</td><td id="rDiscount" style="color: #16a34a !important;"></td></tr>
-                <tr><td>GST (18% INCLUSIVE):</td><td id="rGst"></td></tr>
-                <tr class="r-total">
-                    <td>TOTAL AMOUNT PAID:</td>
-                    <td id="rAmount" style="color: #16a34a !important;"></td>
-                </tr>
-            </table>
-        </div>
-        <div class="r-sigs">
-            <div class="r-sig-box">
-                <div class="r-sig-font">Abhinay Chaubey</div>
-                <div class="r-sig-line">ABHINAY CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(FOUNDER)</span></div>
+        <div class="r-content">
+            <div class="r-header">
+                <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHEMATICS</h1>
+                <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
             </div>
-            <div class="r-sig-box">
-                <div class="r-sig-font">B. P. Chaubey</div>
-                <div class="r-sig-line">B.P CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(CHAIRMAN)</span></div>
+            <div class="r-meta">
+                <div>ENROLLMENT NO: <span id="rEnroll" style="color: #d97706 !important;"></span></div>
+                <div>DATE & TIME: <span id="rDate"></span></div>
             </div>
-        </div>
-        <div class="r-footer">
-            <div><i class="fab fa-youtube" style="color: #dc2626 !important; width: 25px; text-align: center; font-size: 16px;"></i> @ABHINAY_PRATAP_MATHS</div>
-            <div style="text-align: right;"><i class="fab fa-telegram" style="color: #2563eb !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_MATHS</div>
-            <div><i class="fab fa-whatsapp" style="color: #16a34a !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_EXAMEDGE</div>
-            <div style="text-align: right;"><i class="fas fa-globe" style="color: #4b5563 !important; width: 25px; text-align: center; font-size: 16px;"></i> WWW.EXAMEDGEINSTITUTE.IN</div>
+            <div class="r-section">
+                <h3>STUDENT INFORMATION</h3>
+                <table class="r-table">
+                    <tr><td>STUDENT FULL NAME:</td><td id="rName"></td></tr>
+                    <tr><td>FATHER'S NAME:</td><td id="rFather"></td></tr>
+                    <tr><td>CONTACT NUMBER:</td><td id="rMobile"></td></tr>
+                    <tr><td>ADDRESS:</td><td id="rAddress"></td></tr>
+                </table>
+            </div>
+            <div class="r-section">
+                <h3>PAYMENT DETAILS</h3>
+                <table class="r-table">
+                    <tr><td>COURSE ENROLLED:</td><td id="rCourse" style="color: #d97706 !important;"></td></tr>
+                    <tr><td>TRANSACTION UTR NO:</td><td id="rUtr"></td></tr>
+                    <tr><td>BASE COURSE FEE:</td><td id="rBaseFee"></td></tr>
+                    <tr><td>DISCOUNT APPLIED:</td><td id="rDiscount" style="color: #16a34a !important;"></td></tr>
+                    <tr><td>GST (18% INCLUSIVE):</td><td id="rGst"></td></tr>
+                    <tr class="r-total">
+                        <td>TOTAL AMOUNT PAID:</td>
+                        <td id="rAmount" style="color: #16a34a !important;"></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="r-digital-note">
+                THIS IS A COMPUTER GENERATED DIGITAL RECEIPT.<br>NO PHYSICAL SIGNATURE IS REQUIRED.
+            </div>
+
+            <div class="r-footer">
+                <div><i class="fab fa-youtube" style="color: #dc2626 !important; width: 25px; text-align: center; font-size: 16px;"></i> @ABHINAY_PRATAP_MATHS</div>
+                <div style="text-align: right;"><i class="fab fa-telegram" style="color: #2563eb !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_MATHS</div>
+                <div><i class="fab fa-whatsapp" style="color: #16a34a !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_EXAMEDGE</div>
+                <div style="text-align: right;"><i class="fas fa-globe" style="color: #4b5563 !important; width: 25px; text-align: center; font-size: 16px;"></i> WWW.EXAMEDGEINSTITUTE.IN</div>
+            </div>
         </div>
     </div>
 
+    <!-- Pink Toast Alert -->
     <div class="toast-alert" id="toastAlert">
         <i class="fas fa-info-circle"></i> <span id="toastMessage">YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!</span>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-wrapper">
             <div class="footer-col">
@@ -1080,6 +1106,11 @@
             } else {
                 showCustomAlert("VERIFICATION FAILED", "PLEASE UPLOAD A SCREENSHOT OR ENTER A VALID 14-DIGIT UTR NUMBER (STARTS WITH 'PM').");
             }
+        }
+
+        function openDetailsForm() {
+            document.getElementById('customAlertModal').classList.remove('show');
+            setTimeout(() => { detailsModal.classList.add('show'); }, 300);
         }
 
         // --- DIRECT BROWSER NATIVE PRINT RECEIPT LOGIC ---
