@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRATAP MATHEMATICS | PREMIUM PORTAL</title>
+    <title>ABHINAY PRATAP (MATHS MYSTIC) | PREMIUM PORTAL</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Library for PDF Generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
         /* --- Core Variables & Theme --- */
@@ -29,20 +26,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
         body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* --- Animated Splash Screen --- */
+        /* --- Simple Splash Screen (No Animation, 5s) --- */
         .splash-screen {
             position: fixed; inset: 0; z-index: 9999; background: #000000;
             display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 1s ease, visibility 1s ease;
         }
-        .splash-banner {
-            width: 85%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(234, 179, 8, 0.4);
-            animation: zoomInOut 1.5s infinite alternate ease-in-out;
-        }
-        @keyframes zoomInOut {
-            0% { transform: scale(0.95); box-shadow: 0 0 15px rgba(234, 179, 8, 0.2); }
-            100% { transform: scale(1.05); box-shadow: 0 0 45px rgba(234, 179, 8, 0.8); }
-        }
+        .splash-banner { width: 85%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(234, 179, 8, 0.4); }
 
         /* --- Navbar --- */
         nav {
@@ -58,7 +48,7 @@
         .ham-custom:hover .line2, .ham-custom:hover .line3 { width: 28px; background: #fff; }
 
         .brand-container { display: flex; flex-direction: column; line-height: 1.1; }
-        .brand-name { font-size: 1.3rem; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+        .brand-name { font-size: 1.1rem; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
         .brand-subtitle { font-size: 0.55rem; color: var(--text-dim); font-weight: 500; letter-spacing: 0.5px; margin-top: 2px;}
         @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.65rem; } }
 
@@ -94,25 +84,78 @@
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; }
         .overlay.active { opacity: 1; visibility: visible; }
 
+        /* --- PREMIUM TIMED BANNERS (2 MIN & 5 MIN) --- */
+        .timed-banner { 
+            position: fixed; top: -200%; left: 50%; transform: translate(-50%, 0); 
+            width: 1000px; max-width: 90vw; aspect-ratio: 1 / 1; 
+            z-index: 1500; transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            display: flex; justify-content: center; align-items: center;
+        }
+        .timed-banner.show { top: 10vh; }
+        .timed-banner-wrapper {
+            position: relative; width: 100%; height: 100%; border-radius: 15px; padding: 5px;
+            background: linear-gradient(45deg, var(--gold), var(--pink), var(--gold-hover));
+            background-size: 200% 200%; animation: borderGlow 3s ease infinite;
+            box-shadow: 0 10px 40px rgba(255, 42, 117, 0.5);
+        }
+        @keyframes borderGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        .timed-banner-tag {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: #000; color: var(--gold); border: 2px solid var(--gold);
+            padding: 5px 20px; border-radius: 20px; font-weight: 900; z-index: 15;
+            white-space: nowrap; font-size: 0.95rem; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+        }
+        .timed-banner-tag i { color: var(--pink); margin-right: 5px; animation: pulse 1s infinite alternate; }
+        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.2); } }
+
+        .timed-banner-img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; border: 2px solid #000; }
+        .timed-banner-close { 
+            position: absolute; top: -15px; right: -15px; cursor: pointer; 
+            background: var(--pink); border: 2px solid #fff; color: #fff; 
+            width: 38px; height: 38px; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-size: 1.2rem; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.3s; z-index: 20;
+        }
+        .timed-banner-close:hover { background: #fff; color: var(--pink); transform: rotate(90deg) scale(1.1); }
+
         /* --- Banner Slider --- */
         .slider-section { margin-top: 75px; padding: 20px 0 10px; position: relative; }
         .slider-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; }
         .slider-wrapper::-webkit-scrollbar { display: none; }
-        .banner-slide { min-width: 90vw; aspect-ratio: 2/1; border-radius: 15px; scroll-snap-align: center; background-color: #111; border: 1px solid var(--border-dark); display: block; flex-shrink: 0; background-size: 100% 100%; background-position: center; background-repeat: no-repeat; cursor: pointer; }
+        .banner-slide { min-width: 90vw; aspect-ratio: 2/1; border-radius: 15px; scroll-snap-align: center; background-color: #111; border: 1px solid var(--border-dark); display: block; flex-shrink: 0; background-size: 100% 100%; background-position: center; background-repeat: no-repeat; cursor: pointer; transition: transform 0.3s ease; }
+        .banner-slide:active { transform: scale(0.98); }
         @media(min-width: 768px) { .banner-slide { min-width: 70vw; } }
 
         /* --- Courses Section --- */
         .courses-section { padding: 30px 5% 20px; }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 30px; border-left: 4px solid var(--gold); padding-left: 15px; }
-        .course-list { display: flex; flex-direction: column; gap: 35px; }
+        .course-list { display: flex; flex-direction: column; gap: 40px; margin-top: 15px; }
         
-        .course-card { background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); overflow: hidden; transition: 0.3s; }
+        .course-card { position: relative; background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); overflow: visible; transition: 0.3s; }
         .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(234, 179, 8, 0.4); }
-        .course-img { width: 100%; aspect-ratio: 2/1; background-color: #111; object-fit: cover; border-bottom: 2px solid var(--gold); display: block; }
+        .course-img { width: 100%; aspect-ratio: 2/1; background-color: #111; object-fit: cover; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; display: block; }
         .course-info { padding: 20px; }
         .course-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
         .course-faculty { color: var(--gold); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.5px; }
         
+        /* --- PREMIUM DIGITAL COUNTDOWN BADGE --- */
+        .countdown-badge {
+            position: absolute; top: -15px; right: -10px;
+            background: #000; border: 2px solid var(--pink);
+            padding: 6px 12px; border-radius: 10px;
+            display: flex; gap: 4px; align-items: center;
+            box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6);
+            z-index: 10; font-family: 'Poppins', sans-serif;
+        }
+        .countdown-text { font-size: 0.65rem; color: var(--gold); font-weight: 900; margin-right: 5px; letter-spacing: 1px; }
+        .time-block { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .time-val { background: var(--pink); color: #fff; font-size: 1.1rem; font-weight: 900; padding: 2px 5px; border-radius: 5px; font-family: monospace; letter-spacing: 1px; line-height: 1; }
+        .time-lbl { font-size: 0.5rem; color: #aaa; margin-top: 3px; font-weight: 800; letter-spacing: 0.5px; line-height: 1;}
+        .time-sep { color: var(--pink); font-weight: 900; font-size: 1.3rem; margin: 0 1px; margin-top: -10px; animation: blink 1s infinite step-start; }
+        @keyframes blink { 50% { opacity: 0; } }
+
         .btn-group { display: flex; flex-direction: column; gap: 12px; }
         .btn { width: 100%; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; outline: none; letter-spacing: 0.5px; }
         .btn-features { background: #222; color: var(--text-light); border: 1px solid var(--gold); }
@@ -144,17 +187,17 @@
         .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
         .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
 
-        /* Faculty Content */
+        /* Faculty Content (Premium Setup without Rating, White Icons) */
         .fac-avatar-container { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid #ffffff; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
         .fac-avatar-container img { width: 100%; height: 100%; object-fit: cover; }
         .fac-name { text-align: center; color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 5px; }
-        .fac-subject { text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; }
-        .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px; font-weight: 500; }
+        .fac-subject { text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3); padding: 4px 10px; border-radius: 20px; background: rgba(234, 179, 8, 0.05); }
+        .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px; font-weight: 500; min-height: 60px; }
         
-        /* Teacher Icons Updated to Pink */
-        .fac-socials { display: flex; justify-content: center; gap: 12px; margin-top: auto; }
-        .fac-socials a { color: var(--pink); font-size: 1.2rem; background: #1a050d; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid rgba(255, 42, 117, 0.3); transition: 0.3s; }
-        .fac-socials a:hover { background: var(--pink); color: #fff; transform: scale(1.1); box-shadow: 0 0 10px var(--pink); }
+        /* Teacher Icons Updated to White -> Gold Hover */
+        .fac-socials { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 15px; border-top: 1px dashed #222; }
+        .fac-socials a { color: #ffffff; font-size: 1.2rem; background: #111; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s; }
+        .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); box-shadow: 0 0 12px var(--gold); border-color: var(--gold); }
 
         .dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 20px; padding: 0 5%; flex-wrap: wrap; }
         .dots-container .dot { width: 8px; height: 8px; background: #444; border-radius: 50%; transition: 0.3s; cursor: pointer; flex-shrink: 0; }
@@ -165,6 +208,10 @@
         .global-modal.show { opacity: 1; visibility: visible; }
         .modal-content { background: linear-gradient(145deg, #111111, #050505); border: 1px solid #333; border-top: 4px solid var(--gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 95%; text-align: center; position: relative; }
         
+        /* Payment Verification Loader */
+        .loader-spinner { border: 4px solid #333; border-top: 4px solid var(--gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
         .modal-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(234, 179, 8, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse-icon 2s infinite; }
         @keyframes pulse-icon { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
         .modal-icon-wrapper i { font-size: 2.5rem; color: var(--gold); }
@@ -205,75 +252,70 @@
         .footer-col a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-weight: 600; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
         
-        /* Premium Examedge Button */
+        /* Premium Examedge Button (Pink Gradient) */
         .btn-examedge { 
             display: inline-block; background: linear-gradient(135deg, #ff2a75, #ff0055); color: #fff !important; 
             padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; 
             text-align: center; border: none; font-size: 0.95rem; transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 42, 117, 0.4); margin-top: 25px; width: 100%; max-width: 250px;
+            box-shadow: 0 5px 15px rgba(255, 42, 117, 0.4); width: 100%; max-width: 250px;
         }
-        .btn-examedge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6); color: #fff; padding-left: 25px !important;}
-        .btn-examedge i { margin-right: 8px; }
-
-        /* Align Contact Items Properly */
+        .btn-examedge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6); color: #fff; padding-left: 0 !important;}
+        
         .contact-item { display: flex; align-items: center; gap: 15px; color: var(--text-dim); margin-bottom: 18px; font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
         .contact-item i { color: var(--pink); font-size: 1.2rem; width: 25px; text-align: center; }
         .contact-item a { display: inline; color: var(--text-light); text-decoration: none; transition: 0.3s; margin: 0; padding: 0; }
         .contact-item a:hover { color: var(--pink); padding-left: 0; }
-        
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; width: 100%;}
 
-        /* --- A4 PDF RECEIPT CSS (PERMANENT FIXED) --- */
-        #receiptWrapper {
-            position: fixed; top: 0; left: 0; z-index: -9999; display: none; 
-            width: 800px; min-height: 1130px; background: #ffffff !important; color: #000000 !important; 
-            padding: 50px; font-family: Arial, sans-serif; box-sizing: border-box; text-transform: uppercase;
+        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (NO BLANK ISSUES) --- */
+        @media print {
+            body * { visibility: hidden; }
+            #receiptArea, #receiptArea * { visibility: visible; }
+            #receiptArea { 
+                position: absolute; left: 0; top: 0; width: 100%; min-height: 100%; 
+                background: #ffffff !important; color: #000000 !important; 
+                padding: 40px; box-sizing: border-box; display: block !important;
+            }
         }
-        #receiptWrapper * { color: #000000 !important; font-family: Arial, sans-serif !important; } 
-        .receipt-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
-        .receipt-header h1 { font-size: 30px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000000 !important; }
-        .receipt-header p { font-size: 16px; margin: 8px 0 0 0; font-weight: bold; color: #000000 !important; }
-        .receipt-meta { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 15px; color: #000000 !important; }
-        #recEnroll { color: #d97706 !important; }
-        .receipt-section { border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px; }
-        .receipt-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000000 !important; }
-        .receipt-table { width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000000 !important; }
-        .receipt-table td { border-bottom: 1px dashed #ccc; font-weight: 600;}
-        .receipt-table td:first-child { font-weight: 800; width: 40%; }
-        .receipt-table td:last-child { font-weight: 800; text-align: right; }
-        .net-amount-row { background: #f3f4f6 !important; font-size: 20px; border-top: 2px solid #000 !important; }
-        .net-amount-row td { border-bottom: none !important; padding: 15px 10px; font-weight: 900 !important;}
-        #recAmount, #recDiscount { color: #16a34a !important; }
-        #recCourse { color: #d97706 !important; }
-        .signatures { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; color: #000000 !important; }
-        .sig-box { text-align: center; width: 250px; }
-        .sig-font { font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
-        .sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;}
-        .receipt-footer-print { position: absolute; bottom: 40px; left: 50px; right: 50px; border-top: 3px solid #000; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900;}
+        #receiptArea { display: none; }
+        .r-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
+        .r-header h1 { font-size: 28px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000 !important; }
+        .r-header p { font-size: 16px; margin: 8px 0 0 0; font-weight: bold; color: #000 !important; }
+        .r-meta { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 15px; color: #000 !important; }
+        .r-section { border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px; }
+        .r-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000 !important; }
+        .r-table { width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000 !important; }
+        .r-table td { border-bottom: 1px dashed #ccc; font-weight: 600; }
+        .r-table td:first-child { font-weight: 800; width: 40%; }
+        .r-table td:last-child { font-weight: 800; text-align: right; }
+        .r-total { background: #f3f4f6 !important; font-size: 20px; border-top: 2px solid #000 !important; }
+        .r-total td { border-bottom: none !important; padding: 15px 10px; font-weight: 900 !important; }
+        .r-sigs { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; color: #000 !important; }
+        .r-sig-box { text-align: center; width: 250px; }
+        .r-sig-font { font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
+        .r-sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px; }
+        .r-footer { position: absolute; bottom: 40px; left: 50px; right: 50px; border-top: 3px solid #000; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; color: #000 !important;}
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <img src="z.png" alt="PRATAP MATHS" class="splash-banner">
     </div>
 
-    <!-- Navbar -->
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
                 <div class="line1"></div><div class="line2"></div><div class="line3"></div>
             </div>
             <div class="brand-container">
-                <div class="brand-name">PRATAP MATHEMATICS</div>
-                <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
+                <div class="brand-name">ABHINAY PRATAP MATHS</div>
+                <div class="brand-subtitle">THE MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
-        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO PRATAP MATHS SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
+        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP (MATHS MYSTIC) SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
-    <!-- Sidebar -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <ul>
@@ -290,33 +332,54 @@
         </ul>
     </div>
 
-    <!-- Banner Slider -->
+    <div class="timed-banner" id="timedBanner2min">
+        <div class="timed-banner-wrapper">
+            <div class="timed-banner-tag"><i class="fas fa-fire"></i> SPECIAL OFFER</div>
+            <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner2min')"><i class="fas fa-times"></i></div>
+            <img src="al1.png" alt="SPECIAL ALERT" class="timed-banner-img">
+        </div>
+    </div>
+    <div class="timed-banner" id="timedBanner5min">
+        <div class="timed-banner-wrapper">
+            <div class="timed-banner-tag"><i class="fas fa-bolt"></i> LIMITED TIME</div>
+            <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner5min')"><i class="fas fa-times"></i></div>
+            <img src="al2.png" alt="SPECIAL ALERT 5 MIN" class="timed-banner-img">
+        </div>
+    </div>
+
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
-            <div class="banner-slide" style="background-image: url('i1.png');"></div>
-            <div class="banner-slide" style="background-image: url('i2.png');"></div>
-            <div class="banner-slide" style="background-image: url('i3.png');"></div>
-            <div class="banner-slide" style="background-image: url('i4.png');"></div>
-            <div class="banner-slide" style="background-image: url('i5.png');"></div>
-            <div class="banner-slide" style="background-image: url('i6.png');"></div>
-            <div class="banner-slide" style="background-image: url('i7.png');"></div>
-            <div class="banner-slide" style="background-image: url('i8.png');"></div>
-            <div class="banner-slide" style="background-image: url('i9.png');"></div>
-            <div class="banner-slide" style="background-image: url('i10.png');"></div>
+            <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i2.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i3.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i4.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i5.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i6.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i7.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i8.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i9.png');"></div>
+            <div class="banner-slide" data-link="" style="background-image: url('i10.png');"></div>
         </div>
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
-    <!-- Courses Section -->
     <section class="courses-section" id="courses">
         <h2 class="section-title">PREMIUM COURSES</h2>
         <div class="course-list">
             
             <div class="course-card">
+                <div class="countdown-badge">
+                    <div class="countdown-text">ENDS IN</div>
+                    <div class="time-block"><div class="time-val" id="cd-h">23</div><div class="time-lbl">HRS</div></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><div class="time-val" id="cd-m">59</div><div class="time-lbl">MIN</div></div>
+                    <div class="time-sep">:</div>
+                    <div class="time-block"><div class="time-val" id="cd-s">59</div><div class="time-lbl">SEC</div></div>
+                </div>
                 <img src="ca1.png" alt="MATHS BATCH" class="course-img">
                 <div class="course-info">
                     <h3 class="course-title">MATHEMATICS SPECIAL</h3>
-                    <p class="course-faculty">BY ABHINAY PRATAP MATHS</p>
+                    <p class="course-faculty">BY ABHINAY PRATAP (MATHS MYSTIC)</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('MATHEMATICS SPECIAL BATCH', 999)">BUY NOW COURSE</button>
@@ -325,9 +388,9 @@
                         <ul>
                             <li><i class="fas fa-check-circle"></i> COMPLETE PRE + MAINS SYLLABUS</li>
                             <li><i class="fas fa-check-circle"></i> LIVE INTERACTIVE CLASSES</li>
+                            <li><i class="fas fa-check-circle"></i> RECORDED VIDEOS AVAILABILITY</li>
                             <li><i class="fas fa-check-circle"></i> TOPIC-WISE PDF NOTES</li>
                             <li><i class="fas fa-check-circle"></i> WEEKLY MOCK TESTS</li>
-                            <li><i class="fas fa-check-circle"></i> PREVIOUS YEAR QUESTIONS (PYQ)</li>
                             <li><i class="fas fa-check-circle"></i> 1-YEAR COURSE VALIDITY</li>
                         </ul>
                     </div>
@@ -469,14 +532,12 @@
         </div>
     </section>
 
-    <!-- Student Reviews Slider -->
     <section class="uniform-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper"></div>
         <div class="dots-container" id="reviewDotsContainer"></div>
     </section>
 
-    <!-- Expert Faculties Slider -->
     <section class="uniform-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
         <div class="uniform-wrapper" id="facultyWrapper">
@@ -485,7 +546,7 @@
                 <div class="fac-avatar-container"><img src="t1.png" alt="Abhinay"></div>
                 <h3 class="fac-name">ABHINAY CHAUBEY</h3>
                 <p class="fac-subject">FOUNDER & MATHS EXPERT</p>
-                <p class="fac-desc">MASTER OF SHORT TRICKS & ADVANCED MATHEMATICS. 5+ YEARS OF EXPERIENCE.</p>
+                <p class="fac-desc">MASTER OF SHORT TRICKS & ADVANCED MATHEMATICS. 2+ YEARS OF EXPERIENCE IN COMPETITIVE TEACHING.</p>
                 <div class="fac-socials">
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
@@ -498,7 +559,7 @@
                 <div class="fac-avatar-container"><img src="t2.png" alt="Bholu"></div>
                 <h3 class="fac-name">BHOLU CHAUBEY</h3>
                 <p class="fac-subject">CHAIRMAN & GS EXPERT</p>
-                <p class="fac-desc">SPECIALIST IN GENERAL STUDIES & STATIC GK. GUIDING THOUSANDS OF CANDIDATES.</p>
+                <p class="fac-desc">SPECIALIST IN GENERAL STUDIES & STATIC GK. 2+ YEARS OF GUIDING THOUSANDS OF CANDIDATES.</p>
                 <div class="fac-socials">
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
@@ -511,7 +572,7 @@
                 <div class="fac-avatar-container"><img src="t3.png" alt="Akshit"></div>
                 <h3 class="fac-name">AKSHIT SIR</h3>
                 <p class="fac-subject">SENIOR SCIENCE FACULTY</p>
-                <p class="fac-desc">MAKING PHYSICS, CHEMISTRY & BIOLOGY EASY TO UNDERSTAND WITH PRACTICAL CONCEPTS.</p>
+                <p class="fac-desc">MAKING PHYSICS, CHEMISTRY & BIOLOGY EASY TO UNDERSTAND. 2+ YEARS OF TEACHING PRACTICAL CONCEPTS.</p>
                 <div class="fac-socials">
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
@@ -524,7 +585,7 @@
                 <div class="fac-avatar-container"><img src="t4.png" alt="Rahul"></div>
                 <h3 class="fac-name">RAHUL SIR</h3>
                 <p class="fac-subject">REASONING EXPERT</p>
-                <p class="fac-desc">EXPERT IN LOGICAL AND ANALYTICAL REASONING. PUZZLE CRACKING SPECIALIST.</p>
+                <p class="fac-desc">EXPERT IN LOGICAL AND ANALYTICAL REASONING. 2+ YEARS PUZZLE CRACKING SPECIALIST.</p>
                 <div class="fac-socials">
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
@@ -537,7 +598,7 @@
                 <div class="fac-avatar-container"><img src="t5.png" alt="Sneha"></div>
                 <h3 class="fac-name">SNEHA MA'AM</h3>
                 <p class="fac-subject">ENGLISH FACULTY</p>
-                <p class="fac-desc">GRAMMAR AND VOCABULARY MENTOR. SPECIAL COMPREHENSION TRICKS PROFESSOR.</p>
+                <p class="fac-desc">GRAMMAR AND VOCABULARY MENTOR. 2+ YEARS TEACHING COMPREHENSION TRICKS PROFESSOR.</p>
                 <div class="fac-socials">
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
@@ -550,60 +611,66 @@
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
-    <!-- Payment Modal -->
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
             <h3 style="margin-top: 15px; text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px;">COMPLETE PURCHASE</h3>
             
-            <div class="payment-box" style="background: #111; border: 1px solid var(--gold); border-radius: 8px;">
-                <h4 id="modalCourseName" style="color: var(--gold); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">COURSE NAME</h4>
-                <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 5px;">
-                    <span>COURSE FEE:</span> <span id="modalOriginalFee" style="font-weight: bold;">₹0</span>
+            <div id="paymentFormArea">
+                <div class="payment-box" style="background: #111; border: 1px solid var(--gold); border-radius: 8px;">
+                    <h4 id="modalCourseName" style="color: var(--gold); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">COURSE NAME</h4>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 5px;">
+                        <span>COURSE FEE:</span> <span id="modalOriginalFee" style="font-weight: bold;">₹0</span>
+                    </div>
+                    <div id="modalDiscountRow" style="display: none; justify-content: space-between; font-size: 0.95rem; color: #22c55e; margin-bottom: 5px;">
+                        <span>DISCOUNT:</span> <span id="modalDiscountAmount" style="font-weight: bold;">-₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; border-top: 1px dashed #333; padding-top: 8px; margin-top: 5px; color: #fff;">
+                        <span>TOTAL PAYABLE:</span> <span id="modalPayableAmount" style="color: var(--gold);">₹0</span>
+                    </div>
                 </div>
-                <div id="modalDiscountRow" style="display: none; justify-content: space-between; font-size: 0.95rem; color: #22c55e; margin-bottom: 5px;">
-                    <span>DISCOUNT:</span> <span id="modalDiscountAmount" style="font-weight: bold;">-₹0</span>
+
+                <div class="payment-box">
+                    <label>PAYMENT OPTION 1: UPI ID</label>
+                    <div style="background: #1a1a1a; padding: 10px; border-radius: 5px; color: var(--gold); font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 15px;">
+                        7705042892@IBL
+                    </div>
+                    <label>PAYMENT OPTION 2: SCAN QR</label>
+                    <button class="modal-btn" style="background: #222; color: #fff; border: 1px solid var(--gold); padding: 8px;" onclick="generateQR()">GENERATE QR FOR PAYMENT</button>
+                    <div class="qr-area" id="qrContainer">
+                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 5px;">SCAN WITH ANY UPI APP</p>
+                        <img id="qrImage" src="" alt="AUTO GENERATED QR CODE">
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; border-top: 1px dashed #333; padding-top: 8px; margin-top: 5px; color: #fff;">
-                    <span>TOTAL PAYABLE:</span> <span id="modalPayableAmount" style="color: var(--gold);">₹0</span>
+
+                <div class="payment-box">
+                    <label>HAVE A COUPON CODE?</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="couponInput" class="input-field" placeholder="ENTER CODE" style="margin-bottom:0;">
+                        <button class="modal-btn" id="applyCouponBtn" style="width: auto; margin-top: 0; background: #333; color: #fff;" onclick="applyCoupon()">APPLY</button>
+                    </div>
                 </div>
+
+                <div class="payment-box" style="border-color: var(--gold);">
+                    <label style="color: #fff; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 12px;">PAYMENT VERIFICATION</label>
+                    <label>1. UPLOAD PAYMENT SCREENSHOT</label>
+                    <input type="file" id="paymentScreenshot" class="input-field" accept="image/*" style="padding: 8px; background: #222; cursor: pointer;">
+                    <div style="text-align: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 700; margin: 10px 0;">OR</div>
+                    <label>2. ENTER 14-DIGIT UTR NO</label>
+                    <input type="text" id="utrInput" class="input-field" placeholder="E.G. PM123456789012" maxlength="14" style="margin-bottom:0;">
+                </div>
+
+                <button class="modal-btn" style="background:var(--gold); color:#000;" onclick="verifyPaymentSubmit()">VERIFY & CONTINUE</button>
             </div>
 
-            <div class="payment-box">
-                <label>PAYMENT OPTION 1: UPI ID</label>
-                <div style="background: #1a1a1a; padding: 10px; border-radius: 5px; color: var(--gold); font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 15px;">
-                    7705042892@IBL
-                </div>
-                <label>PAYMENT OPTION 2: SCAN QR</label>
-                <button class="modal-btn" style="background: #222; color: #fff; border: 1px solid var(--gold); padding: 8px;" onclick="generateQR()">GENERATE QR FOR PAYMENT</button>
-                <div class="qr-area" id="qrContainer">
-                    <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 5px;">SCAN WITH ANY UPI APP</p>
-                    <img id="qrImage" src="" alt="AUTO GENERATED QR CODE">
-                </div>
+            <div id="loadingArea" style="display: none; text-align: center; padding: 40px 0;">
+                <div class="loader-spinner"></div>
+                <p style="color: var(--gold); font-weight: 800; letter-spacing: 1px;">VERIFYING PAYMENT...</p>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 10px;">PLEASE DO NOT CLOSE THIS WINDOW</p>
             </div>
-
-            <div class="payment-box">
-                <label>HAVE A COUPON CODE?</label>
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" id="couponInput" class="input-field" placeholder="ENTER CODE" style="margin-bottom:0;">
-                    <button class="modal-btn" id="applyCouponBtn" style="width: auto; margin-top: 0; background: #333; color: #fff;" onclick="applyCoupon()">APPLY</button>
-                </div>
-            </div>
-
-            <div class="payment-box" style="border-color: var(--gold);">
-                <label style="color: #fff; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 12px;">PAYMENT VERIFICATION</label>
-                <label>1. UPLOAD PAYMENT SCREENSHOT</label>
-                <input type="file" id="paymentScreenshot" class="input-field" accept="image/*" style="padding: 8px; background: #222; cursor: pointer;">
-                <div style="text-align: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 700; margin: 10px 0;">OR</div>
-                <label>2. ENTER 14-DIGIT UTR NO</label>
-                <input type="text" id="utrInput" class="input-field" placeholder="E.G. PM123456789012" maxlength="14" style="margin-bottom:0;">
-            </div>
-
-            <button class="modal-btn" style="background:var(--gold); color:#000;" onclick="verifyPaymentSubmit()">VERIFY & CONTINUE</button>
         </div>
     </div>
 
-    <!-- Custom Alert Modal -->
     <div class="global-modal" id="customAlertModal">
         <div class="modal-content" style="text-align: center; max-width: 350px;">
             <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
@@ -615,7 +682,6 @@
         </div>
     </div>
 
-    <!-- Student Details Form Modal -->
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
             <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
@@ -626,11 +692,10 @@
                 <input type="text" id="stuFather" class="input-field" placeholder="FATHER'S NAME" required>
                 <textarea id="stuAddress" class="input-field" placeholder="FULL ADDRESS" rows="3" required></textarea>
             </div>
-            <button class="modal-btn" onclick="generateAndDownloadReceipt()">GENERATE & DOWNLOAD RECEIPT</button>
+            <button class="modal-btn" onclick="printReceipt()">GENERATE & PRINT RECEIPT</button>
         </div>
     </div>
 
-    <!-- MY PROFILE MODAL -->
     <div class="global-modal" id="profileModal">
         <div class="modal-content" style="max-width: 400px; text-align: left;">
             <div class="modal-close-btn" onclick="closeProfileModal()">&times;</div>
@@ -646,50 +711,49 @@
         </div>
     </div>
 
-    <!-- --- HIDDEN A4 RECEIPT TEMPLATE (PERMANENT FIXED) --- -->
-    <div id="receiptWrapper" style="position: fixed; top: 0; left: 0; z-index: -9999; display: none; width: 800px; min-height: 1130px; background: #ffffff !important; color: #000000 !important; padding: 50px; font-family: Arial, sans-serif; box-sizing: border-box; text-transform: uppercase;">
-        <div style="text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px;">
-            <h1 style="font-size: 30px; margin: 0; font-weight: 900; letter-spacing: 1px; color: #000000 !important;">EXAMEDGE INSTITUTE X AP MATHEMATICS</h1>
-            <p style="font-size: 16px; margin: 8px 0 0 0; font-weight: bold; color: #000000 !important;">OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
+    <div id="receiptArea">
+        <div class="r-header">
+            <h1>ABHINAY PRATAP (MATHS MYSTIC)</h1>
+            <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
         </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 15px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 15px; color: #000000 !important;">
-            <div>ENROLLMENT NO: <span id="recEnroll" style="color: #d97706 !important;"></span></div>
-            <div>DATE & TIME: <span id="recDate"></span></div>
+        <div class="r-meta">
+            <div>ENROLLMENT NO: <span id="rEnroll" style="color: #d97706 !important;"></span></div>
+            <div>DATE & TIME: <span id="rDate"></span></div>
         </div>
-        <div style="border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px;">
-            <h3 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000000 !important;">STUDENT INFORMATION</h3>
-            <table style="width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000000 !important;">
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">STUDENT FULL NAME:</td><td id="recName" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">FATHER'S NAME:</td><td id="recFather" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">CONTACT NUMBER:</td><td id="recMobile" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">ADDRESS:</td><td id="recAddress" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
+        <div class="r-section">
+            <h3>STUDENT INFORMATION</h3>
+            <table class="r-table">
+                <tr><td>STUDENT FULL NAME:</td><td id="rName"></td></tr>
+                <tr><td>FATHER'S NAME:</td><td id="rFather"></td></tr>
+                <tr><td>CONTACT NUMBER:</td><td id="rMobile"></td></tr>
+                <tr><td>ADDRESS:</td><td id="rAddress"></td></tr>
             </table>
         </div>
-        <div style="border: 2px solid #000; padding: 25px; margin-bottom: 35px; border-radius: 5px;">
-            <h3 style="margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; font-size: 18px; font-weight: 900; color: #000000 !important;">PAYMENT DETAILS</h3>
-            <table style="width: 100%; font-size: 16px; line-height: 2.2; border-collapse: collapse; color: #000000 !important;">
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">COURSE ENROLLED:</td><td id="recCourse" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc; color: #d97706 !important;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">TRANSACTION UTR NO:</td><td id="recUtr" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">BASE COURSE FEE:</td><td id="recBaseFee" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">DISCOUNT APPLIED:</td><td id="recDiscount" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc; color: #16a34a !important;"></td></tr>
-                <tr><td style="font-weight: 800; width: 40%; border-bottom: 1px dashed #ccc;">GST (18% INCLUSIVE):</td><td id="recGst" style="font-weight: 800; text-align: right; border-bottom: 1px dashed #ccc;"></td></tr>
-                <tr style="background: #f3f4f6 !important; font-size: 20px; border-top: 2px solid #000 !important;">
-                    <td style="padding: 15px 10px; font-weight: 900 !important; border-bottom: none !important;">TOTAL AMOUNT PAID:</td>
-                    <td id="recAmount" style="padding: 15px 10px; font-weight: 900 !important; text-align: right; border-bottom: none !important; color: #16a34a !important;"></td>
+        <div class="r-section">
+            <h3>PAYMENT DETAILS</h3>
+            <table class="r-table">
+                <tr><td>COURSE ENROLLED:</td><td id="rCourse" style="color: #d97706 !important;"></td></tr>
+                <tr><td>TRANSACTION UTR NO:</td><td id="rUtr"></td></tr>
+                <tr><td>BASE COURSE FEE:</td><td id="rBaseFee"></td></tr>
+                <tr><td>DISCOUNT APPLIED:</td><td id="rDiscount" style="color: #16a34a !important;"></td></tr>
+                <tr><td>GST (18% INCLUSIVE):</td><td id="rGst"></td></tr>
+                <tr class="r-total">
+                    <td>TOTAL AMOUNT PAID:</td>
+                    <td id="rAmount" style="color: #16a34a !important;"></td>
                 </tr>
             </table>
         </div>
-        <div style="display: flex; justify-content: space-between; margin-top: 80px; padding: 0 20px; color: #000000 !important;">
-            <div style="text-align: center; width: 250px;">
-                <div style="font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px;">Abhinay Chaubey</div>
-                <div style="border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;">ABHINAY CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(FOUNDER)</span></div>
+        <div class="r-sigs">
+            <div class="r-sig-box">
+                <div class="r-sig-font">Abhinay Chaubey</div>
+                <div class="r-sig-line">ABHINAY CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(FOUNDER)</span></div>
             </div>
-            <div style="text-align: center; width: 250px;">
-                <div style="font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px;">B. P. Chaubey</div>
-                <div style="border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px;">B.P CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(CHAIRMAN)</span></div>
+            <div class="r-sig-box">
+                <div class="r-sig-font">B. P. Chaubey</div>
+                <div class="r-sig-line">B.P CHAUBEY<br><span style="font-size: 13px; color: #555; font-weight:bold;">(CHAIRMAN)</span></div>
             </div>
         </div>
-        <div class="receipt-footer-print">
+        <div class="r-footer">
             <div><i class="fab fa-youtube" style="color: #dc2626 !important; width: 25px; text-align: center; font-size: 16px;"></i> @ABHINAY_PRATAP_MATHS</div>
             <div style="text-align: right;"><i class="fab fa-telegram" style="color: #2563eb !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_MATHS</div>
             <div><i class="fab fa-whatsapp" style="color: #16a34a !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_EXAMEDGE</div>
@@ -697,12 +761,10 @@
         </div>
     </div>
 
-    <!-- Toast Alert (Pink theme alert pop-up) -->
     <div class="toast-alert" id="toastAlert">
         <i class="fas fa-info-circle"></i> <span id="toastMessage">LINK NOT AVAILABLE STAY TUNED</span>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-wrapper">
             <div class="footer-col">
@@ -712,12 +774,10 @@
                 <a href="#" onclick="showCustomAlert('COMING SOON', 'JAWAHAR NAVODAYA BATCH WILL BE LIVE SHORTLY.')"><i class="fas fa-angle-right"></i> JAWAHAR NAVODAYA 2027</a>
                 <a href="#" onclick="showCustomAlert('INFO', 'TERMS AND CONDITIONS APPLY.')"><i class="fas fa-angle-right"></i> TERMS & CONDITIONS</a>
                 
-                <!-- EXAMEDGE INSTITUTE BUTTON & LOGO AT BOTTOM -->
                 <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #333;">
                     <p style="color: var(--text-dim); font-size: 0.8rem; font-weight: 600; margin-bottom: 10px;">OUR PARTNER PLATFORM</p>
                     <div style="display: flex; align-items: center; gap: 15px;">
-                        <img src="m.png" alt="ExamEdge Logo" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--pink); object-fit: cover; box-shadow: 0 0 15px rgba(255, 42, 117, 0.4);">
-                        <a href="#" onclick="handlePinkToast(event)" class="btn-examedge"><i class="fas fa-globe"></i> EXAMEDGE INSTITUTE</a>
+                        <a href="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" target="_blank" class="btn-examedge"><i class="fas fa-globe"></i> EXAMEDGE INSTITUTE</a>
                     </div>
                 </div>
             </div>
@@ -726,16 +786,24 @@
                 <h3>CONTACT & SUPPORT</h3>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i> <a href="tel:9670078465">9670078465</a></div>
                 <div class="contact-item"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919670078465" target="_blank">9670078465</a></div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:pratapmaths2026@gmail.com">PRATAPMATHS2026@GMAIL.COM</a></div>
+                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:abhinaychaubey83@gmail.com">abhinaychaubey83@gmail.com</a></div>
                 <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>KUSHINAGAR, UTTAR PRADESH</span></div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 PRATAP MATHS. ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">TEAM AAJAD</span></p>
+            <p>&copy; 2026 ABHINAY PRATAP (MATHS MYSTIC). ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">TEAM AAJAD</span></p>
         </div>
     </footer>
 
     <script>
+        // Simple Splash Screen Logic (Exactly 5 Seconds)
+        window.addEventListener('load', () => { 
+            setTimeout(() => { 
+                document.getElementById('splashScreen').style.opacity = '0';
+                setTimeout(() => { document.getElementById('splashScreen').style.visibility = 'hidden'; }, 1000);
+            }, 5000); 
+        });
+
         // Menu Toggle
         const sidebar = document.getElementById('sidebar'); 
         const overlay = document.getElementById('overlay');
@@ -766,7 +834,7 @@
             </div>`;
         }
 
-        // Premium Custom Alert Logic
+        // Custom Alert Logic
         function showCustomAlert(title, text, isSuccess = false) {
             const modal = document.getElementById('customAlertModal');
             document.getElementById('customAlertTitle').innerText = title;
@@ -794,12 +862,12 @@
             setTimeout(() => { pinkToast.classList.remove('show'); }, 3000);
         }
 
-        // Profile & Sidebar Links
+        // Sidebar Actions
         function triggerComingSoon(e) { e.preventDefault(); toggleMenu(); showCustomAlert('COMING SOON!', 'YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. STAY TUNED!'); }
         function openProfileModal(e) { if(e) e.preventDefault(); toggleMenu(); document.getElementById('profileModal').classList.add('show'); }
         function closeProfileModal() { document.getElementById('profileModal').classList.remove('show'); }
 
-        // --- PAYMENT MODAL LOGIC WITH COUPON CODES ---
+        // --- PAYMENT MODAL & COUPON LOGIC ---
         let currentCourseName = ""; let originalCoursePrice = 0; let currentCoursePrice = 0; let appliedDiscountAmt = 0; let finalUtr = "";
         const paymentModal = document.getElementById('paymentModal');
         const detailsModal = document.getElementById('detailsModal');
@@ -817,6 +885,8 @@
             document.getElementById('paymentScreenshot').value = "";
             document.getElementById('utrInput').value = ""; document.getElementById('couponInput').value = "";
             qrContainer.style.display = "none";
+            document.getElementById('paymentFormArea').style.display = 'block';
+            document.getElementById('loadingArea').style.display = 'none';
             paymentModal.classList.add('show');
         }
 
@@ -850,9 +920,17 @@
 
             if (isFileUploaded || isUtrValid) {
                 finalUtr = isUtrValid ? utrValue : "VERIFIED_VIA_SCREENSHOT";
-                closePaymentModal();
-                showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED SUCCESSFULLY.<br>PLEASE FILL YOUR DETAILS TO DOWNLOAD THE RECEIPT.", true);
-                setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500);
+                
+                // Show 2 Second Processing Loader Animation
+                document.getElementById('paymentFormArea').style.display = 'none';
+                document.getElementById('loadingArea').style.display = 'block';
+                
+                setTimeout(() => {
+                    closePaymentModal();
+                    showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED SUCCESSFULLY.<br>PLEASE FILL YOUR DETAILS TO GENERATE THE RECEIPT.", true);
+                    setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500);
+                }, 2000);
+
             } else {
                 showCustomAlert("VERIFICATION FAILED", "PLEASE UPLOAD A SCREENSHOT OR ENTER A VALID 14-DIGIT UTR NUMBER (STARTS WITH 'PM').");
             }
@@ -863,8 +941,8 @@
             setTimeout(() => { detailsModal.classList.add('show'); }, 300);
         }
 
-        // --- PDF RECEIPT GENERATION (100% CRYSTAL CLEAR PRINT) ---
-        function generateAndDownloadReceipt() {
+        // --- DIRECT BROWSER NATIVE PRINT RECEIPT LOGIC ---
+        function printReceipt() {
             const name = document.getElementById('stuName').value.trim();
             const mobile = document.getElementById('stuMobile').value.trim();
             const father = document.getElementById('stuFather').value.trim();
@@ -877,49 +955,101 @@
             const gst = (finalPayable - base).toFixed(2);
             const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000);
 
-            document.getElementById('recDate').innerText = new Date().toLocaleString('en-IN');
-            document.getElementById('recEnroll').innerText = enrollNo;
-            document.getElementById('recUtr').innerText = finalUtr;
-            document.getElementById('recName').innerText = name.toUpperCase();
-            document.getElementById('recFather').innerText = father.toUpperCase();
-            document.getElementById('recMobile').innerText = mobile;
-            document.getElementById('recAddress').innerText = address.toUpperCase();
-            document.getElementById('recCourse').innerText = currentCourseName;
-            document.getElementById('recBaseFee').innerText = "₹" + base;
-            document.getElementById('recDiscount').innerText = "-₹" + appliedDiscountAmt + ".00";
-            document.getElementById('recGst').innerText = "₹" + gst;
-            document.getElementById('recAmount').innerText = "₹" + finalPayable + ".00";
+            document.getElementById('rDate').innerText = new Date().toLocaleString('en-IN');
+            document.getElementById('rEnroll').innerText = enrollNo;
+            document.getElementById('rUtr').innerText = finalUtr;
+            document.getElementById('rName').innerText = name.toUpperCase();
+            document.getElementById('rFather').innerText = father.toUpperCase();
+            document.getElementById('rMobile').innerText = mobile;
+            document.getElementById('rAddress').innerText = address.toUpperCase();
+            document.getElementById('rCourse').innerText = currentCourseName;
+            document.getElementById('rBaseFee').innerText = "₹" + base;
+            document.getElementById('rDiscount').innerText = "-₹" + appliedDiscountAmt + ".00";
+            document.getElementById('rGst').innerText = "₹" + gst;
+            document.getElementById('rAmount').innerText = "₹" + finalPayable + ".00";
 
-            const element = document.getElementById('receiptWrapper');
-            element.style.display = 'block'; 
-
-            const opt = { 
-                margin: 0, 
-                filename: `Receipt_${enrollNo}.pdf`, 
-                image: { type: 'jpeg', quality: 1 }, 
-                html2canvas: { scale: 2, useCORS: true, windowWidth: 800, y: 0, scrollY: 0 }, 
-                jsPDF: { unit: 'px', format: [800, 1130], orientation: 'portrait' } 
-            };
-
-            html2pdf().set(opt).from(element).save().then(() => {
-                element.style.display = 'none'; 
-                detailsModal.classList.remove('show');
-                setTimeout(() => { showCustomAlert("✅ RECEIPT DOWNLOADED", "YOUR RECEIPT HAS BEEN SAVED TO CHROME DOWNLOADS.<br>WELCOME TO EXAMEDGE X AP MATHS!", true); }, 500);
-            });
+            detailsModal.classList.remove('show');
+            
+            // Native direct clean print
+            setTimeout(() => { 
+                window.print(); 
+                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", "YOUR FEE RECEIPT HAS BEEN GENERATION RECORDED.<br>WELCOME TO ABHINAY PRATAP (MATHS MYSTIC)!", true); }, 1000);
+            }, 500);
         }
 
-        // Splash Screen hide timing
-        window.addEventListener('load', () => { 
-            setTimeout(() => { 
-                document.getElementById('splashScreen').style.opacity = '0'; 
-                document.getElementById('splashScreen').style.visibility = 'hidden'; 
-            }, 3000); 
-        });
+        // Timed Banners Close function
+        function closeTimedBanner(id) { document.getElementById(id).classList.remove('show'); }
+        setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 120000); 
+        setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 300000); 
 
-        // Feature Toggle & Auto Slider Sync Logic
+        // Feature Toggle, Banner Click & Auto Slider Sync Logic
         function toggleFeatures(btn) { let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; btn.style.background = "#222"; btn.style.color = "var(--text-light)"; } else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; btn.style.background = "var(--gold)"; btn.style.color = "#000"; } }
         
-        ['sliderWrapper', 'reviewsWrapper', 'facultyWrapper'].forEach(id => {
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const bannerSlides = document.querySelectorAll('.banner-slide');
+        const bannerDotsContainer = document.getElementById('dotsContainer');
+
+        if(sliderWrapper) {
+            bannerSlides.forEach((slide, i) => {
+                let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active');
+                dot.addEventListener('click', () => { sliderWrapper.scrollTo({ left: (bannerSlides[0].clientWidth + 15) * i, behavior: 'smooth' }); });
+                bannerDotsContainer.appendChild(dot);
+                
+                // Banner Click Redirect / Toast Function
+                slide.addEventListener('click', (e) => {
+                    const link = slide.getAttribute('data-link');
+                    if (link && link.trim() !== '') { window.open(link, '_blank'); } else { handlePinkToast(e); }
+                });
+            });
+
+            sliderWrapper.addEventListener('scroll', () => { 
+                const idx = Math.round(sliderWrapper.scrollLeft / (bannerSlides[0].clientWidth + 15)); 
+                const dots = bannerDotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); 
+                if(dots[idx]) dots[idx].classList.add('active'); 
+            });
+
+            // 4 Second Slow Auto Slider
+            let currentSlide = 0;
+            setInterval(() => {
+                currentSlide++;
+                if (currentSlide >= bannerSlides.length) { currentSlide = 0; }
+                const slideWidth = bannerSlides[0].clientWidth + 15;
+                sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' });
+            }, 4000);
+        }
+
+        // Live 24-Hour Countdown Timer Logic (100% WORKING - Rolling reset every midnight)
+        function startMathsCountdown() {
+            const hoursEl = document.getElementById('cd-h');
+            const minutesEl = document.getElementById('cd-m');
+            const secondsEl = document.getElementById('cd-s');
+            
+            if(!hoursEl || !minutesEl || !secondsEl) return;
+
+            function updateTimer() {
+                const now = new Date();
+                
+                // Set deadline exactly to the next midnight (00:00:00)
+                const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+                
+                // Time difference in milliseconds
+                const diff = tomorrow - now; 
+                
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+                
+                hoursEl.innerText = hours < 10 ? "0" + hours : hours;
+                minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+                secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+            }
+            setInterval(updateTimer, 1000);
+            updateTimer();
+        }
+        startMathsCountdown();
+
+        // Sliders for Reviews & Faculties Layout Sync
+        ['reviewsWrapper', 'facultyWrapper'].forEach(id => {
             const wrapper = document.getElementById(id); const dotsContainer = wrapper.nextElementSibling; const items = wrapper.children;
             for(let i=0; i<items.length; i++) { let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active'); dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 15) * i, behavior: 'smooth' }); }); dotsContainer.appendChild(dot); }
             wrapper.addEventListener('scroll', () => { const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 15)); const dots = dotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
