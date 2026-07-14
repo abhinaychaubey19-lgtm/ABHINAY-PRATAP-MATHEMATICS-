@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABHINAY PRATAP (MATHS MYSTIC) | PREMIUM PORTAL</title>
+    <title>ABHINAY PRATAP MATHEMATICS | PREMIUM PORTAL</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -21,12 +21,14 @@
             --border-dark: #262626;
             --pink: #ff2a75; 
             --pink-hover: #ff0055;
+            --green: #22c55e;
+            --red-brand: #dc2626; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
         body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* --- Simple Splash Screen (No Animation, 5s) --- */
+        /* --- Simple Splash Screen --- */
         .splash-screen {
             position: fixed; inset: 0; z-index: 9999; background: #000000;
             display: flex; align-items: center; justify-content: center;
@@ -41,16 +43,19 @@
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 5%; border-bottom: 1px solid var(--border-dark); z-index: 1000;
         }
-        .nav-left { display: flex; align-items: center; gap: 15px; }
-        .ham-custom { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 5px; transition: 0.3s; }
-        .line1, .line2, .line3 { height: 1.5px; background: var(--gold); border-radius: 2px; transition: 0.4s; }
-        .line1 { width: 28px; } .line2 { width: 18px; } .line3 { width: 10px; }
-        .ham-custom:hover .line2, .ham-custom:hover .line3 { width: 28px; background: #fff; }
+        .nav-left { display: flex; align-items: center; gap: 20px; }
+        
+        .ham-custom { cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 5px; transition: 0.3s; }
+        .ham-custom .line { height: 3px; background: var(--red-brand); border-radius: 3px; transition: 0.4s; }
+        .ham-custom .line1 { width: 32px; } 
+        .ham-custom .line2 { width: 22px; } 
+        .ham-custom .line3 { width: 32px; }
+        .ham-custom:hover .line2 { width: 32px; }
 
         .brand-container { display: flex; flex-direction: column; line-height: 1.1; }
-        .brand-name { font-size: 1.1rem; font-weight: 800; color: var(--gold); letter-spacing: 1px; }
-        .brand-subtitle { font-size: 0.55rem; color: var(--text-dim); font-weight: 500; letter-spacing: 0.5px; margin-top: 2px;}
-        @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.65rem; } }
+        .brand-name { font-size: 1.1rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
+        .brand-subtitle { font-size: 0.6rem; color: var(--red-brand); font-weight: 700; letter-spacing: 0.5px; margin-top: 2px;}
+        @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.75rem; } }
 
         .logo-box {
             width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffffff; 
@@ -76,15 +81,13 @@
         .sidebar.active { left: 0; }
         .sidebar ul { list-style: none; }
         .sidebar ul li { margin-bottom: 25px; } 
-        .sidebar ul li a {
-            display: flex; align-items: center; gap: 20px; color: var(--text-light); text-decoration: none; font-size: 1.1rem; padding: 15px; font-weight: 600; border-radius: 8px; transition: 0.3s; background: #111; border: 1px solid transparent; letter-spacing: 0.5px;
-        }
+        .sidebar ul li a { display: flex; align-items: center; gap: 20px; color: var(--text-light); text-decoration: none; font-size: 1.1rem; padding: 15px; font-weight: 600; border-radius: 8px; transition: 0.3s; background: #111; border: 1px solid transparent; letter-spacing: 0.5px; }
         .sidebar ul li a i { color: var(--gold); width: 30px; text-align: center; font-size: 1.4rem; }
         .sidebar ul li a:hover { background: #1a1a1a; border-color: var(--gold); color: var(--gold); padding-left: 25px; }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; }
         .overlay.active { opacity: 1; visibility: visible; }
 
-        /* --- PREMIUM TIMED BANNERS (2 MIN & 5 MIN) --- */
+        /* --- PREMIUM TIMED BANNERS --- */
         .timed-banner { 
             position: fixed; top: -200%; left: 50%; transform: translate(-50%, 0); 
             width: 1000px; max-width: 90vw; aspect-ratio: 1 / 1; 
@@ -110,7 +113,7 @@
         .timed-banner-tag i { color: var(--pink); margin-right: 5px; animation: pulse 1s infinite alternate; }
         @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.2); } }
 
-        .timed-banner-img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; border: 2px solid #000; }
+        .timed-banner-img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; border: 2px solid #000; background: #000; }
         .timed-banner-close { 
             position: absolute; top: -15px; right: -15px; cursor: pointer; 
             background: var(--pink); border: 2px solid #fff; color: #fff; 
@@ -135,12 +138,27 @@
         
         .course-card { position: relative; background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); overflow: visible; transition: 0.3s; }
         .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(234, 179, 8, 0.4); }
-        .course-img { width: 100%; aspect-ratio: 2/1; background-color: #111; object-fit: cover; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; display: block; }
+        
+        /* New Mini Play Button on Banner */
+        .course-img-box { position: relative; width: 100%; aspect-ratio: 2/1; background-color: #111; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; overflow: hidden; }
+        .course-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .mini-play-btn {
+            position: absolute; bottom: 12px; right: 12px;
+            background: var(--red-brand); color: #fff;
+            padding: 6px 14px; border-radius: 25px;
+            font-size: 0.8rem; font-weight: 800;
+            cursor: pointer; display: flex; align-items: center; gap: 6px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.8);
+            border: 1px solid rgba(255,255,255,0.3); transition: 0.3s; z-index: 5;
+        }
+        .mini-play-btn:hover { background: #ef4444; transform: scale(1.05); box-shadow: 0 6px 15px rgba(239, 68, 68, 1); }
+        .mini-play-btn i { font-size: 1rem; }
+
         .course-info { padding: 20px; }
         .course-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
         .course-faculty { color: var(--gold); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.5px; }
         
-        /* --- PREMIUM DIGITAL COUNTDOWN BADGE --- */
+        /* Premium Digital Countdown Badge */
         .countdown-badge {
             position: absolute; top: -15px; right: -10px;
             background: #000; border: 2px solid var(--pink);
@@ -162,6 +180,10 @@
         .btn-features:hover { background: #333; }
         .btn-buy { background: var(--gold); color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
         .btn-buy:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5); }
+        
+        /* Green Free Button */
+        .btn-free { background: var(--green); color: #fff; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
+        .btn-free:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5); color: #fff; }
 
         .features-box { display: none; padding: 20px; background: #0a0a0a; border-top: 1px solid var(--border-dark); margin-top: 15px; border-radius: 8px; }
         .features-box ul { list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px; }
@@ -187,14 +209,14 @@
         .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
         .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
 
-        /* Faculty Content (Premium Setup without Rating, White Icons) */
+        /* Faculty Content */
         .fac-avatar-container { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid #ffffff; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
         .fac-avatar-container img { width: 100%; height: 100%; object-fit: cover; }
         .fac-name { text-align: center; color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 5px; }
         .fac-subject { text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3); padding: 4px 10px; border-radius: 20px; background: rgba(234, 179, 8, 0.05); }
         .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px; font-weight: 500; min-height: 60px; }
         
-        /* Teacher Icons Updated to White -> Gold Hover */
+        /* Teacher Icons Updated to White */
         .fac-socials { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 15px; border-top: 1px dashed #222; }
         .fac-socials a { color: #ffffff; font-size: 1.2rem; background: #111; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s; }
         .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); box-shadow: 0 0 12px var(--gold); border-color: var(--gold); }
@@ -208,7 +230,6 @@
         .global-modal.show { opacity: 1; visibility: visible; }
         .modal-content { background: linear-gradient(145deg, #111111, #050505); border: 1px solid #333; border-top: 4px solid var(--gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 95%; text-align: center; position: relative; }
         
-        /* Payment Verification Loader */
         .loader-spinner { border: 4px solid #333; border-top: 4px solid var(--gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
@@ -219,10 +240,9 @@
         .modal-content h3 { font-size: 1.6rem; margin-bottom: 12px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
         .modal-btn { background: var(--gold); color: #000; font-weight: 800; font-size: 1rem; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; }
         .modal-btn:hover { background: var(--gold-hover); transform: translateY(-2px); }
-        .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #666; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #1a1a1a; z-index: 10; }
-        .modal-close-btn:hover { color: #fff; background: #333; }
+        .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #666; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #1a1a1a; z-index: 10; transition: 0.2s;}
+        .modal-close-btn:hover { color: #fff; background: var(--red-brand); border-color: var(--red-brand); }
 
-        /* Payment Form Specific CSS */
         .payment-box { background: #0a0a0a; border: 1px solid #333; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
         .payment-box label { color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 5px; display: block; }
         .input-field { width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: #fff; border-radius: 6px; font-size: 0.95rem; font-weight: 600; outline: none; margin-bottom: 10px; }
@@ -252,7 +272,7 @@
         .footer-col a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-weight: 600; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
         
-        /* Premium Examedge Button (Pink Gradient) */
+        /* Premium Examedge Button */
         .btn-examedge { 
             display: inline-block; background: linear-gradient(135deg, #ff2a75, #ff0055); color: #fff !important; 
             padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; 
@@ -267,15 +287,16 @@
         .contact-item a:hover { color: var(--pink); padding-left: 0; }
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; width: 100%;}
 
-        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (NO BLANK ISSUES) --- */
+        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (100% BLANK PAGE FIX) --- */
         @media print {
-            body * { visibility: hidden; }
-            #receiptArea, #receiptArea * { visibility: visible; }
+            body > *:not(#receiptArea) { display: none !important; }
             #receiptArea { 
-                position: absolute; left: 0; top: 0; width: 100%; min-height: 100%; 
-                background: #ffffff !important; color: #000000 !important; 
-                padding: 40px; box-sizing: border-box; display: block !important;
+                display: block !important; position: relative !important; 
+                width: 100% !important; background: #ffffff !important; 
+                color: #000000 !important; padding: 20px !important; 
+                box-sizing: border-box !important; margin: 0 !important;
             }
+            body, html { background: #ffffff !important; color: #000000 !important; height: auto !important; overflow: visible !important; }
         }
         #receiptArea { display: none; }
         .r-header { text-align: center; border-bottom: 4px solid #111; padding-bottom: 20px; margin-bottom: 30px; }
@@ -294,7 +315,7 @@
         .r-sig-box { text-align: center; width: 250px; }
         .r-sig-font { font-family: 'Dancing Script', cursive !important; font-size: 34px; color: #1e3a8a !important; text-transform: capitalize; margin-bottom: 5px; }
         .r-sig-line { border-top: 2px solid #000; padding-top: 8px; font-weight: 900; font-size: 15px; }
-        .r-footer { position: absolute; bottom: 40px; left: 50px; right: 50px; border-top: 3px solid #000; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; color: #000 !important;}
+        .r-footer { margin-top: 40px; border-top: 3px solid #000; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 12px; font-weight: 900; color: #000 !important;}
     </style>
 </head>
 <body>
@@ -306,14 +327,16 @@
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
-                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
             </div>
             <div class="brand-container">
                 <div class="brand-name">ABHINAY PRATAP MATHS</div>
-                <div class="brand-subtitle">THE MOST TRUSTED EDUCATION PLATFORM</div>
+                <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
-        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP (MATHS MYSTIC) SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
+        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP MATHEMATICS SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
@@ -341,9 +364,12 @@
     </div>
     <div class="timed-banner" id="timedBanner5min">
         <div class="timed-banner-wrapper">
-            <div class="timed-banner-tag"><i class="fas fa-bolt"></i> LIMITED TIME</div>
+            <div class="timed-banner-tag"><i class="fas fa-bolt"></i> WATCH VIDEO</div>
             <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner5min')"><i class="fas fa-times"></i></div>
-            <img src="al2.png" alt="SPECIAL ALERT 5 MIN" class="timed-banner-img">
+            <video id="promoVideo" controls class="timed-banner-img">
+                <source src="promo.mp4" type="video/mp4">
+                YOUR BROWSER DOES NOT SUPPORT THE VIDEO TAG.
+            </video>
         </div>
     </div>
 
@@ -376,10 +402,13 @@
                     <div class="time-sep">:</div>
                     <div class="time-block"><div class="time-val" id="cd-s">59</div><div class="time-lbl">SEC</div></div>
                 </div>
-                <img src="ca1.png" alt="MATHS BATCH" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca1.png" alt="MATHS BATCH" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('promo.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">MATHEMATICS SPECIAL</h3>
-                    <p class="course-faculty">BY ABHINAY PRATAP (MATHS MYSTIC)</p>
+                    <p class="course-faculty">BY ABHINAY PRATAP MATHEMATICS</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('MATHEMATICS SPECIAL BATCH', 999)">BUY NOW COURSE</button>
@@ -397,8 +426,42 @@
                 </div>
             </div>
 
+     <!-- UPDATED VANDE BHARAT BATCH CARD WITH VISIBLE DEMO BUTTON -->
+<div class="course-card">
+    <div class="course-img-box">
+        <img src="caa.png" alt="VANDE BHARAT BATCH" class="course-img">
+        <!-- DEMO BUTTON (FIXED POSITION & Z-INDEX) -->
+        <div class="mini-play-btn" onclick="playCourseVideo('cor2.mp4')" style="position: absolute; bottom: 15px; right: 15px; background: #dc2626; color: #fff; padding: 8px 16px; border-radius: 25px; font-size: 0.85rem; font-weight: 800; cursor: pointer; z-index: 10; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            <i class="fas fa-play"></i> DEMO
+        </div>
+        <div class="play-overlay" onclick="playCourseVideo('cor2.mp4')"><i class="fas fa-play-circle"></i></div>
+    </div>
+    <div class="course-info">
+        <h3 class="course-title">VANDE BHARAT BATCH</h3>
+        <p class="course-faculty" style="color: var(--green);">FREE FOR GOVT SCHOOL STUDENTS</p>
+        <div class="btn-group">
+            <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
+            <button class="btn btn-free" onclick="openPaymentModal('VANDE BHARAT BATCH', 0)">ENROLL FOR FREE</button>
+        </div>
+        <div class="features-box">
+            <ul>
+                <li><i class="fas fa-check-circle"></i> 100% FREE FOR GOVT STUDENTS</li>
+                <li><i class="fas fa-check-circle"></i> COMPLETE NCERT SYLLABUS</li>
+                <li><i class="fas fa-check-circle"></i> DAILY LIVE CLASSES</li>
+                <li><i class="fas fa-check-circle"></i> BILINGUAL (HINDI/ENGLISH)</li>
+                <li><i class="fas fa-check-circle"></i> FREE PDF NOTES & TESTS</li>
+                <li><i class="fas fa-check-circle"></i> DEDICATED DOUBT SESSIONS</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
             <div class="course-card">
-                <img src="ca2.png" alt="SCIENCE GS" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca2.png" alt="SCIENCE GS" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor3.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">COMPLETE SCIENCE SPECIAL</h3>
                     <p class="course-faculty">AKSHIT SIR (SCIENCE EXPERT)</p>
@@ -420,10 +483,13 @@
             </div>
 
             <div class="course-card">
-                <img src="ca3.png" alt="TARGET CGL" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca3.png" alt="TARGET CGL" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor4.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">JAWAHAR NAVODAYA ENTRANCE</h3>
-                    <p class="course-faculty">BY ABHINAY PRATAP MATHS AND TEAM</p>
+                    <p class="course-faculty">BY ABHINAY PRATAP MATHEMATICS AND TEAM</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('JAWAHAR NAVODAYA ENTRANCE', 1499)">BUY NOW COURSE</button>
@@ -442,7 +508,10 @@
             </div>
 
             <div class="course-card">
-                <img src="ca4.png" alt="RAILWAY" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca4.png" alt="RAILWAY" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor5.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">KENDRIYA VIDYALAYA</h3>
                     <p class="course-faculty">BHOLU CHAUBEY AND TEAM</p>
@@ -464,10 +533,13 @@
             </div>
 
             <div class="course-card">
-                <img src="ca5.png" alt="TEST PASS" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca5.png" alt="TEST PASS" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor6.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">ULTIMATE TEST PASS PRO</h3>
-                    <p class="course-faculty">ABHINAY PRATAP MATHS PLATFORM</p>
+                    <p class="course-faculty">ABHINAY PRATAP MATHEMATICS PLATFORM</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('ULTIMATE TEST PASS PRO', 499)">BUY NOW COURSE</button>
@@ -486,7 +558,10 @@
             </div>
 
             <div class="course-card">
-                <img src="ca6.png" alt="REASONING SPECIAL" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca6.png" alt="REASONING SPECIAL" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor7.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">REASONING SPECIAL BATCH</h3>
                     <p class="course-faculty">RAHUL SIR (REASONING EXPERT)</p>
@@ -508,7 +583,10 @@
             </div>
 
             <div class="course-card">
-                <img src="ca7.png" alt="GS SPECIAL" class="course-img">
+                <div class="course-img-box">
+                    <img src="ca7.png" alt="GS SPECIAL" class="course-img">
+                    <div class="mini-play-btn" onclick="playCourseVideo('cor8.mp4')"><i class="fas fa-play"></i> DEMO</div>
+                </div>
                 <div class="course-info">
                     <h3 class="course-title">G.S SPECIAL BATCH</h3>
                     <p class="course-faculty">BHOLU CHAUBEY & TEAM</p>
@@ -610,6 +688,16 @@
         </div>
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
+
+    <div class="global-modal" id="courseVideoModal">
+        <div class="modal-content" style="padding: 15px; max-width: 650px; background: #000; border: 2px solid var(--gold); border-radius: 15px;">
+            <div class="modal-close-btn" onclick="closeCourseVideoModal()" style="top: -15px; right: -15px; background: var(--red-brand); border: 2px solid #fff; color: #fff;">&times;</div>
+            <video id="courseVideoPlayer" controls style="width: 100%; border-radius: 10px; outline: none; background: #111;">
+                <source id="cvSource" src="" type="video/mp4">
+                YOUR BROWSER DOES NOT SUPPORT THE VIDEO TAG.
+            </video>
+        </div>
+    </div>
 
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
@@ -713,7 +801,7 @@
 
     <div id="receiptArea">
         <div class="r-header">
-            <h1>ABHINAY PRATAP (MATHS MYSTIC)</h1>
+            <h1>ABHINAY PRATAP MATHEMATICS</h1>
             <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
         </div>
         <div class="r-meta">
@@ -762,7 +850,7 @@
     </div>
 
     <div class="toast-alert" id="toastAlert">
-        <i class="fas fa-info-circle"></i> <span id="toastMessage">LINK NOT AVAILABLE STAY TUNED</span>
+        <i class="fas fa-info-circle"></i> <span id="toastMessage">YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!</span>
     </div>
 
     <footer>
@@ -791,12 +879,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ABHINAY PRATAP (MATHS MYSTIC). ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">TEAM AAJAD</span></p>
+            <p>&copy; 2026 ABHINAY PRATAP MATHEMATICS. ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">TEAM AAJAD</span></p>
         </div>
     </footer>
 
     <script>
-        // Simple Splash Screen Logic (Exactly 5 Seconds)
+        // Simple Splash Screen Logic
         window.addEventListener('load', () => { 
             setTimeout(() => { 
                 document.getElementById('splashScreen').style.opacity = '0';
@@ -855,17 +943,63 @@
         }
 
         // Pink Toast Logic
-        function handlePinkToast(e) {
+        function handlePinkToast(e, msg) {
             if(e) e.preventDefault();
             const pinkToast = document.getElementById('toastAlert');
+            if(msg) document.getElementById('toastMessage').innerText = msg;
+            else document.getElementById('toastMessage').innerText = "LINK NOT AVAILABLE STAY TUNED";
+            
             pinkToast.classList.add('show');
             setTimeout(() => { pinkToast.classList.remove('show'); }, 3000);
         }
+
+        // --- COURSE VIDEO PLAYER LOGIC ---
+        function playCourseVideo(videoSrc) {
+            const videoPlayer = document.getElementById('courseVideoPlayer');
+            const videoSource = document.getElementById('cvSource');
+            const modal = document.getElementById('courseVideoModal');
+            
+            videoSource.src = videoSrc;
+            videoPlayer.load();
+            modal.classList.add('show');
+            
+            let playPromise = videoPlayer.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    closeCourseVideoModal();
+                    handlePinkToast(null, 'YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!');
+                });
+            }
+        }
+
+        function closeCourseVideoModal() {
+            const modal = document.getElementById('courseVideoModal');
+            const videoPlayer = document.getElementById('courseVideoPlayer');
+            videoPlayer.pause();
+            document.getElementById('cvSource').src = ""; 
+            modal.classList.remove('show');
+        }
+
+        document.getElementById('courseVideoPlayer').addEventListener('error', function(e) {
+            closeCourseVideoModal();
+            handlePinkToast(null, 'YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!');
+        });
 
         // Sidebar Actions
         function triggerComingSoon(e) { e.preventDefault(); toggleMenu(); showCustomAlert('COMING SOON!', 'YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. STAY TUNED!'); }
         function openProfileModal(e) { if(e) e.preventDefault(); toggleMenu(); document.getElementById('profileModal').classList.add('show'); }
         function closeProfileModal() { document.getElementById('profileModal').classList.remove('show'); }
+
+        // --- TIMED BANNERS CLOSE LOGIC ---
+        function closeTimedBanner(id) { 
+            document.getElementById(id).classList.remove('show'); 
+            if(id === 'timedBanner5min') {
+                const video = document.getElementById('promoVideo');
+                if(video) video.pause(); 
+            }
+        }
+        setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 120000); 
+        setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 300000); 
 
         // --- PAYMENT MODAL & COUPON LOGIC ---
         let currentCourseName = ""; let originalCoursePrice = 0; let currentCoursePrice = 0; let appliedDiscountAmt = 0; let finalUtr = "";
@@ -879,9 +1013,9 @@
         function openPaymentModal(cName, price) {
             currentCourseName = cName; originalCoursePrice = price; currentCoursePrice = price; appliedDiscountAmt = 0;
             document.getElementById('modalCourseName').innerText = cName;
-            document.getElementById('modalOriginalFee').innerText = "₹" + price;
+            document.getElementById('modalOriginalFee').innerText = price > 0 ? "₹" + price : "FREE";
             document.getElementById('modalDiscountRow').style.display = "none";
-            document.getElementById('modalPayableAmount').innerText = "₹" + price;
+            document.getElementById('modalPayableAmount').innerText = price > 0 ? "₹" + price : "FREE";
             document.getElementById('paymentScreenshot').value = "";
             document.getElementById('utrInput').value = ""; document.getElementById('couponInput').value = "";
             qrContainer.style.display = "none";
@@ -893,6 +1027,7 @@
         function closePaymentModal() { paymentModal.classList.remove('show'); }
 
         function applyCoupon() {
+            if(originalCoursePrice === 0) { showCustomAlert("FREE BATCH", "THIS COURSE IS ALREADY FREE."); return; }
             let code = document.getElementById('couponInput').value.trim().toUpperCase();
             if(appliedDiscountAmt > 0) { showCustomAlert("WAIT!", "A COUPON IS ALREADY APPLIED TO THIS COURSE."); return; }
             if(coupons[code]) {
@@ -907,12 +1042,24 @@
         }
 
         function generateQR() {
+            if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED FOR THIS BATCH."); return; }
             const upiUrl = `upi://pay?pa=7705042892@ibl&pn=PratapMaths&am=${currentCoursePrice}&cu=INR`;
             qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
             qrContainer.style.display = "block";
         }
 
         function verifyPaymentSubmit() {
+            if(currentCoursePrice === 0) {
+                finalUtr = "FREE_ENROLLMENT";
+                document.getElementById('paymentFormArea').style.display = 'none';
+                document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => {
+                    closePaymentModal();
+                    setTimeout(() => { detailsModal.classList.add('show'); }, 500);
+                }, 1000);
+                return;
+            }
+
             const fileInput = document.getElementById('paymentScreenshot');
             const utrValue = document.getElementById('utrInput').value.trim().toUpperCase();
             const isFileUploaded = fileInput.files.length > 0;
@@ -921,7 +1068,6 @@
             if (isFileUploaded || isUtrValid) {
                 finalUtr = isUtrValid ? utrValue : "VERIFIED_VIA_SCREENSHOT";
                 
-                // Show 2 Second Processing Loader Animation
                 document.getElementById('paymentFormArea').style.display = 'none';
                 document.getElementById('loadingArea').style.display = 'block';
                 
@@ -936,11 +1082,6 @@
             }
         }
 
-        function openDetailsForm() {
-            document.getElementById('customAlertModal').classList.remove('show');
-            setTimeout(() => { detailsModal.classList.add('show'); }, 300);
-        }
-
         // --- DIRECT BROWSER NATIVE PRINT RECEIPT LOGIC ---
         function printReceipt() {
             const name = document.getElementById('stuName').value.trim();
@@ -951,8 +1092,8 @@
             if(!name || !mobile || !father || !address) { showCustomAlert("DETAILS MISSING", "PLEASE FILL ALL THE DETAILS TO GENERATE YOUR RECEIPT."); return; }
 
             const finalPayable = currentCoursePrice;
-            const base = (finalPayable / 1.18).toFixed(2);
-            const gst = (finalPayable - base).toFixed(2);
+            const base = finalPayable > 0 ? (finalPayable / 1.18).toFixed(2) : 0;
+            const gst = finalPayable > 0 ? (finalPayable - base).toFixed(2) : 0;
             const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000);
 
             document.getElementById('rDate').innerText = new Date().toLocaleString('en-IN');
@@ -963,26 +1104,20 @@
             document.getElementById('rMobile').innerText = mobile;
             document.getElementById('rAddress').innerText = address.toUpperCase();
             document.getElementById('rCourse').innerText = currentCourseName;
-            document.getElementById('rBaseFee').innerText = "₹" + base;
-            document.getElementById('rDiscount').innerText = "-₹" + appliedDiscountAmt + ".00";
-            document.getElementById('rGst').innerText = "₹" + gst;
-            document.getElementById('rAmount').innerText = "₹" + finalPayable + ".00";
+            document.getElementById('rBaseFee').innerText = finalPayable > 0 ? "₹" + base : "FREE";
+            document.getElementById('rDiscount').innerText = appliedDiscountAmt > 0 ? "-₹" + appliedDiscountAmt + ".00" : "₹0.00";
+            document.getElementById('rGst').innerText = finalPayable > 0 ? "₹" + gst : "₹0.00";
+            document.getElementById('rAmount').innerText = finalPayable > 0 ? "₹" + finalPayable + ".00" : "FREE";
 
             detailsModal.classList.remove('show');
             
-            // Native direct clean print
             setTimeout(() => { 
                 window.print(); 
-                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", "YOUR FEE RECEIPT HAS BEEN GENERATION RECORDED.<br>WELCOME TO ABHINAY PRATAP (MATHS MYSTIC)!", true); }, 1000);
+                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", "YOUR FEE RECEIPT HAS BEEN GENERATED.<br>WELCOME TO ABHINAY PRATAP MATHEMATICS!", true); }, 1000);
             }, 500);
         }
 
-        // Timed Banners Close function
-        function closeTimedBanner(id) { document.getElementById(id).classList.remove('show'); }
-        setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 120000); 
-        setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 300000); 
-
-        // Feature Toggle, Banner Click & Auto Slider Sync Logic
+        // Feature Toggle & Auto Slider Sync Logic
         function toggleFeatures(btn) { let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; btn.style.background = "#222"; btn.style.color = "var(--text-light)"; } else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; btn.style.background = "var(--gold)"; btn.style.color = "#000"; } }
         
         const sliderWrapper = document.getElementById('sliderWrapper');
@@ -995,10 +1130,9 @@
                 dot.addEventListener('click', () => { sliderWrapper.scrollTo({ left: (bannerSlides[0].clientWidth + 15) * i, behavior: 'smooth' }); });
                 bannerDotsContainer.appendChild(dot);
                 
-                // Banner Click Redirect / Toast Function
                 slide.addEventListener('click', (e) => {
                     const link = slide.getAttribute('data-link');
-                    if (link && link.trim() !== '') { window.open(link, '_blank'); } else { handlePinkToast(e); }
+                    if (link && link.trim() !== '') { window.open(link, '_blank'); } else { handlePinkToast(e, null); }
                 });
             });
 
@@ -1008,7 +1142,6 @@
                 if(dots[idx]) dots[idx].classList.add('active'); 
             });
 
-            // 4 Second Slow Auto Slider
             let currentSlide = 0;
             setInterval(() => {
                 currentSlide++;
@@ -1018,7 +1151,7 @@
             }, 4000);
         }
 
-        // Live 24-Hour Countdown Timer Logic (100% WORKING - Rolling reset every midnight)
+        // Live 24-Hour Countdown Timer Logic
         function startMathsCountdown() {
             const hoursEl = document.getElementById('cd-h');
             const minutesEl = document.getElementById('cd-m');
@@ -1028,11 +1161,7 @@
 
             function updateTimer() {
                 const now = new Date();
-                
-                // Set deadline exactly to the next midnight (00:00:00)
                 const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-                
-                // Time difference in milliseconds
                 const diff = tomorrow - now; 
                 
                 const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
