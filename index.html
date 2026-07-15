@@ -6,49 +6,34 @@
     <title>ABHINAY PRATAP (MATHS MYSTIC) | PREMIUM PORTAL</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- Core Variables & Theme --- */
         :root {
-            --bg-main: #050505;
-            --bg-card: #111111;
-            --gold: #eab308;
-            --gold-hover: #ca8a04;
-            --text-light: #ffffff;
-            --text-dim: #a3a3a3;
+            --bg-main: #050505; --bg-card: #111111;
+            --gold: #eab308; --gold-hover: #ca8a04;
+            --text-light: #ffffff; --text-dim: #a3a3a3;
             --border-dark: #262626;
-            --pink: #ff2a75; 
-            --pink-hover: #ff0055;
-            --green: #22c55e;
-            --red-brand: #dc2626; 
+            --pink: #ff2a75; --pink-hover: #ff0055;
+            --green: #22c55e; --red-brand: #dc2626; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
         body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; }
 
         /* --- Full Screen Splash Screen --- */
-        .splash-screen {
-            position: fixed; inset: 0; z-index: 9999; background: #000000;
-            display: flex; align-items: center; justify-content: center;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
+        .splash-screen { position: fixed; inset: 0; z-index: 9999; background: #000000; display: flex; align-items: center; justify-content: center; transition: opacity 1s ease, visibility 1s ease; }
         .splash-banner { width: 100vw; height: 100vh; object-fit: cover; }
 
         /* --- Navbar --- */
-        nav {
-            position: fixed; top: 0; width: 100%; height: 75px;
-            background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5%; border-bottom: 1px solid var(--border-dark); z-index: 1000;
-        }
+        nav { position: fixed; top: 0; width: 100%; height: 75px; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; border-bottom: 1px solid var(--border-dark); z-index: 1000; }
         .nav-left { display: flex; align-items: center; gap: 20px; }
         
         .ham-custom { cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 5px; transition: 0.3s; }
         .ham-custom .line { height: 3px; background: var(--red-brand); border-radius: 3px; transition: 0.4s; }
-        .ham-custom .line1 { width: 32px; } 
-        .ham-custom .line2 { width: 22px; } 
-        .ham-custom .line3 { width: 32px; }
+        .ham-custom .line1 { width: 32px; } .ham-custom .line2 { width: 22px; } .ham-custom .line3 { width: 32px; }
         .ham-custom:hover .line2 { width: 32px; }
 
         .brand-container { display: flex; flex-direction: column; line-height: 1.1; }
@@ -56,27 +41,14 @@
         .brand-subtitle { font-size: 0.6rem; color: var(--red-brand); font-weight: 700; letter-spacing: 0.5px; margin-top: 2px;}
         @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.75rem; } }
 
-        .logo-box {
-            width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffffff; 
-            background: url('m.png') center/contain no-repeat; background-color: #000;
-            cursor: pointer; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
-        }
+        .logo-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffffff; background: url('m.png') center/contain no-repeat; background-color: #000; cursor: pointer; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
 
         /* --- Floating WhatsApp --- */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background: #25D366; color: #fff;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 32px; z-index: 2000; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); text-decoration: none;
-            transition: all 0.3s ease;
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 2000; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); text-decoration: none; transition: all 0.3s ease; }
         .whatsapp-float:hover { transform: translateY(-5px) scale(1.05); }
 
         /* --- Sidebar --- */
-        .sidebar {
-            position: fixed; top: 0; left: -320px; width: 320px; height: 100vh;
-            background: #0a0a0a; border-right: 1px solid var(--border-dark);
-            padding: 90px 20px 20px; transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; overflow-y: auto;
-        }
+        .sidebar { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: #0a0a0a; border-right: 1px solid var(--border-dark); padding: 90px 20px 20px; transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; overflow-y: auto; }
         .sidebar.active { left: 0; }
         .sidebar ul { list-style: none; }
         .sidebar ul li { margin-bottom: 25px; } 
@@ -87,39 +59,13 @@
         .overlay.active { opacity: 1; visibility: visible; }
 
         /* --- PREMIUM TIMED BANNERS --- */
-        .timed-banner { 
-            position: fixed; top: -200%; left: 50%; transform: translate(-50%, 0); 
-            width: 1000px; max-width: 90vw; aspect-ratio: 1 / 1; 
-            z-index: 1500; transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            display: flex; justify-content: center; align-items: center;
-        }
+        .timed-banner { position: fixed; top: -200%; left: 50%; transform: translate(-50%, 0); width: 1000px; max-width: 90vw; aspect-ratio: 1 / 1; z-index: 1500; transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; justify-content: center; align-items: center; }
         .timed-banner.show { top: 10vh; }
-        .timed-banner-wrapper {
-            position: relative; width: 100%; height: 100%; border-radius: 15px; padding: 5px;
-            background: linear-gradient(45deg, var(--gold), var(--pink), var(--gold-hover));
-            background-size: 200% 200%; animation: borderGlow 3s ease infinite;
-            box-shadow: 0 10px 40px rgba(255, 42, 117, 0.5);
-        }
+        .timed-banner-wrapper { position: relative; width: 100%; height: 100%; border-radius: 15px; padding: 5px; background: linear-gradient(45deg, var(--gold), var(--pink), var(--gold-hover)); background-size: 200% 200%; animation: borderGlow 3s ease infinite; box-shadow: 0 10px 40px rgba(255, 42, 117, 0.5); }
         @keyframes borderGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        .timed-banner-tag {
-            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-            background: #000; color: var(--gold); border: 2px solid var(--gold);
-            padding: 5px 20px; border-radius: 20px; font-weight: 900; z-index: 15;
-            white-space: nowrap; font-size: 0.95rem; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-            letter-spacing: 1px;
-        }
-        .timed-banner-tag i { color: var(--pink); margin-right: 5px; animation: pulse 1s infinite alternate; }
-        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.2); } }
-
+        .timed-banner-tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #000; color: var(--gold); border: 2px solid var(--gold); padding: 5px 20px; border-radius: 20px; font-weight: 900; z-index: 15; white-space: nowrap; font-size: 0.95rem; box-shadow: 0 5px 15px rgba(0,0,0,0.8); letter-spacing: 1px; }
         .timed-banner-img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; border: 2px solid #000; background: #000; }
-        .timed-banner-close { 
-            position: absolute; top: -15px; right: -15px; cursor: pointer; 
-            background: var(--pink); border: 2px solid #fff; color: #fff; 
-            width: 38px; height: 38px; border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; font-size: 1.2rem; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.3s; z-index: 20;
-        }
+        .timed-banner-close { position: absolute; top: -15px; right: -15px; cursor: pointer; background: var(--pink); border: 2px solid #fff; color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.3s; z-index: 20; }
         .timed-banner-close:hover { background: #fff; color: var(--pink); transform: rotate(90deg) scale(1.1); }
 
         /* --- Banner Slider --- */
@@ -135,38 +81,20 @@
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 30px; border-left: 4px solid var(--gold); padding-left: 15px; }
         .course-list { display: flex; flex-direction: column; gap: 40px; margin-top: 15px; }
         
-        .course-card { position: relative; background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); overflow: visible; transition: 0.3s; }
+        .course-card { position: relative; background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); transition: 0.3s; }
         .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(234, 179, 8, 0.4); }
-        
-        /* Interactive Video Thumbnail */
         .course-img-box { position: relative; width: 100%; aspect-ratio: 2/1; background-color: #111; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; overflow: hidden; cursor: pointer; }
         .course-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.4s; }
         .course-img-box:hover .course-img { transform: scale(1.05); filter: brightness(0.8); }
         
-        /* Yellow Play Button (Icon Only) */
-        .mini-play-btn {
-            position: absolute; bottom: 12px; right: 12px;
-            background: var(--gold); color: #000;
-            padding: 12px 14px 12px 16px; 
-            border-radius: 50%; font-size: 1.1rem;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.6); border: 2px solid #fff; transition: 0.3s; z-index: 5;
-        }
-        .mini-play-btn:hover { background: #fff; transform: scale(1.1); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.8); }
-
+        .mini-play-btn { position: absolute; bottom: 12px; right: 12px; background: var(--gold); color: #000; padding: 12px 14px 12px 16px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.6); border: 2px solid #fff; transition: 0.3s; z-index: 5; }
+        .mini-play-btn:hover { background: #fff; transform: scale(1.1); }
+        
         .course-info { padding: 20px; }
         .course-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
         .course-faculty { color: var(--gold); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.5px; }
         
-        /* Premium Digital Countdown Badge */
-        .countdown-badge {
-            position: absolute; top: -15px; right: -10px;
-            background: #000; border: 2px solid var(--pink);
-            padding: 6px 12px; border-radius: 10px;
-            display: flex; gap: 4px; align-items: center;
-            box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6);
-            z-index: 10; font-family: 'Poppins', sans-serif;
-        }
+        .countdown-badge { position: absolute; top: -15px; right: -10px; background: #000; border: 2px solid var(--pink); padding: 6px 12px; border-radius: 10px; display: flex; gap: 4px; align-items: center; box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6); z-index: 10; }
         .countdown-text { font-size: 0.65rem; color: var(--gold); font-weight: 900; margin-right: 5px; letter-spacing: 1px; }
         .time-block { display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .time-val { background: var(--pink); color: #fff; font-size: 1.1rem; font-weight: 900; padding: 2px 5px; border-radius: 5px; font-family: monospace; letter-spacing: 1px; line-height: 1; }
@@ -180,10 +108,8 @@
         .btn-features:hover { background: #333; }
         .btn-buy { background: var(--gold); color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
         .btn-buy:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5); }
-        
-        /* Green Free Button */
         .btn-free { background: var(--green); color: #fff; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
-        .btn-free:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5); color: #fff; }
+        .btn-free:hover { background: #16a34a; transform: translateY(-2px); }
 
         .features-box { display: none; padding: 20px; background: #0a0a0a; border-top: 1px solid var(--border-dark); margin-top: 15px; border-radius: 8px; }
         .features-box ul { list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px; }
@@ -191,26 +117,8 @@
         .features-box ul li { font-size: 0.95rem; color: #ffffff; font-weight: 800; text-transform: uppercase; display: flex; align-items: flex-start; gap: 10px; }
         .features-box ul li i { color: var(--gold); margin-top: 3px; font-size: 1.1rem; }
 
-        /* --- UNIFORM LAYOUT FOR REVIEWS AND FACULTIES --- */
-        .uniform-section { padding: 40px 0 20px; }
-        .uniform-section .section-title { margin-left: 5%; }
-        .uniform-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; justify-content: flex-start; }
-        .uniform-wrapper::-webkit-scrollbar { display: none; }
-        
-        .uniform-card { width: 340px; scroll-snap-align: start; flex-shrink: 0; background: var(--bg-card); border: 1px solid var(--gold); padding: 25px; border-radius: 15px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.1); }
-        .uniform-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.2); transition: 0.3s; }
-
-        /* Review Content */
-        .stars-box { color: var(--gold); margin-bottom: 12px; font-size: 1rem; }
-        .review-desc { color: var(--text-light); font-size: 0.95rem; font-weight: 600; line-height: 1.6; font-style: italic; margin-bottom: 20px; }
-        .reviewer-meta { display: flex; align-items: center; gap: 15px; }
-        .rev-avatar { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; background: #222; }
-        .rev-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
-        .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
-
         /* ========================================== */
-        /* --- EXCLUSIVE EDGE (FEATURES 8 CARDS) --- */
+        /* --- EXCLUSIVE EDGE (8 CARDS) --- */
         /* ========================================== */
         .edge-section { padding: 40px 5%; }
         .edge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -236,25 +144,41 @@
         .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: #0a0a0a; }
         .faq-answer p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; font-weight: 600; text-transform: none; padding-bottom: 18px; margin-top: 5px; }
 
-        /* Faculty Content */
+
+        /* --- UNIFORM LAYOUT FOR REVIEWS AND FACULTIES --- */
+        .uniform-section { padding: 40px 0 20px; }
+        .uniform-section .section-title { margin-left: 5%; }
+        .uniform-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; justify-content: flex-start; }
+        .uniform-wrapper::-webkit-scrollbar { display: none; }
+        
+        .uniform-card { width: 340px; scroll-snap-align: start; flex-shrink: 0; background: var(--bg-card); border: 1px solid var(--gold); padding: 25px; border-radius: 15px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.1); }
+        .uniform-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.2); transition: 0.3s; }
+
+        .stars-box { color: var(--gold); margin-bottom: 12px; font-size: 1rem; }
+        .review-desc { color: var(--text-light); font-size: 0.95rem; font-weight: 600; line-height: 1.6; font-style: italic; margin-bottom: 20px; }
+        .reviewer-meta { display: flex; align-items: center; gap: 15px; }
+        .rev-avatar { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; background: #222; }
+        .rev-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
+        .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
+
         .fac-avatar-container { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid #ffffff; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
         .fac-avatar-container img { width: 100%; height: 100%; object-fit: cover; }
         .fac-name { text-align: center; color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 5px; }
         .fac-subject { text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3); padding: 4px 10px; border-radius: 20px; background: rgba(234, 179, 8, 0.05); }
         .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px; font-weight: 500; min-height: 60px; }
-        
         .fac-socials { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 15px; border-top: 1px dashed #222; }
         .fac-socials a { color: #ffffff; font-size: 1.2rem; background: #111; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s; }
-        .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); box-shadow: 0 0 12px var(--gold); border-color: var(--gold); }
+        .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); border-color: var(--gold); }
 
         .dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 20px; padding: 0 5%; flex-wrap: wrap; }
         .dots-container .dot { width: 8px; height: 8px; background: #444; border-radius: 50%; transition: 0.3s; cursor: pointer; flex-shrink: 0; }
         .dots-container .dot.active { background: var(--gold); width: 20px; border-radius: 5px; }
 
         /* --- Global Modals --- */
-        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2000; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .global-modal.show { opacity: 1; visibility: visible; }
-        .modal-content { background: linear-gradient(145deg, #111111, #050505); border: 1px solid #333; border-top: 4px solid var(--gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 95%; text-align: center; position: relative; }
+        .modal-content { background: linear-gradient(145deg, #111111, #050505); border: 1px solid #333; border-top: 4px solid var(--gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 95%; text-align: center; position: relative; max-height: 90vh; overflow-y: auto;}
         
         .loader-spinner { border: 4px solid #333; border-top: 4px solid var(--gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -276,19 +200,39 @@
         .qr-area { text-align: center; margin: 15px 0; display: none; }
         .qr-area img { width: 180px; height: 180px; border: 3px solid var(--gold); border-radius: 10px; padding: 5px; background: #fff; margin: 0 auto; display: block; }
 
-        /* PINK TOAST ALERT BOX STYLING */
-        .toast-alert { 
-            position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); 
-            background: rgba(26, 5, 13, 0.96); backdrop-filter: blur(8px); 
-            border: 1px solid var(--pink); padding: 12px 24px; border-radius: 10px; 
-            color: #fff; font-weight: 600; font-size: 0.9rem; z-index: 3000; 
-            box-shadow: 0 5px 25px rgba(255, 42, 117, 0.35); 
-            display: flex; align-items: center; gap: 10px; 
-            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            text-align: center; white-space: nowrap;
-        }
+        /* PINK TOAST ALERT BOX */
+        .toast-alert { position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); background: rgba(26, 5, 13, 0.96); backdrop-filter: blur(8px); border: 1px solid var(--pink); padding: 12px 24px; border-radius: 10px; color: #fff; font-weight: 600; font-size: 0.9rem; z-index: 3000; box-shadow: 0 5px 25px rgba(255, 42, 117, 0.35); display: flex; align-items: center; gap: 10px; transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-align: center; white-space: nowrap; }
         .toast-alert.show { bottom: 30px; }
         .toast-alert i { color: var(--pink); font-size: 1.2rem; text-shadow: 0 0 5px var(--pink); }
+
+        /* --- NEW: STUDENT PORTAL (MY BATCH & CLASSROOM) --- */
+        .portal-header { background: #000; border-bottom: 2px solid var(--gold); padding: 20px; text-align: left; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;}
+        .dash-card { background: #1a1a1a; border: 1px solid #333; border-left: 5px solid var(--gold); padding: 20px; border-radius: 8px; text-align: left; margin-bottom: 20px; }
+        .dash-card h4 { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; font-weight: 800;}
+        .dash-card p { color: #fff; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px;}
+        .dash-card p span { color: var(--text-dim); }
+        
+        .classroom-container { display: flex; flex-direction: column; height: 100%; background: #000; width: 100%; max-width: 1000px; margin: 0 auto; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
+        @media(min-width: 768px) { .classroom-container { flex-direction: row; height: 75vh; } }
+        
+        .video-player-area { flex: 2; background: #050505; display: flex; flex-direction: column; border-right: 1px solid #333;}
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; background: #111 url('ca1.png') center/cover; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold); }
+        .video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .now-playing-title { padding: 20px; color: #fff; font-weight: 800; font-size: 1.2rem; border-bottom: 1px solid #222;}
+
+        .playlist-area { flex: 1; background: #0a0a0a; display: flex; flex-direction: column; height: 350px;}
+        @media(min-width: 768px) { .playlist-area { height: auto; } }
+        .playlist-header { padding: 15px; background: #111; color: var(--gold); font-weight: 800; font-size: 1.1rem; border-bottom: 2px solid #333; text-align: left;}
+        .playlist-items { overflow-y: auto; flex: 1; scrollbar-width: thin; scrollbar-color: var(--gold) #111; padding: 10px; }
+        
+        .play-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid #222; cursor: pointer; transition: 0.3s; border-radius: 5px; margin-bottom: 5px;}
+        .play-item:hover { background: #1a1a1a; }
+        .play-item.active { background: rgba(234, 179, 8, 0.1); border-left: 4px solid var(--gold); }
+        .play-item-title { color: #fff; font-weight: 600; font-size: 0.9rem; text-align: left; }
+        .play-item-title span { display: block; color: var(--text-dim); font-size: 0.75rem; margin-top: 3px; font-weight: 500;}
+        .play-status { font-size: 1.1rem; }
+        .status-unlocked { color: var(--green); }
+        .status-locked { color: #555; }
 
         /* --- Footer Layout --- */
         footer { background: var(--bg-card); padding: 50px 5% 20px; border-top: 1px solid var(--gold); }
@@ -297,53 +241,30 @@
         .footer-col h3 { color: var(--text-light); margin-bottom: 25px; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 10px; font-weight: 800;}
         .footer-col a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-weight: 600; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
-        
-        .btn-examedge { 
-            display: inline-block; background: linear-gradient(135deg, #ff2a75, #ff0055); color: #fff !important; 
-            padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; 
-            text-align: center; border: none; font-size: 0.95rem; transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 42, 117, 0.4); width: 100%; max-width: 250px;
-        }
+        .btn-examedge { display: inline-block; background: linear-gradient(135deg, #ff2a75, #ff0055); color: #fff !important; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; text-align: center; border: none; font-size: 0.95rem; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 42, 117, 0.4); width: 100%; max-width: 250px; }
         .btn-examedge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6); color: #fff; padding-left: 0 !important;}
-        
         .contact-item { display: flex; align-items: center; gap: 15px; color: var(--text-dim); margin-bottom: 18px; font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
         .contact-item i { color: var(--pink); font-size: 1.2rem; width: 25px; text-align: center; }
         .contact-item a { display: inline; color: var(--text-light); text-decoration: none; transition: 0.3s; margin: 0; padding: 0; }
         .contact-item a:hover { color: var(--pink); padding-left: 0; }
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; width: 100%;}
 
-        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC (100% SINGLE PAGE + WATERMARK FIX) --- */
+        /* --- BROWSER NATIVE PRINT RECEIPT LOGIC --- */
         @media print {
             @page { size: A4 portrait; margin: 15mm; }
             body > *:not(#receiptArea) { display: none !important; }
-            #receiptArea { 
-                display: block !important; position: relative !important; 
-                width: 100% !important; background: #ffffff !important; 
-                color: #000000 !important; padding: 20px !important; 
-                box-sizing: border-box !important; margin: 0 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
+            #receiptArea { display: block !important; position: relative !important; width: 100% !important; background: #ffffff !important; color: #000000 !important; padding: 20px !important; box-sizing: border-box !important; margin: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
             body, html { background: #ffffff !important; color: #000000 !important; height: 100% !important; overflow: hidden !important; }
         }
         
         #receiptArea { display: none; }
-        
-        .r-watermark {
-            position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg);
-            font-size: 36px; font-weight: 900; color: rgba(0, 0, 0, 0.06) !important;
-            text-align: center; white-space: nowrap; z-index: 0; pointer-events: none;
-            -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
-        }
-
+        .r-watermark { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%) rotate(-35deg); font-size: 36px; font-weight: 900; color: rgba(0, 0, 0, 0.06) !important; text-align: center; white-space: nowrap; z-index: 0; pointer-events: none; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         .r-content { position: relative; z-index: 1; }
-        
         .r-header { display: flex; align-items: center; justify-content: center; gap: 15px; border-bottom: 3px solid #111; padding-bottom: 15px; margin-bottom: 25px; }
         .r-logo { width: 75px; height: 75px; border-radius: 50%; object-fit: contain; }
         .r-header-text { text-align: left; }
         .r-header-text h1 { font-size: 20px; margin: 0; font-weight: 900; letter-spacing: 0.5px; color: #000 !important; white-space: nowrap; }
         .r-header-text p { font-size: 14px; margin: 4px 0 0 0; font-weight: bold; color: #000 !important; }
-
         .r-meta { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px; font-weight: 800; border-bottom: 1px solid #ddd; padding-bottom: 10px; color: #000 !important; }
         .r-section { border: 2px solid #000; padding: 15px 20px; margin-bottom: 20px; border-radius: 5px; background: rgba(255,255,255,0.85); }
         .r-section h3 { margin-top: 0; border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-bottom: 12px; font-size: 16px; font-weight: 900; color: #000 !important; }
@@ -353,9 +274,7 @@
         .r-table td:last-child { font-weight: 800; text-align: right; }
         .r-total { background: #f3f4f6 !important; font-size: 18px; border-top: 2px solid #000 !important; }
         .r-total td { border-bottom: none !important; padding: 10px 10px; font-weight: 900 !important; }
-        
         .r-digital-note { text-align: center; margin-top: 30px; font-size: 12px; font-weight: 900; color: #333 !important; border-top: 2px dashed #ccc; padding-top: 15px; }
-        
         .r-footer { margin-top: 20px; border-top: 3px solid #000; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; font-weight: 900; color: #000 !important; background: rgba(255,255,255,0.85);}
     </style>
 </head>
@@ -368,9 +287,7 @@
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
-                <div class="line line1"></div>
-                <div class="line line2"></div>
-                <div class="line line3"></div>
+                <div class="line line1"></div><div class="line line2"></div><div class="line line3"></div>
             </div>
             <div class="brand-container">
                 <div class="brand-name">ABHINAY PRATAP (MATHS MYSTIC)</div>
@@ -380,19 +297,20 @@
         <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP (MATHS MYSTIC) SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
+    <a href="https://wa.me/919670078465" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-book-open"></i> E-BOOKS LIBRARY</a></li>
+            <li><a href="#" onclick="openAuthModal()"><i class="fas fa-user-circle"></i> STUDENT LOGIN</a></li>
+            <li><a href="#courses" onclick="toggleMenu()"><i class="fas fa-book-open"></i> PREMIUM BATCHES</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-file-pdf"></i> PDF MATERIALS</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-video"></i> LIVE CLASSES</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-tasks"></i> MOCK TESTS</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-flask"></i> SCIENCE & GS SECTION</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-calculator"></i> FORMULA SHEETS</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-comments"></i> DOUBT SOLVING</a></li>
-            <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-calendar-alt"></i> BATCH SCHEDULE</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-bell"></i> IMPORTANT UPDATES</a></li>
-            <li><a href="#" onclick="openProfileModal(event)" style="color: var(--gold); border: 1px solid var(--gold);"><i class="fas fa-user-circle"></i> MY PROFILE</a></li>
         </ul>
     </div>
 
@@ -437,10 +355,8 @@
             <div class="course-card">
                 <div class="countdown-badge">
                     <div class="countdown-text">ENDS IN</div>
-                    <div class="time-block"><div class="time-val" id="cd-h">23</div><div class="time-lbl">HRS</div></div>
-                    <div class="time-sep">:</div>
-                    <div class="time-block"><div class="time-val" id="cd-m">59</div><div class="time-lbl">MIN</div></div>
-                    <div class="time-sep">:</div>
+                    <div class="time-block"><div class="time-val" id="cd-h">23</div><div class="time-lbl">HRS</div></div><div class="time-sep">:</div>
+                    <div class="time-block"><div class="time-val" id="cd-m">59</div><div class="time-lbl">MIN</div></div><div class="time-sep">:</div>
                     <div class="time-block"><div class="time-val" id="cd-s">59</div><div class="time-lbl">SEC</div></div>
                 </div>
                 <div class="course-img-box" onclick="playCourseVideo('cor1.mp4')">
@@ -645,120 +561,46 @@
         </div>
     </section>
 
-    <section class="uniform-section">
-        <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
-        <div class="uniform-wrapper" id="reviewsWrapper"></div>
-        <div class="dots-container" id="reviewDotsContainer"></div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- EXCLUSIVE EDGE FEATURES (8 CARDS) -->
-    <!-- ========================================== -->
     <section class="edge-section">
         <h2 class="section-title">THE MATHS MYSTIC <span>ADVANTAGE</span></h2>
         <div class="edge-grid">
-            
-            <div class="edge-card">
-                <div class="edge-tag">HYBRID</div>
-                <div class="edge-icon"><i class="fas fa-building"></i></div>
-                <h3>ONLINE + OFFLINE ACCESS</h3>
-                <p>Seamlessly switch between our Digital App and offline classes at Math's Warrior Institute. Get the best of both worlds with personalized attention.</p>
-            </div>
-            
-            <div class="edge-card">
-                <div class="edge-tag">TARGET 2027</div>
-                <div class="edge-icon"><i class="fas fa-bullseye"></i></div>
-                <h3>CGL 2027 MENTORSHIP</h3>
-                <p>Lock your target with our exclusive roadmap for SSC CGL 2027. Weekly one-on-one video calls, performance tracking, and direct guidance.</p>
-            </div>
-
-            <div class="edge-card">
-                <div class="edge-tag">24/7 AI</div>
-                <div class="edge-icon"><i class="fas fa-brain"></i></div>
-                <h3>INSTANT DOUBT ENGINE</h3>
-                <p>Stuck on a tricky math problem? Upload a photo to our portal and get a detailed, step-by-step video solution from our experts within minutes.</p>
-            </div>
-            
-            <div class="edge-card">
-                <div class="edge-tag">RANKER</div>
-                <div class="edge-icon"><i class="fas fa-trophy"></i></div>
-                <h3>ALL INDIA TEST SERIES</h3>
-                <p>Compete with thousands of students nationwide. Get advanced AI analytics on your weak chapters to improve your exam time-management.</p>
-            </div>
-
-            <div class="edge-card">
-                <div class="edge-tag">SMART</div>
-                <div class="edge-icon"><i class="fas fa-calendar-check"></i></div>
-                <h3>AI STUDY PLANNER</h3>
-                <p>No more manual timetables! Our AI analyzes your mock test performance and automatically builds a custom daily revision schedule focusing on your weak topics.</p>
-            </div>
-
-            <div class="edge-card">
-                <div class="edge-tag">PLAY</div>
-                <div class="edge-icon"><i class="fas fa-gamepad"></i></div>
-                <h3>GAMIFIED LEARNING</h3>
-                <p>Earn Mystic Coins, unlock profile badges, and climb the weekly leaderboard by attending live classes and scoring high in quizzes. Learning is now a game!</p>
-            </div>
-
-            <div class="edge-card">
-                <div class="edge-tag">TRACK</div>
-                <div class="edge-icon"><i class="fas fa-user-shield"></i></div>
-                <h3>PARENT CONNECT DASHBOARD</h3>
-                <p>Complete transparency for parents. Automated weekly progress reports covering attendance, test scores, and video watch time sent directly to parents' WhatsApp.</p>
-            </div>
-
-            <div class="edge-card">
-                <div class="edge-tag">LIVE</div>
-                <div class="edge-icon"><i class="fas fa-hand-paper"></i></div>
-                <h3>INTERACTIVE LIVE POLLS</h3>
-                <p>Experience ultra-low latency classes with real-time MCQ polls, fastest-finger-first leaderboards, and a 'Raise Hand' feature for live audio doubt clearing.</p>
-            </div>
-
+            <div class="edge-card"><div class="edge-tag">HYBRID</div><div class="edge-icon"><i class="fas fa-building"></i></div><h3>ONLINE + OFFLINE ACCESS</h3><p>Seamlessly switch between our Digital App and offline classes at Math's Warrior Institute. Get the best of both worlds with personalized attention.</p></div>
+            <div class="edge-card"><div class="edge-tag">TARGET 2027</div><div class="edge-icon"><i class="fas fa-bullseye"></i></div><h3>CGL 2027 MENTORSHIP</h3><p>Lock your target with our exclusive roadmap for SSC CGL 2027. Weekly one-on-one video calls, performance tracking, and direct guidance.</p></div>
+            <div class="edge-card"><div class="edge-tag">24/7 AI</div><div class="edge-icon"><i class="fas fa-brain"></i></div><h3>INSTANT DOUBT ENGINE</h3><p>Stuck on a tricky math problem? Upload a photo to our portal and get a detailed, step-by-step video solution from our experts within minutes.</p></div>
+            <div class="edge-card"><div class="edge-tag">RANKER</div><div class="edge-icon"><i class="fas fa-trophy"></i></div><h3>ALL INDIA TEST SERIES</h3><p>Compete with thousands of students nationwide. Get advanced AI analytics on your weak chapters to improve your exam time-management.</p></div>
+            <div class="edge-card"><div class="edge-tag">SMART</div><div class="edge-icon"><i class="fas fa-calendar-check"></i></div><h3>AI STUDY PLANNER</h3><p>No more manual timetables! Our AI analyzes your mock test performance and automatically builds a custom daily revision schedule focusing on your weak topics.</p></div>
+            <div class="edge-card"><div class="edge-tag">PLAY</div><div class="edge-icon"><i class="fas fa-gamepad"></i></div><h3>GAMIFIED LEARNING</h3><p>Earn Mystic Coins, unlock profile badges, and climb the weekly leaderboard by attending live classes and scoring high in quizzes. Learning is now a game!</p></div>
+            <div class="edge-card"><div class="edge-tag">TRACK</div><div class="edge-icon"><i class="fas fa-user-shield"></i></div><h3>PARENT CONNECT DASHBOARD</h3><p>Complete transparency for parents. Automated weekly progress reports covering attendance, test scores, and video watch time sent directly to parents' WhatsApp.</p></div>
+            <div class="edge-card"><div class="edge-tag">LIVE</div><div class="edge-icon"><i class="fas fa-hand-paper"></i></div><h3>INTERACTIVE LIVE POLLS</h3><p>Experience ultra-low latency classes with real-time MCQ polls, fastest-finger-first leaderboards, and a 'Raise Hand' feature for live audio doubt clearing.</p></div>
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- FAQ ACCORDION SECTION -->
-    <!-- ========================================== -->
     <section class="faq-section">
         <h2 class="section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
         <div class="faq-container">
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    1. KYA CLASSES HINDI AUR ENGLISH DONO MEIN HONGY? <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Haan, hamare sabhi premium batches completely bilingual (Hindi + English) hain. PDF notes aur test series dono bhashaon mein uplabdh karayi jaati hain taaki UP Board aur CBSE dono ke students ko koi dikkat na ho.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">1. KYA CLASSES HINDI AUR ENGLISH DONO MEIN HONGY? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Haan, hamare sabhi premium batches completely bilingual (Hindi + English) hain. PDF notes aur test series dono bhashaon mein uplabdh karayi jaati hain taaki UP Board aur CBSE dono ke students ko koi dikkat na ho.</p></div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    2. COURSE KI VALIDITY KITNE DIN KI HOGI? <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Normal batches ki validity 1 saal (12 mahine) hoti hai. Lekin hamare foundation aur target batches ki validity 'Till Selection' milti hai, yani jab tak aapka exam clear nahi hota tab tak course aapke paas rahega.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">2. COURSE KI VALIDITY KITNE DIN KI HOGI? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Normal batches ki validity 1 saal (12 mahine) hoti hai. Lekin hamare foundation aur target batches ki validity 'Till Selection' milti hai, yani jab tak aapka exam clear nahi hota tab tak course aapke paas rahega.</p></div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    3. KYA MAIN VIDEOS KO OFFLINE DOWNLOAD KAR SAKTA HU? <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Bilkul! Live class khatam hone ke baad aap video ko apne portal mein download kar sakte hain aur bina internet ke use kitni baar bhi revise kar sakte hain.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">3. KYA MAIN VIDEOS KO OFFLINE DOWNLOAD KAR SAKTA HU? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Bilkul! Live class khatam hone ke baad aap video ko apne portal mein download kar sakte hain aur bina internet ke use kitni baar bhi revise kar sakte hain.</p></div>
             </div>
-
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    4. DOUBTS KAISE CLEAR HONGY? <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Doubt clear karne ke 3 solid tarike hain: Live class ke dauran chat feature, 24/7 dedicated doubt portal jahan aap photo bhej sakte hain, aur har Sunday special Zoom live doubt session.</p>
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">4. DOUBTS KAISE CLEAR HONGY? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><p>Doubt clear karne ke 3 solid tarike hain: Live class ke dauran chat feature, 24/7 dedicated doubt portal jahan aap photo bhej sakte hain, aur har Sunday special Zoom live doubt session.</p></div>
             </div>
         </div>
+    </section>
+
+    <section class="uniform-section">
+        <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
+        <div class="uniform-wrapper" id="reviewsWrapper"></div>
+        <div class="dots-container" id="reviewDotsContainer"></div>
     </section>
 
     <section class="uniform-section" id="faculty">
@@ -834,6 +676,9 @@
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
+    <!-- GLOBAL MODALS -->
+    
+    <!-- Video Player for Guest -->
     <div class="global-modal" id="courseVideoModal">
         <div class="modal-content" style="padding: 15px; max-width: 650px; background: #000; border: 2px solid var(--gold); border-radius: 15px;">
             <div class="modal-close-btn" onclick="closeCourseVideoModal()" style="top: -15px; right: -15px; background: var(--red-brand); border: 2px solid #fff; color: #fff; z-index: 10;">&times;</div>
@@ -844,6 +689,19 @@
         </div>
     </div>
 
+    <!-- Alert Modal -->
+    <div class="global-modal" id="customAlertModal">
+        <div class="modal-content" style="text-align: center; max-width: 350px;">
+            <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
+                <i class="fas fa-bell" id="customAlertIcon" style="color: var(--gold);"></i>
+            </div>
+            <h3 id="customAlertTitle" style="color: var(--gold); font-size: 1.4rem; margin-bottom: 10px;">TITLE</h3>
+            <p id="customAlertText" style="color: #fff; font-size: 0.95rem; font-weight: 600; line-height: 1.5;"></p>
+            <button class="modal-btn" onclick="document.getElementById('customAlertModal').classList.remove('show')" style="margin-top: 20px;">OKAY, GOT IT!</button>
+        </div>
+    </div>
+
+    <!-- PAYMENT MODAL (Step 1) -->
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
@@ -904,46 +762,111 @@
         </div>
     </div>
 
-    <div class="global-modal" id="customAlertModal">
-        <div class="modal-content" style="text-align: center; max-width: 350px;">
-            <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
-                <i class="fas fa-bell" id="customAlertIcon" style="color: var(--gold);"></i>
-            </div>
-            <h3 id="customAlertTitle" style="color: var(--gold); font-size: 1.4rem; margin-bottom: 10px;">TITLE</h3>
-            <p id="customAlertText" style="color: #fff; font-size: 0.95rem; font-weight: 600; line-height: 1.5;"></p>
-            <button class="modal-btn" onclick="document.getElementById('customAlertModal').classList.remove('show')" style="margin-top: 20px;">OKAY, GOT IT!</button>
-        </div>
-    </div>
-
+    <!-- DETAILS MODAL (Step 2 - Generates ID & Receipt) -->
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
             <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
-            <p style="margin-bottom: 15px; font-size: 0.85rem; color: var(--gold);">ENTER DETAILS FOR RECEIPT GENERATION</p>
+            <p style="margin-bottom: 15px; font-size: 0.85rem; color: var(--gold);">ENTER DETAILS FOR RECEIPT & LOGIN ID</p>
             <div style="text-align: left;">
                 <input type="text" id="stuName" class="input-field" placeholder="STUDENT FULL NAME" required>
-                <input type="number" id="stuMobile" class="input-field" placeholder="MOBILE NUMBER" required>
+                <input type="number" id="stuMobile" class="input-field" placeholder="MOBILE NUMBER (For Login)" required>
                 <input type="text" id="stuFather" class="input-field" placeholder="FATHER'S NAME" required>
                 <textarea id="stuAddress" class="input-field" placeholder="FULL ADDRESS" rows="3" required></textarea>
             </div>
-            <button class="modal-btn" onclick="printReceipt()">GENERATE & PRINT RECEIPT</button>
+            <button class="modal-btn" onclick="generateAndSaveReceipt()">GENERATE RECEIPT & ID</button>
         </div>
     </div>
 
-    <div class="global-modal" id="profileModal">
-        <div class="modal-content" style="max-width: 400px; text-align: left;">
-            <div class="modal-close-btn" onclick="closeProfileModal()">&times;</div>
-            <h3 style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 10px;">MY PROFILE DASHBOARD</h3>
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #333;">
-                <div style="width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #000; font-weight: bold; flex-shrink: 0;"><i class="fas fa-user"></i></div>
+    <!-- STUDENT LOGIN MODAL -->
+    <div class="global-modal" id="authModal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-close-btn" onclick="document.getElementById('authModal').classList.remove('show')">&times;</div>
+            <h3><i class="fas fa-user-graduate" style="color:var(--gold);"></i> STUDENT LOGIN</h3>
+            <p style="color:var(--text-dim); font-size:0.85rem; margin-bottom: 20px;">ENTER YOUR ENROLLMENT DETAILS</p>
+            <div style="text-align: left;">
+                <label style="color:var(--gold); font-size:0.85rem; font-weight:700;">REGISTERED MOBILE NO.</label>
+                <input type="number" id="loginMobile" class="input-field" placeholder="Enter Mobile No.">
+                <label style="color:var(--gold); font-size:0.85rem; font-weight:700;">INSTITUTE ID / ENROLLMENT NO.</label>
+                <input type="text" id="loginEnroll" class="input-field" placeholder="E.g. EE-APM-123456">
+            </div>
+            <button class="modal-btn" onclick="verifyLogin()">SECURE LOGIN <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- STUDENT DASHBOARD MODAL -->
+    <div class="global-modal" id="dashboardModal" style="background: #000;">
+        <div class="modal-content" style="max-width: 800px; width: 100%; border:none; padding:0; background: transparent;">
+            <div class="portal-header">
                 <div>
-                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 2px;">STUDENT LOGIN</h4>
-                    <p style="color: var(--gold); font-size: 0.75rem; font-weight: 600;">STATUS: GUEST (NOT ENROLLED)</p>
+                    <h3 style="color:#fff; margin:0; font-size:1.3rem;">STUDENT PORTAL</h3>
+                    <p style="color:var(--gold); font-size:0.8rem; font-weight:700;" id="dashWelcome">WELCOME, STUDENT</p>
+                </div>
+                <button class="btn btn-buy" style="width: auto; padding: 8px 15px; border: 1px solid var(--red-brand); background: transparent; color:var(--red-brand);" onclick="logout()">LOGOUT</button>
+            </div>
+            <div style="padding: 20px;">
+                <h2 style="text-align: left; margin-bottom: 15px; font-size:1.5rem; border-left:4px solid var(--gold); padding-left:10px;">MY BATCHES</h2>
+                <div class="dash-card">
+                    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:15px;">
+                        <div>
+                            <h4 id="dashCourseName">COURSE NAME</h4>
+                            <p><span>ENROLLMENT NO:</span> <strong id="dashEnrollNo" style="color:#fff;">XXX</strong></p>
+                            <p><span>COURSE EXPIRY:</span> <strong id="dashExpiry" style="color:var(--red-brand);">XXX</strong></p>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                            <button class="btn btn-buy" onclick="openClassroom()"><i class="fas fa-play-circle"></i> GO TO CLASSROOM</button>
+                            <button class="btn" style="background: #333; color: #fff;" onclick="window.print()"><i class="fas fa-print"></i> PRINT RECEIPT</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button class="modal-btn" style="background: transparent; color: #ef4444; border: 1px solid #ef4444; margin-top: 20px;" onclick="showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.')"><i class="fas fa-sign-out-alt"></i> SECURE LOGOUT</button>
         </div>
     </div>
 
+    <!-- CLASSROOM PORTAL (120 Videos + Activation Key) -->
+    <div class="global-modal" id="classroomModal" style="background: #000;">
+        <div class="modal-content" style="max-width: 1200px; width: 100%; height:100%; border:none; padding:0; background: transparent; display:flex; flex-direction:column;">
+            
+            <div class="portal-header">
+                <div style="display:flex; align-items:center; gap:15px;">
+                    <button class="btn" style="width:40px; height:40px; padding:0; border-radius:50%; background:#222; color:#fff;" onclick="backToDashboard()"><i class="fas fa-arrow-left"></i></button>
+                    <h3 style="color:#fff; margin:0;" id="classCourseTitle">COURSE TITLE</h3>
+                </div>
+            </div>
+
+            <div style="padding: 20px; flex:1;">
+                <div class="classroom-container">
+                    
+                    <!-- Left: Video Player Area -->
+                    <div class="video-player-area">
+                        <div class="video-placeholder" id="videoOverlay">
+                            <i class="fas fa-lock" style="font-size: 3rem; color: var(--gold); margin-bottom: 15px;"></i>
+                            <h3 style="color:#fff; letter-spacing:1px; margin-bottom: 15px;">COURSE IS LOCKED</h3>
+                            
+                            <div style="width: 80%; max-width: 400px; text-align: center; background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; border: 1px solid var(--gold);">
+                                <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px;">ENTER ACTIVATION KEY TO UNLOCK VIDEOS</p>
+                                <input type="text" id="activationKeyInput" class="input-field" placeholder="E.g. MYSTIC2027" style="text-align: center;">
+                                <button class="btn btn-buy" onclick="activateCourse()">ACTIVATE COURSE</button>
+                            </div>
+                        </div>
+                        <div style="padding: 20px; color: #fff; font-weight: 800; font-size: 1.2rem; border-bottom: 1px solid #222;" id="nowPlayingTitle">
+                            SELECT A CLASS TO PLAY
+                        </div>
+                    </div>
+
+                    <!-- Right: Playlist Area -->
+                    <div class="playlist-area">
+                        <div class="playlist-header"><i class="fas fa-list"></i> COURSE CONTENT (120 CLASSES)</div>
+                        <div class="playlist-items" id="playlistContainer">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIDDEN RECEIPT AREA FOR PRINTING -->
     <div id="receiptArea">
         <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAY PRATAP (MATHS MYSTIC)</div>
         <div class="r-content">
@@ -981,11 +904,7 @@
                     </tr>
                 </table>
             </div>
-            
-            <div class="r-digital-note">
-                * THIS IS A COMPUTER GENERATED DIGITAL RECEIPT. NO PHYSICAL SIGNATURE IS REQUIRED. *
-            </div>
-
+            <div class="r-digital-note">* THIS IS A COMPUTER GENERATED DIGITAL RECEIPT. NO PHYSICAL SIGNATURE IS REQUIRED. *</div>
             <div class="r-footer">
                 <div><i class="fab fa-youtube" style="color: #dc2626 !important; width: 25px; text-align: center; font-size: 16px;"></i> @ABHINAY_PRATAP_MATHS</div>
                 <div style="text-align: right;"><i class="fab fa-telegram" style="color: #2563eb !important; width: 25px; text-align: center; font-size: 16px;"></i> ABHINAY_PRATAP_MATHS</div>
@@ -1005,17 +924,12 @@
                 <h3>QUICK LINKS</h3>
                 <a href="#"><i class="fas fa-angle-right"></i> HOME PORTAL</a>
                 <a href="#" onclick="showCustomAlert('COMING SOON', 'PREMIUM BATCHES WILL BE LIVE SHORTLY.')"><i class="fas fa-angle-right"></i> ACTIVE PREMIUM BATCHES</a>
-                <a href="#" onclick="showCustomAlert('COMING SOON', 'JAWAHAR NAVODAYA BATCH WILL BE LIVE SHORTLY.')"><i class="fas fa-angle-right"></i> JAWAHAR NAVODAYA 2027</a>
                 <a href="#" onclick="showCustomAlert('INFO', 'TERMS AND CONDITIONS APPLY.')"><i class="fas fa-angle-right"></i> TERMS & CONDITIONS</a>
-                
                 <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #333;">
                     <p style="color: var(--text-dim); font-size: 0.8rem; font-weight: 600; margin-bottom: 10px;">OUR PARTNER PLATFORM</p>
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <a href="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" target="_blank" class="btn-examedge"><i class="fas fa-globe"></i> EXAMEDGE INSTITUTE</a>
-                    </div>
+                    <a href="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" target="_blank" class="btn-examedge"><i class="fas fa-globe"></i> EXAMEDGE INSTITUTE</a>
                 </div>
             </div>
-            
             <div class="footer-col">
                 <h3>CONTACT & SUPPORT</h3>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i> <a href="tel:9670078465">9670078465</a></div>
@@ -1030,130 +944,109 @@
     </footer>
 
     <script>
-        // Simple Splash Screen Logic
-        window.addEventListener('load', () => { 
-            setTimeout(() => { 
-                document.getElementById('splashScreen').style.opacity = '0';
-                setTimeout(() => { document.getElementById('splashScreen').style.visibility = 'hidden'; }, 1000);
-            }, 5000); 
-        });
-
-        // Menu Toggle
-        const sidebar = document.getElementById('sidebar'); 
-        const overlay = document.getElementById('overlay');
-        function toggleMenu() { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); }
-
-        // Dynamic Reviews Generation
-        const reviewsContainer = document.getElementById('reviewsWrapper');
-        const reviewNames = ["ABHISHEK YADAV", "VIKAS TIWARI", "RAHUL SHUKLA", "POOJA MISHRA", "MANISH KUMAR", "SAURABH DUBEY", "NEHA RAI", "KARAN JHA", "DEEPAK CHAUHAN", "ANJALI SINGH"];
-        const reviewTexts = [
-            "PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED!",
-            "BHOLU SIR KI GS AUR SCIENCE CLASSES BILKUL POINT-TO-POINT NOTES KE SATH MILTI HAIN JO EXAMS KE LIYE SOLID HAIN.",
-            "BEST PLATFORM FOR BOARDS EXAM PREPARATION. PDF NOTES AND MOCK TESTS ARE EXACTLY MATCHING THE EXAM PATTERN.",
-            "TARGET NVS BATCH IS A GAME CHANGER. THE LEVEL OF MATHEMATICS TAUGHT HERE IS COMPLETELY UNMATCHABLE.",
-            "FORMULA SHEETS AUR SHORT TRICKS BAHUT HELPFUL HAIN. EXAM TIME ME REVISION KARNA BAHUT ASAAN HO GAYA HAI AB.",
-            "TEST PASS PRO HAS EXACTLY EXAM LEVEL QUESTIONS. ANALYSIS FEATURE SHOWS EXACTLY WHERE I NEED TO IMPROVE.",
-            "LIVE CLASSES ARE HIGHLY INTERACTIVE. SIR DOUBTS KO BAHUT PATIENCE KE SATH CLEAR KARTE HAIN. COMPLETELY SATISFIED.",
-            "PRAKRAM BATCH HAS STRUCTURED MY PREPARATION. THE PDF MATERIALS GIVEN AFTER EVERY CLASS ARE TOP NOTCH.",
-            "SCIENCE NOTES IN HINDI AND ENGLISH BOTH ARE SUPERB. IT SAVES A LOT OF TIME WHILE REVISING FOR THE EXAMS.",
-            "THE MENTORSHIP BY SELECTED CANDIDATES IN THIS PLATFORM GAVE ME THE EXACT ROADMAP TO CRACK MY UPCOMING ENTRANCE."
-        ];
+        // --- Initialization & UI Elements ---
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('splashScreen').style.opacity = '0'; setTimeout(() => { document.getElementById('splashScreen').style.visibility = 'hidden'; }, 1000); }, 5000); });
         
-        for(let i=0; i<10; i++) {
-            reviewsContainer.innerHTML += `
-            <div class="uniform-card">
-                <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"${reviewTexts[i]}"</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student"></div><div class="rev-name"><h5>${reviewNames[i]}</h5><span>SELECTED STUDENT</span></div></div>
-            </div>`;
-        }
-
-        // Custom Alert Logic
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
+        
+        function triggerComingSoon(e) { e.preventDefault(); toggleMenu(); showCustomAlert('COMING SOON!', 'YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. STAY TUNED!'); }
+        
         function showCustomAlert(title, text, isSuccess = false) {
             const modal = document.getElementById('customAlertModal');
-            document.getElementById('customAlertTitle').innerText = title;
-            document.getElementById('customAlertText').innerHTML = text;
-            const iconBox = document.getElementById('customAlertIconBox');
-            const icon = document.getElementById('customAlertIcon');
-
-            if(isSuccess) {
-                iconBox.style.background = "rgba(34, 197, 94, 0.1)";
-                document.getElementById('customAlertTitle').style.color = "#22c55e";
-                icon.className = "fas fa-gift"; icon.style.color = "#22c55e";
-            } else {
-                iconBox.style.background = "rgba(234, 179, 8, 0.1)";
-                document.getElementById('customAlertTitle').style.color = "var(--gold)";
-                icon.className = "fas fa-bell"; icon.style.color = "var(--gold)";
-            }
+            document.getElementById('customAlertTitle').innerText = title; document.getElementById('customAlertText').innerHTML = text;
+            const iconBox = document.getElementById('customAlertIconBox'); const icon = document.getElementById('customAlertIcon');
+            if(isSuccess) { iconBox.style.background = "rgba(34, 197, 94, 0.1)"; document.getElementById('customAlertTitle').style.color = "#22c55e"; icon.className = "fas fa-gift"; icon.style.color = "#22c55e"; } 
+            else { iconBox.style.background = "rgba(234, 179, 8, 0.1)"; document.getElementById('customAlertTitle').style.color = "var(--gold)"; icon.className = "fas fa-bell"; icon.style.color = "var(--gold)"; }
             modal.classList.add('show');
         }
 
-        // Pink Toast Logic
         function handlePinkToast(e, msg) {
             if(e) e.preventDefault();
             const pinkToast = document.getElementById('toastAlert');
-            if(msg) document.getElementById('toastMessage').innerText = msg;
-            else document.getElementById('toastMessage').innerText = "LINK NOT AVAILABLE STAY TUNED";
-            
-            pinkToast.classList.add('show');
-            setTimeout(() => { pinkToast.classList.remove('show'); }, 3000);
+            if(msg) document.getElementById('toastMessage').innerText = msg; else document.getElementById('toastMessage').innerText = "LINK NOT AVAILABLE STAY TUNED";
+            pinkToast.classList.add('show'); setTimeout(() => { pinkToast.classList.remove('show'); }, 3000);
         }
 
-        // --- COURSE VIDEO PLAYER LOGIC ---
-        function playCourseVideo(videoSrc) {
-            const videoPlayer = document.getElementById('courseVideoPlayer');
-            const videoSource = document.getElementById('cvSource');
-            const modal = document.getElementById('courseVideoModal');
-            
-            videoSource.src = videoSrc;
-            videoPlayer.load();
-            modal.classList.add('show');
-            
-            let playPromise = videoPlayer.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    closeCourseVideoModal();
-                    handlePinkToast(null, 'YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!');
-                });
-            }
-        }
-
-        function closeCourseVideoModal() {
-            const modal = document.getElementById('courseVideoModal');
-            const videoPlayer = document.getElementById('courseVideoPlayer');
-            videoPlayer.pause();
-            document.getElementById('cvSource').src = ""; 
-            modal.classList.remove('show');
-        }
-
-        document.getElementById('courseVideoPlayer').addEventListener('error', function(e) {
-            closeCourseVideoModal();
-            handlePinkToast(null, 'YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!');
-        });
-
-        // Sidebar Actions
-        function triggerComingSoon(e) { e.preventDefault(); toggleMenu(); showCustomAlert('COMING SOON!', 'YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. STAY TUNED!'); }
-        function openProfileModal(e) { if(e) e.preventDefault(); toggleMenu(); document.getElementById('profileModal').classList.add('show'); }
-        function closeProfileModal() { document.getElementById('profileModal').classList.remove('show'); }
-
-        // --- TIMED BANNERS CLOSE LOGIC ---
-        function closeTimedBanner(id) { 
-            document.getElementById(id).classList.remove('show'); 
-            if(id === 'timedBanner5min') {
-                const video = document.getElementById('promoVideo');
-                if(video) video.pause(); 
-            }
-        }
+        // --- Timed Banners ---
+        function closeTimedBanner(id) { document.getElementById(id).classList.remove('show'); if(id === 'timedBanner5min') { const video = document.getElementById('promoVideo'); if(video) video.pause(); } }
         setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 120000); 
         setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 300000); 
 
-        // --- PAYMENT MODAL & COUPON LOGIC ---
-        let currentCourseName = ""; let originalCoursePrice = 0; let currentCoursePrice = 0; let appliedDiscountAmt = 0; let finalUtr = "";
+        // --- Sliders Logic ---
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const bannerSlides = document.querySelectorAll('.banner-slide');
+        const bannerDotsContainer = document.getElementById('dotsContainer');
+        if(sliderWrapper) {
+            bannerSlides.forEach((slide, i) => {
+                let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active');
+                dot.addEventListener('click', () => { sliderWrapper.scrollTo({ left: (bannerSlides[0].clientWidth + 15) * i, behavior: 'smooth' }); });
+                bannerDotsContainer.appendChild(dot);
+                slide.addEventListener('click', (e) => { const link = slide.getAttribute('data-link'); if (link && link.trim() !== '') { window.open(link, '_blank'); } else { handlePinkToast(e, null); } });
+            });
+            sliderWrapper.addEventListener('scroll', () => { const idx = Math.round(sliderWrapper.scrollLeft / (bannerSlides[0].clientWidth + 15)); const dots = bannerDotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
+            let currentSlide = 0; setInterval(() => { currentSlide++; if (currentSlide >= bannerSlides.length) { currentSlide = 0; } const slideWidth = bannerSlides[0].clientWidth + 15; sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' }); }, 4000);
+        }
+
+        ['reviewsWrapper', 'facultyWrapper'].forEach(id => {
+            const wrapper = document.getElementById(id); const dotsContainer = wrapper.nextElementSibling; const items = wrapper.children;
+            if(wrapper && items.length > 0) {
+                for(let i=0; i<items.length; i++) { let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active'); dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 15) * i, behavior: 'smooth' }); }); dotsContainer.appendChild(dot); }
+                wrapper.addEventListener('scroll', () => { const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 15)); const dots = dotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
+            }
+        });
+
+        // --- Course Features Toggle & Countdown ---
+        function toggleFeatures(btn) { let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; btn.style.background = "#222"; btn.style.color = "var(--text-light)"; } else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; btn.style.background = "var(--gold)"; btn.style.color = "#000"; } }
+        
+        function startMathsCountdown() {
+            const hoursEl = document.getElementById('cd-h'); const minutesEl = document.getElementById('cd-m'); const secondsEl = document.getElementById('cd-s');
+            if(!hoursEl) return;
+            function updateTimer() { const now = new Date(); const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); const diff = tomorrow - now; 
+                hoursEl.innerText = Math.floor((diff / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+                minutesEl.innerText = Math.floor((diff / (1000 * 60)) % 60).toString().padStart(2, '0');
+                secondsEl.innerText = Math.floor((diff / 1000) % 60).toString().padStart(2, '0'); }
+            setInterval(updateTimer, 1000); updateTimer();
+        }
+        startMathsCountdown();
+
+        // --- FAQ Accordion ---
+        function toggleFAQ(element) {
+            const currentItem = element.parentElement;
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== currentItem && item.classList.contains('active')) { item.classList.remove('active'); item.querySelector('.faq-answer').style.maxHeight = null; }
+            });
+            currentItem.classList.toggle('active');
+            const answer = currentItem.querySelector('.faq-answer');
+            answer.style.maxHeight = currentItem.classList.contains('active') ? answer.scrollHeight + 20 + "px" : null;
+        }
+
+        // --- Promo Video Player (Guest) ---
+        function playCourseVideo(videoSrc) {
+            const videoPlayer = document.getElementById('courseVideoPlayer'); const videoSource = document.getElementById('cvSource'); const modal = document.getElementById('courseVideoModal');
+            videoSource.src = videoSrc; videoPlayer.load(); modal.classList.add('show');
+            let playPromise = videoPlayer.play();
+            if (playPromise !== undefined) { playPromise.catch(error => { closeCourseVideoModal(); handlePinkToast(null, 'YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!'); }); }
+        }
+        function closeCourseVideoModal() { document.getElementById('courseVideoPlayer').pause(); document.getElementById('cvSource').src = ""; document.getElementById('courseVideoModal').classList.remove('show'); }
+        document.getElementById('courseVideoPlayer').addEventListener('error', function(e) { closeCourseVideoModal(); handlePinkToast(null, 'YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!'); });
+
+        // --- Dynamic Reviews Generator (To keep HTML short) ---
+        const reviewsContainer = document.getElementById('reviewsWrapper');
+        if(reviewsContainer && reviewsContainer.children.length === 0) {
+            const reviewNames = ["ABHISHEK YADAV", "VIKAS TIWARI", "RAHUL SHUKLA", "POOJA MISHRA", "MANISH KUMAR", "SAURABH DUBEY", "NEHA RAI", "KARAN JHA", "DEEPAK CHAUHAN", "ANJALI SINGH"];
+            const reviewTexts = [ "PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA.", "BHOLU SIR KI GS CLASSES BILKUL POINT-TO-POINT HAIN JO EXAMS KE LIYE SOLID HAIN.", "BEST PLATFORM FOR EXAM PREPARATION. PDF NOTES MATCH EXACT EXAM PATTERN.", "TARGET NVS BATCH IS A GAME CHANGER. THE LEVEL OF MATHEMATICS IS UNMATCHABLE.", "FORMULA SHEETS AUR SHORT TRICKS BAHUT HELPFUL HAIN.", "TEST PASS PRO HAS EXACTLY EXAM LEVEL QUESTIONS.", "LIVE CLASSES ARE HIGHLY INTERACTIVE. SIR DOUBTS KO BAHUT PATIENCE KE SATH CLEAR KARTE HAIN.", "PRAKRAM BATCH HAS STRUCTURED MY PREPARATION.", "SCIENCE NOTES IN HINDI AND ENGLISH BOTH ARE SUPERB.", "THE MENTORSHIP IN THIS PLATFORM GAVE ME THE EXACT ROADMAP." ];
+            for(let i=0; i<10; i++) {
+                reviewsContainer.innerHTML += `<div class="uniform-card"><div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="review-desc">"${reviewTexts[i]}"</p><div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" alt="Student" onerror="this.src='https://via.placeholder.com/55'"></div><div class="rev-name"><h5>${reviewNames[i]}</h5><span>SELECTED STUDENT</span></div></div></div>`;
+            }
+        }
+
+        // ==========================================
+        // --- SMART PAYMENT & RECEIPT SYSTEM ---
+        // ==========================================
+        let currentCourseName = "", originalCoursePrice = 0, currentCoursePrice = 0, appliedDiscountAmt = 0, finalUtr = "";
         const paymentModal = document.getElementById('paymentModal');
         const detailsModal = document.getElementById('detailsModal');
         const qrContainer = document.getElementById('qrContainer');
-        const qrImage = document.getElementById('qrImage');
-
         const coupons = { "ABHINAY50": 0.50, "SUPER30": 0.30, "FESTIVAL20": 0.20, "MATHS10": 0.10 };
 
         function openPaymentModal(cName, price) {
@@ -1162,199 +1055,197 @@
             document.getElementById('modalOriginalFee').innerText = price > 0 ? "₹" + price : "FREE";
             document.getElementById('modalDiscountRow').style.display = "none";
             document.getElementById('modalPayableAmount').innerText = price > 0 ? "₹" + price : "FREE";
-            document.getElementById('paymentScreenshot').value = "";
-            document.getElementById('utrInput').value = ""; document.getElementById('couponInput').value = "";
-            qrContainer.style.display = "none";
-            document.getElementById('paymentFormArea').style.display = 'block';
-            document.getElementById('loadingArea').style.display = 'none';
+            document.getElementById('paymentScreenshot').value = ""; document.getElementById('utrInput').value = ""; document.getElementById('couponInput').value = "";
+            qrContainer.style.display = "none"; document.getElementById('paymentFormArea').style.display = 'block'; document.getElementById('loadingArea').style.display = 'none';
             paymentModal.classList.add('show');
         }
-
         function closePaymentModal() { paymentModal.classList.remove('show'); }
 
         function applyCoupon() {
             if(originalCoursePrice === 0) { showCustomAlert("FREE BATCH", "THIS COURSE IS ALREADY FREE."); return; }
             let code = document.getElementById('couponInput').value.trim().toUpperCase();
-            if(appliedDiscountAmt > 0) { showCustomAlert("WAIT!", "A COUPON IS ALREADY APPLIED TO THIS COURSE."); return; }
+            if(appliedDiscountAmt > 0) { showCustomAlert("WAIT!", "A COUPON IS ALREADY APPLIED."); return; }
             if(coupons[code]) {
-                appliedDiscountAmt = Math.floor(originalCoursePrice * coupons[code]);
-                currentCoursePrice = originalCoursePrice - appliedDiscountAmt;
-                document.getElementById('modalDiscountRow').style.display = "flex";
-                document.getElementById('modalDiscountAmount').innerText = "-₹" + appliedDiscountAmt;
-                document.getElementById('modalPayableAmount').innerText = "₹" + currentCoursePrice;
-                showCustomAlert("🎉 COUPON APPLIED!", `CONGRATULATIONS! CODE '${code}' APPLIED SUCCESSFULLY.<br>YOU GOT ₹${appliedDiscountAmt} DISCOUNT!`, true);
+                appliedDiscountAmt = Math.floor(originalCoursePrice * coupons[code]); currentCoursePrice = originalCoursePrice - appliedDiscountAmt;
+                document.getElementById('modalDiscountRow').style.display = "flex"; document.getElementById('modalDiscountAmount').innerText = "-₹" + appliedDiscountAmt; document.getElementById('modalPayableAmount').innerText = "₹" + currentCoursePrice;
+                showCustomAlert("🎉 COUPON APPLIED!", `CODE '${code}' APPLIED SUCCESSFULLY.<br>YOU GOT ₹${appliedDiscountAmt} DISCOUNT!`, true);
                 if(qrContainer.style.display === "block") generateQR();
             } else { showCustomAlert("INVALID CODE", "PLEASE ENTER A VALID COUPON CODE."); }
         }
 
         function generateQR() {
-            if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED FOR THIS BATCH."); return; }
+            if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); return; }
             const upiUrl = `upi://pay?pa=7705042892@ibl&pn=PratapMaths&am=${currentCoursePrice}&cu=INR`;
-            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+            document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
             qrContainer.style.display = "block";
         }
 
         function verifyPaymentSubmit() {
             if(currentCoursePrice === 0) {
-                finalUtr = "FREE_ENROLLMENT";
-                document.getElementById('paymentFormArea').style.display = 'none';
-                document.getElementById('loadingArea').style.display = 'block';
-                setTimeout(() => {
-                    closePaymentModal();
-                    setTimeout(() => { detailsModal.classList.add('show'); }, 500);
-                }, 1000);
-                return;
+                finalUtr = "FREE_ENROLLMENT"; document.getElementById('paymentFormArea').style.display = 'none'; document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => { closePaymentModal(); setTimeout(() => { detailsModal.classList.add('show'); }, 500); }, 1000); return;
             }
-
-            const fileInput = document.getElementById('paymentScreenshot');
-            const utrValue = document.getElementById('utrInput').value.trim().toUpperCase();
-            const isFileUploaded = fileInput.files.length > 0;
-            const utrRegex = /^PM\d{12}$/; const isUtrValid = utrRegex.test(utrValue);
-
-            if (isFileUploaded || isUtrValid) {
+            const fileInput = document.getElementById('paymentScreenshot'); const utrValue = document.getElementById('utrInput').value.trim().toUpperCase();
+            const isUtrValid = /^PM\d{12}$/.test(utrValue);
+            if (fileInput.files.length > 0 || isUtrValid) {
                 finalUtr = isUtrValid ? utrValue : "VERIFIED_VIA_SCREENSHOT";
-                
-                document.getElementById('paymentFormArea').style.display = 'none';
-                document.getElementById('loadingArea').style.display = 'block';
-                
-                setTimeout(() => {
-                    closePaymentModal();
-                    showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED SUCCESSFULLY.<br>PLEASE FILL YOUR DETAILS TO GENERATE THE RECEIPT.", true);
-                    setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500);
-                }, 2000);
-
-            } else {
-                showCustomAlert("VERIFICATION FAILED", "PLEASE UPLOAD A SCREENSHOT OR ENTER A VALID 14-DIGIT UTR NUMBER (STARTS WITH 'PM').");
-            }
+                document.getElementById('paymentFormArea').style.display = 'none'; document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => { closePaymentModal(); showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED.<br>PLEASE FILL YOUR DETAILS TO GENERATE RECEIPT.", true); setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500); }, 2000);
+            } else { showCustomAlert("VERIFICATION FAILED", "UPLOAD SCREENSHOT OR ENTER VALID 14-DIGIT UTR (STARTS WITH 'PM')."); }
         }
 
-        function openDetailsForm() {
-            document.getElementById('customAlertModal').classList.remove('show');
-            setTimeout(() => { detailsModal.classList.add('show'); }, 300);
-        }
-
-        // --- DIRECT BROWSER NATIVE PRINT RECEIPT LOGIC ---
-        function printReceipt() {
-            const name = document.getElementById('stuName').value.trim();
+        function generateAndSaveReceipt() {
+            const name = document.getElementById('stuName').value.trim().toUpperCase();
             const mobile = document.getElementById('stuMobile').value.trim();
-            const father = document.getElementById('stuFather').value.trim();
-            const address = document.getElementById('stuAddress').value.trim();
+            const father = document.getElementById('stuFather').value.trim().toUpperCase();
+            const address = document.getElementById('stuAddress').value.trim().toUpperCase();
 
-            if(!name || !mobile || !father || !address) { showCustomAlert("DETAILS MISSING", "PLEASE FILL ALL THE DETAILS TO GENERATE YOUR RECEIPT."); return; }
+            if(!name || !mobile || !father || !address) { showCustomAlert("DETAILS MISSING", "PLEASE FILL ALL THE DETAILS."); return; }
+
+            const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000);
+            const dateStr = new Date().toLocaleString('en-IN');
+            let expDate = new Date(); expDate.setFullYear(expDate.getFullYear() + 1);
+            const expiryStr = expDate.toLocaleDateString('en-IN');
 
             const finalPayable = currentCoursePrice;
             const base = finalPayable > 0 ? (finalPayable / 1.18).toFixed(2) : 0;
             const gst = finalPayable > 0 ? (finalPayable - base).toFixed(2) : 0;
-            const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000);
 
-            document.getElementById('rDate').innerText = new Date().toLocaleString('en-IN');
-            document.getElementById('rEnroll').innerText = enrollNo;
-            document.getElementById('rUtr').innerText = finalUtr;
-            document.getElementById('rName').innerText = name.toUpperCase();
-            document.getElementById('rFather').innerText = father.toUpperCase();
+            const studentData = { name: name, mobile: mobile, enrollNo: enrollNo, courseName: currentCourseName, purchaseDate: dateStr, expiryDate: expiryStr, amount: finalPayable };
+            localStorage.setItem('mathsMysticStudent', JSON.stringify(studentData));
+
+            // Populate Print Area
+            document.getElementById('rName').innerText = name;
+            document.getElementById('rFather').innerText = father;
             document.getElementById('rMobile').innerText = mobile;
-            document.getElementById('rAddress').innerText = address.toUpperCase();
+            document.getElementById('rAddress').innerText = address;
+            document.getElementById('rEnroll').innerText = enrollNo;
             document.getElementById('rCourse').innerText = currentCourseName;
+            document.getElementById('rUtr').innerText = finalUtr;
+            document.getElementById('rDate').innerText = dateStr;
             document.getElementById('rBaseFee').innerText = finalPayable > 0 ? "₹" + base : "FREE";
             document.getElementById('rDiscount').innerText = appliedDiscountAmt > 0 ? "-₹" + appliedDiscountAmt + ".00" : "₹0.00";
             document.getElementById('rGst').innerText = finalPayable > 0 ? "₹" + gst : "₹0.00";
             document.getElementById('rAmount').innerText = finalPayable > 0 ? "₹" + finalPayable + ".00" : "FREE";
 
             detailsModal.classList.remove('show');
-            
             setTimeout(() => { 
                 window.print(); 
-                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", "YOUR FEE RECEIPT HAS BEEN GENERATED.<br>WELCOME TO ABHINAY PRATAP (MATHS MYSTIC)!", true); }, 1000);
+                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", `YOUR INSTITUTE ID IS: <b>${enrollNo}</b><br>USE THIS TO LOGIN.`, true); }, 1000);
             }, 500);
         }
 
-        // Feature Toggle & Auto Slider Sync Logic
-        function toggleFeatures(btn) { let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; btn.style.background = "#222"; btn.style.color = "var(--text-light)"; } else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; btn.style.background = "var(--gold)"; btn.style.color = "#000"; } }
-        
-        const sliderWrapper = document.getElementById('sliderWrapper');
-        const bannerSlides = document.querySelectorAll('.banner-slide');
-        const bannerDotsContainer = document.getElementById('dotsContainer');
+        // ==========================================
+        // --- STUDENT LOGIN & DASHBOARD ---
+        // ==========================================
+        function openAuthModal() { toggleMenu(); document.getElementById('authModal').classList.add('show'); }
 
-        if(sliderWrapper) {
-            bannerSlides.forEach((slide, i) => {
-                let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active');
-                dot.addEventListener('click', () => { sliderWrapper.scrollTo({ left: (bannerSlides[0].clientWidth + 15) * i, behavior: 'smooth' }); });
-                bannerDotsContainer.appendChild(dot);
-                
-                slide.addEventListener('click', (e) => {
-                    const link = slide.getAttribute('data-link');
-                    if (link && link.trim() !== '') { window.open(link, '_blank'); } else { handlePinkToast(e, null); }
-                });
-            });
-
-            sliderWrapper.addEventListener('scroll', () => { 
-                const idx = Math.round(sliderWrapper.scrollLeft / (bannerSlides[0].clientWidth + 15)); 
-                const dots = bannerDotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); 
-                if(dots[idx]) dots[idx].classList.add('active'); 
-            });
-
-            let currentSlide = 0;
-            setInterval(() => {
-                currentSlide++;
-                if (currentSlide >= bannerSlides.length) { currentSlide = 0; }
-                const slideWidth = bannerSlides[0].clientWidth + 15;
-                sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' });
-            }, 4000);
-        }
-
-        // Live 24-Hour Countdown Timer Logic
-        function startMathsCountdown() {
-            const hoursEl = document.getElementById('cd-h');
-            const minutesEl = document.getElementById('cd-m');
-            const secondsEl = document.getElementById('cd-s');
+        function verifyLogin() {
+            const entMobile = document.getElementById('loginMobile').value.trim();
+            const entEnroll = document.getElementById('loginEnroll').value.trim().toUpperCase();
+            const savedDataStr = localStorage.getItem('mathsMysticStudent');
             
-            if(!hoursEl || !minutesEl || !secondsEl) return;
-
-            function updateTimer() {
-                const now = new Date();
-                const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-                const diff = tomorrow - now; 
-                
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
-                
-                hoursEl.innerText = hours < 10 ? "0" + hours : hours;
-                minutesEl.innerText = minutes < 10 ? "0" + minutes : minutes;
-                secondsEl.innerText = seconds < 10 ? "0" + seconds : seconds;
-            }
-            setInterval(updateTimer, 1000);
-            updateTimer();
-        }
-        startMathsCountdown();
-
-        // Sliders for Reviews & Faculties Layout Sync
-        ['reviewsWrapper', 'facultyWrapper'].forEach(id => {
-            const wrapper = document.getElementById(id); const dotsContainer = wrapper.nextElementSibling; const items = wrapper.children;
-            for(let i=0; i<items.length; i++) { let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active'); dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 15) * i, behavior: 'smooth' }); }); dotsContainer.appendChild(dot); }
-            wrapper.addEventListener('scroll', () => { const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 15)); const dots = dotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
-        });
-
-        // --- FAQ ACCORDION LOGIC ---
-        function toggleFAQ(element) {
-            const currentItem = element.parentElement;
-            const allItems = document.querySelectorAll('.faq-item');
-            
-            allItems.forEach(item => {
-                if (item !== currentItem && item.classList.contains('active')) {
-                    item.classList.remove('active');
-                    item.querySelector('.faq-answer').style.maxHeight = null;
+            if(savedDataStr) {
+                const data = JSON.parse(savedDataStr);
+                if(data.mobile === entMobile && data.enrollNo === entEnroll) {
+                    document.getElementById('authModal').classList.remove('show');
+                    setupDashboard(data); return;
                 }
-            });
-
-            currentItem.classList.toggle('active');
-            const answer = currentItem.querySelector('.faq-answer');
-            
-            if (currentItem.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + 20 + "px";
-            } else {
-                answer.style.maxHeight = null;
             }
+            showCustomAlert("LOGIN FAILED", "INVALID MOBILE NO OR INSTITUTE ID.<br>PLEASE CHECK YOUR RECEIPT.");
+        }
+
+        function setupDashboard(data) {
+            document.getElementById('dashWelcome').innerText = "WELCOME, " + data.name;
+            document.getElementById('dashCourseName').innerText = data.courseName;
+            document.getElementById('classCourseTitle').innerText = data.courseName;
+            document.getElementById('dashEnrollNo').innerText = data.enrollNo;
+            document.getElementById('dashExpiry').innerText = data.expiryDate;
+            
+            // Refill print data (Minimal for reprints)
+            document.getElementById('rName').innerText = data.name;
+            document.getElementById('rMobile').innerText = data.mobile;
+            document.getElementById('rEnroll').innerText = data.enrollNo;
+            document.getElementById('rCourse').innerText = data.courseName;
+            document.getElementById('rDate').innerText = data.purchaseDate;
+            document.getElementById('rAmount').innerText = "₹" + data.amount;
+
+            document.getElementById('dashboardModal').classList.add('show');
+        }
+
+        function logout() { document.getElementById('dashboardModal').classList.remove('show'); showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.', true); }
+
+        // ==========================================
+        // --- CLASSROOM & ACTIVATION KEY LOGIC ---
+        // ==========================================
+        let isActivated = false;
+
+        function openClassroom() {
+            document.getElementById('dashboardModal').classList.remove('show');
+            generate120Classes(); 
+            document.getElementById('classroomModal').classList.add('show');
+        }
+
+        function backToDashboard() { document.getElementById('classroomModal').classList.remove('show'); document.getElementById('dashboardModal').classList.add('show'); }
+
+        function activateCourse() {
+            const key = document.getElementById('activationKeyInput').value.trim().toUpperCase();
+            if(key === "MYSTIC2027") {
+                isActivated = true;
+                
+                const overlay = document.getElementById('videoOverlay');
+                overlay.innerHTML = `
+                    <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--gold); margin-bottom: 15px; text-shadow: 0 0 20px rgba(234, 179, 8, 0.5);"></i>
+                    <h3 style="color:#fff; font-weight:800; letter-spacing:1px; text-align:center;">COURSE ACTIVATED! <br> SELECT A CLASS FROM PLAYLIST</h3>
+                `;
+                generate120Classes(); // Refresh list to unlock all
+                showCustomAlert("✅ UNLOCKED", "COURSE ACTIVATED SUCCESSFULLY!", true);
+            } else { showCustomAlert("INVALID KEY", "PLEASE ENTER A VALID ACTIVATION KEY."); }
+        }
+
+        function generate120Classes() {
+            const container = document.getElementById('playlistContainer');
+            container.innerHTML = "";
+            const topics = ["Number System", "Percentage", "Profit & Loss", "Ratio & Proportion", "Time & Work", "Algebra", "Trigonometry", "Geometry", "Mensuration", "Mock Test Analysis"];
+
+            for(let i = 1; i <= 120; i++) {
+                let topicName = topics[Math.floor((i-1) / 12) % topics.length]; 
+                
+                // If activated, all unlocked. If not, all locked.
+                let iconClass = isActivated ? "fas fa-play-circle status-unlocked" : "fas fa-lock status-locked";
+                let textStatus = isActivated ? "1 Hr 15 Mins • High Quality" : "LOCKED MODULE";
+                
+                let itemHTML = `
+                    <div class="play-item" onclick="playVideo(${i}, '${topicName}', this)">
+                        <div>
+                            <div class="play-item-title">CLASS ${i}: ${topicName}</div>
+                            <span>${textStatus}</span>
+                        </div>
+                        <div class="play-status"><i class="${iconClass}"></i></div>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            }
+        }
+
+        function playVideo(classNum, topic, element) {
+            if(!isActivated) { showCustomAlert("COURSE LOCKED", "Enter Activation Key (MYSTIC2027) in the video player to unlock all classes."); return; }
+
+            document.querySelectorAll('.play-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            document.getElementById('nowPlayingTitle').innerHTML = `CLASS ${classNum}: ${topic} <span style="display:block; color:var(--text-dim); font-size:0.8rem; margin-top:5px;"><i class="fas fa-file-pdf" style="color:var(--red-brand);"></i> CLASS NOTES PDF: <a href="#" style="color:var(--gold); text-decoration:none;">DOWNLOAD HERE</a></span>`;
+            
+            const overlay = document.getElementById('videoOverlay');
+            overlay.innerHTML = `<i class="fas fa-spinner fa-spin" style="font-size: 3rem; color:var(--gold); margin-bottom: 15px;"></i><h3 style="color:#fff;">CONNECTING TO SERVER...</h3>`;
+            
+            setTimeout(() => {
+                overlay.innerHTML = `
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 4rem; color: var(--pink); margin-bottom: 15px;"></i>
+                    <h3 style="color:#fff; letter-spacing:1px; text-align:center;">CONTENT UPLOADING SOON</h3>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 10px; text-align:center;">Our faculty is preparing high-quality material for Class ${classNum}.<br>Please check back later.</p>
+                `;
+            }, 1500);
         }
     </script>
 </body>
