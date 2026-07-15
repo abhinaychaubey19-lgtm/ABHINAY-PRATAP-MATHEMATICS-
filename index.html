@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABHINAY PRATAP MATHEMATICS | PREMIUM PORTAL</title>
+    <title>ABHINAY PRATAP (MATHS MYSTIC) | PREMIUM PORTAL</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -148,7 +147,7 @@
         .mini-play-btn {
             position: absolute; bottom: 12px; right: 12px;
             background: var(--gold); color: #000;
-            padding: 12px 14px 12px 16px; /* Offset for perfect visual center */
+            padding: 12px 14px 12px 16px; 
             border-radius: 50%; font-size: 1.1rem;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 4px 15px rgba(234, 179, 8, 0.6); border: 2px solid #fff; transition: 0.3s; z-index: 5;
@@ -210,12 +209,32 @@
         .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
         .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
 
-        /* --- SLIM BANNER SLIDER (BELOW REVIEWS) --- */
-        .slim-slider { padding: 10px 0 40px; }
-        .slim-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; }
-        .slim-wrapper::-webkit-scrollbar { display: none; }
-        .slim-slide { min-width: 85vw; aspect-ratio: 4/1; border-radius: 10px; scroll-snap-align: center; background-color: #111; border: 1px solid var(--border-dark); display: block; flex-shrink: 0; background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        @media(min-width: 768px) { .slim-slide { min-width: 45vw; } }
+        /* ========================================== */
+        /* --- EXCLUSIVE EDGE (FEATURES 8 CARDS) --- */
+        /* ========================================== */
+        .edge-section { padding: 40px 5%; }
+        .edge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .edge-card { background: linear-gradient(145deg, #111, #0a0a0a); border: 1px solid #333; border-top: 3px solid var(--gold); border-radius: 15px; padding: 25px; text-align: center; transition: 0.3s; position: relative; overflow: hidden; }
+        .edge-card:hover { transform: translateY(-5px); border-top-color: var(--pink); box-shadow: 0 10px 30px rgba(255, 42, 117, 0.15); }
+        .edge-icon { width: 70px; height: 70px; background: rgba(234, 179, 8, 0.1); color: var(--gold); font-size: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 15px; transition: 0.3s; }
+        .edge-card:hover .edge-icon { background: var(--pink); color: #fff; transform: scale(1.1); box-shadow: 0 0 15px var(--pink); }
+        .edge-card h3 { color: #fff; font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px; }
+        .edge-card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; font-weight: 600; text-transform: none; }
+        .edge-tag { position: absolute; top: 10px; right: -25px; background: var(--red-brand); color: #fff; font-size: 0.65rem; font-weight: 900; padding: 3px 25px; transform: rotate(45deg); letter-spacing: 1px; box-shadow: 0 2px 10px rgba(220, 38, 38, 0.5); }
+
+        /* ========================================== */
+        /* --- FAQ ACCORDION SECTION --- */
+        /* ========================================== */
+        .faq-section { padding: 20px 0 40px; }
+        .faq-section .section-title { margin-left: 5%; }
+        .faq-container { padding: 0 5%; display: flex; flex-direction: column; gap: 15px; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 12px; transition: 0.3s; overflow: hidden; }
+        .faq-item.active { border-color: var(--pink); box-shadow: 0 5px 20px rgba(255, 42, 117, 0.15); }
+        .faq-question { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; }
+        .faq-question i { color: var(--gold); transition: transform 0.4s ease; font-size: 1.1rem; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--pink); }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: #0a0a0a; }
+        .faq-answer p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; font-weight: 600; text-transform: none; padding-bottom: 18px; margin-top: 5px; }
 
         /* Faculty Content */
         .fac-avatar-container { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid #ffffff; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
@@ -342,12 +361,10 @@
 </head>
 <body>
 
-    <!-- Full Screen Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <img src="z.png" alt="PRATAP MATHS" class="splash-banner">
     </div>
 
-    <!-- Navbar -->
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
@@ -356,14 +373,13 @@
                 <div class="line line3"></div>
             </div>
             <div class="brand-container">
-                <div class="brand-name">ABHINAY PRATAP MATHS</div>
+                <div class="brand-name">ABHINAY PRATAP (MATHS MYSTIC)</div>
                 <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
-        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP MATHEMATICS SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
+        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP (MATHS MYSTIC) SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
-    <!-- Sidebar -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <ul>
@@ -380,7 +396,6 @@
         </ul>
     </div>
 
-    <!-- PREMIUM TIMED BANNERS -->
     <div class="timed-banner" id="timedBanner2min">
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-fire"></i> SPECIAL OFFER</div>
@@ -399,7 +414,6 @@
         </div>
     </div>
 
-    <!-- Banner Slider -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
@@ -416,12 +430,10 @@
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
-    <!-- Courses Section -->
     <section class="courses-section" id="courses">
         <h2 class="section-title">PREMIUM COURSES</h2>
         <div class="course-list">
             
-            <!-- Mathematics Special Card -->
             <div class="course-card">
                 <div class="countdown-badge">
                     <div class="countdown-text">ENDS IN</div>
@@ -437,7 +449,7 @@
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">MATHEMATICS SPECIAL</h3>
-                    <p class="course-faculty">BY ABHINAY PRATAP MATHEMATICS</p>
+                    <p class="course-faculty">BY ABHINAY PRATAP (MATHS MYSTIC)</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('MATHEMATICS SPECIAL BATCH', 999)">BUY NOW COURSE</button>
@@ -455,7 +467,6 @@
                 </div>
             </div>
 
-            <!-- VANDE BHARAT BATCH -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor2.mp4')">
                     <img src="cab.png" alt="VANDE BHARAT BATCH" class="course-img" onerror="this.src='ca1.png'">
@@ -481,7 +492,6 @@
                 </div>
             </div>
 
-            <!-- SCIENCE GS -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor3.mp4')">
                     <img src="ca2.png" alt="SCIENCE GS" class="course-img">
@@ -507,7 +517,6 @@
                 </div>
             </div>
 
-            <!-- NAVODAYA -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor4.mp4')">
                     <img src="ca3.png" alt="TARGET CGL" class="course-img">
@@ -515,7 +524,7 @@
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">JAWAHAR NAVODAYA ENTRANCE</h3>
-                    <p class="course-faculty">BY ABHINAY PRATAP MATHEMATICS AND TEAM</p>
+                    <p class="course-faculty">BY ABHINAY PRATAP (MATHS MYSTIC) AND TEAM</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('JAWAHAR NAVODAYA ENTRANCE', 1499)">BUY NOW COURSE</button>
@@ -533,7 +542,6 @@
                 </div>
             </div>
 
-            <!-- RAILWAY/KVS -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor5.mp4')">
                     <img src="ca4.png" alt="RAILWAY" class="course-img">
@@ -559,7 +567,6 @@
                 </div>
             </div>
 
-            <!-- TEST PASS -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor6.mp4')">
                     <img src="ca5.png" alt="TEST PASS" class="course-img">
@@ -567,7 +574,7 @@
                 </div>
                 <div class="course-info">
                     <h3 class="course-title">ULTIMATE TEST PASS PRO</h3>
-                    <p class="course-faculty">ABHINAY PRATAP MATHEMATICS PLATFORM</p>
+                    <p class="course-faculty">ABHINAY PRATAP (MATHS MYSTIC) PLATFORM</p>
                     <div class="btn-group">
                         <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
                         <button class="btn btn-buy" onclick="openPaymentModal('ULTIMATE TEST PASS PRO', 499)">BUY NOW COURSE</button>
@@ -585,7 +592,6 @@
                 </div>
             </div>
 
-            <!-- REASONING -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor7.mp4')">
                     <img src="ca6.png" alt="REASONING SPECIAL" class="course-img">
@@ -611,7 +617,6 @@
                 </div>
             </div>
 
-            <!-- GS SPECIAL -->
             <div class="course-card">
                 <div class="course-img-box" onclick="playCourseVideo('cor8.mp4')">
                     <img src="ca7.png" alt="GS SPECIAL" class="course-img">
@@ -640,25 +645,122 @@
         </div>
     </section>
 
-    <!-- Student Reviews Slider -->
     <section class="uniform-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper"></div>
         <div class="dots-container" id="reviewDotsContainer"></div>
     </section>
 
-    <!-- SLIM BANNER SLIDER (Below Reviews) -->
-    <section class="slim-slider">
-        <div class="slim-wrapper" id="slimSliderWrapper">
-            <div class="slim-slide" style="background-image: url('sa.jpg');"></div>
-            <div class="slim-slide" style="background-image: url('sb.png');"></div>
-            <div class="slim-slide" style="background-image: url('sb.png');"></div>
-            <div class="slim-slide" style="background-image: url('sb.png');"></div>
-            <div class="slim-slide" style="background-image: url('sb.png');"></div>
+    <!-- ========================================== -->
+    <!-- EXCLUSIVE EDGE FEATURES (8 CARDS) -->
+    <!-- ========================================== -->
+    <section class="edge-section">
+        <h2 class="section-title">THE MATHS MYSTIC <span>ADVANTAGE</span></h2>
+        <div class="edge-grid">
+            
+            <div class="edge-card">
+                <div class="edge-tag">HYBRID</div>
+                <div class="edge-icon"><i class="fas fa-building"></i></div>
+                <h3>ONLINE + OFFLINE ACCESS</h3>
+                <p>Seamlessly switch between our Digital App and offline classes at Math's Warrior Institute. Get the best of both worlds with personalized attention.</p>
+            </div>
+            
+            <div class="edge-card">
+                <div class="edge-tag">TARGET 2027</div>
+                <div class="edge-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>CGL 2027 MENTORSHIP</h3>
+                <p>Lock your target with our exclusive roadmap for SSC CGL 2027. Weekly one-on-one video calls, performance tracking, and direct guidance.</p>
+            </div>
+
+            <div class="edge-card">
+                <div class="edge-tag">24/7 AI</div>
+                <div class="edge-icon"><i class="fas fa-brain"></i></div>
+                <h3>INSTANT DOUBT ENGINE</h3>
+                <p>Stuck on a tricky math problem? Upload a photo to our portal and get a detailed, step-by-step video solution from our experts within minutes.</p>
+            </div>
+            
+            <div class="edge-card">
+                <div class="edge-tag">RANKER</div>
+                <div class="edge-icon"><i class="fas fa-trophy"></i></div>
+                <h3>ALL INDIA TEST SERIES</h3>
+                <p>Compete with thousands of students nationwide. Get advanced AI analytics on your weak chapters to improve your exam time-management.</p>
+            </div>
+
+            <div class="edge-card">
+                <div class="edge-tag">SMART</div>
+                <div class="edge-icon"><i class="fas fa-calendar-check"></i></div>
+                <h3>AI STUDY PLANNER</h3>
+                <p>No more manual timetables! Our AI analyzes your mock test performance and automatically builds a custom daily revision schedule focusing on your weak topics.</p>
+            </div>
+
+            <div class="edge-card">
+                <div class="edge-tag">PLAY</div>
+                <div class="edge-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>GAMIFIED LEARNING</h3>
+                <p>Earn Mystic Coins, unlock profile badges, and climb the weekly leaderboard by attending live classes and scoring high in quizzes. Learning is now a game!</p>
+            </div>
+
+            <div class="edge-card">
+                <div class="edge-tag">TRACK</div>
+                <div class="edge-icon"><i class="fas fa-user-shield"></i></div>
+                <h3>PARENT CONNECT DASHBOARD</h3>
+                <p>Complete transparency for parents. Automated weekly progress reports covering attendance, test scores, and video watch time sent directly to parents' WhatsApp.</p>
+            </div>
+
+            <div class="edge-card">
+                <div class="edge-tag">LIVE</div>
+                <div class="edge-icon"><i class="fas fa-hand-paper"></i></div>
+                <h3>INTERACTIVE LIVE POLLS</h3>
+                <p>Experience ultra-low latency classes with real-time MCQ polls, fastest-finger-first leaderboards, and a 'Raise Hand' feature for live audio doubt clearing.</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- Expert Faculties Slider -->
+    <!-- ========================================== -->
+    <!-- FAQ ACCORDION SECTION -->
+    <!-- ========================================== -->
+    <section class="faq-section">
+        <h2 class="section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    1. KYA CLASSES HINDI AUR ENGLISH DONO MEIN HONGY? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Haan, hamare sabhi premium batches completely bilingual (Hindi + English) hain. PDF notes aur test series dono bhashaon mein uplabdh karayi jaati hain taaki UP Board aur CBSE dono ke students ko koi dikkat na ho.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    2. COURSE KI VALIDITY KITNE DIN KI HOGI? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Normal batches ki validity 1 saal (12 mahine) hoti hai. Lekin hamare foundation aur target batches ki validity 'Till Selection' milti hai, yani jab tak aapka exam clear nahi hota tab tak course aapke paas rahega.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    3. KYA MAIN VIDEOS KO OFFLINE DOWNLOAD KAR SAKTA HU? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Bilkul! Live class khatam hone ke baad aap video ko apne portal mein download kar sakte hain aur bina internet ke use kitni baar bhi revise kar sakte hain.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    4. DOUBTS KAISE CLEAR HONGY? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Doubt clear karne ke 3 solid tarike hain: Live class ke dauran chat feature, 24/7 dedicated doubt portal jahan aap photo bhej sakte hain, aur har Sunday special Zoom live doubt session.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="uniform-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
         <div class="uniform-wrapper" id="facultyWrapper">
@@ -732,7 +834,6 @@
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
-    <!-- Global Course Video Player Modal -->
     <div class="global-modal" id="courseVideoModal">
         <div class="modal-content" style="padding: 15px; max-width: 650px; background: #000; border: 2px solid var(--gold); border-radius: 15px;">
             <div class="modal-close-btn" onclick="closeCourseVideoModal()" style="top: -15px; right: -15px; background: var(--red-brand); border: 2px solid #fff; color: #fff; z-index: 10;">&times;</div>
@@ -743,7 +844,6 @@
         </div>
     </div>
 
-    <!-- Payment Verification Modal -->
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
@@ -804,7 +904,6 @@
         </div>
     </div>
 
-    <!-- Custom Alert Modal -->
     <div class="global-modal" id="customAlertModal">
         <div class="modal-content" style="text-align: center; max-width: 350px;">
             <div class="modal-icon-wrapper" id="customAlertIconBox" style="background: rgba(234, 179, 8, 0.1);">
@@ -816,7 +915,6 @@
         </div>
     </div>
 
-    <!-- Student Details Form Modal -->
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
             <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
@@ -831,7 +929,6 @@
         </div>
     </div>
 
-    <!-- MY PROFILE MODAL -->
     <div class="global-modal" id="profileModal">
         <div class="modal-content" style="max-width: 400px; text-align: left;">
             <div class="modal-close-btn" onclick="closeProfileModal()">&times;</div>
@@ -847,14 +944,13 @@
         </div>
     </div>
 
-    <!-- --- RECEIPT PRINT AREA (100% FIXED BROWSER NATIVE PRINT) --- -->
     <div id="receiptArea">
-        <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAYPRATAPCHAUBEYMATHS</div>
+        <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAY PRATAP (MATHS MYSTIC)</div>
         <div class="r-content">
             <div class="r-header">
                 <img src="m.png" alt="Logo" class="r-logo">
                 <div class="r-header-text">
-                    <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHS</h1>
+                    <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP (MATHS MYSTIC)</h1>
                     <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
                 </div>
             </div>
@@ -899,12 +995,10 @@
         </div>
     </div>
 
-    <!-- Pink Toast Alert -->
     <div class="toast-alert" id="toastAlert">
         <i class="fas fa-info-circle"></i> <span id="toastMessage">YEH VIDEO ABHI UPLABDH NAHI HAI. STAY TUNED!</span>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-wrapper">
             <div class="footer-col">
@@ -931,7 +1025,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ABHINAY PRATAP MATHEMATICS. ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">EXAMEDGE INSTITUTE</span></p>
+            <p>&copy; 2026 ABHINAY PRATAP (MATHS MYSTIC). ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">EXAMEDGE INSTITUTE</span></p>
         </div>
     </footer>
 
@@ -1170,7 +1264,7 @@
             
             setTimeout(() => { 
                 window.print(); 
-                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", "YOUR FEE RECEIPT HAS BEEN GENERATED.<br>WELCOME TO ABHINAY PRATAP MATHEMATICS!", true); }, 1000);
+                setTimeout(() => { showCustomAlert("✅ REGISTRATION COMPLETE", "YOUR FEE RECEIPT HAS BEEN GENERATED.<br>WELCOME TO ABHINAY PRATAP (MATHS MYSTIC)!", true); }, 1000);
             }, 500);
         }
 
@@ -1208,19 +1302,6 @@
             }, 4000);
         }
 
-        // --- SLIM SLIDER LOGIC ---
-        const slimWrapper = document.getElementById('slimSliderWrapper');
-        if (slimWrapper) {
-            const slimSlides = document.querySelectorAll('.slim-slide');
-            let currentSlimSlide = 0;
-            setInterval(() => {
-                currentSlimSlide++;
-                if (currentSlimSlide >= slimSlides.length) { currentSlimSlide = 0; }
-                const slimSlideWidth = slimSlides[0].clientWidth + 15;
-                slimWrapper.scrollTo({ left: slimSlideWidth * currentSlimSlide, behavior: 'smooth' });
-            }, 3000); // Scrolls every 3 seconds
-        }
-
         // Live 24-Hour Countdown Timer Logic
         function startMathsCountdown() {
             const hoursEl = document.getElementById('cd-h');
@@ -1253,6 +1334,28 @@
             for(let i=0; i<items.length; i++) { let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active'); dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 15) * i, behavior: 'smooth' }); }); dotsContainer.appendChild(dot); }
             wrapper.addEventListener('scroll', () => { const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 15)); const dots = dotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
         });
+
+        // --- FAQ ACCORDION LOGIC ---
+        function toggleFAQ(element) {
+            const currentItem = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            
+            allItems.forEach(item => {
+                if (item !== currentItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            currentItem.classList.toggle('active');
+            const answer = currentItem.querySelector('.faq-answer');
+            
+            if (currentItem.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 20 + "px";
+            } else {
+                answer.style.maxHeight = null;
+            }
+        }
     </script>
 </body>
 </html>
