@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABHINAY PRATAP (MATHS MYSTIC) | PREMIUM PORTAL</title>
     
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -477,10 +478,12 @@
 </head>
 <body>
 
+    <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <img src="z.png" alt="PRATAP MATHS" class="splash-banner">
     </div>
 
+    <!-- Navigation -->
     <nav>
         <div class="nav-left">
             <div class="ham-custom" onclick="toggleMenu()">
@@ -489,15 +492,17 @@
                 <div class="line line3"></div>
             </div>
             <div class="brand-container">
-                <div class="brand-name">ABHINAY PRATAP MATHS</div>
-                <div class="brand-subtitle">BY EXAMEDGE ONLINE INSTITUTE</div>
+                <div class="brand-name">ABHINAY PRATAP (MATHS MYSTIC)</div>
+                <div class="brand-subtitle">THE INDIA'S MOST TRUSTED EDUCATION PLATFORM</div>
             </div>
         </div>
         <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP (MATHS MYSTIC) SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
     </nav>
 
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/919670078465" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- Sidebar -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <ul>
@@ -513,6 +518,7 @@
         </ul>
     </div>
 
+    <!-- Timed Banners (Updated Timings and 5-min to Image) -->
     <div class="timed-banner" id="timedBanner2min">
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-fire"></i> SPECIAL OFFER</div>
@@ -528,6 +534,7 @@
         </div>
     </div>
 
+    <!-- MAIN BANNER SLIDER (10 IMAGES) -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
@@ -544,6 +551,7 @@
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
+    <!-- PREMIUM COURSES (8 FULL COURSES - NO PLAY BUTTONS ON IMAGES) -->
     <section class="courses-section" id="courses">
         <h2 class="section-title">PREMIUM COURSES</h2>
         <div class="course-list">
@@ -749,6 +757,7 @@
         </div>
     </section>
 
+    <!-- 8 ADVANTAGE CARDS -->
     <section class="edge-section">
         <h2 class="section-title">THE MATHS MYSTIC <span>ADVANTAGE</span></h2>
         <div class="edge-grid">
@@ -763,7 +772,7 @@
             <div class="edge-card">
                 <div class="edge-tag">TARGET 2027</div>
                 <div class="edge-icon"><i class="fas fa-bullseye"></i></div>
-                <h3>BOARD EXAM MENTORSHIP</h3>
+                <h3>CGL 2027 MENTORSHIP</h3>
                 <p>Lock your target with our exclusive roadmap for SSC CGL 2027. Weekly video calls.</p>
             </div>
             
@@ -812,6 +821,7 @@
         </div>
     </section>
 
+    <!-- FAQ ACCORDION -->
     <section class="faq-section">
         <h2 class="section-title">FREQUENTLY ASKED <span>QUESTIONS</span></h2>
         <div class="faq-container">
@@ -855,6 +865,7 @@
         </div>
     </section>
 
+    <!-- 10 RAW HTML STUDENT REVIEWS -->
     <section class="uniform-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper">
@@ -953,6 +964,7 @@
         <div class="dots-container" id="reviewDotsContainer"></div>
     </section>
 
+    <!-- 5 EXPERT FACULTY CARDS -->
     <section class="uniform-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
         <div class="uniform-wrapper" id="facultyWrapper">
@@ -1026,6 +1038,9 @@
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
+    <!-- ========================================== -->
+    <!-- INITIAL STARTUP LOGIN MODAL (With Skip) -->
+    <!-- ========================================== -->
     <div class="global-modal" id="initialLoginModal" style="background: rgba(0,0,0,0.95); z-index: 6000;">
         <div class="modal-content" style="max-width: 350px;">
             <div class="modal-icon-wrapper" style="background: rgba(234, 179, 8, 0.1);">
@@ -1042,6 +1057,9 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- NEW SECURE ADMIN EXPORT MODAL -->
+    <!-- ========================================== -->
     <div class="global-modal" id="adminAuthModal">
         <div class="modal-content" style="max-width: 350px;">
             <div class="modal-close-btn" onclick="document.getElementById('adminAuthModal').classList.remove('show')">&times;</div>
@@ -1055,6 +1073,7 @@
         </div>
     </div>
 
+    <!-- GLOBAL ALERT MODAL -->
     <div class="global-modal" id="customAlertModal">
         <div class="modal-content" style="text-align: center; max-width: 350px;">
             <div class="modal-icon-wrapper" id="customAlertIconBox">
@@ -1066,6 +1085,7 @@
         </div>
     </div>
 
+    <!-- PAYMENT MODAL -->
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
@@ -1125,6 +1145,7 @@
         </div>
     </div>
 
+    <!-- DETAILS MODAL -->
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
             <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
@@ -1139,6 +1160,7 @@
         </div>
     </div>
 
+    <!-- AUTH MODAL -->
     <div class="global-modal" id="authModal">
         <div class="modal-content" style="max-width: 400px;">
             <div class="modal-close-btn" onclick="document.getElementById('authModal').classList.remove('show')">&times;</div>
@@ -1154,6 +1176,9 @@
         </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- APP-LIKE UI: LEVEL 1 (MY BATCH) -->
+    <!-- ========================================================= -->
     <div class="app-modal" id="appMyBatchModal">
         <div class="app-header">
             <h3 class="app-header-title">MY BATCH</h3>
@@ -1172,7 +1197,7 @@
                 <img src="ca1.png" class="batch-list-img" onerror="this.src='m.png'">
                 <div class="batch-list-info">
                     <div class="batch-list-title" id="appCourseTitle">MATHS SPECIAL BATCH</div>
-                    <div class="batch-list-sub" style="text-transform: none;">Abhinay Pratap Sir</div>
+                    <div class="batch-list-sub" style="text-transform: none;">Abhinay Pratap Sir & Team</div>
                     <div style="margin-top: 8px;"><span class="batch-list-tag"><i class="fas fa-calendar-check"></i> START DATE: RECENT</span></div>
                 </div>
                 <i class="fas fa-chevron-right" style="color:var(--gold);"></i>
@@ -1182,61 +1207,22 @@
         </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- APP-LIKE UI: LEVEL 2 (SUBJECTS DYNAMIC LIST) -->
+    <!-- ========================================================= -->
     <div class="app-modal" id="appSubjectsModal">
         <div class="app-header">
             <button class="app-back-btn" onclick="closeAppSubjects()"><i class="fas fa-arrow-left"></i></button>
             <h3 class="app-header-title" id="appSubCourseTitle">COURSE NAME</h3>
         </div>
-        <div class="app-body">
-            
-            <div class="sub-card" onclick="openAppVideoList('TODAY CLASS')">
-                <div class="sub-icon" style="background:rgba(0,188,212,0.1); color:var(--app-blue);">T</div>
-                <div class="sub-info">
-                    <div class="sub-title">Today Class</div>
-                    <div class="sub-meta"><span><i class="fas fa-video"></i> Class: 0</span><span><i class="fas fa-file-pdf"></i> Note: 0</span></div>
-                </div>
-                <i class="fas fa-play sub-arrow"></i>
-            </div>
-
-            <div class="sub-card" onclick="openAppVideoList('MATHEMATICS')">
-                <div class="sub-icon">M</div>
-                <div class="sub-info">
-                    <div class="sub-title">Mathematics Practice</div>
-                    <div class="sub-meta"><span><i class="fas fa-video"></i> Class: 120</span><span><i class="fas fa-file-pdf"></i> Note: 120</span></div>
-                </div>
-                <i class="fas fa-play sub-arrow"></i>
-            </div>
-
-            <div class="sub-card" onclick="openAppVideoList('REASONING')">
-                <div class="sub-icon">R</div>
-                <div class="sub-info">
-                    <div class="sub-title">Reasoning Class</div>
-                    <div class="sub-meta"><span><i class="fas fa-video"></i> Class: 65</span><span><i class="fas fa-file-pdf"></i> Note: 65</span></div>
-                </div>
-                <i class="fas fa-play sub-arrow"></i>
-            </div>
-
-            <div class="sub-card" onclick="openAppVideoList('GENERAL STUDIES')">
-                <div class="sub-icon">G</div>
-                <div class="sub-info">
-                    <div class="sub-title">General Studies (GS)</div>
-                    <div class="sub-meta"><span><i class="fas fa-video"></i> Class: 80</span><span><i class="fas fa-file-pdf"></i> Note: 80</span></div>
-                </div>
-                <i class="fas fa-play sub-arrow"></i>
-            </div>
-
-            <div class="sub-card" onclick="openAppVideoList('ENGLISH COMP.')">
-                <div class="sub-icon">E</div>
-                <div class="sub-info">
-                    <div class="sub-title">English Comp.</div>
-                    <div class="sub-meta"><span><i class="fas fa-video"></i> Class: 45</span><span><i class="fas fa-file-pdf"></i> Note: 45</span></div>
-                </div>
-                <i class="fas fa-play sub-arrow"></i>
-            </div>
-
+        <div class="app-body" id="appSubjectsBody">
+            <!-- Subjects will be dynamically inserted here based on Course -->
         </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- APP-LIKE UI: LEVEL 3 (VIDEO LIST) -->
+    <!-- ========================================================= -->
     <div class="app-modal" id="appVideoListModal">
         <div class="app-header">
             <button class="app-back-btn" onclick="closeAppVideoList()"><i class="fas fa-arrow-left"></i></button>
@@ -1248,9 +1234,13 @@
             <div class="app-tab" onclick="showCustomAlert('TEST', 'Mock Tests will be available here.')">Test</div>
         </div>
         <div class="app-body" id="appVideoContainer" style="padding: 15px 5%;">
-            </div>
+            <!-- Videos generated by JS based on subject -->
+        </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- APP-LIKE UI: LEVEL 4 (VIDEO PLAYER) -->
+    <!-- ========================================================= -->
     <div class="app-modal" id="appVideoPlayerModal" style="background:#000;">
         <div class="app-header" style="border-bottom:none;">
             <button class="app-back-btn" onclick="closeAppVideoPlayer()"><i class="fas fa-arrow-left"></i></button>
@@ -1258,10 +1248,12 @@
         </div>
         
         <div class="player-container">
+            <!-- REAL VIDEO TAG (Hidden if no link) -->
             <video id="realVideoPlayer" controls style="width:100%; height:100%; display:none; outline:none; background:#000;">
                 <source id="realVideoSource" src="" type="video/mp4">
             </video>
 
+            <!-- FAKE/UPLOADING MESSAGE UI -->
             <div id="fakeVideoUI" class="player-msg" style="display:flex; flex-direction:column; align-items:center;">
                 <i class="fas fa-cloud-upload-alt" id="playerIcon"></i>
                 <h3 id="playerHeading">CONTENT UPLOADING SOON</h3>
@@ -1285,13 +1277,14 @@
     </div>
 
 
+    <!-- HIDDEN RECEIPT AREA FOR PRINTING -->
     <div id="receiptArea">
-        <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAY PRATAP MATHS</div>
+        <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAY PRATAP (MATHS MYSTIC)</div>
         <div class="r-content">
             <div class="r-header">
                 <img src="m.png" alt="Logo" class="r-logo" onerror="this.style.display='none'">
                 <div class="r-header-text">
-                    <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHS</h1>
+                    <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP (MATHS MYSTIC)</h1>
                     <p>OFFICIAL FEE RECEIPT & ENROLLMENT RECORD</p>
                 </div>
             </div>
@@ -1337,6 +1330,7 @@
         </div>
     </div>
 
+    <!-- REDESIGNED TOAST ALERT -->
     <div class="toast-alert" id="toastAlert">
         <i class="fas fa-info-circle"></i> 
         <span id="toastMessage">CONTENT CURRENTLY UNAVAILABLE. STAY TUNED!</span>
@@ -1351,13 +1345,13 @@
                 <a href="#" onclick="showCustomAlert('INFO', 'TERMS AND CONDITIONS APPLY.')"><i class="fas fa-angle-right"></i> TERMS & CONDITIONS</a>
                 
                 <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #333;">
-                    <p style="color: var(--text-dim); font-size: 0.8rem; font-weight: 600; margin-bottom: 10px;">OFFICIAL EDUCATION PLATFORM</p>
+                    <p style="color: var(--text-dim); font-size: 0.8rem; font-weight: 600; margin-bottom: 10px;">OUR PARTNER PLATFORM</p>
                     <a href="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" target="_blank" class="btn-examedge" style="margin-bottom: 10px;">
                         <i class="fas fa-globe"></i> EXAMEDGE INSTITUTE
                     </a>
                     <p style="color: var(--text-dim); font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; margin-top: 15px;">OFFICIAL YOUTUBE CHANNEL</p>
-                    <a href="www.youtube.com/@abhinaypratapmaths" target="_blank" class="btn-youtube">
-                        <i class="fab fa-youtube"></i> ABHINAY PRATAP MATHS
+                    <a href="https://www.youtube.com/@ABHINAY_PRATAP_MATHS" target="_blank" class="btn-youtube">
+                        <i class="fab fa-youtube"></i> MATHS MYSTIC
                     </a>
                 </div>
             </div>
@@ -1372,7 +1366,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 ABHINAY PRATAP . ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">EXAMEDGE INSTITUTE</span></p>
+            <p>&copy; 2026 ABHINAY PRATAP (MATHS MYSTIC). ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">EXAMEDGE INSTITUTE</span></p>
         </div>
     </footer>
 
@@ -1479,8 +1473,8 @@
             document.getElementById(id).classList.remove('show'); 
         }
         
-        setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 60000); // 1 MINUTE
-        setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 180000); // 3 MINUTES
+        setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 60000); 
+        setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 180000); 
 
         // --- Sliders Logic ---
         const sliderWrapper = document.getElementById('sliderWrapper'); 
@@ -1747,9 +1741,62 @@
             showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.', true); 
         }
 
+        // --- DYNAMIC COURSE SYLLABUS MAPPING ---
+        function getSyllabus(courseName) {
+            const name = courseName.toUpperCase();
+            if (name.includes("MATHEMATICS SPECIAL")) {
+                return [
+                    { title: "ARITHMETIC MATHS", icon: "M", vids: 100 },
+                    { title: "ADVANCE MATHS", icon: "A", vids: 150 }
+                ];
+            } else if (name.includes("REASONING SPECIAL")) {
+                return [
+                    { title: "REASONING", icon: "R", vids: 100 }
+                ];
+            } else if (name.includes("SCIENCE SPECIAL")) {
+                return [
+                    { title: "PHYSICS", icon: "P", vids: 20 },
+                    { title: "CHEMISTRY", icon: "C", vids: 20 },
+                    { title: "BIOLOGY", icon: "B", vids: 20 }
+                ];
+            } else {
+                // Combo Batches Show Everything
+                return [
+                    { title: "ARITHMETIC MATHS", icon: "M", vids: 100 },
+                    { title: "ADVANCE MATHS", icon: "A", vids: 150 },
+                    { title: "REASONING", icon: "R", vids: 100 },
+                    { title: "PHYSICS", icon: "P", vids: 20 },
+                    { title: "CHEMISTRY", icon: "C", vids: 20 },
+                    { title: "BIOLOGY", icon: "B", vids: 20 },
+                    { title: "ENGLISH GRAMMAR", icon: "E", vids: 100 },
+                    { title: "ENGLISH VOCAB", icon: "V", vids: 50 },
+                    { title: "ENGLISH COMPREHENSION", icon: "C", vids: 20 }
+                ];
+            }
+        }
+
         function openAppSubjects() { 
             document.getElementById('appMyBatchModal').classList.remove('show'); 
-            document.getElementById('appSubCourseTitle').innerText = document.getElementById('appCourseTitle').innerText; 
+            let cName = document.getElementById('appCourseTitle').innerText;
+            document.getElementById('appSubCourseTitle').innerText = cName; 
+            
+            // Generate Dynamic Subjects
+            const syllabus = getSyllabus(cName);
+            let html = '';
+            syllabus.forEach(sub => {
+                html += `
+                <div class="sub-card" onclick="openAppVideoList('${sub.title}', ${sub.vids})">
+                    <div class="sub-icon">${sub.icon}</div>
+                    <div class="sub-info">
+                        <div class="sub-title">${sub.title}</div>
+                        <div class="sub-meta"><span><i class="fas fa-video"></i> Class: ${sub.vids}</span><span><i class="fas fa-file-pdf"></i> Note: ${sub.vids}</span></div>
+                    </div>
+                    <i class="fas fa-play sub-arrow"></i>
+                </div>
+                `;
+            });
+            document.getElementById('appSubjectsBody').innerHTML = html;
+            
             document.getElementById('appSubjectsModal').classList.add('show'); 
         }
         
@@ -1758,10 +1805,10 @@
             document.getElementById('appMyBatchModal').classList.add('show'); 
         }
 
-        function openAppVideoList(subjectName) { 
+        function openAppVideoList(subjectName, totalVids) { 
             document.getElementById('appSubjectsModal').classList.remove('show'); 
             document.getElementById('appListSubjectTitle').innerText = subjectName; 
-            generateAppVideoList(subjectName); 
+            generateAppVideoList(subjectName, totalVids); 
             document.getElementById('appVideoListModal').classList.add('show'); 
         }
         
@@ -1770,10 +1817,9 @@
             document.getElementById('appSubjectsModal').classList.add('show'); 
         }
 
-        function generateAppVideoList(subject) {
+        function generateAppVideoList(subject, totalVids) {
             const container = document.getElementById('appVideoContainer'); 
             container.innerHTML = "";
-            let totalVids = (subject === 'TODAY CLASS') ? 1 : 120;
             
             for(let i = 1; i <= totalVids; i++) {
                 let iconClass = isCourseActivated ? "fas fa-play-circle" : "fas fa-lock";
@@ -1787,7 +1833,7 @@
                                 <i class="${iconClass} play-icon"></i>
                             </div>
                             <div class="vid-info">
-                                <div class="vid-title">${subject} Practice Set - ${i} | Complete Analysis</div>
+                                <div class="vid-title">${subject} Class - ${i} | Complete Analysis</div>
                                 <div class="vid-meta">
                                     <span><i class="far fa-calendar-alt"></i> Recent</span>
                                     <span><i class="far fa-clock"></i> 01:15:00</span>
