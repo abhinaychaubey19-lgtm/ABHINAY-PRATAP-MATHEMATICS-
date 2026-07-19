@@ -105,7 +105,7 @@
         .brand-name { font-size: 1.1rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
         .brand-subtitle { font-size: 0.6rem; color: var(--red-brand); font-weight: 700; letter-spacing: 0.5px; margin-top: 2px;}
         @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.75rem; } }
-        .logo-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffffff; background: url('m.png') center/contain no-repeat; background-color: #000; cursor: pointer; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+        .logo-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffffff; background: url('m.png') center/contain no-repeat; background-color: #000; cursor: pointer; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); transition: background-image 0.5s ease-in-out; }
 
         /* ========================================== */
         /* --- SIDEBAR MENU --- */
@@ -184,14 +184,6 @@
         .course-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
         .course-faculty { color: var(--gold); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.5px; }
         
-        .countdown-badge { position: absolute; top: -15px; right: -10px; background: #000; border: 2px solid var(--pink); padding: 6px 12px; border-radius: 10px; display: flex; gap: 4px; align-items: center; box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6); z-index: 10; font-family: 'Poppins', sans-serif; }
-        .countdown-text { font-size: 0.65rem; color: var(--gold); font-weight: 900; margin-right: 5px; letter-spacing: 1px; }
-        .time-block { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .time-val { background: var(--pink); color: #fff; font-size: 1.1rem; font-weight: 900; padding: 2px 5px; border-radius: 5px; font-family: monospace; letter-spacing: 1px; line-height: 1; }
-        .time-lbl { font-size: 0.5rem; color: #aaa; margin-top: 3px; font-weight: 800; letter-spacing: 0.5px; line-height: 1;}
-        .time-sep { color: var(--pink); font-weight: 900; font-size: 1.3rem; margin: 0 1px; margin-top: -10px; animation: blink 1s infinite step-start; }
-        @keyframes blink { 50% { opacity: 0; } }
-
         .btn-group { display: flex; flex-direction: column; gap: 12px; }
         .btn { width: 100%; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; outline: none; letter-spacing: 0.5px; }
         .btn-features { background: #222; color: var(--text-light); border: 1px solid var(--gold); }
@@ -502,7 +494,7 @@
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-fire"></i> SPECIAL OFFER</div>
             <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner2min')"><i class="fas fa-times"></i></div>
-            <img src="al1.png" alt="SPECIAL ALERT" class="timed-banner-img" onerror="this.src='https://via.placeholder.com/500'">
+            <img src="al1.png" alt="SELECTION FRAM" class="timed-banner-img" onerror="this.src='https://via.placeholder.com/500'">
         </div>
     </div>
     
@@ -510,7 +502,7 @@
         <div class="timed-banner-wrapper">
             <div class="timed-banner-tag"><i class="fas fa-bolt"></i> SPECIAL UPDATE</div>
             <div class="timed-banner-close" onclick="closeTimedBanner('timedBanner5min')"><i class="fas fa-times"></i></div>
-            <img src="al1.png" alt="SPECIAL UPDATE" class="timed-banner-img" onerror="this.src='https://via.placeholder.com/500'">
+            <img src="al2.png" alt="SPECIAL UPDATE" class="timed-banner-img" onerror="this.src='https://via.placeholder.com/500'">
         </div>
     </div>
 
@@ -535,12 +527,6 @@
         <div class="course-list">
             
             <div class="course-card">
-                <div class="countdown-badge">
-                    <div class="countdown-text">ENDS IN</div>
-                    <div class="time-block"><div class="time-val" id="cd-h">23</div><div class="time-lbl">HRS</div></div><div class="time-sep">:</div>
-                    <div class="time-block"><div class="time-val" id="cd-m">59</div><div class="time-lbl">MIN</div></div><div class="time-sep">:</div>
-                    <div class="time-block"><div class="time-val" id="cd-s">59</div><div class="time-lbl">SEC</div></div>
-                </div>
                 <div class="course-img-box">
                     <img src="ca1.png" alt="MATHS BATCH" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
                 </div>
@@ -778,7 +764,7 @@
             <div class="uniform-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED!"</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>ABHISHEK YADAV</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>AYUSHI CHAUBEY</h5><span>SELECTED IN KVS </span></div></div>
             </div>
 
             <div class="uniform-card">
@@ -790,13 +776,13 @@
             <div class="uniform-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"BEST PLATFORM FOR BOARDS EXAM PREPARATION. PDF NOTES AND MOCK TESTS ARE EXACTLY MATCHING THE EXAM PATTERN."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>SELECTED STUDENT</span></div></div>
             </div>
 
             <div class="uniform-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"TARGET NVS BATCH IS A GAME CHANGER. THE LEVEL OF MATHEMATICS TAUGHT HERE IS COMPLETELY UNMATCHABLE."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>POOJA MISHRA</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>POOJA MISHRA</h5><span>SELECTED STUDENT</span></div></div>
             </div>
 
             <div class="uniform-card">
@@ -832,7 +818,7 @@
             <div class="uniform-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"THE MENTORSHIP BY SELECTED CANDIDATES IN THIS PLATFORM GAVE ME THE EXACT ROADMAP TO CRACK MY UPCOMING ENTRANCE."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>ANJALI SINGH</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>ANJALI SINGH</h5><span>SELECTED STUDENT</span></div></div>
             </div>
 
         </div>
@@ -857,7 +843,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t2.png" alt="Bholu" onerror="this.src='m.png'"></div>
+                <div class="fac-avatar-container"><img src="m.png" alt="Bholu" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">BHOLU CHAUBEY</h3>
                 <p class="fac-subject">CHAIRMAN & GS EXPERT</p>
                 <p class="fac-desc">SPECIALIST IN GENERAL STUDIES & STATIC GK. 2+ YEARS OF GUIDING THOUSANDS OF CANDIDATES.</p>
@@ -870,7 +856,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t2.png" alt="Akshit" onerror="this.src='m.png'"></div>
+                <div class="fac-avatar-container"><img src="m.png" alt="Akshit" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">AKSHIT SIR</h3>
                 <p class="fac-subject">SENIOR SCIENCE FACULTY</p>
                 <p class="fac-desc">MAKING PHYSICS, CHEMISTRY & BIOLOGY EASY TO UNDERSTAND. 2+ YEARS OF TEACHING PRACTICAL CONCEPTS.</p>
@@ -883,7 +869,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t2.png" alt="Rahul" onerror="this.src='m.png'"></div>
+                <div class="fac-avatar-container"><img src="m.png" alt="Rahul" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">RAHUL SIR</h3>
                 <p class="fac-subject">REASONING EXPERT</p>
                 <p class="fac-desc">EXPERT IN LOGICAL AND ANALYTICAL REASONING. 2+ YEARS PUZZLE CRACKING SPECIALIST.</p>
@@ -896,7 +882,7 @@
             </div>
 
             <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="t2.png" alt="Sneha" onerror="this.src='m.png'"></div>
+                <div class="fac-avatar-container"><img src="m.png" alt="Sneha" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">SNEHA MA'AM</h3>
                 <p class="fac-subject">ENGLISH FACULTY</p>
                 <p class="fac-desc">GRAMMAR AND VOCABULARY MENTOR. 2+ YEARS TEACHING COMPREHENSION TRICKS PROFESSOR.</p>
@@ -911,22 +897,6 @@
         </div>
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
-
-    <div class="global-modal" id="initialLoginModal" style="background: rgba(0,0,0,0.95); z-index: 6000;">
-        <div class="modal-content" style="max-width: 350px;">
-            <div class="modal-icon-wrapper" style="background: rgba(234, 179, 8, 0.1);">
-                <i class="fas fa-user-circle" style="color: var(--gold);"></i>
-            </div>
-            <h3 style="color: var(--gold); margin-bottom: 5px;">STUDENT LOGIN</h3>
-            <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 20px;">PLEASE LOGIN TO ACCESS PREMIUM FEATURES</p>
-            
-            <input type="text" id="initName" class="input-field" placeholder="ENTER FULL NAME">
-            <input type="number" id="initMobile" class="input-field" placeholder="ENTER 10-DIGIT MOBILE NO.">
-            
-            <button class="modal-btn" onclick="saveInitialLogin()">LOGIN SECURELY</button>
-            <button class="modal-btn" style="background: transparent; color: var(--text-dim); border: 1px solid #444; margin-top: 10px;" onclick="document.getElementById('initialLoginModal').classList.remove('show')">SKIP FOR NOW</button>
-        </div>
-    </div>
 
     <div class="global-modal" id="adminAuthModal">
         <div class="modal-content" style="max-width: 350px;">
@@ -1235,28 +1205,28 @@
                 }
             }, 4500); 
             
-            // Initial Login Prompt
-            if(!localStorage.getItem('mysticLoggedIn')) { 
-                setTimeout(() => { document.getElementById('initialLoginModal').classList.add('show'); }, 6000); 
+            // --- Rotating Nav Logo (10 Logos, every 2 seconds) ---
+            const navLogos = [
+                'm.png',
+                'logo2.png', // Replace these names with your actual logo filenames
+                'logo3.png',
+                'logo4.png',
+                'logo5.png',
+                'logo6.png',
+                'logo7.png',
+                'logo8.png',
+                'logo9.png',
+                'logo10.png'
+            ];
+            let logoIndex = 0;
+            const navLogoBox = document.querySelector('.logo-box');
+            if (navLogoBox) {
+                setInterval(() => {
+                    logoIndex = (logoIndex + 1) % navLogos.length;
+                    navLogoBox.style.backgroundImage = `url('${navLogos[logoIndex]}')`;
+                }, 2000);
             }
         });
-        
-        // --- Admin & Global Logic ---
-        function saveInitialLogin() {
-            const name = document.getElementById('initName').value.trim(); 
-            const mobile = document.getElementById('initMobile').value.trim();
-            
-            if(name && mobile) {
-                let users = JSON.parse(localStorage.getItem('mysticAllUsers') || '[]'); 
-                users.push({name: name, mobile: mobile, date: new Date().toLocaleString()});
-                localStorage.setItem('mysticAllUsers', JSON.stringify(users)); 
-                localStorage.setItem('mysticLoggedIn', 'true'); 
-                document.getElementById('initialLoginModal').classList.remove('show'); 
-                showCustomAlert("WELCOME!", `Hello ${name.toUpperCase()}, welcome to Math's Mystic!`, true);
-            } else { 
-                alert("Please enter Name and Mobile Number, or Click Skip."); 
-            }
-        }
 
         // --- SECURE ADMIN EXPORT LOGIC ---
         function openAdminAuth() {
@@ -1388,7 +1358,7 @@
             }
         });
 
-        // --- Course Features Toggle & Countdown ---
+        // --- Course Features Toggle ---
         function toggleFeatures(btn) { 
             let box = btn.parentElement.nextElementSibling; 
             let icon = btn.querySelector('i'); 
@@ -1401,23 +1371,6 @@
             } 
         }
         
-        function startMathsCountdown() {
-            const hoursEl = document.getElementById('cd-h'); 
-            const minutesEl = document.getElementById('cd-m'); 
-            const secondsEl = document.getElementById('cd-s');
-            if(!hoursEl) return;
-            
-            function updateTimer() { 
-                const now = new Date(); const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); 
-                const diff = tomorrow - now; 
-                hoursEl.innerText = Math.floor((diff / (1000 * 60 * 60)) % 24).toString().padStart(2, '0'); 
-                minutesEl.innerText = Math.floor((diff / (1000 * 60)) % 60).toString().padStart(2, '0'); 
-                secondsEl.innerText = Math.floor((diff / 1000) % 60).toString().padStart(2, '0'); 
-            }
-            setInterval(updateTimer, 1000); updateTimer();
-        }
-        startMathsCountdown();
-
         // --- FAQ Accordion ---
         function toggleFAQ(element) {
             const currentItem = element.parentElement;
