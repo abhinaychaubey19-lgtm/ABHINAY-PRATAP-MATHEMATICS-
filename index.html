@@ -37,11 +37,11 @@
         }
 
         /* ========================================== */
-        /* --- PREMIUM SPLASH SCREEN (NEW DESIGN) --- */
+        /* --- PREMIUM SPLASH SCREEN --- */
         /* ========================================== */
         .splash-screen { 
             position: fixed; inset: 0; z-index: 9999; 
-            background: linear-gradient(135deg, #0f172a, #020617); /* Premium Navy Blue */
+            background: linear-gradient(135deg, #0f172a, #020617); 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             transition: opacity 0.8s ease; 
         }
@@ -52,25 +52,26 @@
         }
 
         .splash-logo-container {
-            position: relative; width: 220px; height: 220px; display: flex; justify-content: center; align-items: center;
+            position: relative; width: 250px; height: 250px; display: flex; justify-content: center; align-items: center;
         }
 
         .splash-main-logo {
-            width: 140px; height: 140px; border-radius: 50%; background: #000; 
-            border: 4px solid var(--red-brand); object-fit: contain; z-index: 10; 
-            box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
+            width: 160px; height: 160px; border-radius: 50%; background: #000; 
+            border: 5px solid #ffffff; 
+            object-fit: contain; z-index: 10; 
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
         }
 
         .splash-orbit-logo {
-            position: absolute; width: 65px; height: 65px; border-radius: 50%; 
+            position: absolute; width: 75px; height: 75px; border-radius: 50%; 
             background: #fff; border: 2px solid var(--gold); object-fit: contain; z-index: 5; 
             opacity: 0; animation: splashOrbit 4.5s ease-in-out forwards;
         }
 
         @keyframes splashOrbit {
             0% { opacity: 0; transform: translateY(0px) rotate(0deg); }
-            10% { opacity: 1; transform: translateY(115px) rotate(0deg); }
-            90% { opacity: 1; transform: rotate(1080deg) translateY(115px) rotate(-1080deg); }
+            10% { opacity: 1; transform: translateY(135px) rotate(0deg); }
+            90% { opacity: 1; transform: rotate(1080deg) translateY(135px) rotate(-1080deg); }
             100% { opacity: 0; transform: rotate(1080deg) translateY(0px) rotate(-1080deg); }
         }
 
@@ -90,7 +91,7 @@
         }
 
         /* ========================================== */
-        /* --- NAVIGATION BAR --- */
+        /* --- NAVIGATION BAR & ROTATING LOGO --- */
         /* ========================================== */
         nav { 
             position: fixed; top: 0; width: 100%; height: 75px; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; border-bottom: 1px solid var(--border-dark); z-index: 1000; 
@@ -105,7 +106,28 @@
         .brand-name { font-size: 1.1rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
         .brand-subtitle { font-size: 0.6rem; color: var(--red-brand); font-weight: 700; letter-spacing: 0.5px; margin-top: 2px;}
         @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.75rem; } }
-        .logo-box { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffffff; background: url('m.png') center/contain no-repeat; background-color: #000; cursor: pointer; box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); transition: background-image 0.5s ease-in-out; }
+        
+        /* Ultra Professional Rotating Circle Logo Box with Glow & Flow */
+        .logo-box { 
+            width: 52px; height: 52px; border-radius: 50%; 
+            border: 3px solid var(--gold); 
+            background: url('m.png') center/contain no-repeat; background-color: #000; 
+            cursor: pointer; 
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.5), inset 0 0 8px rgba(234, 179, 8, 0.3); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            position: relative;
+        }
+        .logo-box:hover {
+            transform: scale(1.1) rotate(6deg);
+            border-color: var(--pink);
+            box-shadow: 0 0 25px rgba(255, 42, 117, 0.7);
+        }
+        .logo-box::after {
+            content: ''; position: absolute; inset: -5px; border-radius: 50%;
+            border: 2px dashed rgba(234, 179, 8, 0.4);
+            animation: spinRing 10s linear infinite;
+        }
+        @keyframes spinRing { 100% { transform: rotate(360deg); } }
 
         /* ========================================== */
         /* --- SIDEBAR MENU --- */
@@ -121,7 +143,7 @@
         .overlay.active { opacity: 1; visibility: visible; }
 
         /* ========================================== */
-        /* --- TIMED PROMO BANNERS (CENTERED + WHITE BORDER) --- */
+        /* --- TIMED PROMO BANNERS --- */
         /* ========================================== */
         .timed-banner { 
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5); 
@@ -227,7 +249,7 @@
         .faq-answer p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; font-weight: 600; text-transform: none; padding-bottom: 18px; margin-top: 5px; }
 
         /* ========================================== */
-        /* --- HORIZONTAL UNIFORM SLIDERS (REVIEWS/FACULTY) --- */
+        /* --- HORIZONTAL UNIFORM SLIDERS --- */
         /* ========================================== */
         .uniform-section { padding: 40px 0 20px; }
         .uniform-section .section-title { margin-left: 5%; }
@@ -281,8 +303,71 @@
         .payment-box label { color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 5px; display: block; }
         .input-field { width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: #fff; border-radius: 6px; font-size: 0.95rem; font-weight: 600; outline: none; margin-bottom: 10px; }
         .input-field:focus { border-color: var(--gold); }
+        
+        /* FULL SIZE ULTRA PROFESSIONAL QR STYLING */
         .qr-area { text-align: center; margin: 15px 0; display: none; }
-        .qr-area img { width: 180px; height: 180px; border: 3px solid var(--gold); border-radius: 10px; padding: 5px; background: #fff; margin: 0 auto; display: block; }
+        .qr-wrapper {
+            position: relative; width: 260px; height: 260px; margin: 0 auto 15px; 
+            padding: 12px; background: linear-gradient(135deg, #ffffff, #f1f5f9); border-radius: 20px; 
+            border: 5px solid var(--gold); box-shadow: 0 0 35px rgba(234, 179, 8, 0.4), inset 0 0 15px rgba(0,0,0,0.1);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .qr-wrapper img#qrImage { width: 100%; height: 100%; border: none; border-radius: 10px; padding: 0; display: block; }
+        .qr-center-logo {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 65px; height: 65px; background: #fff; border-radius: 50%;
+            border: 3px solid var(--gold); padding: 4px; z-index: 5;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6); object-fit: contain;
+        }
+        .upi-accept-text {
+            color: #fff; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; 
+            margin-bottom: 12px; text-align: center; border-bottom: 1px dashed var(--gold); 
+            padding-bottom: 5px; display: inline-block;
+        }
+        .upi-logos {
+            display: flex; justify-content: center; gap: 10px; align-items: center; 
+            flex-wrap: wrap; background: #000; padding: 12px; border-radius: 10px; 
+            border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+        .upi-logos img { height: 26px; object-fit: contain; background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; }
+
+        /* ========================================== */
+        /* --- DIRECTOR MESSAGE MODAL (10s AUTO CLOSE) --- */
+        /* ========================================== */
+        .director-modal {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+            z-index: 9999; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .director-modal.show { opacity: 1; visibility: visible; }
+        .director-card {
+            background: linear-gradient(145deg, #111, #080808); border: 2px solid var(--gold);
+            border-top: 5px solid var(--pink); border-radius: 20px; width: 90%; max-width: 420px;
+            padding: 30px 20px; text-align: center; position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(234, 179, 8, 0.2);
+            animation: directorPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes directorPop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .director-img-wrap {
+            width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--gold);
+            margin: 0 auto 15px; overflow: hidden; background: #000;
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
+        }
+        .director-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .director-title { color: var(--gold); font-size: 1.3rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 5px; }
+        .director-subtitle { color: var(--pink); font-size: 0.8rem; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 15px; }
+        .director-msg-box {
+            background: rgba(255,255,255,0.03); border: 1px solid #333; border-radius: 10px;
+            padding: 15px; color: #fff; font-size: 0.9rem; line-height: 1.6; font-weight: 600;
+            text-transform: none; margin-bottom: 20px; text-align: left;
+        }
+        .director-timer-bar {
+            width: 100%; height: 4px; background: #333; border-radius: 2px; overflow: hidden; margin-top: 15px;
+        }
+        .director-timer-fill {
+            height: 100%; background: var(--gold); width: 100%; transition: width 10s linear;
+        }
 
         /* ========================================== */
         /* --- REDESIGNED TOAST ALERT (PREMIUM) --- */
@@ -314,7 +399,6 @@
         .app-body { flex: 1; overflow-y: auto; background: #050505; padding: 15px 5%; }
         @media(min-width: 768px) { .app-body { padding: 20px 20%; } }
 
-        /* Level 1: Dashboard Cards */
         .batch-list-card { background: #111; border-radius: 12px; padding: 15px; margin-bottom: 12px; display: flex; gap: 15px; align-items: center; border: 1px solid #333; cursor: pointer; transition: 0.3s;}
         .batch-list-card:hover { border-color: var(--gold); }
         .batch-list-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; background:#222;}
@@ -323,26 +407,15 @@
         .batch-list-sub { color: var(--text-dim); font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 5px; text-transform: none;}
         .batch-list-tag { background: rgba(34, 197, 94, 0.2); color: var(--green); font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
 
-        /* Level 2: Subject Cards */
         .sub-card { background: #111; border-radius: 10px; padding: 15px; margin-bottom: 10px; display: flex; gap: 15px; align-items: center; border: 1px solid #333; cursor: pointer; transition: 0.3s;}
         .sub-card:hover { border-color: var(--pink); }
-        
-        /* NEW: CIRCULAR SUBJECT ICON */
-        .sub-icon { 
-            width: 50px; height: 50px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            background: #222; border: 2px solid var(--gold);
-            overflow: hidden; flex-shrink: 0;
-        }
+        .sub-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #222; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; }
         .sub-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .sub-icon span { font-weight: 800; color: var(--gold); font-size: 1.2rem; }
-        
         .sub-info { flex: 1; }
         .sub-title { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 5px;}
         .sub-meta { color: var(--text-dim); font-size: 0.75rem; display: flex; gap: 15px; font-weight: 600; text-transform: none;}
         .sub-arrow { color: var(--gold); font-size: 1.2rem; }
 
-        /* Level 3: Video List */
         .app-tabs { display: flex; background: #111; border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 5;}
         .app-tab { flex: 1; text-align: center; padding: 15px 0; color: var(--text-dim); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s;}
         .app-tab.active { color: var(--gold); border-bottom: 3px solid var(--gold); background: rgba(234, 179, 8, 0.05);}
@@ -355,13 +428,9 @@
         .vid-thumb .play-icon { position: absolute; color: #fff; font-size: 2rem; text-shadow: 0 0 10px #000; z-index: 2; }
         .vid-badge { position: absolute; top: 0; right: 0; background: var(--app-blue); color: #fff; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-bottom-left-radius: 8px; z-index: 3;}
         .vid-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        
-        /* UPDATED VIDEO TITLE FONT (BOLD, GOLD, PRO) */
         .vid-title { color: var(--gold); font-size: 0.95rem; font-weight: 800; margin-bottom: 6px; line-height: 1.3; font-family: 'Poppins', sans-serif; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-transform: uppercase;}
-        
         .vid-meta { color: var(--text-dim); font-size: 0.75rem; display: flex; gap: 15px; font-weight: 600; text-transform: none;}
 
-        /* Level 4: Video Player */
         .player-container { background: #000; width: 100%; aspect-ratio: 16/9; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold);}
         .player-msg { text-align: center; padding: 20px; }
         .player-msg i { font-size: 3rem; color: var(--pink); margin-bottom: 15px; }
@@ -378,27 +447,15 @@
         .footer-col a.quick-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-weight: 600; }
         .footer-col a.quick-link:hover { color: var(--gold); padding-left: 5px; }
         
-        /* PREMIUM FOOTER BUTTONS */
-        .btn-footer { 
-            display: flex; align-items: center; justify-content: center; gap: 10px; 
-            padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; 
-            font-size: 0.95rem; transition: 0.3s; width: 100%; max-width: 280px; 
-            text-transform: uppercase; margin-bottom: 12px;
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-        }
-        
+        .btn-footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: 0.3s; width: 100%; max-width: 280px; text-transform: uppercase; margin-bottom: 12px; background: linear-gradient(145deg, #1a1a1a, #0a0a0a); }
         .btn-examedge { color: var(--gold) !important; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(234, 179, 8, 0.1); }
         .btn-examedge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.25); background: var(--gold); color: #000 !important; }
-
         .btn-youtube { color: #ff0000 !important; border: 1px solid #ff0000; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.1); }
         .btn-youtube:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 0, 0, 0.25); background: #ff0000; color: #fff !important; }
-
         .btn-telegram { color: #0088cc !important; border: 1px solid #0088cc; box-shadow: 0 5px 15px rgba(0, 136, 204, 0.1); }
         .btn-telegram:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 136, 204, 0.25); background: #0088cc; color: #fff !important; }
-
         .btn-whatsapp { color: #25d366 !important; border: 1px solid #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.1); }
         .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25); background: #25d366; color: #fff !important; }
-
         .btn-email { color: #ea4335 !important; border: 1px solid #ea4335; box-shadow: 0 5px 15px rgba(234, 67, 53, 0.1); }
         .btn-email:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 67, 53, 0.25); background: #ea4335; color: #fff !important; }
 
@@ -406,7 +463,6 @@
         .contact-item i { color: var(--pink); font-size: 1.2rem; width: 25px; text-align: center; }
         .contact-item a { display: inline; color: var(--text-light); text-decoration: none; transition: 0.3s; margin: 0; padding: 0; }
         .contact-item a:hover { color: var(--pink); padding-left: 0; }
-        
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; width: 100%;}
 
         /* ========================================== */
@@ -450,12 +506,31 @@
     <div class="splash-screen" id="splashScreen">
         <div class="splash-content-wrapper">
             <div class="splash-logo-container">
-                <img src="m.png" alt="Logo" class="splash-main-logo" onerror="this.src='https://via.placeholder.com/150'">
-                <img src="abhinay.png" alt="Abhinay Logo" class="splash-orbit-logo" onerror="this.src='https://via.placeholder.com/50'">
+                <img src="m.png" alt="Logo" class="splash-main-logo" onerror="this.src='https://via.placeholder.com/160'">
+                <img src="abhinay.png" alt="Abhinay Logo" class="splash-orbit-logo" onerror="this.src='https://via.placeholder.com/75'">
             </div>
             <div class="splash-text">
                 <h1>ABHINAY PRATAP MATHS</h1>
                 <p>BY EXAMEDGE ONLINE INSTITUTE</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIRECTOR MESSAGE POPUP MODAL (10s AUTO CLOSE & TOUCH TRIGGERED) -->
+    <div class="director-modal" id="directorModal">
+        <div class="director-card">
+            <div class="modal-close-btn" onclick="closeDirectorModal()">&times;</div>
+            <div class="director-img-wrap">
+                <img src="abhinay.png" alt="Abhinay Pratap" onerror="this.src='m.png'">
+            </div>
+            <h3 class="director-title">ABHINAY PRATAP</h3>
+            <p class="director-subtitle">FOUNDER & DIRECTOR</p>
+            <div class="director-msg-box">
+                "Welcome to AP Mathematics! Our mission is to transform complex mathematical concepts into crystal-clear logic. Stay focused, trust the process, and let's crack your target exam together with full confidence!"
+            </div>
+            <button class="modal-btn" onclick="closeDirectorModal()">CONTINUE LEARNING</button>
+            <div class="director-timer-bar">
+                <div class="director-timer-fill" id="directorTimerFill"></div>
             </div>
         </div>
     </div>
@@ -472,7 +547,8 @@
                 <div class="brand-subtitle">ABHINAY PRATAP'S EXAMEDGE EXCELLENCE</div>
             </div>
         </div>
-        <div class="logo-box" onclick="showCustomAlert('SUPPORT', 'WELCOME TO ABHINAY PRATAP (MATHS MYSTIC) SUPPORT!<br>HOW CAN WE ASSIST YOU TODAY?')"></div>
+        <!-- Rotated & Flowing Logo Box that triggers Director Message on Touch/Click -->
+        <div class="logo-box" onclick="openDirectorModal()" title="Tap for Director Message"></div>
     </nav>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
@@ -946,11 +1022,30 @@
                     <div style="background: #1a1a1a; padding: 10px; border-radius: 5px; color: var(--gold); font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 15px;">
                         7705042892@axl
                     </div>
-                    <label>PAYMENT OPTION 2: SCAN QR</label>
-                    <button class="modal-btn" style="background: #222; color: #fff; border: 1px solid var(--gold); padding: 8px;" onclick="generateQR()">GENERATE QR FOR PAYMENT</button>
+                    
+                    <label>PAYMENT OPTION 2: DIRECT BANK TRANSFER (IFSC / ACCOUNT)</label>
+                    <div style="background: #161616; padding: 12px; border-radius: 6px; border: 1px solid #333; margin-bottom: 15px; font-size: 0.85rem;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--text-dim);">ACCOUNT NO:</span> <strong style="color:var(--gold); letter-spacing:1px;">520102120008909</strong></div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--text-dim);">IFSC CODE:</span> <strong style="color:var(--gold); letter-spacing:1px;">UBIN0552011</strong></div>
+                        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim);">ACCOUNT HOLDER:</span> <strong style="color:#fff;">ABHINAY CHAUBEY</strong></div>
+                    </div>
+
+                    <label>PAYMENT OPTION 3: SCAN QR</label>
+                    <button class="modal-btn" style="background: #222; color: #fff; border: 1px solid var(--gold); padding: 8px;" onclick="generateQR()">GENERATE FULL QR FOR PAYMENT</button>
+                    
                     <div class="qr-area" id="qrContainer">
-                        <p style="color: var(--text-dim); font-size: 0.8rem; margin-bottom: 5px;">SCAN WITH ANY UPI APP</p>
-                        <img id="qrImage" src="" alt="AUTO GENERATED QR CODE">
+                        <p class="upi-accept-text" style="color: var(--gold); border-bottom:none; margin-bottom: 5px;">SCAN WITH ANY UPI APP</p>
+                        <div class="qr-wrapper">
+                            <img id="qrImage" src="" alt="AUTO GENERATED QR CODE">
+                            <img src="abhinay.png" class="qr-center-logo" alt="Abhinay Logo" onerror="this.style.display='none'">
+                        </div>
+                        <div class="upi-accept-text">ACCEPT ANY UPI HANDLE</div>
+                        <div class="upi-logos">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/BHIM_SVG_Logo.svg" alt="BHIM">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/BharatPe_logo.svg" alt="BharatPe">
+                        </div>
                     </div>
                 </div>
 
@@ -1094,7 +1189,6 @@
         </div>
     </div>
 
-
     <div id="receiptArea">
         <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAY PRATAP (MATHS MYSTIC)</div>
         <div class="r-content">
@@ -1208,7 +1302,7 @@
             // --- Rotating Nav Logo (10 Logos, every 2 seconds) ---
             const navLogos = [
                 'm.png',
-                'logo2.png', // Replace these names with your actual logo filenames
+                'logo2.png',
                 'logo3.png',
                 'logo4.png',
                 'logo5.png',
@@ -1227,6 +1321,37 @@
                 }, 2000);
             }
         });
+
+        // ==========================================
+        // --- DIRECTOR MESSAGE POPUP & 10s TIMER ---
+        // ==========================================
+        let directorTimer = null;
+
+        function openDirectorModal() {
+            const modal = document.getElementById('directorModal');
+            const timerFill = document.getElementById('directorTimerFill');
+            
+            timerFill.style.transition = 'none';
+            timerFill.style.width = '100%';
+            modal.classList.add('show');
+            
+            // Trigger reflow
+            void timerFill.offsetWidth;
+            
+            timerFill.style.transition = 'width 10s linear';
+            timerFill.style.width = '0%';
+            
+            if(directorTimer) clearTimeout(directorTimer);
+            directorTimer = setTimeout(() => {
+                closeDirectorModal();
+            }, 10000);
+        }
+
+        function closeDirectorModal() {
+            const modal = document.getElementById('directorModal');
+            modal.classList.remove('show');
+            if(directorTimer) clearTimeout(directorTimer);
+        }
 
         // --- SECURE ADMIN EXPORT LOGIC ---
         function openAdminAuth() {
@@ -1301,8 +1426,19 @@
         }
         
         // --- TIMED BANNERS (1 MIN & 3 MINS) ---
-        setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); }, 60000); 
-        setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); }, 180000); 
+        if (!sessionStorage.getItem('banner1MinShown')) {
+            setTimeout(() => { 
+                document.getElementById('timedBanner2min').classList.add('show'); 
+                sessionStorage.setItem('banner1MinShown', 'true');
+            }, 60000); 
+        }
+        
+        if (!sessionStorage.getItem('banner3MinShown')) {
+            setTimeout(() => { 
+                document.getElementById('timedBanner5min').classList.add('show'); 
+                sessionStorage.setItem('banner3MinShown', 'true');
+            }, 180000); 
+        }
 
         // --- Sliders Logic ---
         const sliderWrapper = document.getElementById('sliderWrapper'); 
@@ -1433,7 +1569,7 @@
         function generateQR() {
             if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); return; }
             const upiUrl = `upi://pay?pa=7705042892@ibl&pn=PratapMaths&am=${currentCoursePrice}&cu=INR`;
-            document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`; 
+            document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`; 
             qrContainer.style.display = "block";
         }
 
@@ -1482,7 +1618,6 @@
             const studentData = { name: name, mobile: mobile, enrollNo: enrollNo, courseName: currentCourseName, purchaseDate: dateStr, expiryDate: expiryStr, amount: finalPayable };
             localStorage.setItem('mathsMysticStudent', JSON.stringify(studentData));
             
-            // Add to admin record silently
             let users = JSON.parse(localStorage.getItem('mysticAllUsers') || '[]'); 
             users.push({name: name, mobile: mobile, date: dateStr}); 
             localStorage.setItem('mysticAllUsers', JSON.stringify(users));
@@ -1552,7 +1687,6 @@
             showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.', true); 
         }
 
-        // --- DYNAMIC COURSE SYLLABUS MAPPING ---
         function getSyllabus(courseName) {
             const name = courseName.toUpperCase();
             if (name.includes("MATHEMATICS SPECIAL")) {
@@ -1689,7 +1823,7 @@
                 return;
             }
 
-            let videoUrl = ""; // ADD VIDEO LINK HERE
+            let videoUrl = ""; 
             
             if(videoUrl === "" || videoUrl === "#") {
                 realPlayer.style.display = 'none'; 
