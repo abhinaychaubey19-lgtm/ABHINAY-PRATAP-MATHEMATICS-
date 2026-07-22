@@ -15,6 +15,7 @@
             --gold: #eab308;
             --pink: #ff2a75;
             --pink-hover: #ff0055;
+            --app-blue: #00bcd4;
             --text-light: #ffffff;
             --text-dim: #a3a3a3;
             --border-dark: #262626;
@@ -22,55 +23,62 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
-        body { background-color: var(--bg-main); color: var(--text-light); }
+        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; }
 
         /* ========================================== */
-        /* --- HEADER & FLOWING LOGO --- */
+        /* --- PROFESSIONAL SPINNING BORDER LOGOS --- */
+        /* ========================================== */
+        .logo-spin-wrap {
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            background: #000;
+            z-index: 1;
+        }
+        .logo-spin-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -3px; 
+            border-radius: 50%;
+            background: conic-gradient(var(--gold), var(--pink), var(--app-blue), var(--gold));
+            animation: spinBorder 4s linear infinite;
+            z-index: -1;
+        }
+        .inner-img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #000;
+            border: 2px solid #000;
+        }
+        @keyframes spinBorder { 100% { transform: rotate(360deg); } }
+
+        /* ========================================== */
+        /* --- HEADER --- */
         /* ========================================== */
         .portal-header {
             background: var(--bg-card); border-bottom: 2px solid var(--gold);
             padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
             position: sticky; top: 0; z-index: 100; box-shadow: 0 5px 20px rgba(0,0,0,0.8);
         }
-        .header-logo-box { display: flex; align-items: center; gap: 15px; }
-        
-        /* Flowing / Spinning Logo Effect */
-        .header-img {
-            width: 52px; height: 52px; border-radius: 50%; border: 3px solid var(--gold);
-            background: #000; object-fit: contain; padding: 3px;
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);
-            animation: flowLogoSpin 8s linear infinite;
-        }
-        @keyframes flowLogoSpin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.05); border-color: var(--pink); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
+        .header-logo-box { display: flex; align-items: center; gap: 15px; z-index: 2; }
+        .header-logo-wrap { width: 50px; height: 50px; }
 
         .header-text h1 { font-size: 1.2rem; color: #fff; font-weight: 900; letter-spacing: 1px; margin-bottom: 2px;}
         .header-text p { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 1.5px;}
 
-        /* ========================================== */
-        /* --- FLOATING FOLLOWING LOGO --- */
-        /* ========================================== */
-        .floating-logo {
+        .floating-logo-wrap {
             position: fixed; bottom: 30px; right: 30px; z-index: 5000;
-            width: 65px; height: 65px; border-radius: 50%; border: 3px solid var(--gold);
-            background: #fff; padding: 4px; object-fit: contain;
-            box-shadow: 0 10px 30px rgba(234, 179, 8, 0.4); cursor: pointer;
-            animation: bounceFloat 3s ease-in-out infinite;
-        }
-        @keyframes bounceFloat {
-            0%, 100% { transform: translateY(0); box-shadow: 0 10px 30px rgba(234, 179, 8, 0.4); }
-            50% { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(234, 179, 8, 0.6); }
+            width: 65px; height: 65px; cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         /* ========================================== */
         /* --- MAIN CONTAINER --- */
         /* ========================================== */
-        .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; min-height: 80vh; }
+        .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; min-height: 80vh; position: relative; z-index: 2; }
         .section-title { 
-            font-size: 1.8rem; font-weight: 900; margin-bottom: 25px; 
+            font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; 
             border-left: 5px solid var(--gold); padding-left: 15px; letter-spacing: 1px;
         }
         .section-title span { color: var(--gold); }
@@ -79,7 +87,7 @@
         /* --- PREMIUM DROPDOWN SELECTOR --- */
         /* ========================================== */
         .custom-dropdown-container {
-            position: relative; max-width: 400px; margin-bottom: 40px; z-index: 50;
+            position: relative; max-width: 400px; margin-bottom: 35px; z-index: 50;
         }
         .dropdown-header {
             background: var(--bg-card); color: var(--gold); border: 2px solid var(--gold);
@@ -106,100 +114,92 @@
         }
 
         /* ========================================== */
-        /* --- A4 BOOKS GRID SYSTEM (STANDARD) --- */
+        /* --- BOOKS GRID (AUTO FIT IMAGE ADAPTIVE) --- */
         /* ========================================== */
         .books-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; 
         }
         .book-card {
-            background: var(--bg-card); border: 2px solid var(--border-dark); border-radius: 15px; 
+            background: var(--bg-card); border: 2px solid var(--border-dark); border-radius: 14px; 
             overflow: hidden; width: 100%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: 0.4s; text-align: center; position: relative;
             animation: fadeIn 0.5s ease forwards;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .book-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(234, 179, 8, 0.2); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .book-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.2); }
+        
         .book-tag { 
-            position: absolute; top: 15px; right: -30px; background: var(--red-brand); 
-            color: #fff; font-size: 0.75rem; font-weight: 900; padding: 5px 35px; 
-            transform: rotate(45deg); letter-spacing: 1px; box-shadow: 0 2px 10px rgba(220, 38, 38, 0.5); z-index: 10; 
+            position: absolute; top: 12px; right: -28px; background: var(--red-brand); 
+            color: #fff; font-size: 0.7rem; font-weight: 900; padding: 4px 30px; 
+            transform: rotate(45deg); letter-spacing: 1px; z-index: 10; 
         }
+        
+        /* Image sets itself perfectly without cutting */
         .book-banner-img { 
-            width: 100%; aspect-ratio: 1 / 1.414; object-fit: cover; 
-            border-bottom: 3px solid var(--gold); background: #222; display: block; 
+            width: 100%; aspect-ratio: 1 / 1.414; object-fit: contain; 
+            border-bottom: 2px solid var(--gold); background: #111; display: block; padding: 4px; 
         }
-        .book-content { padding: 25px 20px; }
-        .book-subject { color: var(--gold); font-size: 0.85rem; font-weight: 900; margin-bottom: 8px; letter-spacing: 1px; }
-        .book-title { color: var(--text-light); font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; line-height: 1.4;}
+        
+        .book-content { padding: 20px 15px; }
+        .book-subject { color: var(--gold); font-size: 0.75rem; font-weight: 900; margin-bottom: 5px; letter-spacing: 1px; }
+        .book-title { color: var(--text-light); font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; line-height: 1.3;}
         .book-desc {
-            color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; font-weight: 500; 
-            text-transform: none; margin-bottom: 20px; display: -webkit-box; 
-            -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+            color: var(--text-dim); font-size: 0.8rem; line-height: 1.5; font-weight: 500; 
+            text-transform: none; margin-bottom: 15px; display: -webkit-box; 
+            -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
         }
 
         .btn-download { 
             display: block; width: 100%; background: var(--pink); color: #fff; 
-            border: none; outline: none; cursor: pointer; padding: 14px; border-radius: 8px; font-weight: 900; 
-            font-size: 1.05rem; transition: 0.3s; box-shadow: 0 5px 20px rgba(255, 42, 117, 0.4); 
+            border: none; outline: none; cursor: pointer; padding: 11px; border-radius: 6px; font-weight: 900; 
+            font-size: 0.95rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 42, 117, 0.4); 
             letter-spacing: 1px;
         }
-        .btn-download:hover { background: var(--pink-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 42, 117, 0.6); }
+        .btn-download:hover { background: var(--pink-hover); transform: translateY(-2px); }
 
         /* ========================================== */
-        /* --- MATHS SPECIAL LAYOUT (COMPETITION LEVEL) --- */
+        /* --- MATHS SPECIAL LAYOUT --- */
         /* ========================================== */
         .math-special-container { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.5s ease forwards; }
         
-        .math-syllabus-banner {
-            background: linear-gradient(135deg, var(--gold), var(--pink)); border-radius: 15px;
-            padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(255, 42, 117, 0.3);
-            border: 2px solid #fff; margin-bottom: 10px;
-        }
-        .math-syllabus-banner h3 { color: #fff; font-size: 1.5rem; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .math-syllabus-banner p { color: #fff; font-weight: 600; text-transform: none; margin-bottom: 20px; }
-        .btn-white { background: #fff; color: #000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: max-content; margin: 0 auto; padding: 12px 30px;}
-        .btn-white:hover { background: #eee; color: var(--pink); }
-
-        .math-special-tabs {
-            display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;
-        }
-        .math-tab {
-            background: var(--bg-card); color: var(--text-dim); border: 2px solid var(--border-dark);
-            padding: 12px 30px; border-radius: 8px; font-weight: 800; font-size: 1.1rem;
-            cursor: pointer; transition: 0.3s; flex: 1; min-width: 250px;
-        }
-        .math-tab.active {
-            background: var(--pink); color: #fff; border-color: var(--pink);
-            box-shadow: 0 5px 15px rgba(255, 42, 117, 0.4);
+        .math-choice-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 10px;
         }
 
-        .math-chapter-list { display: flex; flex-direction: column; gap: 15px; }
+        .back-choice-btn {
+            background: #222; color: var(--gold); border: 1px solid var(--gold);
+            padding: 10px 20px; border-radius: 8px; font-weight: 800; cursor: pointer;
+            width: max-content; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .back-choice-btn:hover { background: var(--gold); color: #000; }
+
+        /* SLIM & CLEAN CHAPTER LIST ITEMS */
+        .math-chapter-list { display: flex; flex-direction: column; gap: 10px; }
         .math-chapter-item {
             background: var(--bg-card); border: 1px solid var(--border-dark); border-left: 4px solid var(--gold);
-            border-radius: 12px; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between;
-            cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 10px; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between;
+            cursor: pointer; transition: 0.3s ease;
         }
         .math-chapter-item:hover { 
-            transform: translateX(10px); border-color: var(--gold); 
-            box-shadow: 0 8px 25px rgba(234, 179, 8, 0.15); background: #161616;
+            transform: translateX(6px); border-color: var(--gold); background: #161616;
         }
         
-        .math-chapter-left { display: flex; align-items: center; gap: 20px; }
+        .math-chapter-left { display: flex; align-items: center; gap: 15px; }
         .math-chapter-img {
-            width: 55px; height: 55px; border-radius: 8px; border: 2px solid var(--border-dark);
-            object-fit: cover; background: #222;
+            width: 45px; height: 45px; border-radius: 6px; border: 1px solid var(--border-dark);
+            object-fit: contain; background: #111; padding: 2px;
         }
-        .math-chapter-item:hover .math-chapter-img { border-color: var(--gold); }
-        .math-chapter-title { color: var(--text-light); font-size: 1.1rem; font-weight: 800; }
-        .math-chapter-desc { color: var(--text-dim); font-size: 0.75rem; font-weight: 600; text-transform: none; margin-top: 5px; }
+        .math-chapter-title { color: var(--text-light); font-size: 0.95rem; font-weight: 800; }
+        .math-chapter-desc { color: var(--text-dim); font-size: 0.7rem; font-weight: 600; text-transform: none; margin-top: 2px; }
 
         .math-chapter-right {
-            width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 42, 117, 0.1);
+            width: 35px; height: 35px; border-radius: 50%; background: rgba(255, 42, 117, 0.1);
             display: flex; align-items: center; justify-content: center; transition: 0.3s;
         }
-        .math-chapter-right i { color: var(--pink); font-size: 1.3rem; transition: 0.3s; }
-        .math-chapter-item:hover .math-chapter-right { background: var(--pink); box-shadow: 0 0 15px var(--pink); }
-        .math-chapter-item:hover .math-chapter-right i { color: #fff; transform: translateY(-2px); }
+        .math-chapter-right i { color: var(--pink); font-size: 1rem; transition: 0.3s; }
+        .math-chapter-item:hover .math-chapter-right { background: var(--pink); }
+        .math-chapter-item:hover .math-chapter-right i { color: #fff; }
 
         /* ========================================== */
         /* --- PROGRESS & ALERTS --- */
@@ -209,46 +209,48 @@
             z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center;
         }
         .progress-overlay.active { display: flex; }
-        .progress-logo {
-            width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--gold);
-            background: #fff; object-fit: contain; padding: 5px; box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
-            animation: pulseLogo 1.5s infinite;
+        .buffering-spinner {
+            width: 70px; height: 70px; border: 5px solid rgba(234, 179, 8, 0.2);
+            border-top: 5px solid var(--gold); border-radius: 50%;
+            animation: bufferSpin 1s linear infinite; margin-bottom: 20px;
         }
-        @keyframes pulseLogo {
-            0%, 100% { transform: scale(0.95); box-shadow: 0 0 10px rgba(234, 179, 8, 0.2); }
-            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(234, 179, 8, 0.8); }
-        }
-        .progress-percent { font-size: 4rem; color: var(--gold); font-weight: 900; margin-top: 20px; font-family: 'Poppins', sans-serif; letter-spacing: 2px; }
-        .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 3px; margin-top: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); text-align: center; }
+        @keyframes bufferSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .progress-percent { font-size: 4rem; color: var(--gold); font-weight: 900; letter-spacing: 2px; }
+        .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 2px; margin-top: 5px; text-align: center; }
 
         .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10000; background: rgba(0, 0, 0, 0.9); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .global-modal.show { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--pink); padding: 30px; border-radius: 16px; max-width: 400px; width: 95%; text-align: center;}
-        .modal-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(255, 42, 117, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .modal-icon-wrapper i { font-size: 2.5rem; color: var(--pink); }
-        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 20px; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--pink); padding: 25px; border-radius: 14px; max-width: 380px; width: 95%; text-align: center;}
+        .modal-icon-wrapper { width: 70px; height: 70px; margin: 0 auto 15px; background: rgba(255, 42, 117, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .modal-icon-wrapper i { font-size: 2.2rem; color: var(--pink); }
+        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 11px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 15px; }
 
     </style>
 </head>
 <body>
 
-    <!-- Header with Spinning Flowing Logo -->
+    <!-- Header -->
     <header class="portal-header">
         <div class="header-logo-box">
-            <img src="abhinay.png" alt="Logo" class="header-img" onerror="this.src='https://via.placeholder.com/50'">
+            <div class="logo-spin-wrap header-logo-wrap">
+                <img src="abhinay.png" alt="Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/50'">
+            </div>
             <div class="header-text">
                 <h1>ABHINAY PRATAP MATHS</h1>
-                <p>DIGITAL LIBRARY</p>
+                <p>DIGITAL LIBRARY & E- BOOK SECTION</p>
             </div>
         </div>
     </header>
 
     <!-- Floating Following Logo -->
-    <img src="abhinay.png" alt="AP Logo" class="floating-logo" onerror="this.src='https://via.placeholder.com/65'" onclick="window.scrollTo(0,0)" title="Back to Top">
+    <div class="logo-spin-wrap floating-logo-wrap" onclick="window.scrollTo(0,0)" title="Back to Top">
+        <img src="abhinay.png" alt="AP Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/65'">
+    </div>
 
     <div class="pdf-portal-container">
         
-        <!-- Premium Custom Dropdown Selector -->
+        <!-- Category Dropdown -->
         <div class="custom-dropdown-container">
             <div class="dropdown-header" onclick="toggleDropdown()" id="dropdownTitle">
                 <span><i class="fas fa-layer-group" style="margin-right:8px;"></i> SELECT CATEGORY</span>
@@ -267,48 +269,79 @@
 
         <h2 class="section-title" id="dynamicTitle">CLASS 9TH <span>MATERIALS</span></h2>
 
-        <!-- A4 Books Grid (For normal classes) -->
+        <!-- A4 Books Grid -->
         <div class="books-grid" id="booksGrid"></div>
 
-        <!-- Maths Special Exclusive Layout (Full Competition Chapters) -->
+        <!-- Maths Special Exclusive Layout -->
         <div class="math-special-container" id="mathSpecialContainer">
-            <div class="math-syllabus-banner">
-                <h3>MATHS SPECIAL FULL SYLLABUS</h3>
-                <p>Download the complete roadmap and exam strategy officially designed by Abhinay Pratap Sir.</p>
-                <button class="btn-download btn-white" onclick="triggerDownloadProgress('#', 'Maths Special Syllabus')">
-                    <i class="fas fa-file-pdf"></i> DOWNLOAD FULL SYLLABUS
-                </button>
-            </div>
             
-            <h2 class="section-title" style="margin-top:10px;">CHAPTER <span>WISE PDF</span></h2>
-            
-            <!-- Arithmetic / Advance Toggle -->
-            <div class="math-special-tabs">
-                <button class="math-tab active" id="btnArithmetic" onclick="switchMathSection('arithmetic', this)">ARITHMETIC MATH</button>
-                <button class="math-tab" id="btnAdvance" onclick="switchMathSection('advance', this)">ADVANCE MATH</button>
+            <!-- STEP 1: Choice Cards + Syllabus Card Included -->
+            <div id="mathChoiceView">
+                <h3 style="color:var(--gold); margin-bottom:15px; font-size:1.3rem; text-align:center;">BY ABHINAY CHAUBEY(MATHS EXPERT)</h3>
+                <div class="books-grid">
+                    
+                    <!-- Syllabus Card -->
+                    <div class="book-card">
+                        <div class="book-tag">SYLLABUS</div>
+                        <img src="syllabus.png" alt="Syllabus" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                        <div class="book-content">
+                            <h3 class="book-title">MATHS FULL SYLLABUS</h3>
+                            <p class="book-desc">Complete Roadmap and competitive exam strategy designed by Abhinay Sir.</p>
+                            <button class="btn-download" onclick="triggerDownloadProgress('https://drive.google.com/file/d/1iSkVxMKHczV3VnqxUGz6sVYjeM7BN8NS/view?usp=drivesdk', 'Maths Special Syllabus')">
+                                <i class="fas fa-file-pdf"></i> DOWNLOAD SYLLABUS
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Arithmetic Choice -->
+                    <div class="book-card" onclick="openMathSection('arithmetic')" style="cursor:pointer; border-color:var(--pink);">
+                        <img src="arithmetic.png" alt="Arithmetic" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                        <div class="book-content">
+                            <h3 class="book-title">ARITHMETIC MATHS</h3>
+                            <p class="book-desc">Complete 16 Chapters from Percentage, Ratio, Time & Work to Number System.</p>
+                            <button class="btn-download" style="background:#222; color:var(--gold); box-shadow:none; border:1px solid var(--gold);">VIEW CHAPTERS</button>
+                        </div>
+                    </div>
+
+                    <!-- Advance Choice -->
+                    <div class="book-card" onclick="openMathSection('advance')" style="cursor:pointer; border-color:var(--pink);">
+                        <img src="advanced.png" alt="Advance" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                        <div class="book-content">
+                            <h3 class="book-title">ADVANCE MATHS</h3>
+                            <p class="book-desc">Complete 15 Chapters covering Algebra, Geometry, Trigonometry & Mensuration.</p>
+                            <button class="btn-download" style="background:#222; color:var(--gold); box-shadow:none; border:1px solid var(--gold);">VIEW CHAPTERS</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-            <!-- List of Chapters -->
-            <div class="math-chapter-list" id="mathChapterList"></div>
+            <!-- STEP 2: Active Chapter View -->
+            <div class="math-active-section" id="mathActiveSection" style="display:none; flex-direction:column; gap:15px;">
+                <button class="back-choice-btn" onclick="backToChoices()"><i class="fas fa-arrow-left"></i> BACK TO SECTIONS</button>
+                <h2 class="section-title" id="activeSectionTitle" style="margin-top:5px;">CHAPTER <span>WISE PDF</span></h2>
+                <div class="math-chapter-list" id="mathChapterList"></div>
+            </div>
+
         </div>
 
     </div>
 
-    <!-- 1 to 100% Progress Overlay -->
+    <!-- Progress Overlay -->
     <div class="progress-overlay" id="progressOverlay">
-        <img src="abhinay.png" alt="Abhinay Logo" class="progress-logo" onerror="this.src='https://via.placeholder.com/120'">
+        <div class="buffering-spinner"></div>
         <div class="progress-percent" id="progressCounter">1%</div>
-        <div class="progress-msg">SECURE CONNECTION IN PROGRESS...</div>
+        <div class="progress-msg">DOWNLOADING SECURE PDF...</div>
     </div>
 
-    <!-- Custom Alert Modal -->
+    <!-- Alert Modal -->
     <div class="global-modal" id="alertModal">
         <div class="modal-content">
             <div class="modal-icon-wrapper">
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <h3 style="color:#fff; margin-bottom:10px;">LINK UNAVAILABLE</h3>
-            <p id="alertMsg" style="color:var(--text-dim); font-size:0.9rem; line-height:1.6; text-transform:none;">The PDF link has not been updated yet by the administrator. Please check back later.</p>
+            <h3 style="color:#fff; margin-bottom:8px;">LINK UNAVAILABLE</h3>
+            <p id="alertMsg" style="color:var(--text-dim); font-size:0.85rem; line-height:1.5; text-transform:none;">The PDF link has not been updated yet by the administrator. Please check back later.</p>
             <button class="modal-btn" onclick="document.getElementById('alertModal').classList.remove('show')">OKAY, I UNDERSTAND</button>
         </div>
     </div>
@@ -318,16 +351,14 @@
             const list = document.getElementById('dropdownList');
             const arrow = document.getElementById('dropdownArrow');
             list.classList.toggle('show');
-            if(list.classList.contains('show')) { arrow.style.transform = 'rotate(180deg)'; } 
-            else { arrow.style.transform = 'rotate(0deg)'; }
+            arrow.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
         function selectCategory(category, element) {
             document.getElementById('dropdownTitle').innerHTML = `<span><i class="fas fa-check-circle" style="color:var(--green); margin-right:8px;"></i> ${category}</span> <i class="fas fa-chevron-down" id="dropdownArrow"></i>`;
             document.getElementById('dynamicTitle').innerHTML = `${category} <span>MATERIALS</span>`;
             
-            const items = document.querySelectorAll('.dropdown-item');
-            items.forEach(i => i.classList.remove('active-item'));
+            document.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active-item'));
             element.classList.add('active-item');
 
             toggleDropdown();
@@ -358,7 +389,6 @@
             ],
             "CLASS 12": [
                 { subject: "MATHEMATICS", title: "Integration & Calculus Mastery", img: "m12.png", link: "#", desc: "Advanced integration techniques to score 100/100." },
-                { subject: "PHYSICS", title: "Class 12 Electromagnetism", img: "banner.png", link: "#", desc: "Electrostatics, Magnetism, and AC circuits." },
                 { subject: "CHEMISTRY", title: "Inorganic Name Reactions", img: "che12.png", link: "#", desc: "All vital name reactions and p-block elements." },
                 { subject: "ENGLISH", title: "Board Exam Literature", img: "eng12.png", link: "#", desc: "Flamingo and Vistas important questions." },
                 { subject: "BIOLOGY", title: "Genetics & Biotechnology", img: "bio12.png", link: "#", desc: "Handwritten notes for difficult biology chapters." }
@@ -367,19 +397,18 @@
                 { subject: "MATHEMATICS", title: "KVS PRT/TGT Maths", img: "kvm.png", link: "#", desc: "Topic-wise shortcuts for teaching exams." },
                 { subject: "COMPREHENSION", title: "English comprehensive", img: "kvcom.png", link: "#", desc: "Expected Comprehensive theories and MCQ practice sets." },
                 { subject: "ENGLISH", title: "General English Practice", img: "kveng.png", link: "#", desc: "Grammar exercises targeting common errors." },
-                { subject: "REASONING", title: "LOGICAL REASONING", img: "kvres.png", link: "#", desc: "Sandhi, Samas, and basic grammar concepts." },
-                { subject: "SCIENCE", title: " KVS Science NCERT Digest", img: "kvsci.png", link: "#", desc: "Class 6 to 10 NCERT Science gist customized." }
+                { subject: "REASONING", title: "LOGICAL REASONING", img: "kvres.png", link: "#", desc: "Logical thinking and pattern completion." },
+                { subject: "SCIENCE", title: "KVS Science NCERT Digest", img: "kvsci.png", link: "#", desc: "Class 6 to 10 NCERT Science gist customized." }
             ],
             "NVS": [
                 { subject: "MATHEMATICS", title: "NVS PGT Advance Maths", img: "nvsm.png", link: "#", desc: "High-level algebraic and geometric problems." },
                 { subject: "REASONING", title: "Logical Reasoning Ability", img: "nvsr.png", link: "#", desc: "Verbal and non-verbal reasoning shortcuts." },
-                { subject: "COMPREHENSION.", title: "Teaching Aptitude & NEP", img: "nvscom.png", link: "#", desc: "Modern teaching methodologies and NEP policies." },
+                { subject: "COMPREHENSION", title: "Teaching Aptitude & NEP", img: "nvscom.png", link: "#", desc: "Modern teaching methodologies and NEP policies." },
                 { subject: "LANGUAGE TEST", title: "Hindi + English Qualifying", img: "nvseng.png", link: "#", desc: "Grammar notes to clear mandatory test." },
                 { subject: "SCIENCE", title: "NVS General Science", img: "nvssci.png", link: "#", desc: "10 full-length mock sets for rigorous practice." }
             ]
         };
 
-        // --- COMPETITION LEVEL ARITHMETIC & ADVANCE CHAPTERS ---
         const mathSpecialData = {
             arithmetic: [
                 { title: "01. Calculation & Vedic Maths", img: "m.png", link: "#", desc: "Fast Calculation Tricks & Squares/Cubes" },
@@ -425,8 +454,7 @@
             if(category === "MATHS SPECIAL") {
                 grid.style.display = "none";
                 mathContainer.style.display = "flex";
-                const btnArith = document.getElementById('btnArithmetic');
-                switchMathSection('arithmetic', btnArith);
+                backToChoices();
             } else {
                 mathContainer.style.display = "none";
                 grid.style.display = "grid";
@@ -452,13 +480,20 @@
             }
         }
 
-        function switchMathSection(type, element) {
-            document.querySelectorAll('.math-tab').forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
-
+        function openMathSection(type) {
+            document.getElementById('mathChoiceView').style.display = "none";
+            document.getElementById('mathActiveSection').style.display = "flex";
+            
             const chapterList = document.getElementById('mathChapterList');
             chapterList.innerHTML = "";
             const chapters = mathSpecialData[type];
+
+            const sectionTitle = document.getElementById('activeSectionTitle');
+            if(type === 'arithmetic') {
+                sectionTitle.innerHTML = "ARITHMETIC <span>CHAPTERS</span>";
+            } else {
+                sectionTitle.innerHTML = "ADVANCE <span>CHAPTERS</span>";
+            }
 
             chapters.forEach((ch, i) => {
                 chapterList.innerHTML += `
@@ -475,6 +510,11 @@
                     </div>
                 </div>`;
             });
+        }
+
+        function backToChoices() {
+            document.getElementById('mathActiveSection').style.display = "none";
+            document.getElementById('mathChoiceView').style.display = "block";
         }
 
         function triggerDownloadProgress(link, title) {
@@ -494,7 +534,7 @@
                         evaluateLink(link, title);
                     }, 400);
                 }
-            }, 15);
+            }, 30);
         }
 
         function evaluateLink(link, title) {
