@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula Sheets & Short Tricks | AP Mathematics</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #050505;
+            --bg-card: #111111;
+            --gold: #eab308;
+            --pink: #ff2a75;
+            --pink-hover: #ff0055;
+            --app-blue: #00bcd4;
+            --text-light: #ffffff;
+            --text-dim: #a3a3a3;
+            --border-dark: #262626;
+            --red-brand: #dc2626;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
+        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; }
+
+        /* ========================================== */
+        /* --- PROFESSIONAL SPINNING BORDER LOGOS --- */
+        /* ========================================== */
+        .logo-spin-wrap {
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            background: #000;
+            z-index: 1;
+        }
+        .logo-spin-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -3px; 
+            border-radius: 50%;
+            background: conic-gradient(var(--gold), var(--pink), var(--app-blue), var(--gold));
+            animation: spinBorder 4s linear infinite;
+            z-index: -1;
+        }
+        .inner-img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #000;
+            border: 2px solid #000;
+        }
+        @keyframes spinBorder { 100% { transform: rotate(360deg); } }
+
+        /* ========================================== */
+        /* --- HEADER --- */
+        /* ========================================== */
+        .portal-header {
+            background: var(--bg-card); border-bottom: 2px solid var(--gold);
+            padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+        .header-logo-box { display: flex; align-items: center; gap: 15px; z-index: 2; }
+        .header-logo-wrap { width: 50px; height: 50px; }
+
+        .header-text h1 { font-size: 1.2rem; color: #fff; font-weight: 900; letter-spacing: 1px; margin-bottom: 2px;}
+        .header-text p { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 1.5px;}
+
+        .floating-logo-wrap {
+            position: fixed; bottom: 30px; right: 30px; z-index: 5000;
+            width: 65px; height: 65px; cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        /* ========================================== */
+        /* --- MAIN CONTAINER --- */
+        /* ========================================== */
+        .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; min-height: 80vh; position: relative; z-index: 2; }
+        .section-title { 
+            font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; 
+            border-left: 5px solid var(--gold); padding-left: 15px; letter-spacing: 1px;
+        }
+        .section-title span { color: var(--gold); }
+
+        /* ========================================== */
+        /* --- PREMIUM DROPDOWN SELECTOR --- */
+        /* ========================================== */
+        .custom-dropdown-container {
+            position: relative; max-width: 400px; margin-bottom: 35px; z-index: 50;
+        }
+        .dropdown-header {
+            background: var(--bg-card); color: var(--gold); border: 2px solid var(--gold);
+            padding: 15px 20px; border-radius: 12px; font-size: 1.1rem; font-weight: 800;
+            display: flex; justify-content: space-between; align-items: center; cursor: pointer;
+            box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); transition: 0.3s;
+        }
+        .dropdown-header:hover { background: #1a1a1a; }
+        .dropdown-list {
+            position: absolute; top: 110%; left: 0; width: 100%; background: var(--bg-card);
+            border: 2px solid var(--border-dark); border-radius: 12px; overflow: hidden;
+            display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+        }
+        .dropdown-list.show { display: flex; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .dropdown-item {
+            padding: 15px 20px; color: var(--text-light); font-weight: 600; font-size: 1rem;
+            cursor: pointer; border-bottom: 1px solid var(--border-dark); transition: 0.2s;
+        }
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover, .dropdown-item.active-item {
+            background: rgba(234, 179, 8, 0.1); color: var(--gold); padding-left: 25px;
+        }
+
+        /* ========================================== */
+        /* --- BOOKS GRID SYSTEM --- */
+        /* ========================================== */
+        .books-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 40px; 
+        }
+        .book-card {
+            background: var(--bg-card); border: 2px solid var(--border-dark); border-radius: 14px; 
+            overflow: hidden; width: 100%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: 0.4s; text-align: center; position: relative;
+            animation: fadeIn 0.5s ease forwards; margin: 0 auto;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .book-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.2); }
+        
+        .book-tag { 
+            position: absolute; top: 12px; right: -28px; background: var(--pink); 
+            color: #fff; font-size: 0.7rem; font-weight: 900; padding: 4px 30px; 
+            transform: rotate(45deg); letter-spacing: 1px; z-index: 10; 
+        }
+        
+        .book-banner-img { 
+            width: 100%; aspect-ratio: 1 / 1.414; object-fit: contain; 
+            border-bottom: 2px solid var(--gold); background: #1a1a1a; display: block; padding: 4px; 
+        }
+        
+        .book-content { padding: 20px 15px; }
+        .book-subject { color: var(--gold); font-size: 0.75rem; font-weight: 900; margin-bottom: 5px; letter-spacing: 1px; }
+        .book-title { color: var(--text-light); font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; line-height: 1.3;}
+        .book-desc {
+            color: var(--text-dim); font-size: 0.8rem; line-height: 1.5; font-weight: 500; 
+            text-transform: none; margin-bottom: 15px; display: -webkit-box; 
+            -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        .btn-download { 
+            display: block; width: 100%; background: var(--pink); color: #fff; 
+            border: none; outline: none; cursor: pointer; padding: 11px; border-radius: 6px; font-weight: 900; 
+            font-size: 0.95rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 42, 117, 0.4); 
+            letter-spacing: 1px;
+        }
+        .btn-download:hover { background: var(--pink-hover); transform: translateY(-2px); }
+
+        /* ========================================== */
+        /* --- PROGRESS & ALERTS --- */
+        /* ========================================== */
+        .progress-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
+            z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .progress-overlay.active { display: flex; }
+        .buffering-spinner {
+            width: 70px; height: 70px; border: 5px solid rgba(234, 179, 8, 0.2);
+            border-top: 5px solid var(--gold); border-radius: 50%;
+            animation: bufferSpin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes bufferSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .progress-percent { font-size: 4rem; color: var(--gold); font-weight: 900; letter-spacing: 2px; }
+        .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 2px; margin-top: 5px; text-align: center; }
+
+        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10000; background: rgba(0, 0, 0, 0.9); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+        .global-modal.show { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--pink); padding: 25px; border-radius: 14px; max-width: 380px; width: 95%; text-align: center;}
+        .modal-icon-wrapper { width: 70px; height: 70px; margin: 0 auto 15px; background: rgba(255, 42, 117, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .modal-icon-wrapper i { font-size: 2.2rem; color: var(--pink); }
+        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 11px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 15px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="portal-header">
+        <div class="header-logo-box">
+            <div class="logo-spin-wrap header-logo-wrap">
+                <img src="abhinay.png" alt="Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/50'">
+            </div>
+            <div class="header-text">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <p>FORMULA SHEETS & TRICKS</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Following Logo -->
+    <div class="logo-spin-wrap floating-logo-wrap" onclick="window.scrollTo(0,0)" title="Back to Top">
+        <img src="abhinay.png" alt="AP Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/65'">
+    </div>
+
+    <div class="pdf-portal-container">
+        
+        <!-- Category Dropdown Selector -->
+        <div class="custom-dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown()" id="dropdownTitle">
+                <span><i class="fas fa-calculator" style="margin-right:8px;"></i> SELECT FORMULA CLASS</span>
+                <i class="fas fa-chevron-down" id="dropdownArrow"></i>
+            </div>
+            <div class="dropdown-list" id="dropdownList">
+                <div class="dropdown-item active-item" onclick="selectFormulaCategory('CLASS 9', this)">CLASS 9TH FORMULA SHEETS</div>
+                <div class="dropdown-item" onclick="selectFormulaCategory('CLASS 10', this)">CLASS 10TH FORMULA SHEETS</div>
+                <div class="dropdown-item" onclick="selectFormulaCategory('CLASS 11', this)">CLASS 11TH FORMULA SHEETS</div>
+                <div class="dropdown-item" onclick="selectFormulaCategory('CLASS 12', this)">CLASS 12TH FORMULA SHEETS</div>
+                <div class="dropdown-item" onclick="selectFormulaCategory('KVS', this)">KVS EXAM FORMULA SET</div>
+                <div class="dropdown-item" onclick="selectFormulaCategory('NVS', this)">NVS EXAM FORMULA SET</div>
+                <div class="dropdown-item" onclick="selectFormulaCategory('MATHS SPECIAL', this)" style="color:var(--pink);"><i class="fas fa-star"></i> MATHS SPECIAL SHORT TRICKS</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="dynamicTitle">CLASS 9TH <span>FORMULA SHEETS</span></h2>
+
+        <!-- Formula Books Grid -->
+        <div class="books-grid" id="booksGrid"></div>
+
+    </div>
+
+    <!-- Progress Overlay -->
+    <div class="progress-overlay" id="progressOverlay">
+        <div class="buffering-spinner"></div>
+        <div class="progress-percent" id="progressCounter">1%</div>
+        <div class="progress-msg">DOWNLOADING FORMULA SHEET...</div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="global-modal" id="alertModal">
+        <div class="modal-content">
+            <div class="modal-icon-wrapper">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3 style="color:#fff; margin-bottom:8px;">LINK UNAVAILABLE</h3>
+            <p id="alertMsg" style="color:var(--text-dim); font-size:0.85rem; line-height:1.5; text-transform:none;">The PDF link has not been updated yet by the administrator. Please check back later.</p>
+            <button class="modal-btn" onclick="document.getElementById('alertModal').classList.remove('show')">OKAY, I UNDERSTAND</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const list = document.getElementById('dropdownList');
+            const arrow = document.getElementById('dropdownArrow');
+            list.classList.toggle('show');
+            arrow.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function selectFormulaCategory(category, element) {
+            document.getElementById('dropdownTitle').innerHTML = `<span><i class="fas fa-check-circle" style="color:var(--green); margin-right:8px;"></i> ${category}</span> <i class="fas fa-chevron-down" id="dropdownArrow"></i>`;
+            document.getElementById('dynamicTitle').innerHTML = `${category} <span>FORMULA SHEETS</span>`;
+            
+            document.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active-item'));
+            element.classList.add('active-item');
+
+            toggleDropdown();
+            renderFormulaContent(category);
+        }
+
+        // Formula Sheets Data Repository
+        const formulaData = {
+            "CLASS 9": [
+                { subject: "MATHEMATICS", title: "Number Systems & Polynomials Formulas", img: "m9.png", link: "#", desc: "All fundamental algebraic identities and number properties sheet." },
+                { subject: "SCIENCE", title: "Motion & Force Formula Sheet", img: "s9.png", link: "#", desc: "Kinematics equations, Newton's laws formulas and numerical shortcuts." },
+                { subject: "GEOMETRY", title: "Lines, Angles & Triangles Theorems", img: "m9.png", link: "#", desc: "Comprehensive collection of all geometry theorems and rules." }
+            ],
+            "CLASS 10": [
+                { subject: "MATHEMATICS", title: "Trigonometry & Heights Formulas", img: "m10.png", link: "#", desc: "All standard angle values, identities and angle conversion sheets." },
+                { subject: "SCIENCE", title: "Light Reflection & Electricity Sheet", img: "s10.png", link: "#", desc: "Mirror formula, lens formula, Ohm's law and power formulas." },
+                { subject: "QUADRATIC EQ", title: "Quadratic Equations Quick Notes", img: "m10.png", link: "#", desc: "Discriminant rules and root finding shortcuts." }
+            ],
+            "CLASS 11": [
+                { subject: "MATHEMATICS", title: "Calculus & Limits Formula Booklet", img: "m11.png", link: "#", desc: "Standard differentiation formulas and trigonometric expansions." },
+                { subject: "PHYSICS", title: "Kinematics & Thermodynamics Sheet", img: "phy11.png", link: "#", desc: "Vector formulas, work-energy theorem and gas laws." },
+                { subject: "CHEMISTRY", title: "Mole Concept & Periodic Table Tricks", img: "che11.png", link: "#", desc: "Stoichiometry shortcuts and periodic trends overview." }
+            ],
+            "CLASS 12": [
+                { subject: "MATHEMATICS", title: "Integration & Matrices Master Sheet", img: "m12.png", link: "#", desc: "Definite/indefinite integration formulas and inverse trig properties." },
+                { subject: "PHYSICS", title: "Electrostatics & Magnetism Formulas", img: "banner.png", link: "#", desc: "Coulomb's law, Gauss's law, EMI and AC circuit formulas." },
+                { subject: "CHEMISTRY", title: "Solutions & Electrochemistry Sheet", img: "che12.png", link: "#", desc: "Raoult's law, Nernst equation and half-life formulas." }
+            ],
+            "KVS": [
+                { subject: "MATHEMATICS", title: "KVS Quick Revision Formula Handbook", img: "kvm.png", link: "#", desc: "All elementary to higher math formulas for teaching exams." },
+                { subject: "REASONING", title: "Reasoning Shortcuts & Series Rules", img: "kvres.png", link: "#", desc: "Quick mental math and pattern deciphering formulas." }
+            ],
+            "NVS": [
+                { subject: "MATHEMATICS", title: "NVS PGT Advanced Formula Guide", img: "nvsm.png", link: "#", desc: "Complex numbers, matrices, calculus and geometry fast sheet." },
+                { subject: "SCIENCE", title: "General Science Formula Digest", img: "nvssci.png", link: "#", desc: "Important physics and chemistry constants and formulas." }
+            ],
+            "MATHS SPECIAL": [
+                { subject: "SHORT TRICKS", title: "Abhinay Sir's 100+ Vedic Math Tricks", img: "m.png", link: "#", desc: "Superfast multiplication, square roots and division techniques." },
+                { subject: "ARITHMETIC", title: "Arithmetic Ultimate Formula Sheet", img: "m.png", link: "#", desc: "Percentage, Profit/Loss, SI/CI and Time-Work shortcut formulas." },
+                { subject: "ADVANCE", title: "Advance Math Crown Formulas", img: "banne.png", link: "#", desc: "Geometry centers, Algebra identities and Mensuration shortcuts." }
+            ]
+        };
+
+        function renderFormulaContent(category) {
+            const grid = document.getElementById('booksGrid');
+            grid.innerHTML = "";
+            
+            const sheets = formulaData[category] || [];
+            sheets.forEach((sheet, index) => {
+                grid.innerHTML += `
+                <div class="book-card" style="animation: fadeIn 0.5s ease forwards ${index * 0.08}s; opacity:0;">
+                    <div class="book-tag">FREE</div>
+                    <img src="${sheet.img}" alt="${sheet.title}" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    
+                    <div class="book-content">
+                        <div class="book-subject"><i class="fas fa-calculator"></i> ${sheet.subject}</div>
+                        <h3 class="book-title">${sheet.title}</h3>
+                        <p class="book-desc">${sheet.desc}</p>
+                        <button class="btn-download" onclick="triggerDownloadProgress('${sheet.link}', '${sheet.title}')">
+                            <i class="fas fa-download"></i> DOWNLOAD FORMULA PDF
+                        </button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function triggerDownloadProgress(link, title) {
+            const overlay = document.getElementById('progressOverlay');
+            const counter = document.getElementById('progressCounter');
+            overlay.classList.add('active');
+            
+            let currentPercent = 1;
+            let interval = setInterval(() => {
+                counter.innerText = currentPercent + "%";
+                currentPercent++;
+                
+                if(currentPercent > 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                        evaluateLink(link, title);
+                    }, 400);
+                }
+            }, 30);
+        }
+
+        function evaluateLink(link, title) {
+            if(!link || link.trim() === "" || link.trim() === "#") {
+                document.getElementById('alertMsg').innerHTML = `<b>Oops!</b> The Formula PDF for <span style="color:var(--gold); font-weight:800;">"${title}"</span> has not been updated yet by the administrator. Please check back later.`;
+                document.getElementById('alertModal').classList.add('show');
+            } else {
+                const a = document.createElement('a');
+                a.href = link;
+                a.setAttribute('download', ''); 
+                a.setAttribute('target', '_blank');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFormulaContent('CLASS 9');
+        });
+
+        document.addEventListener('click', function(event) {
+            const container = document.querySelector('.custom-dropdown-container');
+            if (!container.contains(event.target)) {
+                document.getElementById('dropdownList').classList.remove('show');
+                document.getElementById('dropdownArrow').style.transform = 'rotate(0deg)';
+            }
+        });
+    </script>
+</body>
+</html>
