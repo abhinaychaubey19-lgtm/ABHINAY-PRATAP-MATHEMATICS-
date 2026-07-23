@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printable Question Paper - AP Maths</title>
+    <title>Olympiad Exam Paper - AP Maths</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         /* ========================================== */
         /* GENERAL SCREEN STYLES (NO-PRINT) */
         /* ========================================== */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 20px;
             color: #000;
@@ -28,209 +29,253 @@
             background: #ff2a75;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 1.1rem;
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
             margin: 0 10px;
             box-shadow: 0 4px 6px rgba(255, 42, 117, 0.3);
+            text-transform: uppercase;
         }
         .btn-print:hover { background: #e60050; }
 
         /* ========================================== */
-        /* A4 PAPER STYLES */
+        /* A4 PAPER CONTAINER FOR SCREEN */
         /* ========================================== */
         .paper-container {
             max-width: 210mm; /* A4 Width */
             margin: 0 auto;
             background: #fff;
-            padding: 15mm 20mm;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            padding: 15mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
             position: relative;
+            min-height: 297mm;
         }
 
-        /* Watermark */
-        .watermark {
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><text x="50%" y="50%" text-anchor="middle" transform="rotate(-45 250 250)" font-size="40" font-family="Arial" font-weight="bold" fill="rgba(0,0,0,0.06)">ABHINAY PRATAP MATHS</text></svg>');
-            background-repeat: repeat;
+        /* Fixed Elements for Print */
+        .print-border {
+            position: fixed;
+            top: 10mm; left: 10mm; bottom: 10mm; right: 10mm;
+            border: 2px solid #000;
+            z-index: 100;
+            pointer-events: none;
+            display: none;
+        }
+        .print-footer {
+            position: fixed;
+            bottom: 12mm;
+            left: 0; right: 0;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 900;
+            color: #000;
+            z-index: 100;
+            display: none;
+            letter-spacing: 2px;
+        }
+        .print-watermark {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 65px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.04);
+            white-space: nowrap;
             z-index: 0;
             pointer-events: none;
+            display: none;
         }
 
-        .content-wrapper { position: relative; z-index: 1; }
+        /* ========================================== */
+        /* EXAM CONTENT STYLES */
+        /* ========================================== */
+        .content-wrapper { position: relative; z-index: 10; padding-bottom: 15mm; }
 
         /* Header */
         .exam-header {
             text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 10px;
+            border-bottom: 3px solid #000;
+            padding-bottom: 15px;
             margin-bottom: 15px;
         }
-        .exam-header h1 { margin: 0; font-size: 24px; text-transform: uppercase; }
-        .exam-header h2 { margin: 5px 0; font-size: 18px; color: #333; }
-        .exam-header p { margin: 5px 0 0 0; font-size: 14px; font-weight: bold; }
+        .exam-header h1 { margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 1px; font-weight: 900; }
+        .exam-header h2 { margin: 8px 0; font-size: 16px; color: #222; font-weight: 800;}
+        .exam-header p { margin: 10px 0 0 0; font-size: 12px; font-weight: bold; }
 
         /* Student Info Box */
         .student-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            border: 1px solid #000;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 14px;
+            gap: 12px;
+            border: 2px solid #000;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 13px;
             font-weight: bold;
         }
-        .info-field { border-bottom: 1px dashed #666; padding-bottom: 5px; }
+        .info-field { border-bottom: 1px dashed #666; padding-bottom: 3px; }
+        .full-width { grid-column: span 2; }
 
         /* Instructions */
         .instructions {
-            border: 1px solid #000;
-            padding: 10px 15px;
+            border: 2px solid #000;
+            padding: 8px 12px;
             margin-bottom: 20px;
-            font-size: 12px;
-            background: #f9f9f9;
+            font-size: 11px;
+            background: #fdfdfd;
         }
         .instructions ul { margin: 5px 0; padding-left: 20px; }
 
-        /* Sections and Questions */
+        /* Questions Container (2 Columns) */
+        .questions-wrapper {
+            column-count: 2;
+            column-gap: 12mm;
+            column-rule: 1px solid #ccc;
+        }
+
         .section-title {
-            background: #eee;
-            padding: 8px;
+            background: #e0e0e0;
+            padding: 6px;
             border: 1px solid #000;
             text-align: center;
-            font-size: 16px;
-            margin: 25px 0 15px 0;
+            font-size: 13px;
+            margin: 0 0 12px 0;
             text-transform: uppercase;
+            font-weight: bold;
+            column-span: all;
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
 
         .question-block {
-            margin-bottom: 18px;
-            font-size: 14px;
+            margin-bottom: 15px;
+            font-size: 12px;
             line-height: 1.4;
-            /* Prevents question from splitting across pages */
+            break-inside: avoid;
             page-break-inside: avoid; 
         }
-        .q-text { font-weight: bold; margin-bottom: 6px; }
+        .q-text { font-weight: bold; margin-bottom: 5px; }
         .q-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            margin-left: 25px;
+            gap: 4px;
+            margin-left: 12px;
         }
 
+        /* Social Media Box (End of Questions) */
+        .social-box {
+            border: 2px solid #000;
+            background: #f9f9f9;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 5px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        .social-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: #000;
+            text-transform: uppercase;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .social-links span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .fa-youtube { color: #ff0000; }
+        .fa-telegram { color: #0088cc; }
+        .fa-whatsapp { color: #25d366; }
+
         /* Answer Key Section */
-        .answer-key-wrapper { margin-top: 40px; page-break-before: always; }
+        .answer-key-wrapper { margin-top: 30px; page-break-before: always; }
+        .key-title { background: #000; color: #fff; padding: 8px; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 12px; text-transform: uppercase;}
         .key-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            font-size: 13px;
+            gap: 8px;
+            font-size: 11px;
         }
-        .key-item { border: 1px solid #ccc; padding: 5px; text-align: center; }
+        .key-item { border: 1px solid #ccc; padding: 4px; text-align: center; }
 
         /* ========================================== */
         /* PRINT CSS (Only applies when printing) */
         /* ========================================== */
         @media print {
+            @page { size: A4; margin: 0; }
             body { background-color: #fff; margin: 0; padding: 0; }
-            .action-bar { display: none; } /* Hide buttons during print */
+            .action-bar { display: none; }
+            
             .paper-container { 
-                box-shadow: none; 
-                margin: 0; 
-                padding: 0; 
-                max-width: 100%; 
-                width: 100%; 
+                box-shadow: none; margin: 0; 
+                padding: 15mm; 
+                max-width: 100%; width: 100%; min-height: auto;
             }
-            .watermark {
-                /* Ensures watermark prints */
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+
+            .print-border { display: block; }
+            .print-footer { display: block; }
+            .print-watermark { display: block; }
+
+            .content-wrapper { padding-bottom: 10mm; }
+            
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Print Action Buttons (Hidden during print) -->
     <div class="action-bar">
-        <h3 style="color:white; margin-top:0;">AP Maths Offline Exam Generator</h3>
-        <button class="btn-print" onclick="window.print()">🖨️ PRINT QUESTION PAPER</button>
+        <h3 style="color:white; margin-top:0;">AP Maths Olympiad Print Generator</h3>
+        <button class="btn-print" onclick="window.print()"> PRINT OLYMPIAD PAPER</button>
     </div>
 
-    <!-- A4 Paper Container -->
     <div class="paper-container">
-        <div class="watermark"></div>
         
-        <div class="content-wrapper">
-            <!-- Header -->
-            <div class="exam-header">
-                <h1>ABHINAY PRATAP MATHS</h1>
-                <h2>GRAND SCHOLARSHIP & ENTRANCE EXAM</h2>
-                <p>Time Allowed: 90 Minutes &nbsp;&nbsp;|&nbsp;&nbsp; Maximum Marks: 100</p>
-            </div>
-
-            <!-- Student Detail Box -->
-            <div class="student-info">
-                <div class="info-field">Student's Name: _______________________________</div>
-                <div class="info-field">Roll Number: __________________________________</div>
-                <div class="info-field">School/Center Name: ___________________________</div>
-                <div class="info-field">Invigilator's Sign: _____________________________</div>
-            </div>
-
-            <!-- Instructions -->
-            <div class="instructions">
-                <strong>General Instructions:</strong>
-                <ul>
-                    <li>This question paper contains 100 objective type questions. All questions are compulsory.</li>
-                    <li>Each correct answer carries <strong>+1 Mark</strong>. There is a negative marking of <strong>-0.25</strong> for each wrong answer.</li>
-                    <li>Do not write anything on the question paper except your details. Use the provided OMR sheet for answers.</li>
-                    <li>Use only Blue/Black ballpoint pen to darken the circles in the OMR sheet.</li>
-                </ul>
-            </div>
-
-            <!-- Questions Container -->
-            <div id="questionsContainer">
-                <!-- Questions will be auto-generated here by JavaScript -->
-            </div>
-
-            <!-- Answer Key Container -->
-            <div class="answer-key-wrapper" id="answerKeyContainer">
-                <!-- Answer Key will be auto-generated here -->
-            </div>
-
+        <!-- FIXED ELEMENTS (Border, Watermark, Footer) -->
+        <div class="print-border"></div>
+        <div class="print-watermark">ABHINAY PRATAP MATHS</div>
+        <div class="print-footer">EXAMEDGE ONLINE INSTITUTE</div>
+        
+        <div class="content-wrapper" id="mainContent">
+            <!-- Content will be injected here -->
         </div>
+
     </div>
 
     <script>
-        // ==========================================
         // 100 REAL QUESTIONS REPOSITORY
-        // ==========================================
         const qDB = [
             // HINDI (20)
-            { sec:"HINDI", q:"'आकाश' का पर्यायवाची शब्द क्या है?", opts:["गगन","पाताल","धरती","नीर"], ans:0 },
-            { sec:"HINDI", q:"'अंधे की लकड़ी' मुहावरे का अर्थ है:", opts:["अंधे व्यक्ति की छड़ी","एकमात्र सहारा","मूर्ख व्यक्ति","असंभव कार्य"], ans:1 },
-            { sec:"HINDI", q:"'अनुराग' का विलोम शब्द है:", opts:["विराग","प्रेम","सुराग","द्वेष"], ans:0 },
-            { sec:"HINDI", q:"जिसका कोई शत्रु न जन्मा हो, उसे कहते हैं:", opts:["अजातशत्रु","शत्रुघ्न","अजेय","अजय"], ans:0 },
-            { sec:"HINDI", q:"'विद्यालय' में कौन सी संधि है?", opts:["गुण संधि","दीर्घ संधि","यण संधि","वृद्धि संधि"], ans:1 },
-            { sec:"HINDI", q:"इनमें से कौन सा शब्द शुद्ध है?", opts:["आशिर्वाद","अशिर्वाद","आशीर्वाद","अशीर्वाद"], ans:2 },
-            { sec:"HINDI", q:"'कमल' का पर्यायवाची नहीं है:", opts:["जलज","पंकज","नीरज","वारिद"], ans:3 },
-            { sec:"HINDI", q:"'नौ दो ग्यारह होना' का अर्थ है:", opts:["गणित सीखना","भाग जाना","धोखा देना","मिलकर रहना"], ans:1 },
-            { sec:"HINDI", q:"'प्रतिदिन' में कौन सा समास है?", opts:["अव्ययीभाव","तत्पुरुष","बहुव्रीहि","द्वंद्व"], ans:0 },
-            { sec:"HINDI", q:"'कवि' का स्त्रीलिंग रूप है:", opts:["कवयित्री","कवियत्री","कवित्री","कविनी"], ans:0 },
-            { sec:"HINDI", q:"'आंखों का तारा' होना:", opts:["बहुत प्यारा होना","आंख की बीमारी","दुश्मन होना","तारा देखना"], ans:0 },
-            { sec:"HINDI", q:"हिंदी वर्णमाला में कितने स्वर होते हैं?", opts:["11","13","33","36"], ans:0 },
-            { sec:"HINDI", q:"'जगन्नाथ' का संधि विच्छेद है:", opts:["जग + नाथ","जगत् + नाथ","जगत + अनाथ","जग + अनाथ"], ans:1 },
-            { sec:"HINDI", q:"जो ईश्वर में विश्वास रखता हो:", opts:["नास्तिक","आस्तिक","आध्यात्मिक","संत"], ans:1 },
-            { sec:"HINDI", q:"इनमें से तद्भव शब्द चुनें:", opts:["अग्नि","अश्रु","आग","पुष्प"], ans:2 },
-            { sec:"HINDI", q:"'उन्नति' का विलोम है:", opts:["पतन","अवनति","विनाश","दुर्दुर्गति"], ans:1 },
-            { sec:"HINDI", q:"'चतुर्भुज' में समास है:", opts:["द्विगु","बहुव्रीहि","कर्मधारय","द्वंद्व"], ans:1 },
-            { sec:"HINDI", q:"'स्वागत' का संधि विच्छेद है:", opts:["स्व + आगत","सु + आगत","स्वा + गत","स + वागत"], ans:1 },
-            { sec:"HINDI", q:"'श्रीगणेश करना' मुहावरे का अर्थ है:", opts:["पूजा करना","प्रारंभ करना","समाप्त करना","विघ्न डालना"], ans:1 },
-            { sec:"HINDI", q:"'पवन' का पर्यायवाची है:", opts:["अनिल","अनल","आग","जल"], ans:0 },
+            { sec:"HINDI", q:"''     ?", opts:["","","",""], ans:0 },
+            { sec:"HINDI", q:"'  '    :", opts:["   "," "," "," "], ans:1 },
+            { sec:"HINDI", q:"''    :", opts:["","","",""], ans:0 },
+            { sec:"HINDI", q:"     ,   :", opts:["","","",""], ans:0 },
+            { sec:"HINDI", q:"''     ?", opts:[" "," "," "," "], ans:1 },
+            { sec:"HINDI", q:"      ?", opts:["","","",""], ans:2 },
+            { sec:"HINDI", q:"''    :", opts:["","","",""], ans:3 },
+            { sec:"HINDI", q:"'   '   :", opts:[" "," "," "," "], ans:1 },
+            { sec:"HINDI", q:"''     ?", opts:["","","",""], ans:0 },
+            { sec:"HINDI", q:"''    :", opts:["","","",""], ans:0 },
+            { sec:"HINDI", q:"'  ' :", opts:["  ","  "," "," "], ans:0 },
+            { sec:"HINDI", q:"      ?", opts:["11","13","33","36"], ans:0 },
+            { sec:"HINDI", q:"''    :", opts:[" + "," + "," + "," + "], ans:1 },
+            { sec:"HINDI", q:"     :", opts:["","","",""], ans:1 },
+            { sec:"HINDI", q:"    :", opts:["","","",""], ans:2 },
+            { sec:"HINDI", q:"''   :", opts:["","","",""], ans:1 },
+            { sec:"HINDI", q:"''   :", opts:["","","",""], ans:1 },
+            { sec:"HINDI", q:"''    :", opts:[" + "," + "," + "," + "], ans:1 },
+            { sec:"HINDI", q:"' '    :", opts:[" "," "," "," "], ans:1 },
+            { sec:"HINDI", q:"''   :", opts:["","","",""], ans:0 },
 
             // REASONING (20)
             { sec:"REASONING", q:"Find the next number in series: 2, 5, 10, 17, 26, ?", opts:["35","37","39","41"], ans:1 },
@@ -266,8 +311,8 @@
             { sec:"MATHEMATICS", q:"Find the LCM of 12, 15, and 20.", opts:["30","60","120","180"], ans:1 },
             { sec:"MATHEMATICS", q:"What is the HCF of 18 and 24?", opts:["4","6","8","12"], ans:1 },
             { sec:"MATHEMATICS", q:"A can do a work in 10 days, B in 15 days. Together they will take?", opts:["4 days","5 days","6 days","8 days"], ans:2 },
-            { sec:"MATHEMATICS", q:"√(225) + √(64) = ?", opts:["21","23","25","27"], ans:1 },
-            { sec:"MATHEMATICS", q:"If radius of a circle is 7cm, its circumference is? (π=22/7)", opts:["22 cm","44 cm","88 cm","154 cm"], ans:1 },
+            { sec:"MATHEMATICS", q:"�(225) + �(64) = ?", opts:["21","23","25","27"], ans:1 },
+            { sec:"MATHEMATICS", q:"If radius of a circle is 7cm, its circumference is? (=22/7)", opts:["22 cm","44 cm","88 cm","154 cm"], ans:1 },
             { sec:"MATHEMATICS", q:"Average of 5 numbers is 20. Sum of numbers is?", opts:["80","100","120","150"], ans:1 },
             { sec:"MATHEMATICS", q:"Which is a prime number?", opts:["9","15","17","21"], ans:2 },
             { sec:"MATHEMATICS", q:"1/2 + 1/4 + 1/8 = ?", opts:["5/8","7/8","3/4","1"], ans:1 },
@@ -288,7 +333,7 @@
             { sec:"SCIENCE", q:"Which vitamin is provided by sunlight?", opts:["Vit A","Vit B","Vit C","Vit D"], ans:3 },
             { sec:"SCIENCE", q:"Heaviest naturally occurring element is?", opts:["Iron","Lead","Uranium","Gold"], ans:2 },
             { sec:"SCIENCE", q:"Sound cannot travel through?", opts:["Water","Air","Steel","Vacuum"], ans:3 },
-            { sec:"SCIENCE", q:"What is the boiling point of water?", opts:["100°C","90°C","120°C","50°C"], ans:0 },
+            { sec:"SCIENCE", q:"What is the boiling point of water?", opts:["100�C","90�C","120�C","50�C"], ans:0 },
             { sec:"SCIENCE", q:"Which metal is liquid at room temperature?", opts:["Iron","Mercury","Gold","Silver"], ans:1 },
             { sec:"SCIENCE", q:"Process of rusting of iron is?", opts:["Oxidation","Reduction","Evaporation","Condensation"], ans:0 },
             { sec:"SCIENCE", q:"Ozone layer protects us from?", opts:["Infrared rays","UV rays","X-rays","Gamma rays"], ans:1 },
@@ -321,22 +366,42 @@
             { sec:"GENERAL STUDIES", q:"World Environment Day is celebrated on?", opts:["5th June","10th July","15th August","1st May"], ans:0 }
         ];
 
-        // Generate HTML for Questions
         document.addEventListener("DOMContentLoaded", () => {
-            const container = document.getElementById('questionsContainer');
-            const keyContainer = document.getElementById('answerKeyContainer');
-            
+            const mainContent = document.getElementById('mainContent');
             let html = '';
-            let currentSec = '';
-            const labels = ['A', 'B', 'C', 'D'];
+            
+            // 1. Header & Student Info
+            html += `
+            <div class="exam-header">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <h2>GRAND OLYMPIAD & ENTRANCE EXAM</h2>
+                <p>Time Allowed: 90 Minutes &nbsp;&nbsp;|&nbsp;&nbsp; Maximum Marks: 100</p>
+            </div>
+            <div class="student-info">
+                <div class="info-field">Student's Name: _______________________________</div>
+                <div class="info-field">Roll Number: __________________________________</div>
+                <div class="info-field full-width">Student's School Name: __________________________________________________________________</div>
+                <div class="info-field">Center Name: _________________________________</div>
+                <div class="info-field">Invigilator's Sign: _____________________________</div>
+            </div>
+            <div class="instructions">
+                <strong>General Instructions:</strong>
+                <ul>
+                    <li>This question paper contains 100 objective type questions. All questions are compulsory.</li>
+                    <li>Each correct answer carries <strong>+1 Mark</strong>. There is a negative marking of <strong>-0.25</strong> for each wrong answer.</li>
+                    <li>Do not write anything on the question paper except your details. Use the provided OMR sheet for answers.</li>
+                </ul>
+            </div>
+            `;
 
-            // Build Question Paper
+            // 2. Questions (Inside 2-column wrapper)
+            html += `<div class="questions-wrapper">`;
+            let currentSec = '';
             qDB.forEach((q, i) => {
                 if (q.sec !== currentSec) {
                     html += `<div class="section-title">PART: ${q.sec}</div>`;
                     currentSec = q.sec;
                 }
-
                 html += `
                 <div class="question-block">
                     <div class="q-text">Q${i+1}. ${q.q}</div>
@@ -348,15 +413,33 @@
                     </div>
                 </div>`;
             });
-            container.innerHTML = html;
+            html += `</div>`; // Close questions-wrapper
 
-            // Build Answer Key
-            let keyHtml = `<div class="section-title">ANSWER KEY (FOR TEACHERS ONLY)</div><div class="key-grid">`;
+            // 3. Social Media Box (Immediately after questions)
+            html += `
+            <div class="social-box">
+                <h3> FOR VIDEO SOLUTIONS & FREE STUDY MATERIAL </h3>
+                <div class="social-links">
+                    <span><i class="fab fa-youtube"></i> YouTube: @abhinaypratapmaths</span>
+                    <span><i class="fab fa-telegram"></i> Telegram: @abhinaypratapmaths</span>
+                    <span><i class="fab fa-whatsapp"></i> WhatsApp:ABHINAY PRATAP CHAUBEY</span>
+                </div>
+            </div>
+            `;
+
+            // 4. Answer Key (New Page)
+            const labels = ['A', 'B', 'C', 'D'];
+            html += `
+            <div class="answer-key-wrapper">
+                <div class="key-title">ANSWER KEY (FOR TEACHERS ONLY)</div>
+                <div class="key-grid">
+            `;
             qDB.forEach((q, i) => {
-                keyHtml += `<div class="key-item"><b>Q${i+1}.</b> ${labels[q.ans]}</div>`;
+                html += `<div class="key-item"><b>Q${i+1}.</b> ${labels[q.ans]}</div>`;
             });
-            keyHtml += `</div>`;
-            keyContainer.innerHTML = keyHtml;
+            html += `</div></div>`;
+
+            mainContent.innerHTML = html;
         });
 
     </script>
