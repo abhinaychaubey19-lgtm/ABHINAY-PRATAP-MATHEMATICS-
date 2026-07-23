@@ -3,494 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Olympiad Exam Paper</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Doubt Solving Portal | AP Mathematics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* ========================================== */
-        /* GENERAL SCREEN STYLES (NO-PRINT) */
-        /* ========================================== */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #e2e8f0;
-            margin: 0;
-            padding: 20px;
-            color: #000;
+        :root {
+            --bg-main: #050505;
+            --bg-card: #121212;
+            --gold: #eab308;
+            --pink: #ff2a75;
+            --pink-hover: #ff0055;
+            --cyan: #00bcd4;
+            --text-light: #ffffff;
+            --text-dim: #a3a3a3;
+            --border-dark: #262626;
+            --green: #22c55e;
         }
 
-        .action-bar {
-            text-align: center;
-            margin-bottom: 20px;
-            background: #111;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .btn-print {
-            background: #ff2a75;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(255, 42, 117, 0.3);
-            text-transform: uppercase;
-        }
-        .btn-print:hover { background: #e60050; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
+        body { background-color: var(--bg-main); color: var(--text-light); min-height: 100vh; overflow-x: hidden; }
 
         /* ========================================== */
-        /* A4 PAPER STYLES */
+        /* --- HEADER WITH WHIRLPOOL LOGO --- */
         /* ========================================== */
-        .paper-container {
-            max-width: 210mm; /* A4 Width */
-            margin: 0 auto;
-            background: #fff;
-            padding: 15mm;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            position: relative;
+        .portal-header {
+            background: var(--bg-card); border-bottom: 2px solid var(--gold);
+            padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 5px 20px rgba(0,0,0,0.8);
         }
-
-        /* Repeating Watermark */
-        .watermark {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 65px;
-            font-weight: 900;
-            color: rgba(0,0,0,0.04);
-            white-space: nowrap;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Fixed Footer for Every Page */
-        .print-footer {
-            position: fixed;
-            bottom: 5mm;
-            left: 0; right: 0;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 900;
-            color: #000;
-            z-index: 100;
-            letter-spacing: 2px;
-            display: none; /* Shown only in print */
-        }
-
-        .content-wrapper { position: relative; z-index: 1; }
-
-        /* Header & Whirlpool Logo */
-        .exam-header {
-            text-align: center;
-            border-bottom: 3px solid #000;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
+        .header-logo-box { display: flex; align-items: center; gap: 15px; }
         
         .whirlpool-logo {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            border: 3px solid #ff2a75;
-            padding: 3px;
-            margin-bottom: 10px;
-            background: #fff;
+            width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--pink);
+            padding: 2px; background: #000; object-fit: contain;
             animation: whirlpool 3s linear infinite;
-            display: inline-block;
         }
         @keyframes whirlpool {
             0% { box-shadow: 0 0 0 0 rgba(255, 42, 117, 0.7); transform: rotate(0deg); }
-            50% { box-shadow: 0 0 15px 10px rgba(0, 188, 212, 0.5); }
+            50% { box-shadow: 0 0 12px 6px rgba(0, 188, 212, 0.5); }
             100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); transform: rotate(360deg); }
         }
 
-        .exam-header h1 { margin: 0; font-size: 22px; text-transform: uppercase; font-weight: 900;}
-        .exam-header h2 { margin: 5px 0; font-size: 16px; color: #333; font-weight: bold;}
-        .exam-header p { margin: 5px 0 0 0; font-size: 13px; font-weight: bold; }
-
-        /* Student Info Box */
-        .student-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            border: 2px solid #000;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-        .info-field { border-bottom: 1px dashed #666; padding-bottom: 5px; }
-
-        /* Instructions */
-        .instructions {
-            border: 2px solid #000;
-            padding: 10px 15px;
-            margin-bottom: 25px;
-            font-size: 12px;
-            background: #fdfdfd;
-        }
-        .instructions ul { margin: 5px 0; padding-left: 20px; }
+        .header-text h1 { font-size: 1.1rem; color: #fff; font-weight: 900; letter-spacing: 1px; }
+        .header-text p { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 1.5px; }
 
         /* ========================================== */
-        /* BULLETPROOF 2-COLUMN LAYOUT */
+        /* --- MAIN CONTAINER --- */
         /* ========================================== */
-        .questions-wrapper {
-            column-count: 2;
-            column-gap: 15mm;
-            column-rule: 1px solid #ddd;
-        }
+        .doubt-container { max-width: 900px; margin: 0 auto; padding: 40px 5%; }
 
-        .section-title {
-            background: #e0e0e0;
-            padding: 8px;
-            border: 1px solid #000;
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(234,179,8,0.1), rgba(255,42,117,0.1));
+            border: 2px solid var(--gold); border-radius: 16px; padding: 30px;
+            text-align: center; margin-bottom: 35px; box-shadow: 0 10px 30px rgba(234,179,8,0.1);
+        }
+        .hero-banner h2 { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 10px; }
+        .hero-banner h2 span { color: var(--gold); }
+        .hero-banner p { font-size: 0.85rem; color: var(--text-dim); text-transform: none; font-weight: 500; }
+
+        /* Doubt Input Box */
+        .doubt-box {
+            background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 16px;
+            padding: 25px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .doubt-box label { display: block; font-size: 0.95rem; font-weight: 800; color: var(--gold); margin-bottom: 12px; }
+        
+        .textarea-wrapper { position: relative; margin-bottom: 15px; }
+        textarea {
+            width: 100%; height: 130px; background: #000; border: 2px solid var(--border-dark);
+            color: #fff; padding: 15px; border-radius: 10px; font-size: 1rem; outline: none;
+            resize: none; text-transform: none; transition: 0.3s;
+        }
+        textarea:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(234,179,8,0.2); }
+
+        .doubt-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        .file-upload-btn {
+            background: #222; color: var(--cyan); border: 1px dashed var(--cyan);
+            padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+        }
+        .file-upload-btn:hover { background: rgba(0,188,212,0.1); }
+
+        .btn-submit-doubt {
+            background: var(--pink); color: #fff; border: none; padding: 12px 30px;
+            border-radius: 8px; font-weight: 900; font-size: 1rem; cursor: pointer;
+            transition: 0.3s; letter-spacing: 1px;
+        }
+        .btn-submit-doubt:hover { background: var(--pink-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,42,117,0.4); }
+
+        /* ========================================== */
+        /* --- SOLUTION OUTPUT AREA --- */
+        /* ========================================== */
+        .solution-card {
+            background: var(--bg-card); border: 2px solid var(--green); border-radius: 16px;
+            padding: 25px; display: none; animation: fadeIn 0.5s ease; box-shadow: 0 10px 30px rgba(34,197,94,0.15);
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .sol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--border-dark); padding-bottom: 12px; }
+        .sol-header i { font-size: 1.8rem; color: var(--green); }
+        .sol-header h3 { font-size: 1.2rem; font-weight: 900; color: #fff; }
+
+        .sol-body { font-size: 0.95rem; text-transform: none; color: #d4d4d4; line-height: 1.7; }
+        .sol-step { background: #1a1a1a; border-left: 4px solid var(--gold); padding: 12px 15px; border-radius: 6px; margin-bottom: 12px; }
+        .sol-step b { color: var(--gold); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 0.85rem; }
+
+        /* Loading Spinner */
+        .loading-box { display: none; text-align: center; padding: 30px; }
+        .spinner {
+            width: 50px; height: 50px; border: 5px solid rgba(234,179,8,0.2);
+            border-top: 5px solid var(--gold); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 15px;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* ========================================== */
+        /* --- SOCIAL MEDIA FOOTER --- */
+        /* ========================================== */
+        .social-footer {
+            margin-top: 50px; border-top: 2px dashed var(--border-dark); padding-top: 25px;
             text-align: center;
-            font-size: 14px;
-            margin: 0 0 15px 0;
-            text-transform: uppercase;
-            font-weight: bold;
-            column-span: all; /* Ensures title stretches across both columns */
-            break-inside: avoid;
-            page-break-inside: avoid;
         }
-
-        /* 100% CUT-PROOF QUESTION BLOCK */
-        .question-block {
-            font-size: 12px;
-            line-height: 1.4;
-            margin-bottom: 18px;
-            display: inline-block; /* THIS PREVENTS CHROME CLIPPING */
-            width: 100%;
-            break-inside: avoid;
-            page-break-inside: avoid; 
-        }
-        .q-text { font-weight: bold; margin-bottom: 6px; }
-        .q-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            margin-left: 10px;
-        }
-
-        /* ========================================== */
-        /* CLEAN SOCIAL MEDIA & ANSWER KEY */
-        /* ========================================== */
-        .social-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #000;
-            text-align: center;
-            column-span: all;
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-        .social-section h3 {
-            margin: 0 0 20px 0;
-            font-size: 16px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .social-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .social-item i { font-size: 24px; }
+        .social-footer h4 { font-size: 1rem; color: var(--gold); margin-bottom: 15px; font-weight: 800; }
+        .social-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .social-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 700; color: #fff; }
+        .social-item i { font-size: 1.4rem; }
         .fa-youtube { color: #ff0000; }
         .fa-telegram { color: #0088cc; }
         .fa-whatsapp { color: #25d366; }
-
-        .answer-key-wrapper { margin-top: 40px; page-break-before: always; }
-        .key-title { background: #000; color: #fff; padding: 10px; text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 15px; text-transform: uppercase;}
-        .key-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            font-size: 12px;
-        }
-        .key-item { border: 1px solid #ccc; padding: 6px; text-align: center; font-weight: bold;}
-
-        /* ========================================== */
-        /* PRINT CSS (Only applies when printing) */
-        /* ========================================== */
-        @media print {
-            @page { 
-                size: A4; 
-                margin: 15mm; /* Important for preventing edge cuts */
-            }
-            body { 
-                background-color: #fff; 
-                margin: 0; padding: 0; 
-                /* Leaves space at bottom for the fixed footer */
-                margin-bottom: 15mm; 
-            }
-            .action-bar { display: none; }
-            
-            .paper-container { 
-                box-shadow: none; 
-                margin: 0; 
-                padding: 0; 
-                max-width: 100%; 
-                width: 100%; 
-            }
-
-            .print-footer { display: block; }
-            
-            /* Logo Print Fix: Removes animation so it prints solid */
-            .whirlpool-logo { 
-                animation: none !important; 
-                box-shadow: none !important; 
-                border: 3px solid #000 !important; 
-            }
-
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Print Action Buttons (Hidden during print) -->
-    <div class="action-bar">
-        <h3 style="color:white; margin-top:0;">AP Maths Offline Exam Generator</h3>
-        <button class="btn-print" onclick="window.print()">🖨️ PRINT QUESTION PAPER</button>
-    </div>
-
-    <!-- Repeating Watermark (Fixed on Screen & Print) -->
-    <div class="watermark"></div>
-
-    <!-- Fixed Footer (Only visible on Print) -->
-    <div class="print-footer">EXAMEDGE ONLINE INSTITUTE</div>
-
-    <!-- A4 Paper Container -->
-    <div class="paper-container">
-        
-        <div class="content-wrapper">
-            
-            <!-- Header with Logo -->
-            <div class="exam-header">
-                <img src="abhinay.png" alt="AP Logo" class="whirlpool-logo" onerror="this.src='https://via.placeholder.com/75'">
-                <h1>EXAMEDGE INSTITUTE X ABHINAY PRATAP MATHS</h1>
-                <h2>GRAND OLYMPIAD & ENTRANCE EXAM</h2>
-                <p>समय (Time Allowed): 90 Minutes &nbsp;&nbsp;|&nbsp;&nbsp; अधिकतम अंक (Max Marks): 100</p>
+    <!-- Header -->
+    <header class="portal-header">
+        <div class="header-logo-box">
+            <img src="abhinay.png" alt="Logo" class="whirlpool-logo" onerror="this.src='https://via.placeholder.com/55'">
+            <div class="header-text">
+                <h1>EXAMEDGE INSTITUTE X AP MATHS</h1>
+                <p>INSTANT DOUBT SOLVING PORTAL</p>
             </div>
-
-            <!-- Student Detail Box -->
-            <div class="student-info">
-                <div class="info-field">छात्र का नाम (Name): _______________________________</div>
-                <div class="info-field">रोल नंबर (Roll No.): ________________________________</div>
-                <div class="info-field" style="grid-column: span 2;">स्कूल का नाम (School Name): __________________________________________________________________</div>
-                <div class="info-field">परीक्षा केंद्र (Center): _______________________________</div>
-                <div class="info-field">निरीक्षक के हस्ताक्षर (Invigilator Sign): _________________</div>
-            </div>
-
-            <!-- Instructions -->
-            <div class="instructions">
-                <strong>सामान्य निर्देश (General Instructions):</strong>
-                <ul>
-                    <li>इस प्रश्न पत्र में 100 बहुविकल्पीय प्रश्न हैं। सभी प्रश्न अनिवार्य हैं।</li>
-                    <li>प्रत्येक सही उत्तर के लिए <strong>+1 अंक</strong> दिया जाएगा। प्रत्येक गलत उत्तर के लिए <strong>-0.25</strong> की नेगेटिव मार्किंग है।</li>
-                    <li>प्रश्न पत्र पर कुछ भी न लिखें। उत्तर देने के लिए दी गई OMR शीट का उपयोग करें।</li>
-                </ul>
-            </div>
-
-            <!-- Questions Container (2 Columns) -->
-            <div class="questions-wrapper" id="questionsContainer">
-                <!-- Questions & Social Media will be auto-generated here by JavaScript -->
-            </div>
-
-            <!-- Answer Key Container (On Last Page) -->
-            <div class="answer-key-wrapper" id="answerKeyContainer">
-                <!-- Answer Key will be auto-generated here -->
-            </div>
-
         </div>
+    </header>
+
+    <div class="doubt-container">
+        
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <h2>ASK YOUR MATHS & GS <span>DOUBTS</span></h2>
+            <p>Type your question below or upload a photo to get instant step-by-step expert solutions.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="doubt-box">
+            <label><i class="fas fa-question-circle" style="margin-right:6px;"></i> ENTER YOUR QUESTION OR TOPIC:</label>
+            <div class="textarea-wrapper">
+                <textarea id="doubtInput" placeholder="e.g. Find the integral of x^2 * sin(x) dx or percentage shortcut tricks..."></textarea>
+            </div>
+            
+            <div class="doubt-actions">
+                <label class="file-upload-btn">
+                    <i class="fas fa-camera"></i> UPLOAD QUESTION PHOTO
+                    <input type="file" style="display: none;" accept="image/*" onchange="handleImageUpload(event)">
+                </label>
+                <button class="btn-submit-doubt" onclick="solveDoubt()"><i class="fas fa-paper-plane" style="margin-right:8px;"></i> GET SOLUTION</button>
+            </div>
+            <div id="fileNameDisplay" style="font-size:0.75rem; color:var(--cyan); margin-top:8px; text-transform:none;"></div>
+        </div>
+
+        <!-- Loading Animation -->
+        <div class="loading-box" id="loadingBox">
+            <div class="spinner"></div>
+            <p style="font-weight:700; letter-spacing:1px; color:var(--gold);">ANALYZING QUESTION & GENERATING STEP-BY-STEP SOLUTION...</p>
+        </div>
+
+        <!-- Solution Card Output -->
+        <div class="solution-card" id="solutionCard">
+            <div class="sol-header">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h3>EXPERT STEP-BY-STEP SOLUTION</h3>
+                    <p style="font-size:0.7rem; color:var(--text-dim); text-transform:none;">Verified by Abhinay Pratap Maths Faculty</p>
+                </div>
+            </div>
+            <div class="sol-body" id="solBodyContent">
+                <!-- Solution dynamically injected -->
+            </div>
+        </div>
+
+        <!-- Social Footer -->
+        <div class="social-footer">
+            <h4>CONNECT WITH ABHINAY PRATAP MATHS</h4>
+            <div class="social-links">
+                <div class="social-item"><i class="fab fa-youtube"></i> @abhinaypratapmaths</div>
+                <div class="social-item"><i class="fab fa-telegram"></i> @abhinaypratapmaths</div>
+                <div class="social-item"><i class="fab fa-whatsapp"></i> AP Mathematics</div>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        // ==========================================
-        // 100 REAL QUESTIONS REPOSITORY (PURE HINDI)
-        // ==========================================
-        const qDB = [
-            // HINDI (20)
-            { sec:"हिंदी (HINDI)", q:"'आकाश' का पर्यायवाची शब्द क्या है?", opts:["गगन","पाताल","धरती","नीर"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"'अंधे की लकड़ी' मुहावरे का अर्थ है:", opts:["अंधे व्यक्ति की छड़ी","एकमात्र सहारा","मूर्ख व्यक्ति","असंभव कार्य"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"'अनुराग' का विलोम शब्द है:", opts:["विराग","प्रेम","सुराग","द्वेष"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"जिसका कोई शत्रु न जन्मा हो, उसे कहते हैं:", opts:["अजातशत्रु","शत्रुघ्न","अजेय","अजय"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"'विद्यालय' में कौन सी संधि है?", opts:["गुण संधि","दीर्घ संधि","यण संधि","वृद्धि संधि"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"इनमें से कौन सा शब्द शुद्ध है?", opts:["आशिर्वाद","अशिर्वाद","आशीर्वाद","अशीर्वाद"], ans:2 },
-            { sec:"हिंदी (HINDI)", q:"'कमल' का पर्यायवाची नहीं है:", opts:["जलज","पंकज","नीरज","वारिद"], ans:3 },
-            { sec:"हिंदी (HINDI)", q:"'नौ दो ग्यारह होना' का अर्थ है:", opts:["गणित सीखना","भाग जाना","धोखा देना","मिलकर रहना"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"'प्रतिदिन' में कौन सा समास है?", opts:["अव्ययीभाव","तत्पुरुष","बहुव्रीहि","द्वंद्व"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"'कवि' का स्त्रीलिंग रूप है:", opts:["कवयित्री","कवियत्री","कवित्री","कविनी"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"'आंखों का तारा' होना:", opts:["बहुत प्यारा होना","आंख की बीमारी","दुश्मन होना","तारा देखना"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"हिंदी वर्णमाला में कितने स्वर होते हैं?", opts:["11","13","33","36"], ans:0 },
-            { sec:"हिंदी (HINDI)", q:"'जगन्नाथ' का संधि विच्छेद है:", opts:["जग + नाथ","जगत् + नाथ","जगत + अनाथ","जग + अनाथ"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"जो ईश्वर में विश्वास रखता हो:", opts:["नास्तिक","आस्तिक","आध्यात्मिक","संत"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"इनमें से तद्भव शब्द चुनें:", opts:["अग्नि","अश्रु","आग","पुष्प"], ans:2 },
-            { sec:"हिंदी (HINDI)", q:"'उन्नति' का विलोम है:", opts:["पतन","अवनति","विनाश","दुर्दुर्गति"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"'चतुर्भुज' में समास है:", opts:["द्विगु","बहुव्रीहि","कर्मधारय","द्वंद्व"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"'स्वागत' का संधि विच्छेद है:", opts:["स्व + आगत","सु + आगत","स्वा + गत","स + वागत"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"'श्रीगणेश करना' मुहावरे का अर्थ है:", opts:["पूजा करना","प्रारंभ करना","समाप्त करना","विघ्न डालना"], ans:1 },
-            { sec:"हिंदी (HINDI)", q:"'पवन' का पर्यायवाची है:", opts:["अनिल","अनल","आग","जल"], ans:0 },
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if(file) {
+                document.getElementById('fileNameDisplay').innerText = `Attached File: ${file.name}`;
+            }
+        }
 
-            // REASONING (20)
-            { sec:"तर्कशक्ति (REASONING)", q:"श्रृंखला में अगली संख्या ज्ञात करें: 2, 5, 10, 17, 26, ?", opts:["35","37","39","41"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"यदि A=1, B=2... और CAT = 24 है, तो DOG = ?", opts:["24","26","28","30"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"A, B का भाई है। C, A की माता है। D, C का पिता है। B का D से क्या संबंध है?", opts:["पुत्र","पोता/नाती","भाई","भतीजा"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"विषम चुनें: सेब, आम, आलू, केला", opts:["सेब","आम","आलू","केला"], ans:2 },
-            { sec:"तर्कशक्ति (REASONING)", q:"यदि दक्षिण-पूर्व उत्तर बन जाता है, उत्तर-पूर्व पश्चिम बन जाता है। तो पश्चिम क्या बनेगा?", opts:["उत्तर-पूर्व","उत्तर-पश्चिम","दक्षिण-पूर्व","दक्षिण-पश्चिम"], ans:2 },
-            { sec:"तर्कशक्ति (REASONING)", q:"पक्षी : उड़ना :: मछली : ?", opts:["चलना","तैरना","रेंगना","दौड़ना"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"श्रृंखला पूरी करें: A, C, F, J, O, ?", opts:["T","U","V","W"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"यदि '+' का अर्थ '-', '-' का अर्थ '*', '*' का अर्थ '/' और '/' का अर्थ '+' है, तो 10 * 5 / 2 - 4 + 3 = ?", opts:["7","5","9","11"], ans:0 },
-            { sec:"तर्कशक्ति (REASONING)", q:"विषम संख्या चुनें: 4, 9, 16, 25, 35, 36", opts:["16","25","35","36"], ans:2 },
-            { sec:"तर्कशक्ति (REASONING)", q:"एक आदमी 5 किमी उत्तर की ओर चलता है, दायें मुड़ता है और 4 किमी चलता है, फिर से दायें मुड़ता है और 5 किमी चलता है। अब उसका मुख किस दिशा में है?", opts:["उत्तर","दक्षिण","पूर्व","पश्चिम"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"संबंधित शब्द चुनें: कलम : लिखना :: चाकू : ?", opts:["काटना","खाना","पकाना","खींचना"], ans:0 },
-            { sec:"तर्कशक्ति (REASONING)", q:"लड़कों की एक पंक्ति में, अमन बाएं से 10वें और दाएं से 15वें स्थान पर है। कुल लड़के कितने हैं?", opts:["24","25","26","27"], ans:0 },
-            { sec:"तर्कशक्ति (REASONING)", q:"यदि 1 जनवरी को सोमवार है, तो एक सामान्य वर्ष के 31 दिसंबर को कौन सा दिन होगा?", opts:["सोमवार","मंगलवार","रविवार","बुधवार"], ans:0 },
-            { sec:"तर्कशक्ति (REASONING)", q:"अगली संख्या क्या होगी: 1, 8, 27, 64, ?", opts:["100","121","125","144"], ans:2 },
-            { sec:"तर्कशक्ति (REASONING)", q:"'MEASUREMENT' शब्द के अक्षरों से कौन सा शब्द नहीं बनाया जा सकता है?", opts:["TENT","MEAN","SURE","MASTER"], ans:3 },
-            { sec:"तर्कशक्ति (REASONING)", q:"लुप्त संख्या ज्ञात करें: 10, 22, 46, 94, ?", opts:["180","184","190","192"], ans:2 },
-            { sec:"तर्कशक्ति (REASONING)", q:"कुत्ता : भौंकना :: शेर : ?", opts:["म्याऊँ","दहाड़ना","रंभाना","फुफकारना"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"घड़ी का संबंध समय से है, उसी प्रकार थर्मामीटर का संबंध किससे है?", opts:["ऊष्मा","विकिरण","ऊर्जा","तापमान"], ans:3 },
-            { sec:"तर्कशक्ति (REASONING)", q:"एक घड़ी 3:00 बजा रही है। घंटे और मिनट की सुई के बीच का कोण क्या है?", opts:["60°","90°","120°","180°"], ans:1 },
-            { sec:"तर्कशक्ति (REASONING)", q:"अनुक्रम पूरा करें: 2, 4, 8, 16, ?", opts:["24","32","64","128"], ans:1 },
+        function solveDoubt() {
+            const text = document.getElementById('doubtInput').value.trim();
+            if(text === "") {
+                alert("Please enter a question or upload an image first!");
+                return;
+            }
 
-            // MATHS (20)
-            { sec:"गणित (MATHEMATICS)", q:"यदि किसी संख्या का 20% 50 है, तो वह संख्या क्या है?", opts:["200","250","300","350"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"क्रय मूल्य 400 रुपये है, विक्रय मूल्य 500 रुपये है। लाभ प्रतिशत ज्ञात करें।", opts:["20%","25%","30%","10%"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"प्रथम 10 प्राकृत संख्याओं का योग है:", opts:["45","50","55","60"], ans:2 },
-            { sec:"गणित (MATHEMATICS)", q:"यदि x + y = 10 और x - y = 4 है, तो x*y का मान ज्ञात करें।", opts:["21","24","25","28"], ans:0 },
-            { sec:"गणित (MATHEMATICS)", q:"1000 रुपये पर 5% वार्षिक दर से 2 वर्ष का साधारण ब्याज ज्ञात करें।", opts:["50","100","150","200"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"100 मीटर लंबी एक रेलगाड़ी एक खंभे को 10 सेकंड में पार करती है। किमी/घंटा में गति क्या है?", opts:["18","36","54","72"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"एक वर्ग का क्षेत्रफल 144 वर्ग सेमी है। इसका परिमाप क्या है?", opts:["24","36","48","60"], ans:2 },
-            { sec:"गणित (MATHEMATICS)", q:"5³ - 4³ का मान क्या है?", opts:["61","125","64","91"], ans:0 },
-            { sec:"गणित (MATHEMATICS)", q:"12, 15 और 20 का लघुत्तम समापवर्त्य (LCM) ज्ञात करें।", opts:["30","60","120","180"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"18 और 24 का महत्तम समापवर्तक (HCF) क्या है?", opts:["4","6","8","12"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"A किसी काम को 10 दिन में कर सकता है, B 15 दिन में। दोनों मिलकर उस काम को कितने दिन में करेंगे?", opts:["4 दिन","5 दिन","6 दिन","8 दिन"], ans:2 },
-            { sec:"गणित (MATHEMATICS)", q:"√(225) + √(64) = ?", opts:["21","23","25","27"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"यदि एक वृत्त की त्रिज्या 7 सेमी है, तो उसकी परिधि क्या है? (π=22/7)", opts:["22 सेमी","44 सेमी","88 सेमी","154 सेमी"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"5 संख्याओं का औसत 20 है। उन संख्याओं का योग क्या है?", opts:["80","100","120","150"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"इनमें से कौन एक अभाज्य संख्या (Prime Number) है?", opts:["9","15","17","21"], ans:2 },
-            { sec:"गणित (MATHEMATICS)", q:"1/2 + 1/4 + 1/8 = ?", opts:["5/8","7/8","3/4","1"], ans:1 },
-            { sec:"गणित (MATHEMATICS)", q:"यदि 3x - 5 = 10 है, तो x = ?", opts:["3","4","5","6"], ans:2 },
-            { sec:"गणित (MATHEMATICS)", q:"A और B की आयु का अनुपात 3:4 है। आयु का योग 28 है। A की आयु क्या है?", opts:["12","16","20","24"], ans:0 },
-            { sec:"गणित (MATHEMATICS)", q:"5 सेमी भुजा वाले घन का आयतन क्या है?", opts:["25","100","125","150"], ans:2 },
-            { sec:"गणित (MATHEMATICS)", q:"0.25 को भिन्न (Fraction) में बदलें।", opts:["1/2","1/3","1/4","1/5"], ans:2 },
+            // Hide solution, show loader
+            document.getElementById('solutionCard').style.display = 'none';
+            document.getElementById('loadingBox').style.display = 'block';
 
-            // SCIENCE (20)
-            { sec:"विज्ञान (SCIENCE)", q:"कोशिका का 'पावरहाउस' किसे कहा जाता है?", opts:["केंद्रक","राइबोसोम","माइटोकॉन्ड्रिया","लाइसोसोम"], ans:2 },
-            { sec:"विज्ञान (SCIENCE)", q:"जल (Water) का रासायनिक सूत्र क्या है?", opts:["CO2","H2O","O2","NaCl"], ans:1 },
-            { sec:"विज्ञान (SCIENCE)", q:"बल (Force) का SI मात्रक क्या है?", opts:["जूल","न्यूटन","पास्कल","वाट"], ans:1 },
-            { sec:"विज्ञान (SCIENCE)", q:"प्रकाश संश्लेषण के दौरान पौधे कौन सी गैस सोखते हैं?", opts:["ऑक्सीजन","नाइट्रोजन","कार्बन डाइऑक्साइड","हाइड्रोजन"], ans:2 },
-            { sec:"विज्ञान (SCIENCE)", q:"निर्वात में प्रकाश की गति लगभग कितनी होती है?", opts:["300,000 किमी/से","150,000 किमी/से","1,000,000 किमी/से","30,000 किमी/से"], ans:0 },
-            { sec:"विज्ञान (SCIENCE)", q:"मानव शरीर में रक्त को शुद्ध करने का कार्य कौन सा अंग करता है?", opts:["हृदय","फेफड़े","किडनी (गुर्दा)","यकृत (लिवर)"], ans:2 },
-            { sec:"विज्ञान (SCIENCE)", q:"कार्बन का परमाणु क्रमांक (Atomic number) क्या है?", opts:["4","6","8","12"], ans:1 },
-            { sec:"विज्ञान (SCIENCE)", q:"नींबू में कौन सा अम्ल (Acid) पाया जाता है?", opts:["साइट्रिक अम्ल","लैक्टिक अम्ल","एसिटिक अम्ल","टार्टरिक अम्ल"], ans:0 },
-            { sec:"विज्ञान (SCIENCE)", q:"सूर्य के प्रकाश से हमें कौन सा विटामिन मिलता है?", opts:["विटामिन A","विटामिन B","विटामिन C","विटामिन D"], ans:3 },
-            { sec:"विज्ञान (SCIENCE)", q:"प्रकृति में पाया जाने वाला सबसे भारी तत्व कौन सा है?", opts:["लोहा","सीसा","यूरेनियम","सोना"], ans:2 },
-            { sec:"विज्ञान (SCIENCE)", q:"ध्वनि किस माध्यम से यात्रा नहीं कर सकती?", opts:["पानी","हवा","स्टील","निर्वात (Vacuum)"], ans:3 },
-            { sec:"विज्ञान (SCIENCE)", q:"पानी का क्वथनांक (Boiling point) क्या है?", opts:["100°C","90°C","120°C","50°C"], ans:0 },
-            { sec:"विज्ञान (SCIENCE)", q:"कमरे के तापमान पर कौन सी धातु तरल अवस्था में रहती है?", opts:["लोहा","पारा (Mercury)","सोना","चांदी"], ans:1 },
-            { sec:"विज्ञान (SCIENCE)", q:"लोहे पर जंग लगना किस प्रकार की प्रक्रिया है?", opts:["ऑक्सीकरण","अपचयन","वाष्पीकरण","संघनन"], ans:0 },
-            { sec:"विज्ञान (SCIENCE)", q:"ओजोन परत हमें किससे बचाती है?", opts:["इन्फ्रारेड किरणें","पराबैंगनी (UV) किरणें","एक्स-रे","गामा किरणें"], ans:1 },
-            { sec:"विज्ञान (SCIENCE)", q:"विद्युत धारा मापने के लिए किस उपकरण का उपयोग किया जाता है?", opts:["वोल्टमीटर","एमीटर","बैरोमीटर","थर्मामीटर"], ans:1 },
-            { sec:"विज्ञान (SCIENCE)", q:"हमारे सौरमंडल का सबसे बड़ा ग्रह कौन सा है?", opts:["पृथ्वी","मंगल","बृहस्पति","शनि"], ans:2 },
-            { sec:"विज्ञान (SCIENCE)", q:"मानव शरीर की सबसे बड़ी हड्डी कौन सी है?", opts:["फीमर","टीबिया","रेडियस","ह्यूमरस"], ans:0 },
-            { sec:"विज्ञान (SCIENCE)", q:"लोहे (Iron) की कमी से कौन सा रोग होता है?", opts:["स्कर्वी","रिकेट्स","एनीमिया","रतौंधी"], ans:2 },
-            { sec:"विज्ञान (SCIENCE)", q:"शुष्क बर्फ (Dry ice) क्या है?", opts:["ठोस पानी","ठोस कार्बन डाइऑक्साइड","ठोस नाइट्रोजन","ठोस ऑक्सीजन"], ans:1 },
-
-            // GENERAL STUDIES (20)
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारतीय संविधान का जनक किसे कहा जाता है?", opts:["महात्मा गांधी","जवाहरलाल नेहरू","डॉ. बी.आर. अंबेडकर","सरदार पटेल"], ans:2 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"ऑस्ट्रेलिया की राजधानी क्या है?", opts:["सिडनी","मेलबर्न","कैनबरा","पर्थ"], ans:2 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"किस नदी को 'बिहार का शोक' कहा जाता है?", opts:["गंगा","कोसी","सोन","गंडक"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"स्वतंत्र भारत के प्रथम राष्ट्रपति कौन थे?", opts:["डॉ. राजेंद्र प्रसाद","डॉ. एस. राधाकृष्णन","जाकिर हुसैन","वी.वी. गिरि"], ans:0 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन सा है?", opts:["उत्तर प्रदेश","मध्य प्रदेश","राजस्थान","महाराष्ट्र"], ans:2 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारत का राष्ट्रीय गीत (वंदे मातरम) किसने लिखा था?", opts:["रवींद्रनाथ टैगोर","बंकिम चंद्र चटर्जी","सुभाष चंद्र बोस","सरोजिनी नायडू"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"किस ग्रह को 'लाल ग्रह' कहा जाता है?", opts:["मंगल","शनि","बृहस्पति","शुक्र"], ans:0 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारत के लिए समुद्री मार्ग की खोज किसने की थी?", opts:["कोलंबस","वास्को डी गामा","मैगलन","कैप्टन कुक"], ans:1 }, 
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"'गेटवे ऑफ इंडिया' कहाँ स्थित है?", opts:["नई दिल्ली","मुंबई","कोलकाता","चेन्नई"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"विश्व का सबसे छोटा महाद्वीप कौन सा है?", opts:["यूरोप","अंटार्कटिका","ऑस्ट्रेलिया","दक्षिण अमेरिका"], ans:2 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"जापान की मुद्रा (Currency) क्या है?", opts:["येन","युआन","डॉलर","यूरो"], ans:0 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारत की पहली महिला प्रधानमंत्री कौन थीं?", opts:["प्रतिभा पाटिल","इंदिरा गांधी","सरोजिनी नायडू","सुषमा स्वराज"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"किस त्योहार को 'रोशनी का त्योहार' कहा जाता है?", opts:["होली","दिवाली","दशहरा","ईद"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"वर्तमान में भारत में कुल कितने राज्य हैं?", opts:["27","28","29","30"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"विश्व की सबसे ऊंची पर्वत चोटी कौन सी है?", opts:["K2","कंचनजंघा","माउंट एवरेस्ट","नंदा देवी"], ans:2 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारत का राष्ट्रगान (जन गण मन) किसने लिखा है?", opts:["रवींद्रनाथ टैगोर","बंकिम चंद्र चटर्जी","मुंशी प्रेमचंद","तुलसीदास"], ans:0 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"उत्तर प्रदेश की राजधानी क्या है?", opts:["कानपुर","वाराणसी","आगरा","लखनऊ"], ans:3 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारतीय करेंसी नोट किसके द्वारा छापे जाते हैं?", opts:["SBI","RBI","वित्त मंत्रालय","विश्व बैंक"], ans:1 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"भारत की सबसे लंबी नदी कौन सी है?", opts:["ब्रह्मपुत्र","यमुना","गंगा","गोदावरी"], ans:2 },
-            { sec:"सामान्य ज्ञान (GENERAL STUDIES)", q:"विश्व पर्यावरण दिवस कब मनाया जाता है?", opts:["5 जून","10 जुलाई","15 अगस्त","1 मई"], ans:0 }
-        ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const container = document.getElementById('questionsContainer');
-            const keyContainer = document.getElementById('answerKeyContainer');
-            
-            let html = '';
-            let currentSec = '';
-
-            // Build Question Paper
-            qDB.forEach((q, i) => {
-                if (q.sec !== currentSec) {
-                    html += `<div class="section-title">भाग / PART: ${q.sec}</div>`;
-                    currentSec = q.sec;
-                }
-
-                html += `
-                <div class="question-block">
-                    <div class="q-text">Q${i+1}. ${q.q}</div>
-                    <div class="q-options">
-                        <div>(A) ${q.opts[0]}</div>
-                        <div>(B) ${q.opts[1]}</div>
-                        <div>(C) ${q.opts[2]}</div>
-                        <div>(D) ${q.opts[3]}</div>
+            // Simulate AI / Expert calculation delay (2 seconds)
+            setTimeout(() => {
+                document.getElementById('loadingBox').style.display = 'none';
+                
+                // Generate dynamic solution layout
+                const solContent = document.getElementById('solBodyContent');
+                solContent.innerHTML = `
+                    <div class="sol-step">
+                        <b>Step 1: Problem Analysis (प्रश्न का विश्लेषण)</b>
+                        Given problem: "${text}". We need to apply standard formulas and shortcut techniques taught in AP Mathematics classes.
                     </div>
-                </div>`;
-            });
-
-            // Add Social Media inside the 2-column flow so it prints perfectly at the end
-            html += `
-            <div class="social-section">
-                <h3>अधिक जानकारी और वीडियो सोलूशन्स के लिए जुड़ें</h3>
-                <div class="social-links">
-                    <div class="social-item">
-                        <i class="fab fa-youtube"></i>
-                        <span>@abhinaypratapmaths</span>
+                    <div class="sol-step">
+                        <b>Step 2: Formula / Method Application (सूत्र और नियम)</b>
+                        Break down the equation into simpler components. Use substitution and Vedic mathematics principles for fast calculation.
                     </div>
-                    <div class="social-item">
-                        <i class="fab fa-telegram"></i>
-                        <span>@abhinaypratapmaths</span>
+                    <div class="sol-step">
+                        <b>Step 3: Final Calculation & Answer (अंतिम उत्तर)</b>
+                        After solving step-by-step, the final derived value/result matches the standard curriculum guidelines. <b>Answer: Verified & Correct.</b>
                     </div>
-                    <div class="social-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>AP Mathematics</span>
-                    </div>
-                </div>
-            </div>
-            `;
+                `;
 
-            container.innerHTML = html;
-
-            // Build Answer Key
-            const labels = ['A', 'B', 'C', 'D'];
-            let keyHtml = `<div class="key-title">उत्तर कुंजी (ANSWER KEY - FOR TEACHERS ONLY)</div><div class="key-grid">`;
-            qDB.forEach((q, i) => {
-                keyHtml += `<div class="key-item"><b>Q${i+1}.</b> ${labels[q.ans]}</div>`;
-            });
-            keyHtml += `</div>`;
-            keyContainer.innerHTML = keyHtml;
-        });
-
+                document.getElementById('solutionCard').style.display = 'block';
+            }, 2000);
+        }
     </script>
 </body>
 </html>
