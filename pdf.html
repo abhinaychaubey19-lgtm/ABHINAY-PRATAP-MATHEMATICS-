@@ -26,30 +26,25 @@
         body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; }
 
         /* ========================================== */
-        /* --- PROFESSIONAL SPINNING BORDER LOGOS --- */
+        /* --- PREMIUM DOTTED SPINNING BORDER --- */
         /* ========================================== */
         .logo-spin-wrap {
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            background: #000;
-            z-index: 1;
+            position: relative; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: #000; z-index: 1;
         }
+        
+        /* This creates the beautiful rotating dotted line */
         .logo-spin-wrap::before {
-            content: '';
-            position: absolute;
-            inset: -3px; 
-            border-radius: 50%;
-            background: conic-gradient(var(--gold), var(--pink), var(--app-blue), var(--gold));
-            animation: spinBorder 4s linear infinite;
-            z-index: -1;
+            content: ''; position: absolute; inset: -6px; border-radius: 50%;
+            border: 4px dotted var(--gold);
+            border-top-color: var(--pink);
+            border-left-color: var(--app-blue);
+            animation: spinBorder 6s linear infinite; z-index: -1;
         }
+        
         .inner-img {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            object-fit: contain;
-            background: #000;
-            border: 2px solid #000;
+            width: 100%; height: 100%; border-radius: 50%; object-fit: contain;
+            background: #000; border: 2px solid #111; /* Clean separation */
         }
         @keyframes spinBorder { 100% { transform: rotate(360deg); } }
 
@@ -63,18 +58,16 @@
         }
         .header-logo-box { display: flex; align-items: center; gap: 15px; z-index: 2; }
         .header-logo-wrap { width: 50px; height: 50px; }
-
         .header-text h1 { font-size: 1.2rem; color: #fff; font-weight: 900; letter-spacing: 1px; margin-bottom: 2px;}
         .header-text p { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 1.5px;}
 
         .floating-logo-wrap {
             position: fixed; bottom: 30px; right: 30px; z-index: 5000;
-            width: 65px; height: 65px; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            width: 65px; height: 65px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         /* ========================================== */
-        /* --- MAIN CONTAINER --- */
+        /* --- MAIN CONTAINER & DROPDOWN --- */
         /* ========================================== */
         .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; min-height: 80vh; position: relative; z-index: 2; }
         .section-title { 
@@ -83,12 +76,7 @@
         }
         .section-title span { color: var(--gold); }
 
-        /* ========================================== */
-        /* --- PREMIUM DROPDOWN SELECTOR --- */
-        /* ========================================== */
-        .custom-dropdown-container {
-            position: relative; max-width: 400px; margin-bottom: 35px; z-index: 50;
-        }
+        .custom-dropdown-container { position: relative; max-width: 400px; margin-bottom: 35px; z-index: 50; }
         .dropdown-header {
             background: var(--bg-card); color: var(--gold); border: 2px solid var(--gold);
             padding: 15px 20px; border-radius: 12px; font-size: 1.1rem; font-weight: 800;
@@ -114,16 +102,13 @@
         }
 
         /* ========================================== */
-        /* --- BOOKS GRID (AUTO FIT IMAGE ADAPTIVE) --- */
+        /* --- BOOKS GRID --- */
         /* ========================================== */
-        .books-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; 
-        }
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .book-card {
             background: var(--bg-card); border: 2px solid var(--border-dark); border-radius: 14px; 
             overflow: hidden; width: 100%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: 0.4s; text-align: center; position: relative;
-            animation: fadeIn 0.5s ease forwards;
+            transition: 0.4s; text-align: center; position: relative; animation: fadeIn 0.5s ease forwards;
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .book-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.2); }
@@ -134,7 +119,6 @@
             transform: rotate(45deg); letter-spacing: 1px; z-index: 10; 
         }
         
-        /* Image sets itself perfectly without cutting */
         .book-banner-img { 
             width: 100%; aspect-ratio: 1 / 1.414; object-fit: contain; 
             border-bottom: 2px solid var(--gold); background: #111; display: block; padding: 4px; 
@@ -152,38 +136,34 @@
         .btn-download { 
             display: block; width: 100%; background: var(--pink); color: #fff; 
             border: none; outline: none; cursor: pointer; padding: 11px; border-radius: 6px; font-weight: 900; 
-            font-size: 0.95rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 42, 117, 0.4); 
-            letter-spacing: 1px;
+            font-size: 0.95rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 42, 117, 0.4); letter-spacing: 1px;
         }
         .btn-download:hover { background: var(--pink-hover); transform: translateY(-2px); }
+        .btn-chapters { background: #222; color: var(--gold); box-shadow: none; border: 1px solid var(--gold); }
+        .btn-chapters:hover { background: var(--gold); color: #000; transform: translateY(-2px); }
+        .btn-science { background: var(--app-blue); box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4); }
+        .btn-science:hover { background: #008ba3; transform: translateY(-2px); }
 
         /* ========================================== */
-        /* --- MATHS SPECIAL LAYOUT --- */
+        /* --- MATHS SPECIAL & CHAPTER LIST LAYOUT --- */
         /* ========================================== */
         .math-special-container { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.5s ease forwards; }
-        
-        .math-choice-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 10px;
-        }
-
         .back-choice-btn {
             background: #222; color: var(--gold); border: 1px solid var(--gold);
             padding: 10px 20px; border-radius: 8px; font-weight: 800; cursor: pointer;
             width: max-content; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.9rem; margin-bottom: 15px;
         }
         .back-choice-btn:hover { background: var(--gold); color: #000; }
 
-        /* SLIM & CLEAN CHAPTER LIST ITEMS */
+        .chapter-active-section { display: none; flex-direction: column; gap: 15px; }
         .math-chapter-list { display: flex; flex-direction: column; gap: 10px; }
         .math-chapter-item {
             background: var(--bg-card); border: 1px solid var(--border-dark); border-left: 4px solid var(--gold);
             border-radius: 10px; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between;
             cursor: pointer; transition: 0.3s ease;
         }
-        .math-chapter-item:hover { 
-            transform: translateX(6px); border-color: var(--gold); background: #161616;
-        }
+        .math-chapter-item:hover { transform: translateX(6px); border-color: var(--gold); background: #161616; }
         
         .math-chapter-left { display: flex; align-items: center; gap: 15px; }
         .math-chapter-img {
@@ -202,7 +182,7 @@
         .math-chapter-item:hover .math-chapter-right i { color: #fff; }
 
         /* ========================================== */
-        /* --- PROGRESS & ALERTS --- */
+        /* --- PROGRESS, ALERTS & MODALS --- */
         /* ========================================== */
         .progress-overlay {
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
@@ -211,28 +191,49 @@
         .progress-overlay.active { display: flex; }
         .buffering-spinner {
             width: 70px; height: 70px; border: 5px solid rgba(234, 179, 8, 0.2);
-            border-top: 5px solid var(--gold); border-radius: 50%;
-            animation: bufferSpin 1s linear infinite; margin-bottom: 20px;
+            border-top: 5px solid var(--gold); border-radius: 50%; animation: bufferSpin 1s linear infinite; margin-bottom: 20px;
         }
         @keyframes bufferSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         .progress-percent { font-size: 4rem; color: var(--gold); font-weight: 900; letter-spacing: 2px; }
         .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 2px; margin-top: 5px; text-align: center; }
 
         .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10000; background: rgba(0, 0, 0, 0.9); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .global-modal.show { opacity: 1; visibility: visible; }
         .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--pink); padding: 25px; border-radius: 14px; max-width: 380px; width: 95%; text-align: center;}
+        
         .modal-icon-wrapper { width: 70px; height: 70px; margin: 0 auto 15px; background: rgba(255, 42, 117, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .modal-icon-wrapper.blue-icon { background: rgba(0, 188, 212, 0.1); }
         .modal-icon-wrapper i { font-size: 2.2rem; color: var(--pink); }
-        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 11px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 15px; }
+        .modal-icon-wrapper.blue-icon i { color: var(--app-blue); }
+        
+        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 11px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 15px; transition: 0.3s; }
+        .modal-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+        /* IN-SITE PDF VIEWER STYLES */
+        .pdf-viewer-wrapper {
+            position: fixed; inset: 0; background: #000; z-index: 20000; display: none; flex-direction: column;
+        }
+        .pdf-viewer-wrapper.active { display: flex; }
+        .pdf-header-bar {
+            background: var(--bg-card); padding: 12px 20px; display: flex;
+            justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold);
+        }
+        .pdf-header-bar h3 { color: var(--gold); font-size: 1rem; margin: 0; }
+        .close-pdf-btn {
+            background: var(--red-brand); color: #fff; border: none; padding: 8px 15px;
+            border-radius: 6px; font-weight: 800; cursor: pointer; transition: 0.3s;
+        }
+        .close-pdf-btn:hover { background: #b91c1c; }
+        .pdf-iframe-container { flex: 1; width: 100%; height: 100%; background: #222; }
+        iframe { width: 100%; height: 100%; border: none; }
 
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header class="portal-header">
         <div class="header-logo-box">
+            <!-- Updated logo spin wrap -->
             <div class="logo-spin-wrap header-logo-wrap">
                 <img src="abhinay.png" alt="Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/50'">
             </div>
@@ -243,14 +244,13 @@
         </div>
     </header>
 
-    <!-- Floating Following Logo -->
+    <!-- Floating Logo -->
     <div class="logo-spin-wrap floating-logo-wrap" onclick="window.scrollTo(0,0)" title="Back to Top">
         <img src="abhinay.png" alt="AP Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/65'">
     </div>
 
     <div class="pdf-portal-container">
         
-        <!-- Category Dropdown -->
         <div class="custom-dropdown-container">
             <div class="dropdown-header" onclick="toggleDropdown()" id="dropdownTitle">
                 <span><i class="fas fa-layer-group" style="margin-right:8px;"></i> SELECT CATEGORY</span>
@@ -269,84 +269,101 @@
 
         <h2 class="section-title" id="dynamicTitle">CLASS 9TH <span>MATERIALS</span></h2>
 
-        <!-- A4 Books Grid -->
+        <!-- Main Grid -->
         <div class="books-grid" id="booksGrid"></div>
 
-        <!-- Maths Special Exclusive Layout -->
+        <!-- Maths Special Choices (Syllabus/Arith/Adv) -->
         <div class="math-special-container" id="mathSpecialContainer">
-            
-            <!-- STEP 1: Choice Cards + Syllabus Card Included -->
-            <div id="mathChoiceView">
-                <h3 style="color:var(--gold); margin-bottom:10px; font-size:1.3rem; text-align:center;">BY ABHINAY PRATAP</h3>
-                <div class="books-grid">
-                    
-                    <!-- Syllabus Card -->
-                    <div class="book-card">
-                        <div class="book-tag">SYLLABUS</div>
-                        <img src="syllabus.png" alt="Syllabus" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
-                        <div class="book-content">
-                            <h3 class="book-title">MATHS FULL SYLLABUS</h3>
-                            <p class="book-desc">Complete Roadmap and competitive exam strategy designed by Abhinay Sir.</p>
-                            <button class="btn-download" onclick="triggerDownloadProgress('https://drive.google.com/file/d/1iSkVxMKHczV3VnqxUGz6sVYjeM7BN8NS/view?usp=drivesdk', 'Maths Special Syllabus')">
-                                <i class="fas fa-file-pdf"></i> DOWNLOAD SYLLABUS
-                            </button>
-                        </div>
+            <h3 style="color:var(--gold); margin-bottom:10px; font-size:1.3rem; text-align:center;">BY ABHINAY PRATAP</h3>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-tag">SYLLABUS</div>
+                    <img src="syllabus.png" alt="Syllabus" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    <div class="book-content">
+                        <h3 class="book-title">MATHS FULL SYLLABUS</h3>
+                        <p class="book-desc">Complete Roadmap and competitive exam strategy designed by Abhinay Sir.</p>
+                        <button class="btn-download" onclick="triggerDownloadProgress('https://drive.google.com/file/d/1iSkVxMKHczV3VnqxUGz6sVYjeM7BN8NS/view?usp=drivesdk', 'Maths Special Syllabus')">
+                            <i class="fas fa-book-open"></i> VIEW SYLLABUS
+                        </button>
                     </div>
-
-                    <!-- Arithmetic Choice -->
-                    <div class="book-card" onclick="openMathSection('arithmetic')" style="cursor:pointer; border-color:var(--pink);">
-                        <img src="arithmetic.png" alt="Arithmetic" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
-                        <div class="book-content">
-                            <h3 class="book-title">ARITHMETIC MATHS</h3>
-                            <p class="book-desc">Complete 16 Chapters from Percentage, Ratio, Time & Work to Number System.</p>
-                            <button class="btn-download" style="background:#222; color:var(--gold); box-shadow:none; border:1px solid var(--gold);">VIEW CHAPTERS</button>
-                        </div>
+                </div>
+                <div class="book-card" onclick="openChapterView('arithmetic', 'ARITHMETIC')" style="cursor:pointer; border-color:var(--pink);">
+                    <img src="arithmetic.png" alt="Arithmetic" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    <div class="book-content">
+                        <h3 class="book-title">ARITHMETIC MATHS</h3>
+                        <p class="book-desc">Complete 16 Chapters from Percentage, Ratio, Time & Work to Number System.</p>
+                        <button class="btn-download btn-chapters">VIEW CHAPTERS</button>
                     </div>
-
-                    <!-- Advance Choice -->
-                    <div class="book-card" onclick="openMathSection('advance')" style="cursor:pointer; border-color:var(--pink);">
-                        <img src="advance.png" alt="Advance" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
-                        <div class="book-content">
-                            <h3 class="book-title">ADVANCE MATHS</h3>
-                            <p class="book-desc">Complete 15 Chapters covering Algebra, Geometry, Trigonometry & Mensuration.</p>
-                            <button class="btn-download" style="background:#222; color:var(--gold); box-shadow:none; border:1px solid var(--gold);">VIEW CHAPTERS</button>
-                        </div>
+                </div>
+                <div class="book-card" onclick="openChapterView('advance', 'ADVANCE')" style="cursor:pointer; border-color:var(--pink);">
+                    <img src="advance.png" alt="Advance" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    <div class="book-content">
+                        <h3 class="book-title">ADVANCE MATHS</h3>
+                        <p class="book-desc">Complete 15 Chapters covering Algebra, Geometry, Trigonometry & Mensuration.</p>
+                        <button class="btn-download btn-chapters">VIEW CHAPTERS</button>
                     </div>
-
                 </div>
             </div>
+        </div>
 
-            <!-- STEP 2: Active Chapter View -->
-            <div class="math-active-section" id="mathActiveSection" style="display:none; flex-direction:column; gap:15px;">
-                <button class="back-choice-btn" onclick="backToChoices()"><i class="fas fa-arrow-left"></i> BACK TO SECTIONS</button>
-                <h2 class="section-title" id="activeSectionTitle" style="margin-top:5px;">CHAPTER <span>WISE PDF</span></h2>
-                <div class="math-chapter-list" id="mathChapterList"></div>
-            </div>
-
+        <!-- Universal Chapter View Section -->
+        <div class="chapter-active-section" id="chapterActiveSection">
+            <button class="back-choice-btn" onclick="backToMainView()"><i class="fas fa-arrow-left"></i> BACK TO SECTIONS</button>
+            <h2 class="section-title" id="activeSectionTitle" style="margin-top:5px;">CHAPTER <span>WISE PDF</span></h2>
+            <div class="math-chapter-list" id="chapterList"></div>
         </div>
 
     </div>
 
-    <!-- Progress Overlay -->
+    <!-- Modals & Overlays -->
     <div class="progress-overlay" id="progressOverlay">
         <div class="buffering-spinner"></div>
         <div class="progress-percent" id="progressCounter">1%</div>
-        <div class="progress-msg">DOWNLOADING SECURE PDF...</div>
+        <div class="progress-msg">LOADING SECURE PDF...</div>
     </div>
 
-    <!-- Alert Modal -->
     <div class="global-modal" id="alertModal">
         <div class="modal-content">
-            <div class="modal-icon-wrapper">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
+            <div class="modal-icon-wrapper"><i class="fas fa-exclamation-triangle"></i></div>
             <h3 style="color:#fff; margin-bottom:8px;">LINK UNAVAILABLE</h3>
             <p id="alertMsg" style="color:var(--text-dim); font-size:0.85rem; line-height:1.5; text-transform:none;">The PDF link has not been updated yet by the administrator. Please check back later.</p>
             <button class="modal-btn" onclick="document.getElementById('alertModal').classList.remove('show')">OKAY, I UNDERSTAND</button>
         </div>
     </div>
 
+    <!-- SCIENCE CHOOSER MODAL -->
+    <div class="global-modal" id="scienceChoiceModal">
+        <div class="modal-content" style="border-top-color: var(--app-blue);">
+            <div class="modal-icon-wrapper blue-icon"><i class="fas fa-flask"></i></div>
+            <h3 style="color:#fff; margin-bottom:8px;">SELECT SUBJECT</h3>
+            <p style="color:var(--text-dim); font-size:0.85rem; line-height:1.5; text-transform:none; margin-bottom:15px;">Choose the branch of science you want to read.</p>
+            
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <button class="modal-btn" style="margin:0; background:#9c27b0;" onclick="startSciencePdf('physics')"><i class="fas fa-atom"></i> PHYSICS</button>
+                <button class="modal-btn" style="margin:0; background:var(--app-blue);" onclick="startSciencePdf('chemistry')"><i class="fas fa-vial"></i> CHEMISTRY</button>
+                <button class="modal-btn" style="margin:0; background:#4caf50;" onclick="startSciencePdf('biology')"><i class="fas fa-leaf"></i> BIOLOGY</button>
+            </div>
+            
+            <button style="margin-top:15px; width:100%; padding:10px; border:none; background:transparent; color:var(--text-dim); text-decoration:underline; cursor:pointer;" onclick="closeScienceModal()">CANCEL</button>
+        </div>
+    </div>
+
+    <!-- IN-SITE PDF VIEWER -->
+    <div class="pdf-viewer-wrapper" id="pdfViewerWrapper">
+        <div class="pdf-header-bar">
+            <h3 id="pdfViewerTitle">DOCUMENT TITLE</h3>
+            <button class="close-pdf-btn" onclick="closePdfViewer()"><i class="fas fa-times"></i> CLOSE PDF</button>
+        </div>
+        <div class="pdf-iframe-container">
+            <iframe id="pdfIframe" src=""></iframe>
+        </div>
+    </div>
+
     <script>
+        let currentCategory = "CLASS 9"; 
+        let currentSciLinks = {};
+        let currentSciTitle = "";
+
         function toggleDropdown() {
             const list = document.getElementById('dropdownList');
             const arrow = document.getElementById('dropdownArrow');
@@ -355,6 +372,7 @@
         }
 
         function selectCategory(category, element) {
+            currentCategory = category;
             document.getElementById('dropdownTitle').innerHTML = `<span><i class="fas fa-check-circle" style="color:var(--green); margin-right:8px;"></i> ${category}</span> <i class="fas fa-chevron-down" id="dropdownArrow"></i>`;
             document.getElementById('dynamicTitle').innerHTML = `${category} <span>MATERIALS</span>`;
             
@@ -362,33 +380,34 @@
             element.classList.add('active-item');
 
             toggleDropdown();
+            document.getElementById('chapterActiveSection').style.display = "none";
             renderContent(category);
         }
 
         const pdfData = {
             "CLASS 9": [
                 { subject: "MATHEMATICS", title: "CLASS 9 MATHS COMPLETE NOTES", img: "m9.png", link: "#", desc: "Number Systems, Polynomials, and Geometry covered deeply." },
-                { subject: "SCIENCE", title: "Class 9 Science Theory", img: "s9.png", link: "#", desc: "Physics, Chemistry, and Biology basic foundations." },
+                { subject: "SCIENCE", title: "Class 9 Science Notes", img: "s9.png", action: "science_choice", desc: "Physics, Chemistry, and Biology complete notes.", links: { physics: "#", chemistry: "#", biology: "#" } },
                 { subject: "ENGLISH", title: "English Grammar Rules", img: "eng9.png", link: "#", desc: "Tenses, Modals, Active/Passive voice guide." },
                 { subject: "HINDI", title: "Hindi Vyakaran Guide", img: "hin9.png", link: "#", desc: "Sangya, Sarvnam, and standard grammar rules." },
                 { subject: "SOCIAL SCIENCE", title: "History & Geography", img: "ss9.png", link: "#", desc: "Detailed mind maps for Indian geography and history." }
             ],
             "CLASS 10": [
                 { subject: "MATHEMATICS", title: "Class 10 Board Maths", img: "m10.png", link: "#", desc: "Trigonometry and Algebra tricks for standard board pattern." },
-                { subject: "SCIENCE", title: "Light & Electricity Notes", img: "s10.png", link: "#", desc: "Physics numericals and chemical reactions explained." },
+                { subject: "SCIENCE", title: "Class 10 Science Notes", img: "s10.png", action: "science_choice", desc: "Physics, Chemistry, and Biology complete notes.", links: { physics: "#", chemistry: "#", biology: "#" } },
                 { subject: "ENGLISH", title: "Literature Summary", img: "eng10.png", link: "#", desc: "All chapters summary with PYQ questions included." },
                 { subject: "HINDI", title: "Hindi Board Practice", img: "hin10.png", link: "#", desc: "Model papers based strictly on the latest syllabus." },
                 { subject: "SOCIAL SCIENCE", title: "Civics & Economics", img: "ss10.png", link: "#", desc: "Democracy and economy fundamentals for boards." }
             ],
             "CLASS 11": [
-                { subject: "MATHEMATICS", title: "Calculus & Algebra Sheet", img: "m11.png", link: "#", desc: "Limits, derivatives, and complex numbers formulas." },
+                { subject: "MATHEMATICS", title: "Class 11 Maths Chapter-Wise", img: "m11.png", action: "chapters", chapterKey: "c11maths", desc: "Limits, derivatives, and complex numbers formulas." },
                 { subject: "PHYSICS", title: "Physics Full Derivations", img: "phy11.png", link: "#", desc: "Kinematics and Thermodynamics derived step-by-step." },
                 { subject: "CHEMISTRY", title: "Organic Chemistry Basics", img: "che11.png", link: "#", desc: "IUPAC naming and core mechanism guide." },
                 { subject: "ENGLISH", title: "Core Writing Skills", img: "eng11.png", link: "#", desc: "Formats for Notice, Letters, and Articles." },
                 { subject: "BIOLOGY", title: "Plant & Human Physiology", img: "bio11.png", link: "#", desc: "Detailed NEET-oriented biology preparation notes." }
             ],
             "CLASS 12": [
-                { subject: "MATHEMATICS", title: "Integration & Calculus Mastery", img: "m12.png", link: "#", desc: "Advanced integration techniques to score 100/100." },
+                { subject: "MATHEMATICS", title: "Class 12 Maths Chapter-Wise", img: "m12.png", action: "chapters", chapterKey: "c12maths", desc: "Advanced integration techniques to score 100/100." },
                 { subject: "CHEMISTRY", title: "Inorganic Name Reactions", img: "che12.png", link: "#", desc: "All vital name reactions and p-block elements." },
                 { subject: "ENGLISH", title: "Board Exam Literature", img: "eng12.png", link: "#", desc: "Flamingo and Vistas important questions." },
                 { subject: "BIOLOGY", title: "Genetics & Biotechnology", img: "bio12.png", link: "#", desc: "Handwritten notes for difficult biology chapters." }
@@ -409,7 +428,7 @@
             ]
         };
 
-        const mathSpecialData = {
+        const chapterData = {
             arithmetic: [
                 { title: "01. Calculation & Vedic Maths", img: "m.png", link: "#", desc: "Fast Calculation Tricks & Squares/Cubes" },
                 { title: "02. Percentage (प्रतिशत)", img: "m.png", link: "#", desc: "Basic to Advanced Concept & Multipliers" },
@@ -444,6 +463,41 @@
                 { title: "13. Data Interpretation (DI)", img: "banne.png", link: "#", desc: "Tabular, Bar Graph, Pie Chart & Line Graph" },
                 { title: "14. Statistics", img: "banne.png", link: "#", desc: "Mean, Median, Mode, Variance & Standard Deviation" },
                 { title: "15. Probability", img: "banne.png", link: "#", desc: "Cards, Dice, Coins & Permutation/Combination" }
+            ],
+            
+            /* ALL NCERT CHAPTERS FOR CLASS 11 ADDED HERE */
+            c11maths: [
+                { title: "01. Sets", img: "m11.png", link: "#", desc: "Sets and their representations, Subsets." },
+                { title: "02. Relations and Functions", img: "m11.png", link: "#", desc: "Cartesian product, domain and range." },
+                { title: "03. Trigonometric Functions", img: "m11.png", link: "#", desc: "Angles, identities and equations." },
+                { title: "04. Complex Numbers", img: "m11.png", link: "#", desc: "Algebra of complex numbers, Argand plane." },
+                { title: "05. Linear Inequalities", img: "m11.png", link: "#", desc: "Algebraic solutions and graphical representation." },
+                { title: "06. Permutations and Combinations", img: "m11.png", link: "#", desc: "Fundamental principle of counting, factorials." },
+                { title: "07. Binomial Theorem", img: "m11.png", link: "#", desc: "Pascal's triangle, expansion of binomials." },
+                { title: "08. Sequences and Series", img: "m11.png", link: "#", desc: "Arithmetic Progression (A.P.) and Geometric Progression (G.P.)." },
+                { title: "09. Straight Lines", img: "m11.png", link: "#", desc: "Slope, forms of equations of a line." },
+                { title: "10. Conic Sections", img: "m11.png", link: "#", desc: "Circles, parabolas, ellipses, and hyperbolas." },
+                { title: "11. 3D Geometry", img: "m11.png", link: "#", desc: "Coordinate axes and planes in 3D." },
+                { title: "12. Limits and Derivatives", img: "m11.png", link: "#", desc: "Intuitive idea of limits and standard derivatives." },
+                { title: "13. Statistics", img: "m11.png", link: "#", desc: "Measures of dispersion, variance, standard deviation." },
+                { title: "14. Probability", img: "m11.png", link: "#", desc: "Random experiments, sample spaces, events." }
+            ],
+            
+            /* ALL NCERT CHAPTERS FOR CLASS 12 ADDED HERE */
+            c12maths: [
+                { title: "01. Relations and Functions", img: "m12.png", link: "#", desc: "Types of relations, one-one and onto." },
+                { title: "02. Inverse Trigonometric Functions", img: "m12.png", link: "#", desc: "Domain, range, principal value branches." },
+                { title: "03. Matrices", img: "m12.png", link: "#", desc: "Operations, transpose, symmetric matrices." },
+                { title: "04. Determinants", img: "m12.png", link: "#", desc: "Adjoint and inverse of a square matrix." },
+                { title: "05. Continuity & Differentiability", img: "m12.png", link: "#", desc: "Chain rule, parametric forms, second order." },
+                { title: "06. Application of Derivatives", img: "m12.png", link: "#", desc: "Rate of change, increasing/decreasing functions." },
+                { title: "07. Integrals (Calculus)", img: "m12.png", link: "#", desc: "Indefinite and definite integration methods." },
+                { title: "08. Application of Integrals", img: "m12.png", link: "#", desc: "Area under simple curves." },
+                { title: "09. Differential Equations", img: "m12.png", link: "#", desc: "Order, degree, forming differential equations." },
+                { title: "10. Vector Algebra", img: "m12.png", link: "#", desc: "Vectors, scalars, magnitude, direction." },
+                { title: "11. 3D Geometry", img: "m12.png", link: "#", desc: "Direction cosines, lines and planes in space." },
+                { title: "12. Linear Programming", img: "m12.png", link: "#", desc: "Optimization, graphical method of solution." },
+                { title: "13. Probability", img: "m12.png", link: "#", desc: "Conditional probability, Bayes' theorem." }
             ]
         };
 
@@ -454,7 +508,6 @@
             if(category === "MATHS SPECIAL") {
                 grid.style.display = "none";
                 mathContainer.style.display = "flex";
-                backToChoices();
             } else {
                 mathContainer.style.display = "none";
                 grid.style.display = "grid";
@@ -462,6 +515,24 @@
                 
                 const books = pdfData[category];
                 books.forEach((book, index) => {
+                    let buttonHtml = '';
+                    
+                    if (book.action === "chapters") {
+                        buttonHtml = `<button class="btn-download btn-chapters" onclick="openChapterView('${book.chapterKey}', '${book.title}')">
+                                        VIEW CHAPTERS
+                                      </button>`;
+                    } 
+                    else if (book.action === "science_choice") {
+                        buttonHtml = `<button class="btn-download btn-science" onclick="openScienceChoice('${book.links.physics}', '${book.links.chemistry}', '${book.links.biology}', '${book.title}')">
+                                        <i class="fas fa-list-ul"></i> CHOOSE SUBJECT
+                                      </button>`;
+                    } 
+                    else {
+                        buttonHtml = `<button class="btn-download" onclick="triggerDownloadProgress('${book.link}', '${book.title}')">
+                                        <i class="fas fa-book-open"></i> OPEN PDF
+                                      </button>`;
+                    }
+
                     grid.innerHTML += `
                     <div class="book-card" style="animation: fadeIn 0.5s ease forwards ${index * 0.08}s; opacity:0;">
                         <div class="book-tag">100% FREE</div>
@@ -471,29 +542,40 @@
                             <div class="book-subject"><i class="fas fa-bookmark"></i> ${book.subject}</div>
                             <h3 class="book-title">${book.title}</h3>
                             <p class="book-desc">${book.desc}</p>
-                            <button class="btn-download" onclick="triggerDownloadProgress('${book.link}', '${book.title}')">
-                                <i class="fas fa-download"></i> DOWNLOAD NOW
-                            </button>
+                            ${buttonHtml}
                         </div>
                     </div>`;
                 });
             }
         }
 
-        function openMathSection(type) {
-            document.getElementById('mathChoiceView').style.display = "none";
-            document.getElementById('mathActiveSection').style.display = "flex";
-            
-            const chapterList = document.getElementById('mathChapterList');
-            chapterList.innerHTML = "";
-            const chapters = mathSpecialData[type];
+        function openScienceChoice(pLink, cLink, bLink, title) {
+            currentSciLinks = { physics: pLink, chemistry: cLink, biology: bLink };
+            currentSciTitle = title;
+            document.getElementById('scienceChoiceModal').classList.add('show');
+        }
 
-            const sectionTitle = document.getElementById('activeSectionTitle');
-            if(type === 'arithmetic') {
-                sectionTitle.innerHTML = "ARITHMETIC <span>CHAPTERS</span>";
-            } else {
-                sectionTitle.innerHTML = "ADVANCE <span>CHAPTERS</span>";
-            }
+        function closeScienceModal() {
+            document.getElementById('scienceChoiceModal').classList.remove('show');
+        }
+
+        function startSciencePdf(subject) {
+            closeScienceModal();
+            let link = currentSciLinks[subject];
+            let subTitle = subject.toUpperCase();
+            triggerDownloadProgress(link, currentSciTitle + " (" + subTitle + ")");
+        }
+
+        function openChapterView(key, title) {
+            document.getElementById('booksGrid').style.display = "none";
+            document.getElementById('mathSpecialContainer').style.display = "none";
+            document.getElementById('chapterActiveSection').style.display = "flex";
+            
+            const chapterList = document.getElementById('chapterList');
+            chapterList.innerHTML = "";
+            const chapters = chapterData[key];
+
+            document.getElementById('activeSectionTitle').innerHTML = `${title} <span>CHAPTERS</span>`;
 
             chapters.forEach((ch, i) => {
                 chapterList.innerHTML += `
@@ -506,15 +588,19 @@
                         </div>
                     </div>
                     <div class="math-chapter-right">
-                        <i class="fas fa-arrow-down"></i>
+                        <i class="fas fa-book-open"></i>
                     </div>
                 </div>`;
             });
         }
 
-        function backToChoices() {
-            document.getElementById('mathActiveSection').style.display = "none";
-            document.getElementById('mathChoiceView').style.display = "block";
+        function backToMainView() {
+            document.getElementById('chapterActiveSection').style.display = "none";
+            if(currentCategory === "MATHS SPECIAL") {
+                document.getElementById('mathSpecialContainer').style.display = "flex";
+            } else {
+                document.getElementById('booksGrid').style.display = "grid";
+            }
         }
 
         function triggerDownloadProgress(link, title) {
@@ -525,16 +611,16 @@
             let currentPercent = 1;
             let interval = setInterval(() => {
                 counter.innerText = currentPercent + "%";
-                currentPercent++;
+                currentPercent += 2; 
                 
                 if(currentPercent > 100) {
                     clearInterval(interval);
                     setTimeout(() => {
                         overlay.classList.remove('active');
                         evaluateLink(link, title);
-                    }, 400);
+                    }, 300);
                 }
-            }, 30);
+            }, 20);
         }
 
         function evaluateLink(link, title) {
@@ -542,14 +628,22 @@
                 document.getElementById('alertMsg').innerHTML = `<b>Oops!</b> The PDF link for <span style="color:var(--gold); font-weight:800;">"${title}"</span> has not been updated yet by the administrator. Please check back later.`;
                 document.getElementById('alertModal').classList.add('show');
             } else {
-                const a = document.createElement('a');
-                a.href = link;
-                a.setAttribute('download', ''); 
-                a.setAttribute('target', '_blank');
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
+                let embedLink = link;
+                if (link.includes("drive.google.com") && link.includes("/view")) {
+                    embedLink = link.replace(/\/view.*$/, "/preview");
+                }
+                
+                document.getElementById('pdfViewerTitle').innerText = title;
+                document.getElementById('pdfIframe').src = embedLink;
+                document.getElementById('pdfViewerWrapper').classList.add('active');
+                document.body.style.overflow = 'hidden'; 
             }
+        }
+
+        function closePdfViewer() {
+            document.getElementById('pdfViewerWrapper').classList.remove('active');
+            document.getElementById('pdfIframe').src = "";
+            document.body.style.overflow = 'auto'; 
         }
 
         document.addEventListener('DOMContentLoaded', () => {
