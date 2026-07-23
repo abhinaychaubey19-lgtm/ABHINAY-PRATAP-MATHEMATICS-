@@ -611,7 +611,7 @@
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-tasks"></i> MOCK TESTS</a></li>
             <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-flask"></i> SCIENCE & GS SECTION</a></li>
             <li><a href="sheet.html" onclick="toggleMenu ()"><i class="fas fa-calculator"></i> FORMULA SHEETS</a></li>
-            <li><a href="#" onclick="triggerComingSoon(event)"><i class="fas fa-comments"></i> DOUBT SOLVING</a></li>
+            <li><a href="print.html" onclick="toggleMenu()"><i class="fas fa-comments"></i> DOUBT SOLVING</a></li>
             <li><a href="#" onclick="openAdminAuth()"><i class="fas fa-download"></i> ADMIN EXPORT (DATA)</a></li>
         </ul>
     </div>
@@ -1648,10 +1648,28 @@
             }
         }
 
+        // ==========================================
+        // --- UPDATED QR CODE GENERATOR FOR ACCOUNT+IFSC ---
+        // ==========================================
         function generateQR() {
-            if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); return; }
-            const upiUrl = `upi://pay?pa=7705042892@ibl&pn=PratapMaths&am=${currentCoursePrice}&cu=INR`;
-            document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`; 
+            if(currentCoursePrice === 0) { 
+                showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); 
+                return; 
+            }
+            
+            // NPCI Direct Bank Account Transfer Format
+            const accNo = "520102120008909";
+            const ifsc = "UBIN0552011";
+            const payeeName = "ABHINAY CHAUBEY"; 
+            
+            // Format: account_number@ifsc_code.ifsc.npci
+            const upiId = `${accNo}@${ifsc}.ifsc.npci`;
+            
+            const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${currentCoursePrice}&cu=INR`;
+            
+            const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(upiUrl)}&size=250&margin=1`;
+            
+            document.getElementById('qrImage').src = qrApiUrl; 
             qrContainer.style.display = "block";
         }
 

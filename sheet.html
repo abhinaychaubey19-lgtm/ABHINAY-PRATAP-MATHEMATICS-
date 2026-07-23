@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formula Sheets & Short Tricks | AP Mathematics</title>
+    <title>Digital Library Vault | AP Mathematics</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,84 +11,75 @@
     <style>
         :root {
             --bg-main: #050505;
-            --bg-card: #111111;
+            --bg-card: #121212;
             --gold: #eab308;
             --pink: #ff2a75;
             --pink-hover: #ff0055;
-            --app-blue: #00bcd4;
+            --cyan: #00bcd4;
+            --purple: #a855f7;
+            --green: #22c55e;
+            --orange: #ff8c00;
             --text-light: #ffffff;
             --text-dim: #a3a3a3;
             --border-dark: #262626;
-            --red-brand: #dc2626;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
-        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; }
+        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; padding-bottom: 30px; }
 
         /* ========================================== */
-        /* --- PROFESSIONAL SPINNING BORDER LOGOS --- */
+        /* --- NEW PROFESSIONAL SPINNING BORDER --- */
         /* ========================================== */
         .logo-spin-wrap {
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            background: #000;
-            z-index: 1;
+            position: relative; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: #000; z-index: 1;
         }
+        /* Inner Fast Spin */
         .logo-spin-wrap::before {
-            content: '';
-            position: absolute;
-            inset: -3px; 
-            border-radius: 50%;
-            background: conic-gradient(var(--gold), var(--pink), var(--app-blue), var(--gold));
-            animation: spinBorder 4s linear infinite;
-            z-index: -1;
+            content: ''; position: absolute; inset: -4px; border-radius: 50%;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--pink);
+            border-bottom: 2px solid var(--cyan);
+            animation: spinBorder 1.5s linear infinite; z-index: -1;
         }
-        .inner-img {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            object-fit: contain;
-            background: #000;
-            border: 2px solid #000;
+        /* Outer Dotted Reverse Spin */
+        .logo-spin-wrap::after {
+            content: ''; position: absolute; inset: -8px; border-radius: 50%;
+            border: 2px dotted var(--gold);
+            animation: spinBorder 4s linear infinite reverse; z-index: -2;
+            opacity: 0.8;
+        }
+        .inner-img { 
+            width: 100%; height: 100%; border-radius: 50%; object-fit: contain; 
+            background: #111; padding: 3px; border: 1px solid #222;
         }
         @keyframes spinBorder { 100% { transform: rotate(360deg); } }
 
         /* ========================================== */
-        /* --- HEADER --- */
+        /* --- HEADER & FLOATING LOGO --- */
         /* ========================================== */
         .portal-header {
             background: var(--bg-card); border-bottom: 2px solid var(--gold);
             padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
             position: sticky; top: 0; z-index: 100; box-shadow: 0 5px 20px rgba(0,0,0,0.8);
         }
-        .header-logo-box { display: flex; align-items: center; gap: 15px; z-index: 2; }
-        .header-logo-wrap { width: 50px; height: 50px; }
+        .header-logo-box { display: flex; align-items: center; gap: 20px; z-index: 2; margin-left: 10px; }
+        .header-logo-wrap { width: 45px; height: 45px; }
 
         .header-text h1 { font-size: 1.2rem; color: #fff; font-weight: 900; letter-spacing: 1px; margin-bottom: 2px;}
         .header-text p { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 1.5px;}
 
         .floating-logo-wrap {
-            position: fixed; bottom: 30px; right: 30px; z-index: 5000;
-            width: 65px; height: 65px; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: fixed; bottom: 45px; right: 30px; z-index: 5000;
+            width: 55px; height: 55px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         /* ========================================== */
-        /* --- MAIN CONTAINER --- */
+        /* --- MAIN CONTAINER & DROPDOWN --- */
         /* ========================================== */
-        .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; min-height: 80vh; position: relative; z-index: 2; }
-        .section-title { 
-            font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; 
-            border-left: 5px solid var(--gold); padding-left: 15px; letter-spacing: 1px;
-        }
-        .section-title span { color: var(--gold); }
-
-        /* ========================================== */
-        /* --- PREMIUM DROPDOWN SELECTOR --- */
-        /* ========================================== */
-        .custom-dropdown-container {
-            position: relative; max-width: 400px; margin-bottom: 35px; z-index: 50;
-        }
+        .pdf-portal-container { max-width: 1100px; margin: 0 auto; padding: 40px 5%; min-height: 80vh; }
+        
+        .custom-dropdown-container { position: relative; max-width: 400px; margin-bottom: 35px; z-index: 50; }
         .dropdown-header {
             background: var(--bg-card); color: var(--gold); border: 2px solid var(--gold);
             padding: 15px 20px; border-radius: 12px; font-size: 1.1rem; font-weight: 800;
@@ -109,83 +100,142 @@
             cursor: pointer; border-bottom: 1px solid var(--border-dark); transition: 0.2s;
         }
         .dropdown-item:last-child { border-bottom: none; }
-        .dropdown-item:hover, .dropdown-item.active-item {
-            background: rgba(234, 179, 8, 0.1); color: var(--gold); padding-left: 25px;
+        .dropdown-item:hover, .dropdown-item.active-item { background: rgba(234, 179, 8, 0.1); color: var(--gold); padding-left: 25px; }
+
+        .section-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; border-left: 5px solid var(--gold); padding-left: 15px; letter-spacing: 1px; }
+        .section-title span { color: var(--gold); }
+
+        /* ========================================== */
+        /* --- PREMIUM FILE VAULT CARDS --- */
+        /* ========================================== */
+        .vault-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;
+        }
+
+        .formula-card {
+            background: var(--bg-card); border: 1px solid var(--border-dark);
+            border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        .formula-card::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+            background: var(--card-color, var(--gold)); transition: width 0.3s;
+        }
+        .formula-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--card-color, var(--gold));
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(var(--card-rgb), 0.2);
+        }
+        .formula-card:hover::before { width: 8px; }
+
+        .icon-box {
+            width: 65px; height: 65px; border-radius: 12px;
+            background: rgba(var(--card-rgb), 0.1); color: var(--card-color);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; flex-shrink: 0; border: 1px solid rgba(var(--card-rgb), 0.3);
+            transition: 0.3s;
+        }
+        .formula-card:hover .icon-box { background: var(--card-color); color: #fff; box-shadow: 0 0 15px var(--card-color); }
+
+        .info-box { flex: 1; }
+        .info-box h3 { color: var(--text-light); font-size: 1.05rem; font-weight: 800; margin-bottom: 5px; letter-spacing: 0.5px; }
+        .info-box p { color: var(--text-dim); font-size: 0.75rem; text-transform: none; font-weight: 500; margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .file-meta { display: flex; gap: 10px; align-items: center; }
+        .file-tag { background: #222; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 800; border: 1px solid #444; }
+        .file-size { color: var(--gold); font-size: 0.7rem; font-weight: 700; }
+
+        .download-btn-circle {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: #222; color: var(--text-light);
+            border: 2px solid var(--border-dark); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; transition: 0.3s; outline: none; flex-shrink: 0;
+        }
+        .formula-card:hover .download-btn-circle {
+            background: var(--pink); color: #fff; border-color: var(--pink);
+            box-shadow: 0 5px 15px rgba(255, 42, 117, 0.5); transform: rotate(-10deg);
         }
 
         /* ========================================== */
-        /* --- BOOKS GRID SYSTEM --- */
+        /* --- MATHS SPECIAL LAYOUT --- */
         /* ========================================== */
-        .books-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 40px; 
-        }
-        .book-card {
-            background: var(--bg-card); border: 2px solid var(--border-dark); border-radius: 14px; 
-            overflow: hidden; width: 100%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: 0.4s; text-align: center; position: relative;
-            animation: fadeIn 0.5s ease forwards; margin: 0 auto;
-        }
+        .math-special-container { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.5s ease forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .book-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.2); }
         
-        .book-tag { 
-            position: absolute; top: 12px; right: -28px; background: var(--pink); 
-            color: #fff; font-size: 0.7rem; font-weight: 900; padding: 4px 30px; 
-            transform: rotate(45deg); letter-spacing: 1px; z-index: 10; 
+        .math-syllabus-banner {
+            background: linear-gradient(135deg, var(--gold), var(--pink)); border-radius: 15px;
+            padding: 25px; text-align: center; box-shadow: 0 10px 30px rgba(255, 42, 117, 0.3);
+            border: 2px solid #fff; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;
         }
-        
-        .book-banner-img { 
-            width: 100%; aspect-ratio: 1 / 1.414; object-fit: contain; 
-            border-bottom: 2px solid var(--gold); background: #1a1a1a; display: block; padding: 4px; 
-        }
-        
-        .book-content { padding: 20px 15px; }
-        .book-subject { color: var(--gold); font-size: 0.75rem; font-weight: 900; margin-bottom: 5px; letter-spacing: 1px; }
-        .book-title { color: var(--text-light); font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; line-height: 1.3;}
-        .book-desc {
-            color: var(--text-dim); font-size: 0.8rem; line-height: 1.5; font-weight: 500; 
-            text-transform: none; margin-bottom: 15px; display: -webkit-box; 
-            -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-        }
+        .math-syllabus-banner h3 { color: #fff; font-size: 1.3rem; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.5); text-align: left;}
+        .math-syllabus-banner p { color: #fff; font-weight: 600; text-transform: none; text-align: left; font-size: 0.85rem;}
+        .btn-white { background: #fff; color: #000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 8px; font-weight: 900; cursor: pointer; border: none; font-size: 0.9rem;}
+        .btn-white:hover { background: #eee; color: var(--pink); }
 
-        .btn-download { 
-            display: block; width: 100%; background: var(--pink); color: #fff; 
-            border: none; outline: none; cursor: pointer; padding: 11px; border-radius: 6px; font-weight: 900; 
-            font-size: 0.95rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 42, 117, 0.4); 
-            letter-spacing: 1px;
+        .math-special-tabs { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .math-tab {
+            background: var(--bg-card); color: var(--text-dim); border: 2px solid var(--border-dark);
+            padding: 12px 25px; border-radius: 8px; font-weight: 800; font-size: 1rem;
+            cursor: pointer; transition: 0.3s; flex: 1; min-width: 200px;
         }
-        .btn-download:hover { background: var(--pink-hover); transform: translateY(-2px); }
+        .math-tab.active { background: var(--pink); color: #fff; border-color: var(--pink); box-shadow: 0 5px 15px rgba(255, 42, 117, 0.4); }
 
         /* ========================================== */
-        /* --- PROGRESS & ALERTS --- */
+        /* --- PROGRESS OVERLAY & ALERTS --- */
         /* ========================================== */
         .progress-overlay {
-            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.96); backdrop-filter: blur(12px);
             z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center;
         }
         .progress-overlay.active { display: flex; }
         .buffering-spinner {
-            width: 70px; height: 70px; border: 5px solid rgba(234, 179, 8, 0.2);
-            border-top: 5px solid var(--gold); border-radius: 50%;
+            width: 80px; height: 80px; border: 6px solid rgba(234, 179, 8, 0.2);
+            border-top: 6px solid var(--gold); border-radius: 50%;
             animation: bufferSpin 1s linear infinite; margin-bottom: 20px;
         }
         @keyframes bufferSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .progress-percent { font-size: 4rem; color: var(--gold); font-weight: 900; letter-spacing: 2px; }
-        .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 2px; margin-top: 5px; text-align: center; }
+        .progress-percent { font-size: 4.5rem; color: var(--gold); font-weight: 900; font-family: 'Poppins', sans-serif; letter-spacing: 2px; }
+        .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 2px; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); text-align: center; }
 
         .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10000; background: rgba(0, 0, 0, 0.9); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .global-modal.show { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--pink); padding: 25px; border-radius: 14px; max-width: 380px; width: 95%; text-align: center;}
-        .modal-icon-wrapper { width: 70px; height: 70px; margin: 0 auto 15px; background: rgba(255, 42, 117, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .modal-icon-wrapper i { font-size: 2.2rem; color: var(--pink); }
-        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 11px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 15px; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--pink); padding: 30px; border-radius: 16px; max-width: 400px; width: 95%; text-align: center;}
+        .modal-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(255, 42, 117, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .modal-icon-wrapper i { font-size: 2.5rem; color: var(--pink); }
+        .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 20px; font-size: 1rem; letter-spacing: 1px;}
+        .modal-btn:hover { background: var(--pink-hover); transform: translateY(-2px); }
+
+        /* ========================================== */
+        /* --- BOTTOM NEWS TICKER (NO BOX/FRAME) --- */
+        /* ========================================== */
+        .news-ticker {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: transparent; padding: 8px 0 2px; z-index: 4000;
+            overflow: hidden; pointer-events: none;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+        .ticker-content {
+            display: inline-block; white-space: nowrap;
+            animation: scrollTicker 20s linear infinite;
+        }
+        .ticker-text {
+            font-size: 0.95rem; font-weight: 800; letter-spacing: 1.5px;
+            background: linear-gradient(90deg, var(--gold), var(--pink), var(--cyan), var(--gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shineText 3s linear infinite;
+            padding-right: 50px; text-transform: uppercase;
+        }
+        @keyframes scrollTicker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        @keyframes shineText { to { background-position: 200% center; } }
 
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header with New Spinning Border Logo -->
     <header class="portal-header">
         <div class="header-logo-box">
             <div class="logo-spin-wrap header-logo-wrap">
@@ -193,47 +243,79 @@
             </div>
             <div class="header-text">
                 <h1>ABHINAY PRATAP MATHS</h1>
-                <p>FORMULA SHEETS & TRICKS</p>
+                <p>DIGITAL STUDY VAULT</p>
             </div>
         </div>
     </header>
 
-    <!-- Floating Following Logo -->
+    <!-- Floating Following Corner Logo -->
     <div class="logo-spin-wrap floating-logo-wrap" onclick="window.scrollTo(0,0)" title="Back to Top">
         <img src="abhinay.png" alt="AP Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/65'">
     </div>
 
+    <!-- Main Container -->
     <div class="pdf-portal-container">
         
-        <!-- Category Dropdown Selector -->
+        <!-- Premium Custom Dropdown Selector -->
         <div class="custom-dropdown-container">
             <div class="dropdown-header" onclick="toggleDropdown()" id="dropdownTitle">
-                <span><i class="fas fa-calculator" style="margin-right:8px;"></i> SELECT FORMULA CLASS</span>
+                <span><i class="fas fa-layer-group" style="margin-right:8px;"></i> SELECT CATEGORY</span>
                 <i class="fas fa-chevron-down" id="dropdownArrow"></i>
             </div>
             <div class="dropdown-list" id="dropdownList">
-                <div class="dropdown-item active-item" onclick="selectFormulaCategory('CLASS 9', this)">CLASS 9TH FORMULA SHEETS</div>
-                <div class="dropdown-item" onclick="selectFormulaCategory('CLASS 10', this)">CLASS 10TH FORMULA SHEETS</div>
-                <div class="dropdown-item" onclick="selectFormulaCategory('CLASS 11', this)">CLASS 11TH FORMULA SHEETS</div>
-                <div class="dropdown-item" onclick="selectFormulaCategory('CLASS 12', this)">CLASS 12TH FORMULA SHEETS</div>
-                <div class="dropdown-item" onclick="selectFormulaCategory('KVS', this)">KVS EXAM FORMULA SET</div>
-                <div class="dropdown-item" onclick="selectFormulaCategory('NVS', this)">NVS EXAM FORMULA SET</div>
-                <div class="dropdown-item" onclick="selectFormulaCategory('MATHS SPECIAL', this)" style="color:var(--pink);"><i class="fas fa-star"></i> MATHS SPECIAL SHORT TRICKS</div>
+                <div class="dropdown-item active-item" onclick="selectCategory('CLASS 9', this)">CLASS 9TH SUBJECTS</div>
+                <div class="dropdown-item" onclick="selectCategory('CLASS 10', this)">CLASS 10TH SUBJECTS</div>
+                <div class="dropdown-item" onclick="selectCategory('CLASS 11', this)">CLASS 11TH SUBJECTS</div>
+                <div class="dropdown-item" onclick="selectCategory('CLASS 12', this)">CLASS 12TH SUBJECTS</div>
+                <div class="dropdown-item" onclick="selectCategory('KVS', this)">KVS ENTRANCE EXAM</div>
+                <div class="dropdown-item" onclick="selectCategory('NVS', this)">NVS ENTRANCE EXAM</div>
+                <div class="dropdown-item" onclick="selectCategory('MATHS SPECIAL', this)" style="color:var(--pink);"><i class="fas fa-star"></i> MATHS SPECIAL BATCH</div>
             </div>
         </div>
 
-        <h2 class="section-title" id="dynamicTitle">CLASS 9TH <span>FORMULA SHEETS</span></h2>
+        <h2 class="section-title" id="dynamicTitle">CLASS 9TH <span>MATERIALS</span></h2>
 
-        <!-- Formula Books Grid -->
-        <div class="books-grid" id="booksGrid"></div>
+        <!-- Subject Vault Grid (For normal classes) -->
+        <div class="vault-grid" id="vaultGrid"></div>
+
+        <!-- Maths Special Exclusive Layout -->
+        <div class="math-special-container" id="mathSpecialContainer">
+            
+            <!-- Syllabus Banner -->
+            <div class="math-syllabus-banner">
+                <div style="text-align:left;">
+                    <h3>MATHS SPECIAL SYLLABUS</h3>
+                    <p>Complete roadmap & strategy designed by Abhinay Sir.</p>
+                </div>
+                <button class="btn-white" onclick="triggerDownloadProgress('#', 'Full Syllabus PDF')">
+                    <i class="fas fa-file-pdf"></i> SYLLABUS PDF
+                </button>
+            </div>
+            
+            <!-- Arithmetic / Advance Toggle -->
+            <div class="math-special-tabs">
+                <button class="math-tab active" id="btnArithmetic" onclick="switchMathSection('arithmetic', this)">ARITHMETIC MATHS</button>
+                <button class="math-tab" id="btnAdvance" onclick="switchMathSection('advance', this)">ADVANCE MATHS</button>
+            </div>
+
+            <!-- Chapter Grid -->
+            <div class="vault-grid" id="mathChapterGrid"></div>
+        </div>
 
     </div>
 
-    <!-- Progress Overlay -->
+    <!-- Bottom Seamless News Ticker -->
+    <div class="news-ticker">
+        <div class="ticker-content">
+            <span class="ticker-text">✨ WELCOME TO ABHINAY PRATAP MATHS! GET 100% FREE STUDY MATERIAL, PREMIUM PDFs, MATHS SHORT TRICKS, PREVIOUS YEAR PAPERS, AND EVERYTHING YOU NEED TO CRACK YOUR EXAM! ✨</span>
+        </div>
+    </div>
+
+    <!-- 1 to 100% Buffering Overlay -->
     <div class="progress-overlay" id="progressOverlay">
         <div class="buffering-spinner"></div>
         <div class="progress-percent" id="progressCounter">1%</div>
-        <div class="progress-msg">DOWNLOADING FORMULA SHEET...</div>
+        <div class="progress-msg">DOWNLOADING SECURE PDF...</div>
     </div>
 
     <!-- Alert Modal -->
@@ -242,8 +324,8 @@
             <div class="modal-icon-wrapper">
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <h3 style="color:#fff; margin-bottom:8px;">LINK UNAVAILABLE</h3>
-            <p id="alertMsg" style="color:var(--text-dim); font-size:0.85rem; line-height:1.5; text-transform:none;">The PDF link has not been updated yet by the administrator. Please check back later.</p>
+            <h3 style="color:#fff; margin-bottom:10px;">LINK UNAVAILABLE</h3>
+            <p id="alertMsg" style="color:var(--text-dim); font-size:0.9rem; line-height:1.6; text-transform:none;">The PDF link has not been updated yet by the administrator. Please check back later.</p>
             <button class="modal-btn" onclick="document.getElementById('alertModal').classList.remove('show')">OKAY, I UNDERSTAND</button>
         </div>
     </div>
@@ -256,77 +338,172 @@
             arrow.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        function selectFormulaCategory(category, element) {
+        function selectCategory(category, element) {
             document.getElementById('dropdownTitle').innerHTML = `<span><i class="fas fa-check-circle" style="color:var(--green); margin-right:8px;"></i> ${category}</span> <i class="fas fa-chevron-down" id="dropdownArrow"></i>`;
-            document.getElementById('dynamicTitle').innerHTML = `${category} <span>FORMULA SHEETS</span>`;
+            document.getElementById('dynamicTitle').innerHTML = `${category} <span>MATERIALS</span>`;
             
             document.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active-item'));
             element.classList.add('active-item');
 
             toggleDropdown();
-            renderFormulaContent(category);
+            renderContent(category);
         }
 
-        // Formula Sheets Data Repository
-        const formulaData = {
+        // ==========================================
+        // --- DATA REPOSITORY (ICONS, COLORS, TEXT) ---
+        // ==========================================
+        const subjectData = {
             "CLASS 9": [
-                { subject: "MATHEMATICS", title: "Number Systems & Polynomials Formulas", img: "m9.png", link: "#", desc: "All fundamental algebraic identities and number properties sheet." },
-                { subject: "SCIENCE", title: "Motion & Force Formula Sheet", img: "s9.png", link: "#", desc: "Kinematics equations, Newton's laws formulas and numerical shortcuts." },
-                { subject: "GEOMETRY", title: "Lines, Angles & Triangles Theorems", img: "m9.png", link: "#", desc: "Comprehensive collection of all geometry theorems and rules." }
+                { subject: "MATHEMATICS", title: "Class 9 Maths Complete", desc: "NCERT Solutions & Polynomials", icon: "fas fa-calculator", color: "#eab308", rgb: "234, 179, 8", size: "2.5 MB", link: "#" },
+                { subject: "SCIENCE", title: "Class 9 Science Theory", desc: "Physics, Chemistry & Bio basics", icon: "fas fa-flask", color: "#00bcd4", rgb: "0, 188, 212", size: "3.1 MB", link: "#" },
+                { subject: "ENGLISH", title: "English Grammar Rules", desc: "Tenses, Modals & Writing", icon: "fas fa-language", color: "#ff2a75", rgb: "255, 42, 117", size: "1.2 MB", link: "#" },
+                { subject: "HINDI", title: "Hindi Vyakaran Guide", desc: "Sangya, Sarvnam & Grammar", icon: "fas fa-book-open", color: "#22c55e", rgb: "34, 197, 94", size: "1.8 MB", link: "#" },
+                { subject: "SOCIAL SCIENCE", title: "History & Geography", desc: "Detailed maps & timelines", icon: "fas fa-globe-asia", color: "#ff8c00", rgb: "255, 140, 0", size: "4.0 MB", link: "#" }
             ],
             "CLASS 10": [
-                { subject: "MATHEMATICS", title: "Trigonometry & Heights Formulas", img: "m10.png", link: "#", desc: "All standard angle values, identities and angle conversion sheets." },
-                { subject: "SCIENCE", title: "Light Reflection & Electricity Sheet", img: "s10.png", link: "#", desc: "Mirror formula, lens formula, Ohm's law and power formulas." },
-                { subject: "QUADRATIC EQ", title: "Quadratic Equations Quick Notes", img: "m10.png", link: "#", desc: "Discriminant rules and root finding shortcuts." }
+                { subject: "MATHEMATICS", title: "Class 10 Board Maths", desc: "Trigonometry & Algebra tricks", icon: "fas fa-calculator", color: "#eab308", rgb: "234, 179, 8", size: "3.2 MB", link: "#" },
+                { subject: "SCIENCE", title: "Light & Electricity", desc: "Numericals & Reactions", icon: "fas fa-lightbulb", color: "#00bcd4", rgb: "0, 188, 212", size: "2.8 MB", link: "#" },
+                { subject: "ENGLISH", title: "Literature Summary", desc: "All chapters with PYQs", icon: "fas fa-language", color: "#ff2a75", rgb: "255, 42, 117", size: "1.5 MB", link: "#" },
+                { subject: "HINDI", title: "Hindi Board Practice", desc: "Model papers & Syllabus", icon: "fas fa-book-open", color: "#22c55e", rgb: "34, 197, 94", size: "2.1 MB", link: "#" },
+                { subject: "SOCIAL SCIENCE", title: "Civics & Economics", desc: "Democracy fundamentals", icon: "fas fa-landmark", color: "#ff8c00", rgb: "255, 140, 0", size: "3.5 MB", link: "#" }
             ],
             "CLASS 11": [
-                { subject: "MATHEMATICS", title: "Calculus & Limits Formula Booklet", img: "m11.png", link: "#", desc: "Standard differentiation formulas and trigonometric expansions." },
-                { subject: "PHYSICS", title: "Kinematics & Thermodynamics Sheet", img: "phy11.png", link: "#", desc: "Vector formulas, work-energy theorem and gas laws." },
-                { subject: "CHEMISTRY", title: "Mole Concept & Periodic Table Tricks", img: "che11.png", link: "#", desc: "Stoichiometry shortcuts and periodic trends overview." }
+                { subject: "MATHEMATICS", title: "Calculus & Algebra", desc: "Limits & derivatives sheet", icon: "fas fa-square-root-alt", color: "#eab308", rgb: "234, 179, 8", size: "4.1 MB", link: "#" },
+                { subject: "PHYSICS", title: "Physics Derivations", desc: "Kinematics & Thermodynamics", icon: "fas fa-rocket", color: "#00bcd4", rgb: "0, 188, 212", size: "3.7 MB", link: "#" },
+                { subject: "CHEMISTRY", title: "Organic Chemistry", desc: "IUPAC naming & mechanisms", icon: "fas fa-vial", color: "#a855f7", rgb: "168, 85, 247", size: "2.9 MB", link: "#" },
+                { subject: "BIOLOGY", title: "Plant Physiology", desc: "NEET-oriented prep notes", icon: "fas fa-dna", color: "#22c55e", rgb: "34, 197, 94", size: "4.5 MB", link: "#" },
+                { subject: "ENGLISH", title: "Core Writing Skills", desc: "Notice, Letters, Articles", icon: "fas fa-pen-nib", color: "#ff2a75", rgb: "255, 42, 117", size: "1.1 MB", link: "#" }
             ],
             "CLASS 12": [
-                { subject: "MATHEMATICS", title: "Integration & Matrices Master Sheet", img: "m12.png", link: "#", desc: "Definite/indefinite integration formulas and inverse trig properties." },
-                { subject: "PHYSICS", title: "Electrostatics & Magnetism Formulas", img: "banner.png", link: "#", desc: "Coulomb's law, Gauss's law, EMI and AC circuit formulas." },
-                { subject: "CHEMISTRY", title: "Solutions & Electrochemistry Sheet", img: "che12.png", link: "#", desc: "Raoult's law, Nernst equation and half-life formulas." }
+                { subject: "MATHEMATICS", title: "Integration Mastery", desc: "Advanced calculus concepts", icon: "fas fa-square-root-alt", color: "#eab308", rgb: "234, 179, 8", size: "4.8 MB", link: "#" },
+                { subject: "PHYSICS", title: "Electromagnetism", desc: "Electrostatics & AC circuits", icon: "fas fa-magnet", color: "#00bcd4", rgb: "0, 188, 212", size: "4.2 MB", link: "#" },
+                { subject: "CHEMISTRY", title: "Inorganic Reactions", desc: "Name reactions & p-block", icon: "fas fa-vial", color: "#a855f7", rgb: "168, 85, 247", size: "3.5 MB", link: "#" },
+                { subject: "BIOLOGY", title: "Genetics Notes", desc: "Handwritten difficult chapters", icon: "fas fa-dna", color: "#22c55e", rgb: "34, 197, 94", size: "5.1 MB", link: "#" },
+                { subject: "ENGLISH", title: "Board Literature", desc: "Flamingo & Vistas Q&A", icon: "fas fa-book", color: "#ff2a75", rgb: "255, 42, 117", size: "1.8 MB", link: "#" }
             ],
             "KVS": [
-                { subject: "MATHEMATICS", title: "KVS Quick Revision Formula Handbook", img: "kvm.png", link: "#", desc: "All elementary to higher math formulas for teaching exams." },
-                { subject: "REASONING", title: "Reasoning Shortcuts & Series Rules", img: "kvres.png", link: "#", desc: "Quick mental math and pattern deciphering formulas." }
+                { subject: "MATHEMATICS", title: "KVS PRT/TGT Maths", desc: "Shortcuts for teaching exams", icon: "fas fa-calculator", color: "#eab308", rgb: "234, 179, 8", size: "3.2 MB", link: "#" },
+                { subject: "PEDAGOGY", title: "Child Development", desc: "CDP theories & MCQ practice", icon: "fas fa-child", color: "#00bcd4", rgb: "0, 188, 212", size: "2.8 MB", link: "#" },
+                { subject: "ENGLISH", title: "General English", desc: "Grammar & common errors", icon: "fas fa-language", color: "#ff2a75", rgb: "255, 42, 117", size: "1.5 MB", link: "#" },
+                { subject: "HINDI", title: "General Hindi", desc: "Sandhi, Samas & basics", icon: "fas fa-book-open", color: "#22c55e", rgb: "34, 197, 94", size: "1.9 MB", link: "#" },
+                { subject: "REASONING", title: "Logical Reasoning", desc: "Patterns and verbal logic", icon: "fas fa-brain", color: "#a855f7", rgb: "168, 85, 247", size: "2.5 MB", link: "#" },
+                { subject: "SCIENCE", title: "KVS Science Digest", desc: "Class 6-10 NCERT Science", icon: "fas fa-flask", color: "#ff8c00", rgb: "255, 140, 0", size: "3.8 MB", link: "#" }
             ],
             "NVS": [
-                { subject: "MATHEMATICS", title: "NVS PGT Advanced Formula Guide", img: "nvsm.png", link: "#", desc: "Complex numbers, matrices, calculus and geometry fast sheet." },
-                { subject: "SCIENCE", title: "General Science Formula Digest", img: "nvssci.png", link: "#", desc: "Important physics and chemistry constants and formulas." }
-            ],
-            "MATHS SPECIAL": [
-                { subject: "SHORT TRICKS", title: "Abhinay Sir's 100+ Vedic Math Tricks", img: "m.png", link: "#", desc: "Superfast multiplication, square roots and division techniques." },
-                { subject: "ARITHMETIC", title: "Arithmetic Ultimate Formula Sheet", img: "m.png", link: "#", desc: "Percentage, Profit/Loss, SI/CI and Time-Work shortcut formulas." },
-                { subject: "ADVANCE", title: "Advance Math Crown Formulas", img: "banne.png", link: "#", desc: "Geometry centers, Algebra identities and Mensuration shortcuts." }
+                { subject: "MATHEMATICS", title: "NVS PGT Advance", desc: "Algebraic & geometric problems", icon: "fas fa-calculator", color: "#eab308", rgb: "234, 179, 8", size: "3.5 MB", link: "#" },
+                { subject: "REASONING", title: "Logical Reasoning", desc: "Time-saving shortcuts", icon: "fas fa-brain", color: "#a855f7", rgb: "168, 85, 247", size: "2.2 MB", link: "#" },
+                { subject: "TEACHING APT.", title: "Teaching Aptitude", desc: "Methodologies & NEP policies", icon: "fas fa-chalkboard-teacher", color: "#00bcd4", rgb: "0, 188, 212", size: "2.7 MB", link: "#" },
+                { subject: "LANGUAGE TEST", title: "Hindi + English", desc: "Qualifying exam guide", icon: "fas fa-spell-check", color: "#ff2a75", rgb: "255, 42, 117", size: "2.0 MB", link: "#" },
+                { subject: "SCIENCE", title: "NVS Science Mock", desc: "10 full-length practice sets", icon: "fas fa-flask", color: "#ff8c00", rgb: "255, 140, 0", size: "4.1 MB", link: "#" }
             ]
         };
 
-        function renderFormulaContent(category) {
-            const grid = document.getElementById('booksGrid');
-            grid.innerHTML = "";
-            
-            const sheets = formulaData[category] || [];
-            sheets.forEach((sheet, index) => {
-                grid.innerHTML += `
-                <div class="book-card" style="animation: fadeIn 0.5s ease forwards ${index * 0.08}s; opacity:0;">
-                    <div class="book-tag">FREE</div>
-                    <img src="${sheet.img}" alt="${sheet.title}" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
-                    
-                    <div class="book-content">
-                        <div class="book-subject"><i class="fas fa-calculator"></i> ${sheet.subject}</div>
-                        <h3 class="book-title">${sheet.title}</h3>
-                        <p class="book-desc">${sheet.desc}</p>
-                        <button class="btn-download" onclick="triggerDownloadProgress('${sheet.link}', '${sheet.title}')">
-                            <i class="fas fa-download"></i> DOWNLOAD FORMULA PDF
+        const mathSpecialData = {
+            arithmetic: [
+                { title: "01. Calculation & Vedic", desc: "Fast Tricks & Squares", size: "1.1 MB", link: "#" },
+                { title: "02. Percentage (प्रतिशत)", desc: "Basic to Advanced Concept", size: "1.5 MB", link: "#" },
+                { title: "03. Ratio & Proportion", desc: "Coin & Income Based", size: "1.3 MB", link: "#" },
+                { title: "04. Partnership", desc: "Investment Methods", size: "1.0 MB", link: "#" },
+                { title: "05. Profit & Loss", desc: "Dishonest Dealer Tricks", size: "1.6 MB", link: "#" },
+                { title: "06. Simple Interest", desc: "Direct Formula Shortcuts", size: "1.2 MB", link: "#" },
+                { title: "07. Compound Interest", desc: "Tree Method & Successive", size: "1.8 MB", link: "#" },
+                { title: "08. SI & CI Combined", desc: "Difference Tricks", size: "1.4 MB", link: "#" },
+                { title: "09. Average (औसत)", desc: "Deviation Method", size: "1.2 MB", link: "#" },
+                { title: "10. Mixture & Alligation", desc: "Replacement Concepts", size: "1.5 MB", link: "#" },
+                { title: "11. Time & Work", desc: "Efficiency & Wages", size: "1.7 MB", link: "#" },
+                { title: "12. Pipe & Cistern", desc: "Inlet & Leakage", size: "1.1 MB", link: "#" },
+                { title: "13. Speed & Distance", desc: "Train & Meeting Point", size: "1.9 MB", link: "#" },
+                { title: "14. Boat & Stream", desc: "Upstream & Downstream", size: "1.0 MB", link: "#" },
+                { title: "15. Number System", desc: "Unit Digit & Remainders", size: "2.1 MB", link: "#" },
+                { title: "16. Simplification", desc: "BODMAS & Surds", size: "1.6 MB", link: "#" }
+            ],
+            advance: [
+                { title: "01. Algebra (Part 1)", desc: "Identities & Value Putting", size: "1.8 MB", link: "#" },
+                { title: "02. Algebra (Part 2)", desc: "Roots & Remainder", size: "1.5 MB", link: "#" },
+                { title: "03. Lines & Angles", desc: "Parallel Lines & Bisectors", size: "1.2 MB", link: "#" },
+                { title: "04. Triangles", desc: "Centroid & Orthocenter", size: "2.0 MB", link: "#" },
+                { title: "05. Quadrilaterals", desc: "Rhombus & Trapezium", size: "1.4 MB", link: "#" },
+                { title: "06. Circle & Tangents", desc: "Chords & Secants", size: "1.9 MB", link: "#" },
+                { title: "07. Coordinate Geo", desc: "Distance Formula & Slopes", size: "1.6 MB", link: "#" },
+                { title: "08. Trigonometry", desc: "Ratios & Identities", size: "2.2 MB", link: "#" },
+                { title: "09. Maxima & Minima", desc: "Trig calculations", size: "1.3 MB", link: "#" },
+                { title: "10. Height & Distance", desc: "Elevation Shortcuts", size: "1.5 MB", link: "#" },
+                { title: "11. Mensuration 2D", desc: "Area & Perimeter", size: "1.8 MB", link: "#" },
+                { title: "12. Mensuration 3D", desc: "Volume & Surface Area", size: "2.4 MB", link: "#" },
+                { title: "13. Data Interpretation", desc: "Pie Charts & Bar Graphs", size: "2.5 MB", link: "#" },
+                { title: "14. Statistics", desc: "Mean, Median, Mode", size: "1.7 MB", link: "#" },
+                { title: "15. Probability", desc: "Cards & Dice logic", size: "1.4 MB", link: "#" }
+            ]
+        };
+
+        // ==========================================
+        // --- RENDER LOGIC ---
+        // ==========================================
+        function renderContent(category) {
+            const grid = document.getElementById('vaultGrid');
+            const mathContainer = document.getElementById('mathSpecialContainer');
+
+            if(category === "MATHS SPECIAL") {
+                grid.style.display = "none";
+                mathContainer.style.display = "flex";
+                const btnArith = document.getElementById('btnArithmetic');
+                switchMathSection('arithmetic', btnArith);
+            } else {
+                mathContainer.style.display = "none";
+                grid.style.display = "grid";
+                grid.innerHTML = "";
+                
+                const subjects = subjectData[category];
+                subjects.forEach((item, index) => {
+                    grid.innerHTML += `
+                    <div class="formula-card" style="--card-color: ${item.color}; --card-rgb: ${item.rgb}; animation: slideDown 0.5s ease forwards ${index * 0.1}s; opacity: 0;">
+                        <div class="icon-box"><i class="${item.icon}"></i></div>
+                        <div class="info-box">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                            <div class="file-meta">
+                                <span class="file-tag">PDF</span>
+                                <span class="file-size">${item.size}</span>
+                            </div>
+                        </div>
+                        <button class="download-btn-circle" onclick="triggerDownloadProgress('${item.link}', '${item.title}')" title="Download">
+                            <i class="fas fa-cloud-download-alt"></i>
                         </button>
+                    </div>`;
+                });
+            }
+        }
+
+        function switchMathSection(type, element) {
+            document.querySelectorAll('.math-tab').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+
+            const chapterGrid = document.getElementById('mathChapterGrid');
+            chapterGrid.innerHTML = "";
+            const chapters = mathSpecialData[type];
+
+            chapters.forEach((ch, i) => {
+                chapterGrid.innerHTML += `
+                <div class="formula-card" style="--card-color: #eab308; --card-rgb: 234, 179, 8; animation: slideDown 0.4s ease forwards ${i * 0.05}s; opacity: 0;">
+                    <div class="icon-box"><i class="fas fa-square-root-alt"></i></div>
+                    <div class="info-box">
+                        <h3>${ch.title}</h3>
+                        <p>${ch.desc}</p>
+                        <div class="file-meta">
+                            <span class="file-tag">PDF</span>
+                            <span class="file-size">${ch.size}</span>
+                        </div>
                     </div>
+                    <button class="download-btn-circle" onclick="triggerDownloadProgress('${ch.link}', '${ch.title}')" title="Download">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
                 </div>`;
             });
         }
 
+        // ==========================================
+        // --- ANIMATIONS & ALERTS ---
+        // ==========================================
         function triggerDownloadProgress(link, title) {
             const overlay = document.getElementById('progressOverlay');
             const counter = document.getElementById('progressCounter');
@@ -342,14 +519,14 @@
                     setTimeout(() => {
                         overlay.classList.remove('active');
                         evaluateLink(link, title);
-                    }, 400);
+                    }, 500);
                 }
-            }, 30);
+            }, 30); // 3 seconds download animation
         }
 
         function evaluateLink(link, title) {
             if(!link || link.trim() === "" || link.trim() === "#") {
-                document.getElementById('alertMsg').innerHTML = `<b>Oops!</b> The Formula PDF for <span style="color:var(--gold); font-weight:800;">"${title}"</span> has not been updated yet by the administrator. Please check back later.`;
+                document.getElementById('alertMsg').innerHTML = `<b>Oops!</b> The PDF link for <span style="color:var(--pink); font-weight:800;">"${title}"</span> has not been updated yet by the administrator. Please check back later.`;
                 document.getElementById('alertModal').classList.add('show');
             } else {
                 const a = document.createElement('a');
@@ -363,7 +540,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderFormulaContent('CLASS 9');
+            renderContent('CLASS 9');
         });
 
         document.addEventListener('click', function(event) {

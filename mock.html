@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Entrance Mock Test | AP Mathematics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #050505;
+            --bg-card: #111111;
+            --gold: #eab308;
+            --pink: #ff2a75;
+            --pink-hover: #ff0055;
+            --cyan: #00bcd4;
+            --text-light: #ffffff;
+            --text-dim: #a3a3a3;
+            --border-dark: #262626;
+            --answered: #22c55e;
+            --not-answered: #dc2626;
+            --marked: #a855f7;
+            --not-visited: #ffffff;
+        }
+
+        /* ANTI-PIRACY RULES */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; user-select: none; -webkit-user-select: none; }
+        body { background-color: var(--bg-main); color: var(--text-light); height: 100vh; overflow: hidden; }
+
+        /* ========================================== */
+        /* --- STEP 1: INTRO SCREEN --- */
+        /* ========================================== */
+        #introScreen {
+            display: flex; height: 100vh; align-items: center; justify-content: center; background: var(--bg-main);
+        }
+        .intro-box {
+            background: var(--bg-card); border: 2px solid var(--gold); border-radius: 16px;
+            padding: 40px; text-align: center; max-width: 450px; width: 90%;
+            box-shadow: 0 10px 40px rgba(234, 179, 8, 0.2); animation: popIn 0.5s ease;
+        }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .intro-box img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); padding: 3px; margin-bottom: 20px; }
+        .intro-box h2 { color: #fff; font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px; }
+        .intro-box p { color: var(--text-dim); font-size: 0.9rem; text-transform: none; margin-bottom: 30px; }
+        .btn-main { background: var(--pink); color: #fff; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: 800; border-radius: 8px; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-main:hover { background: var(--pink-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 42, 117, 0.4); }
+
+        /* ========================================== */
+        /* --- STEP 2: REGISTRATION / DECLARATION --- */
+        /* ========================================== */
+        #registrationScreen {
+            display: none; height: 100vh; align-items: center; justify-content: center; background: var(--bg-main);
+        }
+        .reg-box {
+            background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--gold);
+            border-radius: 12px; padding: 40px; max-width: 600px; width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .reg-box h2 { color: var(--gold); font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; border-bottom: 1px dashed var(--border-dark); padding-bottom: 10px;}
+        
+        .input-group { margin-bottom: 25px; text-align: left; }
+        .input-group label { display: block; color: var(--text-light); font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; }
+        .input-group input[type="text"] {
+            width: 100%; background: #000; border: 1px solid var(--border-dark); color: #fff;
+            padding: 15px; border-radius: 8px; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .input-group input[type="text"]:focus { border-color: var(--gold); }
+
+        .instructions-list { background: #1a1a1a; padding: 15px; border-radius: 8px; font-size: 0.85rem; color: var(--text-dim); text-transform: none; margin-bottom: 25px; max-height: 150px; overflow-y: auto; border: 1px solid #333;}
+        .instructions-list ul { margin-left: 20px; margin-top: 10px; }
+        .instructions-list li { margin-bottom: 5px; }
+
+        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 30px; text-transform: none; cursor: pointer; }
+        .checkbox-group input { width: 22px; height: 22px; accent-color: var(--gold); cursor: pointer; margin-top: 2px;}
+        .checkbox-group span { font-size: 0.9rem; color: #fff; font-weight: 500; line-height: 1.4; }
+
+        .btn-start { background: var(--answered); color: #fff; border: none; padding: 15px; font-size: 1.1rem; font-weight: 900; border-radius: 8px; cursor: pointer; width: 100%; transition: 0.3s; opacity: 0.5; pointer-events: none; }
+        .btn-start.active { opacity: 1; pointer-events: auto; }
+        .btn-start.active:hover { background: #16a34a; transform: translateY(-2px); }
+
+        /* ========================================== */
+        /* --- STEP 3: EXAM INTERFACE --- */
+        /* ========================================== */
+        #examInterface { display: none; flex-direction: column; height: 100vh; }
+        
+        /* CLEAN TOP HEADER (Only Logo & Institute Name) */
+        .exam-header {
+            background: var(--bg-card); border-bottom: 2px solid var(--gold);
+            padding: 10px 3%; display: flex; align-items: center; justify-content: space-between; height: 70px;
+        }
+        .header-logo-box { display: flex; align-items: center; gap: 15px; }
+        .header-logo-wrap { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--gold); padding: 2px; }
+        .header-logo-wrap img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+        .header-text h1 { font-size: 1.1rem; color: #fff; font-weight: 900; letter-spacing: 1px;}
+        .header-text p { font-size: 0.75rem; color: var(--gold); font-weight: 800; letter-spacing: 1px;}
+        
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .timer-box { font-size: 1.3rem; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 8px; background: rgba(220, 38, 38, 0.15); padding: 6px 15px; border-radius: 8px; border: 1px solid var(--not-answered); }
+        .timer-box i { color: var(--not-answered); animation: blink 1s infinite; }
+        
+        .btn-palette-toggle {
+            background: var(--gold); color: #000; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 900; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+        }
+        .btn-palette-toggle:hover { background: #d97706; }
+
+        /* Full Page Clean Question Area with Background Watermark */
+        .exam-body { display: flex; flex: 1; position: relative; overflow: hidden; height: calc(100vh - 120px); }
+        .question-area { 
+            flex: 1; display: flex; flex-direction: column; padding: 20px 5%; overflow-y: auto; background: var(--bg-main); width: 100%; 
+            position: relative;
+        }
+        
+        /* WATERMARK */
+        .question-area::before {
+            content: "ABHINAY PRATAP MATHS";
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 5rem; font-weight: 900; color: rgba(255, 255, 255, 0.03);
+            white-space: nowrap; pointer-events: none; z-index: 0;
+        }
+
+        .section-tabs, .q-header, .q-text, .options-container, .action-bar { position: relative; z-index: 1; }
+
+        .section-tabs { display: flex; gap: 10px; margin-bottom: 25px; overflow-x: auto; padding-bottom: 5px; border-bottom: 1px solid var(--border-dark); }
+        .sec-tab { background: #1a1a1a; color: var(--text-dim); padding: 8px 20px; border-radius: 6px 6px 0 0; cursor: pointer; font-weight: 700; font-size: 0.85rem; border: 1px solid var(--border-dark); border-bottom: none; }
+        .sec-tab.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        .q-header { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 900; color: var(--gold); margin-bottom: 25px; border-bottom: 1px dashed var(--border-dark); padding-bottom: 10px;}
+        .q-text { font-size: 1.15rem; font-weight: 600; line-height: 1.6; margin-bottom: 25px; text-transform: none; max-width: 900px;}
+        
+        .options-container { display: flex; flex-direction: column; gap: 12px; flex: 1; max-width: 900px;}
+        .opt-label { 
+            display: flex; align-items: center; gap: 15px; padding: 12px 18px; 
+            background: var(--bg-card); border: 1px solid var(--border-dark); 
+            border-radius: 8px; cursor: pointer; transition: 0.2s; text-transform: none; font-size: 1rem; font-weight: 500;
+        }
+        .opt-label:hover { border-color: var(--text-dim); background: #1a1a1a; }
+        .opt-label input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--gold); }
+        .opt-label.selected { border-color: var(--gold); background: rgba(234, 179, 8, 0.1); }
+
+        /* SLIM ACTION BUTTONS */
+        .action-bar { display: flex; justify-content: space-between; padding-top: 15px; border-top: 1px solid var(--border-dark); margin-top: auto; max-width: 900px;}
+        .btn { padding: 8px 16px; border-radius: 4px; font-weight: 600; cursor: pointer; border: none; font-size: 0.85rem; transition: 0.3s; letter-spacing: 0.5px; }
+        .btn-prev { background: #333; color: #fff; border: 1px solid #555;}
+        .btn-clear { background: transparent; color: #ccc; border: 1px solid #555;}
+        .btn-mark { background: var(--marked); color: #fff; }
+        .btn-save { background: var(--answered); color: #fff; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        /* BOTTOM FOOTER WITH TICKER (10s Speed) */
+        .exam-footer {
+            background: #0d0d0d; border-top: 1px solid var(--border-dark);
+            height: 50px; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 3%; z-index: 100; overflow: hidden;
+        }
+        .footer-ticker {
+            flex: 1; white-space: nowrap; overflow: hidden; margin-right: 20px;
+        }
+        .ticker-scroller {
+            display: inline-block;
+            font-size: 0.85rem; font-weight: 700; color: var(--cyan);
+            animation: scrollFooterName 10s linear infinite;
+        }
+        @keyframes scrollFooterName {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .footer-right { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+
+        /* ========================================== */
+        /* --- QUESTION PALETTE DRAWER --- */
+        /* ========================================== */
+        .palette-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; display: none; }
+        .palette-overlay.active { display: block; }
+
+        .palette-drawer {
+            position: fixed; top: 0; right: -380px; width: 350px; height: 100vh;
+            background: var(--bg-card); border-left: 2px solid var(--gold);
+            z-index: 2100; transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+        }
+        .palette-drawer.open { right: 0; }
+
+        .drawer-header { padding: 20px; border-bottom: 1px solid var(--border-dark); display: flex; justify-content: space-between; align-items: center;}
+        .drawer-header h3 { color: var(--gold); font-size: 1.1rem; font-weight: 900; }
+        .btn-close-drawer { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        .btn-close-drawer:hover { color: var(--pink); }
+
+        .palette-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px 20px; font-size: 0.75rem; font-weight: 700; border-bottom: 1px solid var(--border-dark); }
+        .stat-item { display: flex; align-items: center; gap: 8px; }
+        .badge { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 0.65rem; font-weight: bold;}
+        .b-ans { background: var(--answered); color: #fff;}
+        .b-not { background: var(--not-answered); color: #fff;}
+        .b-mark { background: var(--marked); color: #fff;}
+        .b-unv { background: var(--not-visited); border: 1px solid #ccc; color: #000; }
+
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 20px; overflow-y: auto; flex: 1; align-content: start; }
+        .pal-btn { width: 40px; height: 40px; border-radius: 50%; font-weight: 800; font-size: 0.9rem; cursor: pointer; border: 1px solid #ccc; background: var(--not-visited); color: #000; transition: 0.2s; }
+        .pal-btn:hover { transform: scale(1.1); }
+        .pal-btn.ans { background: var(--answered); color: #fff; border: none;}
+        .pal-btn.not { background: var(--not-answered); color: #fff; border: none;}
+        .pal-btn.mark { background: var(--marked); color: #fff; border: none;}
+
+        .submit-box { padding: 20px; border-top: 1px solid var(--border-dark); }
+        .btn-submit { width: 100%; padding: 15px; background: var(--pink); color: #fff; font-size: 1.1rem; font-weight: 900; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 1px; }
+        .btn-submit:hover { background: var(--pink-hover); }
+
+        /* ========================================== */
+        /* --- STEP 4: RESULTS & CLARIFICATION --- */
+        /* ========================================== */
+        #resultScreen { display: none; padding: 40px 5%; overflow-y: auto; height: 100vh; background: var(--bg-main); }
+        .result-header { text-align: center; margin-bottom: 40px; }
+        .result-header h2 { font-size: 2.5rem; color: var(--gold); font-weight: 900; }
+        
+        .score-card { background: var(--bg-card); border: 2px solid var(--gold); border-radius: 16px; padding: 40px; text-align: center; max-width: 600px; margin: 0 auto 40px; box-shadow: 0 10px 40px rgba(234, 179, 8, 0.2); }
+        .score-val { font-size: 5rem; font-weight: 900; color: var(--answered); line-height: 1;}
+        .student-result-name { font-size: 1.5rem; color: #fff; font-weight: 800; margin-bottom: 20px; text-transform: uppercase;}
+        
+        .clarification-list { display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 0 auto; padding-bottom: 50px;}
+        .sol-card { background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 12px; padding: 25px; text-transform: none; }
+        .sol-q { font-size: 1.1rem; font-weight: 700; color: var(--gold); margin-bottom: 15px; }
+        .sol-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .sol-opt { padding: 10px; border-radius: 8px; border: 1px solid #333; font-size: 0.9rem; font-weight: 500;}
+        .sol-opt.correct { background: rgba(34, 197, 94, 0.15); border-color: var(--answered); color: var(--answered); font-weight: bold; }
+        .sol-opt.wrong { background: rgba(220, 38, 38, 0.15); border-color: var(--not-answered); color: var(--not-answered); text-decoration: line-through; }
+        .sol-exp { background: #1a1a1a; border-left: 4px solid var(--pink); padding: 15px; border-radius: 6px; font-size: 0.9rem; color: #ccc; line-height: 1.5;}
+
+        /* PRINT STYLES FOR REAL PDF DOWNLOAD REPORT */
+        @media print {
+            body { background: #fff !important; color: #000 !important; overflow: auto !important; height: auto !important; }
+            #resultScreen { display: block !important; height: auto !important; padding: 0 !important; }
+            .score-card, .result-header { border: 1px solid #000 !important; box-shadow: none !important; background: #f9f9f9 !important; color: #000 !important; }
+            .score-val { color: #16a34a !important; }
+            .sol-card { background: #fff !important; border: 1px solid #ddd !important; break-inside: avoid; }
+            .sol-exp { background: #f1f5f9 !important; color: #000 !important; border-left-color: #2563eb !important; }
+            button, .exam-header, .exam-body { display: none !important; }
+        }
+
+        /* ========================================== */
+        /* --- ANTI-CHEAT WARNING OVERLAY --- */
+        /* ========================================== */
+        .cheat-warning {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.98); z-index: 10000;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px;
+        }
+        .cheat-warning i { font-size: 5rem; color: var(--not-answered); margin-bottom: 20px; animation: blink 1s infinite;}
+        .cheat-warning h2 { font-size: 2.5rem; color: #fff; margin-bottom: 15px; }
+        .cheat-warning p { color: var(--text-dim); font-size: 1.1rem; text-transform: none; max-width: 600px; line-height: 1.5;}
+        .btn-resume { background: var(--gold); color: #000; border: none; padding: 15px 40px; font-weight: 900; font-size: 1.2rem; border-radius: 8px; margin-top: 30px; cursor: pointer; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <!-- STEP 1: INITIAL INTRO SCREEN -->
+    <div id="introScreen">
+        <div class="intro-box">
+            <img src="abhinay.png" alt="Logo" onerror="this.src='https://via.placeholder.com/90'">
+            <h2>ENTRANCE EXAM TEST</h2>
+            <p>Official Mock Test by Abhinay Pratap Maths</p>
+            <button class="btn-main" onclick="goToRegistration()">CLICK TO PROCEED <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
+        </div>
+    </div>
+
+    <!-- STEP 2: REGISTRATION / DECLARATION SCREEN -->
+    <div id="registrationScreen">
+        <div class="reg-box">
+            <h2><i class="fas fa-user-graduate"></i> STUDENT DETAILS & DECLARATION</h2>
+            
+            <div class="input-group">
+                <label>ENTER YOUR FULL NAME *</label>
+                <input type="text" id="studentNameInput" placeholder="e.g. Rahul Kumar" oninput="checkDeclaration()">
+            </div>
+
+            <label style="color:#fff; font-size:0.9rem; font-weight:700; margin-bottom:8px; display:block;">EXAM INSTRUCTIONS:</label>
+            <div class="instructions-list">
+                <p>Welcome to the AP Maths Entrance Exam.</p>
+                <ul>
+                    <li>Total Duration: 90 Minutes.</li>
+                    <li>Questions: 100 (Multiple Choice).</li>
+                    <li>Marking: +1 for correct, -0.25 for incorrect.</li>
+                    <li><b>WARNING:</b> Do not switch tabs, minimize browser, or use PrintScreen. Doing so will issue a warning and may auto-submit your test.</li>
+                </ul>
+            </div>
+
+            <label class="checkbox-group">
+                <input type="checkbox" id="agreeCheckbox" onchange="checkDeclaration()">
+                <span>मैंने सभी निर्देश पढ़ लिए हैं और मैं इस मीडियम और नियमों के साथ टेस्ट देने के लिए तैयार हूँ। (I have read and understood the instructions.)</span>
+            </label>
+
+            <button class="btn-start" id="startTestBtn" onclick="startActualTest()">START EXAM NOW</button>
+        </div>
+    </div>
+
+    <!-- STEP 3: MAIN EXAM INTERFACE -->
+    <div id="examInterface">
+        
+        <!-- CLEAN TOP HEADER (Logo & Institute Name Only) -->
+        <header class="exam-header">
+            <div class="header-logo-box">
+                <div class="header-logo-wrap"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/50'"></div>
+                <div class="header-text">
+                    <h1></h1>
+                    <p></p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="timer-box"><i class="fas fa-clock"></i> <span id="timeDisplay">90:00</span></div>
+                <button class="btn-palette-toggle" onclick="togglePalette()"><i class="fas fa-th-large"></i> PALETTE</button>
+            </div>
+        </header>
+
+        <div class="exam-body">
+            <!-- Full Page Clean Question Area with Watermark -->
+            <div class="question-area">
+                <div class="section-tabs" id="secTabs">
+                    <!-- Tabs rendered via JS -->
+                </div>
+
+                <div class="q-header">
+                    <span id="qNumHeader">Question No. 1</span>
+                    <span style="color:var(--text-dim); font-size:0.85rem; background:#1a1a1a; padding:4px 10px; border-radius:4px; border:1px solid #333;">Marks: +1, -0.25</span>
+                </div>
+
+                <div class="q-text" id="qText">Loading question...</div>
+                
+                <div class="options-container" id="optionsContainer">
+                    <!-- Options rendered via JS -->
+                </div>
+
+                <!-- Slim Action Buttons -->
+                <div class="action-bar">
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-prev" onclick="goToPrev()"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button class="btn btn-clear" onclick="clearResponse()">Clear Response</button>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-mark" onclick="markForReview()">Mark for Review & Next</button>
+                        <button class="btn btn-save" onclick="saveAndNext()">Save & Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overlay for Drawer -->
+            <div class="palette-overlay" id="paletteOverlay" onclick="togglePalette()"></div>
+
+            <!-- Question Palette Drawer -->
+            <div class="palette-drawer" id="paletteDrawer">
+                <div class="drawer-header">
+                    <h3>EXAM PALETTE</h3>
+                    <button class="btn-close-drawer" onclick="togglePalette()"><i class="fas fa-times"></i></button>
+                </div>
+
+                <div class="palette-stats">
+                    <div class="stat-item"><div class="badge b-ans" id="cAns">0</div> Answered</div>
+                    <div class="stat-item"><div class="badge b-not" id="cNot">0</div> Not Answered</div>
+                    <div class="stat-item"><div class="badge b-mark" id="cMark">0</div> Marked</div>
+                    <div class="stat-item"><div class="badge b-unv" id="cUnv">100</div> Not Visited</div>
+                </div>
+
+                <div class="palette-grid" id="paletteGrid">
+                    <!-- Palette Buttons rendered via JS -->
+                </div>
+
+                <div class="submit-box">
+                    <button class="btn-submit" onclick="submitExam()"><i class="fas fa-check-circle"></i> SUBMIT FINAL EXAM</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM FOOTER WITH RUNNING STUDENT NAME TICKER -->
+        <footer class="exam-footer">
+            <div class="footer-ticker">
+                <div class="ticker-scroller">
+                    ✨ STUDENT NAME: <span id="displayFooterName" style="color:var(--gold);">CANDIDATE</span> | LIVE ENTRANCE EXAM TEST | ABHINAY PRATAP MATHS ✨
+                </div>
+            </div>
+            <div class="footer-right">
+                <button class="btn-submit-test" onclick="submitExam()"><i class="fas fa-check-circle"></i> SUBMIT TEST</button>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- STEP 4: RESULT & CLARIFICATION SCREEN -->
+    <div id="resultScreen">
+        <div class="result-header">
+            <img src="abhinay.png" alt="AP" style="width:80px; margin-bottom:15px; border:3px solid var(--gold); border-radius:50%;" onerror="this.src='https://via.placeholder.com/80'">
+            <h2>TEST SUBMITTED SUCCESSFULLY</h2>
+            <p style="color:var(--text-dim); font-size:1rem;">Detailed Analysis & Clarification</p>
+        </div>
+
+        <div class="score-card">
+            <div class="student-result-name" id="resultStudentName">STUDENT NAME</div>
+            <h3 style="color:var(--gold); margin-bottom:10px;">TOTAL SCORE</h3>
+            <div class="score-val" id="finalScore">0.00</div>
+            <div style="font-size:1.2rem; color:var(--text-dim); margin-bottom:20px;">out of 100</div>
+            <p style="color:#fff; font-weight:700; background:#222; padding:10px; border-radius:8px; border:1px solid #444;" id="accuracyText">Accuracy: 0%</p>
+            <button class="btn-main" style="margin-top:20px; max-width:280px; padding:12px;" onclick="window.print()"><i class="fas fa-file-pdf"></i> DOWNLOAD PDF REPORT</button>
+        </div>
+
+        <h3 style="text-align:center; color:var(--pink); margin-bottom:30px; font-size:1.4rem;"><i class="fas fa-book-open"></i> QUESTION WISE CLARIFICATION</h3>
+        
+        <div class="clarification-list" id="clarificationList">
+            <!-- Solutions rendered via JS -->
+        </div>
+    </div>
+
+    <!-- ANTI-CHEAT WARNING -->
+    <div class="cheat-warning" id="cheatWarning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h2>WARNING! SUSPICIOUS ACTIVITY DETECTED</h2>
+        <p>Navigating away from the test window, switching tabs, or attempting to take a screenshot is strictly prohibited during the exam.</p>
+        <p style="color:var(--gold); margin-top:15px; font-weight:800; font-size:1.1rem;">Multiple warnings will result in auto-submission of your test.</p>
+        <button class="btn-resume" onclick="resumeTest()">I UNDERSTAND, RESUME TEST</button>
+    </div>
+
+    <script>
+        // ==========================================
+        // --- SCREEN NAVIGATION LOGIC ---
+        // ==========================================
+        function goToRegistration() {
+            document.getElementById('introScreen').style.display = 'none';
+            document.getElementById('registrationScreen').style.display = 'flex';
+        }
+
+        function checkDeclaration() {
+            const name = document.getElementById('studentNameInput').value.trim();
+            const checked = document.getElementById('agreeCheckbox').checked;
+            const btn = document.getElementById('startTestBtn');
+            
+            if(name.length > 2 && checked) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        }
+
+        function startActualTest() {
+            const name = document.getElementById('studentNameInput').value.trim();
+            
+            // Set Name in Footer and Result Screen
+            document.getElementById('displayFooterName').innerText = name.toUpperCase();
+            document.getElementById('resultStudentName').innerText = name.toUpperCase();
+
+            // Switch Screen
+            document.getElementById('registrationScreen').style.display = 'none';
+            document.getElementById('examInterface').style.display = 'flex';
+            
+            // Init Exam
+            renderTabs();
+            renderPalette();
+            loadQuestion(0);
+            startTimer();
+        }
+
+        function togglePalette() {
+            document.getElementById('paletteDrawer').classList.toggle('open');
+            document.getElementById('paletteOverlay').classList.toggle('active');
+        }
+
+        // ==========================================
+        // --- 100 REAL QUESTIONS REPOSITORY ---
+        // ==========================================
+        const qDB = [
+            // HINDI (20)
+            { sec:"HINDI", q:"'आकाश' का पर्यायवाची शब्द क्या है?", opts:["गगन","पाताल","धरती","नीर"], ans:0, exp:"आकाश का पर्यायवाची गगन, नभ, अंबर आदि होता है।" },
+            { sec:"HINDI", q:"'अंधे की लकड़ी' मुहावरे का अर्थ है:", opts:["अंधे व्यक्ति की छड़ी","एकमात्र सहारा","मूर्ख व्यक्ति","असंभव कार्य"], ans:1, exp:"अंधे की लकड़ी का अर्थ 'एकमात्र सहारा' होता है।" },
+            { sec:"HINDI", q:"'अनुराग' का विलोम शब्द है:", opts:["विराग","प्रेम","सुराग","द्वेष"], ans:0, exp:"अनुराग (प्रेम) का सही विलोम विराग होता है।" },
+            { sec:"HINDI", q:"जिसका कोई शत्रु न जन्मा हो, उसे कहते हैं:", opts:["अजातशत्रु","शत्रुघ्न","अजेय","अजय"], ans:0, exp:"अनेक शब्दों के लिए एक शब्द: अजातशत्रु।" },
+            { sec:"HINDI", q:"'विद्यालय' में कौन सी संधि है?", opts:["गुण संधि","दीर्घ संधि","यण संधि","वृद्धि संधि"], ans:1, exp:"विद्या + आलय = विद्यालय (आ + आ = आ), यह दीर्घ स्वर संधि है।" },
+            { sec:"HINDI", q:"इनमें से कौन सा शब्द शुद्ध है?", opts:["आशिर्वाद","अशिर्वाद","आशीर्वाद","अशीर्वाद"], ans:2, exp:"शुद्ध वर्तनी 'आशीर्वाद' है।" },
+            { sec:"HINDI", q:"'कमल' का पर्यायवाची नहीं है:", opts:["जलज","पंकज","नीरज","वारिद"], ans:3, exp:"वारिद (बादल) का पर्यायवाची है, कमल का नहीं। कमल के पर्यायवाची जलज, पंकज, नीरज हैं।" },
+            { sec:"HINDI", q:"'नौ दो ग्यारह होना' का अर्थ है:", opts:["गणित सीखना","भाग जाना","धोखा देना","मिलकर रहना"], ans:1, exp:"नौ दो ग्यारह होना अर्थात मौके से भाग जाना।" },
+            { sec:"HINDI", q:"'प्रतिदिन' में कौन सा समास है?", opts:["अव्ययीभाव","तत्पुरुष","बहुव्रीहि","द्वंद्व"], ans:0, exp:"जिसका पहला पद अव्यय हो (प्रति), वह अव्ययीभाव समास होता है।" },
+            { sec:"HINDI", q:"'कवि' का स्त्रीलिंग रूप है:", opts:["कवयित्री","कवियत्री","कवित्री","कविनी"], ans:0, exp:"कवि का शुद्ध स्त्रीलिंग 'कवयित्री' होता है।" },
+            { sec:"HINDI", q:"'आंखों का तारा' होना:", opts:["बहुत प्यारा होना","आंख की बीमारी","दुश्मन होना","तारा देखना"], ans:0, exp:"आंखों का तारा अर्थात बहुत प्रिय होना।" },
+            { sec:"HINDI", q:"हिंदी वर्णमाला में कितने स्वर होते हैं?", opts:["11","13","33","36"], ans:0, exp:"हिंदी में मूलतः 11 स्वर माने जाते हैं (अ से औ तक)।" },
+            { sec:"HINDI", q:"'जगन्नाथ' का संधि विच्छेद है:", opts:["जग + नाथ","जगत् + नाथ","जगत + अनाथ","जग + अनाथ"], ans:1, exp:"जगत् + नाथ = जगन्नाथ (व्यंजन संधि)।" },
+            { sec:"HINDI", q:"जो ईश्वर में विश्वास रखता हो:", opts:["नास्तिक","आस्तिक","आध्यात्मिक","संत"], ans:1, exp:"ईश्वर में आस्था रखने वाले को आस्तिक कहते हैं।" },
+            { sec:"HINDI", q:"इनमें से तद्भव शब्द चुनें:", opts:["अग्नि","अश्रु","आग","पुष्प"], ans:2, exp:"'आग' तद्भव शब्द है, इसका तत्सम 'अग्नि' होता है।" },
+            { sec:"HINDI", q:"'उन्नति' का विलोम है:", opts:["पतन","अवनति","विनाश","दुर्दुर्गति"], ans:1, exp:"उन्नति (प्रगति) का विलोम अवनति (गिरावट) होता है।" },
+            { sec:"HINDI", q:"'चतुर्भुज' में समास है:", opts:["द्विगु","बहुव्रीहि","कर्मधारय","द्वंद्व"], ans:1, exp:"चार हैं भुजाएं जिसकी अर्थात विष्णु (बहुव्रीहि समास)।" },
+            { sec:"HINDI", q:"'स्वागत' का संधि विच्छेद है:", opts:["स्व + आगत","सु + आगत","स्वा + गत","स + वागत"], ans:1, exp:"सु + आगत = स्वागत (यण संधि)।" },
+            { sec:"HINDI", q:"'श्रीगणेश करना' मुहावरे का अर्थ है:", opts:["पूजा करना","प्रारंभ करना","समाप्त करना","विघ्न डालना"], ans:1, exp:"श्रीगणेश करना मतलब किसी कार्य की शुरुआत करना।" },
+            { sec:"HINDI", q:"'पवन' का पर्यायवाची है:", opts:["अनिल","अनल","आग","जल"], ans:0, exp:"पवन का पर्यायवाची अनिल (हवा) है, जबकि अनल का अर्थ आग होता है।" },
+
+            // REASONING (20)
+            { sec:"REASONING", q:"Find the next number in series: 2, 5, 10, 17, 26, ?", opts:["35","37","39","41"], ans:1, exp:"Difference is 3, 5, 7, 9, so next diff is 11. 26 + 11 = 37." },
+            { sec:"REASONING", q:"If A=1, B=2... and CAT = 24, then DOG = ?", opts:["24","26","28","30"], ans:1, exp:"D(4) + O(15) + G(7) = 26." },
+            { sec:"REASONING", q:"A is B's brother. C is A's mother. D is C's father. How is B related to D?", opts:["Son","Grandchild","Brother","Nephew"], ans:1, exp:"B is A's sibling, so B is C's child. Thus, B is D's grandchild." },
+            { sec:"REASONING", q:"Odd one out: Apple, Mango, Potato, Banana", opts:["Apple","Mango","Potato","Banana"], ans:2, exp:"Potato is a vegetable/root, others are fruits." },
+            { sec:"REASONING", q:"If South-East becomes North, North-East becomes West and so on. What will West become?", opts:["North-East","North-West","South-East","South-West"], ans:2, exp:"Direction rotates 135 degrees clockwise. West + 135 deg = South-East." },
+            { sec:"REASONING", q:"Bird : Fly :: Fish : ?", opts:["Walk","Swim","Crawl","Run"], ans:1, exp:"A bird flies, a fish swims." },
+            { sec:"REASONING", q:"Complete the series: A, C, F, J, O, ?", opts:["T","U","V","W"], ans:1, exp:"A(+2)C(+3)F(+4)J(+5)O(+6) = U." },
+            { sec:"REASONING", q:"If '+' means '-', '-' means '*', '*' means '/' and '/' means '+', then 10 * 5 / 2 - 4 + 3 = ?", opts:["7","5","9","11"], ans:0, exp:"Expression: 10 / 5 + 2 * 4 - 3 => 2 + 8 - 3 = 7." },
+            { sec:"REASONING", q:"Odd one out: 4, 9, 16, 25, 35, 36", opts:["16","25","35","36"], ans:2, exp:"35 is not a perfect square." },
+            { sec:"REASONING", q:"A man walks 5km North, turns right and walks 4km, turns right again and walks 5km. Which direction is he facing now?", opts:["North","South","East","West"], ans:1, exp:"Facing North -> Right(East) -> Right(South). He is facing South." },
+            { sec:"REASONING", q:"Select related word: Pen : Write :: Knife : ?", opts:["Cut","Eat","Cook","Draw"], ans:0, exp:"Pen is used to write, Knife is used to cut." },
+            { sec:"REASONING", q:"In a row of boys, Aman is 10th from left and 15th from right. Total boys?", opts:["24","25","26","27"], ans:0, exp:"Total = (Left + Right) - 1 => 10 + 15 - 1 = 24." },
+            { sec:"REASONING", q:"If 1st Jan is Monday, what day is 31st Dec of a normal year?", opts:["Monday","Tuesday","Sunday","Wednesday"], ans:0, exp:"First and last day of a non-leap year are the same." },
+            { sec:"REASONING", q:"What comes next: 1, 8, 27, 64, ?", opts:["100","121","125","144"], ans:2, exp:"1^3, 2^3, 3^3, 4^3, 5^3 = 125." },
+            { sec:"REASONING", q:"Which word cannot be formed from 'MEASUREMENT'?", opts:["TENT","MEAN","SURE","MASTER"], ans:3, exp:"'MASTER' has 'A' which is not in MEASUREMENT." },
+            { sec:"REASONING", q:"Choose missing term: 10, 22, 46, 94, ?", opts:["180","184","190","192"], ans:2, exp:"(10*2)+2=22, (22*2)+2=46... (94*2)+2 = 190." },
+            { sec:"REASONING", q:"Dog : Bark :: Lion : ?", opts:["Meow","Roar","Grunt","Hiss"], ans:1, exp:"A dog barks, a lion roars." },
+            { sec:"REASONING", q:"Clock is related to Time as Thermometer is to ?", opts:["Heat","Radiation","Energy","Temperature"], ans:3, exp:"Clock measures time, thermometer measures temperature." },
+            { sec:"REASONING", q:"A clock shows 3:00. The angle between hour and minute hand is:", opts:["60","90","120","180"], ans:1, exp:"At 3:00, the angle is exactly 90 degrees." },
+            { sec:"REASONING", q:"Complete the sequence: 2, 4, 8, 16, ?", opts:["24","32","64","128"], ans:1, exp:"Each number is multiplied by 2. 16 * 2 = 32." },
+
+            // MATHS (20)
+            { sec:"MATHS", q:"If 20% of a number is 50, what is the number?", opts:["200","250","300","350"], ans:1, exp:"Let number be x. (20/100)*x = 50 => x = 250." },
+            { sec:"MATHS", q:"Cost price is 400, Selling price is 500. Find profit percentage.", opts:["20%","25%","30%","10%"], ans:1, exp:"Profit = 100. Profit % = (100/400)*100 = 25%." },
+            { sec:"MATHS", q:"Sum of first 10 natural numbers is:", opts:["45","50","55","60"], ans:2, exp:"Sum = n(n+1)/2 = 10*11/2 = 55." },
+            { sec:"MATHS", q:"If x + y = 10 and x - y = 4, find x*y.", opts:["21","24","25","28"], ans:0, exp:"Adding eqs: 2x=14 => x=7. y=3. Product = 21." },
+            { sec:"MATHS", q:"Find Simple Interest on Rs. 1000 at 5% pa for 2 years.", opts:["50","100","150","200"], ans:1, exp:"SI = (P*R*T)/100 = (1000*5*2)/100 = 100." },
+            { sec:"MATHS", q:"A train 100m long passes a pole in 10 sec. Speed in km/hr?", opts:["18","36","54","72"], ans:1, exp:"Speed = 100/10 = 10 m/s. In km/hr = 10 * 18/5 = 36 km/hr." },
+            { sec:"MATHS", q:"Area of a square is 144 sq.cm. Perimeter is?", opts:["24","36","48","60"], ans:2, exp:"Side = √144 = 12. Perimeter = 4 * 12 = 48 cm." },
+            { sec:"MATHS", q:"Value of 5^3 - 4^3 is?", opts:["61","125","64","91"], ans:0, exp:"125 - 64 = 61." },
+            { sec:"MATHS", q:"Find the LCM of 12, 15, and 20.", opts:["30","60","120","180"], ans:1, exp:"60 is the lowest number divisible by 12, 15, and 20." },
+            { sec:"MATHS", q:"What is the HCF of 18 and 24?", opts:["4","6","8","12"], ans:1, exp:"Highest common factor of 18 and 24 is 6." },
+            { sec:"MATHS", q:"A can do a work in 10 days, B in 15 days. Together they will take?", opts:["4 days","5 days","6 days","8 days"], ans:2, exp:"Work = 30 units. A=3 u/d, B=2 u/d. Total=5 u/d. Days = 30/5 = 6 days." },
+            { sec:"MATHS", q:"√(225) + √(64) = ?", opts:["21","23","25","27"], ans:1, exp:"15 + 8 = 23." },
+            { sec:"MATHS", q:"If radius of a circle is 7cm, its circumference is? (π=22/7)", opts:["22 cm","44 cm","88 cm","154 cm"], ans:1, exp:"C = 2*π*r = 2 * (22/7) * 7 = 44 cm." },
+            { sec:"MATHS", q:"Average of 5 numbers is 20. Sum of numbers is?", opts:["80","100","120","150"], ans:1, exp:"Sum = Average * Count = 20 * 5 = 100." },
+            { sec:"MATHS", q:"Which is a prime number?", opts:["9","15","17","21"], ans:2, exp:"17 has no divisors other than 1 and itself." },
+            { sec:"MATHS", q:"1/2 + 1/4 + 1/8 = ?", opts:["5/8","7/8","3/4","1"], ans:1, exp:"4/8 + 2/8 + 1/8 = 7/8." },
+            { sec:"MATHS", q:"If 3x - 5 = 10, then x = ?", opts:["3","4","5","6"], ans:2, exp:"3x = 15 => x = 5." },
+            { sec:"MATHS", q:"Ratio of ages of A and B is 3:4. Sum is 28. A's age?", opts:["12","16","20","24"], ans:0, exp:"3x + 4x = 28 => 7x = 28 => x = 4. A's age = 3*4 = 12." },
+            { sec:"MATHS", q:"Volume of a cube of side 5cm is?", opts:["25","100","125","150"], ans:2, exp:"Volume = a^3 = 5*5*5 = 125 cm³." },
+            { sec:"MATHS", q:"Convert 0.25 into fraction.", opts:["1/2","1/3","1/4","1/5"], ans:2, exp:"0.25 = 25/100 = 1/4." },
+
+            // SCIENCE (20)
+            { sec:"SCIENCE", q:"Powerhouse of the cell is called?", opts:["Nucleus","Ribosome","Mitochondria","Lysosome"], ans:2, exp:"Mitochondria generates most of the chemical energy needed to power the cell." },
+            { sec:"SCIENCE", q:"Chemical formula of Water is?", opts:["CO2","H2O","O2","NaCl"], ans:1, exp:"Water is composed of 2 Hydrogen and 1 Oxygen atom (H2O)." },
+            { sec:"SCIENCE", q:"SI unit of Force is?", opts:["Joule","Newton","Pascal","Watt"], ans:1, exp:"Force is measured in Newtons (N)." },
+            { sec:"SCIENCE", q:"Which gas do plants absorb during photosynthesis?", opts:["Oxygen","Nitrogen","Carbon Dioxide","Hydrogen"], ans:2, exp:"Plants take in CO2 and release Oxygen." },
+            { sec:"SCIENCE", q:"Speed of light in vacuum is approx?", opts:["300,000 km/s","150,000 km/s","1,000,000 km/s","30,000 km/s"], ans:0, exp:"Speed of light is 3x10^8 m/s or 300,000 km/s." },
+            { sec:"SCIENCE", q:"Which organ purifies human blood?", opts:["Heart","Lungs","Kidney","Liver"], ans:2, exp:"Kidneys filter waste products and excess fluid from blood." },
+            { sec:"SCIENCE", q:"Atomic number of Carbon is?", opts:["4","6","8","12"], ans:1, exp:"Carbon has 6 protons, so its atomic number is 6." },
+            { sec:"SCIENCE", q:"Acid present in lemon is?", opts:["Citric acid","Lactic acid","Acetic acid","Tartaric acid"], ans:0, exp:"Lemons and citrus fruits contain Citric Acid." },
+            { sec:"SCIENCE", q:"Which vitamin is provided by sunlight?", opts:["Vit A","Vit B","Vit C","Vit D"], ans:3, exp:"Our skin synthesizes Vitamin D when exposed to sunlight." },
+            { sec:"SCIENCE", q:"Heaviest naturally occurring element is?", opts:["Iron","Lead","Uranium","Gold"], ans:2, exp:"Uranium is the heaviest naturally occurring element." },
+            { sec:"SCIENCE", q:"Sound cannot travel through?", opts:["Water","Air","Steel","Vacuum"], ans:3, exp:"Sound requires a material medium to travel. It cannot travel in a vacuum." },
+            { sec:"SCIENCE", q:"What is the boiling point of water?", opts:["100°C","90°C","120°C","50°C"], ans:0, exp:"Water boils at 100 degrees Celsius at standard atmospheric pressure." },
+            { sec:"SCIENCE", q:"Which metal is liquid at room temperature?", opts:["Iron","Mercury","Gold","Silver"], ans:1, exp:"Mercury (Hg) is the only metal that is liquid at room temperature." },
+            { sec:"SCIENCE", q:"Process of rusting of iron is?", opts:["Oxidation","Reduction","Evaporation","Condensation"], ans:0, exp:"Rusting involves iron reacting with oxygen in presence of moisture (Oxidation)." },
+            { sec:"SCIENCE", q:"Ozone layer protects us from?", opts:["Infrared rays","UV rays","X-rays","Gamma rays"], ans:1, exp:"Ozone layer absorbs most of the Sun's harmful Ultraviolet (UV) radiation." },
+            { sec:"SCIENCE", q:"Device used to measure electric current?", opts:["Voltmeter","Ammeter","Barometer","Thermometer"], ans:1, exp:"Ammeter measures current, Voltmeter measures voltage." },
+            { sec:"SCIENCE", q:"Which is the largest planet in our solar system?", opts:["Earth","Mars","Jupiter","Saturn"], ans:2, exp:"Jupiter is the largest planet." },
+            { sec:"SCIENCE", q:"Human body's largest bone is?", opts:["Femur","Tibia","Radius","Humerus"], ans:0, exp:"Femur (thigh bone) is the longest and largest bone." },
+            { sec:"SCIENCE", q:"Deficiency of Iron causes?", opts:["Scurvy","Rickets","Anemia","Night blindness"], ans:2, exp:"Iron deficiency leads to lack of healthy red blood cells (Anemia)." },
+            { sec:"SCIENCE", q:"What is dry ice?", opts:["Solid Water","Solid CO2","Solid Nitrogen","Solid Oxygen"], ans:1, exp:"Dry ice is the solid form of Carbon Dioxide." },
+
+            // GENERAL STUDIES (20)
+            { sec:"GS", q:"Who is known as the Father of Indian Constitution?", opts:["Mahatma Gandhi","J.L. Nehru","B.R. Ambedkar","Sardar Patel"], ans:2, exp:"Dr. B.R. Ambedkar was the chairman of the drafting committee." },
+            { sec:"GS", q:"Capital of Australia is?", opts:["Sydney","Melbourne","Canberra","Perth"], ans:2, exp:"Canberra is the capital city of Australia." },
+            { sec:"GS", q:"Which river is known as 'Sorrow of Bihar'?", opts:["Ganga","Kosi","Son","Gandak"], ans:1, exp:"Kosi river causes devastating floods in Bihar." },
+            { sec:"GS", q:"First President of independent India?", opts:["Dr. Rajendra Prasad","Dr. S. Radhakrishnan","Zakir Husain","V.V. Giri"], ans:0, exp:"Dr. Rajendra Prasad served as the 1st President of India." },
+            { sec:"GS", q:"Largest state in India by area?", opts:["UP","MP","Rajasthan","Maharashtra"], ans:2, exp:"Rajasthan is the largest state by land area." },
+            { sec:"GS", q:"National Song of India was written by?", opts:["Rabindranath Tagore","Bankim Chandra","Subhash Chandra","Sarojini Naidu"], ans:1, exp:"Vande Mataram was written by Bankim Chandra Chatterjee." },
+            { sec:"GS", q:"Which planet is called the Red Planet?", opts:["Mars","Saturn","Jupiter","Venus"], ans:0, exp:"Mars appears red due to iron oxide on its surface." },
+            { sec:"GS", q:"Who discovered sea route to India?", opts:["Columbus","Vasco da Gama","Magellan","Captain Cook"], ans:1, exp:"Vasco da Gama reached Calicut, India in 1498." }, 
+            { sec:"GS", q:"Gateway of India is located in?", opts:["Delhi","Mumbai","Kolkata","Chennai"], ans:1, exp:"Gateway of India is a monument in Mumbai." },
+            { sec:"GS", q:"Smallest continent in the world?", opts:["Europe","Antarctica","Australia","South America"], ans:2, exp:"Australia is the smallest continent." },
+            { sec:"GS", q:"Currency of Japan is?", opts:["Yen","Yuan","Dollar","Euro"], ans:0, exp:"Japanese Yen is the official currency." },
+            { sec:"GS", q:"First female Prime Minister of India?", opts:["Pratibha Patil","Indira Gandhi","Sarojini Naidu","Sushma Swaraj"], ans:1, exp:"Indira Gandhi was the 1st female PM." },
+            { sec:"GS", q:"Which festival is known as Festival of Lights?", opts:["Holi","Diwali","Dussehra","Eid"], ans:1, exp:"Diwali is the festival of lights." },
+            { sec:"GS", q:"Total number of states in India currently?", opts:["27","28","29","30"], ans:1, exp:"India has 28 States and 8 Union Territories." },
+            { sec:"GS", q:"Highest mountain peak in the world?", opts:["K2","Kangchenjunga","Mount Everest","Nanda Devi"], ans:2, exp:"Mount Everest (8848.86m) is the highest peak." },
+            { sec:"GS", q:"Who wrote the National Anthem of India?", opts:["Rabindranath Tagore","Bankim Chandra","Premchand","Tulsidas"], ans:0, exp:"Jana Gana Mana was penned by Rabindranath Tagore." },
+            { sec:"GS", q:"Capital of Uttar Pradesh is?", opts:["Kanpur","Varanasi","Agra","Lucknow"], ans:3, exp:"Lucknow is the capital of UP." },
+            { sec:"GS", q:"Indian currency notes are printed by?", opts:["SBI","RBI","Finance Ministry","World Bank"], ans:1, exp:"Reserve Bank of India (RBI) controls currency printing." },
+            { sec:"GS", q:"Longest river in India?", opts:["Brahmaputra","Yamuna","Ganga","Godavari"], ans:2, exp:"Ganga (2525 km) is the longest river flowing entirely in India." },
+            { sec:"GS", q:"World Environment Day is celebrated on?", opts:["5th June","10th July","15th August","1st May"], ans:0, exp:"UN designated 5th June as World Environment Day." }
+        ];
+
+        // ==========================================
+        // --- EXAM LOGIC ---
+        // ==========================================
+        let currentQIndex = 0;
+        let userAnswers = new Array(qDB.length).fill(null);
+        let qStatus = new Array(qDB.length).fill(0); // 0=Unv, 1=Ans, 2=Not Ans, 3=Mark, 4=Ans&Mark
+        let timerInterval;
+        let timeLeft = 90 * 60; // 90 mins
+
+        function renderTabs() {
+            const tabsContainer = document.getElementById('secTabs');
+            const sections = [...new Set(qDB.map(q => q.sec))];
+            tabsContainer.innerHTML = sections.map((sec, i) => {
+                const firstIdx = qDB.findIndex(q => q.sec === sec);
+                return `<div class="sec-tab ${i===0?'active':''}" onclick="jumpToSection(${firstIdx}, this)">${sec}</div>`;
+            }).join('');
+        }
+
+        function jumpToSection(idx, el) {
+            document.querySelectorAll('.sec-tab').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            loadQuestion(idx);
+        }
+
+        function loadQuestion(index) {
+            currentQIndex = index;
+            const q = qDB[index];
+            
+            if(qStatus[index] === 0) qStatus[index] = 2; // Visited
+
+            document.getElementById('qNumHeader').innerText = `Question No. ${index + 1} (${q.sec})`;
+            document.getElementById('qText').innerText = q.q;
+
+            const optsContainer = document.getElementById('optionsContainer');
+            optsContainer.innerHTML = q.opts.map((opt, i) => {
+                const isSelected = userAnswers[index] === i;
+                return `
+                <label class="opt-label ${isSelected ? 'selected' : ''}" onclick="selectOption(${i})">
+                    <input type="radio" name="opt" value="${i}" ${isSelected ? 'checked' : ''} onclick="event.stopPropagation()">
+                    ${opt}
+                </label>`;
+            }).join('');
+
+            updatePalette();
+        }
+
+        function selectOption(optIndex) {
+            userAnswers[currentQIndex] = optIndex;
+            const labels = document.querySelectorAll('.opt-label');
+            labels.forEach((l, i) => {
+                if(i === optIndex) {
+                    l.classList.add('selected');
+                    l.querySelector('input').checked = true;
+                } else {
+                    l.classList.remove('selected');
+                }
+            });
+        }
+
+        function saveAndNext() {
+            if(userAnswers[currentQIndex] !== null) qStatus[currentQIndex] = 1;
+            else qStatus[currentQIndex] = 2;
+            goToNext();
+        }
+
+        function markForReview() {
+            if(userAnswers[currentQIndex] !== null) qStatus[currentQIndex] = 4;
+            else qStatus[currentQIndex] = 3;
+            goToNext();
+        }
+
+        function clearResponse() {
+            userAnswers[currentQIndex] = null;
+            qStatus[currentQIndex] = 2;
+            loadQuestion(currentQIndex);
+        }
+
+        function goToPrev() {
+            if(currentQIndex > 0) {
+                const prevSec = qDB[currentQIndex-1].sec;
+                document.querySelectorAll('.sec-tab').forEach(t => {
+                    if(t.innerText === prevSec) t.classList.add('active');
+                    else t.classList.remove('active');
+                });
+                loadQuestion(currentQIndex - 1);
+            }
+        }
+
+        function goToNext() {
+            if(currentQIndex < qDB.length - 1) {
+                const nextSec = qDB[currentQIndex+1].sec;
+                document.querySelectorAll('.sec-tab').forEach(t => {
+                    if(t.innerText === nextSec) t.classList.add('active');
+                    else t.classList.remove('active');
+                });
+                loadQuestion(currentQIndex + 1);
+            } else {
+                updatePalette();
+                if(!document.getElementById('paletteDrawer').classList.contains('open')) {
+                    togglePalette(); // Auto open palette on last question
+                }
+                alert("You have reached the last question. Please review your palette or submit the exam.");
+            }
+        }
+
+        // ==========================================
+        // --- PALETTE LOGIC ---
+        // ==========================================
+        function renderPalette() {
+            const grid = document.getElementById('paletteGrid');
+            let html = '';
+            for(let i=0; i<qDB.length; i++) {
+                html += `<button class="pal-btn" id="pal_${i}" onclick="loadQuestion(${i}); togglePalette();">${i+1}</button>`;
+            }
+            grid.innerHTML = html;
+            updatePalette();
+        }
+
+        function updatePalette() {
+            let cAns=0, cNot=0, cMark=0, cUnv=0;
+
+            for(let i=0; i<qDB.length; i++) {
+                const btn = document.getElementById(`pal_${i}`);
+                btn.className = 'pal-btn';
+                
+                if(qStatus[i] === 0) { cUnv++; }
+                else if(qStatus[i] === 1) { btn.classList.add('ans'); cAns++; }
+                else if(qStatus[i] === 2) { btn.classList.add('not'); cNot++; }
+                else if(qStatus[i] === 3 || qStatus[i] === 4) { btn.classList.add('mark'); cMark++; }
+            }
+
+            document.getElementById('cAns').innerText = cAns;
+            document.getElementById('cNot').innerText = cNot;
+            document.getElementById('cMark').innerText = cMark;
+            document.getElementById('cUnv').innerText = cUnv;
+        }
+
+        // ==========================================
+        // --- TIMER & SUBMIT ---
+        // ==========================================
+        function startTimer() {
+            const display = document.getElementById('timeDisplay');
+            timerInterval = setInterval(() => {
+                if(timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    forceSubmitExam();
+                } else {
+                    timeLeft--;
+                    let m = Math.floor(timeLeft / 60);
+                    let s = timeLeft % 60;
+                    display.innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+                }
+            }, 1000);
+        }
+
+        function submitExam() {
+            if(confirm("Are you sure you want to submit the exam? You cannot change answers after submission.")) {
+                forceSubmitExam();
+            }
+        }
+
+        function forceSubmitExam() {
+            clearInterval(timerInterval);
+            document.getElementById('paletteDrawer').classList.remove('open');
+            document.getElementById('paletteOverlay').classList.remove('active');
+            
+            document.getElementById('examInterface').style.display = 'none';
+            document.getElementById('resultScreen').style.display = 'block';
+
+            calculateAndRenderResult();
+        }
+
+        // ==========================================
+        // --- RESULTS & CLARIFICATION ---
+        // ==========================================
+        function calculateAndRenderResult() {
+            let correct = 0, wrong = 0, unattempted = 0;
+
+            qDB.forEach((q, i) => {
+                if(userAnswers[i] === null) unattempted++;
+                else if(userAnswers[i] === q.ans) correct++;
+                else wrong++;
+            });
+
+            // Scoring: +1 for correct, -0.25 for wrong
+            let score = correct - (wrong * 0.25);
+            let accuracy = correct + wrong > 0 ? ((correct / (correct + wrong)) * 100).toFixed(2) : 0;
+
+            document.getElementById('finalScore').innerHTML = `${score.toFixed(2)}`;
+            document.getElementById('accuracyText').innerText = `Accuracy: ${accuracy}% | Correct: ${correct} | Wrong: ${wrong} | Unattempted: ${unattempted}`;
+
+            const clarList = document.getElementById('clarificationList');
+            let html = '';
+
+            qDB.forEach((q, i) => {
+                let userAns = userAnswers[i];
+                let isCorr = userAns === q.ans;
+                let statusBadge = userAns === null ? '<span style="color:#a3a3a3;">[Unattempted]</span>' : (isCorr ? '<span style="color:#22c55e;">[Correct]</span>' : '<span style="color:#dc2626;">[Wrong]</span>');
+
+                html += `
+                <div class="sol-card">
+                    <div class="sol-q">Q${i+1}. ${q.q} ${statusBadge}</div>
+                    <div class="sol-opts">
+                `;
+
+                q.opts.forEach((opt, optIdx) => {
+                    let optClass = "sol-opt";
+                    if(optIdx === q.ans) optClass += " correct";
+                    else if(optIdx === userAns && !isCorr) optClass += " wrong";
+
+                    html += `<div class="${optClass}">${opt}</div>`;
+                });
+
+                html += `
+                    </div>
+                    <div class="sol-exp"><b>Explanation:</b> ${q.exp}</div>
+                </div>`;
+            });
+
+            clarList.innerHTML = html;
+        }
+
+        // ==========================================
+        // --- ANTI-PIRACY & CHEATING PREVENTION ---
+        // ==========================================
+        
+        // 1. Disable Right Click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 2. Hide Content on Tab Switch / Blur
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden && document.getElementById('examInterface').style.display !== 'none') {
+                document.getElementById('cheatWarning').style.display = 'flex';
+            }
+        });
+
+        // 3. Block PrintScreen (Screenshots)
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'PrintScreen') {
+                navigator.clipboard.writeText(''); // Clear clipboard
+                alert("Screenshots are strictly prohibited!");
+                document.getElementById('cheatWarning').style.display = 'flex';
+            }
+        });
+
+        function resumeTest() {
+            document.getElementById('cheatWarning').style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>

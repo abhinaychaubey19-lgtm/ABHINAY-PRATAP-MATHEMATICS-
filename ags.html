@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GS Library | AP Mathematics</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* New Royal & High-Tech Theme for GS */
+            --bg-main: #0a0a0a;
+            --bg-card: #141414;
+            --primary: #ff7300; /* Amber/Orange for History/Geo */
+            --primary-hover: #e66800;
+            --secondary: #00e5ff; /* Cyan for contrast */
+            --text-light: #ffffff;
+            --text-dim: #a0a0a0;
+            --border-dark: #2a2a2a;
+            --danger: #ff0055;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
+        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; padding-bottom: 50px; }
+
+        /* ========================================== */
+        /* --- NEW LOGO ANIMATION (FLOAT & GLOW) --- */
+        /* ========================================== */
+        .logo-dynamic-wrap {
+            position: relative;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--danger), var(--primary));
+            background-size: 300% 300%;
+            padding: 3px;
+            animation: gradientShift 4s ease infinite, floatSmooth 3s ease-in-out infinite;
+            box-shadow: 0 5px 20px rgba(255, 115, 0, 0.4);
+            z-index: 10;
+        }
+        .logo-dynamic-wrap img {
+            width: 100%; height: 100%; border-radius: 50%;
+            object-fit: contain; background: #000; border: 2px solid #111;
+        }
+
+        @keyframes gradientShift { 
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; } 
+        }
+        @keyframes floatSmooth { 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(-6px); box-shadow: 0 15px 25px rgba(0, 229, 255, 0.5); } 
+        }
+
+        /* ========================================== */
+        /* --- HEADER & FLOATING LOGO --- */
+        /* ========================================== */
+        .portal-header {
+            background: rgba(20, 20, 20, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .header-logo-box { display: flex; align-items: center; gap: 15px; }
+        .header-logo-size { width: 55px; height: 55px; }
+
+        .header-text h1 { font-size: 1.25rem; color: #fff; font-weight: 900; letter-spacing: 1px; margin-bottom: 2px;}
+        .header-text p { font-size: 0.75rem; color: var(--secondary); font-weight: 700; letter-spacing: 1.5px;}
+
+        .floating-logo-size {
+            position: fixed; bottom: 50px; right: 25px; z-index: 5000;
+            width: 65px; height: 65px; cursor: pointer;
+        }
+
+        /* ========================================== */
+        /* --- MAIN CONTAINER --- */
+        /* ========================================== */
+        .library-container { max-width: 1200px; margin: 0 auto; padding: 40px 5%; min-height: 80vh; }
+        
+        .section-header { margin-bottom: 30px; border-left: 5px solid var(--secondary); padding-left: 15px; }
+        .section-header h2 { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; }
+        .section-header span { color: var(--primary); }
+
+        /* ========================================== */
+        /* --- SUBJECT TABS --- */
+        /* ========================================== */
+        .subject-tabs {
+            display: flex; overflow-x: auto; gap: 15px; margin-bottom: 35px;
+            padding-bottom: 10px; scrollbar-width: none;
+        }
+        .subject-tabs::-webkit-scrollbar { display: none; }
+        
+        .tab-btn {
+            background: var(--bg-card); color: var(--text-dim); border: 1px solid var(--border-dark);
+            padding: 12px 28px; border-radius: 8px; font-weight: 800; font-size: 1rem;
+            cursor: pointer; transition: 0.3s; white-space: nowrap;
+        }
+        .tab-btn:hover { border-color: var(--secondary); color: var(--text-light); }
+        .tab-btn.active {
+            background: var(--primary); color: #fff; border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 115, 0, 0.4); transform: translateY(-3px);
+        }
+
+        /* ========================================== */
+        /* --- MATERIAL CARDS (PREMIUM LAYOUT) --- */
+        /* ========================================== */
+        .material-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+
+        .mat-card {
+            background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 14px;
+            padding: 20px; display: flex; flex-direction: column; gap: 15px;
+            transition: 0.4s; position: relative; overflow: hidden;
+            animation: fadeIn 0.5s ease forwards; opacity: 0;
+        }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(20px); } }
+        
+        .mat-card:hover {
+            transform: translateY(-8px); border-color: var(--secondary);
+            box-shadow: 0 12px 30px rgba(0, 229, 255, 0.15);
+        }
+        
+        .mat-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .mat-card-top { display: flex; gap: 15px; align-items: center; }
+        .mat-icon {
+            width: 60px; height: 60px; border-radius: 10px; background: rgba(255, 115, 0, 0.1);
+            color: var(--primary); display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; border: 1px solid rgba(255, 115, 0, 0.3); transition: 0.3s; flex-shrink: 0;
+        }
+        .mat-card:hover .mat-icon { background: var(--primary); color: #fff; box-shadow: 0 0 15px var(--primary); }
+
+        .mat-info h3 { color: var(--text-light); font-size: 1.1rem; font-weight: 800; line-height: 1.3; margin-bottom: 5px;}
+        .mat-info p { color: var(--text-dim); font-size: 0.8rem; text-transform: none; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .mat-meta { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border-dark); padding-top: 15px; margin-top: auto; }
+        .mat-tags span { background: #222; color: var(--secondary); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+        
+        .btn-download {
+            background: var(--bg-main); color: var(--text-light); border: 1px solid var(--border-dark);
+            padding: 8px 15px; border-radius: 6px; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-download:hover { background: var(--secondary); color: #000; border-color: var(--secondary); box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4); }
+
+        /* ========================================== */
+        /* --- PROGRESS OVERLAY & ALERTS --- */
+        /* ========================================== */
+        .progress-overlay {
+            position: fixed; inset: 0; background: rgba(10, 10, 10, 0.96); backdrop-filter: blur(8px);
+            z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .progress-overlay.active { display: flex; }
+        .buffering-spinner {
+            width: 80px; height: 80px; border: 5px solid rgba(255, 115, 0, 0.2);
+            border-top: 5px solid var(--primary); border-radius: 50%;
+            animation: bufferSpin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes bufferSpin { 100% { transform: rotate(360deg); } }
+        .progress-percent { font-size: 4rem; color: var(--secondary); font-weight: 900; letter-spacing: 2px; }
+        .progress-msg { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 2px; margin-top: 10px; }
+
+        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 10000; background: rgba(0, 0, 0, 0.9); opacity: 0; visibility: hidden; transition: 0.3s; }
+        .global-modal.show { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--primary); padding: 30px; border-radius: 12px; max-width: 400px; width: 95%; text-align: center;}
+        .modal-icon-wrapper i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+        .modal-btn { background: var(--primary); color: #fff; font-weight: 800; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 20px; }
+        .modal-btn:hover { background: var(--primary-hover); }
+
+        /* ========================================== */
+        /* --- ULTRA PREMIUM NEWS TICKER --- */
+        /* ========================================== */
+        .news-ticker-container {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 115, 0, 0.3);
+            padding: 8px 0; z-index: 4000; overflow: hidden; pointer-events: none;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
+        }
+        .ticker-wrapper {
+            display: flex; width: max-content;
+            animation: scrollTicker 25s linear infinite;
+        }
+        .ticker-text {
+            font-size: 0.95rem; font-weight: 800; letter-spacing: 1.5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--danger), var(--primary));
+            background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shineText 3s linear infinite;
+            padding-right: 50px; white-space: nowrap;
+        }
+        @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes shineText { to { background-position: 200% center; } }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="portal-header">
+        <div class="header-logo-box">
+            <div class="logo-dynamic-wrap header-logo-size">
+                <img src="abhinay.png" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
+            </div>
+            <div class="header-text">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <p>GS & HISTORY VAULT</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Following Logo -->
+    <div class="logo-dynamic-wrap floating-logo-size" onclick="window.scrollTo(0,0)" title="Back to Top">
+        <img src="abhinay.png" alt="AP Logo" onerror="this.src='https://via.placeholder.com/65'">
+    </div>
+
+    <div class="library-container">
+        
+        <div class="section-header">
+            <h2>SELECT <span>SUBJECT</span></h2>
+        </div>
+
+        <!-- Subject Tabs -->
+        <div class="subject-tabs" id="tabContainer">
+            <button class="tab-btn active" onclick="loadContent('HISTORY', this)"><i class="fas fa-monument"></i> HISTORY</button>
+            <button class="tab-btn" onclick="loadContent('GEOGRAPHY', this)"><i class="fas fa-globe-americas"></i> GEOGRAPHY</button>
+            <button class="tab-btn" onclick="loadContent('POLITY', this)"><i class="fas fa-balance-scale"></i> POLITY</button>
+            <button class="tab-btn" onclick="loadContent('ECONOMICS', this)"><i class="fas fa-chart-line"></i> ECONOMICS</button>
+            <button class="tab-btn" onclick="loadContent('STATIC GK', this)"><i class="fas fa-book"></i> STATIC GK</button>
+        </div>
+
+        <div class="section-header">
+            <h2 id="dynamicTitle">HISTORY <span>MATERIALS</span></h2>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="material-grid" id="materialGrid"></div>
+
+    </div>
+
+    <!-- Bottom Seamless News Ticker -->
+    <div class="news-ticker-container">
+        <!-- Text is duplicated inside wrapper to make infinite scroll seamless -->
+        <div class="ticker-wrapper">
+            <div class="ticker-text">✨ WELCOME TO ABHINAY PRATAP MATHS DIGITAL LIBRARY! GET 100% FREE HISTORY, GEOGRAPHY, AND POLITY PREMIUM PDFs. DOWNLOAD PREVIOUS YEAR PAPERS & EXAM STRATEGIES NOW! ✨</div>
+            <div class="ticker-text">✨ WELCOME TO ABHINAY PRATAP MATHS DIGITAL LIBRARY! GET 100% FREE HISTORY, GEOGRAPHY, AND POLITY PREMIUM PDFs. DOWNLOAD PREVIOUS YEAR PAPERS & EXAM STRATEGIES NOW! ✨</div>
+        </div>
+    </div>
+
+    <!-- 1 to 100% Buffering Overlay -->
+    <div class="progress-overlay" id="progressOverlay">
+        <div class="buffering-spinner"></div>
+        <div class="progress-percent" id="progressCounter">1%</div>
+        <div class="progress-msg">EXTRACTING SECURE PDF...</div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="global-modal" id="alertModal">
+        <div class="modal-content">
+            <div class="modal-icon-wrapper"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3 style="color:#fff; margin-bottom:10px;">FILE UNAVAILABLE</h3>
+            <p id="alertMsg" style="color:var(--text-dim); font-size:0.9rem; line-height:1.6; text-transform:none;">The selected PDF document has not been uploaded yet. Please try again later.</p>
+            <button class="modal-btn" onclick="document.getElementById('alertModal').classList.remove('show')">CLOSE</button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // --- DATA REPOSITORY FOR GS SUBJECTS ---
+        // ==========================================
+        const libraryData = {
+            "HISTORY": [
+                { title: "Ancient Indian History", desc: "Indus Valley, Vedic Period, Mauryan Empire to Gupta Dynasty complete notes.", icon: "fas fa-chess-rook", tag: "PDF", link: "#" },
+                { title: "Medieval Indian History", desc: "Delhi Sultanate, Mughal Empire and Maratha Kingdom highlights.", icon: "fas fa-gopuram", tag: "PDF", link: "#" },
+                { title: "Modern Indian History", desc: "British Rule, Revolt of 1857, and Indian National Movement timeline.", icon: "fas fa-flag-checkered", tag: "PDF", link: "#" },
+                { title: "World History Summary", desc: "French Revolution, World War I & II important events.", icon: "fas fa-globe", tag: "PDF", link: "#" },
+                { title: "History Timeline & Dates", desc: "Quick revision chart for all important historical dates.", icon: "far fa-calendar-alt", tag: "TRICK", link: "#" }
+            ],
+            "GEOGRAPHY": [
+                { title: "Physical Geography", desc: "Universe, Solar System, Earth structure and Landforms.", icon: "fas fa-mountain", tag: "PDF", link: "#" },
+                { title: "Indian Geography", desc: "Rivers, Mountains, Climate, Soils and Agriculture of India.", icon: "fas fa-map-marked-alt", tag: "PDF", link: "#" },
+                { title: "World Geography", desc: "Continents, Oceans, Grasslands and major Deserts.", icon: "fas fa-globe-americas", tag: "PDF", link: "#" },
+                { title: "Ecology & Environment", desc: "Ecosystem, Biodiversity, and Environmental Treaties.", icon: "fas fa-leaf", tag: "PDF", link: "#" },
+                { title: "Map Pointing Guide", desc: "Detailed maps for quick visual revision.", icon: "fas fa-map-pin", tag: "MAPS", link: "#" }
+            ],
+            "POLITY": [
+                { title: "Indian Constitution", desc: "Making of the constitution, Parts, Schedules and Articles.", icon: "fas fa-book", tag: "PDF", link: "#" },
+                { title: "Fundamental Rights", desc: "FRs, DPSP and Fundamental Duties explained simply.", icon: "fas fa-user-shield", tag: "PDF", link: "#" },
+                { title: "Parliament & Judiciary", desc: "Lok Sabha, Rajya Sabha, Supreme Court & High Courts.", icon: "fas fa-balance-scale", tag: "PDF", link: "#" },
+                { title: "Panchayati Raj", desc: "Local self-government and important amendments.", icon: "fas fa-users", tag: "PDF", link: "#" },
+                { title: "Important Articles Trick", desc: "How to remember the most asked articles easily.", icon: "fas fa-lightbulb", tag: "TRICK", link: "#" }
+            ],
+            "ECONOMICS": [
+                { title: "Macro Economics Basics", desc: "GDP, GNP, National Income and Inflation concepts.", icon: "fas fa-chart-bar", tag: "PDF", link: "#" },
+                { title: "Banking & RBI", desc: "Monetary Policy, Repo Rate and Banking system in India.", icon: "fas fa-university", tag: "PDF", link: "#" },
+                { title: "Five Year Plans", desc: "History of planning commission and NITI Aayog.", icon: "fas fa-tasks", tag: "PDF", link: "#" },
+                { title: "Budget & Taxation", desc: "Direct/Indirect taxes, GST and Union Budget basics.", icon: "fas fa-file-invoice-dollar", tag: "PDF", link: "#" }
+            ],
+            "STATIC GK": [
+                { title: "National Parks & Sanctuaries", desc: "State-wise list of all major reserves in India.", icon: "fas fa-tree", tag: "PDF", link: "#" },
+                { title: "Dances & Festivals", desc: "Classical/Folk dances and cultural festivals of India.", icon: "fas fa-music", tag: "PDF", link: "#" },
+                { title: "First in India & World", desc: "Important personalities and their historical firsts.", icon: "fas fa-medal", tag: "PDF", link: "#" },
+                { title: "International Organizations", desc: "UN, WHO, WTO headquarters and their functions.", icon: "fas fa-building", tag: "PDF", link: "#" },
+                { title: "Important Days & Themes", desc: "Month-wise compilation of national and international days.", icon: "far fa-calendar-check", tag: "PDF", link: "#" }
+            ]
+        };
+
+        function loadContent(category, element) {
+            // Update Active Tab
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+
+            // Update Title
+            document.getElementById('dynamicTitle').innerHTML = `${category} <span>MATERIALS</span>`;
+
+            // Render Cards
+            const grid = document.getElementById('materialGrid');
+            grid.innerHTML = "";
+            const data = libraryData[category];
+
+            data.forEach((item, index) => {
+                grid.innerHTML += `
+                <div class="mat-card" style="animation-delay: ${index * 0.05}s;">
+                    <div class="mat-card-top">
+                        <div class="mat-icon"><i class="${item.icon}"></i></div>
+                        <div class="mat-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                    </div>
+                    <div class="mat-meta">
+                        <div class="mat-tags"><span>${item.tag}</span></div>
+                        <button class="btn-download" onclick="triggerDownloadProgress('${item.link}', '${item.title}')">
+                            DOWNLOAD <i class="fas fa-download" style="margin-left:5px;"></i>
+                        </button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        // ==========================================
+        // --- DOWNLOAD PROGRESS ANIMATION ---
+        // ==========================================
+        function triggerDownloadProgress(link, title) {
+            const overlay = document.getElementById('progressOverlay');
+            const counter = document.getElementById('progressCounter');
+            overlay.classList.add('active');
+            
+            let currentPercent = 1;
+            let interval = setInterval(() => {
+                counter.innerText = currentPercent + "%";
+                currentPercent++;
+                
+                if(currentPercent > 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                        evaluateLink(link, title);
+                    }, 400);
+                }
+            }, 25); // Speed of counting
+        }
+
+        function evaluateLink(link, title) {
+            if(!link || link.trim() === "" || link.trim() === "#") {
+                document.getElementById('alertMsg').innerHTML = `<b>Oops!</b> The file for <span style="color:var(--primary); font-weight:800;">"${title}"</span> has not been uploaded yet. Please check back later.`;
+                document.getElementById('alertModal').classList.add('show');
+            } else {
+                const a = document.createElement('a');
+                a.href = link;
+                a.setAttribute('download', ''); 
+                a.setAttribute('target', '_blank');
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        }
+
+        // Initialize First Tab on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstTab = document.querySelector('.tab-btn');
+            loadContent('HISTORY', firstTab);
+        });
+
+    </script>
+</body>
+</html>

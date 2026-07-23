@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Question Paper - AP Maths</title>
+    <style>
+        /* ========================================== */
+        /* GENERAL SCREEN STYLES (NO-PRINT) */
+        /* ========================================== */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+        }
+
+        .action-bar {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #111;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .btn-print {
+            background: #ff2a75;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            box-shadow: 0 4px 6px rgba(255, 42, 117, 0.3);
+        }
+        .btn-print:hover { background: #e60050; }
+
+        /* ========================================== */
+        /* A4 PAPER STYLES */
+        /* ========================================== */
+        .paper-container {
+            max-width: 210mm; /* A4 Width */
+            margin: 0 auto;
+            background: #fff;
+            padding: 15mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><text x="50%" y="50%" text-anchor="middle" transform="rotate(-45 250 250)" font-size="40" font-family="Arial" font-weight="bold" fill="rgba(0,0,0,0.06)">ABHINAY PRATAP MATHS</text></svg>');
+            background-repeat: repeat;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content-wrapper { position: relative; z-index: 1; }
+
+        /* Header */
+        .exam-header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .exam-header h1 { margin: 0; font-size: 24px; text-transform: uppercase; }
+        .exam-header h2 { margin: 5px 0; font-size: 18px; color: #333; }
+        .exam-header p { margin: 5px 0 0 0; font-size: 14px; font-weight: bold; }
+
+        /* Student Info Box */
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            border: 1px solid #000;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .info-field { border-bottom: 1px dashed #666; padding-bottom: 5px; }
+
+        /* Instructions */
+        .instructions {
+            border: 1px solid #000;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            background: #f9f9f9;
+        }
+        .instructions ul { margin: 5px 0; padding-left: 20px; }
+
+        /* Sections and Questions */
+        .section-title {
+            background: #eee;
+            padding: 8px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 16px;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+        }
+
+        .question-block {
+            margin-bottom: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+            /* Prevents question from splitting across pages */
+            page-break-inside: avoid; 
+        }
+        .q-text { font-weight: bold; margin-bottom: 6px; }
+        .q-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-left: 25px;
+        }
+
+        /* Answer Key Section */
+        .answer-key-wrapper { margin-top: 40px; page-break-before: always; }
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            font-size: 13px;
+        }
+        .key-item { border: 1px solid #ccc; padding: 5px; text-align: center; }
+
+        /* ========================================== */
+        /* PRINT CSS (Only applies when printing) */
+        /* ========================================== */
+        @media print {
+            body { background-color: #fff; margin: 0; padding: 0; }
+            .action-bar { display: none; } /* Hide buttons during print */
+            .paper-container { 
+                box-shadow: none; 
+                margin: 0; 
+                padding: 0; 
+                max-width: 100%; 
+                width: 100%; 
+            }
+            .watermark {
+                /* Ensures watermark prints */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Action Buttons (Hidden during print) -->
+    <div class="action-bar">
+        <h3 style="color:white; margin-top:0;">AP Maths Offline Exam Generator</h3>
+        <button class="btn-print" onclick="window.print()">🖨️ PRINT QUESTION PAPER</button>
+    </div>
+
+    <!-- A4 Paper Container -->
+    <div class="paper-container">
+        <div class="watermark"></div>
+        
+        <div class="content-wrapper">
+            <!-- Header -->
+            <div class="exam-header">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <h2>GRAND SCHOLARSHIP & ENTRANCE EXAM</h2>
+                <p>Time Allowed: 90 Minutes &nbsp;&nbsp;|&nbsp;&nbsp; Maximum Marks: 100</p>
+            </div>
+
+            <!-- Student Detail Box -->
+            <div class="student-info">
+                <div class="info-field">Student's Name: _______________________________</div>
+                <div class="info-field">Roll Number: __________________________________</div>
+                <div class="info-field">School/Center Name: ___________________________</div>
+                <div class="info-field">Invigilator's Sign: _____________________________</div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="instructions">
+                <strong>General Instructions:</strong>
+                <ul>
+                    <li>This question paper contains 100 objective type questions. All questions are compulsory.</li>
+                    <li>Each correct answer carries <strong>+1 Mark</strong>. There is a negative marking of <strong>-0.25</strong> for each wrong answer.</li>
+                    <li>Do not write anything on the question paper except your details. Use the provided OMR sheet for answers.</li>
+                    <li>Use only Blue/Black ballpoint pen to darken the circles in the OMR sheet.</li>
+                </ul>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="questionsContainer">
+                <!-- Questions will be auto-generated here by JavaScript -->
+            </div>
+
+            <!-- Answer Key Container -->
+            <div class="answer-key-wrapper" id="answerKeyContainer">
+                <!-- Answer Key will be auto-generated here -->
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 100 REAL QUESTIONS REPOSITORY
+        // ==========================================
+        const qDB = [
+            // HINDI (20)
+            { sec:"HINDI", q:"'आकाश' का पर्यायवाची शब्द क्या है?", opts:["गगन","पाताल","धरती","नीर"], ans:0 },
+            { sec:"HINDI", q:"'अंधे की लकड़ी' मुहावरे का अर्थ है:", opts:["अंधे व्यक्ति की छड़ी","एकमात्र सहारा","मूर्ख व्यक्ति","असंभव कार्य"], ans:1 },
+            { sec:"HINDI", q:"'अनुराग' का विलोम शब्द है:", opts:["विराग","प्रेम","सुराग","द्वेष"], ans:0 },
+            { sec:"HINDI", q:"जिसका कोई शत्रु न जन्मा हो, उसे कहते हैं:", opts:["अजातशत्रु","शत्रुघ्न","अजेय","अजय"], ans:0 },
+            { sec:"HINDI", q:"'विद्यालय' में कौन सी संधि है?", opts:["गुण संधि","दीर्घ संधि","यण संधि","वृद्धि संधि"], ans:1 },
+            { sec:"HINDI", q:"इनमें से कौन सा शब्द शुद्ध है?", opts:["आशिर्वाद","अशिर्वाद","आशीर्वाद","अशीर्वाद"], ans:2 },
+            { sec:"HINDI", q:"'कमल' का पर्यायवाची नहीं है:", opts:["जलज","पंकज","नीरज","वारिद"], ans:3 },
+            { sec:"HINDI", q:"'नौ दो ग्यारह होना' का अर्थ है:", opts:["गणित सीखना","भाग जाना","धोखा देना","मिलकर रहना"], ans:1 },
+            { sec:"HINDI", q:"'प्रतिदिन' में कौन सा समास है?", opts:["अव्ययीभाव","तत्पुरुष","बहुव्रीहि","द्वंद्व"], ans:0 },
+            { sec:"HINDI", q:"'कवि' का स्त्रीलिंग रूप है:", opts:["कवयित्री","कवियत्री","कवित्री","कविनी"], ans:0 },
+            { sec:"HINDI", q:"'आंखों का तारा' होना:", opts:["बहुत प्यारा होना","आंख की बीमारी","दुश्मन होना","तारा देखना"], ans:0 },
+            { sec:"HINDI", q:"हिंदी वर्णमाला में कितने स्वर होते हैं?", opts:["11","13","33","36"], ans:0 },
+            { sec:"HINDI", q:"'जगन्नाथ' का संधि विच्छेद है:", opts:["जग + नाथ","जगत् + नाथ","जगत + अनाथ","जग + अनाथ"], ans:1 },
+            { sec:"HINDI", q:"जो ईश्वर में विश्वास रखता हो:", opts:["नास्तिक","आस्तिक","आध्यात्मिक","संत"], ans:1 },
+            { sec:"HINDI", q:"इनमें से तद्भव शब्द चुनें:", opts:["अग्नि","अश्रु","आग","पुष्प"], ans:2 },
+            { sec:"HINDI", q:"'उन्नति' का विलोम है:", opts:["पतन","अवनति","विनाश","दुर्दुर्गति"], ans:1 },
+            { sec:"HINDI", q:"'चतुर्भुज' में समास है:", opts:["द्विगु","बहुव्रीहि","कर्मधारय","द्वंद्व"], ans:1 },
+            { sec:"HINDI", q:"'स्वागत' का संधि विच्छेद है:", opts:["स्व + आगत","सु + आगत","स्वा + गत","स + वागत"], ans:1 },
+            { sec:"HINDI", q:"'श्रीगणेश करना' मुहावरे का अर्थ है:", opts:["पूजा करना","प्रारंभ करना","समाप्त करना","विघ्न डालना"], ans:1 },
+            { sec:"HINDI", q:"'पवन' का पर्यायवाची है:", opts:["अनिल","अनल","आग","जल"], ans:0 },
+
+            // REASONING (20)
+            { sec:"REASONING", q:"Find the next number in series: 2, 5, 10, 17, 26, ?", opts:["35","37","39","41"], ans:1 },
+            { sec:"REASONING", q:"If A=1, B=2... and CAT = 24, then DOG = ?", opts:["24","26","28","30"], ans:1 },
+            { sec:"REASONING", q:"A is B's brother. C is A's mother. D is C's father. How is B related to D?", opts:["Son","Grandchild","Brother","Nephew"], ans:1 },
+            { sec:"REASONING", q:"Odd one out: Apple, Mango, Potato, Banana", opts:["Apple","Mango","Potato","Banana"], ans:2 },
+            { sec:"REASONING", q:"If South-East becomes North, North-East becomes West and so on. What will West become?", opts:["North-East","North-West","South-East","South-West"], ans:2 },
+            { sec:"REASONING", q:"Bird : Fly :: Fish : ?", opts:["Walk","Swim","Crawl","Run"], ans:1 },
+            { sec:"REASONING", q:"Complete the series: A, C, F, J, O, ?", opts:["T","U","V","W"], ans:1 },
+            { sec:"REASONING", q:"If '+' means '-', '-' means '*', '*' means '/' and '/' means '+', then 10 * 5 / 2 - 4 + 3 = ?", opts:["7","5","9","11"], ans:0 },
+            { sec:"REASONING", q:"Odd one out: 4, 9, 16, 25, 35, 36", opts:["16","25","35","36"], ans:2 },
+            { sec:"REASONING", q:"A man walks 5km North, turns right and walks 4km, turns right again and walks 5km. Which direction is he facing now?", opts:["North","South","East","West"], ans:1 },
+            { sec:"REASONING", q:"Select related word: Pen : Write :: Knife : ?", opts:["Cut","Eat","Cook","Draw"], ans:0 },
+            { sec:"REASONING", q:"In a row of boys, Aman is 10th from left and 15th from right. Total boys?", opts:["24","25","26","27"], ans:0 },
+            { sec:"REASONING", q:"If 1st Jan is Monday, what day is 31st Dec of a normal year?", opts:["Monday","Tuesday","Sunday","Wednesday"], ans:0 },
+            { sec:"REASONING", q:"What comes next: 1, 8, 27, 64, ?", opts:["100","121","125","144"], ans:2 },
+            { sec:"REASONING", q:"Which word cannot be formed from 'MEASUREMENT'?", opts:["TENT","MEAN","SURE","MASTER"], ans:3 },
+            { sec:"REASONING", q:"Choose missing term: 10, 22, 46, 94, ?", opts:["180","184","190","192"], ans:2 },
+            { sec:"REASONING", q:"Dog : Bark :: Lion : ?", opts:["Meow","Roar","Grunt","Hiss"], ans:1 },
+            { sec:"REASONING", q:"Clock is related to Time as Thermometer is to ?", opts:["Heat","Radiation","Energy","Temperature"], ans:3 },
+            { sec:"REASONING", q:"A clock shows 3:00. The angle between hour and minute hand is:", opts:["60","90","120","180"], ans:1 },
+            { sec:"REASONING", q:"Complete the sequence: 2, 4, 8, 16, ?", opts:["24","32","64","128"], ans:1 },
+
+            // MATHS (20)
+            { sec:"MATHEMATICS", q:"If 20% of a number is 50, what is the number?", opts:["200","250","300","350"], ans:1 },
+            { sec:"MATHEMATICS", q:"Cost price is 400, Selling price is 500. Find profit percentage.", opts:["20%","25%","30%","10%"], ans:1 },
+            { sec:"MATHEMATICS", q:"Sum of first 10 natural numbers is:", opts:["45","50","55","60"], ans:2 },
+            { sec:"MATHEMATICS", q:"If x + y = 10 and x - y = 4, find x*y.", opts:["21","24","25","28"], ans:0 },
+            { sec:"MATHEMATICS", q:"Find Simple Interest on Rs. 1000 at 5% pa for 2 years.", opts:["50","100","150","200"], ans:1 },
+            { sec:"MATHEMATICS", q:"A train 100m long passes a pole in 10 sec. Speed in km/hr?", opts:["18","36","54","72"], ans:1 },
+            { sec:"MATHEMATICS", q:"Area of a square is 144 sq.cm. Perimeter is?", opts:["24","36","48","60"], ans:2 },
+            { sec:"MATHEMATICS", q:"Value of 5^3 - 4^3 is?", opts:["61","125","64","91"], ans:0 },
+            { sec:"MATHEMATICS", q:"Find the LCM of 12, 15, and 20.", opts:["30","60","120","180"], ans:1 },
+            { sec:"MATHEMATICS", q:"What is the HCF of 18 and 24?", opts:["4","6","8","12"], ans:1 },
+            { sec:"MATHEMATICS", q:"A can do a work in 10 days, B in 15 days. Together they will take?", opts:["4 days","5 days","6 days","8 days"], ans:2 },
+            { sec:"MATHEMATICS", q:"√(225) + √(64) = ?", opts:["21","23","25","27"], ans:1 },
+            { sec:"MATHEMATICS", q:"If radius of a circle is 7cm, its circumference is? (π=22/7)", opts:["22 cm","44 cm","88 cm","154 cm"], ans:1 },
+            { sec:"MATHEMATICS", q:"Average of 5 numbers is 20. Sum of numbers is?", opts:["80","100","120","150"], ans:1 },
+            { sec:"MATHEMATICS", q:"Which is a prime number?", opts:["9","15","17","21"], ans:2 },
+            { sec:"MATHEMATICS", q:"1/2 + 1/4 + 1/8 = ?", opts:["5/8","7/8","3/4","1"], ans:1 },
+            { sec:"MATHEMATICS", q:"If 3x - 5 = 10, then x = ?", opts:["3","4","5","6"], ans:2 },
+            { sec:"MATHEMATICS", q:"Ratio of ages of A and B is 3:4. Sum is 28. A's age?", opts:["12","16","20","24"], ans:0 },
+            { sec:"MATHEMATICS", q:"Volume of a cube of side 5cm is?", opts:["25","100","125","150"], ans:2 },
+            { sec:"MATHEMATICS", q:"Convert 0.25 into fraction.", opts:["1/2","1/3","1/4","1/5"], ans:2 },
+
+            // SCIENCE (20)
+            { sec:"SCIENCE", q:"Powerhouse of the cell is called?", opts:["Nucleus","Ribosome","Mitochondria","Lysosome"], ans:2 },
+            { sec:"SCIENCE", q:"Chemical formula of Water is?", opts:["CO2","H2O","O2","NaCl"], ans:1 },
+            { sec:"SCIENCE", q:"SI unit of Force is?", opts:["Joule","Newton","Pascal","Watt"], ans:1 },
+            { sec:"SCIENCE", q:"Which gas do plants absorb during photosynthesis?", opts:["Oxygen","Nitrogen","Carbon Dioxide","Hydrogen"], ans:2 },
+            { sec:"SCIENCE", q:"Speed of light in vacuum is approx?", opts:["300,000 km/s","150,000 km/s","1,000,000 km/s","30,000 km/s"], ans:0 },
+            { sec:"SCIENCE", q:"Which organ purifies human blood?", opts:["Heart","Lungs","Kidney","Liver"], ans:2 },
+            { sec:"SCIENCE", q:"Atomic number of Carbon is?", opts:["4","6","8","12"], ans:1 },
+            { sec:"SCIENCE", q:"Acid present in lemon is?", opts:["Citric acid","Lactic acid","Acetic acid","Tartaric acid"], ans:0 },
+            { sec:"SCIENCE", q:"Which vitamin is provided by sunlight?", opts:["Vit A","Vit B","Vit C","Vit D"], ans:3 },
+            { sec:"SCIENCE", q:"Heaviest naturally occurring element is?", opts:["Iron","Lead","Uranium","Gold"], ans:2 },
+            { sec:"SCIENCE", q:"Sound cannot travel through?", opts:["Water","Air","Steel","Vacuum"], ans:3 },
+            { sec:"SCIENCE", q:"What is the boiling point of water?", opts:["100°C","90°C","120°C","50°C"], ans:0 },
+            { sec:"SCIENCE", q:"Which metal is liquid at room temperature?", opts:["Iron","Mercury","Gold","Silver"], ans:1 },
+            { sec:"SCIENCE", q:"Process of rusting of iron is?", opts:["Oxidation","Reduction","Evaporation","Condensation"], ans:0 },
+            { sec:"SCIENCE", q:"Ozone layer protects us from?", opts:["Infrared rays","UV rays","X-rays","Gamma rays"], ans:1 },
+            { sec:"SCIENCE", q:"Device used to measure electric current?", opts:["Voltmeter","Ammeter","Barometer","Thermometer"], ans:1 },
+            { sec:"SCIENCE", q:"Which is the largest planet in our solar system?", opts:["Earth","Mars","Jupiter","Saturn"], ans:2 },
+            { sec:"SCIENCE", q:"Human body's largest bone is?", opts:["Femur","Tibia","Radius","Humerus"], ans:0 },
+            { sec:"SCIENCE", q:"Deficiency of Iron causes?", opts:["Scurvy","Rickets","Anemia","Night blindness"], ans:2 },
+            { sec:"SCIENCE", q:"What is dry ice?", opts:["Solid Water","Solid CO2","Solid Nitrogen","Solid Oxygen"], ans:1 },
+
+            // GENERAL STUDIES (20)
+            { sec:"GENERAL STUDIES", q:"Who is known as the Father of Indian Constitution?", opts:["Mahatma Gandhi","J.L. Nehru","B.R. Ambedkar","Sardar Patel"], ans:2 },
+            { sec:"GENERAL STUDIES", q:"Capital of Australia is?", opts:["Sydney","Melbourne","Canberra","Perth"], ans:2 },
+            { sec:"GENERAL STUDIES", q:"Which river is known as 'Sorrow of Bihar'?", opts:["Ganga","Kosi","Son","Gandak"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"First President of independent India?", opts:["Dr. Rajendra Prasad","Dr. S. Radhakrishnan","Zakir Husain","V.V. Giri"], ans:0 },
+            { sec:"GENERAL STUDIES", q:"Largest state in India by area?", opts:["UP","MP","Rajasthan","Maharashtra"], ans:2 },
+            { sec:"GENERAL STUDIES", q:"National Song of India was written by?", opts:["Rabindranath Tagore","Bankim Chandra","Subhash Chandra","Sarojini Naidu"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"Which planet is called the Red Planet?", opts:["Mars","Saturn","Jupiter","Venus"], ans:0 },
+            { sec:"GENERAL STUDIES", q:"Who discovered sea route to India?", opts:["Columbus","Vasco da Gama","Magellan","Captain Cook"], ans:1 }, 
+            { sec:"GENERAL STUDIES", q:"Gateway of India is located in?", opts:["Delhi","Mumbai","Kolkata","Chennai"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"Smallest continent in the world?", opts:["Europe","Antarctica","Australia","South America"], ans:2 },
+            { sec:"GENERAL STUDIES", q:"Currency of Japan is?", opts:["Yen","Yuan","Dollar","Euro"], ans:0 },
+            { sec:"GENERAL STUDIES", q:"First female Prime Minister of India?", opts:["Pratibha Patil","Indira Gandhi","Sarojini Naidu","Sushma Swaraj"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"Which festival is known as Festival of Lights?", opts:["Holi","Diwali","Dussehra","Eid"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"Total number of states in India currently?", opts:["27","28","29","30"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"Highest mountain peak in the world?", opts:["K2","Kangchenjunga","Mount Everest","Nanda Devi"], ans:2 },
+            { sec:"GENERAL STUDIES", q:"Who wrote the National Anthem of India?", opts:["Rabindranath Tagore","Bankim Chandra","Premchand","Tulsidas"], ans:0 },
+            { sec:"GENERAL STUDIES", q:"Capital of Uttar Pradesh is?", opts:["Kanpur","Varanasi","Agra","Lucknow"], ans:3 },
+            { sec:"GENERAL STUDIES", q:"Indian currency notes are printed by?", opts:["SBI","RBI","Finance Ministry","World Bank"], ans:1 },
+            { sec:"GENERAL STUDIES", q:"Longest river in India?", opts:["Brahmaputra","Yamuna","Ganga","Godavari"], ans:2 },
+            { sec:"GENERAL STUDIES", q:"World Environment Day is celebrated on?", opts:["5th June","10th July","15th August","1st May"], ans:0 }
+        ];
+
+        // Generate HTML for Questions
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('questionsContainer');
+            const keyContainer = document.getElementById('answerKeyContainer');
+            
+            let html = '';
+            let currentSec = '';
+            const labels = ['A', 'B', 'C', 'D'];
+
+            // Build Question Paper
+            qDB.forEach((q, i) => {
+                if (q.sec !== currentSec) {
+                    html += `<div class="section-title">PART: ${q.sec}</div>`;
+                    currentSec = q.sec;
+                }
+
+                html += `
+                <div class="question-block">
+                    <div class="q-text">Q${i+1}. ${q.q}</div>
+                    <div class="q-options">
+                        <div>(A) ${q.opts[0]}</div>
+                        <div>(B) ${q.opts[1]}</div>
+                        <div>(C) ${q.opts[2]}</div>
+                        <div>(D) ${q.opts[3]}</div>
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+
+            // Build Answer Key
+            let keyHtml = `<div class="section-title">ANSWER KEY (FOR TEACHERS ONLY)</div><div class="key-grid">`;
+            qDB.forEach((q, i) => {
+                keyHtml += `<div class="key-item"><b>Q${i+1}.</b> ${labels[q.ans]}</div>`;
+            });
+            keyHtml += `</div>`;
+            keyContainer.innerHTML = keyHtml;
+        });
+
+    </script>
+</body>
+</html>
