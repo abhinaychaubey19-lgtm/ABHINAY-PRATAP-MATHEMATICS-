@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mixture & Alligation Book | Exam Edge Institute</title>
+    <title>Time and Work Practice Book | Exam Edge Institute</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,11 @@
             --brand-gold: #eab308;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             background-color: #e2e8f0;
@@ -30,98 +34,283 @@
         }
 
         .pdf-btn-container {
-            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
         }
         .btn-generate-pdf {
-            background: var(--brand-red); color: #fff; border: none;
-            padding: 15px 25px; font-size: 1.1rem; font-weight: 800;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
-            display: flex; align-items: center; gap: 10px; transition: 0.3s;
+            background: var(--brand-red);
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
         }
-        .btn-generate-pdf:hover { transform: translateY(-5px); background: #b91c1c; }
+        .btn-generate-pdf:hover {
+            transform: translateY(-5px);
+            background: #b91c1c;
+        }
 
-        /* --- A4 PAGE SETUP --- */
+        /* --- A4 PAGE SETUP (STRICTLY FIXED LAYOUT) --- */
         .page {
-            width: 210mm; height: 296mm; background: #ffffff;
-            margin: 15mm auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 10mm 15mm 10mm 15mm; page-break-after: always; overflow: hidden; 
-            border-left: 6px solid var(--brand-blue); border-right: 6px solid var(--brand-red); 
-            display: flex; flex-direction: column;
+            width: 210mm;
+            height: 296mm; 
+            background: #ffffff;
+            margin: 15mm auto;
+            position: relative; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 10mm 15mm 10mm 15mm; 
+            page-break-after: always;
+            overflow: hidden; 
+            border-left: 6px solid var(--brand-blue); 
+            border-right: 6px solid var(--brand-red); 
+            display: flex;
+            flex-direction: column;
         }
 
         .watermark {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); 
-            z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.04); 
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: 5px;
         }
 
         .book-header {
-            display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 3px solid var(--brand-red); padding-bottom: 5mm;
-            margin-bottom: 4mm; z-index: 2; position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--brand-red);
+            padding-bottom: 5mm;
+            margin-bottom: 4mm;
+            z-index: 2;
+            position: relative;
         }
 
-        .header-left { display: flex; align-items: center; }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
         .chapter-badge-wrap {
-            display: flex; align-items: center; background: var(--bg-light); border: 2px solid #e2e8f0;
-            border-radius: 8px 50px 50px 8px; height: 44px; position: relative; z-index: 1;
+            display: flex;
+            align-items: center;
+            background: var(--bg-light);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px 50px 50px 8px;
+            height: 44px;
+            position: relative;
+            z-index: 1;
         }
         .chap-label {
-            background: var(--brand-red); color: #fff; height: 100%; display: flex; align-items: center;
-            padding: 0 12px; font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; border-radius: 6px 0 0 6px;
+            background: var(--brand-red);
+            color: #fff;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-radius: 6px 0 0 6px;
         }
-        .chap-num { font-size: 1.6rem; font-weight: 900; color: var(--dark-text); padding: 0 35px 0 12px; }
+        .chap-num {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--dark-text);
+            padding: 0 35px 0 12px;
+        }
 
         .header-logo {
-            width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--brand-red);
-            background: #fff; margin-left: -30px; z-index: 2; padding: 3px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            width: 80px; 
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--brand-red);
+            background: #fff;
+            margin-left: -30px; 
+            z-index: 2;
+            padding: 3px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         }
-        .header-logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+        }
 
-        .header-right { text-align: right; display: flex; flex-direction: column; justify-content: center; }
-        .title-en { font-size: 1.7rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 1px; text-transform: uppercase; }
-        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
+        .header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .title-en {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--dark-text);
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+        .title-hi {
+            font-family: 'Mukta', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--brand-red);
+            line-height: 1;
+            margin-top: 4px;
+        }
 
         .content-area {
-            flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
-            margin-bottom: 20mm; z-index: 2; position: relative;
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            margin-bottom: 20mm; 
+            z-index: 2;
+            position: relative;
         }
 
         .type-heading {
-            background: var(--dark-text); color: #fff; display: table; padding: 3px 12px;
-            font-size: 0.95rem; font-weight: 800; border-radius: 6px; border-left: 5px solid var(--brand-gold);
-            margin-bottom: 1mm; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); text-transform: uppercase;
+            background: var(--dark-text);
+            color: #fff;
+            display: table;
+            padding: 3px 12px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            border-radius: 6px;
+            border-left: 5px solid var(--brand-gold);
+            margin-bottom: 1mm;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+            text-transform: uppercase;
         }
 
-        .question-block { display: flex; flex-direction: column; gap: 1mm; }
-        .question-text { font-size: 0.88rem; color: var(--dark-text); font-weight: 600; line-height: 1.4; text-align: justify; }
-        .q-number { color: var(--brand-red); font-weight: 900; margin-right: 6px; font-size: 1rem; }
-        .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.95rem; color: var(--grey-text); font-weight: 600; line-height: 1.3; text-align: justify; }
+        .question-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1mm;
+        }
+        .question-text {
+            font-size: 0.88rem; 
+            color: var(--dark-text);
+            font-weight: 600;
+            line-height: 1.4;
+            text-align: justify; 
+        }
+        .q-number {
+            color: var(--brand-red);
+            font-weight: 900;
+            margin-right: 6px;
+            font-size: 1rem;
+        }
 
-        .tag-wrapper { text-align: right; margin-top: 1px; margin-bottom: 2px; }
+        .hindi-text {
+            font-family: 'Mukta', sans-serif;
+            font-size: 0.95rem; 
+            color: var(--grey-text);
+            font-weight: 600;
+            line-height: 1.3;
+            text-align: justify; 
+        }
+
+        .tag-wrapper {
+            text-align: right;
+            margin-top: 1px;
+            margin-bottom: 2px;
+        }
         .exam-tag {
-            display: inline-block; background: linear-gradient(45deg, var(--brand-red), #ff4d4d); color: #fff;
-            font-size: 0.65rem; font-weight: 800; padding: 2px 10px; border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(217, 38, 38, 0.3); letter-spacing: 0.5px;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--brand-red), #ff4d4d);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(217, 38, 38, 0.3);
+            letter-spacing: 0.5px;
         }
 
-        .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
-        .option { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); }
-        .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 4px; }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .option {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        .opt-letter {
+            color: var(--brand-red);
+            font-weight: 800;
+            margin-right: 4px;
+        }
 
-        /* --- ANSWER KEY --- */
-        .answer-key-wrapper { margin-top: 5mm; z-index: 2; position: relative; }
-        .answer-key-title { text-align: center; font-size: 1.8rem; font-weight: 900; color: var(--brand-red); margin-bottom: 5mm; text-decoration: underline; text-underline-offset: 5px; }
-        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        /* --- ANSWER KEY STYLING --- */
+        .answer-key-wrapper {
+            margin-top: 5mm;
+            z-index: 2;
+            position: relative;
+        }
+        .answer-key-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--brand-red);
+            margin-bottom: 5mm;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+        .ans-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
         .ans-box {
-            background: #fff; border: 2px solid var(--brand-red); border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            padding: 8px; box-shadow: 0 2px 8px rgba(217, 38, 38, 0.15);
+            background: #fff;
+            border: 2px solid var(--brand-red);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(217, 38, 38, 0.15);
         }
-        .ans-num { font-weight: 900; color: var(--brand-red); margin-right: 8px; font-size: 1.1rem; }
-        .ans-opt { font-weight: 800; color: var(--dark-text); font-size: 1.1rem; text-transform: uppercase; }
+        .ans-num {
+            font-weight: 900;
+            color: var(--brand-red);
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        .ans-opt {
+            font-weight: 800;
+            color: var(--dark-text);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
 
         /* --- SOCIAL HANDLES --- */
-        .social-wrapper { text-align: center; margin-top: 15mm; padding-top: 5mm; border-top: 2px dashed #cbd5e1; z-index: 2; position: relative; }
+        .social-wrapper { 
+            text-align: center; 
+            margin-top: 15mm; 
+            padding-top: 5mm; 
+            border-top: 2px dashed #cbd5e1; 
+            z-index: 2; 
+            position: relative;
+        }
         .social-title { font-size: 1.1rem; font-weight: 900; color: var(--dark-text); margin-bottom: 10px; letter-spacing: 1px; }
         .social-handles { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
         .social-btn {
@@ -133,18 +322,48 @@
         .s-ig { background: #e1306c; }
         .s-tw { background: #000000; }
 
-        /* --- FOOTER --- */
+        /* --- ABSOLUTE FOOTER --- */
         .book-footer {
-            position: absolute; bottom: 10mm; left: 15mm; right: 15mm; height: 12mm;
-            border-top: 2.5px solid var(--brand-red); padding-top: 3mm;
-            display: flex; justify-content: space-between; align-items: center; z-index: 2; background: #fff; 
+            position: absolute;
+            bottom: 10mm; 
+            left: 15mm;
+            right: 15mm;
+            height: 12mm;
+            border-top: 2.5px solid var(--brand-red);
+            padding-top: 3mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+            background: #fff; 
         }
-        .footer-left { font-size: 0.85rem; font-weight: 900; color: var(--brand-blue); letter-spacing: 0.5px; }
-        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); }
+        .footer-left {
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--brand-blue);
+            letter-spacing: 0.5px;
+        }
+        .footer-right {
+            font-size: 0.85rem;
+            font-weight: 900;
+            color: var(--dark-text);
+        }
         .footer-center {
-            background: var(--brand-red); color: #fff; width: 28px; height: 28px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;
-            position: absolute; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(217, 38, 38, 0.4); border: 2px solid #fff;
+            background: var(--brand-red);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.9rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(217, 38, 38, 0.4);
+            border: 2px solid #fff;
         }
 
         @page { size: A4; margin: 0; }
@@ -157,6 +376,7 @@
 </head>
 <body>
 
+    <!-- PDF GENERATE BUTTON -->
     <div class="pdf-btn-container">
         <button class="btn-generate-pdf" onclick="window.print()">
             <i class="fas fa-file-pdf"></i> SAVE AS PDF
@@ -166,70 +386,81 @@
     <!-- ================= PAGE 1 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
+        
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 1: BASIC RULE OF ALLIGATION</div>
+            <div class="type-heading">TYPE - 1: BASIC CONCEPTS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.1</span> In what ratio must wheat at Rs. 20 per kg be mixed with wheat at Rs. 25 per kg so that the mixture is worth Rs. 23 per kg?</div>
-                <div class="hindi-text">20 रुपये प्रति किलो वाले गेहूं को 25 रुपये प्रति किलो वाले गेहूं के साथ किस अनुपात में मिलाया जाना चाहिए ताकि मिश्रण का मूल्य 23 रुपये प्रति किलो हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.1</span> A can do a piece of work in 10 days and B can do it in 15 days. In how many days will they finish the work together?</div>
+                <div class="hindi-text">A किसी कार्य को 10 दिनों में कर सकता है और B उसे 15 दिनों में कर सकता है। वे दोनों मिलकर उस कार्य को कितने दिनों में पूरा करेंगे?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2:3</div><div class="option"><span class="opt-letter">(b)</span> 3:2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1:2</div><div class="option"><span class="opt-letter">(d)</span> 4:3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 5 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 12 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.2</span> In what proportion must tea at Rs. 62 per kg be mixed with tea at Rs. 72 per kg so that the mixture must be worth Rs. 64.50 per kg?</div>
-                <div class="hindi-text">62 रुपये प्रति किलो वाली चाय को 72 रुपये प्रति किलो वाली चाय के साथ किस अनुपात में मिलाया जाना चाहिए ताकि मिश्रण का मूल्य 64.50 रुपये प्रति किलो हो जाए?</div>
+                <div class="question-text"><span class="q-number">Q.2</span> A and B together can do a piece of work in 12 days. If A alone can do it in 20 days, in how many days can B alone do it?</div>
+                <div class="hindi-text">A और B मिलकर एक कार्य को 12 दिनों में कर सकते हैं। यदि A अकेला उसे 20 दिनों में कर सकता है, तो B अकेला उसे कितने दिनों में कर सकता है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3:1</div><div class="option"><span class="opt-letter">(b)</span> 1:3</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:2</div><div class="option"><span class="opt-letter">(d)</span> 4:1</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 25 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 30 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 24 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.3</span> The average weight of a class of 40 students is 30 kg and the average weight of a class of 20 students is 15 kg. Find the average weight of both the classes combined.</div>
-                <div class="hindi-text">40 छात्रों की एक कक्षा का औसत वजन 30 किलो है और 20 छात्रों की एक कक्षा का औसत वजन 15 किलो है। दोनों कक्षाओं का मिलाकर औसत वजन ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
+                <div class="question-text"><span class="q-number">Q.3</span> A can do a work in 12 days, B in 15 days, and C in 20 days. If they work together, in how many days will the work be completed?</div>
+                <div class="hindi-text">A किसी काम को 12 दिन, B 15 दिन और C 20 दिन में कर सकता है। यदि वे एक साथ काम करें, तो काम कितने दिनों में पूरा होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2024</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20 kg</div><div class="option"><span class="opt-letter">(b)</span> 25 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 22.5 kg</div><div class="option"><span class="opt-letter">(d)</span> 28 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 8 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.4</span> In what ratio must water be mixed with milk costing Rs. 12 per litre to obtain a mixture worth of Rs. 8 per litre?</div>
-                <div class="hindi-text">12 रुपये प्रति लीटर वाले दूध में पानी किस अनुपात में मिलाया जाना चाहिए ताकि मिश्रण का मूल्य 8 रुपये प्रति लीटर हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.4</span> A and B can do a work in 18 days, B and C in 24 days, A and C in 36 days. In how many days can they do it all working together?</div>
+                <div class="hindi-text">A और B किसी काम को 18 दिन में, B और C 24 दिन में, A और C 36 दिन में कर सकते हैं। वे सभी एक साथ मिलकर इसे कितने दिनों में कर सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1:2</div><div class="option"><span class="opt-letter">(b)</span> 2:1</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2:3</div><div class="option"><span class="opt-letter">(d)</span> 3:2</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 16 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 18 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.5</span> A merchant has 1000 kg of sugar, part of which he sells at 8% profit and the rest at 18% profit. He gains 14% on the whole. The quantity sold at 18% profit is:</div>
-                <div class="hindi-text">एक व्यापारी के पास 1000 किलो चीनी है, जिसका कुछ भाग वह 8% लाभ पर और शेष 18% लाभ पर बेचता है। उसे कुल मिलाकर 14% का लाभ होता है। 18% लाभ पर बेची गई मात्रा है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.5</span> P and Q can complete a work in 20 days and 30 days respectively. If they start working together, what fraction of work will be left after 4 days?</div>
+                <div class="hindi-text">P और Q एक कार्य को क्रमशः 20 दिन और 30 दिन में पूरा कर सकते हैं। यदि वे एक साथ काम करना शुरू करते हैं, तो 4 दिनों के बाद कितना अंश कार्य शेष रह जाएगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 400 kg</div><div class="option"><span class="opt-letter">(b)</span> 500 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 600 kg</div><div class="option"><span class="opt-letter">(d)</span> 640 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/3</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 2/3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/4</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 3/4</div>
                 </div>
             </div>
         </div>
@@ -248,66 +479,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 2: ADDING QUANTITY TO A MIXTURE</div>
+            <div class="type-heading">TYPE - 2: LEAVING OR JOINING THE WORK</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.6</span> A mixture of 40 litres of milk and water contains 10% water. How much water must be added to make 20% water in the new mixture?</div>
-                <div class="hindi-text">दूध और पानी के 40 लीटर मिश्रण में 10% पानी है। नए मिश्रण में पानी को 20% बनाने के लिए कितना पानी मिलाना होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3 litres</div><div class="option"><span class="opt-letter">(b)</span> 4 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5 litres</div><div class="option"><span class="opt-letter">(d)</span> 6 litres</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.7</span> A 60 litre mixture of milk and water contains milk and water in the ratio 2:1. How much water must be added to make the ratio 1:2?</div>
-                <div class="hindi-text">60 लीटर दूध और पानी के मिश्रण में दूध और पानी का अनुपात 2:1 है। अनुपात 1:2 बनाने के लिए कितना पानी मिलाना होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40 litres</div><div class="option"><span class="opt-letter">(b)</span> 60 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 80 litres</div><div class="option"><span class="opt-letter">(d)</span> 50 litres</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.8</span> A 30 litre mixture of acid and water contains 20% acid. How much water should be added to reduce the acid percentage to 15%?</div>
-                <div class="hindi-text">एसिड और पानी के 30 लीटर मिश्रण में 20% एसिड है। एसिड प्रतिशत को 15% तक कम करने के लिए कितना पानी मिलाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 8 litres</div><div class="option"><span class="opt-letter">(b)</span> 10 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12 litres</div><div class="option"><span class="opt-letter">(d)</span> 15 litres</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.9</span> A vessel contains 60 liters of a mixture of milk and water in the ratio 3:1. How much milk must be added to make the ratio 4:1?</div>
-                <div class="hindi-text">एक बर्तन में दूध और पानी के 60 लीटर मिश्रण का अनुपात 3:1 है। अनुपात 4:1 बनाने के लिए कितना दूध मिलाया जाना चाहिए?</div>
+                <div class="question-text"><span class="q-number">Q.6</span> A and B can do a work in 15 days and 10 days respectively. They started the work together but B left after 2 days. In how many days will A finish the remaining work?</div>
+                <div class="hindi-text">A और B एक काम को क्रमशः 15 दिन और 10 दिन में कर सकते हैं। उन्होंने एक साथ काम शुरू किया लेकिन 2 दिन बाद B ने काम छोड़ दिया। शेष कार्य को A कितने दिनों में पूरा करेगा?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10 litres</div><div class="option"><span class="opt-letter">(b)</span> 15 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20 litres</div><div class="option"><span class="opt-letter">(d)</span> 12 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.10</span> 80 kg of an alloy of lead and tin contains 60% lead. How much lead must be melted into it to make a new alloy containing 75% lead?</div>
-                <div class="hindi-text">सीसा और टिन के 80 किलो मिश्र धातु में 60% सीसा होता है। 75% सीसा युक्त नया मिश्र धातु बनाने के लिए इसमें कितना सीसा पिघलाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D</span></div>
+                <div class="question-text"><span class="q-number">Q.7</span> A can do a work in 20 days and B in 30 days. A starts the work and works for 8 days, then B joins him. In how many days will the total work be completed?</div>
+                <div class="hindi-text">A एक काम को 20 दिनों में और B 30 दिनों में कर सकता है। A काम शुरू करता है और 8 दिनों तक काम करता है, फिर B उसके साथ जुड़ जाता है। कुल कार्य कितने दिनों में पूरा होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40 kg</div><div class="option"><span class="opt-letter">(b)</span> 48 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 50 kg</div><div class="option"><span class="opt-letter">(d)</span> 45 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15.2 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 16 days</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.8</span> A, B and C can do a work in 10, 12 and 15 days respectively. They start working together. A leaves the work 2 days before its completion and B leaves 3 days before its completion. In how many days the work is completed?</div>
+                <div class="hindi-text">A, B और C क्रमशः 10, 12 और 15 दिनों में काम कर सकते हैं। वे एक साथ काम करना शुरू करते हैं। A काम पूरा होने से 2 दिन पहले और B काम पूरा होने से 3 दिन पहले काम छोड़ देता है। काम कितने दिनों में पूरा होता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5.8 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 6.5 days</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.9</span> P can complete a task in 24 days. After working for 6 days, he is joined by Q. If they complete the remaining work in 12 days, in how many days can Q alone complete the task?</div>
+                <div class="hindi-text">P एक कार्य को 24 दिनों में पूरा कर सकता है। 6 दिन काम करने के बाद, उसके साथ Q जुड़ जाता है। यदि वे शेष कार्य को 12 दिनों में पूरा करते हैं, तो Q अकेला उस कार्य को कितने दिनों में पूरा कर सकता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 48 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 36 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 24 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 18 days</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.10</span> A and B alone can complete a work in 9 days and 18 days respectively. They worked together, but 3 days before the completion of work, A leaves. In how many days was the work completed?</div>
+                <div class="hindi-text">A और B अकेले एक कार्य को क्रमशः 9 दिन और 18 दिन में पूरा कर सकते हैं। उन्होंने एक साथ काम किया, लेकिन कार्य पूरा होने से 3 दिन पहले, A छोड़ देता है। काम कितने दिनों में पूरा हुआ?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 7 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9 days</div>
                 </div>
             </div>
         </div>
@@ -326,66 +567,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 3: MIXING TWO MIXTURES (SAME CAPACITY)</div>
+            <div class="type-heading">TYPE - 3: ALTERNATE DAYS WORK</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.11</span> Two equal glasses are respectively 1/3 and 1/4 full of milk. They are then filled up with water and the contents are mixed in a tumbler. Find the ratio of milk and water in the tumbler.</div>
-                <div class="hindi-text">दो समान गिलास क्रमशः 1/3 और 1/4 दूध से भरे हुए हैं। फिर उन्हें पानी से भर दिया जाता है और सामग्री को एक टम्बलर में मिला दिया जाता है। टम्बलर में दूध और पानी का अनुपात ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.11</span> A and B can do a piece of work in 20 days and 30 days respectively. In how many days will the work be completed if they work on alternate days starting with A?</div>
+                <div class="hindi-text">A और B किसी काम को क्रमशः 20 दिन और 30 दिन में कर सकते हैं। यदि वे A से शुरू करके एकांतर दिनों (Alternate days) में काम करते हैं, तो काम कितने दिनों में पूरा होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 7:17</div><div class="option"><span class="opt-letter">(b)</span> 17:7</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7:12</div><div class="option"><span class="opt-letter">(d)</span> 12:7</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 24 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 25 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 22 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 20 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.12</span> Two vessels contain milk and water in the ratio 3:2 and 7:3 respectively. If both vessels are of equal capacity and mixed together, find the ratio of milk to water in the new mixture.</div>
-                <div class="hindi-text">दो बर्तनों में दूध और पानी का अनुपात क्रमशः 3:2 और 7:3 है। यदि दोनों बर्तन समान क्षमता के हैं और एक साथ मिलाए जाते हैं, तो नए मिश्रण में दूध और पानी का अनुपात ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
+                <div class="question-text"><span class="q-number">Q.12</span> A, B and C can do a work in 11, 20 and 55 days respectively. How soon can the work be done if A is assisted by B and C on alternate days?</div>
+                <div class="hindi-text">A, B और C किसी काम को क्रमशः 11, 20 और 55 दिनों में कर सकते हैं। यदि A को एकांतर दिनों में B और C द्वारा सहायता प्रदान की जाती है, तो काम कितनी जल्दी पूरा किया जा सकता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 13:7</div><div class="option"><span class="opt-letter">(b)</span> 13:10</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12:7</div><div class="option"><span class="opt-letter">(d)</span> 14:9</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 9 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 10 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.13</span> Three equal vessels contain acid and water in the ratio 2:1, 3:2 and 5:3 respectively. If all are mixed together, the ratio of acid to water in the new mixture will be:</div>
-                <div class="hindi-text">तीन समान बर्तनों में एसिड और पानी का अनुपात क्रमशः 2:1, 3:2 और 5:3 है। यदि सभी को एक साथ मिला दिया जाए, तो नए मिश्रण में एसिड और पानी का अनुपात होगा:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.13</span> A can do a work in 10 days and B in 15 days. They work on alternate days starting with B. In how many days the work will be completed?</div>
+                <div class="hindi-text">A एक काम 10 दिनों में और B 15 दिनों में कर सकता है। वे B से शुरू करके एकांतर दिनों में काम करते हैं। काम कितने दिनों में पूरा होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 120:133</div><div class="option"><span class="opt-letter">(b)</span> 227:133</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 227:120</div><div class="option"><span class="opt-letter">(d)</span> 133:227</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 12.5 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 13 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 11 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.14</span> Two vessels A and B contain mixtures of milk and water. In A, the ratio is 5:2 and in B, it is 8:5. In what ratio should these be mixed to get a new mixture containing milk and water in the ratio 9:4?</div>
-                <div class="hindi-text">दो बर्तनों A और B में दूध और पानी का मिश्रण है। A में अनुपात 5:2 है और B में 8:5 है। इन्हें किस अनुपात में मिलाया जाना चाहिए ताकि नए मिश्रण में दूध और पानी का अनुपात 9:4 हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.14</span> A can build a wall in 30 days, while B can demolish it in 40 days. If they work on alternate days starting with A, in how many days will the wall be built for the first time?</div>
+                <div class="hindi-text">A एक दीवार को 30 दिनों में बना सकता है, जबकि B इसे 40 दिनों में गिरा सकता है। यदि वे A से शुरू करके एकांतर दिनों में काम करते हैं, तो पहली बार दीवार कितने दिनों में बनेगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 7:2</div><div class="option"><span class="opt-letter">(b)</span> 2:7</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:5</div><div class="option"><span class="opt-letter">(d)</span> 5:3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 235 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 233 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 240 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 239 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.15</span> The ratio of alcohol and water in two vessels is 5:3 and 5:4 respectively. They are mixed in the ratio 4:5. Find the ratio of alcohol and water in the resulting mixture.</div>
-                <div class="hindi-text">दो बर्तनों में अल्कोहल और पानी का अनुपात क्रमशः 5:3 और 5:4 है। उन्हें 4:5 के अनुपात में मिलाया जाता है। परिणामी मिश्रण में अल्कोहल और पानी का अनुपात ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.15</span> X, Y and Z can complete a work in 10, 20 and 30 days respectively. In how many days will the work be finished if X is assisted by Y and Z together on every third day?</div>
+                <div class="hindi-text">X, Y और Z एक कार्य को क्रमशः 10, 20 और 30 दिनों में पूरा कर सकते हैं। यदि X को हर तीसरे दिन Y और Z दोनों द्वारा सहायता प्रदान की जाती है, तो काम कितने दिनों में पूरा होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15:13</div><div class="option"><span class="opt-letter">(b)</span> 17:15</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 19:15</div><div class="option"><span class="opt-letter">(d)</span> 19:17</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 7 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8.5 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9 days</div>
                 </div>
             </div>
         </div>
@@ -404,66 +655,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 4: PROFIT & LOSS WITH ALLIGATION</div>
+            <div class="type-heading">TYPE - 4: EFFICIENCY BASED QUESTIONS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.16</span> A shopkeeper blends two varieties of tea costing Rs. 18/kg and Rs. 13/kg in the ratio 7:3. He sells the blended tea at Rs. 18.15/kg. His profit percent is:</div>
-                <div class="hindi-text">एक दुकानदार 18 रुपये/किलो और 13 रुपये/किलो की दो प्रकार की चाय को 7:3 के अनुपात में मिलाता है। वह मिश्रित चाय को 18.15 रुपये/किलो की दर से बेचता है। उसका लाभ प्रतिशत है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.16</span> A is twice as good a workman as B and together they finish a piece of work in 14 days. In how many days can A alone finish the work?</div>
+                <div class="hindi-text">A, B से दोगुना अच्छा काम करने वाला है और वे दोनों मिलकर एक काम को 14 दिनों में पूरा करते हैं। A अकेला उस काम को कितने दिनों में पूरा कर सकता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div><div class="option"><span class="opt-letter">(b)</span> 12%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15%</div><div class="option"><span class="opt-letter">(d)</span> 8%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 21 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 28 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 42 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 20 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.17</span> How many kg of sugar costing Rs. 9 per kg must be mixed with 27 kg of sugar costing Rs. 7 per kg so that there may be a gain of 10% by selling the mixture at Rs. 9.24 per kg?</div>
-                <div class="hindi-text">9 रुपये प्रति किलो वाली कितनी चीनी को 7 रुपये प्रति किलो वाली 27 किलो चीनी के साथ मिलाया जाना चाहिए ताकि मिश्रण को 9.24 रुपये प्रति किलो बेचने पर 10% का लाभ हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.17</span> A works three times as fast as B. If B can complete a work in 60 days, then in how many days can A and B working together complete the same work?</div>
+                <div class="hindi-text">A, B से तीन गुना तेज काम करता है। यदि B किसी काम को 60 दिनों में पूरा कर सकता है, तो A और B एक साथ मिलकर उसी काम को कितने दिनों में पूरा कर सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60 kg</div><div class="option"><span class="opt-letter">(b)</span> 63 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 50 kg</div><div class="option"><span class="opt-letter">(d)</span> 77 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 15 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 20 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 18 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.18</span> A milkman buys milk at Rs. 24 per litre. He adds 1/5 of water to it and sells the mixture at Rs. 32 per litre. What will be his gain percent?</div>
-                <div class="hindi-text">एक दूधवाला 24 रुपये प्रति लीटर की दर से दूध खरीदता है। वह इसमें 1/5 पानी मिलाता है और मिश्रण को 32 रुपये प्रति लीटर की दर से बेचता है। उसका लाभ प्रतिशत क्या होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.18</span> A is 50% more efficient than B. If A alone can do a work in 15 days, in how many days can B alone complete the same work?</div>
+                <div class="hindi-text">A, B से 50% अधिक कार्यकुशल है। यदि A अकेला एक काम 15 दिनों में कर सकता है, तो B अकेला उसी काम को कितने दिनों में पूरा कर सकता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40%</div><div class="option"><span class="opt-letter">(b)</span> 50%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60%</div><div class="option"><span class="opt-letter">(d)</span> 33.33%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 22.5 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 30 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.19</span> In what ratio should water and wine be mixed so that after selling the mixture at the cost price a profit of 33.33% is made?</div>
-                <div class="hindi-text">पानी और शराब को किस अनुपात में मिलाया जाना चाहिए ताकि मिश्रण को क्रय मूल्य पर बेचने पर 33.33% का लाभ हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.19</span> The ratio of efficiencies of A and B is 3:4. If A takes 10 days more than B to complete a work, find the time taken by B alone to complete the work.</div>
+                <div class="hindi-text">A और B की कार्यक्षमता का अनुपात 3:4 है। यदि A किसी काम को पूरा करने में B से 10 दिन अधिक लेता है, तो B द्वारा अकेले उस काम को पूरा करने में लिया गया समय ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1:3</div><div class="option"><span class="opt-letter">(b)</span> 1:4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:1</div><div class="option"><span class="opt-letter">(d)</span> 4:1</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 40 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 30 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.20</span> A merchant purchased two qualities of pulses at the rate of Rs. 200/quintal and Rs. 260/quintal. In 52 quintals of the second quality, how much of the first quality should be mixed so that by selling the resulting mixture at Rs. 300/quintal, he gains a profit of 25%?</div>
-                <div class="hindi-text">एक व्यापारी ने 200 रुपये/क्विंटल और 260 रुपये/क्विंटल की दर से दाल की दो किस्में खरीदीं। दूसरी किस्म के 52 क्विंटल में पहली किस्म का कितना भाग मिलाया जाना चाहिए ताकि परिणामी मिश्रण को 300 रुपये/क्विंटल पर बेचने पर उसे 25% का लाभ हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.20</span> Efficiency of A, B and C are in the ratio 2:3:5. Working together they can complete a work in 6 days. In how many days will A alone complete 20% of the work?</div>
+                <div class="hindi-text">A, B और C की कार्यक्षमता का अनुपात 2:3:5 है। एक साथ काम करते हुए वे 6 दिनों में एक काम पूरा कर सकते हैं। A अकेला काम का 20% कितने दिनों में पूरा करेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 26 quintals</div><div class="option"><span class="opt-letter">(b)</span> 20 quintals</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30 quintals</div><div class="option"><span class="opt-letter">(d)</span> 24 quintals</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 10 days</div>
                 </div>
             </div>
         </div>
@@ -482,66 +743,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 5: REPLACEMENT OF QUANTITY (SINGLE)</div>
+            <div class="type-heading">TYPE - 5: MEN, WOMEN & CHILDREN CONCEPT</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.21</span> A mixture contains wine and water in the ratio 3:2. If 4 litres of water is added to the mixture, the ratio becomes equal. Find the quantity of wine in the mixture.</div>
-                <div class="hindi-text">एक मिश्रण में शराब और पानी का अनुपात 3:2 है। यदि मिश्रण में 4 लीटर पानी मिला दिया जाए, तो अनुपात बराबर हो जाता है। मिश्रण में शराब की मात्रा ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Tier 2</span></div>
+                <div class="question-text"><span class="q-number">Q.21</span> If 3 men or 4 women can plough a field in 43 days, how long will 7 men and 5 women take to plough it?</div>
+                <div class="hindi-text">यदि 3 पुरुष या 4 महिलाएं एक खेत को 43 दिनों में जोत सकते हैं, तो 7 पुरुष और 5 महिलाएं इसे जोतने में कितना समय लेंगे?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12 litres</div><div class="option"><span class="opt-letter">(b)</span> 10 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 14 litres</div><div class="option"><span class="opt-letter">(d)</span> 15 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 8 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.22</span> A barrel contains a mixture of wine and water in the ratio 3:1. How much fraction of the mixture must be drawn off and substituted by water so that the ratio of wine and water in the resultant mixture becomes 1:1?</div>
-                <div class="hindi-text">एक बैरल में शराब और पानी का मिश्रण 3:1 के अनुपात में है। मिश्रण का कितना अंश निकाला जाना चाहिए और उसे पानी से बदल दिया जाना चाहिए ताकि परिणामी मिश्रण में शराब और पानी का अनुपात 1:1 हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.22</span> 4 men and 6 women can complete a work in 8 days, while 3 men and 7 women can complete it in 10 days. In how many days will 10 women complete it?</div>
+                <div class="hindi-text">4 पुरुष और 6 महिलाएं एक काम को 8 दिनों में पूरा कर सकते हैं, जबकि 3 पुरुष और 7 महिलाएं इसे 10 दिनों में पूरा कर सकते हैं। 10 महिलाएं इसे कितने दिनों में पूरा करेंगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1/3</div><div class="option"><span class="opt-letter">(b)</span> 1/4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2/3</div><div class="option"><span class="opt-letter">(d)</span> 3/4</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 40 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 36 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 32 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 50 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.23</span> A container contains 40 litres of milk. From this container 4 litres of milk was taken out and replaced by water. This process was repeated further two times. How much milk is now contained by the container?</div>
-                <div class="hindi-text">एक कंटेनर में 40 लीटर दूध है। इस कंटेनर से 4 लीटर दूध निकाला गया और उसकी जगह पानी डाल दिया गया। यह प्रक्रिया दो बार और दोहराई गई। अब कंटेनर में कितना दूध है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.23</span> 10 men can complete a piece of work in 15 days and 15 women can complete the same work in 12 days. If all the 10 men and 15 women work together, in how many days will the work get completed?</div>
+                <div class="hindi-text">10 पुरुष एक काम को 15 दिनों में पूरा कर सकते हैं और 15 महिलाएं उसी काम को 12 दिनों में पूरा कर सकती हैं। यदि सभी 10 पुरुष और 15 महिलाएं एक साथ काम करें, तो काम कितने दिनों में पूरा होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 29.16 litres</div><div class="option"><span class="opt-letter">(b)</span> 28.16 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30 litres</div><div class="option"><span class="opt-letter">(d)</span> 26.5 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 6.66 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7.5 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 8 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.24</span> A vessel is full of milk. 15 litres of milk is taken out and replaced by water. This process is repeated once more. Find the initial amount of milk in the vessel if at the end the ratio of milk to water becomes 16:9.</div>
-                <div class="hindi-text">एक बर्तन दूध से भरा है। 15 लीटर दूध निकाल लिया जाता है और उसकी जगह पानी भर दिया जाता है। इस प्रक्रिया को एक बार और दोहराया जाता है। यदि अंत में दूध और पानी का अनुपात 16:9 हो जाता है, तो बर्तन में दूध की प्रारंभिक मात्रा ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.24</span> A man, a woman and a boy can complete a job in 3, 4 and 12 days respectively. How many boys must assist 1 man and 1 woman to complete the job in 1/4 of a day?</div>
+                <div class="hindi-text">एक पुरुष, एक महिला और एक लड़का एक काम को क्रमशः 3, 4 और 12 दिनों में पूरा कर सकते हैं। काम को 1/4 दिन में पूरा करने के लिए 1 पुरुष और 1 महिला की सहायता के लिए कितने लड़कों की आवश्यकता होगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 65 litres</div><div class="option"><span class="opt-letter">(b)</span> 75 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 80 litres</div><div class="option"><span class="opt-letter">(d)</span> 60 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 41</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 40</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 36</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 45</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.25</span> From a cask of wine containing 64 litres, 8 litres are drawn out and the cask is filled up with water. If the same process is repeated a second, then a third time, what will be the proportion of wine to water in the resulting mixture?</div>
-                <div class="hindi-text">64 लीटर शराब वाले एक पीपे से 8 लीटर शराब निकाली जाती है और पीपे को पानी से भर दिया जाता है। यदि यही प्रक्रिया दूसरी, फिर तीसरी बार दोहराई जाए, तो परिणामी मिश्रण में शराब और पानी का अनुपात क्या होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.25</span> 2 men and 3 boys can do a piece of work in 10 days while 3 men and 2 boys can do the same work in 8 days. In how many days can 2 men and 1 boy do the work?</div>
+                <div class="hindi-text">2 पुरुष और 3 लड़के किसी काम को 10 दिनों में कर सकते हैं जबकि 3 पुरुष और 2 लड़के उसी काम को 8 दिनों में कर सकते हैं। 2 पुरुष और 1 लड़का उस काम को कितने दिनों में कर सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 343:169</div><div class="option"><span class="opt-letter">(b)</span> 169:343</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 512:169</div><div class="option"><span class="opt-letter">(d)</span> 343:512</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12.5 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 11.5 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 14 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 15 days</div>
                 </div>
             </div>
         </div>
@@ -560,66 +831,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 6: REPEATED DILUTION (FORMULA BASED)</div>
+            <div class="type-heading">TYPE - 6: WORK AND WAGES</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.26</span> A container contains 50 litres of pure milk. From this container, 5 litres of milk was taken out and replaced by water. This process is repeated one more time. How much milk is now in the container?</div>
-                <div class="hindi-text">एक कंटेनर में 50 लीटर शुद्ध दूध है। इस कंटेनर से 5 लीटर दूध निकाला गया और उसकी जगह पानी डाला गया। यह प्रक्रिया एक बार और दोहराई जाती है। अब कंटेनर में कितना दूध है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.26</span> A can do a work in 10 days and B in 15 days. They undertake to do it together for Rs. 5000. Find the share of A.</div>
+                <div class="hindi-text">A एक काम को 10 दिनों में और B 15 दिनों में कर सकता है। वे 5000 रुपये में इसे एक साथ करने का ठेका लेते हैं। A का हिस्सा ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40.5 litres</div><div class="option"><span class="opt-letter">(b)</span> 41.5 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 42 litres</div><div class="option"><span class="opt-letter">(d)</span> 45 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 3000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 2000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 2500</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 3500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.27</span> A vessel contains 20 litres of acid. 4 litres of acid is taken out and replaced by water. Next 4 litres of the mixture is taken out and replaced by water. Find the ratio of acid and water in the resulting mixture.</div>
-                <div class="hindi-text">एक बर्तन में 20 लीटर एसिड है। 4 लीटर एसिड निकाला जाता है और उसकी जगह पानी डाला जाता है। इसके बाद 4 लीटर मिश्रण निकाला जाता है और पानी डाला जाता है। परिणामी मिश्रण में एसिड और पानी का अनुपात ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 16:9</div><div class="option"><span class="opt-letter">(b)</span> 9:16</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4:1</div><div class="option"><span class="opt-letter">(d)</span> 16:25</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.28</span> 8 litres are drawn from a cask full of wine and is then filled with water. This operation is performed three more times. The ratio of the quantity of wine now left in cask to that of water is 16:65. How much wine did the cask hold originally?</div>
-                <div class="hindi-text">शराब से भरे पीपे से 8 लीटर निकाला जाता है और फिर उसे पानी से भर दिया जाता है। यह क्रिया तीन बार और की जाती है। पीपे में बची शराब और पानी की मात्रा का अनुपात 16:65 है। पीपे में मूल रूप से कितनी शराब थी?</div>
+                <div class="question-text"><span class="q-number">Q.27</span> A, B and C can do a work in 6, 8 and 12 days respectively. Doing that work together they get an amount of Rs. 1350. What is the share of B in that amount?</div>
+                <div class="hindi-text">A, B और C क्रमशः 6, 8 और 12 दिनों में एक काम कर सकते हैं। उस काम को एक साथ करने पर उन्हें 1350 रुपये की राशि मिलती है। उस राशि में B का हिस्सा क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 24 litres</div><div class="option"><span class="opt-letter">(b)</span> 16 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 32 litres</div><div class="option"><span class="opt-letter">(d)</span> 48 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 450</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 300</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 600</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 400</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.29</span> A jar is full of milk. A person draws out 20% of the milk from the jar and replaces it with sugar solution. He repeats the same process 4 times. What is the remaining fraction of milk in the jar?</div>
-                <div class="hindi-text">एक जार दूध से भरा है। एक व्यक्ति जार से 20% दूध निकालता है और उसकी जगह चीनी का घोल डालता है। वह यही प्रक्रिया 4 बार दोहराता है। जार में दूध का शेष अंश क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.28</span> A alone can do a piece of work in 6 days and B alone in 8 days. A and B undertook to do it for Rs. 3200. With the help of C, they completed the work in 3 days. How much is to be paid to C?</div>
+                <div class="hindi-text">A अकेला किसी काम को 6 दिनों में और B अकेला 8 दिनों में कर सकता है। A और B ने इसे 3200 रुपये में करने का ठेका लिया। C की मदद से उन्होंने 3 दिनों में काम पूरा कर लिया। C को कितना भुगतान किया जाना है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 256/625</div><div class="option"><span class="opt-letter">(b)</span> 4096/3125</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1024/3125</div><div class="option"><span class="opt-letter">(d)</span> 16/25</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 400</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 600</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 800</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 300</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.30</span> A can contains 100 litres of milk. 10 litres of this milk is taken out and replaced with water. This process is repeated twice. Find the amount of remaining milk in the mixture.</div>
-                <div class="hindi-text">एक कैन में 100 लीटर दूध है। इस दूध में से 10 लीटर निकाला जाता है और उसे पानी से बदल दिया जाता है। यह प्रक्रिया दो बार दोहराई जाती है। मिश्रण में बचे हुए दूध की मात्रा ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.29</span> A, B and C contract to do a work for Rs. 4200. A and B together do 19/21 of the work and the rest is done by C alone. How much should C get?</div>
+                <div class="hindi-text">A, B और C 4200 रुपये में एक काम करने का ठेका लेते हैं। A और B मिलकर काम का 19/21 हिस्सा करते हैं और शेष काम C अकेले करता है। C को कितना मिलना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 72.9 litres</div><div class="option"><span class="opt-letter">(b)</span> 81 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 80 litres</div><div class="option"><span class="opt-letter">(d)</span> 75.5 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 400</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 300</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 200</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.30</span> A works for 5 days, B works for 7 days and C works for 9 days to complete a work. Their daily wages are in the ratio 4:3:2. If their total earning is Rs. 1180, what is the total earning of A?</div>
+                <div class="hindi-text">एक काम को पूरा करने के लिए A 5 दिन, B 7 दिन और C 9 दिन काम करता है। उनकी दैनिक मजदूरी 4:3:2 के अनुपात में है। यदि उनकी कुल कमाई 1180 रुपये है, तो A की कुल कमाई क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 400</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 420</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 350</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
                 </div>
             </div>
         </div>
@@ -638,66 +919,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 7: FINDING ORIGINAL QUANTITY</div>
+            <div class="type-heading">TYPE - 7: MDH RULE (CHAIN RULE)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.31</span> A mixture of 70 litres of alcohol and water contains 10% water. How much water must be added to make the water 12.5% of the resulting mixture?</div>
-                <div class="hindi-text">शराब और पानी के 70 लीटर मिश्रण में 10% पानी है। परिणामी मिश्रण में पानी को 12.5% बनाने के लिए कितना पानी मिलाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.31</span> If 20 men can build a wall 56 meters long in 6 days, what length of a similar wall can be built by 35 men in 3 days?</div>
+                <div class="hindi-text">यदि 20 पुरुष 6 दिनों में 56 मीटर लंबी दीवार बना सकते हैं, तो 35 पुरुष 3 दिनों में वैसी ही कितनी लंबी दीवार बना सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2 litres</div><div class="option"><span class="opt-letter">(b)</span> 3 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4 litres</div><div class="option"><span class="opt-letter">(d)</span> 5 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 49 m</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 56 m</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 42 m</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 50 m</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.32</span> In a mixture of 25 litres, the ratio of milk and water is 4:1. How many litres of milk must be added to make the ratio 16:1?</div>
-                <div class="hindi-text">25 लीटर के मिश्रण में दूध और पानी का अनुपात 4:1 है। अनुपात 16:1 बनाने के लिए कितने लीटर दूध मिलाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.32</span> If 40 persons consume 200 kg of rice in 30 days, in how many days will 30 persons consume 500 kg of rice?</div>
+                <div class="hindi-text">यदि 40 व्यक्ति 30 दिनों में 200 किलो चावल की खपत करते हैं, तो 30 व्यक्ति कितने दिनों में 500 किलो चावल की खपत करेंगे?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40 litres</div><div class="option"><span class="opt-letter">(b)</span> 60 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 50 litres</div><div class="option"><span class="opt-letter">(d)</span> 30 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 90 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 100 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 80 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 120 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.33</span> A mixture of 150 litres of wine and water contains 20% water. How much more water should be added so that water becomes 25% of the new mixture?</div>
-                <div class="hindi-text">शराब और पानी के 150 लीटर मिश्रण में 20% पानी है। कितना और पानी मिलाया जाना चाहिए ताकि नए मिश्रण में पानी 25% हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.33</span> A contractor undertook to do a certain piece of work in 40 days. He engages 100 men initially and 100 more after 35 days and completes the work on time. If he had not engaged the additional men, how many days behind schedule would it be finished?</div>
+                <div class="hindi-text">एक ठेकेदार ने एक निश्चित कार्य को 40 दिनों में करने का ठेका लिया। वह शुरू में 100 आदमियों को लगाता है और 35 दिनों के बाद 100 और आदमियों को लगाता है और काम को समय पर पूरा करता है। यदि उसने अतिरिक्त आदमियों को नहीं लगाया होता, तो काम निर्धारित समय से कितने दिन पीछे पूरा होता?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10 litres</div><div class="option"><span class="opt-letter">(b)</span> 15 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20 litres</div><div class="option"><span class="opt-letter">(d)</span> 12 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 5 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 4 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 3 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.34</span> The ratio of milk to water in 100 litres of a mixture is 2:3. How much of the mixture must be withdrawn and replaced with milk so that the ratio becomes 1:1?</div>
-                <div class="hindi-text">100 लीटर मिश्रण में दूध और पानी का अनुपात 2:3 है। कितना मिश्रण निकाला जाना चाहिए और उसकी जगह दूध डाला जाना चाहिए ताकि अनुपात 1:1 हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
+                <div class="question-text"><span class="q-number">Q.34</span> 12 monkeys can eat 12 bananas in 12 minutes. In how many minutes can 4 monkeys eat 4 bananas?</div>
+                <div class="hindi-text">12 बंदर 12 मिनट में 12 केले खा सकते हैं। 4 बंदर 4 केले कितने मिनट में खा सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10 litres</div><div class="option"><span class="opt-letter">(b)</span> 20 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15 litres</div><div class="option"><span class="opt-letter">(d)</span> 16.66 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4 min</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 12 min</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 min</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 8 min</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.35</span> In a 40 litre mixture of milk and water, the ratio of milk to water is 7:1. In order to make the ratio of milk to water 3:1, the quantity of water that should be added is:</div>
-                <div class="hindi-text">दूध और पानी के 40 लीटर मिश्रण में दूध और पानी का अनुपात 7:1 है। दूध और पानी का अनुपात 3:1 बनाने के लिए पानी की कितनी मात्रा मिलानी चाहिए:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.35</span> A garrison of 2000 men has provision for 54 days. At the end of 15 days, a reinforcement arrives and it is now found that the provision will last only for 20 days more. What is the strength of the reinforcement?</div>
+                <div class="hindi-text">2000 सैनिकों की एक चौकी के पास 54 दिनों का रसद है। 15 दिनों के अंत में, एक कुमुक (अतिरिक्त सेना) आती है और अब यह पाया जाता है कि रसद केवल 20 और दिनों तक चलेगी। कुमुक की संख्या क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6.66 litres</div><div class="option"><span class="opt-letter">(b)</span> 5.5 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6 litres</div><div class="option"><span class="opt-letter">(d)</span> 7 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1500</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 1800</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1900</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 2000</div>
                 </div>
             </div>
         </div>
@@ -716,66 +1007,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 8: ADDING PURE QUANTITY</div>
+            <div class="type-heading">TYPE - 8: FRACTION OF WORK COMPLETED</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.36</span> A mixture of glycerin and water contains 45% glycerin. 35 g of water is added to 100 g of the mixture. What will be the percentage of glycerin in the new mixture?</div>
-                <div class="hindi-text">ग्लिसरीन और पानी के मिश्रण में 45% ग्लिसरीन है। 100 ग्राम मिश्रण में 35 ग्राम पानी मिलाया जाता है। नए मिश्रण में ग्लिसरीन का प्रतिशत क्या होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.36</span> A can do 1/3 of a work in 5 days and B can do 2/5 of the work in 10 days. In how many days both A and B together can do the work?</div>
+                <div class="hindi-text">A किसी काम का 1/3 भाग 5 दिनों में कर सकता है और B उसी काम का 2/5 भाग 10 दिनों में कर सकता है। A और B दोनों मिलकर काम को कितने दिनों में कर सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 33.33%</div><div class="option"><span class="opt-letter">(b)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 35%</div><div class="option"><span class="opt-letter">(d)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 9.375 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 10.5 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8.5 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.37</span> A 25 litre mixture contains 30% of spirit and rest water. If 5 litres of water be mixed in it, the percentage of spirit in the new mixture is:</div>
-                <div class="hindi-text">25 लीटर मिश्रण में 30% स्पिरिट और शेष पानी है। यदि इसमें 5 लीटर पानी मिला दिया जाए, तो नए मिश्रण में स्पिरिट का प्रतिशत होगा:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.37</span> A can do 50% of the job in 16 days, B can do 1/4th of the job in 24 days. In how many days can they do 3/4th of the job working together?</div>
+                <div class="hindi-text">A काम का 50%, 16 दिनों में कर सकता है, B काम का 1/4 भाग 24 दिनों में कर सकता है। वे एक साथ काम करते हुए काम का 3/4 भाग कितने दिनों में कर सकते हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25%</div><div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 22%</div><div class="option"><span class="opt-letter">(d)</span> 28%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 18 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 21 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 24 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 16 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.38</span> A mixture contains wine and water in the ratio 3:2 and another mixture contains them in the ratio 4:5. How many litres of the latter must be mixed with 3 litres of the former so that the resulting mixture may contain equal quantities of wine and water?</div>
-                <div class="hindi-text">एक मिश्रण में शराब और पानी का अनुपात 3:2 है और दूसरे मिश्रण में यह 4:5 है। पहले मिश्रण के 3 लीटर के साथ दूसरे मिश्रण के कितने लीटर मिलाए जाने चाहिए ताकि परिणामी मिश्रण में शराब और पानी की मात्रा बराबर हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.38</span> A works for 2 days and B for 3 days to complete 3/5 of a work. If A works for 3 days and B works for 4 days, they complete 4/5 of the work. Find in how many days A alone can complete the work.</div>
+                <div class="hindi-text">A, 2 दिन और B, 3 दिन काम करके एक काम का 3/5 भाग पूरा करते हैं। यदि A, 3 दिन और B, 4 दिन काम करते हैं, तो वे काम का 4/5 भाग पूरा करते हैं। ज्ञात करें कि A अकेला काम को कितने दिनों में पूरा कर सकता है।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5.4 litres</div><div class="option"><span class="opt-letter">(b)</span> 4.5 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5.8 litres</div><div class="option"><span class="opt-letter">(d)</span> 6 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 10 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 15 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.39</span> 80 litres of a mixture of milk and water contains 10% water. How much water must be added to make it 20% water in the new mixture?</div>
-                <div class="hindi-text">दूध और पानी के 80 लीटर मिश्रण में 10% पानी है। नए मिश्रण में पानी को 20% बनाने के लिए कितना पानी मिलाना होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.39</span> A does 20% of a work in 4 days. B does 33.33% of the same work in 10 days. They worked together for 9 days. C completed the remaining work in 6 days. B and C together will complete 75% of the same work in:</div>
+                <div class="hindi-text">A एक काम का 20%, 4 दिनों में करता है। B उसी काम का 33.33%, 10 दिनों में करता है। उन्होंने 9 दिनों तक एक साथ काम किया। C ने शेष काम को 6 दिनों में पूरा किया। B और C मिलकर उसी काम का 75% कितने दिनों में पूरा करेंगे?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 8 litres</div><div class="option"><span class="opt-letter">(b)</span> 10 litres</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12 litres</div><div class="option"><span class="opt-letter">(d)</span> 15 litres</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 15 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.40</span> In 50 kg of an alloy, copper and zinc are in the ratio 3:2. How much zinc must be added to make the ratio 3:4?</div>
-                <div class="hindi-text">50 किलो मिश्र धातु में तांबा और जस्ता 3:2 के अनुपात में है। अनुपात 3:4 बनाने के लिए कितना जस्ता मिलाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
+                <div class="question-text"><span class="q-number">Q.40</span> P does half as much work as Q in three-fourth of the time. If together they take 18 days to complete a work, how much time shall P take to do it alone?</div>
+                <div class="hindi-text">P, तीन-चौथाई समय में Q का आधा काम करता है। यदि एक साथ वे एक काम को पूरा करने में 18 दिन लेते हैं, तो P को इसे अकेले करने में कितना समय लगेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15 kg</div><div class="option"><span class="opt-letter">(b)</span> 20 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25 kg</div><div class="option"><span class="opt-letter">(d)</span> 10 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 45 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 30 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 40 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 54 days</div>
                 </div>
             </div>
         </div>
@@ -794,66 +1095,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 9: FINDING RATIO / MISCELLANEOUS</div>
+            <div class="type-heading">TYPE - 9: EFFICIENCY & TIME RELATION</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.41</span> In what ratio must a grocer mix two varieties of tea worth Rs. 60/kg and Rs. 65/kg so that by selling the mixture at Rs. 68.20/kg he may gain 10%?</div>
-                <div class="hindi-text">एक पंसारी को 60 रुपये/किलो और 65 रुपये/किलो वाली दो प्रकार की चाय को किस अनुपात में मिलाना चाहिए ताकि मिश्रण को 68.20 रुपये/किलो की दर से बेचने पर उसे 10% का लाभ हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.41</span> The ratio of time taken by A and B to complete a work is 4:5. If A takes 5 days less than B, find the time taken by A and B working together.</div>
+                <div class="hindi-text">A और B द्वारा एक काम को पूरा करने में लिए गए समय का अनुपात 4:5 है। यदि A, B से 5 दिन कम लेता है, तो A और B द्वारा एक साथ काम पूरा करने में लिया गया समय ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3:2</div><div class="option"><span class="opt-letter">(b)</span> 3:4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:5</div><div class="option"><span class="opt-letter">(d)</span> 4:5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 100/9 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 11 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 10 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.42</span> A milkman has 2 cans of milk. The first contains 25% water and the rest milk. The second contains 50% water. How much mixture should he mix from each of the containers so as to get 12 litres of mixture such that the ratio of water to milk is 3:5?</div>
-                <div class="hindi-text">एक दूधवाले के पास दूध के 2 डिब्बे हैं। पहले में 25% पानी और शेष दूध है। दूसरे में 50% पानी है। उसे प्रत्येक डिब्बे से कितना मिश्रण मिलाना चाहिए ताकि 12 लीटर मिश्रण प्राप्त हो जिसमें पानी और दूध का अनुपात 3:5 हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.42</span> A takes 3 times as long as B and C together to do a job. B takes 4 times as long as A and C together to do the work. If all three, working together can complete the job in 24 days, then the number of days, A alone will take to finish the job is:</div>
+                <div class="hindi-text">A किसी काम को करने में B और C से 3 गुना समय लेता है। B उसी काम को करने में A और C से 4 गुना समय लेता है। यदि तीनों मिलकर काम को 24 दिनों में पूरा कर सकते हैं, तो A अकेले उस काम को पूरा करने में कितने दिन लेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6 L, 6 L</div><div class="option"><span class="opt-letter">(b)</span> 5 L, 7 L</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 8 L, 4 L</div><div class="option"><span class="opt-letter">(d)</span> 7 L, 5 L</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 96 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 100 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 120 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 72 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.43</span> The cost of Type 1 rice is Rs. 15 per kg and Type 2 rice is Rs. 20 per kg. If both Type 1 and Type 2 are mixed in the ratio of 2:3, then the price per kg of the mixed variety of rice is:</div>
-                <div class="hindi-text">टाइप 1 चावल की कीमत 15 रुपये प्रति किलो है और टाइप 2 चावल की 20 रुपये प्रति किलो है। यदि टाइप 1 और टाइप 2 दोनों को 2:3 के अनुपात में मिलाया जाता है, तो मिश्रित किस्म के चावल की प्रति किलो कीमत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.43</span> B takes twice the time that A takes to complete a work and thrice the time that C takes to complete the same work. Working together, they complete the work in 12 days. In how many days A alone will complete the work?</div>
+                <div class="hindi-text">एक काम को पूरा करने में B, A से दोगुना समय और C से तीन गुना समय लेता है। एक साथ काम करते हुए, वे काम को 12 दिनों में पूरा करते हैं। A अकेला उस काम को कितने दिनों में पूरा करेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 18</div><div class="option"><span class="opt-letter">(b)</span> Rs. 18.5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 19</div><div class="option"><span class="opt-letter">(d)</span> Rs. 17.5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 36 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 24 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 72 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.44</span> In an examination, a student scores 4 marks for every correct answer and loses 1 mark for every wrong answer. If he attempts all 75 questions and secures 125 marks, the number of questions he attempted correctly is:</div>
-                <div class="hindi-text">एक परीक्षा में, एक छात्र प्रत्येक सही उत्तर के लिए 4 अंक प्राप्त करता है और प्रत्येक गलत उत्तर के लिए 1 अंक खो देता है। यदि वह सभी 75 प्रश्नों को हल करता है और 125 अंक प्राप्त करता है, तो उसने कितने प्रश्नों का सही उत्तर दिया?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.44</span> A is 40% more efficient than B and C is 20% less efficient than B. Working together, they can complete a task in 15 days. In how many days will A alone complete 75% of the task?</div>
+                <div class="hindi-text">A, B से 40% अधिक कुशल है और C, B से 20% कम कुशल है। एक साथ काम करते हुए, वे एक कार्य को 15 दिनों में पूरा कर सकते हैं। A अकेला कार्य का 75% कितने दिनों में पूरा करेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 35</div><div class="option"><span class="opt-letter">(b)</span> 40</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 42</div><div class="option"><span class="opt-letter">(d)</span> 45</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 25.5 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 24 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 28 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25.71 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.45</span> A sum of Rs. 41 was divided among 50 boys and girls. Each boy gets 90 paise and each girl 65 paise. The number of boys is:</div>
-                <div class="hindi-text">41 रुपये की राशि 50 लड़के और लड़कियों के बीच बांटी गई। प्रत्येक लड़के को 90 पैसे और प्रत्येक लड़की को 65 पैसे मिलते हैं। लड़कों की संख्या है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.45</span> To complete a wall, X takes 20% more time than Y. If together they complete the wall in 30 days, then how much time will Y alone take to complete it?</div>
+                <div class="hindi-text">एक दीवार को पूरा करने में X, Y से 20% अधिक समय लेता है। यदि वे मिलकर दीवार को 30 दिनों में पूरा करते हैं, तो Y अकेले उसे पूरा करने में कितना समय लेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 16</div><div class="option"><span class="opt-letter">(b)</span> 34</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30</div><div class="option"><span class="opt-letter">(d)</span> 20</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 55 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 60 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 50 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 65 days</div>
                 </div>
             </div>
         </div>
@@ -872,66 +1183,76 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 10: ADVANCED / ALLIGATION RULES</div>
+            <div class="type-heading">TYPE - 10: MISCELLANEOUS / ADVANCED</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.46</span> How many kilograms of sugar costing Rs. 9 per kg must be mixed with 27 kg of sugar costing Rs. 7 per kg so that there may be a gain of 10% by selling the mixture at Rs. 9.24 per kg?</div>
-                <div class="hindi-text">9 रुपये प्रति किलो वाली कितनी चीनी को 7 रुपये प्रति किलो वाली 27 किलो चीनी के साथ मिलाया जाना चाहिए ताकि मिश्रण को 9.24 रुपये प्रति किलो बेचने पर 10% का लाभ हो?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 63 kg</div><div class="option"><span class="opt-letter">(b)</span> 54 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 45 kg</div><div class="option"><span class="opt-letter">(d)</span> 72 kg</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.47</span> The amount of water (in ml) that should be added to reduce 9 ml lotion, containing 50% alcohol, to a lotion containing 30% alcohol is:</div>
-                <div class="hindi-text">50% अल्कोहल वाले 9 मिली लोशन को 30% अल्कोहल वाले लोशन में बदलने के लिए कितना पानी (मिली में) मिलाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3 ml</div><div class="option"><span class="opt-letter">(b)</span> 4 ml</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5 ml</div><div class="option"><span class="opt-letter">(d)</span> 6 ml</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.48</span> A zoo has some pigeons and some rabbits. If their heads are counted, these are 200 and if their legs are counted, these are 580. How many pigeons are there?</div>
-                <div class="hindi-text">एक चिड़ियाघर में कुछ कबूतर और कुछ खरगोश हैं। यदि उनके सिर गिने जाते हैं, तो वे 200 हैं और यदि उनके पैर गिने जाते हैं, तो वे 580 हैं। कबूतरों की संख्या कितनी है?</div>
+                <div class="question-text"><span class="q-number">Q.46</span> A typing work is assigned to 3 typists - A, B and C. A and B together can do it in 10 days, B and C in 15 days, and A and C in 12 days. How long will A, B and C respectively take to do it alone?</div>
+                <div class="hindi-text">एक टाइपिंग का काम 3 टाइपिस्ट - A, B और C को सौंपा जाता है। A और B मिलकर इसे 10 दिनों में, B और C 15 दिनों में, और A और C 12 दिनों में कर सकते हैं। A, B और C अकेले इसे करने में क्रमशः कितना समय लेंगे?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 110</div><div class="option"><span class="opt-letter">(b)</span> 90</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 120</div><div class="option"><span class="opt-letter">(d)</span> 80</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 15, 30, 60</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 24, 15, 30</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20, 20, 30</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 16, 24, 40</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.49</span> 8 kg of tea costing Rs. 24 per kg is mixed with 12 kg of tea costing Rs. 34 per kg. The average price of the mixture is:</div>
-                <div class="hindi-text">24 रुपये प्रति किलो वाली 8 किलो चाय को 34 रुपये प्रति किलो वाली 12 किलो चाय के साथ मिलाया जाता है। मिश्रण का औसत मूल्य है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.47</span> A takes 5 days more than B to complete a certain job and 9 days more than C. A and B together can do the job in the same time as C. How many days A would take to do it?</div>
+                <div class="hindi-text">A को एक निश्चित कार्य को पूरा करने में B से 5 दिन अधिक और C से 9 दिन अधिक लगते हैं। A और B मिलकर उसी समय में कार्य कर सकते हैं जितने में C करता है। A को इसे करने में कितने दिन लगेंगे?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 30</div><div class="option"><span class="opt-letter">(b)</span> Rs. 28</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 32</div><div class="option"><span class="opt-letter">(d)</span> Rs. 31</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 16 days</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15 days</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 14 days</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 18 days</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.50</span> In an examination out of 80 students, 85% of the girls and 70% of the boys passed. How many boys appeared in the examination, if total pass percentage was 75%?</div>
-                <div class="hindi-text">80 छात्रों की एक परीक्षा में, 85% लड़कियां और 70% लड़के उत्तीर्ण हुए। यदि कुल उत्तीर्ण प्रतिशत 75% था, तो परीक्षा में कितने लड़के उपस्थित हुए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.48</span> A man and a boy received Rs. 800 as wages for 5 days for the work they did together. The man's efficiency in the work was three times that of the boy. What are the daily wages of the boy?</div>
+                <div class="hindi-text">एक पुरुष और एक लड़के को एक साथ किए गए काम के लिए 5 दिनों के लिए 800 रुपये मजदूरी के रूप में मिले। काम में पुरुष की कार्यक्षमता लड़के की तीन गुनी थी। लड़के की दैनिक मजदूरी क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25</div><div class="option"><span class="opt-letter">(b)</span> 30</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 40</div><div class="option"><span class="opt-letter">(d)</span> 53.33</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 40</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 50</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 30</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 45</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.49</span> 30 workers can complete a job in 36 days. After 30 days, some workers leave and the remaining job is completed by the remaining workers in 10 days. How many workers left the job?</div>
+                <div class="hindi-text">30 कर्मचारी एक काम को 36 दिनों में पूरा कर सकते हैं। 30 दिनों के बाद, कुछ कर्मचारी चले जाते हैं और शेष काम शेष कर्मचारियों द्वारा 10 दिनों में पूरा किया जाता है। कितने कर्मचारियों ने नौकरी छोड़ दी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 10</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.50</span> A piece of work was to be completed in 40 days by a certain number of men. However, 10 men were absent from the very first day and the remaining men completed the work in 50 days. Find the original number of men.</div>
+                <div class="hindi-text">एक निश्चित संख्या में आदमियों द्वारा एक काम को 40 दिनों में पूरा किया जाना था। हालाँकि, 10 आदमी पहले दिन से ही अनुपस्थित थे और शेष आदमियों ने 50 दिनों में काम पूरा किया। आदमियों की मूल संख्या ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 40</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 50</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 60</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 45</div>
                 </div>
             </div>
         </div>
@@ -950,78 +1271,78 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">06</div>
+                    <div class="chap-num">07</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">MIXTURE & ALLIGATION</div>
-                <div class="title-hi">मिश्रण और पृथक्करण</div>
+                <div class="title-en">TIME AND WORK</div>
+                <div class="title-hi">समय और कार्य</div>
             </div>
         </div>
 
         <div class="answer-key-wrapper">
-            <div class="answer-key-title">ANSWER KEY (PART 1)</div>
+            <div class="answer-key-title">ANSWER KEY</div>
             <div class="ans-grid">
-                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">4.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">b</span></div>
                 
-                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">7.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">9.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">11.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">b</span></div>
 
                 <div class="ans-box"><span class="ans-num">16.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">b</span></div>
 
-                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">22.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">23.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">24.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">24.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">27.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">31.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">33.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">d</span></div>
 
                 <div class="ans-box"><span class="ans-num">41.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">42.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">43.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">44.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">45.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">44.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">45.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">46.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">48.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">49.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">b</span></div>
             </div>
 
             <div class="social-wrapper">
