@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Practice Book | AP Mathematics</title>
+    <title>Profit and Loss Practice Book | Exam Edge Institute</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -68,7 +68,7 @@
             margin: 15mm auto;
             position: relative; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            /* Reduced top/side padding to give more room for questions */
+            /* Perfect padding to keep everything inside */
             padding: 10mm 15mm 10mm 15mm; 
             page-break-after: always;
             overflow: hidden; 
@@ -185,7 +185,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
-            /* THE FIX: Reserving exactly 20mm at the bottom so text NEVER touches footer */
+            /* Reserving exactly 20mm at the bottom so text NEVER touches footer */
             margin-bottom: 20mm; 
             z-index: 2;
             position: relative;
@@ -212,7 +212,7 @@
             gap: 1mm;
         }
         .question-text {
-            font-size: 0.88rem; /* Slightly reduced to guarantee fit */
+            font-size: 0.88rem; 
             color: var(--dark-text);
             font-weight: 600;
             line-height: 1.4;
@@ -227,7 +227,7 @@
 
         .hindi-text {
             font-family: 'Mukta', sans-serif;
-            font-size: 0.95rem; /* Slightly reduced */
+            font-size: 0.95rem; 
             color: var(--grey-text);
             font-weight: 600;
             line-height: 1.3;
@@ -269,7 +269,7 @@
 
         /* --- ANSWER KEY STYLING --- */
         .answer-key-wrapper {
-            margin-top: 10mm;
+            margin-top: 5mm;
             z-index: 2;
             position: relative;
         }
@@ -310,6 +310,26 @@
             text-transform: uppercase;
         }
 
+        /* --- SOCIAL HANDLES --- */
+        .social-wrapper { 
+            text-align: center; 
+            margin-top: 15mm; 
+            padding-top: 5mm; 
+            border-top: 2px dashed #cbd5e1; 
+            z-index: 2; 
+            position: relative;
+        }
+        .social-title { font-size: 1.1rem; font-weight: 900; color: var(--dark-text); margin-bottom: 10px; letter-spacing: 1px; }
+        .social-handles { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .social-btn {
+            display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; color: #fff;
+            font-weight: 800; font-size: 0.85rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .s-yt { background: #ff0000; }
+        .s-tg { background: #0088cc; }
+        .s-ig { background: #e1306c; }
+        .s-tw { background: #000000; }
+
         /* --- ABSOLUTE FOOTER --- */
         .book-footer {
             position: absolute;
@@ -323,7 +343,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2;
-            background: #fff; /* Ensures text doesn't show through if it somehow leaks */
+            background: #fff; 
         }
         .footer-left {
             font-size: 0.85rem;
@@ -389,25 +409,25 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 1: BASIC CONCEPTS</div>
+            <div class="type-heading">TYPE - 1: BASIC PROFIT & LOSS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.1</span> If A's salary is 25% more than B's salary, then B's salary is how much percent less than A's salary?</div>
-                <div class="hindi-text">यदि A का वेतन B के वेतन से 25% अधिक है, तो B का वेतन A के वेतन से कितना प्रतिशत कम है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.1</span> A person buys an article for Rs. 400 and sells it for Rs. 500. Find his profit percentage.</div>
+                <div class="hindi-text">एक व्यक्ति एक वस्तु को 400 रुपये में खरीदता है और 500 रुपये में बेचता है। उसका लाभ प्रतिशत ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
                 <div class="options-grid">
                     <div class="option"><span class="opt-letter">(a)</span> 20%</div>
                     <div class="option"><span class="opt-letter">(b)</span> 24%</div>
@@ -417,50 +437,50 @@
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.2</span> Two numbers are respectively 20% and 50% more than a third number. What percent is the first number of the second?</div>
-                <div class="hindi-text">दो संख्याएँ एक तीसरी संख्या से क्रमशः 20% और 50% अधिक हैं। पहली संख्या दूसरी संख्या का कितना प्रतिशत है?</div>
+                <div class="question-text"><span class="q-number">Q.2</span> The cost price of 15 articles is equal to the selling price of 12 articles. Find the profit percentage.</div>
+                <div class="hindi-text">15 वस्तुओं का क्रय मूल्य 12 वस्तुओं के विक्रय मूल्य के बराबर है। लाभ प्रतिशत ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 80%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 70%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 75%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 85%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 16.66%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.3</span> If 80% of A = 50% of B and B = x% of A, then the value of x is:</div>
-                <div class="hindi-text">यदि A का 80% = B का 50% है और B = A का x% है, तो x का मान क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.3</span> By selling a watch for Rs. 1440, a man loses 10%. At what price should he sell it to gain 10%?</div>
+                <div class="hindi-text">एक घड़ी को 1440 रुपये में बेचने पर एक आदमी को 10% की हानि होती है। 10% का लाभ प्राप्त करने के लिए उसे इसे किस कीमत पर बेचना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2024</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 400</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 300</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 160</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 150</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1584</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1760</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1600</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1800</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.4</span> The difference between a number and its two-fifth is 510. What is 10% of that number?</div>
-                <div class="hindi-text">एक संख्या और उसके दो-पांचवें हिस्से के बीच का अंतर 510 है। उस संख्या का 10% क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.4</span> A shopkeeper sold an article for Rs. 2500. If the cost price of the article is Rs. 2000, find the profit or loss percent.</div>
+                <div class="hindi-text">एक दुकानदार ने एक वस्तु 2500 रुपये में बेची। यदि वस्तु का क्रय मूल्य 2000 रुपये है, तो लाभ या हानि प्रतिशत ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12.75</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 85</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 850</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 204</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20% Profit</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 25% Profit</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20% Loss</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25% Loss</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.5</span> 30% of a three-digit number is 190.8. What will be 125% of that number?</div>
-                <div class="hindi-text">एक तीन अंकों की संख्या का 30% 190.8 है। उस संख्या का 125% क्या होगा?</div>
+                <div class="question-text"><span class="q-number">Q.5</span> If an article is sold at a loss of 20%, the ratio of its selling price to its cost price will be:</div>
+                <div class="hindi-text">यदि किसी वस्तु को 20% की हानि पर बेचा जाता है, तो उसके विक्रय मूल्य और क्रय मूल्य का अनुपात क्या होगा?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 795</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 792</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 785</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 775</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4:5</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5:4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1:5</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 5:6</div>
                 </div>
             </div>
         </div>
@@ -468,7 +488,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">1</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -479,79 +499,79 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
             
+            <div class="type-heading">TYPE - 2: SUCCESSIVE PROFIT/LOSS</div>
+
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.6</span> A student multiplied a number by 3/5 instead of 5/3. Find the percentage error in the calculation.</div>
-                <div class="hindi-text">एक छात्र ने एक संख्या को 5/3 के बजाय 3/5 से गुणा कर दिया। गणना में प्रतिशत त्रुटि ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.6</span> A sells an article to B at a profit of 20%, and B sells it to C at a profit of 10%. If C pays Rs. 660, what did it cost A?</div>
+                <div class="hindi-text">A एक वस्तु B को 20% लाभ पर बेचता है, और B उसे C को 10% लाभ पर बेचता है। यदि C 660 रुपये का भुगतान करता है, तो A को इसकी क्या कीमत चुकानी पड़ी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 44%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 34%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 54%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 64%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 450</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 500</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 550</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 600</div>
                 </div>
             </div>
 
-            <div class="type-heading">TYPE - 2: PRICE & CONSUMPTION</div>
-
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.7</span> The price of sugar is increased by 20%. By what percent must a householder reduce his consumption so that expenditure remains same?</div>
-                <div class="hindi-text">चीनी की कीमत में 20% की वृद्धि होती है। एक गृहस्थ को अपनी खपत कितने प्रतिशत कम करनी चाहिए ताकि खर्च समान रहे?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2024</span></div>
+                <div class="question-text"><span class="q-number">Q.7</span> A manufacturer marks an article at Rs. 500 and allows a discount of 10%. The shopkeeper then sells it at a 20% profit. What is the final selling price?</div>
+                <div class="hindi-text">एक निर्माता किसी वस्तु का मूल्य 500 रुपये अंकित करता है और 10% की छूट देता है। फिर दुकानदार उसे 20% लाभ पर बेचता है। अंतिम विक्रय मूल्य क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 16.66%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 540</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 600</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 550</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 580</div>
                 </div>
             </div>
             
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.8</span> The price of rice is decreased by 25%. Therefore a person can buy 10 kg more rice for Rs. 600. Find the original price per kg.</div>
-                <div class="hindi-text">चावल की कीमत में 25% की कमी होती है। इसलिए एक व्यक्ति 600 रुपये में 10 किलो अधिक चावल खरीद सकता है। प्रति किलो मूल कीमत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.8</span> P bought an article for Rs. 1200 and sold it to Q at 15% loss. Q sold it to R at 20% profit. At what price did R buy the article?</div>
+                <div class="hindi-text">P ने एक वस्तु 1200 रुपये में खरीदी और उसे Q को 15% हानि पर बेच दी। Q ने उसे R को 20% लाभ पर बेचा। R ने वस्तु किस कीमत पर खरीदी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NVS TGT 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 20</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 15</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 25</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 30</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1224</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1020</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1150</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1250</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.9</span> Due to a 20% increase in the price of apples, a man can buy 4 apples less for Rs. 40. Find the increased price of 15 apples.</div>
-                <div class="hindi-text">सेब की कीमत में 20% की वृद्धि के कारण, एक आदमी 40 रुपये में 4 सेब कम खरीद सकता है। 15 सेब की बढ़ी हुई कीमत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NVS TGT 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.9</span> A radio is sold for Rs. 990 at a profit of 10%. What would have been the actual profit or loss on it if it had been sold for Rs. 890?</div>
+                <div class="hindi-text">एक रेडियो 10% के लाभ पर 990 रुपये में बेचा जाता है। यदि इसे 890 रुपये में बेचा जाता तो उस पर वास्तविक लाभ या हानि क्या होती?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 30</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 45</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 20</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 25</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 10 Loss</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 10 Profit</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 90 Loss</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 90 Profit</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.10</span> When the price of a toy was increased by 20%, the number of toys sold was decreased by 15%. What was its effect on the total sales of the shop?</div>
-                <div class="hindi-text">जब एक खिलौने की कीमत में 20% की वृद्धि की गई, तो बेचे गए खिलौनों की संख्या में 15% की कमी आई। दुकान की कुल बिक्री पर इसका क्या प्रभाव पड़ा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.10</span> Successive discounts of 20% and 10% are equivalent to a single discount of:</div>
+                <div class="hindi-text">20% और 10% की क्रमिक छूट किस एकल छूट के बराबर है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> CTET 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2% Increase</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 2% Decrease</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4% Increase</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 4% Decrease</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 28%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 32%</div>
                 </div>
             </div>
 
@@ -560,7 +580,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">2</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -571,79 +591,79 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
 
-            <div class="type-heading">TYPE - 3: INCOME & EXPENDITURE</div>
+            <div class="type-heading">TYPE - 3: DISHONEST DEALER</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.11</span> A person who spends 66.66% of his income is able to save Rs. 1200 per month. His monthly expenses (in Rs) are:</div>
-                <div class="hindi-text">एक व्यक्ति जो अपनी आय का 66.66% खर्च करता है, वह प्रति माह 1200 रुपये बचाने में सक्षम है। उसका मासिक खर्च (रुपये में) कितना है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.11</span> A dishonest dealer professes to sell his goods at cost price, but he uses a weight of 900 grams for a kg. Find his gain percent.</div>
+                <div class="hindi-text">एक बेईमान व्यापारी अपनी वस्तुओं को क्रय मूल्य पर बेचने का दावा करता है, लेकिन वह एक किलोग्राम के लिए 900 ग्राम वजन का उपयोग करता है। उसका लाभ प्रतिशत ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1200</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 2400</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 3600</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 11.11%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12.5%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9.09%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.12</span> A man spends 75% of his income. If his income increases by 20% and his expenditure increases by 10%, his savings will increase by:</div>
-                <div class="hindi-text">एक आदमी अपनी आय का 75% खर्च करता है। यदि उसकी आय में 20% की वृद्धि होती है और उसके खर्च में 10% की वृद्धि होती है, तो उसकी बचत में कितनी वृद्धि होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.12</span> A shopkeeper marks his goods 20% above the cost price and gives a discount of 10% to the customer. Also, he weighs 900g instead of 1kg. Find his overall profit percentage.</div>
+                <div class="hindi-text">एक दुकानदार अपना माल क्रय मूल्य से 20% ऊपर अंकित करता है और ग्राहक को 10% की छूट देता है। साथ ही, वह 1 किलो के स्थान पर 900 ग्राम तौलता है। उसका कुल लाभ प्रतिशत ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.13</span> A grocer sells rice at a profit of 10% and uses weights which are 20% less than the market weight. The total gain earned by him is:</div>
+                <div class="hindi-text">एक पंसारी 10% के लाभ पर चावल बेचता है और बाजार के वजन से 20% कम वजन का उपयोग करता है। उसके द्वारा अर्जित कुल लाभ है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 35%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 37.5%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 40%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.14</span> By selling cloth using a faulty meter scale, a merchant makes a profit of 25% while buying and 25% while selling. What is his total profit percentage?</div>
+                <div class="hindi-text">खराब मीटर स्केल का उपयोग करके कपड़ा बेचकर, एक व्यापारी खरीदते समय 25% और बेचते समय 25% का लाभ कमाता है। उसका कुल लाभ प्रतिशत क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
                 <div class="options-grid">
                     <div class="option"><span class="opt-letter">(a)</span> 50%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 40%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.13</span> Ram saves 14% of his salary while Shyam saves 22%. If both get the same salary and Shyam saves Rs. 1540, what is the savings of Ram?</div>
-                <div class="hindi-text">राम अपने वेतन का 14% बचाता है जबकि श्याम 22% बचाता है। यदि दोनों को समान वेतन मिलता है और श्याम 1540 रुपये बचाता है, तो राम की बचत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2019</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 990</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 980</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 890</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 880</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.14</span> A man spends 40% of his monthly salary on food and one-third of the remaining on transport. If he saves Rs. 4500 per month, find his monthly salary.</div>
-                <div class="hindi-text">एक व्यक्ति अपने मासिक वेतन का 40% भोजन पर और शेष का एक तिहाई परिवहन पर खर्च करता है। यदि वह प्रति माह 4500 रुपये बचाता है, तो उसका मासिक वेतन ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 11250</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 11500</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 10250</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 12000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 56.25%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 60%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 62.5%</div>
                 </div>
             </div>
             
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.15</span> Ram saves 10% of his income. If his income increases by 20% and his expenditure increases by 20%, then his savings increase by:</div>
-                <div class="hindi-text">राम अपनी आय का 10% बचाता है। यदि उसकी आय में 20% की वृद्धि होती है और उसके खर्च में 20% की वृद्धि होती है, तो उसकी बचत में कितने प्रतिशत की वृद्धि होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.15</span> A dishonest milkman professes to sell his milk at cost price but he mixes it with water and thereby gains 25%. The percentage of water in the mixture is:</div>
+                <div class="hindi-text">एक बेईमान दूधवाला अपना दूध क्रय मूल्य पर बेचने का दावा करता है लेकिन वह इसे पानी के साथ मिलाता है और इस प्रकार 25% लाभ प्राप्त करता है। मिश्रण में पानी का प्रतिशत है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 0%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 16.66%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 33.33%</div>
                 </div>
             </div>
 
@@ -652,7 +672,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">3</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -663,79 +683,81 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
 
-            <div class="type-heading">TYPE - 4: PASS/FAIL EXAMS</div>
+            <div class="type-heading">TYPE - 4: MARKED PRICE & DISCOUNT</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.16</span> A student has to secure 33% marks to pass. He gets 125 marks and fails by 40 marks. Find the maximum marks.</div>
-                <div class="hindi-text">एक छात्र को पास होने के लिए 33% अंक प्राप्त करने होते हैं। उसे 125 अंक मिलते हैं और वह 40 अंकों से अनुत्तीर्ण हो जाता है। अधिकतम अंक ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC GD 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.16</span> The marked price of an article is Rs. 800. After allowing a discount of 15%, the shopkeeper gains 10%. Find the cost price of the article.</div>
+                <div class="hindi-text">एक वस्तु का अंकित मूल्य 800 रुपये है। 15% की छूट देने के बाद, दुकानदार को 10% का लाभ होता है। वस्तु का क्रय मूल्य ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 300</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 400</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 500</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 600</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 600</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 620</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 680</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 640</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.17</span> In an examination, a candidate must get 40% marks to pass. A candidate who gets 220 marks fails by 20 marks. Find the maximum marks.</div>
-                <div class="hindi-text">एक परीक्षा में उत्तीर्ण होने के लिए 40% अंक प्राप्त करना अनिवार्य है। एक छात्र 220 अंक प्राप्त करता है और 20 अंकों से अनुत्तीर्ण हो जाता है। अधिकतम अंक ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
+                <div class="question-text"><span class="q-number">Q.17</span> To gain 8% after allowing a discount of 10%, by what percent should the cost price be hiked in the list price?</div>
+                <div class="hindi-text">10% की छूट देने के बाद 8% लाभ प्राप्त करने के लिए, क्रय मूल्य को सूची मूल्य में कितने प्रतिशत बढ़ाया जाना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1200</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 800</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 600</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 400</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 30%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.18</span> A candidate scores 25% marks and fails by 30 marks, while another candidate who scores 50% marks gets 20 marks more than the minimum passing marks. Find the passing percentage.</div>
-                <div class="hindi-text">एक छात्र 25% अंक प्राप्त करता है और 30 अंकों से फेल हो जाता है, जबकि दूसरा छात्र 50% अंक प्राप्त करता है और न्यूनतम पास अंकों से 20 अंक अधिक प्राप्त करता है। पासिंग प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.18</span> A tradesman marks his goods 25% above the cost price and allows purchasers a discount of 12.5%. Find his profit percentage.</div>
+                <div class="hindi-text">एक व्यापारी अपने माल पर क्रय मूल्य से 25% अधिक अंकित करता है और खरीदारों को 12.5% की छूट देता है। उसका लाभ प्रतिशत ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 35%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 9.375%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 8.5%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12.5%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 10%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.19</span> At what percentage above the cost price must an article be marked so as to gain 33% after allowing a customer a discount of 5%?</div>
+                <div class="hindi-text">ग्राहक को 5% की छूट देने के बाद 33% लाभ प्राप्त करने के लिए किसी वस्तु पर क्रय मूल्य से कितने प्रतिशत अधिक अंकित किया जाना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2020</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 38%</div>
                     <div class="option"><span class="opt-letter">(b)</span> 40%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 45%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.19</span> In an examination, 35% students failed in Mathematics and 25% failed in English. If 10% failed in both, then what percent passed in both?</div>
-                <div class="hindi-text">एक परीक्षा में, 35% छात्र गणित में और 25% अंग्रेजी में अनुत्तीर्ण हुए। यदि 10% दोनों में अनुत्तीर्ण हुए, तो दोनों में कितने प्रतिशत उत्तीर्ण हुए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> CTET 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 50%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 55%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 65%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 45%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 50%</div>
                 </div>
             </div>
             
+            <div class="type-heading">TYPE - 5: TWO ARTICLES SAME S.P.</div>
+
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.20</span> In a test, a student scored 30% marks and failed by 25 marks. In the same test, another student scored 40% marks and secured 25 marks more than the pass marks. Find the maximum pass marks.</div>
-                <div class="hindi-text">एक परीक्षा में, एक छात्र ने 30% अंक प्राप्त किए और 25 अंकों से अनुत्तीर्ण हो गया। उसी परीक्षा में, दूसरे छात्र ने 40% अंक प्राप्त किए और पास अंकों से 25 अंक अधिक प्राप्त किए। अधिकतम पास अंक ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.20</span> A man sells two articles for Rs. 5000 each. On one he gains 20% and on the other he loses 20%. Find his overall gain or loss percent.</div>
+                <div class="hindi-text">एक आदमी दो वस्तुएँ 5000 रुपये प्रत्येक में बेचता है। एक पर उसे 20% का लाभ होता है और दूसरे पर उसे 20% की हानि होती है। उसका कुल लाभ या हानि प्रतिशत ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 500</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 150</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 175</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 200</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4% Loss</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 4% Gain</div>
+                    <div class="option"><span class="opt-letter">(c)</span> No Loss No Gain</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 2% Loss</div>
                 </div>
             </div>
 
@@ -744,7 +766,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">4</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -755,81 +777,79 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
 
-            <div class="type-heading">TYPE - 5: ELECTIONS & VOTING</div>
-
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.21</span> In an election between two candidates, the winner gets 60% of total valid votes and wins by 1600 votes. Find the total number of votes.</div>
-                <div class="hindi-text">दो उम्मीदवारों के बीच एक चुनाव में, विजेता को कुल वैध मतों का 60% प्राप्त होता है और वह 1600 मतों से जीतता है। मतों की कुल संख्या ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2024</span></div>
+                <div class="question-text"><span class="q-number">Q.21</span> A shopkeeper sells two TV sets at the same price. There is a gain of 20% on one TV and a loss of 20% on the other. State which of the following statements is correct:</div>
+                <div class="hindi-text">एक दुकानदार दो टीवी सेट एक ही कीमत पर बेचता है। एक टीवी पर 20% का लाभ और दूसरे पर 20% की हानि होती है। बताएं कि निम्नलिखित में से कौन सा कथन सही है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 8000</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 6000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 10000</div>
+                    <div class="option"><span class="opt-letter">(a)</span> No gain No loss</div>
+                    <div class="option"><span class="opt-letter">(b)</span> He loses by 2%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> He gains by 4%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> He loses by 4%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.22</span> In an election, 10% voters did not cast their vote and 10% votes were found invalid. The winner got 54% of valid votes and won by 1620 votes. Find the total number of registered voters.</div>
-                <div class="hindi-text">एक चुनाव में, 10% मतदाताओं ने अपना वोट नहीं डाला और 10% वोट अवैध पाए गए। विजेता को वैध मतों का 54% प्राप्त हुआ और वह 1620 मतों से जीत गया। कुल पंजीकृत मतदाताओं की संख्या ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Tier 2</span></div>
+                <div class="question-text"><span class="q-number">Q.22</span> Two articles were sold for Rs. 2400 each. The first was sold at a profit of 20% and the second at a loss of 20%. Find the net loss in amount.</div>
+                <div class="hindi-text">दो वस्तुएँ 2400 रुपये प्रत्येक में बेची गईं। पहली को 20% लाभ पर और दूसरी को 20% हानि पर बेचा गया। राशि में शुद्ध हानि ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25000</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 22000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 24000</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 200</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 400</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 100</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.23</span> In an election 8% of the voters did not cast their votes. The winning candidate secured 48% of the total votes and defeated his rival by 1100 votes. The total voters were:</div>
-                <div class="hindi-text">एक चुनाव में 8% मतदाताओं ने अपने मत नहीं डाले। जीतने वाले उम्मीदवार ने कुल मतों का 48% हासिल किया और अपने प्रतिद्वंद्वी को 1100 मतों से हराया। कुल मतदाता थे:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.23</span> Ram buys two horses for Rs. 2600. He sells one at a loss of 10% and the other at a profit of 15%. If both horses are sold at same price, find CP of the horse sold at loss.</div>
+                <div class="hindi-text">राम 2600 रुपये में दो घोड़े खरीदता है। वह एक को 10% हानि पर और दूसरे को 15% लाभ पर बेचता है। यदि दोनों घोड़े समान कीमत पर बेचे जाते हैं, तो हानि पर बेचे गए घोड़े का क्रय मूल्य ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 27500</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 28000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 29500</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 30000</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1400</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1460</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1500</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1600</div>
                 </div>
             </div>
 
-            <div class="type-heading">TYPE - 6: POPULATION</div>
+            <div class="type-heading">TYPE - 6: MIXTURE & ALLEGATION BASED</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.24</span> The population of a town increases by 10% annually. If its present population is 21000, what will be its population after 2 years?</div>
-                <div class="hindi-text">एक शहर की जनसंख्या में प्रतिवर्ष 10% की वृद्धि होती है। यदि इसकी वर्तमान जनसंख्या 21000 है, तो 2 वर्ष बाद इसकी जनसंख्या क्या होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.24</span> A shopkeeper bought 30 kg of wheat at Rs. 45 per kg. He sold 40% of it at Rs. 50 per kg. At what rate should he sell the remaining to gain 25% on the whole transaction?</div>
+                <div class="hindi-text">एक दुकानदार ने 45 रुपये प्रति किलो के हिसाब से 30 किलो गेहूं खरीदा। उसने इसका 40%, 50 रुपये प्रति किलो के हिसाब से बेच दिया। पूरे लेन-देन पर 25% का लाभ प्राप्त करने के लिए उसे शेष को किस दर पर बेचना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25410</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 24200</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 23100</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25210</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 60.5</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 54</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 60</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 55.5</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.25</span> The population of a city is 8000. If males increase by 6% and females by 10%, the population will be 8600. Find the number of females initially.</div>
-                <div class="hindi-text">एक शहर की जनसंख्या 8000 है। यदि पुरुषों में 6% और महिलाओं में 10% की वृद्धि होती है, तो जनसंख्या 8600 हो जाएगी। शुरुआत में महिलाओं की संख्या ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.25</span> A man bought two articles for Rs. 3000. He sold one at a profit of 15% and the other at a loss of 10%. If he makes no profit no loss in the whole transaction, what is the CP of the article sold at loss?</div>
+                <div class="hindi-text">एक आदमी ने 3000 रुपये में दो वस्तुएं खरीदीं। उसने एक को 15% लाभ पर और दूसरे को 10% हानि पर बेचा। यदि वह पूरे लेन-देन में कोई लाभ या हानि नहीं कमाता है, तो हानि पर बेची गई वस्तु का क्रय मूल्य क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NVS PGT 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3000</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 4000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 2000</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1200</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1800</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1500</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 2000</div>
                 </div>
             </div>
 
@@ -838,7 +858,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">5</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -849,79 +869,79 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
             
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.26</span> The population of a village decreases by 20% in the first year and increases by 10% in the second year. If the current population is 4400, what was it 2 years ago?</div>
-                <div class="hindi-text">एक गाँव की जनसंख्या पहले वर्ष में 20% कम हो जाती है और दूसरे वर्ष में 10% बढ़ जाती है। यदि वर्तमान जनसंख्या 4400 है, तो 2 वर्ष पहले यह क्या थी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.26</span> Pure milk costs Rs. 20 per litre. After adding water the milkman sells the mixture at the rate of Rs. 18 per litre, thereby making a profit of 20%. In what ratio does he mix water with milk?</div>
+                <div class="hindi-text">शुद्ध दूध की कीमत 20 रुपये प्रति लीटर है। पानी मिलाने के बाद दूधवाला मिश्रण को 18 रुपये प्रति लीटर की दर से बेचता है, जिससे उसे 20% का लाभ होता है। वह दूध में पानी किस अनुपात में मिलाता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5000</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5500</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 4800</div>
-                </div>
-            </div>
-
-            <div class="type-heading">TYPE - 7: GEOMETRY CHANGES</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.27</span> If the length of a rectangle is increased by 20% and its breadth is decreased by 10%, what will be the percentage effect on its area?</div>
-                <div class="hindi-text">यदि एक आयत की लंबाई 20% बढ़ा दी जाए और उसकी चौड़ाई 10% कम कर दी जाए, तो उसके क्षेत्रफल पर क्या प्रभाव पड़ेगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10% Increase</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 8% Increase</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10% Decrease</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 8% Decrease</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1:3</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 1:4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1:2</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 2:3</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.28</span> If the radius of a circle is increased by 50%, its area will increase by:</div>
-                <div class="hindi-text">यदि किसी वृत्त की त्रिज्या 50% बढ़ा दी जाए, तो उसके क्षेत्रफल में कितने प्रतिशत की वृद्धि होगी?</div>
+                <div class="question-text"><span class="q-number">Q.27</span> A trader mixes 26 kg of rice at Rs. 20 per kg with 30 kg of rice of other variety at Rs. 36 per kg and sells the mixture at Rs. 30 per kg. His profit percent is:</div>
+                <div class="hindi-text">एक व्यापारी 20 रुपये प्रति किलोग्राम वाले 26 किलो चावल को 36 रुपये प्रति किलोग्राम वाले 30 किलो चावल की अन्य किस्म के साथ मिलाता है और मिश्रण को 30 रुपये प्रति किलोग्राम पर बेचता है। उसका लाभ प्रतिशत है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 8%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 12%</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 7: QUANTITY BASED QUESTIONS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.28</span> If bananas are bought at the rate of 4 for Rs. 10 and sold at the rate of 5 for Rs. 15, what is the profit percent?</div>
+                <div class="hindi-text">यदि केले 10 रुपये में 4 की दर से खरीदे जाते हैं और 15 रुपये में 5 की दर से बेचे जाते हैं, तो लाभ प्रतिशत क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 50%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 100%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 125%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 150%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.29</span> Each side of a cube is increased by 10%. What is the percentage increase in its volume?</div>
-                <div class="hindi-text">एक घन की प्रत्येक भुजा में 10% की वृद्धि की जाती है। इसके आयतन में प्रतिशत वृद्धि क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 33.1%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 21%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 100%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
                 </div>
             </div>
             
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.30</span> What percent of a day is 3 hours and 36 minutes?</div>
-                <div class="hindi-text">3 घंटे और 36 मिनट एक दिन का कितना प्रतिशत है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> CTET Paper-2</span></div>
+                <div class="question-text"><span class="q-number">Q.29</span> A fruit seller buys lemons at 2 for a rupee and sells them at 5 for three rupees. His profit percent is:</div>
+                <div class="hindi-text">एक फल विक्रेता एक रुपये में 2 नींबू खरीदता है और उन्हें तीन रुपये में 5 बेचता है। उसका लाभ प्रतिशत है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
                     <div class="option"><span class="opt-letter">(b)</span> 15%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 18%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.30</span> A man bought some eggs at 3 for Rs. 5 and sold them at 5 for Rs. 12. Thus he gained Rs. 143 in all. The number of eggs he bought is:</div>
+                <div class="hindi-text">एक आदमी ने 5 रुपये में 3 की दर से कुछ अंडे खरीदे और 12 रुपये में 5 की दर से बेच दिए। इस प्रकार उसे कुल 143 रुपये का लाभ हुआ। उसके द्वारा खरीदे गए अंडों की संख्या है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Tier 2</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 210</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 195</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 190</div>
                 </div>
             </div>
 
@@ -930,7 +950,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">6</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -941,81 +961,81 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
 
-            <div class="type-heading">TYPE - 8: MIXTURES & SOLUTIONS</div>
+            <div class="type-heading">TYPE - 8: CONDITIONAL PROFIT & LOSS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.31</span> 40 liters of a mixture of milk and water contains 10% water. How much water must be added to make it 20% water in the new mixture?</div>
-                <div class="hindi-text">दूध और पानी के 40 लीटर मिश्रण में 10% पानी है। नए मिश्रण में पानी को 20% बनाने के लिए कितना पानी और मिलाना होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI Clerk 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.31</span> Had an article been sold at Rs. 27.50 more, there would have been a profit of 15% instead of a loss of 10%. Find the cost price of the article.</div>
+                <div class="hindi-text">यदि किसी वस्तु को 27.50 रुपये अधिक में बेचा जाता, तो 10% हानि के बजाय 15% का लाभ होता। वस्तु का क्रय मूल्य ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4 liters</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5 liters</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6 liters</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 7 liters</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 110</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 120</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 130</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 140</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.32</span> Fresh fruit contains 68% water and dry fruit contains 20% water. How much dry fruit can be obtained from 100 kg of fresh fruits?</div>
-                <div class="hindi-text">ताजे फलों में 68% पानी होता है और सूखे फलों में 20% पानी होता है। 100 किलोग्राम ताजे फलों से कितने सूखे फल प्राप्त किए जा सकते हैं?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.32</span> The profit earned by selling an article for Rs. 832 is equal to the loss incurred when the same article is sold for Rs. 448. What should be the selling price for making 50% profit?</div>
+                <div class="hindi-text">किसी वस्तु को 832 रुपये में बेचने पर अर्जित लाभ उसी वस्तु को 448 रुपये में बेचने पर हुई हानि के बराबर है। 50% लाभ कमाने के लिए विक्रय मूल्य क्या होना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 32 kg</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 40 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 52 kg</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 80 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 960</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1060</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 920</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1000</div>
                 </div>
             </div>
             
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.33</span> A mixture of 50 liters of milk and water contains 10% water. How much milk must be added to reduce water to 5%?</div>
-                <div class="hindi-text">50 लीटर दूध और पानी के मिश्रण में 10% पानी है। पानी को 5% तक कम करने के लिए कितना दूध मिलाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal</span></div>
+                <div class="question-text"><span class="q-number">Q.33</span> A shopkeeper sells an article at 15% profit. Had he bought it at 10% less and sold it for Rs. 4 less, he would have gained 25%. Cost price of article is:</div>
+                <div class="hindi-text">एक दुकानदार किसी वस्तु को 15% लाभ पर बेचता है। यदि उसने इसे 10% कम पर खरीदा होता और 4 रुपये कम में बेचा होता, तो उसे 25% का लाभ होता। वस्तु का क्रय मूल्य है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40 L</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 50 L</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60 L</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 45 L</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 160</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 150</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 180</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 200</div>
                 </div>
             </div>
 
-            <div class="type-heading">TYPE - 9: FRACTIONS & NUMBERS</div>
+            <div class="type-heading">TYPE - 9: ERROR IN CALCULATION</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.34</span> If the numerator of a fraction is increased by 200% and the denominator is increased by 350%, the resultant fraction is 5/12. What was the original fraction?</div>
-                <div class="hindi-text">यदि किसी भिन्न के अंश को 200% और हर को 350% बढ़ा दिया जाए, तो परिणामी भिन्न 5/12 प्राप्त होता है। मूल भिन्न क्या था?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.34</span> A man calculates his profit percentage on the selling price and finds it to be 20%. What is his actual profit percentage?</div>
+                <div class="hindi-text">एक आदमी विक्रय मूल्य पर अपने लाभ प्रतिशत की गणना करता है और इसे 20% पाता है। उसका वास्तविक लाभ प्रतिशत क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5/9</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5/8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7/12</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 11/12</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 16.66%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 33.33%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.35</span> A number is first increased by 10% and then it is decreased by 10%. The net change in the number is:</div>
-                <div class="hindi-text">एक संख्या को पहले 10% बढ़ाया जाता है और फिर 10% घटाया जाता है। संख्या में शुद्ध परिवर्तन क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.35</span> If a loss of 15% is calculated on the selling price, then what is the actual loss percentage on cost price?</div>
+                <div class="hindi-text">यदि 15% की हानि की गणना विक्रय मूल्य पर की जाती है, तो क्रय मूल्य पर वास्तविक हानि प्रतिशत क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> No change</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 1% Decrease</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1% Increase</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 2% Decrease</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 13.04%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 17.5%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 12.5%</div>
                 </div>
             </div>
 
@@ -1024,7 +1044,7 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">7</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
@@ -1035,79 +1055,79 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="content-area">
 
+            <div class="type-heading">TYPE - 10: MISCELLANEOUS</div>
+
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.36</span> The sum of two numbers is 520. If the bigger number is decreased by 4% and the smaller number is increased by 12%, then the numbers obtained are equal. Find the smaller number.</div>
-                <div class="hindi-text">दो संख्याओं का योग 520 है। यदि बड़ी संख्या में 4% की कमी और छोटी संख्या में 12% की वृद्धि की जाती है, तो प्राप्त संख्याएँ बराबर होती हैं। छोटी संख्या ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.36</span> A publisher sells copies of books to a retail dealer at Rs. 5 per copy but allows 25 copies to be counted as 24. If the retailer sells each at Rs. 6, his profit percent is:</div>
+                <div class="hindi-text">एक प्रकाशक एक खुदरा डीलर को 5 रुपये प्रति प्रति के हिसाब से किताबें बेचता है, लेकिन 25 प्रतियों को 24 के रूप में गिनने की अनुमति देता है। यदि खुदरा विक्रेता प्रत्येक को 6 रुपये में बेचता है, तो उसका लाभ प्रतिशत है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 280</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 240</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 260</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 300</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 24%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 40%</div>
                 </div>
             </div>
             
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.37</span> The price of an article is first increased by 20% and then decreased by 25%. What is the net percentage change in the price?</div>
-                <div class="hindi-text">किसी वस्तु की कीमत पहले 20% बढ़ाई जाती है और फिर 25% घटाई जाती है। कीमत में शुद्ध प्रतिशत परिवर्तन क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.37</span> An article is sold at a certain price. By selling it at 2/3 of that price one loses 10%. Find the gain percent at original price.</div>
+                <div class="hindi-text">एक वस्तु एक निश्चित मूल्य पर बेची जाती है। इसे उस कीमत के 2/3 पर बेचने पर 10% की हानि होती है। मूल कीमत पर लाभ प्रतिशत ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10% Decrease</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5% Decrease</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10% Increase</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 5% Increase</div>
-                </div>
-            </div>
-
-            <div class="type-heading">TYPE - 10: MISCELLANEOUS</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.38</span> In a class of 60 students, 40% can speak only Hindi, 25% can speak only English and rest can speak both languages. How many students can speak English?</div>
-                <div class="hindi-text">60 छात्रों की एक कक्षा में, 40% केवल हिंदी बोल सकते हैं, 25% केवल अंग्रेजी बोल सकते हैं और बाकी दोनों भाषाएँ बोल सकते हैं। कितने छात्र अंग्रेजी बोल सकते हैं?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NVS TGT 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 36</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 21</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 24</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 33.33%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 35%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 40%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.39</span> A salesman's commission is 5% on all sales up to Rs. 10000 and 4% on all sales exceeding this amount. If he remits Rs. 31100 to his parent company, find his total sales.</div>
-                <div class="hindi-text">एक सेल्समैन का कमीशन 10000 रुपये तक की बिक्री पर 5% और इससे अधिक की बिक्री पर 4% है। यदि वह अपनी कंपनी को 31100 रुपये जमा करता है, तो उसकी कुल बिक्री ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.38</span> The percentage profit earned by selling an article for Rs. 1920 is equal to the percentage loss incurred by selling the same article for Rs. 1280. At what price should it be sold to make 25% profit?</div>
+                <div class="hindi-text">किसी वस्तु को 1920 रुपये में बेचने पर अर्जित प्रतिशत लाभ उसी वस्तु को 1280 रुपये में बेचने पर हुई प्रतिशत हानि के बराबर है। 25% लाभ कमाने के लिए इसे किस कीमत पर बेचा जाना चाहिए?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 32500</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 35000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 30000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 34000</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 2000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 2200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 2400</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 2500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.40</span> Out of the total students in a school, 60% are boys. If the number of girls is 972, find the total number of boys in the school.</div>
-                <div class="hindi-text">एक स्कूल में कुल छात्रों में से 60% लड़के हैं। यदि लड़कियों की संख्या 972 है, तो स्कूल में लड़कों की कुल संख्या ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC GD 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.39</span> Oranges are bought at 5 for Rs. 10 and sold at 6 for Rs. 15. The profit percent is:</div>
+                <div class="hindi-text">संतरे 10 रुपये में 5 की दर से खरीदे जाते हैं और 15 रुपये में 6 की दर से बेचे जाते हैं। लाभ प्रतिशत है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1258</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 1458</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1324</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 1624</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.40</span> Pure ghee costs Rs. 100 per kg. After adulterating it with vegetable oil costing Rs. 50 per kg, a shopkeeper sells the mixture at Rs. 96 per kg, thereby making a profit of 20%. In what ratio does he mix the two?</div>
+                <div class="hindi-text">शुद्ध घी की कीमत 100 रुपये प्रति किलो है। इसे 50 रुपये प्रति किलो वाले वनस्पति तेल के साथ मिलाने के बाद, एक दुकानदार मिश्रण को 96 रुपये प्रति किलो पर बेचता है, जिससे 20% का लाभ होता है। वह दोनों को किस अनुपात में मिलाता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 3:2</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 2:3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3:1</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 1:3</div>
                 </div>
             </div>
 
@@ -1116,278 +1136,96 @@
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
             <div class="footer-center">8</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
-    <!-- ================= PAGE 9 (Q41 to Q45) ================= -->
+    <!-- ================= PAGE 9 (ANSWER KEY & SOCIALS) ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+                    <div class="chap-num">02</div>
                 </div>
                 <div class="header-logo">
                     <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
                 </div>
             </div>
             <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-
-        <div class="content-area">
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.41</span> A spider climbed 62.5% of the height of the pole in one hour and in the next hour it covered 12.5% of the remaining height. If pole's height is 192m, distance climbed in second hour is:</div>
-                <div class="hindi-text">एक मकड़ी एक घंटे में खंभे की 62.5% ऊंचाई पर चढ़ गई और अगले घंटे में उसने शेष ऊंचाई का 12.5% तय किया। यदि खंभे की ऊंचाई 192 मीटर है, तो दूसरे घंटे में तय की गई दूरी है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3 m</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5 m</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7 m</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 9 m</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.42</span> 25% of 120 + 40% of 380 = x% of 637. The value of x is:</div>
-                <div class="hindi-text">120 का 25% + 380 का 40% = 637 का x%। x का मान क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 28.57</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 20</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25.5</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.43</span> In an exam, A gets 10% more marks than B, B gets 20% more than C, and C gets 32% less than D. If A gets 272 more marks than C, find marks obtained by B.</div>
-                <div class="hindi-text">एक परीक्षा में, A को B से 10% अधिक अंक मिलते हैं, B को C से 20% अधिक मिलते हैं, और C को D से 32% कम मिलते हैं। यदि A को C से 272 अधिक अंक मिलते हैं, तो B के अंक ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1020</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 850</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1200</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 960</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.44</span> If the income tax is increased by 19%, the net income is reduced by 1%. Find the rate of income tax.</div>
-                <div class="hindi-text">यदि आयकर में 19% की वृद्धि की जाती है, तो शुद्ध आय में 1% की कमी आती है। आयकर की दर ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 8%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.45</span> Out of 100 students, 50 play cricket, 40 play football, and 10 play both. What percent of students play neither of the two games?</div>
-                <div class="hindi-text">100 छात्रों में से 50 क्रिकेट खेलते हैं, 40 फुटबॉल खेलते हैं, और 10 दोनों खेलते हैं। कितने प्रतिशत छात्र दोनों में से कोई खेल नहीं खेलते?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div>
-            <div class="footer-center">9</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
-        </div>
-    </div>
-
-    <!-- ================= PAGE 10 (Q46 to Q50) ================= -->
-    <div class="page">
-        <div class="watermark">EXAMEDGE INSTITUTE</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-
-        <div class="content-area">
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.46</span> The price of a car is Rs. 500,000. It depreciates by 10% in the first year and 20% in the second year. What will be its price after 2 years?</div>
-                <div class="hindi-text">एक कार की कीमत 500,000 रुपये है। पहले वर्ष में इसका मूल्य 10% कम होता है और दूसरे वर्ष में 20%। 2 वर्ष बाद इसकी कीमत क्या होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3,60,000</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 3,50,000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3,40,000</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 3,80,000</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.47</span> A vendor sells 60% of apples he had and throws away 15% of the remainder. Next day he sells 50% of the remainder and throws away the rest. What percent of his apples are thrown away?</div>
-                <div class="hindi-text">एक विक्रेता अपने सेब का 60% बेचता है और शेष का 15% फेंक देता है। अगले दिन वह शेष का 50% बेचता है और बाकी फेंक देता है। उसने कुल कितने प्रतिशत सेब फेंके?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 23%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 17%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.48</span> When water is frozen into ice, its volume increases by 10%. By what percentage will the volume decrease when ice melts into water?</div>
-                <div class="hindi-text">जब पानी जमकर बर्फ बनता है, तो उसका आयतन 10% बढ़ जाता है। जब बर्फ पिघलकर पानी बनती है, तो आयतन कितने प्रतिशत कम हो जाएगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 9.09%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 11.11%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 9.5%</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.49</span> An empty fuel tank of a car was filled with A type petrol. When the tank was half empty, it was filled with B type petrol. Again when the tank was half empty, it was filled with A type petrol. What is the percentage of A type petrol now?</div>
-                <div class="hindi-text">एक कार का खाली ईंधन टैंक A प्रकार के पेट्रोल से भरा गया था। जब टैंक आधा खाली हो गया, तो इसे B प्रकार के पेट्रोल से भर दिया गया। फिर से आधा खाली होने पर इसे A प्रकार से भरा गया। अब टैंक में A प्रकार के पेट्रोल का प्रतिशत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> CAT 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 75%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 50%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 66.6%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.50</span> In a test, a student scored 30% marks and failed by 25 marks. In the same test, another student scored 40% marks and secured 25 marks more than the pass marks. Find the maximum pass marks.</div>
-                <div class="hindi-text">एक परीक्षा में, एक छात्र ने 30% अंक प्राप्त किए और 25 अंकों से अनुत्तीर्ण हो गया। उसी परीक्षा में, दूसरे छात्र ने 40% अंक प्राप्त किए और पास अंकों से 25 अंक अधिक प्राप्त किए। अधिकतम पास अंक ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 500</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 150</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 175</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 200</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div>
-            <div class="footer-center">10</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
-        </div>
-    </div>
-
-    <!-- ================= PAGE 11 (ANSWER KEY) ================= -->
-    <div class="page">
-        <div class="watermark">EXAMEDGE INSTITUTE</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
+                <div class="title-en">PROFIT AND LOSS</div>
+                <div class="title-hi">लाभ और हानि</div>
             </div>
         </div>
 
         <div class="answer-key-wrapper">
             <div class="answer-key-title">ANSWER KEY</div>
             <div class="ans-grid">
-                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">4.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">a</span></div>
                 
-                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">d</span></div>
-                <div class="ans-box"><span class="ans-num">7.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">9.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">7.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">9.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">b</span></div>
 
                 <div class="ans-box"><span class="ans-num">11.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">a</span></div>
 
-                <div class="ans-box"><span class="ans-num">16.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">16.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">d</span></div>
 
-                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">d</span></div>
                 <div class="ans-box"><span class="ans-num">22.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">23.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">24.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">a</span></div>
 
-                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">27.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">c</span></div>
 
-                <div class="ans-box"><span class="ans-num">31.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">33.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">31.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">33.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">a</span></div>
 
-                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">a</span></div>
+            </div>
 
-                <div class="ans-box"><span class="ans-num">41.</span> <span class="ans-opt">d</span></div>
-                <div class="ans-box"><span class="ans-num">42.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">43.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">44.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">45.</span> <span class="ans-opt">b</span></div>
-
-                <div class="ans-box"><span class="ans-num">46.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">48.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">49.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">a</span></div>
+            <div class="social-wrapper">
+                <div class="social-title">CONNECT WITH US</div>
+                <div class="social-handles">
+                    <a href="#" class="social-btn s-yt"><i class="fab fa-youtube"></i> ABHINAY_PRATAP_MATHS</a>
+                    <a href="#" class="social-btn s-tg"><i class="fab fa-telegram-plane"></i> ABHINAY_PRATAP_MATHS</a>
+                    <a href="#" class="social-btn s-ig"><i class="fab fa-instagram"></i> @abhinay_pratap_maths</a>
+                    <a href="#" class="social-btn s-tw"><i class="fab fa-twitter"></i> @abhinay_maths</a>
+                </div>
             </div>
         </div>
 
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
-            <div class="footer-center">11</div>
-            <div class="footer-right">ABHINAY PRATAP(MATHS EXPERT)</div>
+            <div class="footer-center">9</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
 
