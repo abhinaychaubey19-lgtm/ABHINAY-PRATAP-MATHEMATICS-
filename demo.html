@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Speed & Distance Book | Exam Edge Institute</title>
+    <title>Boats and Streams Practice Book | Exam Edge Institute</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,7 +40,7 @@
         }
         .btn-generate-pdf:hover { transform: translateY(-5px); background: #b91c1c; }
 
-        /* --- A4 PAGE SETUP --- */
+        /* --- A4 PAGE SETUP (STRICTLY FIXED LAYOUT) --- */
         .page {
             width: 210mm; height: 296mm; background: #ffffff;
             margin: 15mm auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -79,8 +79,8 @@
         .header-logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
 
         .header-right { text-align: right; display: flex; flex-direction: column; justify-content: center; }
-        .title-en { font-size: 1.8rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 1px; }
-        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
+        .title-en { font-size: 2rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 1px; }
+        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
 
         .content-area {
             flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
@@ -109,7 +109,7 @@
         .option { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); }
         .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 4px; }
 
-        /* --- ANSWER KEY --- */
+        /* --- ANSWER KEY STYLING --- */
         .answer-key-wrapper { margin-top: 5mm; z-index: 2; position: relative; }
         .answer-key-title { text-align: center; font-size: 1.8rem; font-weight: 900; color: var(--brand-red); margin-bottom: 5mm; text-decoration: underline; text-underline-offset: 5px; }
         .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
@@ -133,7 +133,7 @@
         .s-ig { background: #e1306c; }
         .s-tw { background: #000000; }
 
-        /* --- FOOTER --- */
+        /* --- ABSOLUTE FOOTER --- */
         .book-footer {
             position: absolute; bottom: 10mm; left: 15mm; right: 15mm; height: 12mm;
             border-top: 2.5px solid var(--brand-red); padding-top: 3mm;
@@ -170,13 +170,13 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
@@ -184,52 +184,52 @@
             <div class="type-heading">TYPE - 1: BASIC CONCEPTS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.1</span> A person crosses a 600m long street in 5 minutes. What is his speed in km/h?</div>
-                <div class="hindi-text">एक व्यक्ति 600 मीटर लंबी सड़क को 5 मिनट में पार करता है। किमी/घंटा में उसकी गति क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.1</span> The speed of a boat in still water is 10 km/h and the speed of the stream is 2 km/h. Find its downstream and upstream speeds.</div>
+                <div class="hindi-text">शांत जल में एक नाव की गति 10 किमी/घंटा है और धारा की गति 2 किमी/घंटा है। इसकी धारा के अनुकूल (Downstream) और धारा के प्रतिकूल (Upstream) गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3.6 km/h</div><div class="option"><span class="opt-letter">(b)</span> 7.2 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 8.4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 10 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12 km/h & 6 km/h</div><div class="option"><span class="opt-letter">(b)</span> 12 km/h & 8 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 km/h & 12 km/h</div><div class="option"><span class="opt-letter">(d)</span> 14 km/h & 8 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.2</span> A car travels at a speed of 54 km/h. How much distance will it cover in 15 seconds?</div>
-                <div class="hindi-text">एक कार 54 किमी/घंटा की गति से चलती है। यह 15 सेकंड में कितनी दूरी तय करेगी?</div>
+                <div class="question-text"><span class="q-number">Q.2</span> A boat's speed downstream is 14 km/h and upstream is 8 km/h. Find the speed of the boat in still water.</div>
+                <div class="hindi-text">एक नाव की धारा के अनुकूल गति 14 किमी/घंटा और धारा के प्रतिकूल गति 8 किमी/घंटा है। शांत जल में नाव की गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 200 m</div><div class="option"><span class="opt-letter">(b)</span> 250 m</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 225 m</div><div class="option"><span class="opt-letter">(d)</span> 300 m</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 11 km/h</div><div class="option"><span class="opt-letter">(b)</span> 10 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12 km/h</div><div class="option"><span class="opt-letter">(d)</span> 9 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.3</span> An athlete runs a 200m race in 24 seconds. His speed in km/h is:</div>
-                <div class="hindi-text">एक एथलीट 24 सेकंड में 200 मीटर की दौड़ पूरी करता है। किमी/घंटा में उसकी गति है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
+                <div class="question-text"><span class="q-number">Q.3</span> A boat moves downstream at 15 km/h and upstream at 9 km/h. What is the speed of the stream?</div>
+                <div class="hindi-text">एक नाव धारा के अनुकूल 15 किमी/घंटा और धारा के प्रतिकूल 9 किमी/घंटा की गति से चलती है। धारा की गति क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2024</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20 km/h</div><div class="option"><span class="opt-letter">(b)</span> 24 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 28.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 30 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2 km/h</div><div class="option"><span class="opt-letter">(b)</span> 4 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3 km/h</div><div class="option"><span class="opt-letter">(d)</span> 5 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.4</span> Convert a speed of 25 m/s into km/h.</div>
-                <div class="hindi-text">25 मीटर/सेकंड की गति को किमी/घंटा में बदलें।</div>
+                <div class="question-text"><span class="q-number">Q.4</span> The speed of a boat in still water is 12 km/h. If the speed of the stream is 4 km/h, find its downstream speed.</div>
+                <div class="hindi-text">शांत जल में नाव की गति 12 किमी/घंटा है। यदि धारा की गति 4 किमी/घंटा है, तो इसकी धारा के अनुकूल गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 80 km/h</div><div class="option"><span class="opt-letter">(b)</span> 90 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 100 km/h</div><div class="option"><span class="opt-letter">(d)</span> 75 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 16 km/h</div><div class="option"><span class="opt-letter">(b)</span> 8 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 14 km/h</div><div class="option"><span class="opt-letter">(d)</span> 18 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.5</span> If a person walks at 14 km/h instead of 10 km/h, he would have walked 20 km more. The actual distance travelled by him is:</div>
-                <div class="hindi-text">यदि कोई व्यक्ति 10 किमी/घंटा के बजाय 14 किमी/घंटा की गति से चलता है, तो वह 20 किमी अधिक चलता है। उसके द्वारा तय की गई वास्तविक दूरी है:</div>
+                <div class="question-text"><span class="q-number">Q.5</span> A man rows 18 km/h along the stream and 12 km/h against the stream. The speed of the current is:</div>
+                <div class="hindi-text">एक आदमी धारा के अनुकूल 18 किमी/घंटा और धारा के प्रतिकूल 12 किमी/घंटा की गति से नाव चलाता है। धारा की गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 50 km</div><div class="option"><span class="opt-letter">(b)</span> 56 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 70 km</div><div class="option"><span class="opt-letter">(d)</span> 80 km</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2 km/h</div><div class="option"><span class="opt-letter">(b)</span> 3 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 6 km/h</div>
                 </div>
             </div>
         </div>
@@ -248,66 +248,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 2: AVERAGE SPEED</div>
+            <div class="type-heading">TYPE - 2: DISTANCE & TIME GIVEN</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.6</span> A car travels from A to B at a speed of 40 km/h and returns from B to A at a speed of 60 km/h. What is its average speed during the whole journey?</div>
-                <div class="hindi-text">एक कार A से B तक 40 किमी/घंटा की गति से जाती है और B से A तक 60 किमी/घंटा की गति से वापस आती है। पूरी यात्रा के दौरान इसकी औसत गति क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.6</span> A boat covers 40 km downstream in 4 hours and 30 km upstream in 5 hours. Find the speed of the boat in still water.</div>
+                <div class="hindi-text">एक नाव धारा के अनुकूल 40 किमी 4 घंटे में और धारा के प्रतिकूल 30 किमी 5 घंटे में तय करती है। शांत जल में नाव की गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 48 km/h</div><div class="option"><span class="opt-letter">(b)</span> 50 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 45 km/h</div><div class="option"><span class="opt-letter">(d)</span> 52 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 6 km/h</div><div class="option"><span class="opt-letter">(b)</span> 7 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 km/h</div><div class="option"><span class="opt-letter">(d)</span> 9 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.7</span> A person covers half of his journey at 20 km/h and the remaining half at 30 km/h. Find his average speed.</div>
-                <div class="hindi-text">एक व्यक्ति अपनी आधी यात्रा 20 किमी/घंटा की गति से और शेष आधी यात्रा 30 किमी/घंटा की गति से तय करता है। उसकी औसत गति ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.7</span> A man rows 24 km downstream in 3 hours and 16 km upstream in 4 hours. What is the speed of the stream?</div>
+                <div class="hindi-text">एक आदमी धारा के अनुकूल 24 किमी 3 घंटे में और धारा के प्रतिकूल 16 किमी 4 घंटे में नाव चलाता है। धारा की गति क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25 km/h</div><div class="option"><span class="opt-letter">(b)</span> 24 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 26 km/h</div><div class="option"><span class="opt-letter">(d)</span> 22 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1 km/h</div><div class="option"><span class="opt-letter">(b)</span> 2 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3 km/h</div><div class="option"><span class="opt-letter">(d)</span> 4 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.8</span> A car covers 3 equal distances at speeds of 10 km/h, 20 km/h and 60 km/h. What is the average speed of the car?</div>
-                <div class="hindi-text">एक कार 3 समान दूरियों को 10 किमी/घंटा, 20 किमी/घंटा और 60 किमी/घंटा की गति से तय करती है। कार की औसत गति क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.8</span> A boat covers 60 km downstream in 5 hours and same distance upstream in 6 hours. The speed of the boat in still water is:</div>
+                <div class="hindi-text">एक नाव धारा के अनुकूल 60 किमी 5 घंटे में और उतनी ही दूरी धारा के प्रतिकूल 6 घंटे में तय करती है। शांत जल में नाव की गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 30 km/h</div><div class="option"><span class="opt-letter">(b)</span> 25 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 18 km/h</div><div class="option"><span class="opt-letter">(d)</span> 20 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10 km/h</div><div class="option"><span class="opt-letter">(b)</span> 11 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12 km/h</div><div class="option"><span class="opt-letter">(d)</span> 13 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.9</span> A man travels 1st 50 km at 25 km/h, next 40 km at 20 km/h and last 90 km at 15 km/h. Find his average speed for the whole journey.</div>
-                <div class="hindi-text">एक व्यक्ति पहली 50 किमी की दूरी 25 किमी/घंटा, अगली 40 किमी की दूरी 20 किमी/घंटा और अंतिम 90 किमी की दूरी 15 किमी/घंटा की गति से तय करता है। पूरी यात्रा के लिए उसकी औसत गति ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.9</span> A motorboat goes 48 km downstream in 4 hours and 36 km upstream in 6 hours. Find the speed of the current.</div>
+                <div class="hindi-text">एक मोटरबोट धारा के अनुकूल 48 किमी 4 घंटे में और धारा के प्रतिकूल 36 किमी 6 घंटे में जाती है। धारा की गति ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 16 km/h</div><div class="option"><span class="opt-letter">(b)</span> 18 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20 km/h</div><div class="option"><span class="opt-letter">(d)</span> 22 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2 km/h</div><div class="option"><span class="opt-letter">(b)</span> 3 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 5 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.10</span> A boy walks at 5 km/h for 4 hours and 6 km/h for 5 hours. His average speed is:</div>
-                <div class="hindi-text">एक लड़का 4 घंटे के लिए 5 किमी/घंटा और 5 घंटे के लिए 6 किमी/घंटा की गति से चलता है। उसकी औसत गति है:</div>
+                <div class="question-text"><span class="q-number">Q.10</span> A boat travels 20 km upstream in 5 hours and 36 km downstream in 6 hours. What is the speed of boat in still water?</div>
+                <div class="hindi-text">एक नाव धारा के प्रतिकूल 20 किमी 5 घंटे में और धारा के अनुकूल 36 किमी 6 घंटे में यात्रा करती है। शांत जल में नाव की गति क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5.5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 5.2 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5.55 km/h</div><div class="option"><span class="opt-letter">(d)</span> 5.8 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4 km/h</div><div class="option"><span class="opt-letter">(b)</span> 5 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 km/h</div><div class="option"><span class="opt-letter">(d)</span> 7 km/h</div>
                 </div>
             </div>
         </div>
@@ -326,66 +326,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 3: LATE AND EARLY CONCEPT</div>
+            <div class="type-heading">TYPE - 3: FINDING DISTANCE GIVEN TOTAL TIME</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.11</span> If a boy walks from his house to school at 4 km/h, he reaches 10 min late. If he walks at 5 km/h, he reaches 5 min early. The distance of the school is:</div>
-                <div class="hindi-text">यदि कोई लड़का अपने घर से स्कूल 4 किमी/घंटा की गति से जाता है, तो वह 10 मिनट देरी से पहुँचता है। यदि वह 5 किमी/घंटा की गति से जाता है, तो वह 5 मिनट पहले पहुँचता है। स्कूल की दूरी है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.11</span> Speed of a boat in still water is 10 km/h and speed of stream is 2 km/h. It goes to a place and comes back in 5 hours. Find the distance.</div>
+                <div class="hindi-text">शांत जल में नाव की गति 10 किमी/घंटा और धारा की गति 2 किमी/घंटा है। यह एक स्थान पर जाकर 5 घंटे में वापस आती है। दूरी ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4 km</div><div class="option"><span class="opt-letter">(b)</span> 5 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6 km</div><div class="option"><span class="opt-letter">(d)</span> 8 km</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20 km</div><div class="option"><span class="opt-letter">(b)</span> 24 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30 km</div><div class="option"><span class="opt-letter">(d)</span> 12 km</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.12</span> A man traveling at 3 km/h reaches his destination 5 minutes late. If he travels at 4 km/h, he reaches 5 minutes early. The distance is:</div>
-                <div class="hindi-text">3 किमी/घंटा की गति से यात्रा करने वाला व्यक्ति अपने गंतव्य पर 5 मिनट देरी से पहुंचता है। यदि वह 4 किमी/घंटा की गति से यात्रा करता है, तो वह 5 मिनट जल्दी पहुंचता है। दूरी है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
+                <div class="question-text"><span class="q-number">Q.12</span> A man can row 9 km/h in still water. If river is running at 3 km/h, it takes him 3 hours to row to a place and back. How far is the place?</div>
+                <div class="hindi-text">एक आदमी शांत जल में 9 किमी/घंटा की गति से नाव चला सकता है। यदि नदी 3 किमी/घंटा की गति से बह रही है, तो उसे एक स्थान तक नाव चलाकर जाने और वापस आने में 3 घंटे लगते हैं। वह स्थान कितनी दूर है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1.5 km</div><div class="option"><span class="opt-letter">(b)</span> 2 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2.5 km</div><div class="option"><span class="opt-letter">(d)</span> 3 km</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12 km</div><div class="option"><span class="opt-letter">(b)</span> 15 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18 km</div><div class="option"><span class="opt-letter">(d)</span> 24 km</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.13</span> Driving at 5 km/h, a student is 7 minutes late for his exam. If he drives at 6 km/h, he is 5 minutes early. Find the distance to his exam center.</div>
-                <div class="hindi-text">5 किमी/घंटा की गति से गाड़ी चलाने पर, एक छात्र अपनी परीक्षा के लिए 7 मिनट लेट होता है। यदि वह 6 किमी/घंटा की गति से गाड़ी चलाता है, तो वह 5 मिनट जल्दी पहुंचता है। परीक्षा केंद्र की दूरी ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.13</span> A boat goes to a certain point and returns in 16 hours. The speed of boat in still water is 8 km/h and speed of stream is 4 km/h. Find distance.</div>
+                <div class="hindi-text">एक नाव एक निश्चित बिंदु पर जाती है और 16 घंटे में वापस आती है। शांत जल में नाव की गति 8 किमी/घंटा और धारा की गति 4 किमी/घंटा है। दूरी ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 40 km</div><div class="option"><span class="opt-letter">(b)</span> 48 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 54 km</div><div class="option"><span class="opt-letter">(d)</span> 60 km</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.14</span> The speed of boat is 15 km/h and speed of stream is 5 km/h. It goes to a place and returns in 6 hours. Distance of the place is:</div>
+                <div class="hindi-text">नाव की गति 15 किमी/घंटा और धारा की गति 5 किमी/घंटा है। यह एक स्थान पर जाती है और 6 घंटे में वापस आती है। उस स्थान की दूरी है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 40 km</div><div class="option"><span class="opt-letter">(b)</span> 50 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 60 km</div><div class="option"><span class="opt-letter">(d)</span> 45 km</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.15</span> A man rows to a place and returns in 7 hours. His speed in still water is 14 km/h and stream speed is 2 km/h. The distance is:</div>
+                <div class="hindi-text">एक आदमी नाव चलाकर एक स्थान पर जाता है और 7 घंटे में वापस आता है। शांत जल में उसकी गति 14 किमी/घंटा है और धारा की गति 2 किमी/घंटा है। दूरी है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5 km</div><div class="option"><span class="opt-letter">(b)</span> 6 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7 km</div><div class="option"><span class="opt-letter">(d)</span> 8 km</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.14</span> Walking at 5/6 of his usual speed, a man is 10 minutes late. The usual time taken by him to cover the distance is:</div>
-                <div class="hindi-text">अपनी सामान्य गति के 5/6 की गति से चलने पर, एक व्यक्ति 10 मिनट लेट हो जाता है। दूरी तय करने में उसे लगने वाला सामान्य समय है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40 min</div><div class="option"><span class="opt-letter">(b)</span> 50 min</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60 min</div><div class="option"><span class="opt-letter">(d)</span> 75 min</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.15</span> Walking at 3/4 of his normal speed, a person is 20 minutes late to his office. Find his normal time to reach the office.</div>
-                <div class="hindi-text">अपनी सामान्य गति के 3/4 की गति से चलने पर, एक व्यक्ति अपने कार्यालय में 20 मिनट लेट पहुँचता है। कार्यालय पहुँचने का उसका सामान्य समय ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 45 min</div><div class="option"><span class="opt-letter">(b)</span> 50 min</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60 min</div><div class="option"><span class="opt-letter">(d)</span> 80 min</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 42 km</div><div class="option"><span class="opt-letter">(b)</span> 48 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 56 km</div><div class="option"><span class="opt-letter">(d)</span> 64 km</div>
                 </div>
             </div>
         </div>
@@ -404,66 +404,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 4: RATIO OF SPEED & TIME</div>
+            <div class="type-heading">TYPE - 4: 'N' TIMES MORE TIME UPSTREAM</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.16</span> The ratio of speeds of A and B is 3:4. A takes 20 minutes more than B to reach a destination. Time taken by A is:</div>
-                <div class="hindi-text">A और B की गति का अनुपात 3:4 है। A किसी गंतव्य तक पहुँचने में B से 20 मिनट अधिक लेता है। A द्वारा लिया गया समय है:</div>
+                <div class="question-text"><span class="q-number">Q.16</span> A man takes twice as long to row up as to row down the river. If the speed of the boat in still water is 9 km/h, find the speed of stream.</div>
+                <div class="hindi-text">एक आदमी को नदी में धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में दोगुना समय लगता है। यदि शांत जल में नाव की गति 9 किमी/घंटा है, तो धारा की गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60 min</div><div class="option"><span class="opt-letter">(b)</span> 80 min</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 100 min</div><div class="option"><span class="opt-letter">(d)</span> 120 min</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2 km/h</div><div class="option"><span class="opt-letter">(b)</span> 3 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 4.5 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.17</span> Speeds of 3 cars are in the ratio 2:3:4. The ratio of time taken by them to cover the same distance is:</div>
-                <div class="hindi-text">3 कारों की गति का अनुपात 2:3:4 है। समान दूरी तय करने में उनके द्वारा लिए गए समय का अनुपात है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.17</span> A man takes 3 times as long to row upstream as to row downstream. If the stream flows at 2 km/h, what is the speed of the boat in still water?</div>
+                <div class="hindi-text">एक व्यक्ति को धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में 3 गुना समय लगता है। यदि धारा 2 किमी/घंटा की गति से बहती है, तो शांत जल में नाव की गति क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4:3:2</div><div class="option"><span class="opt-letter">(b)</span> 2:3:4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6:4:3</div><div class="option"><span class="opt-letter">(d)</span> 4:6:3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 3 km/h</div><div class="option"><span class="opt-letter">(b)</span> 4 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 km/h</div><div class="option"><span class="opt-letter">(d)</span> 8 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.18</span> A is twice as fast as B, and B is thrice as fast as C. The journey covered by C in 54 minutes will be covered by B in:</div>
-                <div class="hindi-text">A, B से दोगुना तेज है, और B, C से तीन गुना तेज है। C द्वारा 54 मिनट में तय की गई यात्रा B द्वारा कितने समय में तय की जाएगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 18 min</div><div class="option"><span class="opt-letter">(b)</span> 27 min</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 36 min</div><div class="option"><span class="opt-letter">(d)</span> 9 min</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.19</span> Two men start together to walk to a certain destination. One walks at 4 km/h and another at 3 km/h. The former arrives half an hour earlier. Find the distance.</div>
-                <div class="hindi-text">दो आदमी एक साथ एक निश्चित गंतव्य की ओर चलना शुरू करते हैं। एक 4 किमी/घंटा की गति से और दूसरा 3 किमी/घंटा की गति से चलता है। पहला आदमी आधा घंटा पहले पहुँचता है। दूरी ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.18</span> A man takes 4 times as long to row upstream as to row downstream. If the speed of the boat is 15 km/h, find the speed of the stream.</div>
+                <div class="hindi-text">एक व्यक्ति को धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में 4 गुना समय लगता है। यदि नाव की गति 15 किमी/घंटा है, तो धारा की गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5 km</div><div class="option"><span class="opt-letter">(b)</span> 6 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 8 km</div><div class="option"><span class="opt-letter">(d)</span> 12 km</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 9 km/h</div><div class="option"><span class="opt-letter">(b)</span> 10 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12 km/h</div><div class="option"><span class="opt-letter">(d)</span> 6 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.20</span> A train covers a distance in 50 minutes at a speed of 48 km/h. The speed at which it must run to reduce the time to 40 minutes is:</div>
-                <div class="hindi-text">एक ट्रेन 48 किमी/घंटा की गति से 50 मिनट में एक दूरी तय करती है। समय को 40 मिनट तक कम करने के लिए इसे किस गति से चलना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.19</span> A boat takes twice the time to row upstream as to row downstream. What is the ratio of speed of boat in still water to the speed of the stream?</div>
+                <div class="hindi-text">एक नाव को धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में दोगुना समय लगता है। शांत जल में नाव की गति और धारा की गति का अनुपात क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 50 km/h</div><div class="option"><span class="opt-letter">(b)</span> 55 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60 km/h</div><div class="option"><span class="opt-letter">(d)</span> 65 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2:1</div><div class="option"><span class="opt-letter">(b)</span> 3:1</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4:1</div><div class="option"><span class="opt-letter">(d)</span> 3:2</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.20</span> A man takes 2.5 times as long to row upstream as to row downstream. If the speed of the stream is 3 km/h, the speed of the boat in still water is:</div>
+                <div class="hindi-text">एक व्यक्ति को धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में 2.5 गुना समय लगता है। यदि धारा की गति 3 किमी/घंटा है, तो शांत जल में नाव की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 6 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7 km/h</div><div class="option"><span class="opt-letter">(d)</span> 8 km/h</div>
                 </div>
             </div>
         </div>
@@ -482,66 +482,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 5: RELATIVE SPEED (POLICE & THIEF)</div>
+            <div class="type-heading">TYPE - 5: DOUBLE EQUATION (TIME GIVEN)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.21</span> A thief is spotted by a policeman from a distance of 200m. The thief runs at 10 km/h and police at 11 km/h. What is the distance run by the thief before he is caught?</div>
-                <div class="hindi-text">एक पुलिसकर्मी को 200 मीटर की दूरी से एक चोर दिखाई देता है। चोर 10 किमी/घंटा और पुलिस 11 किमी/घंटा की गति से दौड़ता है। पकड़े जाने से पहले चोर द्वारा तय की गई दूरी कितनी है?</div>
+                <div class="question-text"><span class="q-number">Q.21</span> A boat goes 30 km downstream and 20 km upstream in 7 hours. It goes 40 km downstream and 30 km upstream in 10 hours. The speed of the boat in still water is:</div>
+                <div class="hindi-text">एक नाव 7 घंटे में 30 किमी धारा के अनुकूल और 20 किमी धारा के प्रतिकूल जाती है। यह 10 घंटे में 40 किमी धारा के अनुकूल और 30 किमी धारा के प्रतिकूल जाती है। शांत जल में नाव की गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1.5 km</div><div class="option"><span class="opt-letter">(b)</span> 2 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2.5 km</div><div class="option"><span class="opt-letter">(d)</span> 3 km</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 6.5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 7 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 8 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.22</span> A dog sees a cat 100m away. The cat runs at 36 km/h and dog at 54 km/h. In what time will the dog catch the cat?</div>
-                <div class="hindi-text">एक कुत्ता 100 मीटर दूर एक बिल्ली को देखता है। बिल्ली 36 किमी/घंटा की गति से दौड़ती है और कुत्ता 54 किमी/घंटा की गति से। कुत्ता बिल्ली को कितने समय में पकड़ लेगा?</div>
+                <div class="question-text"><span class="q-number">Q.22</span> A boat covers 24 km upstream and 36 km downstream in 6 hrs. It covers 36 km upstream and 24 km downstream in 6.5 hrs. The speed of the current is:</div>
+                <div class="hindi-text">एक नाव 6 घंटे में 24 किमी धारा के प्रतिकूल और 36 किमी धारा के अनुकूल तय करती है। यह 6.5 घंटे में 36 किमी धारा के प्रतिकूल और 24 किमी धारा के अनुकूल तय करती है। धारा की गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15 sec</div><div class="option"><span class="opt-letter">(b)</span> 20 sec</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25 sec</div><div class="option"><span class="opt-letter">(d)</span> 30 sec</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1.5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 2 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 3 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.23</span> Two stations A and B are 110 km apart. Train 1 starts from A at 7 AM at 20 km/h towards B. Train 2 starts from B at 8 AM at 25 km/h towards A. At what time will they meet?</div>
-                <div class="hindi-text">दो स्टेशन A और B 110 किमी दूर हैं। ट्रेन 1 A से सुबह 7 बजे 20 किमी/घंटा की गति से B की ओर चलती है। ट्रेन 2 B से सुबह 8 बजे 25 किमी/घंटा की गति से A की ओर चलती है। वे किस समय मिलेंगी?</div>
+                <div class="question-text"><span class="q-number">Q.23</span> A boat goes 12 km upstream and 18 km downstream in 3 hrs. It goes 36 km upstream and 24 km downstream in 6.5 hrs. Find the speed of the boat in still water.</div>
+                <div class="hindi-text">एक नाव 3 घंटे में 12 किमी धारा के प्रतिकूल और 18 किमी धारा के अनुकूल जाती है। यह 6.5 घंटे में 36 किमी धारा के प्रतिकूल और 24 किमी धारा के अनुकूल जाती है। शांत जल में नाव की गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 9:30 AM</div><div class="option"><span class="opt-letter">(b)</span> 10:00 AM</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10:30 AM</div><div class="option"><span class="opt-letter">(d)</span> 11:00 AM</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8 km/h</div><div class="option"><span class="opt-letter">(b)</span> 9 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 km/h</div><div class="option"><span class="opt-letter">(d)</span> 12 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.24</span> A thief steals a car at 1:30 PM and drives it at 40 km/h. The theft is discovered at 2 PM and the owner sets off in another car at 50 km/h. When will he catch the thief?</div>
-                <div class="hindi-text">एक चोर दोपहर 1:30 बजे एक कार चुराता है और उसे 40 किमी/घंटा की गति से चलाता है। चोरी का पता दोपहर 2 बजे चलता है और मालिक 50 किमी/घंटा की गति से दूसरी कार में निकलता है। वह चोर को कब पकड़ेगा?</div>
+                <div class="question-text"><span class="q-number">Q.24</span> A boat goes 15 km upstream and 21 km downstream in 4 hours. It goes 30 km upstream and 21 km downstream in 5.5 hours. Speed of the boat in still water is:</div>
+                <div class="hindi-text">एक नाव 4 घंटे में 15 किमी धारा के प्रतिकूल और 21 किमी धारा के अनुकूल जाती है। यह 5.5 घंटे में 30 किमी धारा के प्रतिकूल और 21 किमी धारा के अनुकूल जाती है। शांत जल में नाव की गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3:00 PM</div><div class="option"><span class="opt-letter">(b)</span> 3:30 PM</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4:00 PM</div><div class="option"><span class="opt-letter">(d)</span> 4:30 PM</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10 km/h</div><div class="option"><span class="opt-letter">(b)</span> 12 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 13 km/h</div><div class="option"><span class="opt-letter">(d)</span> 14 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.25</span> Two trains start at the same time from A and B towards each other. After crossing, they take 4 hrs and 9 hrs to reach B and A respectively. Find the ratio of their speeds.</div>
-                <div class="hindi-text">दो ट्रेनें एक ही समय पर A और B से एक दूसरे की ओर चलती हैं। पार करने के बाद, वे B और A तक पहुँचने में क्रमशः 4 घंटे और 9 घंटे लेती हैं। उनकी गति का अनुपात ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.25</span> A boat covers 16 km upstream and 24 km downstream in 6 hours. It covers 12 km upstream and 36 km downstream in same time. Find the speed of the current.</div>
+                <div class="hindi-text">एक नाव 6 घंटे में 16 किमी धारा के प्रतिकूल और 24 किमी धारा के अनुकूल तय करती है। यह उतने ही समय में 12 किमी धारा के प्रतिकूल और 36 किमी धारा के अनुकूल तय करती है। धारा की गति ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2:3</div><div class="option"><span class="opt-letter">(b)</span> 3:2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4:9</div><div class="option"><span class="opt-letter">(d)</span> 9:4</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2 km/h</div><div class="option"><span class="opt-letter">(b)</span> 3 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 5 km/h</div>
                 </div>
             </div>
         </div>
@@ -560,66 +560,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 6: TRAINS CROSSING POLE/PLATFORM</div>
+            <div class="type-heading">TYPE - 6: TIME / SPEED LOGIC</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.26</span> A 100m long train running at 36 km/h takes how much time to cross a telegraph pole?</div>
-                <div class="hindi-text">36 किमी/घंटा की गति से चलने वाली 100 मीटर लंबी ट्रेन को एक टेलीग्राफ पोल पार करने में कितना समय लगेगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.26</span> A boat travels upstream for 10 hours and downstream for 7 hours covering same distance. If stream is 3 km/h, distance travelled in one direction is:</div>
+                <div class="hindi-text">एक नाव समान दूरी तय करने के लिए धारा के प्रतिकूल 10 घंटे और धारा के अनुकूल 7 घंटे की यात्रा करती है। यदि धारा 3 किमी/घंटा है, तो एक दिशा में तय की गई दूरी है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 8 sec</div><div class="option"><span class="opt-letter">(b)</span> 10 sec</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12 sec</div><div class="option"><span class="opt-letter">(d)</span> 15 sec</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 120 km</div><div class="option"><span class="opt-letter">(b)</span> 130 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 140 km</div><div class="option"><span class="opt-letter">(d)</span> 150 km</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.27</span> A train 150m long is running at 72 km/h. How much time will it take to cross a platform 250m long?</div>
-                <div class="hindi-text">150 मीटर लंबी एक ट्रेन 72 किमी/घंटा की गति से चल रही है। 250 मीटर लंबे प्लेटफॉर्म को पार करने में इसे कितना समय लगेगा?</div>
+                <div class="question-text"><span class="q-number">Q.27</span> A man rows 15 km downstream in 1 hour. If stream speed is 5 km/h, time to row 15 km upstream is:</div>
+                <div class="hindi-text">एक व्यक्ति 1 घंटे में धारा के अनुकूल 15 किमी नाव चलाता है। यदि धारा की गति 5 किमी/घंटा है, तो धारा के प्रतिकूल 15 किमी नाव चलाने में लगने वाला समय है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2020</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2 hours</div><div class="option"><span class="opt-letter">(b)</span> 3 hours</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4 hours</div><div class="option"><span class="opt-letter">(d)</span> 5 hours</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.28</span> A boat takes 90 mins less to travel 36 km downstream than upstream. If speed of boat in still water is 10 km/h, speed of stream is:</div>
+                <div class="hindi-text">एक नाव को 36 किमी धारा के अनुकूल जाने में धारा के प्रतिकूल जाने की तुलना में 90 मिनट कम लगते हैं। यदि शांत जल में नाव की गति 10 किमी/घंटा है, तो धारा की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1.5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 2 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 3 km/h</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.29</span> Speed of boat is 5 km/h in still water. If river is running at 1 km/h, it takes him 75 minutes to row to a place and back. How far is the place?</div>
+                <div class="hindi-text">शांत जल में नाव की गति 5 किमी/घंटा है। यदि नदी 1 किमी/घंटा की गति से बह रही है, तो उसे एक स्थान तक जाने और वापस आने में 75 मिनट लगते हैं। वह स्थान कितनी दूर है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2 km</div><div class="option"><span class="opt-letter">(b)</span> 2.5 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3 km</div><div class="option"><span class="opt-letter">(d)</span> 4 km</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.30</span> A boat can travel 20 km downstream in 24 mins. Ratio of speed of boat in still water to stream is 4:1. Time to cover 15 km upstream is:</div>
+                <div class="hindi-text">एक नाव 24 मिनट में धारा के अनुकूल 20 किमी की यात्रा कर सकती है। शांत जल में नाव की गति और धारा की गति का अनुपात 4:1 है। धारा के प्रतिकूल 15 किमी तय करने में लगने वाला समय है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 18 sec</div><div class="option"><span class="opt-letter">(b)</span> 20 sec</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 22 sec</div><div class="option"><span class="opt-letter">(d)</span> 24 sec</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.28</span> A train running at a speed of 54 km/h crosses a pole in 20 seconds. Find the length of the train.</div>
-                <div class="hindi-text">54 किमी/घंटा की गति से चलने वाली एक ट्रेन एक पोल को 20 सेकंड में पार करती है। ट्रेन की लंबाई ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 250 m</div><div class="option"><span class="opt-letter">(b)</span> 300 m</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 350 m</div><div class="option"><span class="opt-letter">(d)</span> 200 m</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.29</span> A train crosses a 200m long platform in 20s and a telegraph pole in 10s. Find the speed of the train in km/h.</div>
-                <div class="hindi-text">एक ट्रेन 200 मीटर लंबे प्लेटफॉर्म को 20 सेकंड में और एक टेलीग्राफ पोल को 10 सेकंड में पार करती है। ट्रेन की गति किमी/घंटा में ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 54 km/h</div><div class="option"><span class="opt-letter">(b)</span> 60 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 72 km/h</div><div class="option"><span class="opt-letter">(d)</span> 90 km/h</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.30</span> A train crosses a platform 100m long in 60 sec and a pole in 40 sec. The length of the train is:</div>
-                <div class="hindi-text">एक ट्रेन 100 मीटर लंबे प्लेटफॉर्म को 60 सेकंड में और एक पोल को 40 सेकंड में पार करती है। ट्रेन की लंबाई है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 150 m</div><div class="option"><span class="opt-letter">(b)</span> 200 m</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 250 m</div><div class="option"><span class="opt-letter">(d)</span> 300 m</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 25 mins</div><div class="option"><span class="opt-letter">(b)</span> 30 mins</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 40 mins</div><div class="option"><span class="opt-letter">(d)</span> 45 mins</div>
                 </div>
             </div>
         </div>
@@ -638,66 +638,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 7: TRAINS CROSSING EACH OTHER</div>
+            <div class="type-heading">TYPE - 7: AVERAGE SPEED IN BOATS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.31</span> Two trains 140m and 160m long run at 60 km/h and 40 km/h in opposite directions. Time taken to cross each other is:</div>
-                <div class="hindi-text">140 मीटर और 160 मीटर लंबी दो ट्रेनें विपरीत दिशाओं में 60 किमी/घंटा और 40 किमी/घंटा की गति से चलती हैं। एक-दूसरे को पार करने में लिया गया समय है:</div>
+                <div class="question-text"><span class="q-number">Q.31</span> The speed of a boat in still water is 12 km/h and rate of stream is 4 km/h. It travels from A to B and back. What is its average speed?</div>
+                <div class="hindi-text">शांत जल में एक नाव की गति 12 किमी/घंटा है और धारा की दर 4 किमी/घंटा है। यह A से B तक जाती है और वापस आती है। इसकी औसत गति क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10.66 km/h</div><div class="option"><span class="opt-letter">(b)</span> 11 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 km/h</div><div class="option"><span class="opt-letter">(d)</span> 11.33 km/h</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.32</span> A boat goes downstream at 20 km/h and upstream at 10 km/h. The average speed of the boat for the whole journey is:</div>
+                <div class="hindi-text">एक नाव धारा के अनुकूल 20 किमी/घंटा और धारा के प्रतिकूल 10 किमी/घंटा की गति से जाती है। पूरी यात्रा के लिए नाव की औसत गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10.8 sec</div><div class="option"><span class="opt-letter">(b)</span> 12 sec</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 9.6 sec</div><div class="option"><span class="opt-letter">(d)</span> 11.2 sec</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 15 km/h</div><div class="option"><span class="opt-letter">(b)</span> 14 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 13.33 km/h</div><div class="option"><span class="opt-letter">(d)</span> 12.5 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.32</span> Two trains 150m and 150m long run at 50 km/h and 40 km/h in opposite directions. Time to cross each other is:</div>
-                <div class="hindi-text">150 मीटर और 150 मीटर लंबी दो ट्रेनें विपरीत दिशाओं में 50 किमी/घंटा और 40 किमी/घंटा की गति से चलती हैं। एक-दूसरे को पार करने का समय है:</div>
+                <div class="question-text"><span class="q-number">Q.33</span> A man rows to a place at 15 km/h (downstream) and back at 9 km/h (upstream). His average speed for the whole journey is:</div>
+                <div class="hindi-text">एक व्यक्ति एक स्थान तक 15 किमी/घंटा (धारा के अनुकूल) की गति से नाव चलाकर जाता है और 9 किमी/घंटा (धारा के प्रतिकूल) की गति से वापस आता है। पूरी यात्रा के लिए उसकी औसत गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10 sec</div><div class="option"><span class="opt-letter">(b)</span> 12 sec</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15 sec</div><div class="option"><span class="opt-letter">(d)</span> 18 sec</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12 km/h</div><div class="option"><span class="opt-letter">(b)</span> 11.25 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 11.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 10.8 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.33</span> Two trains 200m and 150m long run in the same direction at 40 km/h and 22 km/h. What is the time taken by faster train to cross the slower train?</div>
-                <div class="hindi-text">200 मीटर और 150 मीटर लंबी दो ट्रेनें एक ही दिशा में 40 किमी/घंटा और 22 किमी/घंटा की गति से चलती हैं। तेज ट्रेन द्वारा धीमी ट्रेन को पार करने में कितना समय लगेगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.34</span> The speed of boat is 8 km/h and stream is 2 km/h. Find the average speed for a round trip.</div>
+                <div class="hindi-text">नाव की गति 8 किमी/घंटा है और धारा की गति 2 किमी/घंटा है। एक राउंड ट्रिप (आने-जाने) के लिए औसत गति ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60 sec</div><div class="option"><span class="opt-letter">(b)</span> 70 sec</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 72 sec</div><div class="option"><span class="opt-letter">(d)</span> 80 sec</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 7 km/h</div><div class="option"><span class="opt-letter">(b)</span> 7.5 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 km/h</div><div class="option"><span class="opt-letter">(d)</span> 6.5 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.34</span> A 150m long train crosses a man walking at 6 km/h in opposite direction in 6 seconds. The speed of the train is:</div>
-                <div class="hindi-text">एक 150 मीटर लंबी ट्रेन विपरीत दिशा में 6 किमी/घंटा की गति से चलते हुए एक आदमी को 6 सेकंड में पार करती है। ट्रेन की गति है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.35</span> A boat goes 24 km/h downstream and 16 km/h upstream. Find the average speed of the boat for the whole journey.</div>
+                <div class="hindi-text">एक नाव धारा के अनुकूल 24 किमी/घंटा और धारा के प्रतिकूल 16 किमी/घंटा की गति से जाती है। पूरी यात्रा के लिए नाव की औसत गति ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 72 km/h</div><div class="option"><span class="opt-letter">(b)</span> 78 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 84 km/h</div><div class="option"><span class="opt-letter">(d)</span> 90 km/h</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.35</span> Two trains running in opposite directions cross a man standing on a platform in 27s and 17s respectively and they cross each other in 23s. The ratio of their speeds is:</div>
-                <div class="hindi-text">विपरीत दिशाओं में चलने वाली दो ट्रेनें प्लेटफॉर्म पर खड़े एक व्यक्ति को क्रमशः 27 सेकंड और 17 सेकंड में पार करती हैं और वे एक-दूसरे को 23 सेकंड में पार करती हैं। उनकी गति का अनुपात है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1:3</div><div class="option"><span class="opt-letter">(b)</span> 3:2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:4</div><div class="option"><span class="opt-letter">(d)</span> 2:3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20 km/h</div><div class="option"><span class="opt-letter">(b)</span> 19.2 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 19.6 km/h</div>
                 </div>
             </div>
         </div>
@@ -716,66 +716,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 8: BOATS AND STREAMS - BASIC</div>
+            <div class="type-heading">TYPE - 8: RATIO OF TIME & SPEEDS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.36</span> A boat rows 15 km/h in still water. The speed of the river is 3 km/h. What is the speed of the boat downstream?</div>
-                <div class="hindi-text">एक नाव शांत जल में 15 किमी/घंटा की गति से चलती है। नदी की गति 3 किमी/घंटा है। धारा के अनुकूल (Downstream) नाव की गति क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.36</span> The speed of boat in still water is 15 km/h and rate of current is 3 km/h. Distance travelled downstream in 12 mins is:</div>
+                <div class="hindi-text">शांत जल में नाव की गति 15 किमी/घंटा है और धारा की दर 3 किमी/घंटा है। 12 मिनट में धारा के अनुकूल तय की गई दूरी है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12 km/h</div><div class="option"><span class="opt-letter">(b)</span> 18 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15 km/h</div><div class="option"><span class="opt-letter">(d)</span> 21 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 3.6 km</div><div class="option"><span class="opt-letter">(b)</span> 4.2 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3 km</div><div class="option"><span class="opt-letter">(d)</span> 4 km</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.37</span> A boat rows 24 km downstream in 4 hours and 12 km upstream in 4 hours. The speed of the boat in still water is:</div>
-                <div class="hindi-text">एक नाव धारा के अनुकूल 24 किमी 4 घंटे में और धारा के प्रतिकूल 12 किमी 4 घंटे में तय करती है। शांत जल में नाव की गति है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3.5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 4.5 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 5 km/h</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.38</span> A man rows upstream 10 km in 5 hrs and downstream 24 km in 3 hrs. Find the speed of the current.</div>
-                <div class="hindi-text">एक व्यक्ति धारा के प्रतिकूल 10 किमी 5 घंटे में और धारा के अनुकूल 24 किमी 3 घंटे में जाता है। धारा की गति ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3 km/h</div><div class="option"><span class="opt-letter">(b)</span> 2 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4 km/h</div><div class="option"><span class="opt-letter">(d)</span> 2.5 km/h</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.39</span> Speed of a boat in still water is 10 km/h and speed of stream is 2 km/h. The time taken to go 60 km downstream is:</div>
-                <div class="hindi-text">शांत जल में एक नाव की गति 10 किमी/घंटा है और धारा की गति 2 किमी/घंटा है। धारा के अनुकूल 60 किमी जाने में लगा समय है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6 hrs</div><div class="option"><span class="opt-letter">(b)</span> 4.5 hrs</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5 hrs</div><div class="option"><span class="opt-letter">(d)</span> 5.5 hrs</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.40</span> A boat covers 30 km downstream in 2 hrs. If speed of stream is 3 km/h, find speed of the boat in still water.</div>
-                <div class="hindi-text">एक नाव धारा के अनुकूल 30 किमी 2 घंटे में तय करती है। यदि धारा की गति 3 किमी/घंटा है, तो शांत जल में नाव की गति ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.37</span> A man can row 18 km/h in still water and it takes him thrice as long to row up as to row down. The stream speed is:</div>
+                <div class="hindi-text">एक व्यक्ति शांत जल में 18 किमी/घंटा की गति से नाव चला सकता है और उसे धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में तीन गुना समय लगता है। धारा की गति है:</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10 km/h</div><div class="option"><span class="opt-letter">(b)</span> 12 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15 km/h</div><div class="option"><span class="opt-letter">(d)</span> 18 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 6 km/h</div><div class="option"><span class="opt-letter">(b)</span> 8 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 9 km/h</div><div class="option"><span class="opt-letter">(d)</span> 12 km/h</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.38</span> Ratio of speed of boat to stream is 5:1. If it takes 4 hours to go 48 km upstream, what is the speed of the boat?</div>
+                <div class="hindi-text">नाव और धारा की गति का अनुपात 5:1 है। यदि 48 किमी धारा के प्रतिकूल जाने में 4 घंटे लगते हैं, तो नाव की गति क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10 km/h</div><div class="option"><span class="opt-letter">(b)</span> 15 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20 km/h</div><div class="option"><span class="opt-letter">(d)</span> 12 km/h</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.39</span> A boat goes 40 km upstream in 8 hours and 36 km downstream in 6 hours. Speed of boat in still water is:</div>
+                <div class="hindi-text">एक नाव 8 घंटे में 40 किमी धारा के प्रतिकूल और 6 घंटे में 36 किमी धारा के अनुकूल जाती है। शांत जल में नाव की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 5.5 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 km/h</div><div class="option"><span class="opt-letter">(d)</span> 6.5 km/h</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.40</span> Ratio of speed of boat in still water to stream is 8:1. 67.5 km downstream in 2.5 hrs. Time to go 56 km upstream is:</div>
+                <div class="hindi-text">शांत जल में नाव की गति और धारा की गति का अनुपात 8:1 है। 2.5 घंटे में 67.5 किमी धारा के अनुकूल जाती है। 56 किमी धारा के प्रतिकूल जाने का समय है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2 hrs 30 min</div><div class="option"><span class="opt-letter">(b)</span> 2 hrs 40 min</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2 hrs 45 min</div><div class="option"><span class="opt-letter">(d)</span> 3 hrs</div>
                 </div>
             </div>
         </div>
@@ -794,66 +794,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 9: BOATS AND STREAMS - ADVANCED</div>
+            <div class="type-heading">TYPE - 9: MIXED QUESTIONS FROM REAL EXAMS</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.41</span> A man can row 6 km/h in still water. If the speed of current is 2 km/h, it takes him 3 hours more in upstream than downstream for same distance. The distance is:</div>
-                <div class="hindi-text">एक व्यक्ति शांत जल में 6 किमी/घंटा की गति से नाव चला सकता है। यदि धारा की गति 2 किमी/घंटा है, तो उसे समान दूरी के लिए धारा के अनुकूल की तुलना में धारा के प्रतिकूल 3 घंटे अधिक लगते हैं। दूरी है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.41</span> A boat goes 24 km downstream and comes back to starting point in 2.5 hrs. Speed of stream is 4 km/h. Speed of boat in still water is:</div>
+                <div class="hindi-text">एक नाव 24 किमी धारा के अनुकूल जाती है और 2.5 घंटे में प्रारंभिक बिंदु पर वापस आती है। धारा की गति 4 किमी/घंटा है। शांत जल में नाव की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20 km</div><div class="option"><span class="opt-letter">(b)</span> 24 km</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30 km</div><div class="option"><span class="opt-letter">(d)</span> 18 km</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 16 km/h</div><div class="option"><span class="opt-letter">(b)</span> 18 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20 km/h</div><div class="option"><span class="opt-letter">(d)</span> 24 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.42</span> A boat goes 12 km upstream and 18 km downstream in 3 hrs. It goes 36 km upstream and 24 km downstream in 6.5 hrs. The speed of the current is:</div>
-                <div class="hindi-text">एक नाव धारा के प्रतिकूल 12 किमी और धारा के अनुकूल 18 किमी 3 घंटे में जाती है। यह धारा के प्रतिकूल 36 किमी और धारा के अनुकूल 24 किमी 6.5 घंटे में जाती है। धारा की गति है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.42</span> A man can row 6 km/h in still water. It takes him 2 times as long to row up as to row down. Stream speed is:</div>
+                <div class="hindi-text">एक आदमी शांत जल में 6 किमी/घंटा की गति से नाव चला सकता है। उसे धारा के अनुकूल जाने की तुलना में धारा के प्रतिकूल जाने में 2 गुना समय लगता है। धारा की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1.5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 2 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2.5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 3 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1 km/h</div><div class="option"><span class="opt-letter">(b)</span> 2 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3 km/h</div><div class="option"><span class="opt-letter">(d)</span> 4 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.43</span> A man rows to a place 48 km distant and comes back in 14 hours. He finds that he can row 4 km with the stream in the same time as 3 km against the stream. Rate of the stream is:</div>
-                <div class="hindi-text">एक आदमी 48 किमी दूर एक स्थान तक नाव चलाकर जाता है और 14 घंटे में वापस आता है। वह पाता है कि वह धारा के अनुकूल 4 किमी उतनी ही देर में जा सकता है जितनी देर में धारा के प्रतिकूल 3 किमी। धारा की दर है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
+                <div class="question-text"><span class="q-number">Q.43</span> A boat goes 2 km US and 3 km DS in 45 mins. Also 3 km US and 9 km DS in 90 mins. Speed of stream is:</div>
+                <div class="hindi-text">एक नाव 45 मिनट में 2 किमी धारा के प्रतिकूल और 3 किमी धारा के अनुकूल जाती है। साथ ही 90 मिनट में 3 किमी धारा के प्रतिकूल और 9 किमी धारा के अनुकूल। धारा की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1 km/h</div><div class="option"><span class="opt-letter">(b)</span> 1.5 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2 km/h</div><div class="option"><span class="opt-letter">(d)</span> 2.5 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 3 km/h</div><div class="option"><span class="opt-letter">(b)</span> 4 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5 km/h</div><div class="option"><span class="opt-letter">(d)</span> 6 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.44</span> A motorboat covers a certain distance downstream in 6 hrs and returns in 8 hrs. If speed of stream is 3 km/h, find speed of boat in still water.</div>
-                <div class="hindi-text">एक मोटरबोट धारा के अनुकूल एक निश्चित दूरी 6 घंटे में तय करती है और 8 घंटे में वापस आती है। यदि धारा की गति 3 किमी/घंटा है, तो शांत जल में नाव की गति ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.44</span> A man rows 12 km downstream and returns in 3 hours. Stream is 3 km/h. Speed of boat is:</div>
+                <div class="hindi-text">एक आदमी 12 किमी धारा के अनुकूल नाव चलाता है और 3 घंटे में लौटता है। धारा 3 किमी/घंटा है। नाव की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 18 km/h</div><div class="option"><span class="opt-letter">(b)</span> 21 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 24 km/h</div><div class="option"><span class="opt-letter">(d)</span> 27 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8 km/h</div><div class="option"><span class="opt-letter">(b)</span> 9 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 km/h</div><div class="option"><span class="opt-letter">(d)</span> 12 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.45</span> The ratio of speed of motorboat to that of current is 36:5. The boat goes along with current in 5 hrs 10 mins. How much time will it take to come back?</div>
-                <div class="hindi-text">मोटरबोट की गति और धारा की गति का अनुपात 36:5 है। नाव धारा के अनुकूल 5 घंटे 10 मिनट में जाती है। इसे वापस आने में कितना समय लगेगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.45</span> Motorboat goes 10 km upstream and back to starting point in 55 mins. Stream is 2 km/h. Speed of boat is:</div>
+                <div class="hindi-text">मोटरबोट 10 किमी धारा के प्रतिकूल जाती है और 55 मिनट में प्रारंभिक बिंदु पर वापस आती है। धारा 2 किमी/घंटा है। नाव की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5 hrs 50 min</div><div class="option"><span class="opt-letter">(b)</span> 6 hrs</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 6 hrs 50 min</div><div class="option"><span class="opt-letter">(d)</span> 7 hrs</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 20 km/h</div><div class="option"><span class="opt-letter">(b)</span> 24 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 22 km/h</div><div class="option"><span class="opt-letter">(d)</span> 25 km/h</div>
                 </div>
             </div>
         </div>
@@ -872,13 +872,13 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
@@ -886,52 +886,52 @@
             <div class="type-heading">TYPE - 10: MISCELLANEOUS / ADVANCED</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.46</span> Without stoppages, a train travels at an average speed of 60 km/h, and with stoppages, it travels at 50 km/h. How many minutes does the train stop on average per hour?</div>
-                <div class="hindi-text">बिना रुके, एक ट्रेन 60 किमी/घंटा की औसत गति से यात्रा करती है, और रुकने के साथ, यह 50 किमी/घंटा की औसत गति से यात्रा करती है। ट्रेन प्रति घंटे औसतन कितने मिनट रुकती है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.46</span> A boat travels upstream from B to A and downstream from A to B in 3 hours. If the speed of the boat in still water is 9 km/h and stream is 3 km/h, distance between A and B is:</div>
+                <div class="hindi-text">एक नाव B से A तक धारा के प्रतिकूल और A से B तक धारा के अनुकूल 3 घंटे में यात्रा करती है। यदि शांत जल में नाव की गति 9 किमी/घंटा और धारा 3 किमी/घंटा है, तो A और B के बीच की दूरी है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10 min</div><div class="option"><span class="opt-letter">(b)</span> 12 min</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15 min</div><div class="option"><span class="opt-letter">(d)</span> 8 min</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10 km</div><div class="option"><span class="opt-letter">(b)</span> 12 km</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15 km</div><div class="option"><span class="opt-letter">(d)</span> 18 km</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.47</span> Two guns were fired from the same place at an interval of 10 minutes, but a person in a train approaching the place hears the second report 9 minutes after the first. If the speed of sound is 330 m/s, the speed of the train is:</div>
-                <div class="hindi-text">एक ही स्थान से 10 मिनट के अंतराल पर दो गोलियां दागी गईं, लेकिन स्थान की ओर आ रही ट्रेन में एक व्यक्ति पहली के 9 मिनट बाद दूसरी आवाज सुनता है। यदि ध्वनि की गति 330 मीटर/सेकंड है, तो ट्रेन की गति है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.47</span> A swimmer swims from point A against a current for 5 minutes and then swims backwards in favor of current for next 5 minutes and comes to point B. If AB is 100 meters, the speed of the current is:</div>
+                <div class="hindi-text">एक तैराक बिंदु A से धारा के विपरीत 5 मिनट तक तैरता है और फिर अगले 5 मिनट के लिए धारा के अनुकूल पीछे की ओर तैरता है और बिंदु B पर आता है। यदि AB 100 मीटर है, तो धारा की गति है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 132 km/h</div><div class="option"><span class="opt-letter">(b)</span> 120 km/h</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 140 km/h</div><div class="option"><span class="opt-letter">(d)</span> 110 km/h</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 0.4 km/h</div><div class="option"><span class="opt-letter">(b)</span> 0.5 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 0.6 km/h</div><div class="option"><span class="opt-letter">(d)</span> 0.8 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.48</span> A runs 1 2/3 times as fast as B. If A gives B a start of 40m, how far must the winning post be so A and B might reach it at the same time?</div>
-                <div class="hindi-text">A, B से 1 2/3 गुना तेज दौड़ता है। यदि A, B को 40 मीटर की शुरुआत देता है, तो विजय बिंदु कितनी दूर होना चाहिए ताकि A और B एक ही समय पर वहां पहुंच सकें?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
+                <div class="question-text"><span class="q-number">Q.48</span> Speed of a motorboat is that of current as 36:5. The boat goes along with current in 5 hrs 10 mins. How much time it will take to come back?</div>
+                <div class="hindi-text">एक मोटरबोट और धारा की गति का अनुपात 36:5 है। नाव धारा के अनुकूल 5 घंटे 10 मिनट में जाती है। इसे वापस आने में कितना समय लगेगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 80 m</div><div class="option"><span class="opt-letter">(b)</span> 100 m</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 120 m</div><div class="option"><span class="opt-letter">(d)</span> 150 m</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 6 hrs 30 min</div><div class="option"><span class="opt-letter">(b)</span> 6 hrs 40 min</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 hrs 50 min</div><div class="option"><span class="opt-letter">(d)</span> 7 hrs</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.49</span> A monkey climbs a 60m high pole. In the 1st minute, he climbs 6m and slips down 3m in the next minute. How much time is required to reach the top?</div>
-                <div class="hindi-text">एक बंदर 60 मीटर ऊंचे खंभे पर चढ़ता है। पहले मिनट में, वह 6 मीटर चढ़ता है और अगले मिनट में 3 मीटर नीचे खिसक जाता है। शीर्ष पर पहुंचने में कितना समय लगेगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.49</span> A man rows 40 km upstream in 8 hours and 36 km downstream in 6 hours. His speed in still water is?</div>
+                <div class="hindi-text">एक आदमी 8 घंटे में 40 किमी धारा के प्रतिकूल और 6 घंटे में 36 किमी धारा के अनुकूल नाव चलाता है। शांत जल में उसकी गति क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 36 mins</div><div class="option"><span class="opt-letter">(b)</span> 37 mins</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 40 mins</div><div class="option"><span class="opt-letter">(d)</span> 38 mins</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 5 km/h</div><div class="option"><span class="opt-letter">(b)</span> 5.5 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 km/h</div><div class="option"><span class="opt-letter">(d)</span> 6.5 km/h</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.50</span> A rabbit is pursued by a dog. The rabbit is 30 leaps of its own ahead of the dog. The dog takes 5 leaps for every 6 leaps of the rabbit. If 1 leap of the dog is equal to 2 leaps of the rabbit, in how many leaps will the dog catch the rabbit?</div>
-                <div class="hindi-text">एक खरगोश का पीछा एक कुत्ते द्वारा किया जाता है। खरगोश कुत्ते से अपनी 30 छलांग आगे है। खरगोश की हर 6 छलांग के लिए कुत्ता 5 छलांग लगाता है। यदि कुत्ते की 1 छलांग खरगोश की 2 छलांग के बराबर है, तो कुत्ता खरगोश को कितनी छलांग में पकड़ लेगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.50</span> Time taken by a boat to travel 13 km downstream is same as time taken to travel 7 km upstream. If speed of stream is 3 km/h, find speed of boat in still water.</div>
+                <div class="hindi-text">एक नाव द्वारा 13 किमी धारा के अनुकूल यात्रा करने में लिया गया समय 7 किमी धारा के प्रतिकूल यात्रा करने में लिए गए समय के समान है। यदि धारा की गति 3 किमी/घंटा है, तो शांत जल में नाव की गति ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60 leaps</div><div class="option"><span class="opt-letter">(b)</span> 75 leaps</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 80 leaps</div><div class="option"><span class="opt-letter">(d)</span> 90 leaps</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8 km/h</div><div class="option"><span class="opt-letter">(b)</span> 9 km/h</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10 km/h</div><div class="option"><span class="opt-letter">(d)</span> 12 km/h</div>
                 </div>
             </div>
         </div>
@@ -950,13 +950,13 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">09</div>
+                    <div class="chap-num">10</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">TIME SPEED & DISTANCE</div>
-                <div class="title-hi">समय, चाल और दूरी</div>
+                <div class="title-en">BOATS AND STREAMS</div>
+                <div class="title-hi">नाव और धारा</div>
             </div>
         </div>
 
@@ -964,64 +964,64 @@
             <div class="answer-key-title">ANSWER KEY</div>
             <div class="ans-grid">
                 <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">d</span></div>
-                <div class="ans-box"><span class="ans-num">4.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">4.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">b</span></div>
                 
-                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">7.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">9.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">b</span></div>
 
                 <div class="ans-box"><span class="ans-num">11.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">b</span></div>
 
                 <div class="ans-box"><span class="ans-num">16.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">c</span></div>
 
-                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">22.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">23.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">23.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">24.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">c</span></div>
 
-                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">27.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">b</span></div>
 
                 <div class="ans-box"><span class="ans-num">31.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">33.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">b</span></div>
 
-                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">b</span></div>
 
-                <div class="ans-box"><span class="ans-num">41.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">41.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">42.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">43.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">43.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">44.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">45.</span> <span class="ans-opt">c</span></div>
 
-                <div class="ans-box"><span class="ans-num">46.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">48.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">46.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">48.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">49.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">c</span></div>
             </div>
 
             <div class="social-wrapper">
