@@ -23,7 +23,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
-        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; }
+        body { background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
         /* ========================================== */
         /* --- PREMIUM DOTTED SPINNING BORDER --- */
@@ -33,7 +33,6 @@
             border-radius: 50%; background: #000; z-index: 1;
         }
         
-        /* This creates the beautiful rotating dotted line */
         .logo-spin-wrap::before {
             content: ''; position: absolute; inset: -6px; border-radius: 50%;
             border: 4px dotted var(--gold);
@@ -44,7 +43,7 @@
         
         .inner-img {
             width: 100%; height: 100%; border-radius: 50%; object-fit: contain;
-            background: #000; border: 2px solid #111; /* Clean separation */
+            background: #000; border: 2px solid #111; 
         }
         @keyframes spinBorder { 100% { transform: rotate(360deg); } }
 
@@ -62,14 +61,14 @@
         .header-text p { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 1.5px;}
 
         .floating-logo-wrap {
-            position: fixed; bottom: 30px; right: 30px; z-index: 5000;
-            width: 65px; height: 65px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: fixed; bottom: 80px; right: 25px; z-index: 5000;
+            width: 55px; height: 55px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         /* ========================================== */
         /* --- MAIN CONTAINER & DROPDOWN --- */
         /* ========================================== */
-        .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; min-height: 80vh; position: relative; z-index: 2; }
+        .pdf-portal-container { max-width: 1200px; margin: 0 auto; padding: 30px 5%; flex: 1; position: relative; z-index: 2; width: 100%; }
         .section-title { 
             font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; 
             border-left: 5px solid var(--gold); padding-left: 15px; letter-spacing: 1px;
@@ -102,16 +101,29 @@
         }
 
         /* ========================================== */
-        /* --- BOOKS GRID --- */
+        /* --- BOOKS GRID & CARDS (UPDATED BORDERS) --- */
         /* ========================================== */
         .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
         .book-card {
-            background: var(--bg-card); border: 2px solid var(--border-dark); border-radius: 14px; 
-            overflow: hidden; width: 100%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: 0.4s; text-align: center; position: relative; animation: fadeIn 0.5s ease forwards;
+            background: var(--bg-card); 
+            border: 2px solid var(--gold); /* Pehle se hi Gold color ka border */
+            border-radius: 14px; 
+            overflow: hidden; 
+            width: 100%; 
+            box-shadow: 0 8px 25px rgba(234, 179, 8, 0.15); /* Haldi si chamak (Glow) */
+            transition: 0.4s; 
+            text-align: center; 
+            position: relative; 
+            animation: fadeIn 0.5s ease forwards;
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .book-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.2); }
+        
+        .book-card:hover { 
+            transform: translateY(-6px); 
+            border-color: var(--pink); /* Hover/Click karne par Pink ho jayega */
+            box-shadow: 0 15px 35px rgba(255, 42, 117, 0.3); 
+        }
         
         .book-tag { 
             position: absolute; top: 12px; right: -28px; background: var(--red-brand); 
@@ -119,11 +131,77 @@
             transform: rotate(45deg); letter-spacing: 1px; z-index: 10; 
         }
         
-        .book-banner-img { 
-            width: 100%; aspect-ratio: 1 / 1.414; object-fit: contain; 
-            border-bottom: 2px solid var(--gold); background: #111; display: block; padding: 4px; 
+        /* ========================================== */
+        /* --- MANUAL SWIPE IMAGE SLIDER & DOTS --- */
+        /* ========================================== */
+        .slider-container {
+            position: relative;
+            width: 100%;
+        }
+        .banner-slider-wrapper { 
+            width: 100%; 
+            aspect-ratio: 1 / 1.414; 
+            border-bottom: 2px solid var(--gold); 
+            background: #111; 
+            overflow-x: auto; 
+            overflow-y: hidden;
+            position: relative; 
+            scroll-snap-type: x mandatory; 
+            scrollbar-width: none; 
+            -webkit-overflow-scrolling: touch;
+        }
+        .banner-slider-wrapper::-webkit-scrollbar { display: none; }
+
+        .banner-slider-track { 
+            display: flex; 
+            width: 200%; 
+            height: 100%; 
+        }
+        .banner-slider-track img { 
+            width: 50%; 
+            height: 100%; 
+            object-fit: contain; 
+            display: block; 
+            padding: 4px; 
+            scroll-snap-align: start; 
+        }
+        .swipe-hint {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--gold);
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            pointer-events: none;
+            z-index: 5;
+            border: 1px solid var(--gold);
         }
         
+        .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transition: 0.3s ease;
+        }
+        .dot.active {
+            background: var(--gold);
+            width: 20px;
+            border-radius: 10px;
+        }
+
         .book-content { padding: 20px 15px; }
         .book-subject { color: var(--gold); font-size: 0.75rem; font-weight: 900; margin-bottom: 5px; letter-spacing: 1px; }
         .book-title { color: var(--text-light); font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; line-height: 1.3;}
@@ -158,12 +236,20 @@
 
         .chapter-active-section { display: none; flex-direction: column; gap: 15px; }
         .math-chapter-list { display: flex; flex-direction: column; gap: 10px; }
+        
         .math-chapter-item {
-            background: var(--bg-card); border: 1px solid var(--border-dark); border-left: 4px solid var(--gold);
+            background: var(--bg-card); 
+            border: 1px solid rgba(234, 179, 8, 0.4); /* Pehle se visible border */
+            border-left: 4px solid var(--gold);
             border-radius: 10px; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between;
             cursor: pointer; transition: 0.3s ease;
         }
-        .math-chapter-item:hover { transform: translateX(6px); border-color: var(--gold); background: #161616; }
+        .math-chapter-item:hover { 
+            transform: translateX(6px); 
+            border-color: var(--pink); 
+            border-left-color: var(--pink);
+            background: #161616; 
+        }
         
         .math-chapter-left { display: flex; align-items: center; gap: 15px; }
         .math-chapter-img {
@@ -180,6 +266,63 @@
         .math-chapter-right i { color: var(--pink); font-size: 1rem; transition: 0.3s; }
         .math-chapter-item:hover .math-chapter-right { background: var(--pink); }
         .math-chapter-item:hover .math-chapter-right i { color: #fff; }
+
+        /* ========================================== */
+        /* --- SLIM FOOTER (NEW DESIGN) --- */
+        /* ========================================== */
+        .slim-footer {
+            background: var(--bg-card);
+            border-top: 2px solid var(--gold);
+            padding: 15px 5%;
+            margin-top: 40px;
+            display: flex; /* Will be toggled via JS */
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+        }
+        .footer-social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #fff;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+        .social-btn.yt { background: #ff0000; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); }
+        .social-btn.yt:hover { background: #cc0000; transform: translateY(-2px); }
+        .social-btn.tg { background: #0088cc; box-shadow: 0 4px 10px rgba(0, 136, 204, 0.2); }
+        .social-btn.tg:hover { background: #006699; transform: translateY(-2px); }
+        
+        .footer-copyright {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .slim-footer {
+                justify-content: space-between;
+            }
+            .footer-copyright {
+                width: auto;
+                text-align: right;
+            }
+        }
 
         /* ========================================== */
         /* --- PROGRESS, ALERTS & MODALS --- */
@@ -209,7 +352,6 @@
         .modal-btn { background: var(--pink); color: #fff; font-weight: 800; padding: 11px 20px; border: none; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 15px; transition: 0.3s; }
         .modal-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
-        /* IN-SITE PDF VIEWER STYLES */
         .pdf-viewer-wrapper {
             position: fixed; inset: 0; background: #000; z-index: 20000; display: none; flex-direction: column;
         }
@@ -233,7 +375,6 @@
 
     <header class="portal-header">
         <div class="header-logo-box">
-            <!-- Updated logo spin wrap -->
             <div class="logo-spin-wrap header-logo-wrap">
                 <img src="abhinay.png" alt="Logo" class="inner-img" onerror="this.src='https://via.placeholder.com/50'">
             </div>
@@ -261,8 +402,8 @@
                 <div class="dropdown-item" onclick="selectCategory('CLASS 10', this)">CLASS 10TH BATCH</div>
                 <div class="dropdown-item" onclick="selectCategory('CLASS 11', this)">CLASS 11TH BATCH</div>
                 <div class="dropdown-item" onclick="selectCategory('CLASS 12', this)">CLASS 12TH BATCH</div>
-                <div class="dropdown-item" onclick="selectCategory('KVS', this)">KVS ENTRENCE EXAM</div>
-                <div class="dropdown-item" onclick="selectCategory('NVS', this)">NVS ENTRENCE EXAM</div>
+                <div class="dropdown-item" onclick="selectCategory('KVS', this)">KVS ENTRANCE EXAM</div>
+                <div class="dropdown-item" onclick="selectCategory('NVS', this)">NVS ENTRANCE EXAM</div>
                 <div class="dropdown-item" onclick="selectCategory('MATHS SPECIAL', this)" style="color:var(--pink);"><i class="fas fa-star"></i> MATHS SPECIAL 2.0</div>
             </div>
         </div>
@@ -274,11 +415,24 @@
 
         <!-- Maths Special Choices (Syllabus/Arith/Adv) -->
         <div class="math-special-container" id="mathSpecialContainer">
-            <h3 style="color:var(--gold); margin-bottom:10px; font-size:1.3rem; text-align:center;">BY ABHINAY PRATAP</h3>
+            <h3 style="color:var(--gold); margin-bottom:10px; font-size:1.3rem; text-align:center;">BY ABHINAY PRATAP (MATHS MYSTIC)</h3>
             <div class="books-grid">
-                <div class="book-card">
+                
+                <div class="book-card" style="border-color:var(--pink);">
                     <div class="book-tag">SYLLABUS</div>
-                    <img src="syllabus.png" alt="Syllabus" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    <div class="slider-container">
+                        <div class="banner-slider-wrapper" onscroll="updateDots(this)">
+                            <div class="swipe-hint">SWIPE <i class="fas fa-arrows-alt-h"></i></div>
+                            <div class="banner-slider-track">
+                                <img src="syllabus.png" alt="Syllabus Front" onerror="this.src='https://via.placeholder.com/400x565'">
+                                <img src="syllabus.png" alt="Syllabus Back" onerror="this.src='https://via.placeholder.com/400x565'">
+                            </div>
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
                     <div class="book-content">
                         <h3 class="book-title">MATHS FULL SYLLABUS</h3>
                         <p class="book-desc">Complete Roadmap and competitive exam strategy designed by Abhinay Sir.</p>
@@ -287,16 +441,42 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="book-card" onclick="openChapterView('arithmetic', 'ARITHMETIC')" style="cursor:pointer; border-color:var(--pink);">
-                    <img src="arithmetic.png" alt="Arithmetic" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    <div class="slider-container">
+                        <div class="banner-slider-wrapper" onscroll="updateDots(this)">
+                            <div class="swipe-hint">SWIPE <i class="fas fa-arrows-alt-h"></i></div>
+                            <div class="banner-slider-track">
+                                <img src="syllabus.png" alt="Syllabus Banner" onerror="this.src='https://via.placeholder.com/400x565'">
+                                <img src="arithmetic.png" alt="Arithmetic" onerror="this.src='https://via.placeholder.com/400x565'">
+                            </div>
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
                     <div class="book-content">
                         <h3 class="book-title">ARITHMETIC MATHS</h3>
                         <p class="book-desc">Complete 16 Chapters from Percentage, Ratio, Time & Work to Number System.</p>
                         <button class="btn-download btn-chapters">VIEW CHAPTERS</button>
                     </div>
                 </div>
+
                 <div class="book-card" onclick="openChapterView('advance', 'ADVANCE')" style="cursor:pointer; border-color:var(--pink);">
-                    <img src="advance.png" alt="Advance" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                    <div class="slider-container">
+                        <div class="banner-slider-wrapper" onscroll="updateDots(this)">
+                            <div class="swipe-hint">SWIPE <i class="fas fa-arrows-alt-h"></i></div>
+                            <div class="banner-slider-track">
+                                <img src="syllabus.png" alt="Syllabus Banner" onerror="this.src='https://via.placeholder.com/400x565'">
+                                <img src="banne.png" alt="Advance" onerror="this.src='https://via.placeholder.com/400x565'">
+                            </div>
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
                     <div class="book-content">
                         <h3 class="book-title">ADVANCE MATHS</h3>
                         <p class="book-desc">Complete 15 Chapters covering Algebra, Geometry, Trigonometry & Mensuration.</p>
@@ -312,8 +492,22 @@
             <h2 class="section-title" id="activeSectionTitle" style="margin-top:5px;">CHAPTER <span>WISE PDF</span></h2>
             <div class="math-chapter-list" id="chapterList"></div>
         </div>
-
     </div>
+
+    <!-- NEW SLIM FOOTER (WITH ID TO TOGGLE) -->
+    <footer id="mainFooter" class="slim-footer">
+        <div class="footer-social-links">
+            <a href="#" target="_blank" class="social-btn yt">
+                <i class="fab fa-youtube"></i> ABHINAY_PRATAP_MATHS
+            </a>
+            <a href="#" target="_blank" class="social-btn tg">
+                <i class="fab fa-telegram-plane"></i> ABHINAY_PRATAP_MATHS
+            </a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2026 AP MATHEMATICS
+        </div>
+    </footer>
 
     <!-- Modals & Overlays -->
     <div class="progress-overlay" id="progressOverlay">
@@ -360,6 +554,13 @@
     </div>
 
     <script>
+        function updateDots(el) {
+            const index = Math.round(el.scrollLeft / el.clientWidth);
+            const dots = el.parentElement.querySelectorAll('.dot');
+            dots.forEach(d => d.classList.remove('active'));
+            if(dots[index]) dots[index].classList.add('active');
+        }
+
         let currentCategory = "CLASS 9"; 
         let currentSciLinks = {};
         let currentSciTitle = "";
@@ -413,97 +614,101 @@
                 { subject: "BIOLOGY", title: "Genetics & Biotechnology", img: "bio12.png", link: "#", desc: "Handwritten notes for difficult biology chapters." }
             ],
             "KVS": [
-                { subject: "MATHEMATICS", title: "KVS PRT/TGT Maths", img: "kvm.png", link: "#", desc: "Topic-wise shortcuts for teaching exams." },
-                { subject: "COMPREHENSION", title: "English comprehensive", img: "kvcom.png", link: "#", desc: "Expected Comprehensive theories and MCQ practice sets." },
-                { subject: "ENGLISH", title: "General English Practice", img: "kveng.png", link: "#", desc: "Grammar exercises targeting common errors." },
-                { subject: "REASONING", title: "LOGICAL REASONING", img: "kvres.png", link: "#", desc: "Logical thinking and pattern completion." },
-                { subject: "SCIENCE", title: "KVS Science NCERT Digest", img: "kvsci.png", link: "#", desc: "Class 6 to 10 NCERT Science gist customized." }
+                { subject: "MATHEMATICS", title: "KVS Entrance Maths", img: "kvs.png", link: "#", desc: "Complete basic mathematics designed for KVS admission tests." },
+                { subject: "ENGLISH", title: "KVS Entrance English", img: "kvs.png", link: "#", desc: "Grammar, vocabulary, and reading comprehension practice." },
+                { subject: "HINDI", title: "KVS Entrance Hindi", img: "kvs.png", link: "#", desc: "Hindi vyakaran and passage practice for school admission." },
+                { subject: "SCIENCE", title: "KVS Entrance Science", img: "kvs.png", link: "#", desc: "Core science concepts strictly based on NCERT pattern." },
+                { subject: "GENERAL AWARENESS", title: "GK & Reasoning", img: "kvs.png", link: "#", desc: "Important general knowledge and basic logical reasoning." }
             ],
             "NVS": [
-                { subject: "MATHEMATICS", title: "NVS PGT Advance Maths", img: "nvsm.png", link: "#", desc: "High-level algebraic and geometric problems." },
-                { subject: "REASONING", title: "Logical Reasoning Ability", img: "nvsr.png", link: "#", desc: "Verbal and non-verbal reasoning shortcuts." },
-                { subject: "COMPREHENSION", title: "Teaching Aptitude & NEP", img: "nvscom.png", link: "#", desc: "Modern teaching methodologies and NEP policies." },
-                { subject: "LANGUAGE TEST", title: "Hindi + English Qualifying", img: "nvseng.png", link: "#", desc: "Grammar notes to clear mandatory test." },
-                { subject: "SCIENCE", title: "NVS General Science", img: "nvssci.png", link: "#", desc: "10 full-length mock sets for rigorous practice." }
+                { subject: "MENTAL ABILITY", title: "NVS Mental Ability", img: "nvs.png", link: "#", desc: "Figure matching, odd-one-out, and pattern completion." },
+                { subject: "MATHEMATICS", title: "NVS Arithmetic Test", img: "nvs.png", link: "#", desc: "Fractions, decimals, profit-loss, and basic arithmetic." },
+                { subject: "LANGUAGE (HINDI)", title: "Hindi Language Test", img: "nvs.png", link: "#", desc: "Hindi unseen passages and basic grammar evaluation." },
+                { subject: "LANGUAGE (ENGLISH)", title: "English Language Test", img: "nvs.png", link: "#", desc: "English comprehension passages and vocabulary building." },
+                { subject: "PRACTICE SETS", title: "NVS Full Mock Papers", img: "nvs.png", link: "#", desc: "10 Full-length mock tests for Jawahar Navodaya Vidyalaya." }
             ]
         };
 
         const chapterData = {
             arithmetic: [
-                { title: "01. Calculation & Vedic Maths", img: "m.png", link: "#", desc: "Fast Calculation Tricks & Squares/Cubes" },
-                { title: "02. Percentage (प्रतिशत)", img: "m.png", link: "#", desc: "Basic to Advanced Concept & Multipliers" },
-                { title: "03. Ratio & Proportion", img: "m.png", link: "#", desc: "Coin, Income & Expenditure Based Questions" },
-                { title: "04. Partnership (साझेदारी)", img: "m.png", link: "#", desc: "Investment & Profit Sharing Methods" },
-                { title: "05. Profit, Loss & Discount", img: "m.png", link: "#", desc: "Dishonest Dealer, MP & SP Short Tricks" },
-                { title: "06. Simple Interest (SI)", img: "m.png", link: "#", desc: "Rate & Time Direct Formula Shortcuts" },
-                { title: "07. Compound Interest (CI)", img: "m.png", link: "#", desc: "Tree Method, Successive & Installments" },
-                { title: "08. SI & CI Combined", img: "m.png", link: "#", desc: "Difference Between SI and CI Trick Sets" },
-                { title: "09. Average (औसत)", img: "m.png", link: "#", desc: "Deviation Method & Group Age Questions" },
-                { title: "10. Mixture & Alligation", img: "m.png", link: "#", desc: "Replacement & Pure/Impure Milk Concepts" },
-                { title: "11. Time & Work", img: "m.png", link: "#", desc: "Efficiency, M-D-H & Wages Questions" },
-                { title: "12. Pipe & Cistern", img: "m.png", link: "#", desc: "Inlet, Outlet & Leakage Based Problems" },
-                { title: "13. Time, Speed & Distance", img: "m.png", link: "#", desc: "Relative Speed, Train & Meeting Point" },
-                { title: "14. Boat & Stream", img: "m.png", link: "#", desc: "Upstream & Downstream Short Tricks" },
-                { title: "15. Number System", img: "m.png", link: "#", desc: "Unit Digit, Factors, AP/GP & Remainders" },
-                { title: "16. Simplification & Surds/Indices", img: "m.png", link: "#", desc: "BODMAS, Series & Square Root Tricks" }
+                { title: "01. Calculation & Vedic Maths", img: "syllabus.png", link: "#", desc: "Fast Calculation Tricks & Squares/Cubes" },
+                { title: "02. Percentage (प्रतिशत)", img: "syllabus.png", link: "https://drive.google.com/file/d/1exYBrvDorJyc3yUVKn9nYUixtzEMjKIZ/view?usp=drivesdk", desc: "Basic to Advanced Concept & Multipliers" },
+                { title: "03. Ratio & Proportion", img: "syllabus.png", link: "https://drive.google.com/file/d/1NEaj9D9YcMVqdgs5PlrueN_tJ2_x5b9h/view?usp=drivesdk", desc: "Coin, Income & Expenditure Based Questions" },
+                { title: "04. Partnership (साझेदारी)", img: "syllabus.png", link: "https://drive.google.com/file/d/1LIy1dX4hlVYznwGQ_A5OwMAbHIYfjnz6/view?usp=drivesdk", desc: "Investment & Profit Sharing Methods" },
+                { title: "04. AGE (आयु)", img: "syllabus.png", link: "https://drive.google.com/file/d/1CNdDm72QWp9DV_IxQrz2Eqwadj07Ms2n/view?usp=drivesdk", desc: "Investment & Profit Sharing Methods" },
+                { title: "05. Profit, Loss & Discount", img: "syllabus.png", link: "https://drive.google.com/file/d/1xLgOHYuqPaTKGlC1iZqI1BqhN2s8TW55/view?usp=drivesdk", desc: "Dishonest Dealer, MP & SP Short Tricks" },
+                { title: "06. Simple Interest (SI)", img: "syllabus.png", link: "https://drive.google.com/file/d/1I4PRNBS7--fb3jWzGaHYRTXyHiDxtgiK/view?usp=drivesdk", desc: "Rate & Time Direct Formula Shortcuts" },
+                { title: "07. Compound Interest (CI)", img: "syllabus.png", link: "https://drive.google.com/file/d/1o0JObscVYoircaOmK7ippWFgrgCHOeh-/view?usp=drivesdk", desc: "Tree Method, Successive & Installments" },
+                { title: "08. LCM AND HCF", img: "syllabus.png", link: "https://drive.google.com/file/d/1k6aqeZ8G9Mk203DhsrK_sygt0enAWCCe/view?usp=drivesdk", desc: "Difference Between SI and CI Trick Sets" },
+                { title: "09. Average (औसत)", img: "syllabus.png", link: "https://drive.google.com/file/d/1gz6Vu3vQwO-Q4vnXQ1wDepy4amYimY8E/view?usp=drivesdk", desc: "Deviation Method & Group Age Questions" },
+                { title: "10. Mixture & Alligation", img: "syllabus.png", link: "https://drive.google.com/file/d/1beVeVN8guGBgZVGaOlu1zZyHP0tLsVm5/view?usp=drivesdk", desc: "Replacement & Pure/Impure Milk Concepts" },
+                { title: "11. Time & Work", img: "syllabus.png", link: "https://drive.google.com/file/d/1w9fPjhhr3151uqMVjkpJgVRgM4A-UjuT/view?usp=drivesdk", desc: "Efficiency, M-D-H & Wages Questions" },
+                { title: "12. Pipe & Cistern", img: "syllabus.png", link: "https://drive.google.com/file/d/13INPnXKx0sWDqoyAtgcBj9hrh2oOosq7/view?usp=drivesdk", desc: "Inlet, Outlet & Leakage Based Problems" },
+                { title: "13. Time, Speed & Distance", img: "syllabus.png", link: "https://drive.google.com/file/d/1SFp69Qe7eoMNkydrcREOzAMR7I5TakU0/view?usp=drivesdk", desc: "Relative Speed, Train & Meeting Point" },
+                { title: "14. Boat & Stream", img: "syllabus.png", link: "https://drive.google.com/file/d/1bTnfXXtjxHEolEitCZNUrS6A7S-JGdKY/view?usp=drivesdk", desc: "Upstream & Downstream Short Tricks" },
+                { title: "15. Number System", img: "syllabus.png", link: "https://drive.google.com/file/d/1TcW3IHRlv4h9BW3lUBEPL7pNyLN0G2JF/view?usp=drivesdk", desc: "Unit Digit, Factors, AP/GP & Remainders" },
+                { title: "16. Simplification & Surds/Indices", img: "syllabus.png", link: "https://drive.google.com/file/d/1OIB6DK5QlLh5vwMYn4dnY3wfG83zqi2Q/view?usp=drivesdk", desc: "BODMAS, Series & Square Root Tricks" }
             ],
             advance: [
-                { title: "01. Algebra (बीजगणित - Part 1)", img: "banne.png", link: "#", desc: "Identities, Power Formats & Value Putting" },
-                { title: "02. Algebra (Part 2 - Quadratic Eq.)", img: "banne.png", link: "#", desc: "Roots, Max/Min Values & Remainder Theorem" },
-                { title: "03. Lines & Angles (Geometry)", img: "banne.png", link: "#", desc: "Parallel Lines, Transversal & Angle Bisectors" },
-                { title: "04. Triangles & Congruency", img: "banne.png", link: "#", desc: "Centroid, Orthocenter, Incenter & Circumcenter" },
-                { title: "05. Quadrilaterals & Polygons", img: "banne.png", link: "#", desc: "Parallelogram, Rhombus, Trapezium & Diagonals" },
-                { title: "06. Circle & Tangents", img: "banne.png", link: "#", desc: "Chords, Secants, Alternate Segment Theorem" },
-                { title: "07. Coordinate Geometry", img: "banne.png", link: "#", desc: "Distance Formula, Section Formula & Slopes" },
-                { title: "08. Trigonometry (Ratio & Identities)", img: "banne.png", link: "#", desc: "Standard Values, Quadrants & Fundamental Formulas" },
-                { title: "09. Maxima & Minima (Trigonometry)", img: "banne.png", link: "#", desc: "Sine/Cosine ranges and advanced calculations" },
-                { title: "10. Height & Distance", img: "banne.png", link: "#", desc: "Shadow, Elevation & Depression Angle Shortcuts" },
-                { title: "11. Mensuration 2D (Area/Perimeter)", img: "banne.png", link: "#", desc: "Square, Rectangle, Triangle, Circle & Sector" },
-                { title: "12. Mensuration 3D (Volume/Surface)", img: "banne.png", link: "#", desc: "Cube, Cuboid, Cylinder, Cone, Sphere & Prism" },
-                { title: "13. Data Interpretation (DI)", img: "banne.png", link: "#", desc: "Tabular, Bar Graph, Pie Chart & Line Graph" },
-                { title: "14. Statistics", img: "banne.png", link: "#", desc: "Mean, Median, Mode, Variance & Standard Deviation" },
-                { title: "15. Probability", img: "banne.png", link: "#", desc: "Cards, Dice, Coins & Permutation/Combination" }
+                { title: "01. Algebra (बीजगणित - Part 1)", img: "syllabus.png", link: "#", desc: "Identities, Power Formats & Value Putting" },
+                { title: "02. Algebra (Part 2 - Quadratic Eq.)", img: "syllabus.png", link: "#", desc: "Roots, Max/Min Values & Remainder Theorem" },
+                { title: "03. Lines & Angles (Geometry)", img: "syllabus.png", link: "#", desc: "Parallel Lines, Transversal & Angle Bisectors" },
+                { title: "04. Triangles & Congruency", img: "syllabus.png", link: "#", desc: "Centroid, Orthocenter, Incenter & Circumcenter" },
+                { title: "05. Quadrilaterals & Polygons", img: "syllabus.png", link: "#", desc: "Parallelogram, Rhombus, Trapezium & Diagonals" },
+                { title: "06. Circle & Tangents", img: "syllabus.png", link: "#", desc: "Chords, Secants, Alternate Segment Theorem" },
+                { title: "07. Coordinate Geometry", img: "syllabus.png", link: "#", desc: "Distance Formula, Section Formula & Slopes" },
+                { title: "08. Trigonometry (Ratio & Identities)", img: "syllabus.png", link: "#", desc: "Standard Values, Quadrants & Fundamental Formulas" },
+                { title: "09. Maxima & Minima (Trigonometry)", img: "syllabus.png", link: "#", desc: "Sine/Cosine ranges and advanced calculations" },
+                { title: "10. Height & Distance", img: "syllabus.png", link: "#", desc: "Shadow, Elevation & Depression Angle Shortcuts" },
+                { title: "11. Mensuration 2D (Area/Perimeter)", img: "syllabus.png", link: "#", desc: "Square, Rectangle, Triangle, Circle & Sector" },
+                { title: "12. Mensuration 3D (Volume/Surface)", img: "syllabus.png", link: "#", desc: "Cube, Cuboid, Cylinder, Cone, Sphere & Prism" },
+                { title: "13. Data Interpretation (DI)", img: "syllabus.png", link: "#", desc: "Tabular, Bar Graph, Pie Chart & Line Graph" },
+                { title: "14. Statistics", img: "syllabus.png", link: "#", desc: "Mean, Median, Mode, Variance & Standard Deviation" },
+                { title: "15. Probability", img: "syllabus.png", link: "#", desc: "Cards, Dice, Coins & Permutation/Combination" }
             ],
-            
-            /* ALL NCERT CHAPTERS FOR CLASS 11 ADDED HERE */
             c11maths: [
-                { title: "01. Sets", img: "m11.png", link: "#", desc: "Sets and their representations, Subsets." },
-                { title: "02. Relations and Functions", img: "m11.png", link: "#", desc: "Cartesian product, domain and range." },
-                { title: "03. Trigonometric Functions", img: "m11.png", link: "#", desc: "Angles, identities and equations." },
-                { title: "04. Complex Numbers", img: "m11.png", link: "#", desc: "Algebra of complex numbers, Argand plane." },
-                { title: "05. Linear Inequalities", img: "m11.png", link: "#", desc: "Algebraic solutions and graphical representation." },
-                { title: "06. Permutations and Combinations", img: "m11.png", link: "#", desc: "Fundamental principle of counting, factorials." },
-                { title: "07. Binomial Theorem", img: "m11.png", link: "#", desc: "Pascal's triangle, expansion of binomials." },
-                { title: "08. Sequences and Series", img: "m11.png", link: "#", desc: "Arithmetic Progression (A.P.) and Geometric Progression (G.P.)." },
-                { title: "09. Straight Lines", img: "m11.png", link: "#", desc: "Slope, forms of equations of a line." },
-                { title: "10. Conic Sections", img: "m11.png", link: "#", desc: "Circles, parabolas, ellipses, and hyperbolas." },
-                { title: "11. 3D Geometry", img: "m11.png", link: "#", desc: "Coordinate axes and planes in 3D." },
-                { title: "12. Limits and Derivatives", img: "m11.png", link: "#", desc: "Intuitive idea of limits and standard derivatives." },
-                { title: "13. Statistics", img: "m11.png", link: "#", desc: "Measures of dispersion, variance, standard deviation." },
-                { title: "14. Probability", img: "m11.png", link: "#", desc: "Random experiments, sample spaces, events." }
+                { title: "01. Sets", img: "syllabus.png", link: "#", desc: "Sets and their representations, Subsets." },
+                { title: "02. Relations and Functions", img: "syllabus.png", link: "#", desc: "Cartesian product, domain and range." },
+                { title: "03. Trigonometric Functions", img: "syllabus.png", link: "#", desc: "Angles, identities and equations." },
+                { title: "04. Complex Numbers", img: "syllabus.png", link: "#", desc: "Algebra of complex numbers, Argand plane." },
+                { title: "05. Linear Inequalities", img: "syllabus.png", link: "#", desc: "Algebraic solutions and graphical representation." },
+                { title: "06. Permutations and Combinations", img: "syllabus.png", link: "#", desc: "Fundamental principle of counting, factorials." },
+                { title: "07. Binomial Theorem", img: "syllabus.png", link: "#", desc: "Pascal's triangle, expansion of binomials." },
+                { title: "08. Sequences and Series", img: "syllabus.png", link: "#", desc: "Arithmetic Progression (A.P.) and Geometric Progression (G.P.)." },
+                { title: "09. Straight Lines", img: "syllabus.png", link: "#", desc: "Slope, forms of equations of a line." },
+                { title: "10. Conic Sections", img: "syllabus.png", link: "#", desc: "Circles, parabolas, ellipses, and hyperbolas." },
+                { title: "11. 3D Geometry", img: "syllabus.png", link: "#", desc: "Coordinate axes and planes in 3D." },
+                { title: "12. Limits and Derivatives", img: "syllabus.png", link: "#", desc: "Intuitive idea of limits and standard derivatives." },
+                { title: "13. Statistics", img: "syllabus.png", link: "#", desc: "Measures of dispersion, variance, standard deviation." },
+                { title: "14. Probability", img: "syllabus.png", link: "#", desc: "Random experiments, sample spaces, events." }
             ],
-            
-            /* ALL NCERT CHAPTERS FOR CLASS 12 ADDED HERE */
             c12maths: [
-                { title: "01. Relations and Functions", img: "m12.png", link: "#", desc: "Types of relations, one-one and onto." },
-                { title: "02. Inverse Trigonometric Functions", img: "m12.png", link: "#", desc: "Domain, range, principal value branches." },
-                { title: "03. Matrices", img: "m12.png", link: "#", desc: "Operations, transpose, symmetric matrices." },
-                { title: "04. Determinants", img: "m12.png", link: "#", desc: "Adjoint and inverse of a square matrix." },
-                { title: "05. Continuity & Differentiability", img: "m12.png", link: "#", desc: "Chain rule, parametric forms, second order." },
-                { title: "06. Application of Derivatives", img: "m12.png", link: "#", desc: "Rate of change, increasing/decreasing functions." },
-                { title: "07. Integrals (Calculus)", img: "m12.png", link: "#", desc: "Indefinite and definite integration methods." },
-                { title: "08. Application of Integrals", img: "m12.png", link: "#", desc: "Area under simple curves." },
-                { title: "09. Differential Equations", img: "m12.png", link: "#", desc: "Order, degree, forming differential equations." },
-                { title: "10. Vector Algebra", img: "m12.png", link: "#", desc: "Vectors, scalars, magnitude, direction." },
-                { title: "11. 3D Geometry", img: "m12.png", link: "#", desc: "Direction cosines, lines and planes in space." },
-                { title: "12. Linear Programming", img: "m12.png", link: "#", desc: "Optimization, graphical method of solution." },
-                { title: "13. Probability", img: "m12.png", link: "#", desc: "Conditional probability, Bayes' theorem." }
+                { title: "01. Relations and Functions", img: "syllabus.png", link: "#", desc: "Types of relations, one-one and onto." },
+                { title: "02. Inverse Trigonometric Functions", img: "syllabus.png", link: "#", desc: "Domain, range, principal value branches." },
+                { title: "03. Matrices", img: "syllabus.png", link: "#", desc: "Operations, transpose, symmetric matrices." },
+                { title: "04. Determinants", img: "syllabus.png", link: "#", desc: "Adjoint and inverse of a square matrix." },
+                { title: "05. Continuity & Differentiability", img: "syllabus.png", link: "#", desc: "Chain rule, parametric forms, second order." },
+                { title: "06. Application of Derivatives", img: "syllabus.png", link: "#", desc: "Rate of change, increasing/decreasing functions." },
+                { title: "07. Integrals (Calculus)", img: "syllabus.png", link: "#", desc: "Indefinite and definite integration methods." },
+                { title: "08. Application of Integrals", img: "syllabus.png", link: "#", desc: "Area under simple curves." },
+                { title: "09. Differential Equations", img: "syllabus.png", link: "#", desc: "Order, degree, forming differential equations." },
+                { title: "10. Vector Algebra", img: "syllabus.png", link: "#", desc: "Vectors, scalars, magnitude, direction." },
+                { title: "11. 3D Geometry", img: "syllabus.png", link: "#", desc: "Direction cosines, lines and planes in space." },
+                { title: "12. Linear Programming", img: "syllabus.png", link: "#", desc: "Optimization, graphical method of solution." },
+                { title: "13. Probability", img: "syllabus.png", link: "#", desc: "Conditional probability, Bayes' theorem." }
             ]
         };
 
         function renderContent(category) {
             const grid = document.getElementById('booksGrid');
             const mathContainer = document.getElementById('mathSpecialContainer');
+            const mainFooter = document.getElementById('mainFooter');
+
+            if(category === "CLASS 9") {
+                if(mainFooter) mainFooter.style.display = "flex";
+            } else {
+                if(mainFooter) mainFooter.style.display = "none";
+            }
 
             if(category === "MATHS SPECIAL") {
                 grid.style.display = "none";
@@ -536,7 +741,20 @@
                     grid.innerHTML += `
                     <div class="book-card" style="animation: fadeIn 0.5s ease forwards ${index * 0.08}s; opacity:0;">
                         <div class="book-tag">100% FREE</div>
-                        <img src="${book.img}" alt="${book.title}" class="book-banner-img" onerror="this.src='https://via.placeholder.com/400x565'">
+                        
+                        <div class="slider-container">
+                            <div class="banner-slider-wrapper" onscroll="updateDots(this)">
+                                <div class="swipe-hint">SWIPE <i class="fas fa-arrows-alt-h"></i></div>
+                                <div class="banner-slider-track">
+                                    <img src="syllabus.png" alt="Syllabus Banner" onerror="this.src='https://via.placeholder.com/400x565'">
+                                    <img src="${book.img}" alt="${book.title}" onerror="this.src='https://via.placeholder.com/400x565'">
+                                </div>
+                            </div>
+                            <div class="slider-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
                         
                         <div class="book-content">
                             <div class="book-subject"><i class="fas fa-bookmark"></i> ${book.subject}</div>
