@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Practice Book | AP Mathematics</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-red: #d92626;   
+            --dark-text: #1e293b;
+            --grey-text: #475569;
+            --bg-light: #f8fafc;
+            --brand-gold: #eab308;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ANTI-COPY CSS */
+        body {
+            background-color: #e2e8f0;
+            font-family: 'Poppins', sans-serif;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            user-select: none; 
+            -webkit-user-select: none;
+        }
+
+        /* --- PDF GENERATOR BUTTON --- */
+        .pdf-btn-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+        .btn-generate-pdf {
+            background: var(--brand-red);
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .btn-generate-pdf:hover {
+            transform: translateY(-5px);
+            background: #b91c1c;
+        }
+
+        /* --- A4 PAGE SETUP --- */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            margin: 20mm auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            padding: 15mm 20mm 20mm 20mm;
+            page-break-after: always;
+        }
+
+        /* ========================================== */
+        /* --- BOOK HEADER --- */
+        /* ========================================== */
+        .book-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--brand-red);
+            padding-bottom: 12mm;
+            margin-bottom: 5mm;
+            position: relative;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .chapter-badge-wrap {
+            display: flex;
+            align-items: center;
+            background: var(--bg-light);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px 50px 50px 8px;
+            height: 48px;
+            position: relative;
+            z-index: 1;
+        }
+        .chap-label {
+            background: var(--brand-red);
+            color: #fff;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-radius: 6px 0 0 6px;
+        }
+        .chap-num {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--dark-text);
+            padding: 0 35px 0 15px;
+        }
+
+        /* LOGO BADA KAR DIYA GAYA HAI (90px) */
+        .header-logo {
+            width: 90px; 
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--brand-red);
+            background: #fff;
+            margin-left: -30px; 
+            z-index: 2;
+            padding: 3px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        .header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .title-en {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--dark-text);
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+        .title-hi {
+            font-family: 'Mukta', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--brand-red);
+            line-height: 1;
+            margin-top: 5px;
+        }
+
+        /* --- CONTENT AREA --- */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 7mm; 
+        }
+
+        /* --- TYPE HEADING STYLING --- */
+        .type-heading {
+            background: var(--dark-text);
+            color: #fff;
+            display: table; /* Auto width */
+            padding: 4px 15px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 6px;
+            border-left: 5px solid var(--brand-gold);
+            margin: 2mm 0;
+            page-break-after: avoid; /* Heading ke theek baad page break nahi hoga */
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+        }
+
+        /* --- QUESTIONS STYLING --- */
+        .question-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5mm;
+            page-break-inside: avoid; 
+        }
+        .question-text {
+            font-size: 0.92rem;
+            color: var(--dark-text);
+            font-weight: 600;
+            line-height: 1.5;
+            text-align: justify; 
+        }
+        .q-number {
+            color: var(--brand-red);
+            font-weight: 900;
+            margin-right: 6px;
+            font-size: 1.05rem;
+        }
+        
+        /* EXAM TAG STYLING */
+        .exam-tag {
+            display: inline-block;
+            background: #fef2f2;
+            color: var(--brand-red);
+            border: 1px solid var(--brand-red);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        }
+
+        .hindi-text {
+            font-family: 'Mukta', sans-serif;
+            font-size: 1.02rem;
+            color: var(--grey-text);
+            font-weight: 600;
+            line-height: 1.4;
+            text-align: justify; 
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 3px;
+        }
+        .option {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        .opt-letter {
+            color: var(--brand-red);
+            font-weight: 800;
+            margin-right: 5px;
+        }
+
+        /* --- FOOTER --- */
+        .book-footer {
+            margin-top: auto;
+            padding-top: 4mm;
+            border-top: 2px solid var(--brand-red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--dark-text);
+            letter-spacing: 1px;
+        }
+        .footer-left span { color: var(--brand-red); }
+        
+        .footer-right {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #fff;
+            background: var(--dark-text);
+            padding: 3px 15px;
+            border-radius: 4px;
+        }
+
+        /* ========================================== */
+        /* --- PRINT SPECIFIC CSS --- */
+        /* ========================================== */
+        @page {
+            size: A4;
+            margin: 0; 
+        }
+        
+        @media print {
+            body { background: white; }
+            .pdf-btn-container { display: none !important; }
+            
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PDF GENERATE BUTTON -->
+    <div class="pdf-btn-container">
+        <button class="btn-generate-pdf" onclick="window.print()">
+            <i class="fas fa-file-pdf"></i> SAVE AS PDF
+        </button>
+    </div>
+
+    <!-- ================= PAGE 1 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="type-heading">TYPE - 1: BASIC CONCEPTS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.1</span> If A's salary is 25% more than B's salary, then B's salary is how much percent less than A's salary? <span class="exam-tag">[SSC CGL 2023]</span></div>
+                <div class="hindi-text">यदि A का वेतन B के वेतन से 25% अधिक है, तो B का वेतन A के वेतन से कितना प्रतिशत कम है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 24%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 16.66%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.2</span> Two numbers are respectively 20% and 50% more than a third number. What percent is the first number of the second? <span class="exam-tag">[RRB NTPC 2021]</span></div>
+                <div class="hindi-text">दो संख्याएँ एक तीसरी संख्या से क्रमशः 20% और 50% अधिक हैं। पहली संख्या दूसरी संख्या का कितना प्रतिशत है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 80%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 70%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 75%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 85%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.3</span> If 80% of A = 50% of B and B = x% of A, then the value of x is: <span class="exam-tag">[SSC CHSL 2022]</span></div>
+                <div class="hindi-text">यदि A का 80% = B का 50% है और B = A का x% है, तो x का मान क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 400</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 300</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 160</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 150</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.4</span> The difference between a number and its two-fifth is 510. What is 10% of that number? <span class="exam-tag">[KVS PRT 2018]</span></div>
+                <div class="hindi-text">एक संख्या और उसके दो-पांचवें हिस्से के बीच का अंतर 510 है। उस संख्या का 10% क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12.75</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 85</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 850</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 204</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.5</span> 30% of a three-digit number is 190.8. What will be 125% of that number? <span class="exam-tag">[IBPS Clerk 2021]</span></div>
+                <div class="hindi-text">एक तीन अंकों की संख्या का 30% 190.8 है। उस संख्या का 125% क्या होगा?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 795</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 792</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 785</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 775</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.6</span> A student multiplied a number by 3/5 instead of 5/3. Find the percentage error in the calculation. <span class="exam-tag">[SSC CGL 2020]</span></div>
+                <div class="hindi-text">एक छात्र ने एक संख्या को 5/3 के बजाय 3/5 से गुणा कर दिया। गणना में प्रतिशत त्रुटि ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 44%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 34%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 54%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 64%</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 1</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+
+            <div class="type-heading">TYPE - 2: PRICE & CONSUMPTION</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.7</span> The price of sugar is increased by 20%. By what percent must a householder reduce his consumption so that expenditure remains same? <span class="exam-tag">[UP Police 2024]</span></div>
+                <div class="hindi-text">चीनी की कीमत में 20% की वृद्धि होती है। एक गृहस्थ को अपनी खपत कितने प्रतिशत कम करनी चाहिए ताकि खर्च समान रहे?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 16.66%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
+                </div>
+            </div>
+            
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.8</span> The price of rice is decreased by 25%. Therefore a person can buy 10 kg more rice for Rs. 600. Find the original price per kg. <span class="exam-tag">[SSC MTS 2022]</span></div>
+                <div class="hindi-text">चावल की कीमत में 25% की कमी होती है। इसलिए एक व्यक्ति 600 रुपये में 10 किलो अधिक चावल खरीद सकता है। प्रति किलो मूल कीमत ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 20</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 15</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 25</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 30</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.9</span> Due to a 20% increase in the price of apples, a man can buy 4 apples less for Rs. 40. Find the increased price of 15 apples. <span class="exam-tag">[NVS TGT 2019]</span></div>
+                <div class="hindi-text">सेब की कीमत में 20% की वृद्धि के कारण, एक आदमी 40 रुपये में 4 सेब कम खरीद सकता है। 15 सेब की बढ़ी हुई कीमत ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 30</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 45</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 20</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 25</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.10</span> When the price of a toy was increased by 20%, the number of toys sold was decreased by 15%. What was its effect on the total sales of the shop? <span class="exam-tag">[SSC CPO 2023]</span></div>
+                <div class="hindi-text">जब एक खिलौने की कीमत में 20% की वृद्धि की गई, तो बेचे गए खिलौनों की संख्या में 15% की कमी आई। दुकान की कुल बिक्री पर इसका क्या प्रभाव पड़ा?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2% Increase</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 2% Decrease</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4% Increase</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 4% Decrease</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 3: INCOME & EXPENDITURE</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.11</span> A person who spends 66.66% of his income is able to save Rs. 1200 per month. His monthly expenses (in Rs) are: <span class="exam-tag">[SBI PO 2021]</span></div>
+                <div class="hindi-text">एक व्यक्ति जो अपनी आय का 66.66% खर्च करता है, वह प्रति माह 1200 रुपये बचाने में सक्षम है। उसका मासिक खर्च (रुपये में) कितना है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1200</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 2400</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 3600</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.12</span> A man spends 75% of his income. If his income increases by 20% and his expenditure increases by 10%, his savings will increase by: <span class="exam-tag">[SSC CGL 2021]</span></div>
+                <div class="hindi-text">एक आदमी अपनी आय का 75% खर्च करता है। यदि उसकी आय में 20% की वृद्धि होती है और उसके खर्च में 10% की वृद्धि होती है, तो उसकी बचत में कितनी वृद्धि होगी?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 50%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 2</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 3 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.13</span> Ram saves 14% of his salary while Shyam saves 22%. If both get the same salary and Shyam saves Rs. 1540, what is the savings of Ram? <span class="exam-tag">[RRB Group D 2019]</span></div>
+                <div class="hindi-text">राम अपने वेतन का 14% बचाता है जबकि श्याम 22% बचाता है। यदि दोनों को समान वेतन मिलता है और श्याम 1540 रुपये बचाता है, तो राम की बचत क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 990</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 980</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 890</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 880</div>
+                </div>
+            </div>
+            
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.14</span> A man spends 40% of his monthly salary on food and one-third of the remaining on transport. If he saves Rs. 4500 per month, find his monthly salary. <span class="exam-tag">[DSSSB 2022]</span></div>
+                <div class="hindi-text">एक व्यक्ति अपने मासिक वेतन का 40% भोजन पर और शेष का एक तिहाई परिवहन पर खर्च करता है। यदि वह प्रति माह 4500 रुपये बचाता है, तो उसका मासिक वेतन ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 11250</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 11500</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 10250</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 12000</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 4: PASS/FAIL EXAMS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.15</span> A student has to secure 33% marks to pass. He gets 125 marks and fails by 40 marks. Find the maximum marks. <span class="exam-tag">[SSC GD 2023]</span></div>
+                <div class="hindi-text">एक छात्र को पास होने के लिए 33% अंक प्राप्त करने होते हैं। उसे 125 अंक मिलते हैं और वह 40 अंकों से अनुत्तीर्ण हो जाता है। अधिकतम अंक ज्ञात करें।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 300</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 400</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 500</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 600</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.16</span> In an examination, a candidate must get 40% marks to pass. A candidate who gets 220 marks fails by 20 marks. Find the maximum marks. <span class="exam-tag">[UP Lekhpal 2015]</span></div>
+                <div class="hindi-text">एक परीक्षा में उत्तीर्ण होने के लिए 40% अंक प्राप्त करना अनिवार्य है। एक छात्र 220 अंक प्राप्त करता है और 20 अंकों से अनुत्तीर्ण हो जाता है। अधिकतम अंक ज्ञात करें।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1200</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 800</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 600</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 400</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.17</span> A candidate scores 25% marks and fails by 30 marks, while another candidate who scores 50% marks gets 20 marks more than the minimum passing marks. Find the passing percentage. <span class="exam-tag">[SSC CGL Mains 2020]</span></div>
+                <div class="hindi-text">एक छात्र 25% अंक प्राप्त करता है और 30 अंकों से फेल हो जाता है, जबकि दूसरा छात्र 50% अंक प्राप्त करता है और न्यूनतम पास अंकों से 20 अंक अधिक प्राप्त करता है। पासिंग प्रतिशत ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 35%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 45%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.18</span> In an examination, 35% students failed in Mathematics and 25% failed in English. If 10% failed in both, then what percent passed in both? <span class="exam-tag">[CTET 2021]</span></div>
+                <div class="hindi-text">एक परीक्षा में, 35% छात्र गणित में और 25% अंग्रेजी में अनुत्तीर्ण हुए। यदि 10% दोनों में अनुत्तीर्ण हुए, तो दोनों में कितने प्रतिशत उत्तीर्ण हुए?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 50%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 55%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 60%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 65%</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 3</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 4 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.19</span> In an exam, 80% candidates passed in English and 85% in Mathematics. If 73% passed in both, then what percent of candidates failed in both subjects? <span class="exam-tag">[SSC CGL 2022]</span></div>
+                <div class="hindi-text">एक परीक्षा में 80% उम्मीदवार अंग्रेजी में और 85% गणित में पास हुए। यदि 73% दोनों में पास हुए, तो कितने प्रतिशत उम्मीदवार दोनों विषयों में फेल हुए?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 27%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 35%</div>
+                </div>
+            </div>
+            
+            <div class="type-heading">TYPE - 5: ELECTIONS & VOTING</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.20</span> In an election between two candidates, the winner gets 60% of total valid votes and wins by 1600 votes. Find the total number of votes. <span class="exam-tag">[UP Police 2024]</span></div>
+                <div class="hindi-text">दो उम्मीदवारों के बीच एक चुनाव में, विजेता को कुल वैध मतों का 60% प्राप्त होता है और वह 1600 मतों से जीतता है। मतों की कुल संख्या ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 6000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 10000</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.21</span> In an election, 10% voters did not cast their vote and 10% votes were found invalid. The winner got 54% of valid votes and won by 1620 votes. Find the total number of registered voters. <span class="exam-tag">[SSC CGL Tier 2]</span></div>
+                <div class="hindi-text">एक चुनाव में, 10% मतदाताओं ने अपना वोट नहीं डाला और 10% वोट अवैध पाए गए। विजेता को वैध मतों का 54% प्राप्त हुआ और वह 1620 मतों से जीत गया। कुल पंजीकृत मतदाताओं की संख्या ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 22000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 24000</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.22</span> In an election 8% of the voters did not cast their votes. The winning candidate secured 48% of the total votes and defeated his rival by 1100 votes. The total voters were: <span class="exam-tag">[SSC CHSL 2021]</span></div>
+                <div class="hindi-text">एक चुनाव में 8% मतदाताओं ने अपने मत नहीं डाले। जीतने वाले उम्मीदवार ने कुल मतों का 48% हासिल किया और अपने प्रतिद्वंद्वी को 1100 मतों से हराया। कुल मतदाता थे:</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 27500</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 28000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 29500</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 30000</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 6: POPULATION</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.23</span> The population of a town increases by 10% annually. If its present population is 21000, what will be its population after 2 years? <span class="exam-tag">[SSC MTS 2023]</span></div>
+                <div class="hindi-text">एक शहर की जनसंख्या में प्रतिवर्ष 10% की वृद्धि होती है। यदि इसकी वर्तमान जनसंख्या 21000 है, तो 2 वर्ष बाद इसकी जनसंख्या क्या होगी?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25410</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 24200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 23100</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25210</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.24</span> The population of a city is 8000. If males increase by 6% and females by 10%, the population will be 8600. Find the number of females initially. <span class="exam-tag">[RRB ALP 2018]</span></div>
+                <div class="hindi-text">एक शहर की जनसंख्या 8000 है। यदि पुरुषों में 6% और महिलाओं में 10% की वृद्धि होती है, तो जनसंख्या 8600 हो जाएगी। शुरुआत में महिलाओं की संख्या ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 3000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 4000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 2000</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 4</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 5 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.25</span> The population of a village decreases by 20% in the first year and increases by 10% in the second year. If the current population is 4400, what was it 2 years ago? <span class="exam-tag">[SSC CPO 2022]</span></div>
+                <div class="hindi-text">एक गाँव की जनसंख्या पहले वर्ष में 20% कम हो जाती है और दूसरे वर्ष में 10% बढ़ जाती है। यदि वर्तमान जनसंख्या 4400 है, तो 2 वर्ष पहले यह क्या थी?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5500</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 4800</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 7: GEOMETRY CHANGES</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.26</span> If the length of a rectangle is increased by 20% and its breadth is decreased by 10%, what will be the percentage effect on its area? <span class="exam-tag">[KVS TGT 2023]</span></div>
+                <div class="hindi-text">यदि एक आयत की लंबाई 20% बढ़ा दी जाए और उसकी चौड़ाई 10% कम कर दी जाए, तो उसके क्षेत्रफल पर क्या प्रभाव पड़ेगा?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10% Increase</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 8% Increase</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10% Decrease</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 8% Decrease</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.27</span> If the radius of a circle is increased by 50%, its area will increase by: <span class="exam-tag">[SSC CHSL 2020]</span></div>
+                <div class="hindi-text">यदि किसी वृत्त की त्रिज्या 50% बढ़ा दी जाए, तो उसके क्षेत्रफल में कितने प्रतिशत की वृद्धि होगी?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 50%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 100%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 125%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 150%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.28</span> Each side of a cube is increased by 10%. What is the percentage increase in its volume? <span class="exam-tag">[SSC CGL Mains]</span></div>
+                <div class="hindi-text">एक घन की प्रत्येक भुजा में 10% की वृद्धि की जाती है। इसके आयतन में प्रतिशत वृद्धि क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 33.1%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 21%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 100%</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 8: MIXTURES & SOLUTIONS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.29</span> 40 liters of a mixture of milk and water contains 10% water. How much water must be added to make it 20% water in the new mixture? <span class="exam-tag">[SBI Clerk 2022]</span></div>
+                <div class="hindi-text">दूध और पानी के 40 लीटर मिश्रण में 10% पानी है। नए मिश्रण में पानी को 20% बनाने के लिए कितना पानी और मिलाना होगा?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 4 liters</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5 liters</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6 liters</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 7 liters</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.30</span> Fresh fruit contains 68% water and dry fruit contains 20% water. How much dry fruit can be obtained from 100 kg of fresh fruits? <span class="exam-tag">[SSC CGL 2023]</span></div>
+                <div class="hindi-text">ताजे फलों में 68% पानी होता है और सूखे फलों में 20% पानी होता है। 100 किलोग्राम ताजे फलों से कितने सूखे फल प्राप्त किए जा सकते हैं?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 32 kg</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 40 kg</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 52 kg</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 80 kg</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 5</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 6 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.31</span> A mixture of 50 liters of milk and water contains 10% water. How much milk must be added to reduce water to 5%? <span class="exam-tag">[UP Lekhpal]</span></div>
+                <div class="hindi-text">50 लीटर दूध और पानी के मिश्रण में 10% पानी है। पानी को 5% तक कम करने के लिए कितना दूध मिलाया जाना चाहिए?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 40 L</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 50 L</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 60 L</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 45 L</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 9: FRACTIONS & NUMBERS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.32</span> If the numerator of a fraction is increased by 200% and the denominator is increased by 350%, the resultant fraction is 5/12. What was the original fraction? <span class="exam-tag">[IBPS PO 2020]</span></div>
+                <div class="hindi-text">यदि किसी भिन्न के अंश को 200% और हर को 350% बढ़ा दिया जाए, तो परिणामी भिन्न 5/12 प्राप्त होता है। मूल भिन्न क्या था?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5/9</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7/12</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 11/12</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.33</span> A number is first increased by 10% and then it is decreased by 10%. The net change in the number is: <span class="exam-tag">[SSC MTS 2021]</span></div>
+                <div class="hindi-text">एक संख्या को पहले 10% बढ़ाया जाता है और फिर 10% घटाया जाता है। संख्या में शुद्ध परिवर्तन क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> No change</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 1% Decrease</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1% Increase</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 2% Decrease</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.34</span> The sum of two numbers is 520. If the bigger number is decreased by 4% and the smaller number is increased by 12%, then the numbers obtained are equal. Find the smaller number. <span class="exam-tag">[SSC CPO 2023]</span></div>
+                <div class="hindi-text">दो संख्याओं का योग 520 है। यदि बड़ी संख्या में 4% की कमी और छोटी संख्या में 12% की वृद्धि की जाती है, तो प्राप्त संख्याएँ बराबर होती हैं। छोटी संख्या ज्ञात करें।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 280</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 240</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 260</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 300</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 10: MISCELLANEOUS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.35</span> In a class of 60 students, 40% can speak only Hindi, 25% can speak only English and rest can speak both languages. How many students can speak English? <span class="exam-tag">[NVS TGT 2022]</span></div>
+                <div class="hindi-text">60 छात्रों की एक कक्षा में, 40% केवल हिंदी बोल सकते हैं, 25% केवल अंग्रेजी बोल सकते हैं और बाकी दोनों भाषाएँ बोल सकते हैं। कितने छात्र अंग्रेजी बोल सकते हैं?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 36</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 21</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 24</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.36</span> A salesman's commission is 5% on all sales up to Rs. 10000 and 4% on all sales exceeding this amount. If he remits Rs. 31100 to his parent company, find his total sales. <span class="exam-tag">[SSC CGL 2019]</span></div>
+                <div class="hindi-text">एक सेल्समैन का कमीशन 10000 रुपये तक की बिक्री पर 5% और इससे अधिक की बिक्री पर 4% है। यदि वह अपनी कंपनी को 31100 रुपये जमा करता है, तो उसकी कुल बिक्री ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 32500</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 35000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 30000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 34000</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 6</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.37</span> A reduction of 20% in the price of wheat enables a man to buy 5 kg more for Rs. 320. The original price of wheat per kg is: <span class="exam-tag">[RRB NTPC 2019]</span></div>
+                <div class="hindi-text">गेहूं की कीमत में 20% की कमी एक आदमी को 320 रुपये में 5 किलो अधिक खरीदने में सक्षम बनाती है। गेहूं की प्रति किलो मूल कीमत क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 16</div>
+                    <div class="option"><span class="opt-letter">(b)</span> Rs. 18</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 20</div>
+                    <div class="option"><span class="opt-letter">(d)</span> Rs. 25</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.38</span> A spider climbed 62.5% of the height of the pole in one hour and in the next hour it covered 12.5% of the remaining height. If pole's height is 192m, distance climbed in second hour is: <span class="exam-tag">[SSC CHSL 2023]</span></div>
+                <div class="hindi-text">एक मकड़ी एक घंटे में खंभे की 62.5% ऊंचाई पर चढ़ गई और अगले घंटे में उसने शेष ऊंचाई का 12.5% तय किया। यदि खंभे की ऊंचाई 192 मीटर है, तो दूसरे घंटे में तय की गई दूरी है:</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 3 m</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5 m</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7 m</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9 m</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.39</span> Ram saves 10% of his income. If his income increases by 20% and his expenditure increases by 20%, then his savings increase by: <span class="exam-tag">[SSC MTS 2022]</span></div>
+                <div class="hindi-text">राम अपनी आय का 10% बचाता है। यदि उसकी आय में 20% की वृद्धि होती है और उसके खर्च में 20% की वृद्धि होती है, तो उसकी बचत में कितने प्रतिशत की वृद्धि होगी?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 0%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.40</span> The price of an article is first increased by 20% and then decreased by 25%. What is the net percentage change in the price? <span class="exam-tag">[UP Police 2020]</span></div>
+                <div class="hindi-text">किसी वस्तु की कीमत पहले 20% बढ़ाई जाती है और फिर 25% घटाई जाती है। कीमत में शुद्ध प्रतिशत परिवर्तन क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10% Decrease</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5% Decrease</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10% Increase</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 5% Increase</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.41</span> What percent of a day is 3 hours and 36 minutes? <span class="exam-tag">[CTET Paper-2]</span></div>
+                <div class="hindi-text">3 घंटे और 36 मिनट एक दिन का कितना प्रतिशत है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 20%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.42</span> 25% of 120 + 40% of 380 = x% of 637. The value of x is: <span class="exam-tag">[IBPS Clerk 2022]</span></div>
+                <div class="hindi-text">120 का 25% + 380 का 40% = 637 का x%। x का मान क्या है?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 28.57</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 20</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25.5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.43</span> Out of the total students in a school, 60% are boys. If the number of girls is 972, find the total number of boys in the school. <span class="exam-tag">[SSC GD 2021]</span></div>
+                <div class="hindi-text">एक स्कूल में कुल छात्रों में से 60% लड़के हैं। यदि लड़कियों की संख्या 972 है, तो स्कूल में लड़कों की कुल संख्या ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1258</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 1458</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1324</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 1624</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 7</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 8 ================= -->
+    <div class="page">
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">01</div>
+                </div>
+                <div class="header-logo">
+                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PERCENTAGE</div>
+                <div class="title-hi">प्रतिशतता</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.44</span> In an exam, A gets 10% more marks than B, B gets 20% more than C, and C gets 32% less than D. If A gets 272 more marks than C, find marks obtained by B. <span class="exam-tag">[SSC CGL Mains 2022]</span></div>
+                <div class="hindi-text">एक परीक्षा में, A को B से 10% अधिक अंक मिलते हैं, B को C से 20% अधिक मिलते हैं, और C को D से 32% कम मिलते हैं। यदि A को C से 272 अधिक अंक मिलते हैं, तो B के अंक ज्ञात करें।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1020</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 850</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1200</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 960</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.45</span> If the income tax is increased by 19%, the net income is reduced by 1%. Find the rate of income tax. <span class="exam-tag">[SSC CHSL 2020]</span></div>
+                <div class="hindi-text">यदि आयकर में 19% की वृद्धि की जाती है, तो शुद्ध आय में 1% की कमी आती है। आयकर की दर ज्ञात कीजिए।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 4%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 5%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 8%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.46</span> Out of 100 students, 50 play cricket, 40 play football, and 10 play both. What percent of students play neither of the two games? <span class="exam-tag">[KVS TGT 2023]</span></div>
+                <div class="hindi-text">100 छात्रों में से 50 क्रिकेट खेलते हैं, 40 फुटबॉल खेलते हैं, और 10 दोनों खेलते हैं। कितने प्रतिशत छात्र दोनों में से कोई खेल नहीं खेलते?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.47</span> The price of a car is Rs. 500,000. It depreciates by 10% in the first year and 20% in the second year. What will be its price after 2 years? <span class="exam-tag">[RRB ALP 2018]</span></div>
+                <div class="hindi-text">एक कार की कीमत 500,000 रुपये है। पहले वर्ष में इसका मूल्य 10% कम होता है और दूसरे वर्ष में 20%। 2 वर्ष बाद इसकी कीमत क्या होगी?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 3,60,000</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 3,50,000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3,40,000</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 3,80,000</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.48</span> A vendor sells 60% of apples he had and throws away 15% of the remainder. Next day he sells 50% of the remainder and throws away the rest. What percent of his apples are thrown away? <span class="exam-tag">[SSC CPO 2022]</span></div>
+                <div class="hindi-text">एक विक्रेता अपने सेब का 60% बेचता है और शेष का 15% फेंक देता है। अगले दिन वह शेष का 50% बेचता है और बाकी फेंक देता है। उसने कुल कितने प्रतिशत सेब फेंके?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 23%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 17%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.49</span> When water is frozen into ice, its volume increases by 10%. By what percentage will the volume decrease when ice melts into water? <span class="exam-tag">[UP Police SI]</span></div>
+                <div class="hindi-text">जब पानी जमकर बर्फ बनता है, तो उसका आयतन 10% बढ़ जाता है। जब बर्फ पिघलकर पानी बनती है, तो आयतन कितने प्रतिशत कम हो जाएगा?</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 9.09%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 11.11%</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 9.5%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.50</span> In a test, a student scored 30% marks and failed by 25 marks. In the same test, another student scored 40% marks and secured 25 marks more than the pass marks. Find the maximum pass marks. <span class="exam-tag">[SSC MTS 2023]</span></div>
+                <div class="hindi-text">एक परीक्षा में, एक छात्र ने 30% अंक प्राप्त किए और 25 अंकों से अनुत्तीर्ण हो गया। उसी परीक्षा में, दूसरे छात्र ने 40% अंक प्राप्त किए और पास अंकों से 25 अंक अधिक प्राप्त किए। अधिकतम पास अंक ज्ञात करें।</div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 500</div>
+                    <div class="option"><span class="opt-letter">(b)</span> 150</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 175</div>
+                    <div class="option"><span class="opt-letter">(d)</span> 200</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAM AGE <span>ONLINE</span></div>
+            <div class="footer-right">Page 8</div>
+        </div>
+    </div>
+
+    <!-- SECURITY SCRIPT -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+        };
+    </script>
+</body>
+</html>
