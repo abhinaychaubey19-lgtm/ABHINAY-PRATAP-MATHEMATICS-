@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profit and Loss Practice Book | Exam Edge Institute</title>
+    <title>Simple Interest Practice Book | Exam Edge Institute</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,13 +18,8 @@
             --brand-gold: #eab308;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ANTI-COPY CSS */
         body {
             background-color: #e2e8f0;
             font-family: 'Poppins', sans-serif;
@@ -35,290 +30,98 @@
         }
 
         .pdf-btn-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
         }
         .btn-generate-pdf {
-            background: var(--brand-red);
-            color: #fff;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
+            background: var(--brand-red); color: #fff; border: none;
+            padding: 15px 25px; font-size: 1.1rem; font-weight: 800;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
+            display: flex; align-items: center; gap: 10px; transition: 0.3s;
         }
-        .btn-generate-pdf:hover {
-            transform: translateY(-5px);
-            background: #b91c1c;
-        }
+        .btn-generate-pdf:hover { transform: translateY(-5px); background: #b91c1c; }
 
-        /* --- A4 PAGE SETUP (STRICTLY FIXED LAYOUT TO PREVENT OVERLAP) --- */
+        /* --- A4 PAGE SETUP --- */
         .page {
-            width: 210mm;
-            height: 296mm; 
-            background: #ffffff;
-            margin: 15mm auto;
-            position: relative; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            /* Perfect padding to keep everything inside */
-            padding: 10mm 15mm 10mm 15mm; 
-            page-break-after: always;
-            overflow: hidden; 
-            border-left: 6px solid var(--brand-blue); 
-            border-right: 6px solid var(--brand-red); 
-            display: flex;
-            flex-direction: column;
+            width: 210mm; height: 296mm; background: #ffffff;
+            margin: 15mm auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 10mm 15mm 10mm 15mm; page-break-after: always; overflow: hidden; 
+            border-left: 6px solid var(--brand-blue); border-right: 6px solid var(--brand-red); 
+            display: flex; flex-direction: column;
         }
 
-        /* --- WATERMARK --- */
         .watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 5rem;
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.04); 
-            z-index: 0;
-            pointer-events: none;
-            white-space: nowrap;
-            text-transform: uppercase;
-            letter-spacing: 5px;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); 
+            z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 5px;
         }
 
-        /* --- BOOK HEADER --- */
         .book-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid var(--brand-red);
-            padding-bottom: 5mm;
-            margin-bottom: 4mm;
-            z-index: 2;
-            position: relative;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 3px solid var(--brand-red); padding-bottom: 5mm;
+            margin-bottom: 4mm; z-index: 2; position: relative;
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
+        .header-left { display: flex; align-items: center; }
         .chapter-badge-wrap {
-            display: flex;
-            align-items: center;
-            background: var(--bg-light);
-            border: 2px solid #e2e8f0;
-            border-radius: 8px 50px 50px 8px;
-            height: 44px;
-            position: relative;
-            z-index: 1;
+            display: flex; align-items: center; background: var(--bg-light); border: 2px solid #e2e8f0;
+            border-radius: 8px 50px 50px 8px; height: 44px; position: relative; z-index: 1;
         }
         .chap-label {
-            background: var(--brand-red);
-            color: #fff;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            font-weight: 900;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            border-radius: 6px 0 0 6px;
+            background: var(--brand-red); color: #fff; height: 100%; display: flex; align-items: center;
+            padding: 0 12px; font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; border-radius: 6px 0 0 6px;
         }
-        .chap-num {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--dark-text);
-            padding: 0 35px 0 12px;
-        }
+        .chap-num { font-size: 1.6rem; font-weight: 900; color: var(--dark-text); padding: 0 35px 0 12px; }
 
         .header-logo {
-            width: 80px; 
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid var(--brand-red);
-            background: #fff;
-            margin-left: -30px; 
-            z-index: 2;
-            padding: 3px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--brand-red);
+            background: #fff; margin-left: -30px; z-index: 2; padding: 3px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         }
-        .header-logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: contain;
-        }
+        .header-logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
 
-        .header-right {
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .title-en {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--dark-text);
-            line-height: 1;
-            letter-spacing: 1px;
-        }
-        .title-hi {
-            font-family: 'Mukta', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--brand-red);
-            line-height: 1;
-            margin-top: 4px;
-        }
+        .header-right { text-align: right; display: flex; flex-direction: column; justify-content: center; }
+        .title-en { font-size: 2rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 1px; }
+        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
 
-        /* --- CONTENT AREA (WITH OVERLAP PROTECTION) --- */
         .content-area {
-            flex: 1; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; 
-            /* Reserving exactly 20mm at the bottom so text NEVER touches footer */
-            margin-bottom: 20mm; 
-            z-index: 2;
-            position: relative;
+            flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
+            margin-bottom: 20mm; z-index: 2; position: relative;
         }
 
         .type-heading {
-            background: var(--dark-text);
-            color: #fff;
-            display: table;
-            padding: 3px 12px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            border-radius: 6px;
-            border-left: 5px solid var(--brand-gold);
-            margin-bottom: 1mm;
-            box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
-            text-transform: uppercase;
+            background: var(--dark-text); color: #fff; display: table; padding: 3px 12px;
+            font-size: 0.95rem; font-weight: 800; border-radius: 6px; border-left: 5px solid var(--brand-gold);
+            margin-bottom: 1mm; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); text-transform: uppercase;
         }
 
-        /* --- QUESTIONS STYLING --- */
-        .question-block {
-            display: flex;
-            flex-direction: column;
-            gap: 1mm;
-        }
-        .question-text {
-            font-size: 0.88rem; 
-            color: var(--dark-text);
-            font-weight: 600;
-            line-height: 1.4;
-            text-align: justify; 
-        }
-        .q-number {
-            color: var(--brand-red);
-            font-weight: 900;
-            margin-right: 6px;
-            font-size: 1rem;
-        }
+        .question-block { display: flex; flex-direction: column; gap: 1mm; }
+        .question-text { font-size: 0.88rem; color: var(--dark-text); font-weight: 600; line-height: 1.4; text-align: justify; }
+        .q-number { color: var(--brand-red); font-weight: 900; margin-right: 6px; font-size: 1rem; }
+        .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.95rem; color: var(--grey-text); font-weight: 600; line-height: 1.3; text-align: justify; }
 
-        .hindi-text {
-            font-family: 'Mukta', sans-serif;
-            font-size: 0.95rem; 
-            color: var(--grey-text);
-            font-weight: 600;
-            line-height: 1.3;
-            text-align: justify; 
-        }
-
-        .tag-wrapper {
-            text-align: right;
-            margin-top: 1px;
-            margin-bottom: 2px;
-        }
+        .tag-wrapper { text-align: right; margin-top: 1px; margin-bottom: 2px; }
         .exam-tag {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--brand-red), #ff4d4d);
-            color: #fff;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 2px 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(217, 38, 38, 0.3);
-            letter-spacing: 0.5px;
+            display: inline-block; background: linear-gradient(45deg, var(--brand-red), #ff4d4d); color: #fff;
+            font-size: 0.65rem; font-weight: 800; padding: 2px 10px; border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(217, 38, 38, 0.3); letter-spacing: 0.5px;
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-        }
-        .option {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--dark-text);
-        }
-        .opt-letter {
-            color: var(--brand-red);
-            font-weight: 800;
-            margin-right: 4px;
-        }
+        .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+        .option { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); }
+        .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 4px; }
 
-        /* --- ANSWER KEY STYLING --- */
-        .answer-key-wrapper {
-            margin-top: 5mm;
-            z-index: 2;
-            position: relative;
-        }
-        .answer-key-title {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--brand-red);
-            margin-bottom: 5mm;
-            text-decoration: underline;
-            text-underline-offset: 5px;
-        }
-        .ans-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
-        }
+        /* --- ANSWER KEY --- */
+        .answer-key-wrapper { margin-top: 5mm; z-index: 2; position: relative; }
+        .answer-key-title { text-align: center; font-size: 1.8rem; font-weight: 900; color: var(--brand-red); margin-bottom: 5mm; text-decoration: underline; text-underline-offset: 5px; }
+        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
         .ans-box {
-            background: #fff;
-            border: 2px solid var(--brand-red);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            box-shadow: 0 2px 8px rgba(217, 38, 38, 0.15);
+            background: #fff; border: 2px solid var(--brand-red); border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            padding: 8px; box-shadow: 0 2px 8px rgba(217, 38, 38, 0.15);
         }
-        .ans-num {
-            font-weight: 900;
-            color: var(--brand-red);
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-        .ans-opt {
-            font-weight: 800;
-            color: var(--dark-text);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-        }
+        .ans-num { font-weight: 900; color: var(--brand-red); margin-right: 8px; font-size: 1.1rem; }
+        .ans-opt { font-weight: 800; color: var(--dark-text); font-size: 1.1rem; text-transform: uppercase; }
 
         /* --- SOCIAL HANDLES --- */
-        .social-wrapper { 
-            text-align: center; 
-            margin-top: 15mm; 
-            padding-top: 5mm; 
-            border-top: 2px dashed #cbd5e1; 
-            z-index: 2; 
-            position: relative;
-        }
+        .social-wrapper { text-align: center; margin-top: 15mm; padding-top: 5mm; border-top: 2px dashed #cbd5e1; z-index: 2; position: relative; }
         .social-title { font-size: 1.1rem; font-weight: 900; color: var(--dark-text); margin-bottom: 10px; letter-spacing: 1px; }
         .social-handles { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
         .social-btn {
@@ -330,157 +133,103 @@
         .s-ig { background: #e1306c; }
         .s-tw { background: #000000; }
 
-        /* --- ABSOLUTE FOOTER --- */
+        /* --- FOOTER --- */
         .book-footer {
-            position: absolute;
-            bottom: 10mm; /* Locked firmly to the bottom */
-            left: 15mm;
-            right: 15mm;
-            height: 12mm;
-            border-top: 2.5px solid var(--brand-red);
-            padding-top: 3mm;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2;
-            background: #fff; 
+            position: absolute; bottom: 10mm; left: 15mm; right: 15mm; height: 12mm;
+            border-top: 2.5px solid var(--brand-red); padding-top: 3mm;
+            display: flex; justify-content: space-between; align-items: center; z-index: 2; background: #fff; 
         }
-        .footer-left {
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: var(--brand-blue);
-            letter-spacing: 0.5px;
-        }
-        .footer-right {
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: var(--dark-text);
-        }
+        .footer-left { font-size: 0.85rem; font-weight: 900; color: var(--brand-blue); letter-spacing: 0.5px; }
+        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); }
         .footer-center {
-            background: var(--brand-red);
-            color: #fff;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 0.9rem;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 10px rgba(217, 38, 38, 0.4);
-            border: 2px solid #fff;
+            background: var(--brand-red); color: #fff; width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;
+            position: absolute; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(217, 38, 38, 0.4); border: 2px solid #fff;
         }
 
-        @page {
-            size: A4;
-            margin: 0; 
-        }
-        
+        @page { size: A4; margin: 0; }
         @media print {
             body { background: white; }
             .pdf-btn-container { display: none !important; }
-            .page {
-                margin: 0;
-                box-shadow: none;
-                width: 210mm;
-                height: 297mm;
-                page-break-after: always;
-            }
+            .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; page-break-after: always; }
         }
     </style>
 </head>
 <body>
 
-    <!-- PDF GENERATE BUTTON -->
     <div class="pdf-btn-container">
         <button class="btn-generate-pdf" onclick="window.print()">
             <i class="fas fa-file-pdf"></i> SAVE AS PDF
         </button>
     </div>
 
-    <!-- ================= PAGE 1 (Q1 to Q5) ================= -->
+    <!-- ================= PAGE 1 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
-        
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 1: BASIC PROFIT & LOSS</div>
+            <div class="type-heading">TYPE - 1: BASIC SI CALCULATION</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.1</span> A person buys an article for Rs. 400 and sells it for Rs. 500. Find his profit percentage.</div>
-                <div class="hindi-text">एक व्यक्ति एक वस्तु को 400 रुपये में खरीदता है और 500 रुपये में बेचता है। उसका लाभ प्रतिशत ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.1</span> Find the simple interest on Rs. 5000 at the rate of 10% per annum for 2 years.</div>
+                <div class="hindi-text">5000 रुपये पर 10% वार्षिक दर से 2 वर्ष का साधारण ब्याज ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 24%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 16.66%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 800</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.2</span> The cost price of 15 articles is equal to the selling price of 12 articles. Find the profit percentage.</div>
-                <div class="hindi-text">15 वस्तुओं का क्रय मूल्य 12 वस्तुओं के विक्रय मूल्य के बराबर है। लाभ प्रतिशत ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.2</span> What will be the simple interest on Rs. 8000 at 5% per annum for 3 years?</div>
+                <div class="hindi-text">8000 रुपये पर 5% वार्षिक दर से 3 वर्षों का साधारण ब्याज क्या होगा?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 16.66%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1500</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1400</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1600</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.3</span> By selling a watch for Rs. 1440, a man loses 10%. At what price should he sell it to gain 10%?</div>
-                <div class="hindi-text">एक घड़ी को 1440 रुपये में बेचने पर एक आदमी को 10% की हानि होती है। 10% का लाभ प्राप्त करने के लिए उसे इसे किस कीमत पर बेचना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2024</span></div>
+                <div class="question-text"><span class="q-number">Q.3</span> Find the simple interest on a principal of Rs. 12000 at 8% per annum for 9 months.</div>
+                <div class="hindi-text">12000 रुपये के मूलधन पर 8% वार्षिक दर से 9 महीने का साधारण ब्याज ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1584</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1760</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1600</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1800</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 720</div><div class="option"><span class="opt-letter">(b)</span> Rs. 840</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 960</div><div class="option"><span class="opt-letter">(d)</span> Rs. 600</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.4</span> A shopkeeper sold an article for Rs. 2500. If the cost price of the article is Rs. 2000, find the profit or loss percent.</div>
-                <div class="hindi-text">एक दुकानदार ने एक वस्तु 2500 रुपये में बेची। यदि वस्तु का क्रय मूल्य 2000 रुपये है, तो लाभ या हानि प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.4</span> The simple interest on Rs. 4000 in 3 years at the rate of x% per annum is Rs. 600. Find x.</div>
+                <div class="hindi-text">4000 रुपये पर 3 वर्षों में x% वार्षिक दर से साधारण ब्याज 600 रुपये है। x का मान ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20% Profit</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 25% Profit</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20% Loss</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25% Loss</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4%</div><div class="option"><span class="opt-letter">(b)</span> 5%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6%</div><div class="option"><span class="opt-letter">(d)</span> 8%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.5</span> If an article is sold at a loss of 20%, the ratio of its selling price to its cost price will be:</div>
-                <div class="hindi-text">यदि किसी वस्तु को 20% की हानि पर बेचा जाता है, तो उसके विक्रय मूल्य और क्रय मूल्य का अनुपात क्या होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.5</span> At what rate percent per annum will the simple interest on a sum of money be 2/5 of the principal amount in 10 years?</div>
+                <div class="hindi-text">किस वार्षिक प्रतिशत दर पर किसी धनराशि पर साधारण ब्याज 10 वर्षों में मूलधन का 2/5 हो जाएगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4:5</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 5:4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1:5</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 5:6</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4%</div><div class="option"><span class="opt-letter">(b)</span> 5%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2%</div><div class="option"><span class="opt-letter">(d)</span> 8%</div>
                 </div>
             </div>
         </div>
@@ -492,89 +241,75 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 2 (Q6 to Q10) ================= -->
+    <!-- ================= PAGE 2 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-            
-            <div class="type-heading">TYPE - 2: SUCCESSIVE PROFIT/LOSS</div>
+            <div class="type-heading">TYPE - 2: FINDING PRINCIPAL & AMOUNT</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.6</span> A sells an article to B at a profit of 20%, and B sells it to C at a profit of 10%. If C pays Rs. 660, what did it cost A?</div>
-                <div class="hindi-text">A एक वस्तु B को 20% लाभ पर बेचता है, और B उसे C को 10% लाभ पर बेचता है। यदि C 660 रुपये का भुगतान करता है, तो A को इसकी क्या कीमत चुकानी पड़ी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.6</span> A certain sum of money amounts to Rs. 1008 in 2 years and to Rs. 1164 in 3.5 years. Find the principal.</div>
+                <div class="hindi-text">एक निश्चित धनराशि 2 वर्षों में 1008 रुपये और 3.5 वर्षों में 1164 रुपये हो जाती है। मूलधन ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 450</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 500</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 550</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 600</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 800</div><div class="option"><span class="opt-letter">(b)</span> Rs. 850</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 900</div><div class="option"><span class="opt-letter">(d)</span> Rs. 750</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.7</span> A manufacturer marks an article at Rs. 500 and allows a discount of 10%. The shopkeeper then sells it at a 20% profit. What is the final selling price?</div>
-                <div class="hindi-text">एक निर्माता किसी वस्तु का मूल्य 500 रुपये अंकित करता है और 10% की छूट देता है। फिर दुकानदार उसे 20% लाभ पर बेचता है। अंतिम विक्रय मूल्य क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 540</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 600</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 550</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 580</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.8</span> P bought an article for Rs. 1200 and sold it to Q at 15% loss. Q sold it to R at 20% profit. At what price did R buy the article?</div>
-                <div class="hindi-text">P ने एक वस्तु 1200 रुपये में खरीदी और उसे Q को 15% हानि पर बेच दी। Q ने उसे R को 20% लाभ पर बेचा। R ने वस्तु किस कीमत पर खरीदी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NVS TGT 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1224</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1020</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1150</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1250</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.9</span> A radio is sold for Rs. 990 at a profit of 10%. What would have been the actual profit or loss on it if it had been sold for Rs. 890?</div>
-                <div class="hindi-text">एक रेडियो 10% के लाभ पर 990 रुपये में बेचा जाता है। यदि इसे 890 रुपये में बेचा जाता तो उस पर वास्तविक लाभ या हानि क्या होती?</div>
+                <div class="question-text"><span class="q-number">Q.7</span> What sum of money will amount to Rs. 520 in 5 years and to Rs. 568 in 7 years at simple interest?</div>
+                <div class="hindi-text">कौन सी धनराशि साधारण ब्याज पर 5 वर्षों में 520 रुपये और 7 वर्षों में 568 रुपये हो जाएगी?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 10 Loss</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 10 Profit</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 90 Loss</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 90 Profit</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 400</div><div class="option"><span class="opt-letter">(b)</span> Rs. 450</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 380</div><div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.10</span> Successive discounts of 20% and 10% are equivalent to a single discount of:</div>
-                <div class="hindi-text">20% और 10% की क्रमिक छूट किस एकल छूट के बराबर है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> CTET 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.8</span> A sum amounts to Rs. 7200 in 3 years and Rs. 8400 in 5 years. Find the rate of interest per annum.</div>
+                <div class="hindi-text">एक राशि 3 वर्षों में 7200 रुपये और 5 वर्षों में 8400 रुपये हो जाती है। प्रति वर्ष ब्याज दर ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 28%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 32%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8%</div><div class="option"><span class="opt-letter">(b)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 11%</div><div class="option"><span class="opt-letter">(d)</span> 12%</div>
                 </div>
             </div>
 
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.9</span> If the simple interest on a certain sum of money for 3 years at 12.5% per annum is Rs. 3500 less than its principal. Find the sum.</div>
+                <div class="hindi-text">यदि किसी निश्चित राशि पर 12.5% वार्षिक दर से 3 वर्ष का साधारण ब्याज उसके मूलधन से 3500 रुपये कम है। राशि ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 5600</div><div class="option"><span class="opt-letter">(b)</span> Rs. 6000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 4800</div><div class="option"><span class="opt-letter">(d)</span> Rs. 6400</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.10</span> A sum of money at simple interest amounts to Rs. 2240 in 2 years and to Rs. 2600 in 5 years. What is the principal amount?</div>
+                <div class="hindi-text">साधारण ब्याज पर एक धनराशि 2 वर्षों में 2240 रुपये और 5 वर्षों में 2600 रुपये हो जाती है। मूलधन क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 2000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1800</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1950</div><div class="option"><span class="opt-letter">(d)</span> Rs. 2100</div>
+                </div>
+            </div>
         </div>
 
         <div class="book-footer">
@@ -584,89 +319,75 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 3 (Q11 to Q15) ================= -->
+    <!-- ================= PAGE 3 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-
-            <div class="type-heading">TYPE - 3: DISHONEST DEALER</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.11</span> A dishonest dealer professes to sell his goods at cost price, but he uses a weight of 900 grams for a kg. Find his gain percent.</div>
-                <div class="hindi-text">एक बेईमान व्यापारी अपनी वस्तुओं को क्रय मूल्य पर बेचने का दावा करता है, लेकिन वह एक किलोग्राम के लिए 900 ग्राम वजन का उपयोग करता है। उसका लाभ प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 11.11%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12.5%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 9.09%</div>
-                </div>
-            </div>
+            <div class="type-heading">TYPE - 3: SUM BECOMES 'N' TIMES</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.12</span> A shopkeeper marks his goods 20% above the cost price and gives a discount of 10% to the customer. Also, he weighs 900g instead of 1kg. Find his overall profit percentage.</div>
-                <div class="hindi-text">एक दुकानदार अपना माल क्रय मूल्य से 20% ऊपर अंकित करता है और ग्राहक को 10% की छूट देता है। साथ ही, वह 1 किलो के स्थान पर 900 ग्राम तौलता है। उसका कुल लाभ प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.13</span> A grocer sells rice at a profit of 10% and uses weights which are 20% less than the market weight. The total gain earned by him is:</div>
-                <div class="hindi-text">एक पंसारी 10% के लाभ पर चावल बेचता है और बाजार के वजन से 20% कम वजन का उपयोग करता है। उसके द्वारा अर्जित कुल लाभ है:</div>
+                <div class="question-text"><span class="q-number">Q.11</span> A sum of money doubles itself in 10 years at simple interest. What is the rate of interest?</div>
+                <div class="hindi-text">एक धनराशि साधारण ब्याज पर 10 वर्षों में दोगुनी हो जाती है। ब्याज दर क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 35%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 37.5%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div><div class="option"><span class="opt-letter">(b)</span> 12%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15%</div><div class="option"><span class="opt-letter">(d)</span> 20%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.14</span> By selling cloth using a faulty meter scale, a merchant makes a profit of 25% while buying and 25% while selling. What is his total profit percentage?</div>
-                <div class="hindi-text">खराब मीटर स्केल का उपयोग करके कपड़ा बेचकर, एक व्यापारी खरीदते समय 25% और बेचते समय 25% का लाभ कमाता है। उसका कुल लाभ प्रतिशत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.12</span> A sum of money becomes three times itself in 20 years at simple interest. In how many years will it become double of itself at the same rate?</div>
+                <div class="hindi-text">एक धनराशि साधारण ब्याज पर 20 वर्षों में तीन गुनी हो जाती है। समान दर पर वह कितने वर्षों में दोगुनी हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 50%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 56.25%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 62.5%</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.15</span> A dishonest milkman professes to sell his milk at cost price but he mixes it with water and thereby gains 25%. The percentage of water in the mixture is:</div>
-                <div class="hindi-text">एक बेईमान दूधवाला अपना दूध क्रय मूल्य पर बेचने का दावा करता है लेकिन वह इसे पानी के साथ मिलाता है और इस प्रकार 25% लाभ प्राप्त करता है। मिश्रण में पानी का प्रतिशत है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 16.66%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 33.33%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10 years</div><div class="option"><span class="opt-letter">(b)</span> 12 years</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8 years</div><div class="option"><span class="opt-letter">(d)</span> 15 years</div>
                 </div>
             </div>
 
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.13</span> In how much time will a sum of money become 4 times of itself at 15% per annum simple interest?</div>
+                <div class="hindi-text">कितने समय में एक धनराशि 15% वार्षिक साधारण ब्याज की दर से 4 गुनी हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 15 years</div><div class="option"><span class="opt-letter">(b)</span> 20 years</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25 years</div><div class="option"><span class="opt-letter">(d)</span> 30 years</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.14</span> A sum of money becomes 7/4 of itself in 6 years at a certain rate of simple interest. Find the rate of interest.</div>
+                <div class="hindi-text">एक धनराशि एक निश्चित साधारण ब्याज दर पर 6 वर्षों में स्वयं की 7/4 हो जाती है। ब्याज दर ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12%</div><div class="option"><span class="opt-letter">(b)</span> 12.5%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15%</div><div class="option"><span class="opt-letter">(d)</span> 10%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.15</span> If a sum of money at simple interest becomes 36 times in 100 years, then it will become 29 times in:</div>
+                <div class="hindi-text">यदि कोई धनराशि साधारण ब्याज पर 100 वर्षों में 36 गुना हो जाती है, तो वह कितने वर्षों में 29 गुना हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 80 years</div><div class="option"><span class="opt-letter">(b)</span> 75 years</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 90 years</div><div class="option"><span class="opt-letter">(d)</span> 85 years</div>
+                </div>
+            </div>
         </div>
 
         <div class="book-footer">
@@ -676,91 +397,75 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 4 (Q16 to Q20) ================= -->
+    <!-- ================= PAGE 4 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-
-            <div class="type-heading">TYPE - 4: MARKED PRICE & DISCOUNT</div>
+            <div class="type-heading">TYPE - 4: DIFFERENCE IN TIME/RATE</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.16</span> The marked price of an article is Rs. 800. After allowing a discount of 15%, the shopkeeper gains 10%. Find the cost price of the article.</div>
-                <div class="hindi-text">एक वस्तु का अंकित मूल्य 800 रुपये है। 15% की छूट देने के बाद, दुकानदार को 10% का लाभ होता है। वस्तु का क्रय मूल्य ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.16</span> If the simple interest on a certain sum of money is Rs. 256 for 4 years at 8% p.a., what will be the SI on the same sum for 5 years at 10% p.a.?</div>
+                <div class="hindi-text">यदि किसी निश्चित राशि पर 8% वार्षिक दर से 4 वर्ष का साधारण ब्याज 256 रुपये है, तो उसी राशि पर 10% वार्षिक दर से 5 वर्ष का साधारण ब्याज क्या होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 600</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 620</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 680</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 640</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 400</div><div class="option"><span class="opt-letter">(b)</span> Rs. 380</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 420</div><div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.17</span> To gain 8% after allowing a discount of 10%, by what percent should the cost price be hiked in the list price?</div>
-                <div class="hindi-text">10% की छूट देने के बाद 8% लाभ प्राप्त करने के लिए, क्रय मूल्य को सूची मूल्य में कितने प्रतिशत बढ़ाया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains</span></div>
+                <div class="question-text"><span class="q-number">Q.17</span> The difference between the simple interest received from two different sources on Rs. 1500 for 3 years is Rs. 13.50. Find the difference between their rates of interest.</div>
+                <div class="hindi-text">1500 रुपये पर 3 वर्षों के लिए दो अलग-अलग स्रोतों से प्राप्त साधारण ब्याज के बीच का अंतर 13.50 रुपये है। उनकी ब्याज दरों के बीच का अंतर ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 18%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 30%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 0.1%</div><div class="option"><span class="opt-letter">(b)</span> 0.2%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 0.3%</div><div class="option"><span class="opt-letter">(d)</span> 0.4%</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.18</span> A tradesman marks his goods 25% above the cost price and allows purchasers a discount of 12.5%. Find his profit percentage.</div>
-                <div class="hindi-text">एक व्यापारी अपने माल पर क्रय मूल्य से 25% अधिक अंकित करता है और खरीदारों को 12.5% की छूट देता है। उसका लाभ प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.18</span> If a sum of money is lent at simple interest for 2 years at 3% higher rate, it would fetch Rs. 300 more. Find the sum.</div>
+                <div class="hindi-text">यदि कोई धनराशि साधारण ब्याज पर 2 वर्षों के लिए 3% अधिक दर पर उधार दी जाती है, तो 300 रुपये अधिक प्राप्त होते। धनराशि ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 9.375%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 8.5%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12.5%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 4000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 5000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 6000</div><div class="option"><span class="opt-letter">(d)</span> Rs. 4500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.19</span> At what percentage above the cost price must an article be marked so as to gain 33% after allowing a customer a discount of 5%?</div>
-                <div class="hindi-text">ग्राहक को 5% की छूट देने के बाद 33% लाभ प्राप्त करने के लिए किसी वस्तु पर क्रय मूल्य से कितने प्रतिशत अधिक अंकित किया जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2020</span></div>
+                <div class="question-text"><span class="q-number">Q.19</span> The simple interest on a sum of money for 3 years is Rs. 240 and for 4 years is Rs. 320. If the rate of interest is 8%, find the principal.</div>
+                <div class="hindi-text">एक धनराशि पर 3 वर्ष का साधारण ब्याज 240 रुपये और 4 वर्ष का 320 रुपये है। यदि ब्याज दर 8% है, तो मूलधन ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 38%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 40%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 45%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 50%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 800</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1500</div>
                 </div>
             </div>
-            
-            <div class="type-heading">TYPE - 5: TWO ARTICLES SAME S.P.</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.20</span> A man sells two articles for Rs. 5000 each. On one he gains 20% and on the other he loses 20%. Find his overall gain or loss percent.</div>
-                <div class="hindi-text">एक आदमी दो वस्तुएँ 5000 रुपये प्रत्येक में बेचता है। एक पर उसे 20% का लाभ होता है और दूसरे पर उसे 20% की हानि होती है। उसका कुल लाभ या हानि प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.20</span> A sum was put at simple interest at a certain rate for 3 years. Had it been put at 2% higher rate, it would have fetched Rs. 360 more. Find the sum.</div>
+                <div class="hindi-text">एक राशि 3 वर्ष के लिए एक निश्चित दर पर साधारण ब्याज पर रखी गई थी। यदि इसे 2% अधिक दर पर रखा जाता, तो 360 रुपये अधिक मिलते। राशि ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4% Loss</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 4% Gain</div>
-                    <div class="option"><span class="opt-letter">(c)</span> No Loss No Gain</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 2% Loss</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 5000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 6000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 4000</div><div class="option"><span class="opt-letter">(d)</span> Rs. 5500</div>
                 </div>
             </div>
-
         </div>
 
         <div class="book-footer">
@@ -770,89 +475,75 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 5 (Q21 to Q25) ================= -->
+    <!-- ================= PAGE 5 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
+            <div class="type-heading">TYPE - 5: SPLITTING THE SUM</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.21</span> A shopkeeper sells two TV sets at the same price. There is a gain of 20% on one TV and a loss of 20% on the other. State which of the following statements is correct:</div>
-                <div class="hindi-text">एक दुकानदार दो टीवी सेट एक ही कीमत पर बेचता है। एक टीवी पर 20% का लाभ और दूसरे पर 20% की हानि होती है। बताएं कि निम्नलिखित में से कौन सा कथन सही है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
+                <div class="question-text"><span class="q-number">Q.21</span> A sum of Rs. 10000 is lent partly at 8% and remaining at 10% per annum. If the yearly interest on the average is 9.2%, the two parts are:</div>
+                <div class="hindi-text">10000 रुपये की राशि आंशिक रूप से 8% और शेष 10% प्रति वर्ष पर उधार दी जाती है। यदि औसत वार्षिक ब्याज 9.2% है, तो दोनों भाग हैं:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Tier 2</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> No gain No loss</div>
-                    <div class="option"><span class="opt-letter">(b)</span> He loses by 2%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> He gains by 4%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> He loses by 4%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4000, 6000</div><div class="option"><span class="opt-letter">(b)</span> 5000, 5000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6000, 4000</div><div class="option"><span class="opt-letter">(d)</span> 3000, 7000</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.22</span> Two articles were sold for Rs. 2400 each. The first was sold at a profit of 20% and the second at a loss of 20%. Find the net loss in amount.</div>
-                <div class="hindi-text">दो वस्तुएँ 2400 रुपये प्रत्येक में बेची गईं। पहली को 20% लाभ पर और दूसरी को 20% हानि पर बेचा गया। राशि में शुद्ध हानि ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.22</span> Rs. 4000 is divided into two parts such that if one part be invested at 3% and the other at 5%, the annual interest from both the investments is Rs. 144. Find the first part.</div>
+                <div class="hindi-text">4000 रुपये को दो भागों में इस प्रकार विभाजित किया जाता है कि यदि एक भाग को 3% और दूसरे को 5% पर निवेश किया जाता है, तो दोनों निवेशों से वार्षिक ब्याज 144 रुपये है। पहला भाग ज्ञात करें।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 200</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 400</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 100</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 2800</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 2000</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1500</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.23</span> Ram buys two horses for Rs. 2600. He sells one at a loss of 10% and the other at a profit of 15%. If both horses are sold at same price, find CP of the horse sold at loss.</div>
-                <div class="hindi-text">राम 2600 रुपये में दो घोड़े खरीदता है। वह एक को 10% हानि पर और दूसरे को 15% लाभ पर बेचता है। यदि दोनों घोड़े समान कीमत पर बेचे जाते हैं, तो हानि पर बेचे गए घोड़े का क्रय मूल्य ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.23</span> A person lends Rs. 25000 partly at 11% and the remaining at 14% p.a. If his total income after 1 year is Rs. 3200, find the amount lent at 14%.</div>
+                <div class="hindi-text">एक व्यक्ति 25000 रुपये आंशिक रूप से 11% और शेष 14% वार्षिक पर उधार देता है। यदि 1 वर्ष के बाद उसकी कुल आय 3200 रुपये है, तो 14% पर उधार दी गई राशि ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1400</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1460</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1500</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1600</div>
-                </div>
-            </div>
-
-            <div class="type-heading">TYPE - 6: MIXTURE & ALLEGATION BASED</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.24</span> A shopkeeper bought 30 kg of wheat at Rs. 45 per kg. He sold 40% of it at Rs. 50 per kg. At what rate should he sell the remaining to gain 25% on the whole transaction?</div>
-                <div class="hindi-text">एक दुकानदार ने 45 रुपये प्रति किलो के हिसाब से 30 किलो गेहूं खरीदा। उसने इसका 40%, 50 रुपये प्रति किलो के हिसाब से बेच दिया। पूरे लेन-देन पर 25% का लाभ प्राप्त करने के लिए उसे शेष को किस दर पर बेचना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 60.5</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 54</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 60</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 55.5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 15000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 10000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 12500</div><div class="option"><span class="opt-letter">(d)</span> Rs. 20000</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.25</span> A man bought two articles for Rs. 3000. He sold one at a profit of 15% and the other at a loss of 10%. If he makes no profit no loss in the whole transaction, what is the CP of the article sold at loss?</div>
-                <div class="hindi-text">एक आदमी ने 3000 रुपये में दो वस्तुएं खरीदीं। उसने एक को 15% लाभ पर और दूसरे को 10% हानि पर बेचा। यदि वह पूरे लेन-देन में कोई लाभ या हानि नहीं कमाता है, तो हानि पर बेची गई वस्तु का क्रय मूल्य क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NVS PGT 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.24</span> Out of Rs. 50,000, a man lends Rs. 8,000 at 5.5% and Rs. 24,000 at 6%. He lends the remaining money at a certain rate of interest so that he gets total annual interest of Rs. 3,680. The rate of interest on the remaining amount is:</div>
+                <div class="hindi-text">50,000 रुपये में से, एक आदमी 8,000 रुपये 5.5% पर और 24,000 रुपये 6% पर उधार देता है। वह शेष राशि को एक निश्चित ब्याज दर पर उधार देता है ताकि उसे कुल वार्षिक ब्याज 3,680 रुपये मिले। शेष राशि पर ब्याज दर है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1200</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1800</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1500</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 2000</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 8%</div><div class="option"><span class="opt-letter">(b)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12%</div><div class="option"><span class="opt-letter">(d)</span> 9%</div>
                 </div>
             </div>
 
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.25</span> Rs. 12000 is divided into two parts such that the simple interest on the first part for 3 years at 12% per annum is equal to the simple interest on the second part for 4.5 years at 16% per annum. The ratio of the first part to the second part is:</div>
+                <div class="hindi-text">12000 रुपये को दो भागों में इस प्रकार विभाजित किया जाता है कि पहले भाग पर 12% वार्षिक दर से 3 वर्ष का साधारण ब्याज दूसरे भाग पर 16% वार्षिक दर से 4.5 वर्ष के साधारण ब्याज के बराबर है। पहले भाग का दूसरे भाग से अनुपात है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2:1</div><div class="option"><span class="opt-letter">(b)</span> 1:2</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3:2</div><div class="option"><span class="opt-letter">(d)</span> 2:3</div>
+                </div>
+            </div>
         </div>
 
         <div class="book-footer">
@@ -862,89 +553,75 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 6 (Q26 to Q30) ================= -->
+    <!-- ================= PAGE 6 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-            
+            <div class="type-heading">TYPE - 6: CHANGE IN RATE %</div>
+
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.26</span> Pure milk costs Rs. 20 per litre. After adding water the milkman sells the mixture at the rate of Rs. 18 per litre, thereby making a profit of 20%. In what ratio does he mix water with milk?</div>
-                <div class="hindi-text">शुद्ध दूध की कीमत 20 रुपये प्रति लीटर है। पानी मिलाने के बाद दूधवाला मिश्रण को 18 रुपये प्रति लीटर की दर से बेचता है, जिससे उसे 20% का लाभ होता है। वह दूध में पानी किस अनुपात में मिलाता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
+                <div class="question-text"><span class="q-number">Q.26</span> If the simple interest on a certain sum of money is Rs. 1200 at 5% p.a. for 4 years. Find the interest if rate is increased by 2%.</div>
+                <div class="hindi-text">यदि किसी निश्चित राशि पर 5% वार्षिक दर से 4 वर्ष का साधारण ब्याज 1200 रुपये है। यदि दर में 2% की वृद्धि कर दी जाए तो ब्याज ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1:3</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 1:4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1:2</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 2:3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1680</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1440</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1500</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1800</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.27</span> A trader mixes 26 kg of rice at Rs. 20 per kg with 30 kg of rice of other variety at Rs. 36 per kg and sells the mixture at Rs. 30 per kg. His profit percent is:</div>
-                <div class="hindi-text">एक व्यापारी 20 रुपये प्रति किलोग्राम वाले 26 किलो चावल को 36 रुपये प्रति किलोग्राम वाले 30 किलो चावल की अन्य किस्म के साथ मिलाता है और मिश्रण को 30 रुपये प्रति किलोग्राम पर बेचता है। उसका लाभ प्रतिशत है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.27</span> A sum of money amounts to Rs. 5200 in 5 years at 4% per annum. What will it amount to in 5 years if the rate of interest becomes 6%?</div>
+                <div class="hindi-text">कोई धनराशि 4% वार्षिक दर से 5 वर्षों में 5200 रुपये हो जाती है। यदि ब्याज दर 6% हो जाए तो 5 वर्षों में यह कितनी हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 8%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 12%</div>
-                </div>
-            </div>
-
-            <div class="type-heading">TYPE - 7: QUANTITY BASED QUESTIONS</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.28</span> If bananas are bought at the rate of 4 for Rs. 10 and sold at the rate of 5 for Rs. 15, what is the profit percent?</div>
-                <div class="hindi-text">यदि केले 10 रुपये में 4 की दर से खरीदे जाते हैं और 15 रुपये में 5 की दर से बेचे जाते हैं, तो लाभ प्रतिशत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.29</span> A fruit seller buys lemons at 2 for a rupee and sells them at 5 for three rupees. His profit percent is:</div>
-                <div class="hindi-text">एक फल विक्रेता एक रुपये में 2 नींबू खरीदता है और उन्हें तीन रुपये में 5 बेचता है। उसका लाभ प्रतिशत है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 25%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 5600</div><div class="option"><span class="opt-letter">(b)</span> Rs. 5400</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 5800</div><div class="option"><span class="opt-letter">(d)</span> Rs. 6000</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.30</span> A man bought some eggs at 3 for Rs. 5 and sold them at 5 for Rs. 12. Thus he gained Rs. 143 in all. The number of eggs he bought is:</div>
-                <div class="hindi-text">एक आदमी ने 5 रुपये में 3 की दर से कुछ अंडे खरीदे और 12 रुपये में 5 की दर से बेच दिए। इस प्रकार उसे कुल 143 रुपये का लाभ हुआ। उसके द्वारा खरीदे गए अंडों की संख्या है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Tier 2</span></div>
+                <div class="question-text"><span class="q-number">Q.28</span> The SI on a certain sum is Rs. 400 for 2 years at 10% per annum. Find the simple interest on the same sum for 3 years at 15% per annum.</div>
+                <div class="hindi-text">एक निश्चित राशि पर 10% प्रति वर्ष की दर से 2 वर्ष का साधारण ब्याज 400 रुपये है। उसी राशि पर 15% प्रति वर्ष की दर से 3 वर्ष का साधारण ब्याज ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 210</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 200</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 195</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 190</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 800</div><div class="option"><span class="opt-letter">(b)</span> Rs. 900</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 700</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1000</div>
                 </div>
             </div>
 
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.29</span> A borrowed Rs. 5000 from B at simple interest. After 4 years, B received Rs. 1000 more than the principal. What is the rate of interest?</div>
+                <div class="hindi-text">A ने B से साधारण ब्याज पर 5000 रुपये उधार लिए। 4 साल बाद, B को मूलधन से 1000 रुपये अधिक मिले। ब्याज की दर क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 4%</div><div class="option"><span class="opt-letter">(b)</span> 5%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 6%</div><div class="option"><span class="opt-letter">(d)</span> 10%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.30</span> What annual rate of simple interest will make a sum double itself in 8 years?</div>
+                <div class="hindi-text">साधारण ब्याज की किस वार्षिक दर से कोई राशि 8 वर्षों में स्वयं की दोगुनी हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS Clerk 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12.5%</div><div class="option"><span class="opt-letter">(b)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15%</div><div class="option"><span class="opt-letter">(d)</span> 20%</div>
+                </div>
+            </div>
         </div>
 
         <div class="book-footer">
@@ -954,91 +631,75 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 7 (Q31 to Q35) ================= -->
+    <!-- ================= PAGE 7 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-
-            <div class="type-heading">TYPE - 8: CONDITIONAL PROFIT & LOSS</div>
+            <div class="type-heading">TYPE - 7: EQUAL AMOUNT / INTEREST</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.31</span> Had an article been sold at Rs. 27.50 more, there would have been a profit of 15% instead of a loss of 10%. Find the cost price of the article.</div>
-                <div class="hindi-text">यदि किसी वस्तु को 27.50 रुपये अधिक में बेचा जाता, तो 10% हानि के बजाय 15% का लाभ होता। वस्तु का क्रय मूल्य ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI</span></div>
+                <div class="question-text"><span class="q-number">Q.31</span> A sum of Rs. 1500 is lent out in two parts such that the simple interest on one part at 10% per annum for 5 years is equal to the simple interest on another part at 12.5% per annum for 4 years. The sum lent at 12.5% is:</div>
+                <div class="hindi-text">1500 रुपये की राशि दो भागों में इस प्रकार उधार दी जाती है कि एक भाग पर 10% प्रति वर्ष की दर से 5 वर्ष का साधारण ब्याज दूसरे भाग पर 12.5% प्रति वर्ष की दर से 4 वर्ष के साधारण ब्याज के बराबर है। 12.5% पर उधार दी गई राशि है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 110</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 120</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 130</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 140</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 750</div><div class="option"><span class="opt-letter">(b)</span> Rs. 800</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 700</div><div class="option"><span class="opt-letter">(d)</span> Rs. 600</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.32</span> The profit earned by selling an article for Rs. 832 is equal to the loss incurred when the same article is sold for Rs. 448. What should be the selling price for making 50% profit?</div>
-                <div class="hindi-text">किसी वस्तु को 832 रुपये में बेचने पर अर्जित लाभ उसी वस्तु को 448 रुपये में बेचने पर हुई हानि के बराबर है। 50% लाभ कमाने के लिए विक्रय मूल्य क्या होना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 960</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 1060</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 920</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 1000</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.33</span> A shopkeeper sells an article at 15% profit. Had he bought it at 10% less and sold it for Rs. 4 less, he would have gained 25%. Cost price of article is:</div>
-                <div class="hindi-text">एक दुकानदार किसी वस्तु को 15% लाभ पर बेचता है। यदि उसने इसे 10% कम पर खरीदा होता और 4 रुपये कम में बेचा होता, तो उसे 25% का लाभ होता। वस्तु का क्रय मूल्य है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI Clerk 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 160</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 150</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 180</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 200</div>
-                </div>
-            </div>
-
-            <div class="type-heading">TYPE - 9: ERROR IN CALCULATION</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.34</span> A man calculates his profit percentage on the selling price and finds it to be 20%. What is his actual profit percentage?</div>
-                <div class="hindi-text">एक आदमी विक्रय मूल्य पर अपने लाभ प्रतिशत की गणना करता है और इसे 20% पाता है। उसका वास्तविक लाभ प्रतिशत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 16.66%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 33.33%</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.35</span> If a loss of 15% is calculated on the selling price, then what is the actual loss percentage on cost price?</div>
-                <div class="hindi-text">यदि 15% की हानि की गणना विक्रय मूल्य पर की जाती है, तो क्रय मूल्य पर वास्तविक हानि प्रतिशत क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.32</span> Rs. 12000 is divided into two parts such that the simple interest on the first part for 3 years at 12% per annum may be equal to the simple interest on the second part for 4.5 years at 16% per annum. Find the larger part.</div>
+                <div class="hindi-text">12000 रुपये को दो भागों में इस प्रकार विभाजित किया जाता है कि पहले भाग पर 12% वार्षिक दर से 3 वर्ष का साधारण ब्याज दूसरे भाग पर 16% वार्षिक दर से 4.5 वर्ष के साधारण ब्याज के बराबर हो। बड़ा भाग ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 13.04%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 15%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 17.5%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 12.5%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 8000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 6000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 4000</div><div class="option"><span class="opt-letter">(d)</span> Rs. 9000</div>
                 </div>
             </div>
 
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.33</span> A man divided his share of Rs. 18750 among his two sons of age 12 years and 14 years in such a way that both receive the same amount at 5% simple interest when they attain 18 years of age. Find the share of younger son.</div>
+                <div class="hindi-text">एक आदमी ने 18750 रुपये का अपना हिस्सा अपने 12 वर्ष और 14 वर्ष के दो बेटों के बीच इस तरह बांटा कि 18 वर्ष की आयु प्राप्त करने पर दोनों को 5% साधारण ब्याज पर समान राशि मिले। छोटे बेटे का हिस्सा ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 9000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 9750</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 9500</div><div class="option"><span class="opt-letter">(d)</span> Rs. 9250</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.34</span> Rs. 2600 is divided into two parts such that the interest on first part at 10% for 5 years is equal to the interest on the second part at 9% for 6 years. Find both parts.</div>
+                <div class="hindi-text">2600 रुपये को दो भागों में इस प्रकार विभाजित किया जाता है कि पहले भाग पर 10% की दर से 5 वर्षों का ब्याज दूसरे भाग पर 9% की दर से 6 वर्षों के ब्याज के बराबर है। दोनों भाग ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1350, 1250</div><div class="option"><span class="opt-letter">(b)</span> 1400, 1200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1300, 1300</div><div class="option"><span class="opt-letter">(d)</span> 1500, 1100</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.35</span> A father left a will of Rs. 16400 for his two sons whose ages are 17 and 18 years. They must get equal amounts when they are 20 years, at 5% simple interest. Find the share of elder son.</div>
+                <div class="hindi-text">एक पिता ने अपने 17 और 18 वर्ष के दो बेटों के लिए 16400 रुपये की वसीयत छोड़ी। 20 वर्ष के होने पर उन्हें 5% साधारण ब्याज पर समान राशि मिलनी चाहिए। बड़े बेटे का हिस्सा ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 8400</div><div class="option"><span class="opt-letter">(b)</span> Rs. 8200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 8000</div><div class="option"><span class="opt-letter">(d)</span> Rs. 8600</div>
+                </div>
+            </div>
         </div>
 
         <div class="book-footer">
@@ -1048,89 +709,77 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 8 (Q36 to Q40) ================= -->
+    <!-- ================= PAGE 8 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="content-area">
-
-            <div class="type-heading">TYPE - 10: MISCELLANEOUS</div>
+            <div class="type-heading">TYPE - 8: RATE % CHANGES AFTER SOMETIME</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.36</span> A publisher sells copies of books to a retail dealer at Rs. 5 per copy but allows 25 copies to be counted as 24. If the retailer sells each at Rs. 6, his profit percent is:</div>
-                <div class="hindi-text">एक प्रकाशक एक खुदरा डीलर को 5 रुपये प्रति प्रति के हिसाब से किताबें बेचता है, लेकिन 25 प्रतियों को 24 के रूप में गिनने की अनुमति देता है। यदि खुदरा विक्रेता प्रत्येक को 6 रुपये में बेचता है, तो उसका लाभ प्रतिशत है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.36</span> The rate of interest for the first 2 years is 3% p.a., for the next 3 years is 8% p.a. and for the period beyond 5 years is 10% p.a. If a man gets Rs. 1520 as simple interest for 6 years, find the money he deposited.</div>
+                <div class="hindi-text">पहले 2 वर्षों के लिए ब्याज की दर 3% प्रति वर्ष है, अगले 3 वर्षों के लिए 8% प्रति वर्ष है और 5 वर्षों से अधिक की अवधि के लिए 10% प्रति वर्ष है। यदि एक व्यक्ति को 6 वर्षों के लिए साधारण ब्याज के रूप में 1520 रुपये मिलते हैं, तो उसके द्वारा जमा की गई राशि ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 24%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 40%</div>
-                </div>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.37</span> An article is sold at a certain price. By selling it at 2/3 of that price one loses 10%. Find the gain percent at original price.</div>
-                <div class="hindi-text">एक वस्तु एक निश्चित मूल्य पर बेची जाती है। इसे उस कीमत के 2/3 पर बेचने पर 10% की हानि होती है। मूल कीमत पर लाभ प्रतिशत ज्ञात करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 33.33%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 35%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 3800</div><div class="option"><span class="opt-letter">(b)</span> Rs. 4000</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 3500</div><div class="option"><span class="opt-letter">(d)</span> Rs. 4200</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.38</span> The percentage profit earned by selling an article for Rs. 1920 is equal to the percentage loss incurred by selling the same article for Rs. 1280. At what price should it be sold to make 25% profit?</div>
-                <div class="hindi-text">किसी वस्तु को 1920 रुपये में बेचने पर अर्जित प्रतिशत लाभ उसी वस्तु को 1280 रुपये में बेचने पर हुई प्रतिशत हानि के बराबर है। 25% लाभ कमाने के लिए इसे किस कीमत पर बेचा जाना चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.37</span> A certain sum is invested at SI at 5% p.a. for 2 years, 6% p.a. for next 3 years and 8% p.a. for next 4 years. If the total interest earned is Rs. 1800, find the principal.</div>
+                <div class="hindi-text">एक निश्चित राशि साधारण ब्याज पर 2 वर्षों के लिए 5% प्रति वर्ष, अगले 3 वर्षों के लिए 6% प्रति वर्ष और अगले 4 वर्षों के लिए 8% प्रति वर्ष की दर से निवेश की जाती है। यदि अर्जित कुल ब्याज 1800 रुपये है, तो मूलधन ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS TGT 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Rs. 2000</div>
-                    <div class="option"><span class="opt-letter">(b)</span> Rs. 2200</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Rs. 2400</div>
-                    <div class="option"><span class="opt-letter">(d)</span> Rs. 2500</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 2000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 2500</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 3000</div><div class="option"><span class="opt-letter">(d)</span> Rs. 4000</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.39</span> Oranges are bought at 5 for Rs. 10 and sold at 6 for Rs. 15. The profit percent is:</div>
-                <div class="hindi-text">संतरे 10 रुपये में 5 की दर से खरीदे जाते हैं और 15 रुपये में 6 की दर से बेचे जाते हैं। लाभ प्रतिशत है:</div>
+                <div class="question-text"><span class="q-number">Q.38</span> A sum of Rs. 2400 is lent out. Part of it is lent at 5% and the rest at 8% SI. If the total interest received in 3 years is Rs. 480, find the sum lent at 5%.</div>
+                <div class="hindi-text">2400 रुपये की राशि उधार दी जाती है। इसका कुछ हिस्सा 5% पर और शेष 8% साधारण ब्याज पर उधार दिया जाता है। यदि 3 वर्षों में प्राप्त कुल ब्याज 480 रुपये है, तो 5% पर उधार दी गई राशि ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1600</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 800</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1000</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 9: INSTALLMENT PROBLEMS</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.39</span> What annual installment will discharge a debt of Rs. 1092 due in 3 years at 12% simple interest?</div>
+                <div class="hindi-text">12% साधारण ब्याज पर 3 वर्षों में देय 1092 रुपये के ऋण को कौन सी वार्षिक किस्त चुकाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 325</div><div class="option"><span class="opt-letter">(b)</span> Rs. 300</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 350</div><div class="option"><span class="opt-letter">(d)</span> Rs. 400</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.40</span> The annual payment of Rs. 700 in 5 years at 10% per annum simple interest will discharge a debt of what amount?</div>
+                <div class="hindi-text">10% प्रति वर्ष साधारण ब्याज पर 5 वर्षों में 700 रुपये का वार्षिक भुगतान कितनी राशि के ऋण को चुकाएगा?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25%</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30%</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 15%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 4000</div><div class="option"><span class="opt-letter">(b)</span> Rs. 4200</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 4500</div><div class="option"><span class="opt-letter">(d)</span> Rs. 3500</div>
                 </div>
             </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.40</span> Pure ghee costs Rs. 100 per kg. After adulterating it with vegetable oil costing Rs. 50 per kg, a shopkeeper sells the mixture at Rs. 96 per kg, thereby making a profit of 20%. In what ratio does he mix the two?</div>
-                <div class="hindi-text">शुद्ध घी की कीमत 100 रुपये प्रति किलो है। इसे 50 रुपये प्रति किलो वाले वनस्पति तेल के साथ मिलाने के बाद, एक दुकानदार मिश्रण को 96 रुपये प्रति किलो पर बेचता है, जिससे 20% का लाभ होता है। वह दोनों को किस अनुपात में मिलाता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3:2</div>
-                    <div class="option"><span class="opt-letter">(b)</span> 2:3</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:1</div>
-                    <div class="option"><span class="opt-letter">(d)</span> 1:3</div>
-                </div>
-            </div>
-
         </div>
 
         <div class="book-footer">
@@ -1140,75 +789,239 @@
         </div>
     </div>
 
-    <!-- ================= PAGE 9 (ANSWER KEY & SOCIALS) ================= -->
+    <!-- ================= PAGE 9 ================= -->
     <div class="page">
         <div class="watermark">EXAMEDGE INSTITUTE</div>
         <div class="book-header">
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">02</div>
+                    <div class="chap-num">03</div>
                 </div>
-                <div class="header-logo">
-                    <img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'">
-                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">PROFIT AND LOSS</div>
-                <div class="title-hi">लाभ और हानि</div>
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.41</span> Find the annual installment that will discharge a debt of Rs. 4200 due in 5 years at 10% SI.</div>
+                <div class="hindi-text">वह वार्षिक किस्त ज्ञात कीजिए जो 10% साधारण ब्याज पर 5 वर्षों में देय 4200 रुपये के ऋण को चुकाएगी।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 700</div><div class="option"><span class="opt-letter">(b)</span> Rs. 800</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 600</div><div class="option"><span class="opt-letter">(d)</span> Rs. 750</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.42</span> What annual installment will discharge a debt of Rs. 6450 due in 4 years at 5% simple interest?</div>
+                <div class="hindi-text">5% साधारण ब्याज पर 4 वर्षों में देय 6450 रुपये के ऋण को कौन सी वार्षिक किस्त चुकाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1400</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1500</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1600</div><div class="option"><span class="opt-letter">(d)</span> Rs. 1450</div>
+                </div>
+            </div>
+
+            <div class="type-heading">TYPE - 10: MISCELLANEOUS / TRUE DISCOUNT</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.43</span> The present worth of Rs. 169 due in 2 years at 4% per annum is:</div>
+                <div class="hindi-text">4% प्रति वर्ष की दर से 2 वर्ष में देय 169 रुपये का वर्तमान मूल्य क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 150</div><div class="option"><span class="opt-letter">(b)</span> Rs. 156.25</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 158.50</div><div class="option"><span class="opt-letter">(d)</span> Rs. 160</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.44</span> Find the true discount on Rs. 2520 due 6 months hence at 10% per annum.</div>
+                <div class="hindi-text">10% प्रति वर्ष की दर से 6 महीने बाद देय 2520 रुपये पर वास्तविक छूट ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 120</div><div class="option"><span class="opt-letter">(b)</span> Rs. 125</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 110</div><div class="option"><span class="opt-letter">(d)</span> Rs. 100</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.45</span> If a sum of Rs. 1500 becomes Rs. 1800 in 4 years, what will be the amount if the rate of interest is increased by 2%?</div>
+                <div class="hindi-text">यदि 1500 रुपये की राशि 4 वर्षों में 1800 रुपये हो जाती है, तो यदि ब्याज दर में 2% की वृद्धि की जाती है तो राशि क्या होगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2019</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 1900</div><div class="option"><span class="opt-letter">(b)</span> Rs. 1920</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 1950</div><div class="option"><span class="opt-letter">(d)</span> Rs. 2000</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">9</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 10 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">03</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.46</span> At what rate percent per annum simple interest will a sum double itself in 12.5 years?</div>
+                <div class="hindi-text">किस वार्षिक साधारण ब्याज दर पर कोई राशि 12.5 वर्षों में दोगुनी हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8%</div><div class="option"><span class="opt-letter">(b)</span> 10%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12.5%</div><div class="option"><span class="opt-letter">(d)</span> 6%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.47</span> The simple interest on a sum of money is 4/9 of the principal. Find the rate percent and time, if both are numerically equal.</div>
+                <div class="hindi-text">किसी धनराशि पर साधारण ब्याज मूलधन का 4/9 है। यदि दोनों संख्यात्मक रूप से समान हैं, तो दर प्रतिशत और समय ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2015</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 6.66</div><div class="option"><span class="opt-letter">(b)</span> 5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8</div><div class="option"><span class="opt-letter">(d)</span> 10</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.48</span> Two equal sums were borrowed at 8% simple interest per annum for 2 years and 3 years respectively. The difference in the interest was Rs. 56. The sum borrowed were:</div>
+                <div class="hindi-text">दो समान राशियाँ क्रमशः 2 वर्ष और 3 वर्ष के लिए 8% वार्षिक साधारण ब्याज पर उधार ली गईं। ब्याज में अंतर 56 रुपये था। उधार ली गई राशि थी:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 600</div><div class="option"><span class="opt-letter">(b)</span> Rs. 700</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 800</div><div class="option"><span class="opt-letter">(d)</span> Rs. 500</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.49</span> A sum of Rs. 400 amounts to Rs. 480 in 4 years. What will it amount to if the rate of interest is increased by 2%?</div>
+                <div class="hindi-text">400 रुपये की राशि 4 वर्षों में 480 रुपये हो जाती है। यदि ब्याज दर 2% बढ़ा दी जाए तो यह कितनी हो जाएगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2018</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Rs. 512</div><div class="option"><span class="opt-letter">(b)</span> Rs. 520</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Rs. 500</div><div class="option"><span class="opt-letter">(d)</span> Rs. 540</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.50</span> Simple interest on a certain sum is 16/25 of the sum. Find the rate percent and time, if both are numerically equal.</div>
+                <div class="hindi-text">एक निश्चित राशि पर साधारण ब्याज उस राशि का 16/25 है। यदि दोनों संख्यात्मक रूप से समान हैं, तो दर प्रतिशत और समय ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8</div><div class="option"><span class="opt-letter">(b)</span> 10</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12</div><div class="option"><span class="opt-letter">(d)</span> 15</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">10</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 11 (ANSWER KEY & SOCIALS) ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">03</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">SIMPLE INTEREST</div>
+                <div class="title-hi">साधारण ब्याज</div>
             </div>
         </div>
 
         <div class="answer-key-wrapper">
             <div class="answer-key-title">ANSWER KEY</div>
             <div class="ans-grid">
-                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">4.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">a</span></div>
                 
-                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">7.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">9.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">a</span></div>
 
-                <div class="ans-box"><span class="ans-num">11.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">11.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">16.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">b</span></div>
 
-                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">22.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">23.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">24.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">a</span></div>
 
-                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">27.</span> <span class="ans-opt">b</span></div>
-                <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">c</span></div>
-                <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">27.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">a</span></div>
 
                 <div class="ans-box"><span class="ans-num">31.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">33.</span> <span class="ans-opt">a</span></div>
                 <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">b</span></div>
 
-                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">b</span></div>
                 <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">c</span></div>
                 <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">a</span></div>
-                <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">b</span></div>
+
+                <div class="ans-box"><span class="ans-num">41.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">42.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">43.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">44.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">45.</span> <span class="ans-opt">b</span></div>
+
+                <div class="ans-box"><span class="ans-num">46.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">48.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">49.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">a</span></div>
             </div>
 
             <div class="social-wrapper">
@@ -1224,7 +1037,7 @@
 
         <div class="book-footer">
             <div class="footer-left">EXAMEDGE INSTITUTE</div>
-            <div class="footer-center">9</div>
+            <div class="footer-center">11</div>
             <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
