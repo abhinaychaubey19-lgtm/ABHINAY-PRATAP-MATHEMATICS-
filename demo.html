@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics Practice Book | Exam Edge Institute</title>
+    <title>Probability Practice Book | Exam Edge Institute</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,6 +40,7 @@
         }
         .btn-generate-pdf:hover { transform: translateY(-5px); background: #b91c1c; }
 
+        /* --- A4 PAGE SETUP (STRICTLY FIXED LAYOUT) --- */
         .page {
             width: 210mm; height: 296mm; background: #ffffff;
             margin: 15mm auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -50,7 +51,7 @@
 
         .watermark {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 4.5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); 
+            font-size: 5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); 
             z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 5px;
         }
 
@@ -92,7 +93,7 @@
             margin-bottom: 1mm; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); text-transform: uppercase;
         }
 
-        .question-block { display: flex; flex-direction: column; gap: 1mm; margin-bottom: 5px; }
+        .question-block { display: flex; flex-direction: column; gap: 1mm; margin-bottom: 3px; }
         .question-text { font-size: 0.88rem; color: var(--dark-text); font-weight: 600; line-height: 1.4; text-align: justify; }
         .q-number { color: var(--brand-red); font-weight: 900; margin-right: 6px; font-size: 1rem; }
         .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.95rem; color: var(--grey-text); font-weight: 600; line-height: 1.3; text-align: justify; }
@@ -108,13 +109,39 @@
         .option { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); }
         .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 4px; }
 
+        /* --- ANSWER KEY STYLING --- */
+        .answer-key-wrapper { margin-top: 5mm; z-index: 2; position: relative; }
+        .answer-key-title { text-align: center; font-size: 1.8rem; font-weight: 900; color: var(--brand-red); margin-bottom: 5mm; text-decoration: underline; text-underline-offset: 5px; }
+        .ans-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .ans-box {
+            background: #fff; border: 2px solid var(--brand-red); border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            padding: 8px; box-shadow: 0 2px 8px rgba(217, 38, 38, 0.15);
+        }
+        .ans-num { font-weight: 900; color: var(--brand-red); margin-right: 8px; font-size: 1.1rem; }
+        .ans-opt { font-weight: 800; color: var(--dark-text); font-size: 1.1rem; text-transform: uppercase; }
+        .ans-val { color: var(--grey-text); font-size: 0.9rem; margin-left: 5px; font-weight: 600; }
+
+        /* --- SOCIAL HANDLES --- */
+        .social-wrapper { text-align: center; margin-top: 15mm; padding-top: 5mm; border-top: 2px dashed #cbd5e1; z-index: 2; position: relative; }
+        .social-title { font-size: 1.1rem; font-weight: 900; color: var(--dark-text); margin-bottom: 10px; letter-spacing: 1px; }
+        .social-handles { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .social-btn {
+            display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; color: #fff;
+            font-weight: 800; font-size: 0.85rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .s-yt { background: #ff0000; }
+        .s-tg { background: #0088cc; }
+        .s-ig { background: #e1306c; }
+        .s-tw { background: #000000; }
+
+        /* --- ABSOLUTE FOOTER --- */
         .book-footer {
             position: absolute; bottom: 10mm; left: 15mm; right: 15mm; height: 12mm;
             border-top: 2.5px solid var(--brand-red); padding-top: 3mm;
             display: flex; justify-content: space-between; align-items: center; z-index: 2; background: #fff; 
         }
         .footer-left { font-size: 0.85rem; font-weight: 900; color: var(--brand-blue); letter-spacing: 0.5px; }
-        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); text-transform: uppercase; }
+        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); }
         .footer-center {
             background: var(--brand-red); color: #fff; width: 28px; height: 28px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;
@@ -144,66 +171,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 1: MEAN (माध्य)</div>
+            <div class="type-heading">TYPE - 1: COINS BASED (सिक्कों पर आधारित)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.1</span> Find the mean of the first 10 prime numbers.</div>
-                <div class="hindi-text">प्रथम 10 अभाज्य संख्याओं का माध्य ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.1</span> A fair coin is tossed once. What is the probability of getting a Head?</div>
+                <div class="hindi-text">एक निष्पक्ष सिक्के को एक बार उछाला जाता है। चित (Head) आने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12.9</div><div class="option"><span class="opt-letter">(b)</span> 12.5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 11.8</div><div class="option"><span class="opt-letter">(d)</span> 10.5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 1/3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/4</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.2</span> If the mean of 5 observations x, x+2, x+4, x+6, and x+8 is 11, find the value of x.</div>
-                <div class="hindi-text">यदि 5 प्रेक्षणों x, x+2, x+4, x+6, और x+8 का माध्य 11 है, तो x का मान ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.2</span> Two coins are tossed simultaneously. Find the probability of getting exactly one head.</div>
+                <div class="hindi-text">दो सिक्कों को एक साथ उछाला जाता है। ठीक एक चित (head) आने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5</div><div class="option"><span class="opt-letter">(b)</span> 6</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7</div><div class="option"><span class="opt-letter">(d)</span> 8</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 1/4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3/4</div><div class="option"><span class="opt-letter">(d)</span> 1/3</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.3</span> The mean of 10 numbers is 15. If 3 is added to each number, what will be the new mean?</div>
-                <div class="hindi-text">10 संख्याओं का माध्य 15 है। यदि प्रत्येक संख्या में 3 जोड़ दिया जाए, तो नया माध्य क्या होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.3</span> Two unbiased coins are tossed. What is the probability of getting at least one head?</div>
+                <div class="hindi-text">दो निष्पक्ष सिक्कों को उछाला जाता है। कम से कम एक चित (head) प्राप्त करने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 18</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12</div><div class="option"><span class="opt-letter">(d)</span> 45</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 3/4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/2</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.4</span> The mean of 50 numbers is 30. Later it was discovered that a value 28 was wrongly read as 82. Find the correct mean.</div>
-                <div class="hindi-text">50 संख्याओं का माध्य 30 है। बाद में यह पता चला कि एक मान 28 को गलती से 82 पढ़ लिया गया था। सही माध्य ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.4</span> Two coins are tossed. Find the probability of getting no head.</div>
+                <div class="hindi-text">दो सिक्कों को उछाला जाता है। कोई चित (head) न आने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 28.92</div><div class="option"><span class="opt-letter">(b)</span> 29.82</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 31.08</div><div class="option"><span class="opt-letter">(d)</span> 28.52</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 3/4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/4</div><div class="option"><span class="opt-letter">(d)</span> 0</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.5</span> The average marks of 30 students in a class is 45. If the teacher's marks are included, the average becomes 46. What are the teacher's marks?</div>
-                <div class="hindi-text">एक कक्षा में 30 छात्रों के औसत अंक 45 हैं। यदि शिक्षक के अंकों को शामिल कर लिया जाए, तो औसत 46 हो जाता है। शिक्षक के अंक क्या हैं?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.5</span> Three fair coins are tossed together. Find the probability of getting all heads.</div>
+                <div class="hindi-text">तीन निष्पक्ष सिक्कों को एक साथ उछाला जाता है। सभी चित (heads) आने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 75</div><div class="option"><span class="opt-letter">(b)</span> 76</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 46</div><div class="option"><span class="opt-letter">(d)</span> 85</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/2</div><div class="option"><span class="opt-letter">(d)</span> 1/8</div>
                 </div>
             </div>
         </div>
@@ -222,66 +249,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 2: MEDIAN (माध्यिका)</div>
+            <div class="type-heading">TYPE - 1: COINS BASED (Continued)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.6</span> Find the median of the data: 2, 4, 6, 8, 10, 12, 14.</div>
-                <div class="hindi-text">आंकड़ों की माध्यिका ज्ञात कीजिए: 2, 4, 6, 8, 10, 12, 14.</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.6</span> Three coins are tossed. Find the probability of getting exactly two heads.</div>
+                <div class="hindi-text">तीन सिक्कों को उछाला जाता है। ठीक दो चित (heads) आने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB TGT 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10</div><div class="option"><span class="opt-letter">(d)</span> 7</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/8</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/8</div><div class="option"><span class="opt-letter">(d)</span> 1/2</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.7</span> What is the median of the following numbers: 15, 11, 7, 9, 20, 17?</div>
-                <div class="hindi-text">निम्नलिखित संख्याओं की माध्यिका क्या है: 15, 11, 7, 9, 20, 17?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.7</span> Three unbiased coins are tossed. What is the probability of getting at least two heads?</div>
+                <div class="hindi-text">तीन निष्पक्ष सिक्कों को उछाला जाता है। कम से कम दो चित (heads) आने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> KVS PRT 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 13</div><div class="option"><span class="opt-letter">(b)</span> 11</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15</div><div class="option"><span class="opt-letter">(d)</span> 12</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/8</div><div class="option"><span class="opt-letter">(d)</span> 1/4</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.8</span> The observations 11, 12, 14, 18, x+2, x+4, 30, 32, 35, 41 are in ascending order. If the median is 24, find x.</div>
-                <div class="hindi-text">प्रेक्षण 11, 12, 14, 18, x+2, x+4, 30, 32, 35, 41 आरोही क्रम में हैं। यदि माध्यिका 24 है, तो x ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.8</span> Three coins are tossed simultaneously. Find the probability of getting at most one head.</div>
+                <div class="hindi-text">तीन सिक्कों को एक साथ उछाला जाता है। अधिक से अधिक एक चित (head) आने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 21</div><div class="option"><span class="opt-letter">(b)</span> 22</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20</div><div class="option"><span class="opt-letter">(d)</span> 24</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7/8</div><div class="option"><span class="opt-letter">(d)</span> 1/4</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.9</span> Find the median of the first 10 whole numbers.</div>
-                <div class="hindi-text">प्रथम 10 पूर्ण संख्याओं की माध्यिका ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.9</span> Four fair coins are tossed together. What is the probability of getting all tails?</div>
+                <div class="hindi-text">चार निष्पक्ष सिक्कों को एक साथ उछाला जाता है। सभी पट (tails) आने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 1/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/16</div><div class="option"><span class="opt-letter">(d)</span> 1/32</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.10</span> Four coins are tossed. Find the probability of getting exactly two heads and two tails.</div>
+                <div class="hindi-text">चार सिक्कों को उछाला जाता है। ठीक दो चित और दो पट आने की प्रायिकता ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 5.5</div><div class="option"><span class="opt-letter">(b)</span> 4.5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5</div><div class="option"><span class="opt-letter">(d)</span> 4</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.10</span> If the median of a dataset is 15. If each observation is multiplied by 2, the new median will be?</div>
-                <div class="hindi-text">यदि किसी डेटासेट की माध्यिका 15 है। यदि प्रत्येक प्रेक्षण को 2 से गुणा किया जाता है, तो नई माध्यिका क्या होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 17</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 30</div><div class="option"><span class="opt-letter">(d)</span> 7.5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/16</div><div class="option"><span class="opt-letter">(d)</span> 1/2</div>
                 </div>
             </div>
         </div>
@@ -300,68 +327,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 3: MODE (बहुलक)</div>
+            <div class="type-heading">TYPE - 2: DICE BASED (पासे पर आधारित)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.11</span> Find the mode of the given data: 2, 3, 4, 3, 5, 3, 6, 2.</div>
-                <div class="hindi-text">दिए गए आंकड़ों का बहुलक ज्ञात कीजिए: 2, 3, 4, 3, 5, 3, 6, 2.</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.11</span> A fair die is rolled once. Find the probability of getting an even number.</div>
+                <div class="hindi-text">एक निष्पक्ष पासे को एक बार फेंका जाता है। सम संख्या प्राप्त करने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2</div><div class="option"><span class="opt-letter">(b)</span> 3</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4</div><div class="option"><span class="opt-letter">(d)</span> 5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 1/3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/6</div><div class="option"><span class="opt-letter">(d)</span> 2/3</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.12</span> In a frequency distribution, the class with the highest frequency is called?</div>
-                <div class="hindi-text">एक आवृत्ति वितरण में, सबसे अधिक आवृत्ति वाले वर्ग को क्या कहा जाता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Mean Class</div><div class="option"><span class="opt-letter">(b)</span> Median Class</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Modal Class</div><div class="option"><span class="opt-letter">(d)</span> None</div>
-                </div>
-            </div>
-
-            <div class="type-heading" style="margin-top: 5mm;">TYPE - 4: EMPIRICAL RELATION (अनुभवजन्य संबंध)</div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.13</span> If the mean of a moderately asymmetrical distribution is 10 and the median is 12, find its mode.</div>
-                <div class="hindi-text">यदि एक मध्यम असममित वितरण का माध्य 10 है और माध्यिका 12 है, तो इसका बहुलक ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 16</div><div class="option"><span class="opt-letter">(b)</span> 14</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 18</div><div class="option"><span class="opt-letter">(d)</span> 20</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.14</span> The mode of a dataset is 24 and its median is 20. What will be its mean?</div>
-                <div class="hindi-text">एक डेटासेट का बहुलक 24 है और इसकी माध्यिका 20 है। इसका माध्य क्या होगा?</div>
+                <div class="question-text"><span class="q-number">Q.12</span> A die is thrown. What is the probability of getting a prime number?</div>
+                <div class="hindi-text">एक पासा फेंका जाता है। अभाज्य संख्या आने की प्रायिकता क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 18</div><div class="option"><span class="opt-letter">(b)</span> 20</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 22</div><div class="option"><span class="opt-letter">(d)</span> 16</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 1/3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2/3</div><div class="option"><span class="opt-letter">(d)</span> 1/6</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.15</span> If Mean - Mode = 3, then Mean - Median is equal to:</div>
-                <div class="hindi-text">यदि माध्य - बहुलक = 3, तो माध्य - माध्यिका किसके बराबर है:</div>
+                <div class="question-text"><span class="q-number">Q.13</span> A single die is rolled. Find the probability of getting a multiple of 3.</div>
+                <div class="hindi-text">एक पासा उछाला जाता है। 3 का गुणज (multiple) प्राप्त होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB ALP 2018</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 1/6</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/3</div><div class="option"><span class="opt-letter">(d)</span> 5/6</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.14</span> Two dice are thrown simultaneously. What is the probability that the sum of the numbers appearing on them is exactly 8?</div>
+                <div class="hindi-text">दो पासे एक साथ फेंके जाते हैं। उन पर आने वाली संख्याओं का योग ठीक 8 होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1/9</div><div class="option"><span class="opt-letter">(b)</span> 5/36</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/6</div><div class="option"><span class="opt-letter">(d)</span> 7/36</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.15</span> Two fair dice are rolled. Find the probability of getting a doublet (same number on both dice).</div>
+                <div class="hindi-text">दो निष्पक्ष पासे उछाले जाते हैं। द्विक (दोनों पासों पर समान संख्या) आने की प्रायिकता ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1</div><div class="option"><span class="opt-letter">(b)</span> 2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3</div><div class="option"><span class="opt-letter">(d)</span> 4</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/36</div><div class="option"><span class="opt-letter">(b)</span> 5/36</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/12</div><div class="option"><span class="opt-letter">(d)</span> 1/6</div>
                 </div>
             </div>
         </div>
@@ -380,66 +405,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 5: RANGE & MEAN DEVIATION (परास और माध्य विचलन)</div>
+            <div class="type-heading">TYPE - 2: DICE BASED (Continued)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.16</span> Find the range of the given dataset: 10, 20, 15, 25, 30, 5, 8.</div>
-                <div class="hindi-text">दिए गए डेटासेट का परास (Range) ज्ञात कीजिए: 10, 20, 15, 25, 30, 5, 8.</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.16</span> Two dice are rolled. What is the probability that the sum of the numbers is greater than 9?</div>
+                <div class="hindi-text">दो पासे उछाले जाते हैं। संख्याओं का योग 9 से अधिक होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25</div><div class="option"><span class="opt-letter">(b)</span> 20</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15</div><div class="option"><span class="opt-letter">(d)</span> 30</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/12</div><div class="option"><span class="opt-letter">(b)</span> 5/36</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/6</div><div class="option"><span class="opt-letter">(d)</span> 1/9</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.17</span> What is the range of the first 15 natural numbers?</div>
-                <div class="hindi-text">प्रथम 15 प्राकृतिक संख्याओं का परास क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.17</span> Two dice are thrown. Find the probability that the sum of the numbers is a prime number.</div>
+                <div class="hindi-text">दो पासे फेंके जाते हैं। संख्याओं का योग एक अभाज्य संख्या (prime number) होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 14</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 16</div><div class="option"><span class="opt-letter">(d)</span> 13</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 7/18</div><div class="option"><span class="opt-letter">(b)</span> 5/12</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/2</div><div class="option"><span class="opt-letter">(d)</span> 11/36</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.18</span> Find the mean deviation about the mean for the data: 3, 4, 5, 6, 7.</div>
-                <div class="hindi-text">आंकड़ों के लिए माध्य के सापेक्ष माध्य विचलन ज्ञात कीजिए: 3, 4, 5, 6, 7.</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.18</span> Two dice are thrown simultaneously. What is the probability that the product of the numbers appearing on top is even?</div>
+                <div class="hindi-text">दो पासे एक साथ फेंके जाते हैं। शीर्ष पर आने वाली संख्याओं का गुणनफल सम (even) होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> DSSSB 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1.2</div><div class="option"><span class="opt-letter">(b)</span> 1.5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2</div><div class="option"><span class="opt-letter">(d)</span> 1.8</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 3/4</div><div class="option"><span class="opt-letter">(b)</span> 1/4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/2</div><div class="option"><span class="opt-letter">(d)</span> 5/8</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.19</span> The range of the data: -5, -2, 0, 4, 8, 12 is:</div>
-                <div class="hindi-text">आंकड़ों: -5, -2, 0, 4, 8, 12 का परास है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.19</span> Three fair dice are rolled simultaneously. Find the probability that the sum of the numbers is exactly 18.</div>
+                <div class="hindi-text">तीन निष्पक्ष पासे एक साथ उछाले जाते हैं। संख्याओं का योग ठीक 18 होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> NDA Pune 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 17</div><div class="option"><span class="opt-letter">(b)</span> 12</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7</div><div class="option"><span class="opt-letter">(d)</span> 15</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/36</div><div class="option"><span class="opt-letter">(b)</span> 3/216</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/216</div><div class="option"><span class="opt-letter">(d)</span> 1/72</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.20</span> Find the mean deviation about the median for the observations: 1, 2, 3, 4, 5.</div>
-                <div class="hindi-text">प्रेक्षणों: 1, 2, 3, 4, 5 के लिए माध्यिका के सापेक्ष माध्य विचलन ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.20</span> Two dice are rolled together. Find the probability of getting a sum of exactly 7.</div>
+                <div class="hindi-text">दो पासे एक साथ उछाले जाते हैं। ठीक 7 का योग प्राप्त करने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable 2019</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1</div><div class="option"><span class="opt-letter">(b)</span> 1.2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1.5</div><div class="option"><span class="opt-letter">(d)</span> 2</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 5/36</div><div class="option"><span class="opt-letter">(b)</span> 1/6</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7/36</div><div class="option"><span class="opt-letter">(d)</span> 1/12</div>
                 </div>
             </div>
         </div>
@@ -458,66 +483,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 6: VARIANCE (प्रसरण)</div>
+            <div class="type-heading">TYPE - 3: PLAYING CARDS (ताश के पत्तों पर आधारित)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.21</span> Find the variance of the data: 1, 2, 3, 4, 5.</div>
-                <div class="hindi-text">आंकड़ों का प्रसरण (Variance) ज्ञात कीजिए: 1, 2, 3, 4, 5.</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2</div><div class="option"><span class="opt-letter">(b)</span> 2.5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3</div><div class="option"><span class="opt-letter">(d)</span> 1.5</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.22</span> What is the variance of the first 10 natural numbers?</div>
-                <div class="hindi-text">प्रथम 10 प्राकृतिक संख्याओं का प्रसरण क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.21</span> A card is drawn from a well-shuffled deck of 52 cards. Find the probability of getting a King.</div>
+                <div class="hindi-text">52 ताश के पत्तों की अच्छी तरह से फेंटी गई गड्डी में से एक पत्ता निकाला जाता है। बादशाह (King) प्राप्त करने की प्रायिकता ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 8.25</div><div class="option"><span class="opt-letter">(b)</span> 8.5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 9.15</div><div class="option"><span class="opt-letter">(d)</span> 10</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 1/52</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/13</div><div class="option"><span class="opt-letter">(d)</span> 2/13</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.23</span> If the variance of a dataset is 144, what is its standard deviation?</div>
-                <div class="hindi-text">यदि किसी डेटासेट का प्रसरण 144 है, तो उसका मानक विचलन (Standard Deviation) क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12</div><div class="option"><span class="opt-letter">(b)</span> -12</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 144</div><div class="option"><span class="opt-letter">(d)</span> 72</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.24</span> The variance of 10 observations is 4. If each observation is multiplied by 3, what will be the new variance?</div>
-                <div class="hindi-text">10 प्रेक्षणों का प्रसरण 4 है। यदि प्रत्येक प्रेक्षण को 3 से गुणा किया जाए, तो नया प्रसरण क्या होगा?</div>
+                <div class="question-text"><span class="q-number">Q.22</span> What is the probability of drawing a red card from a standard deck of 52 playing cards?</div>
+                <div class="hindi-text">52 ताश के पत्तों की एक मानक गड्डी में से एक लाल पत्ता निकालने की प्रायिकता क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12</div><div class="option"><span class="opt-letter">(b)</span> 36</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4</div><div class="option"><span class="opt-letter">(d)</span> 16</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 1/4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 13/52</div><div class="option"><span class="opt-letter">(d)</span> 1/13</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.25</span> The variance of 5 observations is 9. If 2 is added to each observation, find the new variance.</div>
-                <div class="hindi-text">5 प्रेक्षणों का प्रसरण 9 है। यदि प्रत्येक प्रेक्षण में 2 जोड़ दिया जाए, तो नया प्रसरण ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.23</span> A card is drawn at random. Find the probability that it is a face card (Jack, Queen, or King).</div>
+                <div class="hindi-text">एक पत्ता यादृच्छिक रूप से निकाला जाता है। प्रायिकता ज्ञात कीजिए कि यह एक फेस कार्ड (गुलाम, बेगम, या बादशाह) है।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 11</div><div class="option"><span class="opt-letter">(b)</span> 13</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 9</div><div class="option"><span class="opt-letter">(d)</span> 7</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/13</div><div class="option"><span class="opt-letter">(b)</span> 4/13</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2/13</div><div class="option"><span class="opt-letter">(d)</span> 3/13</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.24</span> What is the probability of getting a red face card from a well-shuffled deck of 52 cards?</div>
+                <div class="hindi-text">52 पत्तों की अच्छी तरह फेंटी गई गड्डी से लाल फेस कार्ड प्राप्त करने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 3/13</div><div class="option"><span class="opt-letter">(b)</span> 3/26</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/26</div><div class="option"><span class="opt-letter">(d)</span> 1/52</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.25</span> A card is drawn from a deck of 52 cards. Find the probability that the card drawn is neither a heart nor a king.</div>
+                <div class="hindi-text">52 पत्तों की गड्डी से एक पत्ता निकाला जाता है। प्रायिकता ज्ञात कीजिए कि निकाला गया पत्ता न तो पान (heart) है और न ही बादशाह (king)।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 9/13</div><div class="option"><span class="opt-letter">(b)</span> 7/13</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4/13</div><div class="option"><span class="opt-letter">(d)</span> 11/26</div>
                 </div>
             </div>
         </div>
@@ -536,66 +561,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 7: STANDARD DEVIATION (मानक विचलन)</div>
+            <div class="type-heading">TYPE - 3: PLAYING CARDS (Continued)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.26</span> Find the standard deviation of the numbers: 3, 4, 5, 6, 7.</div>
-                <div class="hindi-text">संख्याओं: 3, 4, 5, 6, 7 का मानक विचलन ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.26</span> Two cards are drawn successively without replacement from a deck of 52 cards. Find the probability that both are Aces.</div>
+                <div class="hindi-text">52 पत्तों की गड्डी में से बिना वापस रखे (without replacement) एक के बाद एक दो पत्ते निकाले जाते हैं। दोनों के इक्का (Ace) होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> &radic;2</div><div class="option"><span class="opt-letter">(b)</span> 2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> &radic;3</div><div class="option"><span class="opt-letter">(d)</span> 1.5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/169</div><div class="option"><span class="opt-letter">(b)</span> 1/221</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3/221</div><div class="option"><span class="opt-letter">(d)</span> 4/221</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.27</span> The standard deviation of a dataset is 5. If each observation is multiplied by -2, what is the new standard deviation?</div>
-                <div class="hindi-text">एक डेटासेट का मानक विचलन 5 है। यदि प्रत्येक प्रेक्षण को -2 से गुणा किया जाए, तो नया मानक विचलन क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.27</span> Two cards are drawn at random from a standard deck. What is the probability that one is a King and the other is a Queen?</div>
+                <div class="hindi-text">एक मानक गड्डी में से यादृच्छिक रूप से दो पत्ते निकाले जाते हैं। क्या प्रायिकता है कि एक बादशाह हो और दूसरी बेगम हो?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> IBPS PO 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> -10</div><div class="option"><span class="opt-letter">(b)</span> 10</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 5</div><div class="option"><span class="opt-letter">(d)</span> -5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4/663</div><div class="option"><span class="opt-letter">(b)</span> 1/169</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8/663</div><div class="option"><span class="opt-letter">(d)</span> 16/169</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.28</span> What is the standard deviation of the first 5 natural numbers?</div>
-                <div class="hindi-text">प्रथम 5 प्राकृतिक संख्याओं का मानक विचलन क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.28</span> A card is drawn from a well-shuffled pack of 52 cards. What is the probability that the card is either a spade or an ace?</div>
+                <div class="hindi-text">52 पत्तों की अच्छी तरह से फेंटी गई गड्डी में से एक पत्ता निकाला जाता है। इसकी क्या प्रायिकता है कि पत्ता या तो हुकुम (spade) है या इक्का (ace) है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> &radic;3</div><div class="option"><span class="opt-letter">(b)</span> &radic;2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2</div><div class="option"><span class="opt-letter">(d)</span> 3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4/13</div><div class="option"><span class="opt-letter">(b)</span> 17/52</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/13</div><div class="option"><span class="opt-letter">(d)</span> 3/13</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.29</span> If the variance of a distribution is 16, what is its standard deviation?</div>
-                <div class="hindi-text">यदि किसी वितरण का प्रसरण 16 है, तो उसका मानक विचलन क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.29</span> Find the probability of drawing a black queen from a pack of 52 cards.</div>
+                <div class="hindi-text">52 पत्तों की गड्डी में से एक काली बेगम (black queen) निकालने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2018</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 16</div><div class="option"><span class="opt-letter">(d)</span> 2</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/13</div><div class="option"><span class="opt-letter">(b)</span> 1/52</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2/13</div><div class="option"><span class="opt-letter">(d)</span> 1/26</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.30</span> Find the standard deviation of the data: 10, 10, 10, 10, 10.</div>
-                <div class="hindi-text">आंकड़ों का मानक विचलन ज्ञात कीजिए: 10, 10, 10, 10, 10.</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.30</span> Two cards are drawn at random from a deck of 52 cards. Find the probability that both are red cards.</div>
+                <div class="hindi-text">52 पत्तों की गड्डी में से यादृच्छिक रूप से दो पत्ते निकाले जाते हैं। प्रायिकता ज्ञात कीजिए कि दोनों लाल पत्ते हैं।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10</div><div class="option"><span class="opt-letter">(b)</span> 5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 0</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 26/51</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25/102</div><div class="option"><span class="opt-letter">(d)</span> 13/51</div>
                 </div>
             </div>
         </div>
@@ -614,66 +639,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 8: COEFFICIENT OF VARIATION (विचरण गुणांक)</div>
+            <div class="type-heading">TYPE - 4: BALLS / BAGS (गेंदों पर आधारित)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.31</span> If the mean of a distribution is 20 and the standard deviation is 4, find the coefficient of variation.</div>
-                <div class="hindi-text">यदि किसी वितरण का माध्य 20 है और मानक विचलन 4 है, तो विचरण गुणांक ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.31</span> A bag contains 3 red and 5 black balls. A ball is drawn at random. Find the probability that the ball drawn is red.</div>
+                <div class="hindi-text">एक थैले में 3 लाल और 5 काली गेंदें हैं। एक गेंद यादृच्छिक रूप से निकाली जाती है। निकाली गई गेंद के लाल होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10%</div><div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div><div class="option"><span class="opt-letter">(d)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 5/8</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3/5</div><div class="option"><span class="opt-letter">(d)</span> 1/8</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.32</span> The coefficient of variation is 40% and the mean is 15. What is the standard deviation?</div>
-                <div class="hindi-text">विचरण गुणांक 40% है और माध्य 15 है। मानक विचलन क्या है?</div>
+                <div class="question-text"><span class="q-number">Q.32</span> A box contains 4 white, 5 red, and 6 blue balls. One ball is drawn at random. What is the probability that it is NOT red?</div>
+                <div class="hindi-text">एक बक्से में 4 सफेद, 5 लाल और 6 नीली गेंदें हैं। यादृच्छिक रूप से एक गेंद निकाली जाती है। इसके लाल न होने की प्रायिकता क्या है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6</div><div class="option"><span class="opt-letter">(b)</span> 5</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 8</div><div class="option"><span class="opt-letter">(d)</span> 4</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2/3</div><div class="option"><span class="opt-letter">(b)</span> 1/3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4/15</div><div class="option"><span class="opt-letter">(d)</span> 2/5</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.33</span> If the variance of a dataset is 25 and its mean is 10, find the coefficient of variation.</div>
-                <div class="hindi-text">यदि किसी डेटासेट का प्रसरण 25 है और उसका माध्य 10 है, तो विचरण गुणांक ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.33</span> A bag has 5 green and 4 yellow marbles. Two marbles are drawn at random. Find the probability that both are green.</div>
+                <div class="hindi-text">एक थैले में 5 हरे और 4 पीले कंचे (marbles) हैं। दो कंचे यादृच्छिक रूप से निकाले जाते हैं। दोनों के हरे होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police Constable</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25%</div><div class="option"><span class="opt-letter">(b)</span> 40%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 50%</div><div class="option"><span class="opt-letter">(d)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 5/9</div><div class="option"><span class="opt-letter">(b)</span> 5/18</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/18</div><div class="option"><span class="opt-letter">(d)</span> 10/18</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.34</span> The coefficient of variation of a dataset is 25% and its standard deviation is 5. What is the mean?</div>
-                <div class="hindi-text">एक डेटासेट का विचरण गुणांक 25% है और इसका मानक विचलन 5 है। माध्य क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.34</span> A bag contains 3 red, 4 blue, and 5 yellow balls. If a ball is drawn, what is the probability that it is either blue or yellow?</div>
+                <div class="hindi-text">एक थैले में 3 लाल, 4 नीली और 5 पीली गेंदें हैं। यदि एक गेंद निकाली जाती है, तो क्या प्रायिकता है कि वह या तो नीली हो या पीली?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 20</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25</div><div class="option"><span class="opt-letter">(d)</span> 30</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/3</div><div class="option"><span class="opt-letter">(b)</span> 5/12</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/4</div><div class="option"><span class="opt-letter">(d)</span> 3/4</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.35</span> Two series A and B have coefficients of variation as 50% and 60% respectively. If the standard deviation of A is 10 and that of B is 15, find the ratio of their means.</div>
-                <div class="hindi-text">दो श्रृंखलाओं A और B के विचरण गुणांक क्रमशः 50% और 60% हैं। यदि A का मानक विचलन 10 है और B का 15 है, तो उनके माध्य का अनुपात ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.35</span> From a bag containing 6 black and 4 white balls, two balls are drawn at random. What is the probability that one is black and one is white?</div>
+                <div class="hindi-text">6 काली और 4 सफेद गेंदों वाले एक थैले में से दो गेंदें यादृच्छिक रूप से निकाली जाती हैं। एक के काली और एक के सफेद होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4:5</div><div class="option"><span class="opt-letter">(b)</span> 5:4</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3:2</div><div class="option"><span class="opt-letter">(d)</span> 2:3</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 12/25</div><div class="option"><span class="opt-letter">(b)</span> 8/15</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7/15</div><div class="option"><span class="opt-letter">(d)</span> 1/2</div>
                 </div>
             </div>
         </div>
@@ -692,66 +717,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 9: COMBINED MEAN (संयुक्त माध्य)</div>
+            <div class="type-heading">TYPE - 4: BALLS / BAGS (Continued)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.36</span> The mean weight of 30 boys is 15 kg, and that of 20 girls is 10 kg. Find the combined mean weight of all students.</div>
-                <div class="hindi-text">30 लड़कों का औसत (माध्य) वजन 15 किलोग्राम है, और 20 लड़कियों का 10 किलोग्राम है। सभी छात्रों का संयुक्त माध्य वजन ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.36</span> A basket contains 2 red, 3 green, and 2 blue balls. If 2 balls are drawn at random, what is the probability that none of them is blue?</div>
+                <div class="hindi-text">एक टोकरी में 2 लाल, 3 हरी और 2 नीली गेंदें हैं। यदि 2 गेंदें यादृच्छिक रूप से निकाली जाती हैं, तो उनमें से किसी के भी नीले न होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SBI PO 2020</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12 kg</div><div class="option"><span class="opt-letter">(b)</span> 13 kg</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 14 kg</div><div class="option"><span class="opt-letter">(d)</span> 12.5 kg</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 10/21</div><div class="option"><span class="opt-letter">(b)</span> 11/21</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/21</div><div class="option"><span class="opt-letter">(d)</span> 2/7</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.37</span> The average marks of 10 items is 20 and that of another 20 items is 30. Find the combined mean.</div>
-                <div class="hindi-text">10 वस्तुओं के औसत अंक 20 हैं और अन्य 20 वस्तुओं के 30 हैं। संयुक्त माध्य ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 25.6</div><div class="option"><span class="opt-letter">(b)</span> 26.6</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 24</div><div class="option"><span class="opt-letter">(d)</span> 28</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.38</span> The sum of the deviations of a set of values from their mean is always:</div>
-                <div class="hindi-text">किसी दिए गए मानों के समूह के उनके माध्य से विचलनों का योग हमेशा होता है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Positive</div><div class="option"><span class="opt-letter">(b)</span> Negative</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Zero</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.39</span> The sum of squares of deviations of a given set of observations is minimum when taken from?</div>
-                <div class="hindi-text">दिए गए प्रेक्षणों के समूह के विचलनों के वर्गों का योग न्यूनतम होता है, जब इसे लिया जाता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Median</div><div class="option"><span class="opt-letter">(b)</span> Mode</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Mean</div><div class="option"><span class="opt-letter">(d)</span> Zero</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.40</span> Which of the following is not a measure of central tendency?</div>
-                <div class="hindi-text">निम्नलिखित में से कौन केंद्रीय प्रवृत्ति की माप नहीं है?</div>
+                <div class="question-text"><span class="q-number">Q.37</span> A box contains 4 red and 6 black balls. Three balls are drawn at random. Find the probability that all three are black.</div>
+                <div class="hindi-text">एक बक्से में 4 लाल और 6 काली गेंदें हैं। तीन गेंदें यादृच्छिक रूप से निकाली जाती हैं। प्रायिकता ज्ञात कीजिए कि तीनों काली हैं।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Mean</div><div class="option"><span class="opt-letter">(b)</span> Median</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Mode</div><div class="option"><span class="opt-letter">(d)</span> Range</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/4</div><div class="option"><span class="opt-letter">(b)</span> 1/5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/6</div><div class="option"><span class="opt-letter">(d)</span> 1/10</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.38</span> A bag contains 5 red and 3 green balls. Two balls are drawn successively with replacement. What is the probability that both are red?</div>
+                <div class="hindi-text">एक थैले में 5 लाल और 3 हरी गेंदें हैं। वापस रखने (with replacement) के साथ दो गेंदें निकाली जाती हैं। दोनों के लाल होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25/64</div><div class="option"><span class="opt-letter">(b)</span> 5/14</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25/56</div><div class="option"><span class="opt-letter">(d)</span> 5/8</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.39</span> A box contains 7 white and 3 black balls. If 2 balls are drawn at random, what is the probability that both are of the same color?</div>
+                <div class="hindi-text">एक बक्से में 7 सफेद और 3 काली गेंदें हैं। यदि 2 गेंदें यादृच्छिक रूप से निकाली जाती हैं, तो क्या प्रायिकता है कि दोनों एक ही रंग की हों?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 7/15</div><div class="option"><span class="opt-letter">(b)</span> 8/15</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/2</div><div class="option"><span class="opt-letter">(d)</span> 2/5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.40</span> Tickets numbered 1 to 20 are mixed up and then a ticket is drawn at random. What is the probability that the ticket drawn has a number which is a multiple of 3 or 5?</div>
+                <div class="hindi-text">1 से 20 तक संख्या वाले टिकटों को मिलाया जाता है और फिर यादृच्छिक रूप से एक टिकट निकाला जाता है। क्या प्रायिकता है कि निकाले गए टिकट पर 3 या 5 का गुणज हो?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2020</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1/2</div><div class="option"><span class="opt-letter">(b)</span> 2/5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 9/20</div><div class="option"><span class="opt-letter">(d)</span> 8/15</div>
                 </div>
             </div>
         </div>
@@ -770,66 +795,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 10: MISCELLANEOUS (विविध)</div>
+            <div class="type-heading">TYPE - 5: MISCELLANEOUS (विविध)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.41</span> The geometric mean of 4 and 16 is:</div>
-                <div class="hindi-text">4 और 16 का गुणोत्तर माध्य है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="question-text"><span class="q-number">Q.41</span> What is the probability that a leap year has exactly 53 Sundays?</div>
+                <div class="hindi-text">एक लीप वर्ष (लीप ईयर) में ठीक 53 रविवार होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12</div><div class="option"><span class="opt-letter">(d)</span> 6</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/7</div><div class="option"><span class="opt-letter">(b)</span> 2/7</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3/7</div><div class="option"><span class="opt-letter">(d)</span> 1/53</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.42</span> The harmonic mean of 2 and 4 is:</div>
-                <div class="hindi-text">2 और 4 का हरात्मक माध्य है:</div>
+                <div class="question-text"><span class="q-number">Q.42</span> Find the probability that a non-leap year (ordinary year) contains exactly 53 Mondays.</div>
+                <div class="hindi-text">एक साधारण वर्ष (नॉन-लीप वर्ष) में ठीक 53 सोमवार होने की प्रायिकता ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1/7</div><div class="option"><span class="opt-letter">(b)</span> 2/7</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3/7</div><div class="option"><span class="opt-letter">(d)</span> 1/365</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.43</span> The letters of the word 'APPLE' are arranged randomly. What is the probability that the word starts with 'A'?</div>
+                <div class="hindi-text">'APPLE' शब्द के अक्षरों को यादृच्छिक रूप से व्यवस्थित किया गया है। क्या प्रायिकता है कि शब्द 'A' से शुरू होता है?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 8/3</div><div class="option"><span class="opt-letter">(b)</span> 3</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3.5</div><div class="option"><span class="opt-letter">(d)</span> 2.5</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 2/5</div><div class="option"><span class="opt-letter">(b)</span> 1/4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/5</div><div class="option"><span class="opt-letter">(d)</span> 3/5</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.43</span> If the arithmetic mean of two numbers is 10 and their geometric mean is 8, find the harmonic mean.</div>
-                <div class="hindi-text">यदि दो संख्याओं का समांतर माध्य 10 है और उनका गुणोत्तर माध्य 8 है, तो हरात्मक माध्य ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.44</span> The odds in favor of an event are 3:5. Find the probability of occurrence of this event.</div>
+                <div class="hindi-text">किसी घटना के पक्ष में संयोगानुपात (odds in favor) 3:5 हैं। इस घटना के घटित होने की प्रायिकता ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6.4</div><div class="option"><span class="opt-letter">(b)</span> 6.8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7.2</div><div class="option"><span class="opt-letter">(d)</span> 6.0</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 3/5</div><div class="option"><span class="opt-letter">(b)</span> 3/8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/8</div><div class="option"><span class="opt-letter">(d)</span> 2/5</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.44</span> The arithmetic mean of the squares of the first n natural numbers is:</div>
-                <div class="hindi-text">प्रथम n प्राकृतिक संख्याओं के वर्गों का समांतर माध्य है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.45</span> The probability of an impossible event is:</div>
+                <div class="hindi-text">एक असंभव घटना की प्रायिकता होती है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> n(n+1)/2</div><div class="option"><span class="opt-letter">(b)</span> (n+1)(2n+1)/6</div>
-                    <div class="option"><span class="opt-letter">(c)</span> n(n+1)/6</div><div class="option"><span class="opt-letter">(d)</span> (n-1)/2</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.45</span> What is the relationship between Arithmetic Mean (AM), Geometric Mean (GM), and Harmonic Mean (HM)?</div>
-                <div class="hindi-text">समांतर माध्य (AM), गुणोत्तर माध्य (GM), और हरात्मक माध्य (HM) के बीच क्या संबंध है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> AM < GM < HM</div><div class="option"><span class="opt-letter">(b)</span> AM &ge; GM &ge; HM</div>
-                    <div class="option"><span class="opt-letter">(c)</span> AM = GM + HM</div><div class="option"><span class="opt-letter">(d)</span> GM = AM - HM</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 0</div><div class="option"><span class="opt-letter">(b)</span> 1</div>
+                    <div class="option"><span class="opt-letter">(c)</span> -1</div><div class="option"><span class="opt-letter">(d)</span> 0.5</div>
                 </div>
             </div>
         </div>
@@ -848,66 +873,66 @@
             <div class="header-left">
                 <div class="chapter-badge-wrap">
                     <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">17</div>
+                    <div class="chap-num">18</div>
                 </div>
                 <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
             </div>
             <div class="header-right">
-                <div class="title-en">STATISTICS</div>
-                <div class="title-hi">सांख्यिकी</div>
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
             </div>
         </div>
 
         <div class="content-area">
-            <div class="type-heading">TYPE - 10: MISCELLANEOUS (Continued)</div>
+            <div class="type-heading">TYPE - 5: MISCELLANEOUS (Continued)</div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.46</span> If the mean of x and 1/x is M, then the mean of x&sup2; and 1/x&sup2; is:</div>
-                <div class="hindi-text">यदि x और 1/x का माध्य M है, तो x&sup2; और 1/x&sup2; का माध्य है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="question-text"><span class="q-number">Q.46</span> The probability of a sure (certain) event is:</div>
+                <div class="hindi-text">एक निश्चित (sure) घटना की प्रायिकता होती है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> M&sup2; - 2</div><div class="option"><span class="opt-letter">(b)</span> 2M&sup2; - 1</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2M&sup2; - 2</div><div class="option"><span class="opt-letter">(d)</span> M&sup2; - 1</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 0</div><div class="option"><span class="opt-letter">(b)</span> 1</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 0.5</div><div class="option"><span class="opt-letter">(d)</span> Cannot be determined</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.47</span> The standard deviation of the data 10, 12, 14, 16, 18 is:</div>
-                <div class="hindi-text">आंकड़ों 10, 12, 14, 16, 18 का मानक विचलन है:</div>
+                <div class="question-text"><span class="q-number">Q.47</span> If P(E) = 0.35, then what is the probability of 'not E' ?</div>
+                <div class="hindi-text">यदि P(E) = 0.35 है, तो 'E नहीं' (not E) की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 0.35</div><div class="option"><span class="opt-letter">(b)</span> 0.55</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 0.65</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.48</span> A letter is chosen at random from the word 'PROBABILITY'. Find the probability that it is a vowel.</div>
+                <div class="hindi-text">'PROBABILITY' शब्द में से एक अक्षर यादृच्छिक रूप से चुना जाता है। इसके स्वर (vowel) होने की प्रायिकता ज्ञात कीजिए।</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> &radic;10</div><div class="option"><span class="opt-letter">(b)</span> &radic;8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2&radic;2</div><div class="option"><span class="opt-letter">(d)</span> Both b & c</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 4/11</div><div class="option"><span class="opt-letter">(b)</span> 3/11</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5/11</div><div class="option"><span class="opt-letter">(d)</span> 2/11</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.48</span> If the mean of n observations ax_1, ax_2, ..., ax_n is aX, where X is the mean of x_1, x_2, ..., x_n, then this property shows that:</div>
-                <div class="hindi-text">यदि n प्रेक्षणों ax_1, ax_2, ..., ax_n का माध्य aX है, जहाँ X, x_1, x_2, ..., x_n का माध्य है, तो यह गुण दर्शाता है कि:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="question-text"><span class="q-number">Q.49</span> A number is selected at random from the first 50 natural numbers. What is the probability that it is a perfect square?</div>
+                <div class="hindi-text">प्रथम 50 प्राकृतिक संख्याओं में से एक संख्या यादृच्छिक रूप से चुनी जाती है। इसके पूर्ण वर्ग (perfect square) होने की प्रायिकता क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> Mean is affected by change of scale</div><div class="option"><span class="opt-letter">(b)</span> Unaffected by scale</div>
-                    <div class="option"><span class="opt-letter">(c)</span> Affected by change of origin only</div><div class="option"><span class="opt-letter">(d)</span> None</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/10</div><div class="option"><span class="opt-letter">(b)</span> 3/25</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4/25</div><div class="option"><span class="opt-letter">(d)</span> 7/50</div>
                 </div>
             </div>
 
             <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.49</span> The variance of the first n even natural numbers is:</div>
-                <div class="hindi-text">प्रथम n सम प्राकृतिक संख्याओं का प्रसरण है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> (n&sup2; - 1) / 12</div><div class="option"><span class="opt-letter">(b)</span> (n&sup2; - 1) / 3</div>
-                    <div class="option"><span class="opt-letter">(c)</span> (n&sup2; + 1) / 12</div><div class="option"><span class="opt-letter">(d)</span> (n&sup2; - 1) / 6</div>
-                </div>
-            </div>
-
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.50</span> Find the median of all prime numbers between 10 and 30.</div>
-                <div class="hindi-text">10 और 30 के बीच सभी अभाज्य संख्याओं की माध्यिका ज्ञात कीजिए।</div>
+                <div class="question-text"><span class="q-number">Q.50</span> Two friends were born in the same year. What is the probability that they have their birthdays in the same month?</div>
+                <div class="hindi-text">दो दोस्त एक ही वर्ष में पैदा हुए थे। इसकी क्या प्रायिकता है कि उनका जन्मदिन एक ही महीने में हो?</div>
                 <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
                 <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 17</div><div class="option"><span class="opt-letter">(b)</span> 19</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 18</div><div class="option"><span class="opt-letter">(d)</span> 23</div>
+                    <div class="option"><span class="opt-letter">(a)</span> 1/365</div><div class="option"><span class="opt-letter">(b)</span> 1/12</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1/6</div><div class="option"><span class="opt-letter">(d)</span> 1/24</div>
                 </div>
             </div>
         </div>
@@ -918,7 +943,106 @@
             <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
         </div>
     </div>
-    
+
+    <!-- ================= PAGE 11 (ANSWER KEY & SOCIALS) ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">18</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">PROBABILITY</div>
+                <div class="title-hi">प्रायिकता</div>
+            </div>
+        </div>
+
+        <div class="answer-key-wrapper">
+            <div class="answer-key-title">ANSWER KEY</div>
+            <div class="ans-grid">
+                <div class="ans-box"><span class="ans-num">1.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">2.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">3.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">4.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">5.</span> <span class="ans-opt">d</span></div>
+                
+                <div class="ans-box"><span class="ans-num">6.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">7.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">8.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">9.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">10.</span> <span class="ans-opt">b</span></div>
+
+                <div class="ans-box"><span class="ans-num">11.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">12.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">13.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">14.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">15.</span> <span class="ans-opt">d</span></div>
+
+                <div class="ans-box"><span class="ans-num">16.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">17.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">18.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">19.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">20.</span> <span class="ans-opt">b</span></div>
+
+                <div class="ans-box"><span class="ans-num">21.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">22.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">23.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">24.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">25.</span> <span class="ans-opt">a</span></div>
+
+                <div class="ans-box"><span class="ans-num">26.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">27.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">28.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">29.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">30.</span> <span class="ans-opt">c</span></div>
+
+                <div class="ans-box"><span class="ans-num">31.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">32.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">33.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">34.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">35.</span> <span class="ans-opt">b</span></div>
+
+                <div class="ans-box"><span class="ans-num">36.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">37.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">38.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">39.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">40.</span> <span class="ans-opt">c</span></div>
+
+                <div class="ans-box"><span class="ans-num">41.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">42.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">43.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">44.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">45.</span> <span class="ans-opt">a</span></div>
+
+                <div class="ans-box"><span class="ans-num">46.</span> <span class="ans-opt">b</span></div>
+                <div class="ans-box"><span class="ans-num">47.</span> <span class="ans-opt">c</span></div>
+                <div class="ans-box"><span class="ans-num">48.</span> <span class="ans-opt">a</span></div>
+                <div class="ans-box"><span class="ans-num">49.</span> <span class="ans-opt">d</span></div>
+                <div class="ans-box"><span class="ans-num">50.</span> <span class="ans-opt">b</span></div>
+            </div>
+
+            <div class="social-wrapper">
+                <div class="social-title">CONNECT WITH US</div>
+                <div class="social-handles">
+                    <a href="https://www.youtube.com/@abhinaypratapmaths" class="social-btn s-yt"><i class="fab fa-youtube"></i> ABHINAY_PRATAP_MATHS</a>
+                    <a href="#" class="social-btn s-tg"><i class="fab fa-telegram-plane"></i> ABHINAY_PRATAP_MATHS</a>
+                    <a href="#" class="social-btn s-ig"><i class="fab fa-instagram"></i> @abhinay_pratap_maths</a>
+                    <a href="#" class="social-btn s-tw"><i class="fab fa-twitter"></i> @abhinay_maths</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">11</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
     <!-- SECURITY SCRIPT -->
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
