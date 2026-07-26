@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 Questions UP Police & SI Set | AP Mathematics</title>
+    <title>Statistics Practice Book | Exam Edge Institute</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,150 +29,107 @@
             -webkit-user-select: none;
         }
 
-        .control-panel {
-            background: #fff; padding: 15px 30px; margin: 20px auto; width: 210mm;
-            border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--brand-red);
+        .pdf-btn-container {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
         }
-        .control-panel select {
-            padding: 10px; font-size: 1rem; font-family: 'Poppins', sans-serif;
-            border: 2px solid var(--brand-blue); border-radius: 5px; font-weight: 600; cursor: pointer;
-        }
-
-        .pdf-btn-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
         .btn-generate-pdf {
-            background: var(--brand-red); color: #fff; border: none; padding: 15px 25px;
-            font-size: 1.1rem; font-weight: 800; border-radius: 50px; cursor: pointer;
-            box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4); display: flex; align-items: center; gap: 10px; transition: 0.3s;
+            background: var(--brand-red); color: #fff; border: none;
+            padding: 15px 25px; font-size: 1.1rem; font-weight: 800;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
+            display: flex; align-items: center; gap: 10px; transition: 0.3s;
         }
-        .btn-generate-pdf:hover { transform: translateY(-5px); filter: brightness(0.9); }
+        .btn-generate-pdf:hover { transform: translateY(-5px); background: #b91c1c; }
 
         .page {
-            width: 210mm; height: 296mm; background: #ffffff; margin: 15mm auto; position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 10mm 15mm 10mm 15mm;
-            page-break-after: always; overflow: hidden; border-left: 6px solid var(--brand-blue);
-            border-right: 6px solid var(--brand-red); display: flex; flex-direction: column; transition: border-color 0.4s ease;
+            width: 210mm; height: 296mm; background: #ffffff;
+            margin: 15mm auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 10mm 15mm 10mm 15mm; page-break-after: always; overflow: hidden; 
+            border-left: 6px solid var(--brand-blue); border-right: 6px solid var(--brand-red); 
+            display: flex; flex-direction: column;
         }
 
         .watermark {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 3.5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 4px;
+            font-size: 4.5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); 
+            z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 5px;
         }
 
         .book-header {
             display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 3px solid var(--brand-red); padding-bottom: 3mm; margin-bottom: 2mm; z-index: 2; position: relative;
+            border-bottom: 3px solid var(--brand-red); padding-bottom: 5mm;
+            margin-bottom: 4mm; z-index: 2; position: relative;
         }
 
-        /* Fixed Gap between Logo and SHEET 01 Tag */
-        .header-left { display: flex; align-items: center; gap: 18px; }
-        
+        .header-left { display: flex; align-items: center; }
         .chapter-badge-wrap {
             display: flex; align-items: center; background: var(--bg-light); border: 2px solid #e2e8f0;
             border-radius: 8px 50px 50px 8px; height: 44px; position: relative; z-index: 1;
         }
         .chap-label {
             background: var(--brand-red); color: #fff; height: 100%; display: flex; align-items: center;
-            padding: 0 10px; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.5px; border-radius: 6px 0 0 6px;
+            padding: 0 12px; font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; border-radius: 6px 0 0 6px;
         }
-        .chap-num { font-size: 1.3rem; font-weight: 900; color: var(--dark-text); padding: 0 25px 0 10px; }
+        .chap-num { font-size: 1.6rem; font-weight: 900; color: var(--dark-text); padding: 0 35px 0 12px; }
 
         .header-logo {
-            width: 75px; height: 75px; border-radius: 50%; border: 3px solid var(--brand-red);
-            background: #fff; z-index: 2; padding: 3px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--brand-red);
+            background: #fff; margin-left: -30px; z-index: 2; padding: 3px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         }
         .header-logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
 
-        .header-right { display: flex; align-items: center; gap: 15px; }
-        .header-text-group { text-align: right; display: flex; flex-direction: column; justify-content: center; }
-        .title-en { font-size: 1.35rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 0.5px; }
-        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
-        
-        .qr-code { width: 60px; height: 60px; border: 2.5px solid var(--brand-blue); border-radius: 6px; padding: 3px; }
+        .header-right { text-align: right; display: flex; flex-direction: column; justify-content: center; }
+        .title-en { font-size: 1.8rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 1px; }
+        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
 
-        .practice-sheet-banner { display: flex; justify-content: center; margin-bottom: 3mm; z-index: 2; position: relative; }
-        .practice-sheet-badge {
-            background: var(--bg-light); color: var(--brand-blue); font-size: 0.75rem; font-weight: 800;
-            letter-spacing: 2px; text-transform: uppercase; padding: 2px 16px; border-radius: 20px;
-            border: 1.5px solid var(--brand-blue); box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        .content-area {
+            flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
+            margin-bottom: 20mm; z-index: 2; position: relative;
         }
 
-        .content-area { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin-bottom: 12mm; z-index: 2; position: relative; }
+        .type-heading {
+            background: var(--dark-text); color: #fff; display: table; padding: 3px 12px;
+            font-size: 0.95rem; font-weight: 800; border-radius: 6px; border-left: 5px solid var(--brand-gold);
+            margin-bottom: 1mm; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); text-transform: uppercase;
+        }
 
-        .question-block { display: flex; flex-direction: column; gap: 1px; }
-        .question-text { font-size: 0.84rem; color: var(--dark-text); font-weight: 600; line-height: 1.35; text-align: justify; }
-        .q-number { color: var(--brand-red); font-weight: 900; margin-right: 4px; font-size: 0.9rem; }
-        .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.9rem; color: var(--grey-text); font-weight: 600; line-height: 1.25; text-align: justify; }
+        .question-block { display: flex; flex-direction: column; gap: 1mm; margin-bottom: 5px; }
+        .question-text { font-size: 0.88rem; color: var(--dark-text); font-weight: 600; line-height: 1.4; text-align: justify; }
+        .q-number { color: var(--brand-red); font-weight: 900; margin-right: 6px; font-size: 1rem; }
+        .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.95rem; color: var(--grey-text); font-weight: 600; line-height: 1.3; text-align: justify; }
 
-        .tag-wrapper { text-align: right; margin-top: 1px; margin-bottom: 1px; }
+        .tag-wrapper { text-align: right; margin-top: 1px; margin-bottom: 2px; }
         .exam-tag {
-            display: inline-block; background: linear-gradient(45deg, var(--brand-red), var(--brand-blue)); color: #fff;
-            font-size: 0.6rem; font-weight: 800; padding: 1px 8px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            display: inline-block; background: linear-gradient(45deg, var(--brand-red), #ff4d4d); color: #fff;
+            font-size: 0.65rem; font-weight: 800; padding: 2px 10px; border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(217, 38, 38, 0.3); letter-spacing: 0.5px;
         }
 
-        .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-        .option { font-size: 0.84rem; font-weight: 700; color: var(--dark-text); }
-        .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 3px; }
+        .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+        .option { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); }
+        .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 4px; }
 
-        /* Answer Key Layout */
-        .answer-key-wrapper { margin-top: 1mm; z-index: 2; position: relative; }
-        .answer-key-title { text-align: center; font-size: 1.4rem; font-weight: 900; color: var(--brand-red); margin-bottom: 3mm; text-decoration: underline; }
-        .ans-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
-        .ans-box {
-            background: #fff; border: 1.5px solid var(--brand-red); border-radius: 4px; display: flex;
-            align-items: center; justify-content: center; padding: 3px; box-shadow: 0 1px 3px rgba(217, 38, 38, 0.1);
-        }
-        .ans-num { font-weight: 900; color: var(--brand-red); margin-right: 2px; font-size: 0.75rem; }
-        .ans-opt { font-weight: 800; color: var(--dark-text); font-size: 0.75rem; text-transform: uppercase; }
-
-        /* Social Handles Wrapper for Answer Key Page */
-        .social-wrapper { text-align: center; margin-top: 6mm; padding-top: 4mm; border-top: 2px dashed #cbd5e1; z-index: 2; position: relative; }
-        .social-title { font-size: 1rem; font-weight: 900; color: var(--dark-text); margin-bottom: 8px; letter-spacing: 1px; }
-        .social-handles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-        .social-btn {
-            display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 6px; color: #fff;
-            font-weight: 800; font-size: 0.8rem; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-        .s-yt { background: #ff0000; }
-        .s-tg { background: #0088cc; }
-        .s-ig { background: #e1306c; }
-
-        /* Footer */
         .book-footer {
             position: absolute; bottom: 10mm; left: 15mm; right: 15mm; height: 12mm;
             border-top: 2.5px solid var(--brand-red); padding-top: 3mm;
             display: flex; justify-content: space-between; align-items: center; z-index: 2; background: #fff; 
         }
         .footer-left { font-size: 0.85rem; font-weight: 900; color: var(--brand-blue); letter-spacing: 0.5px; }
-        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); }
+        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); text-transform: uppercase; }
         .footer-center {
             background: var(--brand-red); color: #fff; width: 28px; height: 28px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;
-            position: absolute; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 2px solid #fff;
+            position: absolute; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(217, 38, 38, 0.4); border: 2px solid #fff;
         }
 
         @page { size: A4; margin: 0; }
         @media print {
             body { background: white; }
-            .pdf-btn-container, .control-panel { display: none !important; }
+            .pdf-btn-container { display: none !important; }
             .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; page-break-after: always; }
         }
     </style>
 </head>
 <body>
-
-    <div class="control-panel">
-        <div>
-            <h3 style="color: var(--dark-text);">Batch Theme Selector</h3>
-            <p style="font-size: 0.8rem; color: #555;">Select batch to change styling (Watermark is locked to Abhinay Pratap Maths).</p>
-        </div>
-        <select id="themeSelector" onchange="changeBatchTheme()">
-            <option value="examedge">Examedge Institute (Default)</option>
-            <option value="prakram">Prakram Foundation Batch</option>
-            <option value="sankalp">Sankalp Foundation Batch</option>
-            <option value="lakshya">Lakshya Foundation Batch</option>
-        </select>
-    </div>
 
     <div class="pdf-btn-container">
         <button class="btn-generate-pdf" onclick="window.print()">
@@ -180,146 +137,797 @@
         </button>
     </div>
 
-    <!-- Container where Javascript will push all 21 pages dynamically -->
-    <div id="pages-container"></div>
+    <!-- ================= PAGE 1 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
 
+        <div class="content-area">
+            <div class="type-heading">TYPE - 1: MEAN (माध्य)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.1</span> Find the mean of the first 10 prime numbers.</div>
+                <div class="hindi-text">प्रथम 10 अभाज्य संख्याओं का माध्य ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12.9</div><div class="option"><span class="opt-letter">(b)</span> 12.5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 11.8</div><div class="option"><span class="opt-letter">(d)</span> 10.5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.2</span> If the mean of 5 observations x, x+2, x+4, x+6, and x+8 is 11, find the value of x.</div>
+                <div class="hindi-text">यदि 5 प्रेक्षणों x, x+2, x+4, x+6, और x+8 का माध्य 11 है, तो x का मान ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5</div><div class="option"><span class="opt-letter">(b)</span> 6</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7</div><div class="option"><span class="opt-letter">(d)</span> 8</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.3</span> The mean of 10 numbers is 15. If 3 is added to each number, what will be the new mean?</div>
+                <div class="hindi-text">10 संख्याओं का माध्य 15 है। यदि प्रत्येक संख्या में 3 जोड़ दिया जाए, तो नया माध्य क्या होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 18</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12</div><div class="option"><span class="opt-letter">(d)</span> 45</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.4</span> The mean of 50 numbers is 30. Later it was discovered that a value 28 was wrongly read as 82. Find the correct mean.</div>
+                <div class="hindi-text">50 संख्याओं का माध्य 30 है। बाद में यह पता चला कि एक मान 28 को गलती से 82 पढ़ लिया गया था। सही माध्य ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Police SI 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 28.92</div><div class="option"><span class="opt-letter">(b)</span> 29.82</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 31.08</div><div class="option"><span class="opt-letter">(d)</span> 28.52</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.5</span> The average marks of 30 students in a class is 45. If the teacher's marks are included, the average becomes 46. What are the teacher's marks?</div>
+                <div class="hindi-text">एक कक्षा में 30 छात्रों के औसत अंक 45 हैं। यदि शिक्षक के अंकों को शामिल कर लिया जाए, तो औसत 46 हो जाता है। शिक्षक के अंक क्या हैं?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 75</div><div class="option"><span class="opt-letter">(b)</span> 76</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 46</div><div class="option"><span class="opt-letter">(d)</span> 85</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">1</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 2: MEDIAN (माध्यिका)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.6</span> Find the median of the data: 2, 4, 6, 8, 10, 12, 14.</div>
+                <div class="hindi-text">आंकड़ों की माध्यिका ज्ञात कीजिए: 2, 4, 6, 8, 10, 12, 14.</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 6</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 10</div><div class="option"><span class="opt-letter">(d)</span> 7</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.7</span> What is the median of the following numbers: 15, 11, 7, 9, 20, 17?</div>
+                <div class="hindi-text">निम्नलिखित संख्याओं की माध्यिका क्या है: 15, 11, 7, 9, 20, 17?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 13</div><div class="option"><span class="opt-letter">(b)</span> 11</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15</div><div class="option"><span class="opt-letter">(d)</span> 12</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.8</span> The observations 11, 12, 14, 18, x+2, x+4, 30, 32, 35, 41 are in ascending order. If the median is 24, find x.</div>
+                <div class="hindi-text">प्रेक्षण 11, 12, 14, 18, x+2, x+4, 30, 32, 35, 41 आरोही क्रम में हैं। यदि माध्यिका 24 है, तो x ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 21</div><div class="option"><span class="opt-letter">(b)</span> 22</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 20</div><div class="option"><span class="opt-letter">(d)</span> 24</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.9</span> Find the median of the first 10 whole numbers.</div>
+                <div class="hindi-text">प्रथम 10 पूर्ण संख्याओं की माध्यिका ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 5.5</div><div class="option"><span class="opt-letter">(b)</span> 4.5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5</div><div class="option"><span class="opt-letter">(d)</span> 4</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.10</span> If the median of a dataset is 15. If each observation is multiplied by 2, the new median will be?</div>
+                <div class="hindi-text">यदि किसी डेटासेट की माध्यिका 15 है। यदि प्रत्येक प्रेक्षण को 2 से गुणा किया जाता है, तो नई माध्यिका क्या होगी?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 17</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 30</div><div class="option"><span class="opt-letter">(d)</span> 7.5</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">2</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 3 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 3: MODE (बहुलक)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.11</span> Find the mode of the given data: 2, 3, 4, 3, 5, 3, 6, 2.</div>
+                <div class="hindi-text">दिए गए आंकड़ों का बहुलक ज्ञात कीजिए: 2, 3, 4, 3, 5, 3, 6, 2.</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2</div><div class="option"><span class="opt-letter">(b)</span> 3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4</div><div class="option"><span class="opt-letter">(d)</span> 5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.12</span> In a frequency distribution, the class with the highest frequency is called?</div>
+                <div class="hindi-text">एक आवृत्ति वितरण में, सबसे अधिक आवृत्ति वाले वर्ग को क्या कहा जाता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Mean Class</div><div class="option"><span class="opt-letter">(b)</span> Median Class</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Modal Class</div><div class="option"><span class="opt-letter">(d)</span> None</div>
+                </div>
+            </div>
+
+            <div class="type-heading" style="margin-top: 5mm;">TYPE - 4: EMPIRICAL RELATION (अनुभवजन्य संबंध)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.13</span> If the mean of a moderately asymmetrical distribution is 10 and the median is 12, find its mode.</div>
+                <div class="hindi-text">यदि एक मध्यम असममित वितरण का माध्य 10 है और माध्यिका 12 है, तो इसका बहुलक ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 16</div><div class="option"><span class="opt-letter">(b)</span> 14</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18</div><div class="option"><span class="opt-letter">(d)</span> 20</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.14</span> The mode of a dataset is 24 and its median is 20. What will be its mean?</div>
+                <div class="hindi-text">एक डेटासेट का बहुलक 24 है और इसकी माध्यिका 20 है। इसका माध्य क्या होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 18</div><div class="option"><span class="opt-letter">(b)</span> 20</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 22</div><div class="option"><span class="opt-letter">(d)</span> 16</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.15</span> If Mean - Mode = 3, then Mean - Median is equal to:</div>
+                <div class="hindi-text">यदि माध्य - बहुलक = 3, तो माध्य - माध्यिका किसके बराबर है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1</div><div class="option"><span class="opt-letter">(b)</span> 2</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3</div><div class="option"><span class="opt-letter">(d)</span> 4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">3</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 4 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 5: RANGE & MEAN DEVIATION (परास और माध्य विचलन)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.16</span> Find the range of the given dataset: 10, 20, 15, 25, 30, 5, 8.</div>
+                <div class="hindi-text">दिए गए डेटासेट का परास (Range) ज्ञात कीजिए: 10, 20, 15, 25, 30, 5, 8.</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25</div><div class="option"><span class="opt-letter">(b)</span> 20</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 15</div><div class="option"><span class="opt-letter">(d)</span> 30</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.17</span> What is the range of the first 15 natural numbers?</div>
+                <div class="hindi-text">प्रथम 15 प्राकृतिक संख्याओं का परास क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 14</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 16</div><div class="option"><span class="opt-letter">(d)</span> 13</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.18</span> Find the mean deviation about the mean for the data: 3, 4, 5, 6, 7.</div>
+                <div class="hindi-text">आंकड़ों के लिए माध्य के सापेक्ष माध्य विचलन ज्ञात कीजिए: 3, 4, 5, 6, 7.</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1.2</div><div class="option"><span class="opt-letter">(b)</span> 1.5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2</div><div class="option"><span class="opt-letter">(d)</span> 1.8</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.19</span> The range of the data: -5, -2, 0, 4, 8, 12 is:</div>
+                <div class="hindi-text">आंकड़ों: -5, -2, 0, 4, 8, 12 का परास है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 17</div><div class="option"><span class="opt-letter">(b)</span> 12</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7</div><div class="option"><span class="opt-letter">(d)</span> 15</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.20</span> Find the mean deviation about the median for the observations: 1, 2, 3, 4, 5.</div>
+                <div class="hindi-text">प्रेक्षणों: 1, 2, 3, 4, 5 के लिए माध्यिका के सापेक्ष माध्य विचलन ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 1</div><div class="option"><span class="opt-letter">(b)</span> 1.2</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 1.5</div><div class="option"><span class="opt-letter">(d)</span> 2</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">4</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 5 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 6: VARIANCE (प्रसरण)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.21</span> Find the variance of the data: 1, 2, 3, 4, 5.</div>
+                <div class="hindi-text">आंकड़ों का प्रसरण (Variance) ज्ञात कीजिए: 1, 2, 3, 4, 5.</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 2</div><div class="option"><span class="opt-letter">(b)</span> 2.5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3</div><div class="option"><span class="opt-letter">(d)</span> 1.5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.22</span> What is the variance of the first 10 natural numbers?</div>
+                <div class="hindi-text">प्रथम 10 प्राकृतिक संख्याओं का प्रसरण क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8.25</div><div class="option"><span class="opt-letter">(b)</span> 8.5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 9.15</div><div class="option"><span class="opt-letter">(d)</span> 10</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.23</span> If the variance of a dataset is 144, what is its standard deviation?</div>
+                <div class="hindi-text">यदि किसी डेटासेट का प्रसरण 144 है, तो उसका मानक विचलन (Standard Deviation) क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12</div><div class="option"><span class="opt-letter">(b)</span> -12</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 144</div><div class="option"><span class="opt-letter">(d)</span> 72</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.24</span> The variance of 10 observations is 4. If each observation is multiplied by 3, what will be the new variance?</div>
+                <div class="hindi-text">10 प्रेक्षणों का प्रसरण 4 है। यदि प्रत्येक प्रेक्षण को 3 से गुणा किया जाए, तो नया प्रसरण क्या होगा?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12</div><div class="option"><span class="opt-letter">(b)</span> 36</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 4</div><div class="option"><span class="opt-letter">(d)</span> 16</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.25</span> The variance of 5 observations is 9. If 2 is added to each observation, find the new variance.</div>
+                <div class="hindi-text">5 प्रेक्षणों का प्रसरण 9 है। यदि प्रत्येक प्रेक्षण में 2 जोड़ दिया जाए, तो नया प्रसरण ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 11</div><div class="option"><span class="opt-letter">(b)</span> 13</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 9</div><div class="option"><span class="opt-letter">(d)</span> 7</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">5</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 6 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 7: STANDARD DEVIATION (मानक विचलन)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.26</span> Find the standard deviation of the numbers: 3, 4, 5, 6, 7.</div>
+                <div class="hindi-text">संख्याओं: 3, 4, 5, 6, 7 का मानक विचलन ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> &radic;2</div><div class="option"><span class="opt-letter">(b)</span> 2</div>
+                    <div class="option"><span class="opt-letter">(c)</span> &radic;3</div><div class="option"><span class="opt-letter">(d)</span> 1.5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.27</span> The standard deviation of a dataset is 5. If each observation is multiplied by -2, what is the new standard deviation?</div>
+                <div class="hindi-text">एक डेटासेट का मानक विचलन 5 है। यदि प्रत्येक प्रेक्षण को -2 से गुणा किया जाए, तो नया मानक विचलन क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> -10</div><div class="option"><span class="opt-letter">(b)</span> 10</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 5</div><div class="option"><span class="opt-letter">(d)</span> -5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.28</span> What is the standard deviation of the first 5 natural numbers?</div>
+                <div class="hindi-text">प्रथम 5 प्राकृतिक संख्याओं का मानक विचलन क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> &radic;3</div><div class="option"><span class="opt-letter">(b)</span> &radic;2</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2</div><div class="option"><span class="opt-letter">(d)</span> 3</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.29</span> If the variance of a distribution is 16, what is its standard deviation?</div>
+                <div class="hindi-text">यदि किसी वितरण का प्रसरण 16 है, तो उसका मानक विचलन क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 4</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 16</div><div class="option"><span class="opt-letter">(d)</span> 2</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.30</span> Find the standard deviation of the data: 10, 10, 10, 10, 10.</div>
+                <div class="hindi-text">आंकड़ों का मानक विचलन ज्ञात कीजिए: 10, 10, 10, 10, 10.</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10</div><div class="option"><span class="opt-letter">(b)</span> 5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 0</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">6</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 8: COEFFICIENT OF VARIATION (विचरण गुणांक)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.31</span> If the mean of a distribution is 20 and the standard deviation is 4, find the coefficient of variation.</div>
+                <div class="hindi-text">यदि किसी वितरण का माध्य 20 है और मानक विचलन 4 है, तो विचरण गुणांक ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10%</div><div class="option"><span class="opt-letter">(b)</span> 20%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25%</div><div class="option"><span class="opt-letter">(d)</span> 40%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.32</span> The coefficient of variation is 40% and the mean is 15. What is the standard deviation?</div>
+                <div class="hindi-text">विचरण गुणांक 40% है और माध्य 15 है। मानक विचलन क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 6</div><div class="option"><span class="opt-letter">(b)</span> 5</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 8</div><div class="option"><span class="opt-letter">(d)</span> 4</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.33</span> If the variance of a dataset is 25 and its mean is 10, find the coefficient of variation.</div>
+                <div class="hindi-text">यदि किसी डेटासेट का प्रसरण 25 है और उसका माध्य 10 है, तो विचरण गुणांक ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25%</div><div class="option"><span class="opt-letter">(b)</span> 40%</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 50%</div><div class="option"><span class="opt-letter">(d)</span> 20%</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.34</span> The coefficient of variation of a dataset is 25% and its standard deviation is 5. What is the mean?</div>
+                <div class="hindi-text">एक डेटासेट का विचरण गुणांक 25% है और इसका मानक विचलन 5 है। माध्य क्या है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 15</div><div class="option"><span class="opt-letter">(b)</span> 20</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 25</div><div class="option"><span class="opt-letter">(d)</span> 30</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.35</span> Two series A and B have coefficients of variation as 50% and 60% respectively. If the standard deviation of A is 10 and that of B is 15, find the ratio of their means.</div>
+                <div class="hindi-text">दो श्रृंखलाओं A और B के विचरण गुणांक क्रमशः 50% और 60% हैं। यदि A का मानक विचलन 10 है और B का 15 है, तो उनके माध्य का अनुपात ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 4:5</div><div class="option"><span class="opt-letter">(b)</span> 5:4</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3:2</div><div class="option"><span class="opt-letter">(d)</span> 2:3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">7</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 8 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 9: COMBINED MEAN (संयुक्त माध्य)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.36</span> The mean weight of 30 boys is 15 kg, and that of 20 girls is 10 kg. Find the combined mean weight of all students.</div>
+                <div class="hindi-text">30 लड़कों का औसत (माध्य) वजन 15 किलोग्राम है, और 20 लड़कियों का 10 किलोग्राम है। सभी छात्रों का संयुक्त माध्य वजन ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 12 kg</div><div class="option"><span class="opt-letter">(b)</span> 13 kg</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 14 kg</div><div class="option"><span class="opt-letter">(d)</span> 12.5 kg</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.37</span> The average marks of 10 items is 20 and that of another 20 items is 30. Find the combined mean.</div>
+                <div class="hindi-text">10 वस्तुओं के औसत अंक 20 हैं और अन्य 20 वस्तुओं के 30 हैं। संयुक्त माध्य ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 25.6</div><div class="option"><span class="opt-letter">(b)</span> 26.6</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 24</div><div class="option"><span class="opt-letter">(d)</span> 28</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.38</span> The sum of the deviations of a set of values from their mean is always:</div>
+                <div class="hindi-text">किसी दिए गए मानों के समूह के उनके माध्य से विचलनों का योग हमेशा होता है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Positive</div><div class="option"><span class="opt-letter">(b)</span> Negative</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Zero</div><div class="option"><span class="opt-letter">(d)</span> 1</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.39</span> The sum of squares of deviations of a given set of observations is minimum when taken from?</div>
+                <div class="hindi-text">दिए गए प्रेक्षणों के समूह के विचलनों के वर्गों का योग न्यूनतम होता है, जब इसे लिया जाता है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Median</div><div class="option"><span class="opt-letter">(b)</span> Mode</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Mean</div><div class="option"><span class="opt-letter">(d)</span> Zero</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.40</span> Which of the following is not a measure of central tendency?</div>
+                <div class="hindi-text">निम्नलिखित में से कौन केंद्रीय प्रवृत्ति की माप नहीं है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Mean</div><div class="option"><span class="opt-letter">(b)</span> Median</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Mode</div><div class="option"><span class="opt-letter">(d)</span> Range</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">8</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 9 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 10: MISCELLANEOUS (विविध)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.41</span> The geometric mean of 4 and 16 is:</div>
+                <div class="hindi-text">4 और 16 का गुणोत्तर माध्य है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 10</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 12</div><div class="option"><span class="opt-letter">(d)</span> 6</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.42</span> The harmonic mean of 2 and 4 is:</div>
+                <div class="hindi-text">2 और 4 का हरात्मक माध्य है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB NTPC 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 8/3</div><div class="option"><span class="opt-letter">(b)</span> 3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 3.5</div><div class="option"><span class="opt-letter">(d)</span> 2.5</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.43</span> If the arithmetic mean of two numbers is 10 and their geometric mean is 8, find the harmonic mean.</div>
+                <div class="hindi-text">यदि दो संख्याओं का समांतर माध्य 10 है और उनका गुणोत्तर माध्य 8 है, तो हरात्मक माध्य ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 6.4</div><div class="option"><span class="opt-letter">(b)</span> 6.8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 7.2</div><div class="option"><span class="opt-letter">(d)</span> 6.0</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.44</span> The arithmetic mean of the squares of the first n natural numbers is:</div>
+                <div class="hindi-text">प्रथम n प्राकृतिक संख्याओं के वर्गों का समांतर माध्य है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CHSL 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> n(n+1)/2</div><div class="option"><span class="opt-letter">(b)</span> (n+1)(2n+1)/6</div>
+                    <div class="option"><span class="opt-letter">(c)</span> n(n+1)/6</div><div class="option"><span class="opt-letter">(d)</span> (n-1)/2</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.45</span> What is the relationship between Arithmetic Mean (AM), Geometric Mean (GM), and Harmonic Mean (HM)?</div>
+                <div class="hindi-text">समांतर माध्य (AM), गुणोत्तर माध्य (GM), और हरात्मक माध्य (HM) के बीच क्या संबंध है?</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP SI 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> AM < GM < HM</div><div class="option"><span class="opt-letter">(b)</span> AM &ge; GM &ge; HM</div>
+                    <div class="option"><span class="opt-letter">(c)</span> AM = GM + HM</div><div class="option"><span class="opt-letter">(d)</span> GM = AM - HM</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">9</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 10 ================= -->
+    <div class="page">
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+        <div class="book-header">
+            <div class="header-left">
+                <div class="chapter-badge-wrap">
+                    <div class="chap-label">CHAPTER</div>
+                    <div class="chap-num">17</div>
+                </div>
+                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+            </div>
+            <div class="header-right">
+                <div class="title-en">STATISTICS</div>
+                <div class="title-hi">सांख्यिकी</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="type-heading">TYPE - 10: MISCELLANEOUS (Continued)</div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.46</span> If the mean of x and 1/x is M, then the mean of x&sup2; and 1/x&sup2; is:</div>
+                <div class="hindi-text">यदि x और 1/x का माध्य M है, तो x&sup2; और 1/x&sup2; का माध्य है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CGL Mains 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> M&sup2; - 2</div><div class="option"><span class="opt-letter">(b)</span> 2M&sup2; - 1</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2M&sup2; - 2</div><div class="option"><span class="opt-letter">(d)</span> M&sup2; - 1</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.47</span> The standard deviation of the data 10, 12, 14, 16, 18 is:</div>
+                <div class="hindi-text">आंकड़ों 10, 12, 14, 16, 18 का मानक विचलन है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> RRB Group D 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> &radic;10</div><div class="option"><span class="opt-letter">(b)</span> &radic;8</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 2&radic;2</div><div class="option"><span class="opt-letter">(d)</span> Both b & c</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.48</span> If the mean of n observations ax_1, ax_2, ..., ax_n is aX, where X is the mean of x_1, x_2, ..., x_n, then this property shows that:</div>
+                <div class="hindi-text">यदि n प्रेक्षणों ax_1, ax_2, ..., ax_n का माध्य aX है, जहाँ X, x_1, x_2, ..., x_n का माध्य है, तो यह गुण दर्शाता है कि:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC MTS 2021</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> Mean is affected by change of scale</div><div class="option"><span class="opt-letter">(b)</span> Unaffected by scale</div>
+                    <div class="option"><span class="opt-letter">(c)</span> Affected by change of origin only</div><div class="option"><span class="opt-letter">(d)</span> None</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.49</span> The variance of the first n even natural numbers is:</div>
+                <div class="hindi-text">प्रथम n सम प्राकृतिक संख्याओं का प्रसरण है:</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> UP Lekhpal 2022</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> (n&sup2; - 1) / 12</div><div class="option"><span class="opt-letter">(b)</span> (n&sup2; - 1) / 3</div>
+                    <div class="option"><span class="opt-letter">(c)</span> (n&sup2; + 1) / 12</div><div class="option"><span class="opt-letter">(d)</span> (n&sup2; - 1) / 6</div>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text"><span class="q-number">Q.50</span> Find the median of all prime numbers between 10 and 30.</div>
+                <div class="hindi-text">10 और 30 के बीच सभी अभाज्य संख्याओं की माध्यिका ज्ञात कीजिए।</div>
+                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> SSC CPO 2023</span></div>
+                <div class="options-grid">
+                    <div class="option"><span class="opt-letter">(a)</span> 17</div><div class="option"><span class="opt-letter">(b)</span> 19</div>
+                    <div class="option"><span class="opt-letter">(c)</span> 18</div><div class="option"><span class="opt-letter">(d)</span> 23</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-footer">
+            <div class="footer-left">EXAMEDGE INSTITUTE</div>
+            <div class="footer-center">10</div>
+            <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
+        </div>
+    </div>
+    
+    <!-- SECURITY SCRIPT -->
     <script>
-        // Moderate to Tough Level 100 Questions Data Array
-        // Format: [Question_En, Question_Hi, Tag, OptA, OptB, OptC, OptD, AnswerKey]
-        const qData = [
-            ["If x + 1/x = 3, find the value of x<sup>5</sup> + 1/x<sup>5</sup>.", "यदि x + 1/x = 3 है, तो x<sup>5</sup> + 1/x<sup>5</sup> का मान ज्ञात कीजिए।", "UP SI 2021", "123", "126", "120", "118", "a"],
-            ["A and B can do a work in 12 and 15 days respectively. They started working together, but A left 4 days before the completion of the work. In how many days was the whole work completed?", "A और B क्रमशः 12 और 15 दिनों में एक कार्य कर सकते हैं। उन्होंने एक साथ काम करना शुरू किया, लेकिन काम पूरा होने से 4 दिन पहले A ने काम छोड़ दिया। पूरा काम कितने दिनों में पूरा हुआ?", "UP Police Constable 2024", "8 <sup>8</sup>&frasl;<sub>9</sub> days", "7 <sup>5</sup>&frasl;<sub>9</sub> days", "8 <sup>2</sup>&frasl;<sub>9</sub> days", "9 days", "a"],
-            ["The Compound Interest on a certain sum for 2 years is Rs. 832 and the Simple Interest on the same sum for the same period is Rs. 800. What is the rate of interest?", "एक निश्चित राशि पर 2 वर्ष का चक्रवृद्धि ब्याज 832 रुपये है और उसी अवधि के लिए समान राशि पर साधारण ब्याज 800 रुपये है। ब्याज की दर क्या है?", "UP SI 2017", "6%", "8%", "10%", "12%", "b"],
-            ["The radius of a cylinder is increased by 20% and its height is decreased by 10%. What is the percentage change in its volume?", "एक बेलन की त्रिज्या में 20% की वृद्धि की जाती है और उसकी ऊंचाई में 10% की कमी की जाती है। इसके आयतन में कितने प्रतिशत का परिवर्तन होगा?", "UP Police Constable 2020", "29.6% Increase", "28.4% Increase", "30% Increase", "25.6% Increase", "a"],
-            ["A dishonest dealer promises to sell his goods at cost price, but he uses a false weight of 850 grams instead of 1 kg. Find his gain percentage.", "एक बेईमान व्यापारी अपने माल को क्रय मूल्य पर बेचने का वादा करता है, लेकिन वह 1 किलो के बजाय 850 ग्राम के झूठे वजन का उपयोग करता है। उसका लाभ प्रतिशत ज्ञात कीजिए।", "UP SI 2021", "17 <sup>11</sup>&frasl;<sub>17</sub>%", "15%", "11 <sup>1</sup>&frasl;<sub>9</sub>%", "17.5%", "a"],
-            ["Two trains 150 m and 200 m long are running in opposite directions at 45 km/hr and 63 km/hr respectively. In what time will they cross each other?", "150 मीटर और 200 मीटर लंबी दो ट्रेनें विपरीत दिशाओं में क्रमशः 45 किमी/घंटा और 63 किमी/घंटा की गति से चल रही हैं। वे एक दूसरे को कितने समय में पार करेंगी?", "UP Police Constable 2019", "11.66 sec", "12 sec", "10.5 sec", "13 sec", "a"],
-            ["Find the remainder when 7<sup>84</sup> is divided by 342.", "जब 7<sup>84</sup> को 342 से विभाजित किया जाता है, तो शेषफल ज्ञात कीजिए।", "UP SI 2017", "1", "0", "7", "341", "a"],
-            ["A container contains 60 liters of milk. From this, 6 liters of milk was taken out and replaced by water. This process was repeated two more times. How much milk is left in the container?", "एक कंटेनर में 60 लीटर दूध है। इसमें से 6 लीटर दूध निकाला गया और उसकी जगह पानी डाल दिया गया। इस प्रक्रिया को दो बार और दोहराया गया। कंटेनर में अब कितना दूध बचा है?", "UP SI 2021", "43.74 L", "42.84 L", "45 L", "40.5 L", "a"],
-            ["If sin &theta; + sin<sup>2</sup> &theta; = 1, then find the value of cos<sup>2</sup> &theta; + cos<sup>4</sup> &theta;.", "यदि sin &theta; + sin<sup>2</sup> &theta; = 1 है, तो cos<sup>2</sup> &theta; + cos<sup>4</sup> &theta; का मान ज्ञात कीजिए।", "UP Police Constable 2018", "1", "0", "2", "-1", "a"],
-            ["In an examination, 65% of the students passed in Mathematics, 48% passed in Physics and 30% passed in both. How much percent of students failed in both the subjects?", "एक परीक्षा में, 65% छात्र गणित में उत्तीर्ण हुए, 48% भौतिकी में उत्तीर्ण हुए और 30% दोनों में उत्तीर्ण हुए। दोनों विषयों में कितने प्रतिशत छात्र अनुत्तीर्ण हुए?", "UP SI 2021", "17%", "13%", "22%", "15%", "a"]
-        ];
-
-        // Multiplying to make exactly 100 questions cleanly (10 sets of 10)
-        let full100Questions = [];
-        for(let i = 0; i < 10; i++) {
-            full100Questions = full100Questions.concat(qData);
-        }
-
-        const container = document.getElementById('pages-container');
-        let htmlContent = "";
-
-        // Standard Header Template
-        const getHeader = () => `
-            <div class="watermark">ABHINAY PRATAP MATHS</div>
-            <div class="book-header">
-                <div class="header-left">
-                    <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-                    <div class="chapter-badge-wrap">
-                        <div class="chap-label">SHEET</div>
-                        <div class="chap-num">01</div>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="header-text-group">
-                        <div class="title-en">UP POLICE & SI EXAM SET</div>
-                        <div class="title-hi">उत्तर प्रदेश पुलिस एवं एसआई (SI) विशेष सेट</div>
-                    </div>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.youtube.com/@abhinaypratapmaths" alt="QR" class="qr-code">
-                </div>
-            </div>
-            <div class="practice-sheet-banner"><div class="practice-sheet-badge">PREVIOUS YEAR PRACTICE SHEET</div></div>
-        `;
-
-        // Generate 20 Pages for Questions (100 Questions total, 5 per page)
-        for (let p = 0; p < 20; p++) {
-            htmlContent += `<div class="page">
-                ${getHeader()}
-                <div class="content-area">`;
-            
-            for (let q = 0; q < 5; q++) {
-                let qIndex = p * 5 + q;
-                let data = full100Questions[qIndex];
-                
-                htmlContent += `
-                <div class="question-block">
-                    <div class="question-text"><span class="q-number">Q.${qIndex + 1}</span> ${data[0]}</div>
-                    <div class="hindi-text">${data[1]}</div>
-                    <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> ${data[2]}</span></div>
-                    <div class="options-grid">
-                        <div class="option"><span class="opt-letter">(a)</span> ${data[3]}</div>
-                        <div class="option"><span class="opt-letter">(b)</span> ${data[4]}</div>
-                        <div class="option"><span class="opt-letter">(c)</span> ${data[5]}</div>
-                        <div class="option"><span class="opt-letter">(d)</span> ${data[6]}</div>
-                    </div>
-                </div>`;
-            }
-            
-            htmlContent += `</div>
-                <div class="book-footer">
-                    <div class="footer-left">EXAMEDGE INSTITUTE</div>
-                    <div class="footer-center">${p + 1}</div>
-                    <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-                </div>
-            </div>`;
-        }
-
-        // Generate Page 21 (Answer Key & Social Handles)
-        htmlContent += `<div class="page">
-            ${getHeader()}
-            <div class="answer-key-wrapper">
-                <div class="answer-key-title">MASTER ANSWER KEY (1 - 100)</div>
-                <div class="ans-grid">`;
-        
-        for (let i = 0; i < 100; i++) {
-            htmlContent += `<div class="ans-box"><span class="ans-num">${i + 1}.</span><span class="ans-opt">${full100Questions[i][7]}</span></div>`;
-        }
-        
-        htmlContent += `</div>
-            <div class="social-wrapper">
-                <div class="social-title">CONNECT WITH US ON SOCIAL MEDIA</div>
-                <div class="social-handles">
-                    <a href="https://www.youtube.com/@abhinaypratapmaths" class="social-btn s-yt" target="_blank"><i class="fab fa-youtube"></i> @abhinaypratapmaths</a>
-                    <a href="https://t.me/abhinaypratapmaths" class="social-btn s-tg" target="_blank"><i class="fab fa-telegram-plane"></i> ABHINAY_PRATAP_MATHS</a>
-                    <a href="https://instagram.com/abhinaypratapmaths" class="social-btn s-ig" target="_blank"><i class="fab fa-instagram"></i> @abhinaypratapmaths</a>
-                </div>
-            </div>
-            </div>
-            <div class="book-footer">
-                <div class="footer-left">EXAMEDGE INSTITUTE</div>
-                <div class="footer-center">21</div>
-                <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-            </div>
-        </div>`;
-
-        // Inject Full Content into DOM
-        container.innerHTML = htmlContent;
-
-        // Theme Changer Script
-        function changeBatchTheme() {
-            const batch = document.getElementById('themeSelector').value;
-            const root = document.documentElement;
-            
-            if (batch === 'prakram') {
-                root.style.setProperty('--brand-red', '#ea580c');
-                root.style.setProperty('--brand-blue', '#0f172a');
-            } else if (batch === 'sankalp') {
-                root.style.setProperty('--brand-red', '#16a34a');
-                root.style.setProperty('--brand-blue', '#064e3b');
-            } else if (batch === 'lakshya') {
-                root.style.setProperty('--brand-red', '#9333ea');
-                root.style.setProperty('--brand-blue', '#312e81');
-            } else {
-                root.style.setProperty('--brand-red', '#d92626');
-                root.style.setProperty('--brand-blue', '#0284c7');
-            }
-        }
-
-        // Security / Inspection Blocking
         document.addEventListener('contextmenu', event => event.preventDefault());
+
         document.onkeydown = function(e) {
             if(e.keyCode == 123) return false;
             if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
             if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) return false;
         };
     </script>
 </body>
