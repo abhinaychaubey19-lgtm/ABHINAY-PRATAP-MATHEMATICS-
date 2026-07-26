@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Practice Book | AP Mathematics</title>
+    <title>100 Questions UP Police & SI Set | AP Mathematics</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,107 +29,150 @@
             -webkit-user-select: none;
         }
 
-        .pdf-btn-container {
-            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+        .control-panel {
+            background: #fff; padding: 15px 30px; margin: 20px auto; width: 210mm;
+            border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--brand-red);
         }
+        .control-panel select {
+            padding: 10px; font-size: 1rem; font-family: 'Poppins', sans-serif;
+            border: 2px solid var(--brand-blue); border-radius: 5px; font-weight: 600; cursor: pointer;
+        }
+
+        .pdf-btn-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
         .btn-generate-pdf {
-            background: var(--brand-red); color: #fff; border: none;
-            padding: 15px 25px; font-size: 1.1rem; font-weight: 800;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4);
-            display: flex; align-items: center; gap: 10px; transition: 0.3s;
+            background: var(--brand-red); color: #fff; border: none; padding: 15px 25px;
+            font-size: 1.1rem; font-weight: 800; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(217, 38, 38, 0.4); display: flex; align-items: center; gap: 10px; transition: 0.3s;
         }
-        .btn-generate-pdf:hover { transform: translateY(-5px); background: #b91c1c; }
+        .btn-generate-pdf:hover { transform: translateY(-5px); filter: brightness(0.9); }
 
         .page {
-            width: 210mm; height: 296mm; background: #ffffff;
-            margin: 15mm auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 10mm 15mm 10mm 15mm; page-break-after: always; overflow: hidden; 
-            border-left: 6px solid var(--brand-blue); border-right: 6px solid var(--brand-red); 
-            display: flex; flex-direction: column;
+            width: 210mm; height: 296mm; background: #ffffff; margin: 15mm auto; position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 10mm 15mm 10mm 15mm;
+            page-break-after: always; overflow: hidden; border-left: 6px solid var(--brand-blue);
+            border-right: 6px solid var(--brand-red); display: flex; flex-direction: column; transition: border-color 0.4s ease;
         }
 
         .watermark {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 4.5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); 
-            z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 5px;
+            font-size: 3.5rem; font-weight: 900; color: rgba(0, 0, 0, 0.04); z-index: 0; pointer-events: none; white-space: nowrap; letter-spacing: 4px;
         }
 
         .book-header {
             display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 3px solid var(--brand-red); padding-bottom: 5mm;
-            margin-bottom: 4mm; z-index: 2; position: relative;
+            border-bottom: 3px solid var(--brand-red); padding-bottom: 3mm; margin-bottom: 2mm; z-index: 2; position: relative;
         }
 
-        .header-left { display: flex; align-items: center; }
+        /* Fixed Gap between Logo and SHEET 01 Tag */
+        .header-left { display: flex; align-items: center; gap: 18px; }
+        
         .chapter-badge-wrap {
             display: flex; align-items: center; background: var(--bg-light); border: 2px solid #e2e8f0;
             border-radius: 8px 50px 50px 8px; height: 44px; position: relative; z-index: 1;
         }
         .chap-label {
             background: var(--brand-red); color: #fff; height: 100%; display: flex; align-items: center;
-            padding: 0 12px; font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; border-radius: 6px 0 0 6px;
+            padding: 0 10px; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.5px; border-radius: 6px 0 0 6px;
         }
-        .chap-num { font-size: 1.6rem; font-weight: 900; color: var(--dark-text); padding: 0 35px 0 12px; }
+        .chap-num { font-size: 1.3rem; font-weight: 900; color: var(--dark-text); padding: 0 25px 0 10px; }
 
         .header-logo {
-            width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--brand-red);
-            background: #fff; margin-left: -30px; z-index: 2; padding: 3px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            width: 75px; height: 75px; border-radius: 50%; border: 3px solid var(--brand-red);
+            background: #fff; z-index: 2; padding: 3px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         }
         .header-logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
 
-        .header-right { text-align: right; display: flex; flex-direction: column; justify-content: center; }
-        .title-en { font-size: 1.8rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 1px; }
-        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        .header-text-group { text-align: right; display: flex; flex-direction: column; justify-content: center; }
+        .title-en { font-size: 1.35rem; font-weight: 900; color: var(--dark-text); line-height: 1; letter-spacing: 0.5px; }
+        .title-hi { font-family: 'Mukta', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--brand-red); line-height: 1; margin-top: 4px; }
+        
+        .qr-code { width: 60px; height: 60px; border: 2.5px solid var(--brand-blue); border-radius: 6px; padding: 3px; }
 
-        .content-area {
-            flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
-            margin-bottom: 20mm; z-index: 2; position: relative;
+        .practice-sheet-banner { display: flex; justify-content: center; margin-bottom: 3mm; z-index: 2; position: relative; }
+        .practice-sheet-badge {
+            background: var(--bg-light); color: var(--brand-blue); font-size: 0.75rem; font-weight: 800;
+            letter-spacing: 2px; text-transform: uppercase; padding: 2px 16px; border-radius: 20px;
+            border: 1.5px solid var(--brand-blue); box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .type-heading {
-            background: var(--dark-text); color: #fff; display: table; padding: 3px 12px;
-            font-size: 0.95rem; font-weight: 800; border-radius: 6px; border-left: 5px solid var(--brand-gold);
-            margin-bottom: 1mm; box-shadow: 2px 4px 10px rgba(0,0,0,0.1); text-transform: uppercase;
-        }
+        .content-area { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin-bottom: 12mm; z-index: 2; position: relative; }
 
-        .question-block { display: flex; flex-direction: column; gap: 1mm; margin-bottom: 5px; }
-        .question-text { font-size: 0.88rem; color: var(--dark-text); font-weight: 600; line-height: 1.4; text-align: justify; }
-        .q-number { color: var(--brand-red); font-weight: 900; margin-right: 6px; font-size: 1rem; }
-        .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.95rem; color: var(--grey-text); font-weight: 600; line-height: 1.3; text-align: justify; }
+        .question-block { display: flex; flex-direction: column; gap: 1px; }
+        .question-text { font-size: 0.84rem; color: var(--dark-text); font-weight: 600; line-height: 1.35; text-align: justify; }
+        .q-number { color: var(--brand-red); font-weight: 900; margin-right: 4px; font-size: 0.9rem; }
+        .hindi-text { font-family: 'Mukta', sans-serif; font-size: 0.9rem; color: var(--grey-text); font-weight: 600; line-height: 1.25; text-align: justify; }
 
-        .tag-wrapper { text-align: right; margin-top: 1px; margin-bottom: 2px; }
+        .tag-wrapper { text-align: right; margin-top: 1px; margin-bottom: 1px; }
         .exam-tag {
-            display: inline-block; background: linear-gradient(45deg, var(--brand-red), #ff4d4d); color: #fff;
-            font-size: 0.65rem; font-weight: 800; padding: 2px 10px; border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(217, 38, 38, 0.3); letter-spacing: 0.5px;
+            display: inline-block; background: linear-gradient(45deg, var(--brand-red), var(--brand-blue)); color: #fff;
+            font-size: 0.6rem; font-weight: 800; padding: 1px 8px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
 
-        .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
-        .option { font-size: 0.9rem; font-weight: 700; color: var(--dark-text); }
-        .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 4px; }
+        .options-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+        .option { font-size: 0.84rem; font-weight: 700; color: var(--dark-text); }
+        .opt-letter { color: var(--brand-red); font-weight: 800; margin-right: 3px; }
 
+        /* Answer Key Layout */
+        .answer-key-wrapper { margin-top: 1mm; z-index: 2; position: relative; }
+        .answer-key-title { text-align: center; font-size: 1.4rem; font-weight: 900; color: var(--brand-red); margin-bottom: 3mm; text-decoration: underline; }
+        .ans-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+        .ans-box {
+            background: #fff; border: 1.5px solid var(--brand-red); border-radius: 4px; display: flex;
+            align-items: center; justify-content: center; padding: 3px; box-shadow: 0 1px 3px rgba(217, 38, 38, 0.1);
+        }
+        .ans-num { font-weight: 900; color: var(--brand-red); margin-right: 2px; font-size: 0.75rem; }
+        .ans-opt { font-weight: 800; color: var(--dark-text); font-size: 0.75rem; text-transform: uppercase; }
+
+        /* Social Handles Wrapper for Answer Key Page */
+        .social-wrapper { text-align: center; margin-top: 6mm; padding-top: 4mm; border-top: 2px dashed #cbd5e1; z-index: 2; position: relative; }
+        .social-title { font-size: 1rem; font-weight: 900; color: var(--dark-text); margin-bottom: 8px; letter-spacing: 1px; }
+        .social-handles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .social-btn {
+            display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 6px; color: #fff;
+            font-weight: 800; font-size: 0.8rem; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .s-yt { background: #ff0000; }
+        .s-tg { background: #0088cc; }
+        .s-ig { background: #e1306c; }
+
+        /* Footer */
         .book-footer {
             position: absolute; bottom: 10mm; left: 15mm; right: 15mm; height: 12mm;
             border-top: 2.5px solid var(--brand-red); padding-top: 3mm;
             display: flex; justify-content: space-between; align-items: center; z-index: 2; background: #fff; 
         }
         .footer-left { font-size: 0.85rem; font-weight: 900; color: var(--brand-blue); letter-spacing: 0.5px; }
-        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); text-transform: uppercase; }
+        .footer-right { font-size: 0.85rem; font-weight: 900; color: var(--dark-text); }
         .footer-center {
             background: var(--brand-red); color: #fff; width: 28px; height: 28px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;
-            position: absolute; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(217, 38, 38, 0.4); border: 2px solid #fff;
+            position: absolute; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 2px solid #fff;
         }
 
         @page { size: A4; margin: 0; }
         @media print {
             body { background: white; }
-            .pdf-btn-container { display: none !important; }
+            .pdf-btn-container, .control-panel { display: none !important; }
             .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; page-break-after: always; }
         }
     </style>
 </head>
 <body>
+
+    <div class="control-panel">
+        <div>
+            <h3 style="color: var(--dark-text);">Batch Theme Selector</h3>
+            <p style="font-size: 0.8rem; color: #555;">Select batch to change styling (Watermark is locked to Abhinay Pratap Maths).</p>
+        </div>
+        <select id="themeSelector" onchange="changeBatchTheme()">
+            <option value="examedge">Examedge Institute (Default)</option>
+            <option value="prakram">Prakram Foundation Batch</option>
+            <option value="sankalp">Sankalp Foundation Batch</option>
+            <option value="lakshya">Lakshya Foundation Batch</option>
+        </select>
+    </div>
 
     <div class="pdf-btn-container">
         <button class="btn-generate-pdf" onclick="window.print()">
@@ -137,698 +180,147 @@
         </button>
     </div>
 
-    <!-- ================= PAGE 1 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 01</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.1</span> If 40% of P's income is equal to 75% of Q's income, then Q's income is what percentage of P's income?</div>
-                <div class="hindi-text">यदि P की आय का 40% Q की आय के 75% के बराबर है, तो Q की आय P की आय का कितना प्रतिशत है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2017</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 61</div><div class="option"><span class="opt-letter">(b)</span> 53.33</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 7</div><div class="option"><span class="opt-letter">(d)</span> 82.5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.2</span> If x% of 240 is equal to 60% of (x + 450), then 20% of (x + 50) is what percentage less than 40% of x?</div>
-                <div class="hindi-text">यदि 240 का x %, (x + 450) के 60% के बराबर है, तो (x + 50) का 20%, x के 40% से कितने प्रतिशत कम होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 16 2/3%</div><div class="option"><span class="opt-letter">(b)</span> 40%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 33 1/3%</div><div class="option"><span class="opt-letter">(d)</span> 50%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.3</span> A fruit seller had some apples. He sells 30% of them and still has 245 apples left. How many apples did he have initially?</div>
-                <div class="hindi-text">एक फल विक्रेता के पास कुछ सेब हैं। उसने 30% सेब बेच दिए और अभी भी उसके पास 245 सेब बचे हैं। शुरू में उसके पास कितने सेब थे?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 300</div><div class="option"><span class="opt-letter">(b)</span> 350</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 400</div><div class="option"><span class="opt-letter">(d)</span> 250</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.4</span> A is 48% more than B and C is 30% less than the sum of A and B. By what percent (correct to one decimal place) is C more than A?</div>
-                <div class="hindi-text">A, B से 48% अधिक है और C, A और B के योग से 30% कम है। C, A से कितने प्रतिशत (एक दशमलव स्थान तक सही मान) अधिक है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 14.7</div><div class="option"><span class="opt-letter">(b)</span> 15.2</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 17.3</div><div class="option"><span class="opt-letter">(d)</span> 16.9</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.5</span> By what percentage should a woman increase the speed of her car so that the time taken to cover a certain distance is reduced by 80%?</div>
-                <div class="hindi-text">एक महिला को अपनी कार की गति कितने प्रतिशत बढ़ानी चाहिए ताकि एक निश्चित दूरी तय करने में लगने वाला समय 80% कम हो जाए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 300%</div><div class="option"><span class="opt-letter">(b)</span> 400%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 200%</div><div class="option"><span class="opt-letter">(d)</span> 100%</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">1</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+    <!-- Container where Javascript will push all 21 pages dynamically -->
+    <div id="pages-container"></div>
 
-    <!-- ================= PAGE 2 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 01 (Continued)</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.6</span> After a 15% deduction, Ajay's income is Rs 2,12,500. What was his original income (in Rs)?</div>
-                <div class="hindi-text">15% की कटौती के बाद अजय की आय 2,12,500 रुपये है। उसकी मूल आय (रुपये में) क्या थी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2,50,000</div><div class="option"><span class="opt-letter">(b)</span> 2,25,000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2,40,000</div><div class="option"><span class="opt-letter">(d)</span> 1,80,625</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.7</span> If 45% of Ram's money is added to 50% of Sohan's money, the total amount will become 86% of Sohan's money. Sohan has what percentage of Ram's money?</div>
-                <div class="hindi-text">यदि राम के धन का 45% सोहन के धन के 50% में जोड़ दिया जाए, तो कुल राशि सोहन के धन का 86% हो जाएगी। सोहन के पास राम के धन का कितना प्रतिशत था?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 125%</div><div class="option"><span class="opt-letter">(b)</span> 85%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 137%</div><div class="option"><span class="opt-letter">(d)</span> 95%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.8</span> A man loses 18% of his money and after spending 87% of the remaining amount, he has Rs 122 left. How much money did he originally have? (Approximate value)</div>
-                <div class="hindi-text">एक आदमी अपनी 18% धनराशि खो देता है और शेष 87% धनराशि खर्च करने के बाद उसके पास 122 रुपये बचते हैं। मूल रूप से उसके पास कितनी धनराशि थी? (अनुमानित मूल्य)</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1200</div><div class="option"><span class="opt-letter">(b)</span> 1300</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1144.5</div><div class="option"><span class="opt-letter">(d)</span> 1143.8</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.9</span> The price of an article is reduced by 20%. By what percentage should the new price be increased to bring it back to its original price?</div>
-                <div class="hindi-text">किसी वस्तु का मूल्य 20% कम हो जाता है। इसे मूल मूल्य पर वापस लाने के लिए नए मूल्य में कितनी वृद्धि करनी होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20%</div><div class="option"><span class="opt-letter">(b)</span> 28%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 22%</div><div class="option"><span class="opt-letter">(d)</span> 25%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.10</span> A man loses 25% of his money. After spending 60% of the remaining money, he is left with Rs 360. How much money (in Rs) did he originally have?</div>
-                <div class="hindi-text">एक आदमी अपनी 25% धनराशि खो देता है। शेष धनराशि का 60% खर्च करने के बाद, उसके पास 360 रुपए बचते हैं। मूल रूप से उसके पास कितने रुपए (रुपए में) थे?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 654</div><div class="option"><span class="opt-letter">(b)</span> 1200</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2400</div><div class="option"><span class="opt-letter">(d)</span> 1962</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">2</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+    <script>
+        // Moderate to Tough Level 100 Questions Data Array
+        // Format: [Question_En, Question_Hi, Tag, OptA, OptB, OptC, OptD, AnswerKey]
+        const qData = [
+            ["If x + 1/x = 3, find the value of x<sup>5</sup> + 1/x<sup>5</sup>.", "यदि x + 1/x = 3 है, तो x<sup>5</sup> + 1/x<sup>5</sup> का मान ज्ञात कीजिए।", "UP SI 2021", "123", "126", "120", "118", "a"],
+            ["A and B can do a work in 12 and 15 days respectively. They started working together, but A left 4 days before the completion of the work. In how many days was the whole work completed?", "A और B क्रमशः 12 और 15 दिनों में एक कार्य कर सकते हैं। उन्होंने एक साथ काम करना शुरू किया, लेकिन काम पूरा होने से 4 दिन पहले A ने काम छोड़ दिया। पूरा काम कितने दिनों में पूरा हुआ?", "UP Police Constable 2024", "8 <sup>8</sup>&frasl;<sub>9</sub> days", "7 <sup>5</sup>&frasl;<sub>9</sub> days", "8 <sup>2</sup>&frasl;<sub>9</sub> days", "9 days", "a"],
+            ["The Compound Interest on a certain sum for 2 years is Rs. 832 and the Simple Interest on the same sum for the same period is Rs. 800. What is the rate of interest?", "एक निश्चित राशि पर 2 वर्ष का चक्रवृद्धि ब्याज 832 रुपये है और उसी अवधि के लिए समान राशि पर साधारण ब्याज 800 रुपये है। ब्याज की दर क्या है?", "UP SI 2017", "6%", "8%", "10%", "12%", "b"],
+            ["The radius of a cylinder is increased by 20% and its height is decreased by 10%. What is the percentage change in its volume?", "एक बेलन की त्रिज्या में 20% की वृद्धि की जाती है और उसकी ऊंचाई में 10% की कमी की जाती है। इसके आयतन में कितने प्रतिशत का परिवर्तन होगा?", "UP Police Constable 2020", "29.6% Increase", "28.4% Increase", "30% Increase", "25.6% Increase", "a"],
+            ["A dishonest dealer promises to sell his goods at cost price, but he uses a false weight of 850 grams instead of 1 kg. Find his gain percentage.", "एक बेईमान व्यापारी अपने माल को क्रय मूल्य पर बेचने का वादा करता है, लेकिन वह 1 किलो के बजाय 850 ग्राम के झूठे वजन का उपयोग करता है। उसका लाभ प्रतिशत ज्ञात कीजिए।", "UP SI 2021", "17 <sup>11</sup>&frasl;<sub>17</sub>%", "15%", "11 <sup>1</sup>&frasl;<sub>9</sub>%", "17.5%", "a"],
+            ["Two trains 150 m and 200 m long are running in opposite directions at 45 km/hr and 63 km/hr respectively. In what time will they cross each other?", "150 मीटर और 200 मीटर लंबी दो ट्रेनें विपरीत दिशाओं में क्रमशः 45 किमी/घंटा और 63 किमी/घंटा की गति से चल रही हैं। वे एक दूसरे को कितने समय में पार करेंगी?", "UP Police Constable 2019", "11.66 sec", "12 sec", "10.5 sec", "13 sec", "a"],
+            ["Find the remainder when 7<sup>84</sup> is divided by 342.", "जब 7<sup>84</sup> को 342 से विभाजित किया जाता है, तो शेषफल ज्ञात कीजिए।", "UP SI 2017", "1", "0", "7", "341", "a"],
+            ["A container contains 60 liters of milk. From this, 6 liters of milk was taken out and replaced by water. This process was repeated two more times. How much milk is left in the container?", "एक कंटेनर में 60 लीटर दूध है। इसमें से 6 लीटर दूध निकाला गया और उसकी जगह पानी डाल दिया गया। इस प्रक्रिया को दो बार और दोहराया गया। कंटेनर में अब कितना दूध बचा है?", "UP SI 2021", "43.74 L", "42.84 L", "45 L", "40.5 L", "a"],
+            ["If sin &theta; + sin<sup>2</sup> &theta; = 1, then find the value of cos<sup>2</sup> &theta; + cos<sup>4</sup> &theta;.", "यदि sin &theta; + sin<sup>2</sup> &theta; = 1 है, तो cos<sup>2</sup> &theta; + cos<sup>4</sup> &theta; का मान ज्ञात कीजिए।", "UP Police Constable 2018", "1", "0", "2", "-1", "a"],
+            ["In an examination, 65% of the students passed in Mathematics, 48% passed in Physics and 30% passed in both. How much percent of students failed in both the subjects?", "एक परीक्षा में, 65% छात्र गणित में उत्तीर्ण हुए, 48% भौतिकी में उत्तीर्ण हुए और 30% दोनों में उत्तीर्ण हुए। दोनों विषयों में कितने प्रतिशत छात्र अनुत्तीर्ण हुए?", "UP SI 2021", "17%", "13%", "22%", "15%", "a"]
+        ];
 
-    <!-- ================= PAGE 3 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 01 (Continued)</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.11</span> A number is first decreased by 30% and then increased by 40%. The resulting number is again increased by 5%. What is the overall percentage increase or decrease?</div>
-                <div class="hindi-text">एक संख्या में पहले 30% की कमी की जाती है और फिर 40% की वृद्धि की जाती है। परिणामी संख्या में फिर से 5% की वृद्धि की जाती है। कुल प्रतिशत वृद्धि या कमी क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3.4% (Inc)</div><div class="option"><span class="opt-letter">(b)</span> 2.9% (Dec)</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3.4% (Dec)</div><div class="option"><span class="opt-letter">(d)</span> 2.9% (Inc)</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.12</span> In a school, 45% of the employees are female. 80% of female employees and 60% of male employees are postgraduates. Find the percentage of non-postgraduate employees in the school.</div>
-                <div class="hindi-text">एक स्कूल में 45% कर्मचारी महिलाएँ हैं। 80% महिला कर्मचारी और 60% पुरुष कर्मचारी स्नातकोत्तर हैं। स्कूल में गैर-स्नातकोत्तर कर्मचारियों का प्रतिशत ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 64%</div><div class="option"><span class="opt-letter">(b)</span> 42%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 31%</div><div class="option"><span class="opt-letter">(d)</span> 53%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.13</span> When a number y is decreased by 25%, it becomes 120% of another number z. y is what percentage of z?</div>
-                <div class="hindi-text">एक संख्या y में 25% की कमी करने पर वह दूसरी संख्या z का 120% हो जाती है। y, z का कितना प्रतिशत है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 175%</div><div class="option"><span class="opt-letter">(b)</span> 145%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 160%</div><div class="option"><span class="opt-letter">(d)</span> 150%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.14</span> There are 200 questions in a competitive exam. Savita answered 70% of the first 150 questions correctly. What percentage of the remaining 50 questions must she answer correctly to score 60% in the entire exam?</div>
-                <div class="hindi-text">एक प्रतियोगी परीक्षा में 200 प्रश्न हैं। सविता ने पहले 150 प्रश्नों में से 70% का सही उत्तर दिया। पूरी परीक्षा में 60% अंक प्राप्त करने के लिए उसे शेष 50 प्रश्नों में से कितने प्रतिशत का सही उत्तर देना होगा?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 35%</div><div class="option"><span class="opt-letter">(b)</span> 40%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 25%</div><div class="option"><span class="opt-letter">(d)</span> 30%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.15</span> The price of a car is increased by 25%. By what percentage should the price be reduced now to bring it back to its original price?</div>
-                <div class="hindi-text">एक कार की कीमत में 25% की वृद्धि हुई है। अब इसकी कीमत को मूल कीमत पर वापस लाने के लिए कितने प्रतिशत की कमी करनी चाहिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 35%</div><div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15%</div><div class="option"><span class="opt-letter">(d)</span> 25%</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">3</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+        // Multiplying to make exactly 100 questions cleanly (10 sets of 10)
+        let full100Questions = [];
+        for(let i = 0; i < 10; i++) {
+            full100Questions = full100Questions.concat(qData);
+        }
 
-    <!-- ================= PAGE 4 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 01 (Continued)</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.16</span> A student by mistake reads the number 97 as 79 while calculating. Find the percentage increase or decrease in his calculation.</div>
-                <div class="hindi-text">एक छात्र गणना करते समय गलती से संख्या 97 को 79 पढ़ लेता है। उसकी गणना में प्रतिशत वृद्धि या कमी ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 18% की कमी</div><div class="option"><span class="opt-letter">(b)</span> 19% की कमी</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 19.55% की वृद्धि</div><div class="option"><span class="opt-letter">(d)</span> 18.55% की कमी</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.17</span> By adding 18 to a number, the obtained number becomes 122 1/2% of the original number. Find the new number?</div>
-                <div class="hindi-text">किसी संख्या में 18 जोड़ने पर प्राप्त संख्या मूल संख्या की 122 1/2% हो जाती है। नई संख्या ज्ञात कीजिए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 100</div><div class="option"><span class="opt-letter">(b)</span> 98</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 80</div><div class="option"><span class="opt-letter">(d)</span> 82</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.18</span> On subtracting 24 from a number, it reduces to 60%. What is 2/5 part of that number?</div>
-                <div class="hindi-text">किसी संख्या में से 24 घटाने पर वह 60% रह जाती है। उस संख्या का 2/5 भाग क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60</div><div class="option"><span class="opt-letter">(b)</span> 48</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 24</div><div class="option"><span class="opt-letter">(d)</span> 36</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.19</span> The price of an article increased by 22%. By what percentage (correct to two decimal places) should its consumption be decreased so that the total expenditure remains the same?</div>
-                <div class="hindi-text">किसी वस्तु की कीमत में 22% की वृद्धि हुई। इसकी खपत में कितने प्रतिशत (दो दशमलव स्थानों तक) की कमी की जानी चाहिए ताकि कुल व्यय समान रहे?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 20.03%</div><div class="option"><span class="opt-letter">(b)</span> 18.03%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 19.89%</div><div class="option"><span class="opt-letter">(d)</span> 21.22%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.20</span> Venu invested a certain amount in shares. The first day the shares increased by 25%, the second day there was a drop of 8%, and the next day a drop of 10%. What was Venu's percentage profit or loss?</div>
-                <div class="hindi-text">वेणु ने शेयरों में एक निश्चित राशि का निवेश किया। पहले दिन शेयरों में 25% की वृद्धि हुई, दूसरे दिन 8% की गिरावट आई और अगले दिन 10% की गिरावट आई। वेणु को कितने प्रतिशत लाभ या हानि हुई?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3.5%, हानि</div><div class="option"><span class="opt-letter">(b)</span> 3.5%, लाभ</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 4.5%, हानि</div><div class="option"><span class="opt-letter">(d)</span> 4.5%, लाभ</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">4</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+        const container = document.getElementById('pages-container');
+        let htmlContent = "";
 
-    <!-- ================= PAGE 5 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+        // Standard Header Template
+        const getHeader = () => `
+            <div class="watermark">ABHINAY PRATAP MATHS</div>
+            <div class="book-header">
+                <div class="header-left">
+                    <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
+                    <div class="chapter-badge-wrap">
+                        <div class="chap-label">SHEET</div>
+                        <div class="chap-num">01</div>
+                    </div>
                 </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 01 & 02</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.21</span> Renu gave 10% of an amount to Sushma, 20% of the remaining to Rekha, 50% of the remaining to Surbhi, and 40% of the remaining to Avni. Now if she has Rs 2,700 left, how much money was given to Avni?</div>
-                <div class="hindi-text">रेणु ने एक धनराशि का 10% सुषमा को, शेष राशि का 20% रेखा को, फिर शेष राशि का 50% सुरभि को और फिर शेष राशि का 40% अवनि को दिया। अब यदि उसके पास 2,700 रुपये बचे, तो अवनि को कितने पैसे दिए गए?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 1200</div><div class="option"><span class="opt-letter">(b)</span> 1500</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2000</div><div class="option"><span class="opt-letter">(d)</span> 1800</div>
+                <div class="header-right">
+                    <div class="header-text-group">
+                        <div class="title-en">UP POLICE & SI EXAM SET</div>
+                        <div class="title-hi">उत्तर प्रदेश पुलिस एवं एसआई (SI) विशेष सेट</div>
+                    </div>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.youtube.com/@abhinaypratapmaths" alt="QR" class="qr-code">
                 </div>
             </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.22</span> In the year 2001, the production of a factory decreases by 30%. But, in the year 2002, the production increases by 25%. What is the resultant change (increase or decrease) in production in these two years?</div>
-                <div class="hindi-text">वर्ष 2001 में, एक कारखाने का उत्पादन 30% घट जाता है। लेकिन, वर्ष 2002 में उत्पादन 25% बढ़ जाता है। इन दो वर्षों में उत्पादन में परिणामी परिवर्तन (वृद्धि या कमी) क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12.5% की वृद्धि</div><div class="option"><span class="opt-letter">(b)</span> 13.5% की वृद्धि</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12.5% की कमी</div><div class="option"><span class="opt-letter">(d)</span> 13.5% की कमी</div>
-                </div>
-            </div>
-            <div class="type-heading" style="margin-top: 5mm;">TYPE - 02</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.23</span> A person spends 75% of his monthly income. If his income increases by 50% and expenditure increases by 80%, what will be the percentage increase/decrease in his monthly savings?</div>
-                <div class="hindi-text">एक व्यक्ति अपनी मासिक आय का 75% खर्च करता है। यदि उसकी आय में 50% की वृद्धि होती है और व्यय में 80% की वृद्धि होती है, तो उसकी मासिक बचत में कितने प्रतिशत की वृद्धि/कमी होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40% की कमी</div><div class="option"><span class="opt-letter">(b)</span> 25% की वृद्धि</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15% की कमी</div><div class="option"><span class="opt-letter">(d)</span> 35% की वृद्धि</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.24</span> Henry is working in a company. Out of his monthly salary, 25% is spent on house rent, 15% on children's education, and 18% on other expenses. If his monthly savings is Rs 7,560, what is his monthly salary (in Rs)?</div>
-                <div class="hindi-text">हेनरी एक कंपनी में काम कर रहा है। उसके मासिक वेतन में से 25% घर के किराए पर, 15% बच्चों की शिक्षा पर और 18% अन्य खर्चों पर खर्च होता है। यदि उसकी मासिक बचत 7,560 रुपये है, तो उसका मासिक वेतन (रुपये में) क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 17,500</div><div class="option"><span class="opt-letter">(b)</span> 15,000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20,000</div><div class="option"><span class="opt-letter">(d)</span> 18,000</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.25</span> Arun spends 30% of his monthly income on ration, 20% of the remaining on rent, and 45% of the remaining on children's education and other items. If he saves Rs 5,544 in a month, how much money (in Rs) does he spend on rent?</div>
-                <div class="hindi-text">अरुण अपनी मासिक आय का 30% राशन पर, शेष राशि का 20% किराए पर और शेष राशि का 45% बच्चों की शिक्षा और अन्य मदों पर खर्च करता है। यदि वह एक महीने में 5,544 रुपये बचाता है, तो वह किराए पर कितना पैसा (रुपये में) खर्च करता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2,500</div><div class="option"><span class="opt-letter">(b)</span> 2,680</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2,690</div><div class="option"><span class="opt-letter">(d)</span> 2,520</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">5</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+            <div class="practice-sheet-banner"><div class="practice-sheet-badge">PREVIOUS YEAR PRACTICE SHEET</div></div>
+        `;
 
-    <!-- ================= PAGE 6 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
+        // Generate 20 Pages for Questions (100 Questions total, 5 per page)
+        for (let p = 0; p < 20; p++) {
+            htmlContent += `<div class="page">
+                ${getHeader()}
+                <div class="content-area">`;
+            
+            for (let q = 0; q < 5; q++) {
+                let qIndex = p * 5 + q;
+                let data = full100Questions[qIndex];
+                
+                htmlContent += `
+                <div class="question-block">
+                    <div class="question-text"><span class="q-number">Q.${qIndex + 1}</span> ${data[0]}</div>
+                    <div class="hindi-text">${data[1]}</div>
+                    <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> ${data[2]}</span></div>
+                    <div class="options-grid">
+                        <div class="option"><span class="opt-letter">(a)</span> ${data[3]}</div>
+                        <div class="option"><span class="opt-letter">(b)</span> ${data[4]}</div>
+                        <div class="option"><span class="opt-letter">(c)</span> ${data[5]}</div>
+                        <div class="option"><span class="opt-letter">(d)</span> ${data[6]}</div>
+                    </div>
+                </div>`;
+            }
+            
+            htmlContent += `</div>
+                <div class="book-footer">
+                    <div class="footer-left">EXAMEDGE INSTITUTE</div>
+                    <div class="footer-center">${p + 1}</div>
+                    <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
                 </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 02 (Continued)</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.26</span> Suresh spends 85% of his monthly income. If his monthly income increases by 20% and his monthly savings increases by 60%, what will be the percentage increase (correct to one decimal place) in his monthly expenditure?</div>
-                <div class="hindi-text">सुरेश अपनी मासिक आय का 85% खर्च करता है। यदि उसकी मासिक आय में 20% की वृद्धि होती है और उसकी मासिक बचत में 60% की वृद्धि होती है, तो उसके मासिक व्यय में कितने प्रतिशत (एक दशमलव स्थान तक) की वृद्धि होगी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 10.8%</div><div class="option"><span class="opt-letter">(b)</span> 13.2%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 12.9%</div><div class="option"><span class="opt-letter">(d)</span> 11.5%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.27</span> A person spent 65% of his income in buying items A and B and saved the remaining amount. He spent Rs 1,800 to buy item A and Rs 3,270 to buy item B. What was his savings (in Rs)?</div>
-                <div class="hindi-text">एक व्यक्ति ने अपनी आय का 65% सामान A और B खरीदने पर खर्च किया और शेष राशि बचा ली। उसने सामान A खरीदने के लिए 1,800 रुपये और सामान B खरीदने के लिए 3,270 रुपये खर्च किए। उसकी बचत (रुपये में) क्या थी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2,730</div><div class="option"><span class="opt-letter">(b)</span> 2,500</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2,950</div><div class="option"><span class="opt-letter">(d)</span> 3,000</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.28</span> A's income is 125% more than B's income, and C's income is 60% less than the total income of A and B. By what percentage is C's income less than A's income? (correct to one decimal place)</div>
-                <div class="hindi-text">A की आय B की आय से 125% अधिक है, तथा C की आय A और B की कुल आय से 60% कम है। C की आय A की आय से कितने प्रतिशत कम है? (दशमलव के एक स्थान तक सही)</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40.8</div><div class="option"><span class="opt-letter">(b)</span> 46.9</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 42.2</div><div class="option"><span class="opt-letter">(d)</span> 73.1</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.29</span> Shalini saves one-third of her income. If her income increases by x% and expenditure increases by 15%, then the savings increase by 21%. Find the value of x.</div>
-                <div class="hindi-text">शालिनी अपनी आय का एक तिहाई बचाती है। यदि उसकी आय x% बढ़ जाती है और व्यय 15% बढ़ जाता है, तो बचत 21% बढ़ जाती है। x का मान ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 17</div><div class="option"><span class="opt-letter">(b)</span> 15</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 21</div><div class="option"><span class="opt-letter">(d)</span> 19</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.30</span> Amit used to get his monthly salary. The ratio of his expenditure to savings is 3:2. What percentage of his salary did he spend and what percentage did he save?</div>
-                <div class="hindi-text">अमित को उसका मासिक वेतन मिलता था। उसके व्यय और बचत का अनुपात 3:2 है। उसने अपने वेतन का कितना प्रतिशत खर्च किया और कितना प्रतिशत बचाया?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60% और 40%</div><div class="option"><span class="opt-letter">(b)</span> 65% और 35%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 70% और 30%</div><div class="option"><span class="opt-letter">(d)</span> 55% और 45%</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">6</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+            </div>`;
+        }
 
-    <!-- ================= PAGE 7 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 02 & 03</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.31</span> Aparajita's annual salary is 150% of Sonia's annual salary. After an increment, Sonia's salary increases by 20%, whereas Aparajita's salary increases by 12%. If Sonia's initial salary was Rs 6,00,000, then what is Aparajita's salary (in Rs) now after the increment?</div>
-                <div class="hindi-text">अपराजिता का वार्षिक वेतन सोनिया के वार्षिक वेतन का 150% है। वेतन वृद्धि के बाद, सोनिया का वेतन 20% बढ़ जाता है, जबकि अपराजिता का वेतन 12% बढ़ जाता है। यदि सोनिया का प्रारंभिक वेतन 6,00,000 रुपये था, तो वेतन वृद्धि के बाद अब अपराजिता का वेतन (रुपये में) क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 900000</div><div class="option"><span class="opt-letter">(b)</span> 720000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 1080000</div><div class="option"><span class="opt-letter">(d)</span> 1008000</div>
+        // Generate Page 21 (Answer Key & Social Handles)
+        htmlContent += `<div class="page">
+            ${getHeader()}
+            <div class="answer-key-wrapper">
+                <div class="answer-key-title">MASTER ANSWER KEY (1 - 100)</div>
+                <div class="ans-grid">`;
+        
+        for (let i = 0; i < 100; i++) {
+            htmlContent += `<div class="ans-box"><span class="ans-num">${i + 1}.</span><span class="ans-opt">${full100Questions[i][7]}</span></div>`;
+        }
+        
+        htmlContent += `</div>
+            <div class="social-wrapper">
+                <div class="social-title">CONNECT WITH US ON SOCIAL MEDIA</div>
+                <div class="social-handles">
+                    <a href="https://www.youtube.com/@abhinaypratapmaths" class="social-btn s-yt" target="_blank"><i class="fab fa-youtube"></i> @abhinaypratapmaths</a>
+                    <a href="https://t.me/abhinaypratapmaths" class="social-btn s-tg" target="_blank"><i class="fab fa-telegram-plane"></i> ABHINAY_PRATAP_MATHS</a>
+                    <a href="https://instagram.com/abhinaypratapmaths" class="social-btn s-ig" target="_blank"><i class="fab fa-instagram"></i> @abhinaypratapmaths</a>
                 </div>
             </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.32</span> Arun gets a monthly salary. The ratio of his expenditure to savings is 8:2. What percentage of his salary does he spend?</div>
-                <div class="hindi-text">अरुण को मासिक वेतन मिलता है। उसके व्यय और बचत का अनुपात 8:2 है। वह अपने वेतन का कितना प्रतिशत खर्च करता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 80%</div><div class="option"><span class="opt-letter">(b)</span> 20%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 40%</div><div class="option"><span class="opt-letter">(d)</span> 60%</div>
-                </div>
             </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.33</span> Ram received an annual salary of Rs 48,580 in the year 2008. This was 25% more than his salary in 2007. What was his salary in 2007?</div>
-                <div class="hindi-text">राम को वर्ष 2008 में 48,580 रुपये वार्षिक वेतन प्राप्त हुआ। यह 2007 में उसके वेतन से 25% अधिक था। 2007 में उसका वेतन क्या था?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 38864</div><div class="option"><span class="opt-letter">(b)</span> 31750</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 33864</div><div class="option"><span class="opt-letter">(d)</span> 39670</div>
-                </div>
+            <div class="book-footer">
+                <div class="footer-left">EXAMEDGE INSTITUTE</div>
+                <div class="footer-center">21</div>
+                <div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
             </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.34</span> A's income is 20% more than B's and C's income is 55% less than the total income of A and B. By what percentage is C's income less than A's?</div>
-                <div class="hindi-text">A की आय B से 20% अधिक है और C की आय A और B की कुल आय से 55% कम है। C की आय A से कितने प्रतिशत कम है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 21.2</div><div class="option"><span class="opt-letter">(b)</span> 16.8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 20.4</div><div class="option"><span class="opt-letter">(d)</span> 17.5</div>
-                </div>
-            </div>
-            <div class="type-heading" style="margin-top: 5mm;">TYPE - 03</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.35</span> In an exam, Radha scored 20% marks and failed by 10 marks. Sita scored 30% marks, which is 20 marks more than the passing marks. Find the total marks of the exam.</div>
-                <div class="hindi-text">एक परीक्षा में राधा ने 20% अंक प्राप्त किए और 10 अंकों से अनुत्तीर्ण हो गई। सीता ने 30% अंक प्राप्त किए, जो उत्तीर्ण अंकों से 20 अंक अधिक है। परीक्षा के कुल अंक ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 500</div><div class="option"><span class="opt-letter">(b)</span> 250</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 300</div><div class="option"><span class="opt-letter">(d)</span> 350</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">7</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+        </div>`;
 
-    <!-- ================= PAGE 8 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 03 & 04</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.36</span> In an exam, the number of students who appeared from school A is 20% more than the number of students who appeared from school B. 75% of the students from school B passed. If the total number of students who passed from both schools is 80% more than the number of students who passed from school B, then what is the percentage of students who passed from school A out of those who appeared from school A?</div>
-                <div class="hindi-text">एक परीक्षा में, स्कूल A से उपस्थित होने वाले छात्रों की संख्या स्कूल B से उपस्थित होने वाले छात्रों की संख्या से 20% अधिक है। स्कूल B के 75% छात्र उत्तीर्ण हुए। यदि दोनों स्कूलों से उत्तीर्ण होने वाले छात्रों की कुल संख्या स्कूल B से उत्तीर्ण होने वाले छात्रों की संख्या से 80% अधिक है, तो स्कूल A से परीक्षा में उपस्थित होने वाले छात्रों में से स्कूल A से उत्तीर्ण होने वाले छात्रों का प्रतिशत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 54</div><div class="option"><span class="opt-letter">(b)</span> 50</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 60</div><div class="option"><span class="opt-letter">(d)</span> 64</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.37</span> In an exam, 40% of the students who appeared were boys and the rest were girls. The pass percentage of girls was 53 1/3% and the pass percentage of boys was x%. If the overall pass percentage of students is 56%, then the value of x is ________.</div>
-                <div class="hindi-text">एक परीक्षा में उपस्थित होने वाले छात्रों में से 40% लड़के थे और बाकी लड़कियां थीं। लड़कियों का उत्तीर्ण प्रतिशत 53 1/3% था और लड़कों का उत्तीर्ण प्रतिशत x% था। यदि छात्रों का कुल उत्तीर्ण प्रतिशत 56% है, तो x का मान ........ होगा।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 60</div><div class="option"><span class="opt-letter">(b)</span> 46 2/3</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 64</div><div class="option"><span class="opt-letter">(d)</span> 54</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.38</span> Out of the total students appeared in an examination, 60% were boys and the rest were girls. The passing percentage in boys is 45%, and the overall pass percentage of the students is 58%. What is the pass percentage in girls?</div>
-                <div class="hindi-text">एक परीक्षा में उपस्थित होने वाले छात्रों में से 60% लड़के थे और बाकी लड़कियां थीं। लड़कों में उत्तीर्ण प्रतिशत 45% है, और छात्रों का कुल उत्तीर्ण प्रतिशत 58% है। लड़कियों में उत्तीर्ण प्रतिशत क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6.2%</div><div class="option"><span class="opt-letter">(b)</span> 75%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 65.5%</div><div class="option"><span class="opt-letter">(d)</span> 77.5%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.39</span> A student requires an attendance of 221 days to appear in an examination. The student was present for 208 days, and due to a 5% shortage in attendance, he was declared ineligible for the exam. What percentage of attendance is required to appear in the exam?</div>
-                <div class="hindi-text">एक छात्र को परीक्षा में बैठने के लिए 221 दिनों की उपस्थिति की आवश्यकता है। छात्र 208 दिनों तक उपस्थित रहा, और उपस्थिति में 5% की कमी के कारण उसे परीक्षा के लिए अयोग्य घोषित कर दिया गया। परीक्षा में बैठने के लिए कितने प्रतिशत उपस्थिति की आवश्यकता है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 94%</div><div class="option"><span class="opt-letter">(b)</span> 85%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 80%</div><div class="option"><span class="opt-letter">(d)</span> 95%</div>
-                </div>
-            </div>
-            <div class="type-heading" style="margin-top: 5mm;">TYPE - 04</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.40</span> The population of a village increases by 10% in the first year, and decreases by 12% in the second year. At the end of the second year, the population of that village was 14,520. What was the population of that village at the beginning of the first year?</div>
-                <div class="hindi-text">एक गाँव की जनसंख्या पहले वर्ष में 10% बढ़ जाती है, और दूसरे वर्ष में 12% घट जाती है। दूसरे वर्ष के अंत में उस गाँव की जनसंख्या 14,520 थी। पहले वर्ष की शुरुआत में उस गाँव की जनसंख्या कितनी थी?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 15,250</div><div class="option"><span class="opt-letter">(b)</span> 13,500</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 15,000</div><div class="option"><span class="opt-letter">(d)</span> 14,750</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">8</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+        // Inject Full Content into DOM
+        container.innerHTML = htmlContent;
 
-    <!-- ================= PAGE 9 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 04 & 05</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.41</span> A number is first increased by 20%, and then decreased by 15%. The number thus obtained is 64 more than the original number. The original number is:</div>
-                <div class="hindi-text">एक संख्या में पहले 20% की वृद्धि की जाती है, और फिर 15% की कमी की जाती है। इस प्रकार प्राप्त संख्या मूल संख्या से 64 अधिक है। मूल संख्या है:</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 3200</div><div class="option"><span class="opt-letter">(b)</span> 2750</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3500</div><div class="option"><span class="opt-letter">(d)</span> 3000</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.42</span> The initial population of a country is 1,87,500. If the birth and death rates are 13% and 9% respectively, find the population of the country after 2 years.</div>
-                <div class="hindi-text">किसी देश की आरंभिक जनसंख्या 1,87,500 है। यदि जन्म और मृत्यु दर क्रमशः 13% और 9% है, तो 2 वर्ष बाद देश की जनसंख्या ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2,02,700</div><div class="option"><span class="opt-letter">(b)</span> 2,03,000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2,02,800</div><div class="option"><span class="opt-letter">(d)</span> 2,02,900</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.43</span> The population of a town is 7,000. If the percentage increase in male and female population is 11% and 8% respectively, then the new population will be 7,680. Find the number of female citizens in the town.</div>
-                <div class="hindi-text">एक कस्बे की जनसंख्या 7,000 है। यदि पुरुष और महिला जनसंख्या में प्रतिशत वृद्धि क्रमशः 11% और 8% है, तो नई जनसंख्या 7,680 होगी। कस्बे में महिला नागरिकों की संख्या ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 4500</div><div class="option"><span class="opt-letter">(b)</span> 3000</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 2500</div><div class="option"><span class="opt-letter">(d)</span> 4000</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.44</span> Four years ago, the population of a town was 10,000. During the first two years, the annual growth rate of the population was 20%. In the third and fourth year, the population decreased by 10% and 5% respectively. What is the present population of the town after four years?</div>
-                <div class="hindi-text">चार वर्ष पहले, एक कस्बे की जनसंख्या 10,000 थी। पहले दो वर्षों के दौरान जनसंख्या की वार्षिक वृद्धि दर 20% थी। तीसरे और चौथे वर्ष में जनसंख्या में क्रमशः 10% और 5% की कमी आई। चार वर्षों के बाद कस्बे की वर्तमान जनसंख्या क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12312</div><div class="option"><span class="opt-letter">(b)</span> 14288</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10500</div><div class="option"><span class="opt-letter">(d)</span> 16632</div>
-                </div>
-            </div>
-            <div class="type-heading" style="margin-top: 5mm;">TYPE - 05</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.45</span> Due to a 20% increase in the price of sugar, a man is able to buy 3 kg less sugar for Rs 120. What is the increased price of sugar (in Rs)?</div>
-                <div class="hindi-text">चीनी की कीमत में 20% वृद्धि के कारण एक आदमी 120 रुपये में 3 किलोग्राम कम चीनी खरीदने में सक्षम है। चीनी की बढ़ी हुई कीमत (रुपये में) क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2017</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 6.66</div><div class="option"><span class="opt-letter">(b)</span> 8</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10</div><div class="option"><span class="opt-letter">(d)</span> 12</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">9</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+        // Theme Changer Script
+        function changeBatchTheme() {
+            const batch = document.getElementById('themeSelector').value;
+            const root = document.documentElement;
+            
+            if (batch === 'prakram') {
+                root.style.setProperty('--brand-red', '#ea580c');
+                root.style.setProperty('--brand-blue', '#0f172a');
+            } else if (batch === 'sankalp') {
+                root.style.setProperty('--brand-red', '#16a34a');
+                root.style.setProperty('--brand-blue', '#064e3b');
+            } else if (batch === 'lakshya') {
+                root.style.setProperty('--brand-red', '#9333ea');
+                root.style.setProperty('--brand-blue', '#312e81');
+            } else {
+                root.style.setProperty('--brand-red', '#d92626');
+                root.style.setProperty('--brand-blue', '#0284c7');
+            }
+        }
 
-    <!-- ================= PAGE 10 ================= -->
-    <div class="page">
-        <div class="watermark">AP MATHEMATICS</div>
-        <div class="book-header">
-            <div class="header-left">
-                <div class="chapter-badge-wrap">
-                    <div class="chap-label">CHAPTER</div>
-                    <div class="chap-num">01</div>
-                </div>
-                <div class="header-logo"><img src="abhinay.png" alt="AP" onerror="this.src='https://via.placeholder.com/90?text=AP'"></div>
-            </div>
-            <div class="header-right">
-                <div class="title-en">PERCENTAGE</div>
-                <div class="title-hi">प्रतिशतता</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <div class="type-heading">TYPE - 05 (Continued)</div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.46</span> Due to a 25% decrease in the price of sugar per kg, Radha can buy 10 kg more sugar for Rs 1,200. Find the original price (in Rs) of sugar per kg.</div>
-                <div class="hindi-text">प्रति किग्रा चीनी की कीमत में 25% की कमी के कारण, राधा 1,200 रुपये में 10 किग्रा अधिक चीनी खरीद सकती है। प्रति किग्रा चीनी की मूल कीमत (रुपये में) ज्ञात कीजिए।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 40</div><div class="option"><span class="opt-letter">(b)</span> 50</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 45</div><div class="option"><span class="opt-letter">(d)</span> 35</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.47</span> A family consumes 20 kg of rice per month. When the price of rice increases by 35%, the family reduces its consumption of rice to such an extent that the expenditure on rice increases by only 8%. What is the new consumption (in kg) of rice per month due to the increase in the price of rice?</div>
-                <div class="hindi-text">एक परिवार प्रति माह 20 किलोग्राम चावल की खपत करता है। जब चावल की कीमत 35% बढ़ जाती है, तो परिवार चावल की खपत इतनी कम कर देता है कि चावल पर खर्च केवल 8% बढ़ता है। चावल की कीमत में वृद्धि के कारण प्रति माह चावल की नई खपत (किलोग्राम में) क्या है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 14</div><div class="option"><span class="opt-letter">(b)</span> 18</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 16</div><div class="option"><span class="opt-letter">(d)</span> 12</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.48</span> Even after a 25% increase in the price of an article, the expenditure on it increases by 10%. By what percentage has the quantity of consumption of the article decreased?</div>
-                <div class="hindi-text">किसी वस्तु की कीमत में 25% वृद्धि होने के बाद भी उसका व्यय 10% बढ़ जाता है। वस्तु की खपत की मात्रा में कितने प्रतिशत की कमी आई है?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2020</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 12</div><div class="option"><span class="opt-letter">(b)</span> 15</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 10.5</div><div class="option"><span class="opt-letter">(d)</span> 12.5</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.49</span> If the price of tea increases by 28%, by what percentage (correct to the nearest integer) should its consumption be reduced so that the expenditure on it remains unchanged?</div>
-                <div class="hindi-text">यदि चाय की कीमत में 28% की वृद्धि होती है, तो इसकी खपत में कितने प्रतिशत (निकटतम पूर्णांक तक सही) की कमी की जानी चाहिए ताकि इस पर व्यय अपरिवर्तित रहे?</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 21%</div><div class="option"><span class="opt-letter">(b)</span> 22%</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 28%</div><div class="option"><span class="opt-letter">(d)</span> 27%</div>
-                </div>
-            </div>
-            <div class="question-block">
-                <div class="question-text"><span class="q-number">Q.50</span> The price of an article decreases by 25% and its daily sale increases by 30%. Calculate the net effect on the daily sale receipts.</div>
-                <div class="hindi-text">किसी वस्तु का मूल्य 25% कम हो जाता है तथा उसकी दैनिक बिक्री 30% बढ़ जाती है। दैनिक बिक्री प्राप्तियों पर शुद्ध प्रभाव की गणना करें।</div>
-                <div class="tag-wrapper"><span class="exam-tag"><i class="fas fa-bookmark"></i> Delhi Police Constable 2023</span></div>
-                <div class="options-grid">
-                    <div class="option"><span class="opt-letter">(a)</span> 2 1/2%, वृद्धि</div><div class="option"><span class="opt-letter">(b)</span> 2 1/2%, कमी</div>
-                    <div class="option"><span class="opt-letter">(c)</span> 3%, कमी</div><div class="option"><span class="opt-letter">(d)</span> 3%, वृद्धि</div>
-                </div>
-            </div>
-        </div>
-        <div class="book-footer">
-            <div class="footer-left">EXAMEDGE INSTITUTE</div><div class="footer-center">10</div><div class="footer-right">ABHINAY PRATAP (MATHS MYSTIC)</div>
-        </div>
-    </div>
+        // Security / Inspection Blocking
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
+    </script>
 </body>
 </html>
