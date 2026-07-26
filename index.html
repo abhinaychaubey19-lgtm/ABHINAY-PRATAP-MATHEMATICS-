@@ -11,29 +11,45 @@
 
     <style>
         /* ========================================== */
-        /* --- CORE VARIABLES & GLOBAL STYLES --- */
+        /* --- DYNAMIC THEME VARIABLES --- */
         /* ========================================== */
         :root {
+            /* DARK MODE (DEFAULT) */
             --bg-main: #050505; 
             --bg-card: #111111;
-            --gold: #eab308; 
-            --gold-hover: #ca8a04;
+            --bg-header: rgba(5, 5, 5, 0.98);
             --text-light: #ffffff; 
             --text-dim: #a3a3a3;
             --border-dark: #262626;
+            --item-bg: #1a1a1a;
+            --shadow-color: rgba(0, 0, 0, 0.8);
+            
+            /* BRAND COLORS */
+            --gold: #eab308; 
+            --gold-hover: #ca8a04;
             --pink: #ff2a75; 
-            --pink-hover: #ff0055;
             --green: #22c55e; 
             --red-brand: #dc2626; 
             --app-blue: #00bcd4;
         }
 
-        * { 
-            margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; 
+        /* LIGHT MODE OVERRIDES */
+        body.light-mode {
+            --bg-main: #f8fafc; 
+            --bg-card: #ffffff;
+            --bg-header: rgba(255, 255, 255, 0.98);
+            --text-light: #0f172a; 
+            --text-dim: #475569;
+            --border-dark: #cbd5e1;
+            --item-bg: #f1f5f9;
+            --shadow-color: rgba(0, 0, 0, 0.08);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
 
         body { 
             background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; 
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         /* ========================================== */
@@ -45,28 +61,10 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             transition: opacity 0.8s ease; 
         }
-        
-        .splash-content-wrapper {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            animation: popIn 1s ease-out forwards;
-        }
-
-        .splash-logo-container {
-            position: relative; width: 250px; height: 250px; display: flex; justify-content: center; align-items: center;
-        }
-
-        .splash-main-logo {
-            width: 160px; height: 160px; border-radius: 50%; background: #000; 
-            border: 5px solid #ffffff; 
-            object-fit: contain; z-index: 10; 
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
-        }
-
-        .splash-orbit-logo {
-            position: absolute; width: 75px; height: 75px; border-radius: 50%; 
-            background: #fff; border: 2px solid var(--gold); object-fit: contain; z-index: 5; 
-            opacity: 0; animation: splashOrbit 4.5s ease-in-out forwards;
-        }
+        .splash-content-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: popIn 1s ease-out forwards; }
+        .splash-logo-container { position: relative; width: 250px; height: 250px; display: flex; justify-content: center; align-items: center; }
+        .splash-main-logo { width: 160px; height: 160px; border-radius: 50%; background: #000; border: 5px solid #ffffff; object-fit: contain; z-index: 10; box-shadow: 0 0 40px rgba(255, 255, 255, 0.4); }
+        .splash-orbit-logo { position: absolute; width: 75px; height: 75px; border-radius: 50%; background: #fff; border: 2px solid var(--gold); object-fit: contain; z-index: 5; opacity: 0; animation: splashOrbit 4.5s ease-in-out forwards; }
 
         @keyframes splashOrbit {
             0% { opacity: 0; transform: translateY(0px) rotate(0deg); }
@@ -74,119 +72,88 @@
             90% { opacity: 1; transform: rotate(1080deg) translateY(135px) rotate(-1080deg); }
             100% { opacity: 0; transform: rotate(1080deg) translateY(0px) rotate(-1080deg); }
         }
-
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+        @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
         .splash-text { margin-top: 30px; text-align: center; }
-        .splash-text h1 { 
-            color: var(--gold); font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; 
-            margin-bottom: 8px; text-shadow: 0 4px 15px rgba(234, 179, 8, 0.4); 
-        }
-        .splash-text p { 
-            color: #fff; font-size: 0.95rem; font-weight: 700; letter-spacing: 2px; 
-            background: var(--red-brand); padding: 5px 18px; border-radius: 20px; display: inline-block; box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
-        }
+        .splash-text h1 { color: var(--gold); font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; text-shadow: 0 4px 15px rgba(234, 179, 8, 0.4); }
+        .splash-text p { color: #fff; font-size: 0.95rem; font-weight: 700; letter-spacing: 2px; background: var(--red-brand); padding: 5px 18px; border-radius: 20px; display: inline-block; box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4); }
 
         /* ========================================== */
         /* --- NAVIGATION BAR & ROTATING LOGO --- */
         /* ========================================== */
         nav { 
-            position: fixed; top: 0; width: 100%; height: 75px; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; border-bottom: 1px solid var(--border-dark); z-index: 1000; 
+            position: fixed; top: 0; width: 100%; height: 75px; background: var(--bg-header); backdrop-filter: blur(10px); 
+            display: flex; align-items: center; justify-content: space-between; padding: 0 5%; border-bottom: 1px solid var(--border-dark); z-index: 1000; 
+            transition: background 0.4s ease, border-color 0.4s ease;
         }
         .nav-left { display: flex; align-items: center; gap: 20px; }
         .ham-custom { cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 5px; transition: 0.3s; }
-        .ham-custom .line { height: 3px; background: var(--red-brand); border-radius: 3px; transition: 0.4s; }
+        .ham-custom .line { height: 3px; background: var(--gold); border-radius: 3px; transition: 0.4s; }
         .ham-custom .line1 { width: 32px; } .ham-custom .line2 { width: 22px; } .ham-custom .line3 { width: 32px; }
-        .ham-custom:hover .line2 { width: 32px; }
+        .ham-custom:hover .line2 { width: 32px; background: var(--pink); }
 
         .brand-container { display: flex; flex-direction: column; line-height: 1.1; }
-        .brand-name { font-size: 1.1rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
+        .brand-name { font-size: 1.1rem; font-weight: 800; color: var(--text-light); letter-spacing: 1px; }
         .brand-subtitle { font-size: 0.6rem; color: var(--red-brand); font-weight: 700; letter-spacing: 0.5px; margin-top: 2px;}
         @media(min-width: 768px){ .brand-name { font-size: 1.5rem; } .brand-subtitle { font-size: 0.75rem; } }
         
         .logo-box { 
-            width: 52px; height: 52px; border-radius: 50%; 
-            border: 3px solid var(--gold); 
-            background: url('m.png') center/contain no-repeat; background-color: #000; 
-            cursor: pointer; 
+            width: 52px; height: 52px; border-radius: 50%; border: 3px solid var(--gold); 
+            background: url('m.png') center/contain no-repeat; background-color: #000; cursor: pointer; 
             box-shadow: 0 0 15px rgba(234, 179, 8, 0.5), inset 0 0 8px rgba(234, 179, 8, 0.3); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
         }
-        .logo-box:hover {
-            transform: scale(1.1) rotate(6deg);
-            border-color: var(--pink);
-            box-shadow: 0 0 25px rgba(255, 42, 117, 0.7);
-        }
-        .logo-box::after {
-            content: ''; position: absolute; inset: -5px; border-radius: 50%;
-            border: 2px dashed rgba(234, 179, 8, 0.4);
-            animation: spinRing 10s linear infinite;
-        }
+        .logo-box:hover { transform: scale(1.1) rotate(6deg); border-color: var(--pink); box-shadow: 0 0 25px rgba(255, 42, 117, 0.7); }
+        .logo-box::after { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px dashed rgba(234, 179, 8, 0.4); animation: spinRing 10s linear infinite; }
         @keyframes spinRing { 100% { transform: rotate(360deg); } }
 
         /* ========================================== */
         /* --- CELEBRATION BALLOONS & CONGRATS --- */
         /* ========================================== */
-        .celeb-overlay {
-            position: fixed; inset: 0; z-index: 10000; pointer-events: none;
-            display: none; justify-content: center; align-items: center; overflow: hidden;
-            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
-        }
+        .celeb-overlay { position: fixed; inset: 0; z-index: 10000; pointer-events: none; display: none; justify-content: center; align-items: center; overflow: hidden; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); }
         .celeb-overlay.active { display: flex; }
-        .congrats-text {
-            font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: var(--gold);
-            text-shadow: 0 0 20px rgba(234, 179, 8, 0.8), 3px 3px 6px #000;
-            animation: popUpZoom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            z-index: 10001; text-align: center; text-transform: none; line-height: 1.2;
-        }
-        .congrats-sub { 
-            font-family: 'Poppins', sans-serif; font-size: 1.4rem; color: #fff; 
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9); display:block; margin-top:15px; 
-            font-weight:900; text-transform:uppercase; letter-spacing: 2px;
-        }
-        
-        .balloon {
-            position: absolute; bottom: -150px;
-            width: 50px; height: 65px;
-            background-color: var(--b-color);
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            animation: floatUp ease-in forwards;
-            opacity: 0.95;
-            box-shadow: inset -10px -10px 15px rgba(0,0,0,0.2), 0 0 15px var(--b-color);
-        }
-        .balloon::before {
-            content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
-            border-bottom: 10px solid var(--b-color); 
-        }
-        .balloon::after {
-            content: ''; position: absolute; top: 100%; left: 50%; width: 1.5px; height: 80px; background: rgba(255,255,255,0.4);
-        }
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
-        }
-        @keyframes popUpZoom {
-            0% { transform: scale(0.3); opacity: 0; }
-            70% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+        .congrats-text { font-family: 'Dancing Script', cursive; font-size: 4.5rem; color: var(--gold); text-shadow: 0 0 20px rgba(234, 179, 8, 0.8), 3px 3px 6px #000; animation: popUpZoom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; z-index: 10001; text-align: center; text-transform: none; line-height: 1.2; }
+        .congrats-sub { font-family: 'Poppins', sans-serif; font-size: 1.4rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.9); display:block; margin-top:15px; font-weight:900; text-transform:uppercase; letter-spacing: 2px; }
+        .balloon { position: absolute; bottom: -150px; width: 50px; height: 65px; background-color: var(--b-color); border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; animation: floatUp ease-in forwards; opacity: 0.95; box-shadow: inset -10px -10px 15px rgba(0,0,0,0.2), 0 0 15px var(--b-color); }
+        .balloon::before { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 10px solid var(--b-color); }
+        .balloon::after { content: ''; position: absolute; top: 100%; left: 50%; width: 1.5px; height: 80px; background: rgba(255,255,255,0.4); }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; } }
+        @keyframes popUpZoom { 0% { transform: scale(0.3); opacity: 0; } 70% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 
         /* ========================================== */
         /* --- SIDEBAR MENU --- */
         /* ========================================== */
-        .sidebar { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: #0a0a0a; border-right: 1px solid var(--border-dark); padding: 90px 20px 20px; transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; overflow-y: auto; }
-        .sidebar.active { left: 0; }
-        .sidebar ul { list-style: none; }
-        .sidebar ul li { margin-bottom: 25px; } 
-        .sidebar ul li a { display: flex; align-items: center; gap: 20px; color: var(--text-light); text-decoration: none; font-size: 1.1rem; padding: 15px; font-weight: 600; border-radius: 8px; transition: 0.3s; background: #111; border: 1px solid transparent; letter-spacing: 0.5px; }
-        .sidebar ul li a i { color: var(--gold); width: 30px; text-align: center; font-size: 1.4rem; }
-        .sidebar ul li a:hover { background: #1a1a1a; border-color: var(--gold); color: var(--gold); padding-left: 25px; }
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; }
+        .sidebar { 
+            position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; 
+            background: var(--bg-card); border-right: 1px solid var(--border-dark); 
+            display: flex; flex-direction: column; transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            z-index: 999; overflow-y: auto; 
+        }
+        .sidebar.active { left: 0; box-shadow: 5px 0 20px rgba(0,0,0,0.5); }
+        
+        .sidebar-header {
+            padding: 90px 20px 20px; border-bottom: 2px solid var(--gold);
+            text-align: center; background: var(--bg-main);
+        }
+        .sidebar-header h3 { color: var(--gold); font-size: 1.2rem; font-weight: 900; letter-spacing: 1px; }
+        .sidebar-header p { color: var(--text-dim); font-size: 0.85rem; font-weight: 700; margin-top: 5px; }
+
+        .sidebar ul { list-style: none; padding: 20px 15px; flex: 1; }
+        .sidebar ul li { margin-bottom: 12px; } 
+        .sidebar ul li a { 
+            display: flex; align-items: center; gap: 15px; color: var(--text-light); text-decoration: none; 
+            font-size: 1rem; padding: 12px 15px; font-weight: 600; border-radius: 8px; transition: 0.3s; 
+            background: var(--bg-main); border: 1px solid var(--border-dark); letter-spacing: 0.5px; 
+        }
+        .sidebar ul li a i { color: var(--gold); width: 25px; text-align: center; font-size: 1.2rem; }
+        .sidebar ul li a:hover { background: var(--bg-card); border-color: var(--gold); color: var(--gold); padding-left: 20px; }
+
+        .theme-toggle-container { margin-top: 15px; border-top: 1px dashed var(--border-dark); padding-top: 15px; }
+        .theme-toggle-btn { background: var(--bg-main) !important; justify-content: center; }
+        .theme-toggle-btn i { color: var(--app-blue) !important; }
+        .theme-toggle-btn:hover { color: var(--app-blue) !important; padding-left: 15px !important; }
+
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; backdrop-filter: blur(3px); }
         .overlay.active { opacity: 1; visibility: visible; }
 
         /* ========================================== */
@@ -199,159 +166,196 @@
             display: flex; justify-content: center; align-items: center; 
             opacity: 0; visibility: hidden; pointer-events: none;
         }
-        .timed-banner.show { 
-            transform: translate(-50%, -50%) scale(1); 
-            opacity: 1; visibility: visible; pointer-events: auto;
-        }
+        .timed-banner.show { transform: translate(-50%, -50%) scale(1); opacity: 1; visibility: visible; pointer-events: auto; }
         .timed-banner-wrapper { 
             position: relative; width: 100%; height: 100%; border-radius: 15px; padding: 6px; 
             background: linear-gradient(45deg, var(--gold), var(--pink), var(--gold-hover)); 
             background-size: 200% 200%; animation: borderGlow 3s ease infinite; 
-            box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 20px rgba(255,255,255,0.2); 
-            border: 4px solid #ffffff;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9), 0 0 20px rgba(255,255,255,0.2); border: 4px solid #ffffff;
         }
         @keyframes borderGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        .timed-banner-tag { 
-            position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: #000; color: var(--gold); 
-            border: 2px solid var(--gold); padding: 5px 20px; border-radius: 20px; font-weight: 900; z-index: 15; white-space: nowrap; 
-            font-size: 0.95rem; box-shadow: 0 5px 15px rgba(0,0,0,0.8); letter-spacing: 1px; 
-        }
+        .timed-banner-tag { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: #000; color: var(--gold); border: 2px solid var(--gold); padding: 5px 20px; border-radius: 20px; font-weight: 900; z-index: 15; white-space: nowrap; font-size: 0.95rem; box-shadow: 0 5px 15px rgba(0,0,0,0.8); letter-spacing: 1px; }
         .timed-banner-img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; background: #000; }
-        .timed-banner-close { 
-            position: absolute; top: -18px; right: -18px; cursor: pointer; background: var(--pink); border: 2px solid #fff; color: #fff; 
-            width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.3s; z-index: 20; 
-        }
+        .timed-banner-close { position: absolute; top: -18px; right: -18px; cursor: pointer; background: var(--pink); border: 2px solid #fff; color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.9); transition: 0.3s; z-index: 20; }
         .timed-banner-close:hover { background: #fff; color: var(--pink); transform: rotate(90deg) scale(1.1); }
 
         /* ========================================== */
-        /* --- MAIN BANNER SLIDER --- */
+        /* --- MAIN BANNER SLIDER (NO BORDER & PEEKING EFFECT) --- */
         /* ========================================== */
-        .slider-section { margin-top: 75px; padding: 20px 0 10px; position: relative; }
-        .slider-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; }
+        .slider-section { margin-top: 75px; padding: 25px 0 10px; position: relative; }
+        .slider-wrapper { 
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; 
+            padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; align-items: center;
+        }
         .slider-wrapper::-webkit-scrollbar { display: none; }
-        .banner-slide { min-width: 90vw; aspect-ratio: 2/1; border-radius: 15px; scroll-snap-align: center; background-color: #111; border: 1px solid var(--border-dark); display: block; flex-shrink: 0; background-size: 100% 100%; background-position: center; background-repeat: no-repeat; cursor: pointer; transition: transform 0.3s ease; }
+        .banner-slide { 
+            min-width: 90vw; aspect-ratio: 21/9; border-radius: 15px; scroll-snap-align: center; 
+            background-color: var(--bg-card); display: block; flex-shrink: 0; background-size: cover; 
+            background-position: center; background-repeat: no-repeat; cursor: pointer; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
         .banner-slide:active { transform: scale(0.98); }
-        @media(min-width: 768px) { .banner-slide { min-width: 70vw; } }
+        @media(min-width: 768px) { .banner-slide { min-width: 75vw; aspect-ratio: 24/9; } }
 
         /* ========================================== */
-        /* --- PREMIUM COURSES SECTION --- */
+        /* --- PREMIUM COURSES SECTION (HOME PAGE) --- */
         /* ========================================== */
         .courses-section { padding: 30px 5% 20px; }
-        .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 30px; border-left: 4px solid var(--gold); padding-left: 15px; }
+        .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 30px; border-left: 5px solid var(--gold); padding-left: 15px; color: var(--text-light); transition: 0.3s;}
         .section-title span { color: var(--gold); }
-        .course-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 15px; }
+        .course-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 15px; }
         
-        .course-card { position: relative; background: var(--bg-card); border-radius: 16px; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.2); transition: 0.3s; }
-        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(234, 179, 8, 0.4); }
-        .course-img-box { position: relative; width: 100%; aspect-ratio: 2/1; background-color: #111; border-bottom: 2px solid var(--gold); border-top-left-radius: 14px; border-top-right-radius: 14px; overflow: hidden; }
-        .course-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.4s; }
-        .course-img-box:hover .course-img { transform: scale(1.05); filter: brightness(0.8); }
+        .course-card { width: 100%; max-width: 450px; position: relative; background: var(--bg-card); border-radius: 20px; border: 2px solid var(--border-dark); box-shadow: 0 10px 30px var(--shadow-color); transition: 0.3s; overflow: hidden;}
+        .course-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(234, 179, 8, 0.25); }
+        .course-img-box { position: relative; width: 100%; aspect-ratio: 2/1; background-color: var(--bg-main); border-bottom: 3px solid var(--gold); overflow: hidden; }
+        .course-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .course-img-box:hover .course-img { transform: scale(1.08); filter: brightness(0.85); }
         
-        .course-info { padding: 20px; }
-        .course-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; }
-        .course-faculty { color: var(--gold); font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.5px; }
+        .course-info { padding: 25px 20px; }
+        .course-title { font-size: 1.4rem; font-weight: 900; margin-bottom: 8px; color: var(--text-light); letter-spacing: 0.5px;}
+        .course-faculty { color: var(--gold); font-size: 0.95rem; font-weight: 800; margin-bottom: 25px; letter-spacing: 1px; }
         
         .btn-group { display: flex; flex-direction: column; gap: 12px; }
-        .btn { width: 100%; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 1.05rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; outline: none; letter-spacing: 0.5px; }
-        .btn-features { background: #222; color: var(--text-light); border: 1px solid var(--gold); }
-        .btn-features:hover { background: #333; }
-        .btn-buy { background: var(--gold); color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
-        .btn-buy:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 179, 8, 0.5); }
-        .btn-free { background: var(--green); color: #fff; border: none; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
-        .btn-free:hover { background: #16a34a; transform: translateY(-2px); color: #fff; }
+        .btn { width: 100%; padding: 14px; border-radius: 10px; font-weight: 800; font-size: 1.05rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; outline: none; letter-spacing: 1px; }
+        .btn-features { background: var(--item-bg); color: var(--text-light); border: 1px solid var(--border-dark); }
+        .btn-features:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-buy { background: linear-gradient(90deg, var(--gold), #facc15); color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
+        .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.5); }
+        .btn-free { background: linear-gradient(90deg, var(--green), #4ade80); color: #fff; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
+        .btn-free:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5); }
 
-        .features-box { display: none; padding: 20px; background: #0a0a0a; border-top: 1px solid var(--border-dark); margin-top: 15px; border-radius: 8px; }
+        .features-box { 
+            display: none; padding: 20px 15px; background: rgba(0,0,0,0.2); 
+            border-top: none; margin-top: 20px; border-radius: 12px; 
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+        body.light-mode .features-box { background: rgba(0,0,0,0.03); box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
         .features-box ul { list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px; }
         @media(min-width: 768px) { .features-box ul { grid-template-columns: 1fr 1fr; } }
-        .features-box ul li { font-size: 0.95rem; color: #ffffff; font-weight: 800; display: flex; align-items: flex-start; gap: 10px; }
-        .features-box ul li i { color: var(--gold); margin-top: 3px; font-size: 1.1rem; }
+        .features-box ul li { 
+            background: var(--bg-card); padding: 12px; border-radius: 8px; 
+            border: 1px solid var(--border-dark); font-size: 0.85rem; font-weight: 700; 
+            display: flex; align-items: center; gap: 10px; color: var(--text-light);
+            box-shadow: 0 2px 5px var(--shadow-color); transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .features-box ul li:hover { border-color: var(--gold); transform: translateX(5px); background: var(--item-bg); }
+        .features-box ul li i { color: var(--gold); font-size: 1.2rem; min-width: 20px; text-align: center; }
 
         /* ========================================== */
-        /* --- 8 EXCLUSIVE ADVANTAGE CARDS --- */
+        /* --- 8 EXCLUSIVE ADVANTAGE CARDS (BOARD EXAM) --- */
         /* ========================================== */
         .edge-section { padding: 40px 5%; }
-        .edge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .edge-card { background: linear-gradient(145deg, #111, #0a0a0a); border: 1px solid #333; border-top: 3px solid var(--gold); border-radius: 15px; padding: 25px; text-align: center; transition: 0.3s; position: relative; overflow: hidden; }
-        .edge-card:hover { transform: translateY(-5px); border-top-color: var(--pink); box-shadow: 0 10px 30px rgba(255, 42, 117, 0.15); }
-        .edge-icon { width: 70px; height: 70px; background: rgba(234, 179, 8, 0.1); color: var(--gold); font-size: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 15px; transition: 0.3s; }
-        .edge-card:hover .edge-icon { background: var(--pink); color: #fff; transform: scale(1.1); box-shadow: 0 0 15px var(--pink); }
-        .edge-card h3 { color: #fff; font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px; }
-        .edge-card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; font-weight: 600; text-transform: none; }
-        .edge-tag { position: absolute; top: 10px; right: -25px; background: var(--red-brand); color: #fff; font-size: 0.65rem; font-weight: 900; padding: 3px 25px; transform: rotate(45deg); letter-spacing: 1px; box-shadow: 0 2px 10px rgba(220, 38, 38, 0.5); }
+        .edge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .edge-card { 
+            background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 4px solid var(--gold); 
+            border-radius: 16px; padding: 30px 20px; text-align: center; transition: 0.4s; position: relative; overflow: hidden; 
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+        .edge-card:hover { transform: translateY(-8px); border-top-color: var(--app-blue); box-shadow: 0 15px 35px rgba(0, 188, 212, 0.15); }
+        .edge-icon { width: 75px; height: 75px; background: rgba(0, 188, 212, 0.1); color: var(--app-blue); font-size: 2.2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 20px; transition: 0.4s; }
+        .edge-card:hover .edge-icon { background: var(--app-blue); color: #fff; transform: scale(1.1) rotate(10deg); box-shadow: 0 0 20px var(--app-blue); }
+        .edge-card h3 { color: var(--text-light); font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; letter-spacing: 1px; }
+        .edge-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; font-weight: 600; text-transform: none; }
+        .edge-tag { position: absolute; top: 12px; right: -30px; background: var(--red-brand); color: #fff; font-size: 0.65rem; font-weight: 900; padding: 4px 30px; transform: rotate(45deg); letter-spacing: 1px; box-shadow: 0 2px 10px rgba(220, 38, 38, 0.5); }
 
         /* ========================================== */
         /* --- FAQ ACCORDION SECTION --- */
         /* ========================================== */
-        .faq-section { padding: 20px 0 40px; }
+        .faq-section { padding: 20px 0 50px; }
         .faq-section .section-title { margin-left: 5%; }
         .faq-container { padding: 0 5%; display: flex; flex-direction: column; gap: 15px; }
-        .faq-item { background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 12px; transition: 0.3s; overflow: hidden; }
-        .faq-item.active { border-color: var(--pink); box-shadow: 0 5px 20px rgba(255, 42, 117, 0.15); }
-        .faq-question { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; }
-        .faq-question i { color: var(--gold); transition: transform 0.4s ease; font-size: 1.1rem; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 12px; transition: 0.3s; overflow: hidden; box-shadow: 0 4px 15px var(--shadow-color);}
+        .faq-item.active { border-color: var(--gold); box-shadow: 0 5px 20px rgba(234, 179, 8, 0.15); }
+        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: var(--text-light); font-weight: 800; font-size: 1rem; letter-spacing: 0.5px; }
+        .faq-question i { color: var(--gold); transition: transform 0.4s ease; font-size: 1.2rem; }
         .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--pink); }
-        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: #0a0a0a; }
-        .faq-answer p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; font-weight: 600; text-transform: none; padding-bottom: 18px; margin-top: 5px; }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: var(--item-bg); }
+        .faq-answer p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; font-weight: 600; text-transform: none; padding-bottom: 20px; margin-top: 5px; }
 
         /* ========================================== */
-        /* --- HORIZONTAL UNIFORM SLIDERS --- */
+        /* --- HORIZONTAL UNIFORM SLIDERS (REVIEWS & FACULTY) --- */
         /* ========================================== */
-        .uniform-section { padding: 40px 0 20px; }
+        .uniform-section { padding: 40px 0 30px; }
         .uniform-section .section-title { margin-left: 5%; }
-        .uniform-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; justify-content: flex-start; }
+        .uniform-wrapper { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 0 5%; scrollbar-width: none; scroll-behavior: smooth; justify-content: flex-start; }
         .uniform-wrapper::-webkit-scrollbar { display: none; }
         
-        .uniform-card { width: 340px; scroll-snap-align: start; flex-shrink: 0; background: var(--bg-card); border: 1px solid var(--gold); padding: 25px; border-radius: 15px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.1); transition: 0.3s;}
-        .uniform-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.2); }
-
-        .stars-box { color: var(--gold); margin-bottom: 12px; font-size: 1rem; }
-        .review-desc { color: var(--text-light); font-size: 0.95rem; font-weight: 600; line-height: 1.6; font-style: italic; margin-bottom: 20px; text-transform: none; }
-        .reviewer-meta { display: flex; align-items: center; gap: 15px; }
-        .rev-avatar { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; background: #222; }
+        .review-card { 
+            width: 350px; scroll-snap-align: start; flex-shrink: 0; background: var(--bg-card); 
+            border: 1px solid var(--border-dark); border-top: 4px solid var(--gold); padding: 30px 25px; 
+            border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; 
+            box-shadow: 0 10px 30px var(--shadow-color); transition: 0.4s; position: relative; z-index: 1;
+        }
+        .review-card::before {
+            content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: 20px; right: 25px; font-size: 3.5rem; color: var(--text-dim); opacity: 0.1; z-index: -1;
+        }
+        .review-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(234, 179, 8, 0.15); border-color: var(--gold);}
+        .stars-box { color: var(--gold); margin-bottom: 15px; font-size: 1.1rem; }
+        .review-desc { color: var(--text-light); font-size: 0.95rem; font-weight: 600; line-height: 1.6; font-style: italic; margin-bottom: 25px; text-transform: none; }
+        .reviewer-meta { display: flex; align-items: center; gap: 15px; margin-top: auto;}
+        .rev-avatar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; background: #222; box-shadow: 0 4px 10px rgba(0,0,0,0.3);}
         .rev-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .rev-name h5 { font-size: 1rem; font-weight: 800; color: #fff; }
-        .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; }
+        .rev-name h5 { font-size: 1.05rem; font-weight: 900; color: var(--text-light); }
+        .rev-name span { font-size: 0.8rem; color: var(--gold); font-weight: 700; letter-spacing: 0.5px;}
 
-        .fac-avatar-container { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 3px solid #ffffff; overflow: hidden; background: #000; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+        .fac-card { 
+            width: 320px; scroll-snap-align: start; flex-shrink: 0; background: var(--bg-card); 
+            border: 1px solid var(--border-dark); border-radius: 16px; padding: 0 0 25px 0; 
+            display: flex; flex-direction: column; box-shadow: 0 10px 30px var(--shadow-color); 
+            transition: 0.4s; overflow: hidden;
+        }
+        .fac-card:hover { transform: translateY(-8px); border-color: var(--pink); box-shadow: 0 15px 40px rgba(255, 42, 117, 0.15); }
+        .fac-cover { height: 80px; background: linear-gradient(135deg, var(--brand-blue), var(--pink)); position: relative; }
+        .fac-avatar-container { 
+            width: 110px; height: 110px; margin: -55px auto 15px; border-radius: 50%; 
+            border: 4px solid var(--bg-card); overflow: hidden; background: #000; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; z-index: 2;
+        }
         .fac-avatar-container img { width: 100%; height: 100%; object-fit: cover; }
-        .fac-name { text-align: center; color: #fff; font-size: 1.3rem; font-weight: 800; margin-bottom: 5px; }
-        .fac-subject { text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3); padding: 4px 10px; border-radius: 20px; background: rgba(234, 179, 8, 0.05); }
-        .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px; font-weight: 500; min-height: 60px; text-transform: none;}
-        .fac-socials { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 15px; border-top: 1px dashed #222; }
-        .fac-socials a { color: #ffffff; font-size: 1.2rem; background: #111; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s; }
-        .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); box-shadow: 0 0 12px var(--gold); border-color: var(--gold); }
+        .fac-name { text-align: center; color: var(--text-light); font-size: 1.4rem; font-weight: 900; margin-bottom: 5px; }
+        .fac-subject { 
+            text-align: center; color: var(--gold); font-size: 0.85rem; font-weight: 800; margin: 0 auto 15px; 
+            letter-spacing: 1px; border: 1px solid rgba(234, 179, 8, 0.3); padding: 4px 12px; 
+            border-radius: 20px; background: rgba(234, 179, 8, 0.05); display: table;
+        }
+        .fac-desc { text-align: center; color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; font-weight: 600; padding: 0 20px; text-transform: none;}
+        .fac-socials { display: flex; justify-content: center; gap: 15px; margin-top: auto; padding-top: 15px; border-top: 1px dashed var(--border-dark); }
+        .fac-socials a { color: var(--text-light); font-size: 1.2rem; background: var(--item-bg); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid var(--border-dark); transition: 0.3s; }
+        .fac-socials a:hover { background: var(--gold); color: #000; transform: scale(1.1); box-shadow: 0 0 15px var(--gold); border-color: var(--gold); }
 
-        .dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 20px; padding: 0 5%; flex-wrap: wrap; }
-        .dots-container .dot { width: 8px; height: 8px; background: #444; border-radius: 50%; transition: 0.3s; cursor: pointer; flex-shrink: 0; }
-        .dots-container .dot.active { background: var(--gold); width: 20px; border-radius: 5px; }
+        .dots-container { display: flex; justify-content: center; gap: 8px; margin-top: 25px; padding: 0 5%; flex-wrap: wrap; }
+        .dots-container .dot { width: 10px; height: 10px; background: var(--border-dark); border-radius: 50%; transition: 0.3s; cursor: pointer; flex-shrink: 0; }
+        .dots-container .dot.active { background: var(--gold); width: 25px; border-radius: 5px; }
 
         /* ========================================== */
         /* --- GLOBAL MODALS (LOGIN, PAYMENT, ADMIN) --- */
         /* ========================================== */
-        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 5000; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 5000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .global-modal.show { opacity: 1; visibility: visible; }
-        .modal-content { background: linear-gradient(145deg, #111111, #050505); border: 1px solid #333; border-top: 4px solid var(--gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 95%; text-align: center; position: relative; max-height: 90vh; overflow-y: auto;}
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 5px solid var(--gold); padding: 30px; border-radius: 20px; max-width: 450px; width: 95%; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; scrollbar-width: none; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
+        .modal-content::-webkit-scrollbar { display: none; }
         
-        .loader-spinner { border: 4px solid #333; border-top: 4px solid var(--gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        .loader-spinner { border: 4px solid var(--border-dark); border-top: 4px solid var(--gold); border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .modal-icon-wrapper { width: 80px; height: 80px; margin: 0 auto 20px; background: rgba(234, 179, 8, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse-icon 2s infinite; }
         @keyframes pulse-icon { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
         .modal-icon-wrapper i { font-size: 2.5rem; color: var(--gold); }
         
-        .modal-btn { background: var(--gold); color: #000; font-weight: 800; font-size: 1rem; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; letter-spacing: 1px; }
-        .modal-btn:hover { background: var(--gold-hover); transform: translateY(-2px); }
-        .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #666; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #1a1a1a; z-index: 10; transition: 0.2s;}
-        .modal-close-btn:hover { color: #fff; background: var(--red-brand); border-color: var(--red-brand); }
+        .modal-btn { background: linear-gradient(90deg, var(--gold), #facc15); color: #000; font-weight: 900; font-size: 1.05rem; padding: 14px 20px; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; width: 100%; margin-top: 10px; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);}
+        .modal-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.5); }
+        .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-dim); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--item-bg); z-index: 10; transition: 0.2s;}
+        .modal-close-btn:hover { color: #fff; background: var(--red-brand); }
 
-        .payment-box { background: #0a0a0a; border: 1px solid #333; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
+        .payment-box { background: var(--bg-main); border: 1px solid var(--border-dark); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
         .payment-box label { color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 5px; display: block; }
-        .input-field { width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: #fff; border-radius: 6px; font-size: 0.95rem; font-weight: 600; outline: none; margin-bottom: 10px; }
-        .input-field:focus { border-color: var(--gold); }
+        .input-field { width: 100%; padding: 14px; background: var(--bg-card); border: 1px solid var(--border-dark); color: var(--text-light); border-radius: 8px; font-size: 0.95rem; font-weight: 600; outline: none; margin-bottom: 10px; transition: 0.3s;}
+        .input-field:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);}
         
-        /* FULL SIZE ULTRA PROFESSIONAL QR STYLING */
+        /* QR STYLING */
         .qr-area { text-align: center; margin: 15px 0; display: none; }
         .qr-wrapper {
             position: relative; width: 260px; height: 260px; margin: 0 auto 15px; 
@@ -366,20 +370,12 @@
             border: 3px solid var(--gold); padding: 4px; z-index: 5;
             box-shadow: 0 0 15px rgba(0,0,0,0.6); object-fit: contain;
         }
-        .upi-accept-text {
-            color: #fff; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; 
-            margin-bottom: 12px; text-align: center; border-bottom: 1px dashed var(--gold); 
-            padding-bottom: 5px; display: inline-block;
-        }
-        .upi-logos {
-            display: flex; justify-content: center; gap: 10px; align-items: center; 
-            flex-wrap: wrap; background: #000; padding: 12px; border-radius: 10px; 
-            border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
-        }
-        .upi-logos img { height: 26px; object-fit: contain; background: #fff; padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; }
+        .upi-accept-text { color: var(--text-light); font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 12px; text-align: center; border-bottom: 1px dashed var(--gold); padding-bottom: 5px; display: inline-block; }
+        .upi-logos { display: flex; justify-content: center; gap: 10px; align-items: center; flex-wrap: wrap; background: #ffffff; padding: 12px; border-radius: 10px; border: 1px solid #ccc; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
+        .upi-logos img { height: 26px; object-fit: contain; background: #fff; border-radius: 4px; }
 
         /* ========================================== */
-        /* --- DIRECTOR MESSAGE MODAL (10s AUTO CLOSE) --- */
+        /* --- DIRECTOR MESSAGE MODAL --- */
         /* ========================================== */
         .director-modal {
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
@@ -388,7 +384,7 @@
         }
         .director-modal.show { opacity: 1; visibility: visible; }
         .director-card {
-            background: linear-gradient(145deg, #111, #080808); border: 2px solid var(--gold);
+            background: var(--bg-card); border: 2px solid var(--gold);
             border-top: 5px solid var(--pink); border-radius: 20px; width: 90%; max-width: 420px;
             padding: 30px 20px; text-align: center; position: relative;
             box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(234, 179, 8, 0.2);
@@ -396,34 +392,22 @@
         }
         @keyframes directorPop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         
-        .director-img-wrap {
-            width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--gold);
-            margin: 0 auto 15px; overflow: hidden; background: #000;
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
-        }
+        .director-img-wrap { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--gold); margin: 0 auto 15px; overflow: hidden; background: #000; box-shadow: 0 0 20px rgba(234, 179, 8, 0.4); }
         .director-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
         .director-title { color: var(--gold); font-size: 1.3rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 5px; }
         .director-subtitle { color: var(--pink); font-size: 0.8rem; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 15px; }
-        .director-msg-box {
-            background: rgba(255,255,255,0.03); border: 1px solid #333; border-radius: 10px;
-            padding: 15px; color: #fff; font-size: 0.9rem; line-height: 1.6; font-weight: 600;
-            text-transform: none; margin-bottom: 20px; text-align: left;
-        }
-        .director-timer-bar {
-            width: 100%; height: 4px; background: #333; border-radius: 2px; overflow: hidden; margin-top: 15px;
-        }
-        .director-timer-fill {
-            height: 100%; background: var(--gold); width: 100%; transition: width 10s linear;
-        }
+        .director-msg-box { background: var(--bg-main); border: 1px solid var(--border-dark); border-radius: 10px; padding: 15px; color: var(--text-light); font-size: 0.9rem; line-height: 1.6; font-weight: 600; text-transform: none; margin-bottom: 20px; text-align: left; }
+        .director-timer-bar { width: 100%; height: 4px; background: var(--border-dark); border-radius: 2px; overflow: hidden; margin-top: 15px; }
+        .director-timer-fill { height: 100%; background: var(--gold); width: 100%; transition: width 10s linear; }
 
         /* ========================================== */
-        /* --- REDESIGNED TOAST ALERT (PREMIUM) --- */
+        /* --- TOAST ALERT --- */
         /* ========================================== */
         .toast-alert { 
             position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); 
-            background: rgba(15, 15, 15, 0.98); backdrop-filter: blur(10px); 
-            border: 1px solid #333; border-left: 4px solid var(--gold); 
-            padding: 14px 28px; border-radius: 8px; color: #fff; 
+            background: var(--bg-card); backdrop-filter: blur(10px); 
+            border: 1px solid var(--border-dark); border-left: 4px solid var(--gold); 
+            padding: 14px 28px; border-radius: 8px; color: var(--text-light); 
             font-weight: 600; font-size: 0.95rem; z-index: 6000; 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); 
             display: flex; align-items: center; gap: 12px; 
@@ -434,83 +418,101 @@
         .toast-alert i { color: var(--gold); font-size: 1.3rem; }
 
         /* ========================================== */
-        /* --- APP-LIKE UI (MY BATCH PORTAL) --- */
+        /* --- APP-LIKE UI (PREMIUM BATCHES MODAL) --- */
         /* ========================================== */
         .app-modal { position: fixed; inset: 0; background: var(--bg-main); z-index: 4000; display: none; flex-direction: column; overflow: hidden;}
-        .app-modal.show { display: flex; animation: slideUp 0.3s ease; }
+        .app-modal.show { display: flex; animation: slideUp 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         
-        .app-header { background: #111; padding: 15px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: sticky; top:0; z-index:10; }
-        .app-back-btn { background: transparent; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; padding: 5px; }
-        .app-header-title { color: #fff; font-size: 1.2rem; font-weight: 800; flex:1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .app-body { flex: 1; overflow-y: auto; background: #050505; padding: 15px 5%; }
-        @media(min-width: 768px) { .app-body { padding: 20px 20%; } }
+        .app-header { background: var(--bg-card); padding: 18px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: sticky; top:0; z-index:10; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+        .app-back-btn { background: transparent; border: none; color: var(--text-light); font-size: 1.3rem; cursor: pointer; padding: 5px; }
+        .app-header-title { color: var(--text-light); font-size: 1.3rem; font-weight: 900; flex:1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.5px;}
+        .app-body { flex: 1; overflow-y: auto; padding: 20px 5%; scrollbar-width: none;}
+        .app-body::-webkit-scrollbar { display: none; }
+        @media(min-width: 768px) { .app-body { padding: 20px 15%; } }
 
-        .batch-list-card { background: #111; border-radius: 12px; padding: 15px; margin-bottom: 12px; display: flex; gap: 15px; align-items: center; border: 1px solid #333; cursor: pointer; transition: 0.3s;}
-        .batch-list-card:hover { border-color: var(--gold); }
-        .batch-list-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; background:#222;}
+        /* Premium Categories Tab Scroll */
+        .category-scroll-wrapper { width: 100%; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; scrollbar-width: none; }
+        .category-scroll-wrapper::-webkit-scrollbar { display: none; }
+        .category-tabs { display: flex; gap: 12px; width: max-content; }
+        .cat-tab { 
+            padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border-dark); 
+            background: var(--bg-card); color: var(--text-dim); font-size: 0.85rem; font-weight: 800; 
+            cursor: pointer; transition: 0.3s; white-space: nowrap; box-shadow: 0 2px 5px var(--shadow-color);
+        }
+        .cat-tab.active { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 4px 10px rgba(234, 179, 8, 0.3); }
+        .cat-tab:hover:not(.active) { color: var(--gold); border-color: var(--gold); }
+
+        /* MY BATCH SPECIFIC */
+        .batch-list-card { background: var(--bg-card); border-radius: 14px; padding: 18px; margin-bottom: 15px; display: flex; gap: 15px; align-items: center; border: 1px solid var(--border-dark); cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px var(--shadow-color);}
+        .batch-list-card:hover { border-color: var(--gold); transform: translateY(-3px);}
+        .batch-list-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; background:var(--item-bg);}
         .batch-list-info { flex: 1; }
-        .batch-list-title { color: #fff; font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
-        .batch-list-sub { color: var(--text-dim); font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 5px; text-transform: none;}
-        .batch-list-tag { background: rgba(34, 197, 94, 0.2); color: var(--green); font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+        .batch-list-title { color: var(--text-light); font-size: 1.05rem; font-weight: 900; margin-bottom: 4px; }
+        .batch-list-sub { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 5px; text-transform: none;}
+        .batch-list-tag { background: rgba(34, 197, 94, 0.15); color: var(--green); font-size: 0.7rem; font-weight: 800; padding: 3px 8px; border-radius: 5px; border: 1px solid rgba(34, 197, 94, 0.3);}
 
-        .sub-card { background: #111; border-radius: 10px; padding: 15px; margin-bottom: 10px; display: flex; gap: 15px; align-items: center; border: 1px solid #333; cursor: pointer; transition: 0.3s;}
-        .sub-card:hover { border-color: var(--pink); }
-        .sub-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #222; border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; }
+        .sub-card { background: var(--bg-card); border-radius: 12px; padding: 15px 18px; margin-bottom: 12px; display: flex; gap: 15px; align-items: center; border: 1px solid var(--border-dark); cursor: pointer; transition: 0.3s; box-shadow: 0 2px 8px var(--shadow-color);}
+        .sub-card:hover { border-color: var(--pink); transform: translateX(5px);}
+        .sub-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--item-bg); border: 2px solid var(--gold); overflow: hidden; flex-shrink: 0; }
         .sub-icon img { width: 100%; height: 100%; object-fit: cover; }
         .sub-info { flex: 1; }
-        .sub-title { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 5px;}
-        .sub-meta { color: var(--text-dim); font-size: 0.75rem; display: flex; gap: 15px; font-weight: 600; text-transform: none;}
+        .sub-title { color: var(--text-light); font-size: 1.05rem; font-weight: 800; margin-bottom: 5px;}
+        .sub-meta { color: var(--text-dim); font-size: 0.8rem; display: flex; gap: 15px; font-weight: 600; text-transform: none;}
         .sub-arrow { color: var(--gold); font-size: 1.2rem; }
 
-        .app-tabs { display: flex; background: #111; border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 5;}
-        .app-tab { flex: 1; text-align: center; padding: 15px 0; color: var(--text-dim); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s;}
+        .app-tabs { display: flex; background: var(--bg-card); border-bottom: 1px solid var(--border-dark); position: sticky; top: 0; z-index: 5;}
+        .app-tab { flex: 1; text-align: center; padding: 16px 0; color: var(--text-dim); font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s;}
         .app-tab.active { color: var(--gold); border-bottom: 3px solid var(--gold); background: rgba(234, 179, 8, 0.05);}
         
-        .vid-card { background: #111; border-radius: 10px; margin-bottom: 15px; border: 1px solid #333; overflow: hidden; cursor: pointer; transition: 0.3s;}
-        .vid-card:hover { border-color: var(--gold); background: #1a1a1a;}
-        .vid-flex { display: flex; padding: 12px; gap: 15px; }
-        .vid-thumb { width: 130px; height: 80px; background: #222; border-radius: 8px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;}
-        .vid-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-        .vid-thumb .play-icon { position: absolute; color: #fff; font-size: 2rem; text-shadow: 0 0 10px #000; z-index: 2; }
-        .vid-badge { position: absolute; top: 0; right: 0; background: var(--app-blue); color: #fff; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-bottom-left-radius: 8px; z-index: 3;}
+        .vid-card { background: var(--bg-card); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-dark); overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px var(--shadow-color);}
+        .vid-card:hover { border-color: var(--gold); background: var(--item-bg); transform: translateY(-2px);}
+        .vid-flex { display: flex; padding: 15px; gap: 15px; }
+        .vid-thumb { width: 140px; height: 85px; background: #000; border-radius: 8px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;}
+        .vid-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .vid-thumb .play-icon { position: absolute; color: #fff; font-size: 2.2rem; text-shadow: 0 0 10px rgba(0,0,0,0.8); z-index: 2; }
+        .vid-badge { position: absolute; top: 0; right: 0; background: var(--app-blue); color: #fff; font-size: 0.75rem; font-weight: 900; padding: 3px 10px; border-bottom-left-radius: 8px; z-index: 3;}
         .vid-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .vid-title { color: var(--gold); font-size: 0.95rem; font-weight: 800; margin-bottom: 6px; line-height: 1.3; font-family: 'Poppins', sans-serif; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-transform: uppercase;}
-        .vid-meta { color: var(--text-dim); font-size: 0.75rem; display: flex; gap: 15px; font-weight: 600; text-transform: none;}
+        .vid-title { color: var(--text-light); font-size: 1rem; font-weight: 800; margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-transform: uppercase;}
+        .vid-meta { color: var(--text-dim); font-size: 0.8rem; display: flex; gap: 15px; font-weight: 600; text-transform: none;}
 
-        .player-container { background: #000; width: 100%; aspect-ratio: 16/9; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 2px solid var(--gold);}
+        .player-container { background: #000; width: 100%; aspect-ratio: 16/9; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 3px solid var(--gold);}
         .player-msg { text-align: center; padding: 20px; }
-        .player-msg i { font-size: 3rem; color: var(--pink); margin-bottom: 15px; }
-        .player-msg h3 { color: #fff; font-size: 1.2rem; margin-bottom: 10px;}
-        .player-msg p { color: var(--text-dim); font-size: 0.85rem; text-transform: none;}
+        .player-msg i { font-size: 3.5rem; color: var(--pink); margin-bottom: 15px; }
+        .player-msg h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; font-weight: 900;}
+        .player-msg p { color: #ccc; font-size: 0.9rem; text-transform: none;}
 
         /* ========================================== */
-        /* --- FOOTER LAYOUT & BUTTONS --- */
+        /* --- FOOTER (REDESIGNED & CLEANED) --- */
         /* ========================================== */
-        footer { background: var(--bg-card); padding: 50px 5% 20px; border-top: 1px solid var(--gold); }
-        .footer-wrapper { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 30px; }
+        footer { background: var(--bg-card); padding: 60px 5% 20px; border-top: 2px solid var(--border-dark); }
+        .footer-wrapper { display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
         .footer-col { flex: 1; min-width: 280px; }
-        .footer-col h3 { color: var(--text-light); margin-bottom: 25px; font-size: 1.2rem; border-left: 3px solid var(--gold); padding-left: 10px; font-weight: 800;}
-        .footer-col a.quick-link { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 12px; transition: 0.3s; font-weight: 600; }
-        .footer-col a.quick-link:hover { color: var(--gold); padding-left: 5px; }
+        .footer-col h3 { color: var(--text-light); margin-bottom: 25px; font-size: 1.25rem; border-left: 4px solid var(--gold); padding-left: 12px; font-weight: 900; letter-spacing: 1px;}
         
-        .btn-footer { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: 0.3s; width: 100%; max-width: 280px; text-transform: uppercase; margin-bottom: 12px; background: linear-gradient(145deg, #1a1a1a, #0a0a0a); }
-        .btn-examedge { color: var(--gold) !important; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(234, 179, 8, 0.1); }
-        .btn-examedge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.25); background: var(--gold); color: #000 !important; }
-        .btn-youtube { color: #ff0000 !important; border: 1px solid #ff0000; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.1); }
-        .btn-youtube:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 0, 0, 0.25); background: #ff0000; color: #fff !important; }
-        .btn-telegram { color: #0088cc !important; border: 1px solid #0088cc; box-shadow: 0 5px 15px rgba(0, 136, 204, 0.1); }
-        .btn-telegram:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 136, 204, 0.25); background: #0088cc; color: #fff !important; }
-        .btn-whatsapp { color: #25d366 !important; border: 1px solid #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.1); }
-        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.25); background: #25d366; color: #fff !important; }
-        .btn-email { color: #ea4335 !important; border: 1px solid #ea4335; box-shadow: 0 5px 15px rgba(234, 67, 53, 0.1); }
-        .btn-email:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 67, 53, 0.25); background: #ea4335; color: #fff !important; }
+        .quick-link { 
+            display: flex; align-items: center; gap: 12px; color: var(--text-dim); text-decoration: none; 
+            padding: 12px 0; border-bottom: 1px dashed var(--border-dark); transition: 0.3s; 
+            font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;
+        }
+        .quick-link i { color: var(--gold); font-size: 1.2rem; transition: 0.3s; }
+        .quick-link:hover { color: var(--gold); border-bottom-color: var(--gold); padding-left: 10px; background: rgba(234, 179, 8, 0.05); border-radius: 4px;}
+        
+        .contact-item { display: flex; align-items: center; gap: 15px; color: var(--text-dim); margin-bottom: 20px; font-size: 1rem; font-weight: 600; line-height: 1.5; text-transform: none;}
+        .contact-item i { color: var(--pink); font-size: 1.3rem; width: 30px; text-align: center; }
+        .contact-item a { display: inline; color: var(--text-light); text-decoration: none; transition: 0.3s; }
+        .contact-item a:hover { color: var(--pink); }
 
-        .contact-item { display: flex; align-items: center; gap: 15px; color: var(--text-dim); margin-bottom: 18px; font-size: 0.95rem; font-weight: 600; line-height: 1.4; text-transform: none;}
-        .contact-item i { color: var(--pink); font-size: 1.2rem; width: 25px; text-align: center; }
-        .contact-item a { display: inline; color: var(--text-light); text-decoration: none; transition: 0.3s; margin: 0; padding: 0; }
-        .contact-item a:hover { color: var(--pink); padding-left: 0; }
-        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.9rem; font-weight: 600; width: 100%;}
+        .btn-examedge { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 25px; 
+            border-radius: 8px; text-decoration: none; font-weight: 900; font-size: 1rem; transition: 0.3s; 
+            width: 100%; max-width: 300px; text-transform: uppercase; margin-top: 10px; 
+            background: linear-gradient(145deg, var(--item-bg), var(--bg-main)); 
+            color: var(--gold); border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(234, 179, 8, 0.1); 
+        }
+        .btn-examedge:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.3); background: var(--gold); color: #000; }
+
+        .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid var(--border-dark); color: var(--text-dim); font-size: 0.95rem; font-weight: 700; width: 100%; letter-spacing: 0.5px;}
 
         /* ========================================== */
         /* --- BROWSER NATIVE PRINT RECEIPT LOGIC --- */
@@ -563,7 +565,7 @@
         </div>
     </div>
 
-    <!-- DIRECTOR MESSAGE POPUP MODAL (10s AUTO CLOSE & TOUCH TRIGGERED) -->
+    <!-- DIRECTOR MESSAGE POPUP MODAL -->
     <div class="director-modal" id="directorModal">
         <div class="director-card">
             <div class="modal-close-btn" onclick="closeDirectorModal()">&times;</div>
@@ -597,23 +599,64 @@
                 <div class="brand-subtitle">ABHINAY PRATAP'S EXAMEDGE EXCELLENCE</div>
             </div>
         </div>
-        <!-- Rotated & Flowing Logo Box that triggers Director Message on Touch/Click -->
         <div class="logo-box" onclick="openDirectorModal()" title="Tap for Director Message"></div>
     </nav>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    
+    <!-- PREMIUM REDESIGNED SIDEBAR -->
     <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>EXAMEDGE INSTITUTE</h3>
+            <p>PREMIUM PORTAL</p>
+        </div>
         <ul>
             <li><a href="#" onclick="openAuthModal()"><i class="fas fa-user-circle"></i> MY BATCH (LOGIN)</a></li>
-            <li><a href="#courses" onclick="toggleMenu()"><i class="fas fa-book-open"></i> PREMIUM BATCHES</a></li>
+            <li><a href="#" onclick="openPremiumBatches()"><i class="fas fa-gem"></i> PREMIUM BATCHES</a></li>
             <li><a href="pdf.html" onclick="toggleMenu()"><i class="fas fa-file-pdf"></i> PDF MATERIALS</a></li>
             <li><a href="book.html" onclick="toggleMenu()"><i class="fas fa-book"></i> BOOK STORE</a></li>
             <li><a href="mock.html" onclick="toggleMenu()"><i class="fas fa-tasks"></i> MOCK TESTS</a></li>
-            <li><a href="demo.html" onclick="toggleMenu ()"><i class="fas fa-flask"></i> SCIENCE & GS SECTION</a></li>
-            <li><a href="sheet.html" onclick="toggleMenu ()"><i class="fas fa-calculator"></i> FORMULA SHEETS</a></li>
+            <li><a href="demo.html" onclick="toggleMenu()"><i class="fas fa-flask"></i> SCIENCE & GS</a></li>
+            <li><a href="sheet.html" onclick="toggleMenu()"><i class="fas fa-calculator"></i> FORMULA SHEETS</a></li>
             <li><a href="print.html" onclick="toggleMenu()"><i class="fas fa-comments"></i> DOUBT SOLVING</a></li>
-            <li><a href="#" onclick="openAdminAuth()"><i class="fas fa-download"></i> ADMIN EXPORT (DATA)</a></li>
+            <li><a href="#" onclick="openAdminAuth()"><i class="fas fa-user-shield"></i> ADMIN EXPORT</a></li>
+            
+            <!-- DARK/LIGHT MODE TOGGLE AT BOTTOM -->
+            <li class="theme-toggle-container">
+                <a href="#" class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
+                    <i class="fas fa-sun" id="themeIcon"></i> <span id="themeText">LIGHT MODE</span>
+                </a>
+            </li>
         </ul>
+    </div>
+
+    <!-- PREMIUM BATCHES MODAL WITH CATEGORY FILTER -->
+    <div class="app-modal" id="premiumBatchesModal">
+        <div class="app-header">
+            <h3 class="app-header-title" style="color:var(--gold);"><i class="fas fa-gem"></i> PREMIUM BATCHES</h3>
+            <button class="app-back-btn" onclick="closePremiumBatches()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="app-body">
+            
+            <!-- HORIZONTAL CATEGORY TABS -->
+            <div class="category-scroll-wrapper">
+                <div class="category-tabs" id="categoryTabs">
+                    <div class="cat-tab active" onclick="filterPremiumCourses('ALL', this)">ALL BATCHES</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('FREE BATCH', this)">FREE BATCH</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('9TH TO 12TH', this)">9TH TO 12TH</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('KVS / NVS', this)">KVS & NVS ENTRANCE</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('MATHS SPECIAL', this)">MATHS SPECIAL</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('AIRFORCE X/Y', this)">AIRFORCE X/Y</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('DEFENCE', this)">DEFENCE</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('STATE EXAM', this)">STATE EXAM</div>
+                    <div class="cat-tab" onclick="filterPremiumCourses('BANK EXAM', this)">BANK EXAM</div>
+                </div>
+            </div>
+
+            <div class="course-list" id="premiumCourseList">
+                <!-- Courses injected via JS based on filter -->
+            </div>
+        </div>
     </div>
 
     <div class="timed-banner" id="timedBanner2min">
@@ -632,6 +675,7 @@
         </div>
     </div>
 
+    <!-- MAIN BANNER SLIDER (RESTORED MULTI-VIEW & AUTO-SLIDE FIX) -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
@@ -648,11 +692,11 @@
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
+    <!-- HOME PAGE BATCH (ONLY 1 COURSE VISIBLE) -->
     <section class="courses-section" id="courses">
-        <h2 class="section-title">PREMIUM COURSES</h2>
-        <div class="course-list">
-            
-            <div class="course-card">
+        <h2 class="section-title">FEATURED <span>BATCH</span></h2>
+        <div class="course-list" style="display: flex; justify-content: center;">
+            <div class="course-card" style="max-width: 450px; width: 100%;">
                 <div class="course-img-box">
                     <img src="ca1.png" alt="MATHS BATCH" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
                 </div>
@@ -675,185 +719,17 @@
                     </div>
                 </div>
             </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="cab.png" alt="VANDE BHARAT BATCH" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">VANDE BHARAT BATCH</h3>
-                    <p class="course-faculty" style="color: var(--green);">FREE FOR GOVT SCHOOL STUDENTS</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-free" onclick="openPaymentModal('VANDE BHARAT BATCH', 0)">ENROLL FOR FREE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> 100% FREE FOR GOVT STUDENTS</li>
-                            <li><i class="fas fa-check-circle"></i> COMPLETE NCERT SYLLABUS</li>
-                            <li><i class="fas fa-check-circle"></i> DAILY LIVE CLASSES</li>
-                            <li><i class="fas fa-check-circle"></i> BILINGUAL (HINDI/ENGLISH)</li>
-                            <li><i class="fas fa-check-circle"></i> FREE PDF NOTES & TESTS</li>
-                            <li><i class="fas fa-check-circle"></i> DEDICATED DOUBT SESSIONS</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="ca2.png" alt="SCIENCE GS" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">COMPLETE SCIENCE SPECIAL</h3>
-                    <p class="course-faculty">AKSHIT SIR (SCIENCE EXPERT)</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-buy" onclick="openPaymentModal('COMPLETE SCIENCE SPECIAL', 999)">BUY NOW COURSE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> PHYSICS, CHEMISTRY, BIOLOGY COVERED</li>
-                            <li><i class="fas fa-check-circle"></i> COMPLETE HISTORY, POLITY, GEO</li>
-                            <li><i class="fas fa-check-circle"></i> BILINGUAL CONTENT (HINDI/ENGLISH)</li>
-                            <li><i class="fas fa-check-circle"></i> CLASS NOTES PDF</li>
-                            <li><i class="fas fa-check-circle"></i> 5000+ MCQS PRACTICE</li>
-                            <li><i class="fas fa-check-circle"></i> TILL SELECTION VALIDITY</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="ca3.png" alt="TARGET CGL" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">JAWAHAR NAVODAYA EXAM</h3>
-                    <p class="course-faculty">ABHINAY PRATAP AND TEAM</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-buy" onclick="openPaymentModal('JAWAHAR NAVODAYA ENTRANCE', 2199)">BUY NOW COURSE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> ZERO TO HERO LEVEL TARGET</li>
-                            <li><i class="fas fa-check-circle"></i> ALL SUBJECTS IN ONE PACK</li>
-                            <li><i class="fas fa-check-circle"></i> DAILY 4 HOURS LIVE CLASS</li>
-                            <li><i class="fas fa-check-circle"></i> MENTORSHIP BY SELECTED CANDIDATES</li>
-                            <li><i class="fas fa-check-circle"></i> FULL LENGTH SECTIONAL TESTS</li>
-                            <li><i class="fas fa-check-circle"></i> VALID TILL ENTRANCE EXAM</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="ca4.png" alt="RAILWAY" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">KENDRIYA VIDYALAYA EXAM</h3>
-                    <p class="course-faculty">BHOLU CHAUBEY AND TEAM</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-buy" onclick="openPaymentModal('KENDRIYA VIDYALAYA BATCH', 1199)">BUY NOW COURSE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> SPECIAL FOCUS ON ENTRANCE EXAMS</li>
-                            <li><i class="fas fa-check-circle"></i> KVS & NVS SYLLABUS</li>
-                            <li><i class="fas fa-check-circle"></i> STATIC GK & UP GK</li>
-                            <li><i class="fas fa-check-circle"></i> PRINTED NOTES DELIVERY OPTION</li>
-                            <li><i class="fas fa-check-circle"></i> SPEED TEST MODULES</li>
-                            <li><i class="fas fa-check-circle"></i> 12 MONTHS VALIDITY</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="ca5.png" alt="TEST PASS" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">ULTIMATE TEST PASS PRO</h3>
-                    <p class="course-faculty">ABHINAY PRATAP SIR</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-buy" onclick="openPaymentModal('ULTIMATE TEST PASS PRO', 499)">BUY NOW COURSE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> ACCESS TO 1000+ MOCK TESTS</li>
-                            <li><i class="fas fa-check-circle"></i> DETAILED VIDEO SOLUTIONS</li>
-                            <li><i class="fas fa-check-circle"></i> ALL INDIA RANK GENERATION</li>
-                            <li><i class="fas fa-check-circle"></i> PREVIOUS 5 YEARS PYQ MOCKS</li>
-                            <li><i class="fas fa-check-circle"></i> AD-FREE EXPERIENCE</li>
-                            <li><i class="fas fa-check-circle"></i> 1-YEAR UNLIMITED ACCESS</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="ca6.png" alt="REASONING SPECIAL" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">REASONING SPECIAL BATCH</h3>
-                    <p class="course-faculty">RAHUL SIR (REASONING EXPERT)</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-buy" onclick="openPaymentModal('REASONING SPECIAL BATCH', 699)">BUY NOW COURSE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> VERBAL & NON-VERBAL REASONING</li>
-                            <li><i class="fas fa-check-circle"></i> LOGICAL & ANALYTICAL REASONING</li>
-                            <li><i class="fas fa-check-circle"></i> PREVIOUS YEAR PAPERS ANALYSIS</li>
-                            <li><i class="fas fa-check-circle"></i> SHORT TRICKS FOR TIME MANAGEMENT</li>
-                            <li><i class="fas fa-check-circle"></i> 100+ SECTIONAL MOCK TESTS</li>
-                            <li><i class="fas fa-check-circle"></i> 1-YEAR COURSE VALIDITY</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-img-box">
-                    <img src="ca7.png" alt="GS SPECIAL" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'">
-                </div>
-                <div class="course-info">
-                    <h3 class="course-title">G.S SPECIAL BATCH</h3>
-                    <p class="course-faculty">BHOLU CHAUBEY & TEAM</p>
-                    <div class="btn-group">
-                        <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
-                        <button class="btn btn-buy" onclick="openPaymentModal('G.S SPECIAL BATCH', 599)">BUY NOW COURSE</button>
-                    </div>
-                    <div class="features-box">
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> HISTORY, POLITY & GEOGRAPHY</li>
-                            <li><i class="fas fa-check-circle"></i> ECONOMICS & STATIC GK</li>
-                            <li><i class="fas fa-check-circle"></i> DAILY CURRENT AFFAIRS</li>
-                            <li><i class="fas fa-check-circle"></i> NCERT BASED FOUNDATION</li>
-                            <li><i class="fas fa-check-circle"></i> MIND MAPS & FLOW CHARTS</li>
-                            <li><i class="fas fa-check-circle"></i> COMPREHENSIVE PDF NOTES</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
+    <!-- WHY CHOOSE US -->
     <section class="edge-section">
-        <h2 class="section-title">THE <span>ADVANTAGE</span></h2>
+        <h2 class="section-title">WHY CHOOSE <span>US?</span></h2>
         <div class="edge-grid">
-            <div class="edge-card"><div class="edge-tag">HYBRID</div><div class="edge-icon"><i class="fas fa-building"></i></div><h3>ONLINE + OFFLINE ACCESS</h3><p>Seamlessly switch between our Digital App and offline classes at Math's Warrior Institute.</p></div>
-            <div class="edge-card"><div class="edge-tag">TARGET 2027</div><div class="edge-icon"><i class="fas fa-bullseye"></i></div><h3>CGL 2027 MENTORSHIP</h3><p>Lock your target with our exclusive roadmap for SSC CGL 2027. Weekly video calls.</p></div>
-            <div class="edge-card"><div class="edge-tag">24/7 AI</div><div class="edge-icon"><i class="fas fa-brain"></i></div><h3>INSTANT DOUBT ENGINE</h3><p>Stuck on a tricky math problem? Upload a photo to our portal and get a video solution.</p></div>
-            <div class="edge-card"><div class="edge-tag">RANKER</div><div class="edge-icon"><i class="fas fa-trophy"></i></div><h3>ALL INDIA TEST SERIES</h3><p>Compete with thousands of students nationwide. Get advanced AI analytics.</p></div>
+            <div class="edge-card"><div class="edge-tag">HYBRID</div><div class="edge-icon"><i class="fas fa-building"></i></div><h3>ONLINE + OFFLINE</h3><p>Seamlessly switch between our Digital App and offline classes at Math's Warrior Institute.</p></div>
+            <div class="edge-card"><div class="edge-tag">BOARD 2027</div><div class="edge-icon"><i class="fas fa-bullseye"></i></div><h3>BOARD EXAM 2027 MENTORSHIP</h3><p>Master your 10th & 12th Board Exams with our structured roadmap and weekly personal mentorship.</p></div>
+            <div class="edge-card"><div class="edge-tag">24/7 AI</div><div class="edge-icon"><i class="fas fa-brain"></i></div><h3>INSTANT DOUBT ENGINE</h3><p>Stuck on a tricky Math problem? Upload a photo to our portal and get a video solution.</p></div>
+            <div class="edge-card"><div class="edge-tag">RANKER</div><div class="edge-icon"><i class="fas fa-trophy"></i></div><h3>ALL INDIA MOCK BOARDS</h3><p>Experience real Board Exam environment with our All India Mock Tests and advanced analytics.</p></div>
             <div class="edge-card"><div class="edge-tag">SMART</div><div class="edge-icon"><i class="fas fa-calendar-check"></i></div><h3>AI STUDY PLANNER</h3><p>Our AI analyzes your mock test performance and builds a custom daily revision schedule.</p></div>
             <div class="edge-card"><div class="edge-tag">PLAY</div><div class="edge-icon"><i class="fas fa-gamepad"></i></div><h3>GAMIFIED LEARNING</h3><p>Earn Mystic Coins, unlock badges, and climb the weekly leaderboard.</p></div>
             <div class="edge-card"><div class="edge-tag">TRACK</div><div class="edge-icon"><i class="fas fa-user-shield"></i></div><h3>PARENT CONNECT DASHBOARD</h3><p>Automated weekly progress reports sent directly to parents' WhatsApp.</p></div>
@@ -886,67 +762,31 @@
     <section class="uniform-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper">
-            
-            <div class="uniform-card">
+            <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED!"</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>AYUSHI CHAUBEY</h5><span>SELECTED IN KVS </span></div></div>
+                <p class="review-desc">"PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED FOR BOARD EXAMS!"</p>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>AYUSHI CHAUBEY</h5><span>95% IN BOARDS</span></div></div>
             </div>
-
-            <div class="uniform-card">
+            <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"BHOLU SIR KI GS AUR SCIENCE CLASSES BILKUL POINT-TO-POINT NOTES KE SATH MILTI HAIN JO EXAMS KE LIYE SOLID HAIN."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>VIKAS TIWARI</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>VIKAS TIWARI</h5><span>DISTRICT TOPPER</span></div></div>
             </div>
-
-            <div class="uniform-card">
+            <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"BEST PLATFORM FOR BOARDS EXAM PREPARATION. PDF NOTES AND MOCK TESTS ARE EXACTLY MATCHING THE EXAM PATTERN."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>92% IN 12TH</span></div></div>
             </div>
-
-            <div class="uniform-card">
+            <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"TARGET NVS BATCH IS A GAME CHANGER. THE LEVEL OF MATHEMATICS TAUGHT HERE IS COMPLETELY UNMATCHABLE."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>POOJA MISHRA</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>POOJA MISHRA</h5><span>SELECTED NVS</span></div></div>
             </div>
-
-            <div class="uniform-card">
-                <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"FORMULA SHEETS AUR SHORT TRICKS BAHUT HELPFUL HAIN. EXAM TIME ME REVISION KARNA BAHUT ASAAN HO GAYA HAI AB."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>MANISH KUMAR</h5><span>SELECTED STUDENT</span></div></div>
-            </div>
-
-            <div class="uniform-card">
-                <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"TEST PASS PRO HAS EXACTLY EXAM LEVEL QUESTIONS. ANALYSIS FEATURE SHOWS EXACTLY WHERE I NEED TO IMPROVE."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>SAURABH DUBEY</h5><span>SELECTED STUDENT</span></div></div>
-            </div>
-
-            <div class="uniform-card">
+            <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"LIVE CLASSES ARE HIGHLY INTERACTIVE. SIR DOUBTS KO BAHUT PATIENCE KE SATH CLEAR KARTE HAIN. COMPLETELY SATISFIED."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>NEHA RAI</h5><span>SELECTED STUDENT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>NEHA RAI</h5><span>STATE MERIT</span></div></div>
             </div>
-
-            <div class="uniform-card">
-                <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"PRAKRAM BATCH HAS STRUCTURED MY PREPARATION. THE PDF MATERIALS GIVEN AFTER EVERY CLASS ARE TOP NOTCH."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>KARAN JHA</h5><span>SELECTED STUDENT</span></div></div>
-            </div>
-
-            <div class="uniform-card">
-                <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"SCIENCE NOTES IN HINDI AND ENGLISH BOTH ARE SUPERB. IT SAVES A LOT OF TIME WHILE REVISING FOR THE EXAMS."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>DEEPAK CHAUHAN</h5><span>SELECTED STUDENT</span></div></div>
-            </div>
-
-            <div class="uniform-card">
-                <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"THE MENTORSHIP BY SELECTED CANDIDATES IN THIS PLATFORM GAVE ME THE EXACT ROADMAP TO CRACK MY UPCOMING ENTRANCE."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>ANJALI SINGH</h5><span>SELECTED STUDENT</span></div></div>
-            </div>
-
         </div>
         <div class="dots-container" id="reviewDotsContainer"></div>
     </section>
@@ -954,8 +794,8 @@
     <section class="uniform-section" id="faculty">
         <h2 class="section-title">OUR EXPERT <span>FACULTIES</span></h2>
         <div class="uniform-wrapper" id="facultyWrapper">
-            
-            <div class="uniform-card">
+            <div class="fac-card">
+                <div class="fac-cover"></div>
                 <div class="fac-avatar-container"><img src="t1.png" alt="Abhinay" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">ABHINAY CHAUBEY</h3>
                 <p class="fac-subject">FOUNDER & MATHS EXPERT</p>
@@ -963,12 +803,11 @@
                 <div class="fac-socials">
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
-                    <a href="9670078465" onclick="handlePinkToast(event)"><i class="fas fa-phone-alt"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:9670078465" onclick="handlePinkToast(event)"><i class="fas fa-phone-alt"></i></a>
                 </div>
             </div>
-
-            <div class="uniform-card">
+            <div class="fac-card">
+                <div class="fac-cover"></div>
                 <div class="fac-avatar-container"><img src="m.png" alt="Bholu" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">BHOLU CHAUBEY</h3>
                 <p class="fac-subject">CHAIRMAN & GS EXPERT</p>
@@ -977,11 +816,10 @@
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-phone-alt"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-
-            <div class="uniform-card">
+            <div class="fac-card">
+                <div class="fac-cover"></div>
                 <div class="fac-avatar-container"><img src="m.png" alt="Akshit" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">AKSHIT SIR</h3>
                 <p class="fac-subject">SENIOR SCIENCE FACULTY</p>
@@ -990,11 +828,10 @@
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-phone-alt"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-
-            <div class="uniform-card">
+            <div class="fac-card">
+                <div class="fac-cover"></div>
                 <div class="fac-avatar-container"><img src="m.png" alt="Rahul" onerror="this.src='m.png'"></div>
                 <h3 class="fac-name">RAHUL SIR</h3>
                 <p class="fac-subject">REASONING EXPERT</p>
@@ -1003,35 +840,19 @@
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
                     <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-phone-alt"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-
-            <div class="uniform-card">
-                <div class="fac-avatar-container"><img src="m.png" alt="Sneha" onerror="this.src='m.png'"></div>
-                <h3 class="fac-name">SNEHA MA'AM</h3>
-                <p class="fac-subject">ENGLISH FACULTY</p>
-                <p class="fac-desc">GRAMMAR AND VOCABULARY MENTOR. 2+ YEARS TEACHING COMPREHENSION TRICKS PROFESSOR.</p>
-                <div class="fac-socials">
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-youtube"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fab fa-telegram"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-phone-alt"></i></a>
-                    <a href="#" onclick="handlePinkToast(event)"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-
         </div>
         <div class="dots-container" id="facultyDotsContainer"></div>
     </section>
 
+    <!-- GLOBALS MODALS -->
     <div class="global-modal" id="adminAuthModal">
         <div class="modal-content" style="max-width: 350px;">
             <div class="modal-close-btn" onclick="document.getElementById('adminAuthModal').classList.remove('show')">&times;</div>
             <h3 style="color:var(--gold); margin-bottom: 5px;"><i class="fas fa-user-shield"></i> ADMIN ACCESS</h3>
             <p style="color:var(--text-dim); font-size:0.85rem; margin-bottom:15px;">AUTHENTICATION REQUIRED</p>
-            
             <input type="password" id="adminPwdInput" class="input-field" placeholder="ENTER ADMIN PASSWORD" style="text-align:center; letter-spacing:2px;">
-            
             <button class="modal-btn" onclick="verifyAdminAndExport()">VERIFY & EXPORT</button>
             <p id="adminErrorMsg" style="color:var(--red-brand); font-size:0.85rem; margin-top:10px; display:none; font-weight:bold;">INCORRECT PASSWORD!</p>
         </div>
@@ -1043,7 +864,7 @@
                 <i class="fas fa-bell" id="customAlertIcon"></i>
             </div>
             <h3 id="customAlertTitle">TITLE</h3>
-            <p id="customAlertText" style="color: #fff; font-size: 0.95rem; font-weight: 600; line-height: 1.5;"></p>
+            <p id="customAlertText" style="color: var(--text-light); font-size: 0.95rem; font-weight: 600; line-height: 1.5;"></p>
             <button class="modal-btn" onclick="document.getElementById('customAlertModal').classList.remove('show')" style="margin-top: 20px;">OKAY, GOT IT!</button>
         </div>
     </div>
@@ -1051,37 +872,37 @@
     <div class="global-modal" id="paymentModal">
         <div class="modal-content" style="text-align: left; padding: 25px;">
             <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
-            <h3 style="margin-top: 15px; text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px;">COMPLETE PURCHASE</h3>
+            <h3 style="margin-top: 15px; text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; color: var(--text-light);">COMPLETE PURCHASE</h3>
             
             <div id="paymentFormArea">
-                <div class="payment-box" style="background: #111; border: 1px solid var(--gold);">
-                    <h4 id="modalCourseName" style="color: var(--gold); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">COURSE NAME</h4>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 5px;">
+                <div class="payment-box" style="border: 1px solid var(--gold);">
+                    <h4 id="modalCourseName" style="color: var(--gold); font-size: 1.1rem; font-weight: 900; margin-bottom: 8px;">COURSE NAME</h4>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 5px; color: var(--text-light);">
                         <span>COURSE FEE:</span> <span id="modalOriginalFee" style="font-weight: bold;">₹0</span>
                     </div>
                     <div id="modalDiscountRow" style="display: none; justify-content: space-between; font-size: 0.95rem; color: var(--green); margin-bottom: 5px;">
                         <span>DISCOUNT:</span> <span id="modalDiscountAmount" style="font-weight: bold;">-₹0</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; border-top: 1px dashed #333; padding-top: 8px; margin-top: 5px; color: #fff;">
+                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; border-top: 1px dashed var(--border-dark); padding-top: 8px; margin-top: 5px; color: var(--text-light);">
                         <span>TOTAL PAYABLE:</span> <span id="modalPayableAmount" style="color: var(--gold);">₹0</span>
                     </div>
                 </div>
 
                 <div class="payment-box">
                     <label>PAYMENT OPTION 1: UPI ID</label>
-                    <div style="background: #1a1a1a; padding: 10px; border-radius: 5px; color: var(--gold); font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 15px;">
+                    <div style="background: var(--bg-main); padding: 10px; border-radius: 5px; color: var(--gold); border: 1px solid var(--border-dark); font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 15px;">
                         7705042892@axl
                     </div>
                     
-                    <label>PAYMENT OPTION 2: DIRECT BANK TRANSFER (IFSC / ACCOUNT)</label>
-                    <div style="background: #161616; padding: 12px; border-radius: 6px; border: 1px solid #333; margin-bottom: 15px; font-size: 0.85rem;">
+                    <label>PAYMENT OPTION 2: BANK TRANSFER</label>
+                    <div style="background: var(--bg-main); padding: 12px; border-radius: 6px; border: 1px solid var(--border-dark); margin-bottom: 15px; font-size: 0.85rem;">
                         <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--text-dim);">ACCOUNT NO:</span> <strong style="color:var(--gold); letter-spacing:1px;">520102120008909</strong></div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--text-dim);">IFSC CODE:</span> <strong style="color:var(--gold); letter-spacing:1px;">UBIN0552011</strong></div>
-                        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim);">ACCOUNT HOLDER:</span> <strong style="color:#fff;">ABHINAY CHAUBEY</strong></div>
+                        <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-dim);">ACCOUNT HOLDER:</span> <strong style="color:var(--text-light);">ABHINAY CHAUBEY</strong></div>
                     </div>
 
                     <label>PAYMENT OPTION 3: SCAN QR</label>
-                    <button class="modal-btn" style="background: #222; color: #fff; border: 1px solid var(--gold); padding: 8px;" onclick="generateQR()">GENERATE FULL QR FOR PAYMENT</button>
+                    <button class="modal-btn" style="background: var(--item-bg); color: var(--text-light); border: 1px solid var(--gold); padding: 10px;" onclick="generateQR()">GENERATE FULL QR FOR PAYMENT</button>
                     
                     <div class="qr-area" id="qrContainer">
                         <p class="upi-accept-text" style="color: var(--gold); border-bottom:none; margin-bottom: 5px;">SCAN WITH ANY UPI APP</p>
@@ -1089,12 +910,11 @@
                             <img id="qrImage" src="" alt="AUTO GENERATED QR CODE">
                             <img src="abhinay.png" class="qr-center-logo" alt="Abhinay Logo" onerror="this.style.display='none'">
                         </div>
-                        <div class="upi-accept-text">ACCEPT ANY UPI HANDLE</div>
+                        <div class="upi-accept-text" style="color:var(--text-dim);">ACCEPT ANY UPI HANDLE</div>
                         <div class="upi-logos">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/BHIM_SVG_Logo.svg" alt="BHIM">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/BharatPe_logo.svg" alt="BharatPe">
                         </div>
                     </div>
                 </div>
@@ -1103,20 +923,20 @@
                     <label>HAVE A COUPON CODE?</label>
                     <div style="display: flex; gap: 10px;">
                         <input type="text" id="couponInput" class="input-field" placeholder="ENTER CODE" style="margin-bottom:0;">
-                        <button class="modal-btn" style="width: auto; margin-top: 0; background: #333; color: #fff;" onclick="applyCoupon()">APPLY</button>
+                        <button class="modal-btn" style="width: auto; margin-top: 0; background: var(--bg-main); color: var(--text-light);" onclick="applyCoupon()">APPLY</button>
                     </div>
                 </div>
 
                 <div class="payment-box" style="border-color: var(--gold);">
-                    <label style="color: #fff; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 12px;">PAYMENT VERIFICATION</label>
+                    <label style="color: var(--text-light); font-size: 1rem; border-bottom: 1px solid var(--border-dark); padding-bottom: 8px; margin-bottom: 12px;">PAYMENT VERIFICATION</label>
                     <label>1. UPLOAD PAYMENT SCREENSHOT</label>
-                    <input type="file" id="paymentScreenshot" class="input-field" accept="image/*" style="padding: 8px; background: #222; cursor: pointer;">
+                    <input type="file" id="paymentScreenshot" class="input-field" accept="image/*" style="padding: 8px; cursor: pointer;">
                     <div style="text-align: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 700; margin: 10px 0;">OR</div>
                     <label>2. ENTER 14-DIGIT UTR NO</label>
                     <input type="text" id="utrInput" class="input-field" placeholder="ENTER TRANSACTION UTR NO" maxlength="14" style="margin-bottom:0;">
                 </div>
 
-                <button class="modal-btn" style="background:var(--gold); color:#000;" onclick="verifyPaymentSubmit()">VERIFY & CONTINUE</button>
+                <button class="modal-btn" onclick="verifyPaymentSubmit()">VERIFY & CONTINUE</button>
             </div>
 
             <div id="loadingArea" style="display: none; text-align: center; padding: 40px 0;">
@@ -1128,7 +948,7 @@
 
     <div class="global-modal" id="detailsModal">
         <div class="modal-content" style="text-align: center;">
-            <h3 style="margin-top: 15px;">STUDENT DETAILS</h3>
+            <h3 style="margin-top: 15px; color: var(--text-light);">STUDENT DETAILS</h3>
             <p style="margin-bottom: 15px; font-size: 0.85rem; color: var(--gold);">ENTER DETAILS FOR RECEIPT & LOGIN ID</p>
             <div style="text-align: left;">
                 <input type="text" id="stuName" class="input-field" placeholder="STUDENT FULL NAME" required>
@@ -1143,7 +963,7 @@
     <div class="global-modal" id="authModal">
         <div class="modal-content" style="max-width: 400px;">
             <div class="modal-close-btn" onclick="document.getElementById('authModal').classList.remove('show')">&times;</div>
-            <h3><i class="fas fa-user-graduate" style="color:var(--gold);"></i> STUDENT LOGIN</h3>
+            <h3 style="color: var(--text-light);"><i class="fas fa-user-graduate" style="color:var(--gold);"></i> STUDENT LOGIN</h3>
             <p style="color:var(--text-dim); font-size:0.85rem; margin-bottom: 20px;">ENTER YOUR ENROLLMENT DETAILS</p>
             <div style="text-align: left;">
                 <label style="color:var(--gold); font-size:0.85rem; font-weight:700;">REGISTERED MOBILE NO.</label>
@@ -1155,6 +975,7 @@
         </div>
     </div>
 
+    <!-- APP MODALS -->
     <div class="app-modal" id="appMyBatchModal">
         <div class="app-header">
             <h3 class="app-header-title">MY BATCH</h3>
@@ -1163,11 +984,11 @@
         </div>
         <div class="app-body">
             <div style="margin-bottom: 20px;">
-                <h4 style="color:#fff; font-size:1.1rem;">HELLO, <span id="appUserName" style="color:var(--gold);">STUDENT</span></h4>
+                <h4 style="color:var(--text-light); font-size:1.1rem;">HELLO, <span id="appUserName" style="color:var(--gold);">STUDENT</span></h4>
                 <p style="color:var(--text-dim); font-size:0.8rem;">ENROLLMENT: <span id="appUserEnroll">N/A</span> | VALID TILL: <span id="appUserExpiry">N/A</span></p>
             </div>
             
-            <h3 style="color:#fff; font-size:1.2rem; border-left:4px solid var(--gold); padding-left:10px; margin-bottom:15px;">PURCHASED COURSES</h3>
+            <h3 style="color:var(--text-light); font-size:1.2rem; border-left:4px solid var(--gold); padding-left:10px; margin-bottom:15px;">PURCHASED COURSES</h3>
             
             <div class="batch-list-card" onclick="openAppSubjects()">
                 <img src="ca1.png" class="batch-list-img" onerror="this.src='m.png'">
@@ -1179,7 +1000,7 @@
                 <i class="fas fa-chevron-right" style="color:var(--gold);"></i>
             </div>
 
-            <button class="modal-btn" style="background:transparent; border:1px solid #444; color:var(--text-dim);" onclick="window.print()"><i class="fas fa-print"></i> PRINT INVOICE/RECEIPT</button>
+            <button class="modal-btn" style="background:transparent; border:1px solid var(--border-dark); color:var(--text-dim);" onclick="window.print()"><i class="fas fa-print"></i> PRINT INVOICE/RECEIPT</button>
         </div>
     </div>
 
@@ -1189,7 +1010,7 @@
             <h3 class="app-header-title" id="appSubCourseTitle">COURSE NAME</h3>
         </div>
         <div class="app-body" id="appSubjectsBody">
-            </div>
+        </div>
     </div>
 
     <div class="app-modal" id="appVideoListModal">
@@ -1203,13 +1024,13 @@
             <div class="app-tab" onclick="showCustomAlert('TEST', 'Mock Tests will be available here.')">Test</div>
         </div>
         <div class="app-body" id="appVideoContainer" style="padding: 15px 5%;">
-            </div>
+        </div>
     </div>
 
     <div class="app-modal" id="appVideoPlayerModal" style="background:#000;">
-        <div class="app-header" style="border-bottom:none;">
+        <div class="app-header" style="border-bottom:none; background:#000;">
             <button class="app-back-btn" onclick="closeAppVideoPlayer()"><i class="fas fa-arrow-left"></i></button>
-            <h3 class="app-header-title" id="appPlayerTitle">CLASS PLAYING</h3>
+            <h3 class="app-header-title" id="appPlayerTitle" style="color:#fff;">CLASS PLAYING</h3>
         </div>
         
         <div class="player-container">
@@ -1220,18 +1041,18 @@
             <div id="fakeVideoUI" class="player-msg" style="display:flex; flex-direction:column; align-items:center;">
                 <i class="fas fa-cloud-upload-alt" id="playerIcon"></i>
                 <h3 id="playerHeading">CONTENT UPLOADING SOON</h3>
-                <p id="playerSubHeading">Faculty is preparing high-quality material for this class.</p>
+                <p id="playerSubHeading" style="color:#a3a3a3;">Faculty is preparing high-quality material for this class.</p>
                 
                 <div style="margin-top: 20px; width:100%; max-width:300px; display:none;" id="activationBox">
-                    <input type="text" id="activationKeyInput" class="input-field" placeholder="Enter Key (MYSTIC2027)" style="text-align:center;">
+                    <input type="text" id="activationKeyInput" class="input-field" placeholder="Enter Key (MYSTIC2027)" style="text-align:center; background:#111; color:#fff; border-color:#333;">
                     <button class="modal-btn" onclick="activateCourseKey()">UNLOCK COURSE</button>
                 </div>
             </div>
         </div>
 
-        <div style="padding: 20px;">
+        <div style="padding: 20px; background:#000;">
             <h4 style="color:#fff; margin-bottom:10px;">CLASS DETAILS</h4>
-            <p style="color:var(--text-dim); font-size:0.9rem; line-height:1.6; text-transform:none;">
+            <p style="color:#a3a3a3; font-size:0.9rem; line-height:1.6; text-transform:none;">
                 <i class="fas fa-chalkboard-teacher" style="color:var(--gold);"></i> Abhinay Pratap & Team<br>
                 <i class="fas fa-video" style="color:var(--app-blue);"></i> HD 1080p Resolution<br>
                 <i class="fas fa-file-pdf" style="color:var(--red-brand);"></i> <a href="#" style="color:var(--gold); text-decoration:none;">Download PDF Notes</a>
@@ -1239,6 +1060,7 @@
         </div>
     </div>
 
+    <!-- RECEIPT AREA -->
     <div id="receiptArea">
         <div class="r-watermark">EXAMEDGE INSTITUTE<br>X<br>ABHINAY PRATAP (MATHS MYSTIC)</div>
         <div class="r-content">
@@ -1296,241 +1118,319 @@
         <span id="toastMessage">CONTENT CURRENTLY UNAVAILABLE. STAY TUNED!</span>
     </div>
 
+    <!-- CLEANED & PROFESSIONAL FOOTER -->
     <footer>
         <div class="footer-wrapper">
             <div class="footer-col">
-                <h3 style="margin-bottom:15px;">OUR OFFICIAL PLATFORMS</h3>
-                <div style="margin-bottom: 25px;">
-                    <a href="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" target="_blank" class="btn-footer btn-examedge" style="margin-bottom: 10px;">
-                        <i class="fas fa-globe"></i> EXAMEDGE INSTITUTE
-                    </a>
-                    <a href="https://www.youtube.com/@abhinaypratapmaths" target="_blank" class="btn-footer btn-youtube" style="margin-bottom: 10px;">
-                        <i class="fab fa-youtube"></i> ABHINAYPRATAPMATHS 
-                    </a>
-                    <a href="#" target="_blank" class="btn-footer btn-telegram" style="margin-bottom: 10px;">
-                        <i class="fab fa-telegram"></i> JOIN TELEGRAM
-                    </a>
-                    <a href="https://wa.me/919670078465" target="_blank" class="btn-footer btn-whatsapp" style="margin-bottom: 10px;">
-                        <i class="fab fa-whatsapp"></i> WHATSAPP SUPPORT
-                    </a>
-                    <a href="mailto:abhinaychaubey83@gmail.com" target="_blank" class="btn-footer btn-email" style="margin-bottom: 10px;">
-                        <i class="fas fa-envelope"></i> ENQUIRY EMAIL 
-                    </a>
-                </div>
-
-                <h3 style="margin-bottom:15px; padding-top: 20px; border-top: 1px dashed #333;">QUICK LINKS</h3>
-                <a href="#" class="quick-link"><i class="fas fa-angle-right"></i> HOME PORTAL</a>
-                <a href="#" class="quick-link" onclick="showCustomAlert('COMING SOON', 'PREMIUM BATCHES WILL BE LIVE SHORTLY.')"><i class="fas fa-angle-right"></i> ACTIVE PREMIUM BATCHES</a>
-                <a href="#" class="quick-link" onclick="showCustomAlert('INFO', 'TERMS AND CONDITIONS APPLY.')"><i class="fas fa-angle-right"></i> TERMS & CONDITIONS</a>
+                <h3>QUICK LINKS</h3>
+                <a href="#" class="quick-link"><i class="fas fa-home"></i> HOME PORTAL</a>
+                <a href="#" class="quick-link" onclick="openPremiumBatches()"><i class="fas fa-gem"></i> EXPLORE PREMIUM BATCHES</a>
+                <a href="pdf.html" class="quick-link"><i class="fas fa-file-pdf"></i> FREE STUDY MATERIAL</a>
+                <a href="#" class="quick-link" onclick="showCustomAlert('INFO', 'TERMS AND CONDITIONS APPLY.')"><i class="fas fa-file-contract"></i> TERMS & CONDITIONS</a>
             </div>
             
             <div class="footer-col">
                 <h3>CONTACT & SUPPORT</h3>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i> <a href="tel:9670078465">9670078465</a></div>
-                <div class="contact-item"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919670078465" target="_blank">9670078465</a></div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:abhinaychaubey83@gmail.com">abhinaychaubey83@gmail.com</a></div>
                 <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>KUSHINAGAR, UTTAR PRADESH</span></div>
+                <div class="contact-item" style="margin-top: 25px;">
+                    <a href="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" target="_blank" class="btn-examedge" style="max-width: 100%; border:1px solid var(--gold); padding:10px 15px; border-radius:8px; text-decoration:none; color:var(--gold); font-weight:800; background:var(--bg-main);">
+                        <i class="fas fa-globe"></i> EXAMEDGE INSTITUTE
+                    </a>
+                </div>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 ABHINAY PRATAP MATHS  || ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 700;">EXAMEDGE INSTITUTE</span></p>
+            <p>&copy; 2026 ABHINAY PRATAP MATHS || ALL RIGHTS RESERVED. | POWERED BY <span style="color: var(--gold); font-weight: 900;">EXAMEDGE INSTITUTE</span></p>
         </div>
     </footer>
 
     <script>
-        // --- Initialization & Setup ---
+        // ==========================================
+        // --- THEME TOGGLE LOGIC (DARK/LIGHT) ---
+        // ==========================================
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeIcon.className = "fas fa-moon";
+                themeText.innerText = "DARK MODE";
+                localStorage.setItem('mysticTheme', 'light');
+            } else {
+                themeIcon.className = "fas fa-sun";
+                themeText.innerText = "LIGHT MODE";
+                localStorage.setItem('mysticTheme', 'dark');
+            }
+        }
+
+        if(localStorage.getItem('mysticTheme') === 'light') {
+            document.body.classList.add('light-mode');
+            document.getElementById('themeIcon').className = "fas fa-moon";
+            document.getElementById('themeText').innerText = "DARK MODE";
+        }
+
+        // --- Course Data for Premium Batches Modal (With Categories) ---
+        const premiumCoursesData = [
+            { 
+                title: "VANDE BHARAT BATCH", 
+                category: ["ALL", "FREE BATCH", "9TH TO 12TH"],
+                faculty: "FREE FOR GOVT SCHOOL STUDENTS", 
+                facultyColor: "var(--green)", 
+                img: "cab.png", 
+                price: 0, 
+                btnText: "ENROLL FOR FREE", 
+                btnClass: "btn-free", 
+                features: ["100% FREE FOR GOVT STUDENTS", "COMPLETE NCERT SYLLABUS", "DAILY LIVE CLASSES", "BILINGUAL (HINDI/ENGLISH)", "FREE PDF NOTES & TESTS", "DEDICATED DOUBT SESSIONS"] 
+            },
+            { 
+                title: "MATHEMATICS SPECIAL BATCH", 
+                category: ["ALL", "MATHS SPECIAL", "STATE EXAM", "BANK EXAM"],
+                faculty: "BY ABHINAY PRATAP SIR", 
+                facultyColor: "var(--gold)", 
+                img: "ca1.png", 
+                price: 2199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["COMPLETE PRE + MAINS SYLLABUS", "LIVE INTERACTIVE CLASSES", "RECORDED VIDEOS AVAILABILITY", "TOPIC-WISE PDF NOTES", "WEEKLY MOCK TESTS", "1-YEAR COURSE VALIDITY"] 
+            },
+            { 
+                title: "COMPLETE SCIENCE SPECIAL", 
+                category: ["ALL", "9TH TO 12TH", "DEFENCE"],
+                faculty: "AKSHIT SIR (SCIENCE EXPERT)", 
+                facultyColor: "var(--gold)", 
+                img: "ca2.png", 
+                price: 999, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["PHYSICS, CHEMISTRY, BIOLOGY COVERED", "COMPLETE HISTORY, POLITY, GEO", "BILINGUAL CONTENT", "CLASS NOTES PDF", "5000+ MCQS PRACTICE", "TILL SELECTION VALIDITY"] 
+            },
+            { 
+                title: "JAWAHAR NAVODAYA EXAM", 
+                category: ["ALL", "KVS / NVS"],
+                faculty: "ABHINAY PRATAP AND TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "ca3.png", 
+                price: 2199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["ZERO TO HERO LEVEL TARGET", "ALL SUBJECTS IN ONE PACK", "DAILY 4 HOURS LIVE CLASS", "MENTORSHIP BY SELECTED CANDIDATES", "FULL LENGTH SECTIONAL TESTS", "VALID TILL ENTRANCE EXAM"] 
+            },
+            { 
+                title: "KENDRIYA VIDYALAYA EXAM", 
+                category: ["ALL", "KVS / NVS"],
+                faculty: "BHOLU CHAUBEY AND TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "ca4.png", 
+                price: 1199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["SPECIAL FOCUS ON ENTRANCE EXAMS", "KVS & NVS SYLLABUS", "STATIC GK & UP GK", "PRINTED NOTES DELIVERY OPTION", "SPEED TEST MODULES", "12 MONTHS VALIDITY"] 
+            },
+            { 
+                title: "AIRFORCE X/Y GROUP", 
+                category: ["ALL", "AIRFORCE X/Y", "DEFENCE"],
+                faculty: "DEFENCE EXPERTS", 
+                facultyColor: "var(--app-blue)", 
+                img: "ca1.png", 
+                price: 899, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["COMPLETE TECHNICAL MATHS", "PHYSICS & ENGLISH INCLUDED", "RAGA SECTION COVERED", "ONLINE MOCK TESTS", "PHYSICAL & MEDICAL GUIDANCE", "TILL EXAM VALIDITY"] 
+            },
+            { 
+                title: "REASONING SPECIAL BATCH", 
+                category: ["ALL", "STATE EXAM", "BANK EXAM"],
+                faculty: "RAHUL SIR (REASONING EXPERT)", 
+                facultyColor: "var(--gold)", 
+                img: "ca6.png", 
+                price: 699, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["VERBAL & NON-VERBAL REASONING", "LOGICAL & ANALYTICAL REASONING", "PREVIOUS YEAR PAPERS ANALYSIS", "SHORT TRICKS FOR TIME MANAGEMENT", "100+ SECTIONAL MOCK TESTS", "1-YEAR COURSE VALIDITY"] 
+            },
+            { 
+                title: "G.S SPECIAL BATCH", 
+                category: ["ALL", "STATE EXAM", "BANK EXAM"],
+                faculty: "BHOLU CHAUBEY & TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "ca7.png", 
+                price: 599, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["HISTORY, POLITY & GEOGRAPHY", "ECONOMICS & STATIC GK", "DAILY CURRENT AFFAIRS", "NCERT BASED FOUNDATION", "MIND MAPS & FLOW CHARTS", "COMPREHENSIVE PDF NOTES"] 
+            }
+        ];
+
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => { 
                 const splash = document.getElementById('splashScreen');
-                if(splash) {
-                    splash.style.opacity = '0'; 
-                    setTimeout(() => { splash.style.display = 'none'; }, 1000); 
-                }
+                if(splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; }, 1000); }
             }, 4500); 
             
-            // --- Rotating Nav Logo (10 Logos, every 2 seconds) ---
-            const navLogos = [
-                'm.png',
-                'logo2.png',
-                'logo3.png',
-                'logo4.png',
-                'logo5.png',
-                'logo6.png',
-                'logo7.png',
-                'logo8.png',
-                'logo9.png',
-                'logo10.png'
-            ];
+            const navLogos = ['m.png', 'logo2.png', 'logo3.png', 'logo4.png', 'logo5.png', 'logo6.png', 'logo7.png', 'logo8.png', 'logo9.png', 'logo10.png'];
             let logoIndex = 0;
             const navLogoBox = document.querySelector('.logo-box');
-            if (navLogoBox) {
-                setInterval(() => {
-                    logoIndex = (logoIndex + 1) % navLogos.length;
-                    navLogoBox.style.backgroundImage = `url('${navLogos[logoIndex]}')`;
-                }, 2000);
-            }
+            if (navLogoBox) { setInterval(() => { logoIndex = (logoIndex + 1) % navLogos.length; navLogoBox.style.backgroundImage = `url('${navLogos[logoIndex]}')`; }, 2000); }
+
+            loadPremiumCourses('ALL');
         });
 
         // ==========================================
-        // --- DIRECTOR MESSAGE POPUP & 10s TIMER ---
+        // --- PREMIUM BATCHES MODAL & FILTERS ---
         // ==========================================
-        let directorTimer = null;
+        function openPremiumBatches() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('premiumBatchesModal').classList.add('show');
+            
+            // Reset to ALL tab
+            const tabs = document.getElementById('categoryTabs').children;
+            filterPremiumCourses('ALL', tabs[0]);
+        }
+        
+        function closePremiumBatches() { 
+            document.getElementById('premiumBatchesModal').classList.remove('show'); 
+        }
 
+        function filterPremiumCourses(category, btnElement) {
+            const tabs = document.getElementById('categoryTabs').children;
+            for(let i=0; i<tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            btnElement.classList.add('active');
+            loadPremiumCourses(category);
+        }
+
+        function loadPremiumCourses(filterCategory) {
+            const list = document.getElementById('premiumCourseList');
+            let html = '';
+            
+            let filteredData = premiumCoursesData.filter(c => c.category.includes(filterCategory));
+
+            if(filteredData.length === 0) {
+                html = `<div style="text-align:center; width:100%; color:var(--text-dim); padding:40px 0;">
+                            <i class="fas fa-box-open" style="font-size:3rem; color:var(--border-dark); margin-bottom:15px;"></i>
+                            <h3>NO BATCHES FOUND IN THIS CATEGORY</h3>
+                        </div>`;
+            } else {
+                filteredData.forEach(c => {
+                    let featuresHTML = c.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('');
+                    html += `
+                    <div class="course-card">
+                        <div class="course-img-box"><img src="${c.img}" alt="${c.title}" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'"></div>
+                        <div class="course-info">
+                            <h3 class="course-title">${c.title}</h3>
+                            <p class="course-faculty" style="color: ${c.facultyColor};">${c.faculty}</p>
+                            <div class="btn-group">
+                                <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
+                                <button class="btn ${c.btnClass}" onclick="openPaymentModal('${c.title}', ${c.price})">${c.btnText}</button>
+                            </div>
+                            <div class="features-box"><ul>${featuresHTML}</ul></div>
+                        </div>
+                    </div>`;
+                });
+            }
+            list.innerHTML = html;
+        }
+
+        let directorTimer = null;
         function openDirectorModal() {
             const modal = document.getElementById('directorModal');
             const timerFill = document.getElementById('directorTimerFill');
-            
-            timerFill.style.transition = 'none';
-            timerFill.style.width = '100%';
-            modal.classList.add('show');
-            
-            // Trigger reflow
-            void timerFill.offsetWidth;
-            
-            timerFill.style.transition = 'width 10s linear';
-            timerFill.style.width = '0%';
-            
+            timerFill.style.transition = 'none'; timerFill.style.width = '100%';
+            modal.classList.add('show'); void timerFill.offsetWidth; 
+            timerFill.style.transition = 'width 10s linear'; timerFill.style.width = '0%';
             if(directorTimer) clearTimeout(directorTimer);
-            directorTimer = setTimeout(() => {
-                closeDirectorModal();
-            }, 10000);
+            directorTimer = setTimeout(() => { closeDirectorModal(); }, 10000);
         }
+        function closeDirectorModal() { document.getElementById('directorModal').classList.remove('show'); if(directorTimer) clearTimeout(directorTimer); }
 
-        function closeDirectorModal() {
-            const modal = document.getElementById('directorModal');
-            modal.classList.remove('show');
-            if(directorTimer) clearTimeout(directorTimer);
-        }
-
-        // --- CELEBRATION BALLOONS LOGIC ---
         function triggerCelebration(enrollNo) {
             const overlay = document.getElementById('celebOverlay');
-            overlay.innerHTML = `
-                <div class="congrats-text">
-                    Congratulations!
-                    <span class="congrats-sub">ENROLLMENT: ${enrollNo}</span>
-                </div>
-            `;
+            overlay.innerHTML = `<div class="congrats-text">Congratulations!<span class="congrats-sub">ENROLLMENT: ${enrollNo}</span></div>`;
             overlay.classList.add('active');
-
             const colors = ['#eab308', '#ff2a75', '#22c55e', '#00bcd4', '#ff0000', '#a855f7', '#ffffff'];
             for (let i = 0; i < 40; i++) {
-                let b = document.createElement('div');
-                b.className = 'balloon';
-                let color = colors[Math.floor(Math.random() * colors.length)];
-                b.style.setProperty('--b-color', color);
-                b.style.left = Math.random() * 100 + 'vw';
-                b.style.animationDuration = (3 + Math.random() * 3) + 's';
-                b.style.animationDelay = (Math.random() * 0.5) + 's';
-                overlay.appendChild(b);
+                let b = document.createElement('div'); b.className = 'balloon';
+                b.style.setProperty('--b-color', colors[Math.floor(Math.random() * colors.length)]);
+                b.style.left = Math.random() * 100 + 'vw'; b.style.animationDuration = (3 + Math.random() * 3) + 's';
+                b.style.animationDelay = (Math.random() * 0.5) + 's'; overlay.appendChild(b);
             }
-
-            // Remove celebration after 4.5 seconds and trigger print
-            setTimeout(() => {
-                overlay.classList.remove('active');
-                overlay.innerHTML = '';
-                showCustomAlert("✅ REGISTRATION COMPLETE", `YOUR INSTITUTE ID IS: <b>${enrollNo}</b><br>USE THIS TO LOGIN IN MY BATCH.`, true); 
-                setTimeout(() => { window.print(); }, 800);
-            }, 4500);
+            setTimeout(() => { overlay.classList.remove('active'); overlay.innerHTML = ''; showCustomAlert("✅ REGISTRATION COMPLETE", `YOUR INSTITUTE ID IS: <b>${enrollNo}</b><br>USE THIS TO LOGIN IN MY BATCH.`, true); setTimeout(() => { window.print(); }, 800); }, 4500);
         }
 
-        // --- SECURE ADMIN EXPORT LOGIC ---
-        function openAdminAuth() {
-            toggleMenu();
-            document.getElementById('adminErrorMsg').style.display = 'none';
-            document.getElementById('adminPwdInput').value = '';
-            document.getElementById('adminAuthModal').classList.add('show');
-        }
-
+        function openAdminAuth() { toggleMenu(); document.getElementById('adminErrorMsg').style.display = 'none'; document.getElementById('adminPwdInput').value = ''; document.getElementById('adminAuthModal').classList.add('show'); }
         function verifyAdminAndExport() {
             const pwd = document.getElementById('adminPwdInput').value; 
-            if(pwd !== "admin123") { 
-                document.getElementById('adminErrorMsg').style.display = 'block'; 
-                return; 
-            }
+            if(pwd !== "admin123") { document.getElementById('adminErrorMsg').style.display = 'block'; return; }
             document.getElementById('adminAuthModal').classList.remove('show');
-            
             let users = JSON.parse(localStorage.getItem('mysticAllUsers') || '[]'); 
             if(users.length === 0) { alert("No student data found."); return; }
-            
             let html = `<h2>MATHS MYSTIC - LOGGED IN STUDENTS DATA</h2><table border="1" cellpadding="10" style="width:100%; border-collapse:collapse; text-align:left;"><tr><th>NAME</th><th>MOBILE</th><th>LOGIN DATE/TIME</th></tr>`;
             users.forEach(u => { html += `<tr><td>${u.name.toUpperCase()}</td><td>${u.mobile}</td><td>${u.date}</td></tr>`; });
             html += `</table><button onclick="window.print()" style="margin-top:20px; padding:10px 20px; background:#eab308; cursor:pointer; font-weight:bold;">PRINT / SAVE AS PDF</button>`;
-            
-            const newWin = window.open("", "_blank"); 
-            newWin.document.write(`<html><head><title>Admin Data Export</title><style>body{font-family:sans-serif; padding:20px;} table th{background:#eee;}</style></head><body>${html}</body></html>`); 
-            newWin.document.close();
+            const newWin = window.open("", "_blank"); newWin.document.write(`<html><head><title>Admin Data Export</title><style>body{font-family:sans-serif; padding:20px;} table th{background:#eee;}</style></head><body>${html}</body></html>`); newWin.document.close();
         }
 
-        function toggleMenu() { 
-            document.getElementById('sidebar').classList.toggle('active'); 
-            document.getElementById('overlay').classList.toggle('active'); 
-        }
-        
-        function triggerComingSoon(e) { 
-            e.preventDefault(); toggleMenu(); 
-            showCustomAlert('COMING SOON!', 'YEH PREMIUM FEATURE ABHI DEVELOPMENT MEIN HAI. STAY TUNED!'); 
-        }
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
         
         function showCustomAlert(title, text, isSuccess = false) {
             const modal = document.getElementById('customAlertModal');
-            document.getElementById('customAlertTitle').innerText = title; 
-            document.getElementById('customAlertText').innerHTML = text;
-            
-            const iconBox = document.getElementById('customAlertIconBox'); 
-            const icon = document.getElementById('customAlertIcon');
-            
-            if(isSuccess) { 
-                iconBox.style.background = "rgba(34, 197, 94, 0.1)"; 
-                document.getElementById('customAlertTitle').style.color = "#22c55e"; 
-                icon.className = "fas fa-gift"; icon.style.color = "#22c55e"; 
-            } else { 
-                iconBox.style.background = "rgba(234, 179, 8, 0.1)"; 
-                document.getElementById('customAlertTitle').style.color = "var(--gold)"; 
-                icon.className = "fas fa-bell"; icon.style.color = "var(--gold)"; 
-            }
+            document.getElementById('customAlertTitle').innerText = title; document.getElementById('customAlertText').innerHTML = text;
+            const iconBox = document.getElementById('customAlertIconBox'); const icon = document.getElementById('customAlertIcon');
+            if(isSuccess) { iconBox.style.background = "rgba(34, 197, 94, 0.1)"; document.getElementById('customAlertTitle').style.color = "#22c55e"; icon.className = "fas fa-gift"; icon.style.color = "#22c55e"; } 
+            else { iconBox.style.background = "rgba(234, 179, 8, 0.1)"; document.getElementById('customAlertTitle').style.color = "var(--gold)"; icon.className = "fas fa-bell"; icon.style.color = "var(--gold)"; }
             modal.classList.add('show');
         }
 
         function handlePinkToast(e, msg) {
-            if(e) e.preventDefault();
-            const pinkToast = document.getElementById('toastAlert');
-            if(msg) document.getElementById('toastMessage').innerText = msg; 
-            else document.getElementById('toastMessage').innerText = "CONTENT CURRENTLY UNAVAILABLE. STAY TUNED!";
-            
-            pinkToast.classList.add('show'); 
-            setTimeout(() => { pinkToast.classList.remove('show'); }, 3000);
+            if(e) e.preventDefault(); const pinkToast = document.getElementById('toastAlert');
+            if(msg) document.getElementById('toastMessage').innerText = msg; else document.getElementById('toastMessage').innerText = "CONTENT CURRENTLY UNAVAILABLE. STAY TUNED!";
+            pinkToast.classList.add('show'); setTimeout(() => { pinkToast.classList.remove('show'); }, 3000);
         }
 
-        function closeTimedBanner(id) { 
-            document.getElementById(id).classList.remove('show'); 
-        }
+        function closeTimedBanner(id) { document.getElementById(id).classList.remove('show'); }
         
-        // --- TIMED BANNERS (1 MIN & 3 MINS) ---
-        if (!sessionStorage.getItem('banner1MinShown')) {
-            setTimeout(() => { 
-                document.getElementById('timedBanner2min').classList.add('show'); 
-                sessionStorage.setItem('banner1MinShown', 'true');
-            }, 60000); 
-        }
-        
-        if (!sessionStorage.getItem('banner3MinShown')) {
-            setTimeout(() => { 
-                document.getElementById('timedBanner5min').classList.add('show'); 
-                sessionStorage.setItem('banner3MinShown', 'true');
-            }, 180000); 
-        }
+        if (!sessionStorage.getItem('banner1MinShown')) { setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); sessionStorage.setItem('banner1MinShown', 'true'); }, 60000); }
+        if (!sessionStorage.getItem('banner3MinShown')) { setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); sessionStorage.setItem('banner3MinShown', 'true'); }, 180000); }
 
-        // --- Sliders Logic ---
+        // ==========================================
+        // --- FIXED BANNER SLIDER LOGIC ---
+        // ==========================================
         const sliderWrapper = document.getElementById('sliderWrapper'); 
         const bannerSlides = document.querySelectorAll('.banner-slide'); 
         const bannerDotsContainer = document.getElementById('dotsContainer');
-        
+        let autoSlideInterval;
+        let currentSlide = 0;
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => { 
+                currentSlide++; 
+                if (currentSlide >= bannerSlides.length) { currentSlide = 0; } 
+                // Scroll accounting for 15px gap
+                const slideWidth = bannerSlides[0].clientWidth + 15;
+                sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' }); 
+            }, 10000); // 10 SECONDS
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
         if(sliderWrapper && bannerSlides.length > 0) {
             bannerSlides.forEach((slide, i) => {
                 let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active');
-                dot.addEventListener('click', () => { sliderWrapper.scrollTo({ left: (bannerSlides[0].clientWidth + 15) * i, behavior: 'smooth' }); }); 
+                dot.addEventListener('click', () => { 
+                    currentSlide = i;
+                    const slideWidth = bannerSlides[0].clientWidth + 15;
+                    sliderWrapper.scrollTo({ left: slideWidth * i, behavior: 'smooth' }); 
+                    stopAutoSlide(); startAutoSlide();
+                }); 
                 bannerDotsContainer.appendChild(dot);
                 
                 slide.addEventListener('click', (e) => { 
@@ -1541,19 +1441,19 @@
             });
             
             sliderWrapper.addEventListener('scroll', () => { 
-                const idx = Math.round(sliderWrapper.scrollLeft / (bannerSlides[0].clientWidth + 15)); 
+                const slideWidth = bannerSlides[0].clientWidth + 15;
+                const idx = Math.round(sliderWrapper.scrollLeft / slideWidth); 
+                currentSlide = idx;
                 const dots = bannerDotsContainer.children; 
                 Array.from(dots).forEach(d => d.classList.remove('active')); 
                 if(dots[idx]) dots[idx].classList.add('active'); 
             });
-            
-            let currentSlide = 0; 
-            setInterval(() => { 
-                currentSlide++; 
-                if (currentSlide >= bannerSlides.length) { currentSlide = 0; } 
-                const slideWidth = bannerSlides[0].clientWidth + 15; 
-                sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' }); 
-            }, 4000);
+
+            startAutoSlide();
+            sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
+            sliderWrapper.addEventListener('mouseleave', startAutoSlide);
+            sliderWrapper.addEventListener('touchstart', stopAutoSlide);
+            sliderWrapper.addEventListener('touchend', startAutoSlide);
         }
 
         ['reviewsWrapper', 'facultyWrapper'].forEach(id => {
@@ -1563,415 +1463,154 @@
                 if(dotsContainer && items.length > 0 && dotsContainer.classList.contains('dots-container')) {
                     for(let i=0; i<items.length; i++) { 
                         let dot = document.createElement('div'); dot.className = 'dot'; if(i===0) dot.classList.add('active'); 
-                        dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 15) * i, behavior: 'smooth' }); }); 
+                        dot.addEventListener('click', () => { wrapper.scrollTo({ left: (items[0].clientWidth + 20) * i, behavior: 'smooth' }); }); 
                         dotsContainer.appendChild(dot); 
                     }
-                    wrapper.addEventListener('scroll', () => { 
-                        const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 15)); 
-                        const dots = dotsContainer.children; 
-                        Array.from(dots).forEach(d => d.classList.remove('active')); 
-                        if(dots[idx]) dots[idx].classList.add('active'); 
-                    });
+                    wrapper.addEventListener('scroll', () => { const idx = Math.round(wrapper.scrollLeft / (items[0].clientWidth + 20)); const dots = dotsContainer.children; Array.from(dots).forEach(d => d.classList.remove('active')); if(dots[idx]) dots[idx].classList.add('active'); });
                 }
             }
         });
 
-        // --- Course Features Toggle ---
         function toggleFeatures(btn) { 
-            let box = btn.parentElement.nextElementSibling; 
-            let icon = btn.querySelector('i'); 
-            if(box.style.display === "block") { 
-                box.style.display = "none"; icon.className = "fas fa-chevron-down"; 
-                btn.style.background = "#222"; btn.style.color = "var(--text-light)"; 
-            } else { 
-                box.style.display = "block"; icon.className = "fas fa-chevron-up"; 
-                btn.style.background = "var(--gold)"; btn.style.color = "#000"; 
-            } 
+            let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); 
+            if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; } 
+            else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; } 
         }
         
-        // --- FAQ Accordion ---
         function toggleFAQ(element) {
             const currentItem = element.parentElement;
-            document.querySelectorAll('.faq-item').forEach(item => { 
-                if (item !== currentItem && item.classList.contains('active')) { 
-                    item.classList.remove('active'); item.querySelector('.faq-answer').style.maxHeight = null; 
-                } 
-            });
-            currentItem.classList.toggle('active'); 
-            const answer = currentItem.querySelector('.faq-answer'); 
+            document.querySelectorAll('.faq-item').forEach(item => { if (item !== currentItem && item.classList.contains('active')) { item.classList.remove('active'); item.querySelector('.faq-answer').style.maxHeight = null; } });
+            currentItem.classList.toggle('active'); const answer = currentItem.querySelector('.faq-answer'); 
             answer.style.maxHeight = currentItem.classList.contains('active') ? answer.scrollHeight + 20 + "px" : null;
         }
 
-        // ==========================================
-        // --- SMART PAYMENT & RECEIPT SYSTEM ---
-        // ==========================================
         let currentCourseName = "", originalCoursePrice = 0, currentCoursePrice = 0, appliedDiscountAmt = 0, finalUtr = "";
-        const paymentModal = document.getElementById('paymentModal'); 
-        const detailsModal = document.getElementById('detailsModal'); 
-        const qrContainer = document.getElementById('qrContainer');
+        const paymentModal = document.getElementById('paymentModal'); const detailsModal = document.getElementById('detailsModal'); const qrContainer = document.getElementById('qrContainer');
         const coupons = { "ABHINAY50": 0.50, "SUPER30": 0.30, "FESTIVAL20": 0.20, "MATHS10": 0.10 };
 
         function openPaymentModal(cName, price) {
-            currentCourseName = cName; originalCoursePrice = price; currentCoursePrice = price; appliedDiscountAmt = 0;
-            
-            document.getElementById('modalCourseName').innerText = cName; 
-            document.getElementById('modalOriginalFee').innerText = price > 0 ? "₹" + price : "FREE";
-            document.getElementById('modalDiscountRow').style.display = "none"; 
-            document.getElementById('modalPayableAmount').innerText = price > 0 ? "₹" + price : "FREE";
-            document.getElementById('paymentScreenshot').value = ""; 
-            document.getElementById('utrInput').value = ""; 
-            document.getElementById('couponInput').value = "";
-            qrContainer.style.display = "none"; 
-            document.getElementById('paymentFormArea').style.display = 'block'; 
-            document.getElementById('loadingArea').style.display = 'none'; 
-            
+            closePremiumBatches(); currentCourseName = cName; originalCoursePrice = price; currentCoursePrice = price; appliedDiscountAmt = 0;
+            document.getElementById('modalCourseName').innerText = cName; document.getElementById('modalOriginalFee').innerText = price > 0 ? "₹" + price : "FREE";
+            document.getElementById('modalDiscountRow').style.display = "none"; document.getElementById('modalPayableAmount').innerText = price > 0 ? "₹" + price : "FREE";
+            document.getElementById('paymentScreenshot').value = ""; document.getElementById('utrInput').value = ""; document.getElementById('couponInput').value = "";
+            qrContainer.style.display = "none"; document.getElementById('paymentFormArea').style.display = 'block'; document.getElementById('loadingArea').style.display = 'none'; 
             paymentModal.classList.add('show');
         }
-        
         function closePaymentModal() { paymentModal.classList.remove('show'); }
 
         function applyCoupon() {
             if(originalCoursePrice === 0) { showCustomAlert("FREE BATCH", "THIS COURSE IS ALREADY FREE."); return; }
             let code = document.getElementById('couponInput').value.trim().toUpperCase(); 
             if(appliedDiscountAmt > 0) { showCustomAlert("WAIT!", "A COUPON IS ALREADY APPLIED."); return; }
-            
             if(coupons[code]) {
-                appliedDiscountAmt = Math.floor(originalCoursePrice * coupons[code]); 
-                currentCoursePrice = originalCoursePrice - appliedDiscountAmt;
-                document.getElementById('modalDiscountRow').style.display = "flex"; 
-                document.getElementById('modalDiscountAmount').innerText = "-₹" + appliedDiscountAmt; 
-                document.getElementById('modalPayableAmount').innerText = "₹" + currentCoursePrice;
+                appliedDiscountAmt = Math.floor(originalCoursePrice * coupons[code]); currentCoursePrice = originalCoursePrice - appliedDiscountAmt;
+                document.getElementById('modalDiscountRow').style.display = "flex"; document.getElementById('modalDiscountAmount').innerText = "-₹" + appliedDiscountAmt; document.getElementById('modalPayableAmount').innerText = "₹" + currentCoursePrice;
                 showCustomAlert("🎉 COUPON APPLIED!", `CODE '${code}' APPLIED SUCCESSFULLY.<br>YOU GOT ₹${appliedDiscountAmt} DISCOUNT!`, true);
                 if(qrContainer.style.display === "block") generateQR();
-            } else { 
-                showCustomAlert("INVALID CODE", "PLEASE ENTER A VALID COUPON CODE."); 
-            }
+            } else { showCustomAlert("INVALID CODE", "PLEASE ENTER A VALID COUPON CODE."); }
         }
 
-        // ==========================================
-        // --- UPDATED QR CODE GENERATOR FOR ACCOUNT+IFSC ---
-        // ==========================================
         function generateQR() {
-            if(currentCoursePrice === 0) { 
-                showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); 
-                return; 
-            }
-            
-            // NPCI Direct Bank Account Transfer Format
-            const accNo = "520102120008909";
-            const ifsc = "UBIN0552011";
-            const payeeName = "ABHINAY CHAUBEY"; 
-            
-            // Format: account_number@ifsc_code.ifsc.npci
+            if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); return; }
+            const accNo = "520102120008909"; const ifsc = "UBIN0552011"; const payeeName = "ABHINAY CHAUBEY"; 
             const upiId = `${accNo}@${ifsc}.ifsc.npci`;
-            
             const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${currentCoursePrice}&cu=INR`;
-            
             const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(upiUrl)}&size=250&margin=1`;
-            
-            document.getElementById('qrImage').src = qrApiUrl; 
-            qrContainer.style.display = "block";
+            document.getElementById('qrImage').src = qrApiUrl; qrContainer.style.display = "block";
         }
 
         function verifyPaymentSubmit() {
             if(currentCoursePrice === 0) {
-                finalUtr = "FREE_ENROLLMENT"; 
-                document.getElementById('paymentFormArea').style.display = 'none'; 
-                document.getElementById('loadingArea').style.display = 'block';
-                setTimeout(() => { closePaymentModal(); setTimeout(() => { detailsModal.classList.add('show'); }, 500); }, 1000); 
-                return;
+                finalUtr = "FREE_ENROLLMENT"; document.getElementById('paymentFormArea').style.display = 'none'; document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => { closePaymentModal(); setTimeout(() => { detailsModal.classList.add('show'); }, 500); }, 1000); return;
             }
-            
-            const fileInput = document.getElementById('paymentScreenshot'); 
-            const utrValue = document.getElementById('utrInput').value.trim().toUpperCase(); 
-            const isUtrValid = /^PM\d{12}$/.test(utrValue);
-            
+            const fileInput = document.getElementById('paymentScreenshot'); const utrValue = document.getElementById('utrInput').value.trim().toUpperCase(); const isUtrValid = /^PM\d{12}$/.test(utrValue);
             if (fileInput.files.length > 0 || isUtrValid) {
-                finalUtr = isUtrValid ? utrValue : "VERIFIED_VIA_SCREENSHOT"; 
-                document.getElementById('paymentFormArea').style.display = 'none'; 
-                document.getElementById('loadingArea').style.display = 'block';
-                setTimeout(() => { 
-                    closePaymentModal(); 
-                    showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED.<br>PLEASE FILL YOUR DETAILS TO GENERATE RECEIPT.", true); 
-                    setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500); 
-                }, 2000);
-            } else { 
-                showCustomAlert("VERIFICATION FAILED", "UPLOAD SCREENSHOT OR ENTER VALID 14-DIGIT UTR (STARTS WITH 'PM')."); 
-            }
+                finalUtr = isUtrValid ? utrValue : "VERIFIED_VIA_SCREENSHOT"; document.getElementById('paymentFormArea').style.display = 'none'; document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => { closePaymentModal(); showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED.<br>PLEASE FILL YOUR DETAILS TO GENERATE RECEIPT.", true); setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); detailsModal.classList.add('show'); }, 2500); }, 2000);
+            } else { showCustomAlert("VERIFICATION FAILED", "UPLOAD SCREENSHOT OR ENTER VALID 14-DIGIT UTR (STARTS WITH 'PM')."); }
         }
 
         function generateAndSaveReceipt() {
-            const name = document.getElementById('stuName').value.trim().toUpperCase(); 
-            const mobile = document.getElementById('stuMobile').value.trim(); 
-            const father = document.getElementById('stuFather').value.trim().toUpperCase(); 
-            const address = document.getElementById('stuAddress').value.trim().toUpperCase();
+            const name = document.getElementById('stuName').value.trim().toUpperCase(); const mobile = document.getElementById('stuMobile').value.trim(); const father = document.getElementById('stuFather').value.trim().toUpperCase(); const address = document.getElementById('stuAddress').value.trim().toUpperCase();
             if(!name || !mobile || !father || !address) { showCustomAlert("DETAILS MISSING", "PLEASE FILL ALL THE DETAILS."); return; }
 
-            const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000); 
-            const dateStr = new Date().toLocaleString('en-IN');
-            let expDate = new Date(); expDate.setFullYear(expDate.getFullYear() + 1); 
-            const expiryStr = expDate.toLocaleDateString('en-IN');
-            const finalPayable = currentCoursePrice; 
-            const base = finalPayable > 0 ? (finalPayable / 1.18).toFixed(2) : 0; 
-            const gst = finalPayable > 0 ? (finalPayable - base).toFixed(2) : 0;
+            const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000); const dateStr = new Date().toLocaleString('en-IN');
+            let expDate = new Date(); expDate.setFullYear(expDate.getFullYear() + 1); const expiryStr = expDate.toLocaleDateString('en-IN');
+            const finalPayable = currentCoursePrice; const base = finalPayable > 0 ? (finalPayable / 1.18).toFixed(2) : 0; const gst = finalPayable > 0 ? (finalPayable - base).toFixed(2) : 0;
 
             const studentData = { name: name, mobile: mobile, enrollNo: enrollNo, courseName: currentCourseName, purchaseDate: dateStr, expiryDate: expiryStr, amount: finalPayable };
             localStorage.setItem('mathsMysticStudent', JSON.stringify(studentData));
-            
-            let users = JSON.parse(localStorage.getItem('mysticAllUsers') || '[]'); 
-            users.push({name: name, mobile: mobile, date: dateStr}); 
-            localStorage.setItem('mysticAllUsers', JSON.stringify(users));
+            let users = JSON.parse(localStorage.getItem('mysticAllUsers') || '[]'); users.push({name: name, mobile: mobile, date: dateStr}); localStorage.setItem('mysticAllUsers', JSON.stringify(users));
 
-            document.getElementById('rName').innerText = name; 
-            document.getElementById('rFather').innerText = father; 
-            document.getElementById('rMobile').innerText = mobile; 
-            document.getElementById('rAddress').innerText = address; 
-            document.getElementById('rEnroll').innerText = enrollNo; 
-            document.getElementById('rCourse').innerText = currentCourseName; 
-            document.getElementById('rUtr').innerText = finalUtr; 
-            document.getElementById('rDate').innerText = dateStr; 
-            document.getElementById('rBaseFee').innerText = finalPayable > 0 ? "₹" + base : "FREE"; 
-            document.getElementById('rDiscount').innerText = appliedDiscountAmt > 0 ? "-₹" + appliedDiscountAmt + ".00" : "₹0.00"; 
-            document.getElementById('rGst').innerText = finalPayable > 0 ? "₹" + gst : "₹0.00"; 
-            document.getElementById('rAmount').innerText = finalPayable > 0 ? "₹" + finalPayable + ".00" : "FREE";
-
-            detailsModal.classList.remove('show');
-            
-            // Trigger Balloons and Congratulations Animation!
-            setTimeout(() => {
-                triggerCelebration(enrollNo);
-            }, 300);
+            document.getElementById('rName').innerText = name; document.getElementById('rFather').innerText = father; document.getElementById('rMobile').innerText = mobile; document.getElementById('rAddress').innerText = address; document.getElementById('rEnroll').innerText = enrollNo; document.getElementById('rCourse').innerText = currentCourseName; document.getElementById('rUtr').innerText = finalUtr; document.getElementById('rDate').innerText = dateStr; document.getElementById('rBaseFee').innerText = finalPayable > 0 ? "₹" + base : "FREE"; document.getElementById('rDiscount').innerText = appliedDiscountAmt > 0 ? "-₹" + appliedDiscountAmt + ".00" : "₹0.00"; document.getElementById('rGst').innerText = finalPayable > 0 ? "₹" + gst : "₹0.00"; document.getElementById('rAmount').innerText = finalPayable > 0 ? "₹" + finalPayable + ".00" : "FREE";
+            detailsModal.classList.remove('show'); setTimeout(() => { triggerCelebration(enrollNo); }, 300);
         }
 
-        // ==========================================
-        // --- APP-LIKE LOGIN & NAVIGATION LOGIC ---
-        // ==========================================
         let isCourseActivated = false;
-
         function openAuthModal() { toggleMenu(); document.getElementById('authModal').classList.add('show'); }
-
         function verifyLogin() {
-            const entMobile = document.getElementById('loginMobile').value.trim(); 
-            const entEnroll = document.getElementById('loginEnroll').value.trim().toUpperCase(); 
-            const savedDataStr = localStorage.getItem('mathsMysticStudent');
-            
-            if(savedDataStr) { 
-                const data = JSON.parse(savedDataStr); 
-                if(data.mobile === entMobile && data.enrollNo === entEnroll) { 
-                    document.getElementById('authModal').classList.remove('show'); 
-                    setupMyBatchLevel1(data); return; 
-                } 
-            }
+            const entMobile = document.getElementById('loginMobile').value.trim(); const entEnroll = document.getElementById('loginEnroll').value.trim().toUpperCase(); const savedDataStr = localStorage.getItem('mathsMysticStudent');
+            if(savedDataStr) { const data = JSON.parse(savedDataStr); if(data.mobile === entMobile && data.enrollNo === entEnroll) { document.getElementById('authModal').classList.remove('show'); setupMyBatchLevel1(data); return; } }
             showCustomAlert("LOGIN FAILED", "INVALID MOBILE NO OR INSTITUTE ID.<br>PLEASE CHECK YOUR RECEIPT.");
         }
-
         function setupMyBatchLevel1(data) {
-            document.getElementById('appUserName').innerText = data.name; 
-            document.getElementById('appUserEnroll').innerText = data.enrollNo; 
-            document.getElementById('appUserExpiry').innerText = data.expiryDate; 
-            document.getElementById('appCourseTitle').innerText = data.courseName;
-            
-            document.getElementById('rName').innerText = data.name; 
-            document.getElementById('rMobile').innerText = data.mobile; 
-            document.getElementById('rEnroll').innerText = data.enrollNo; 
-            document.getElementById('rCourse').innerText = data.courseName; 
-            document.getElementById('rDate').innerText = data.purchaseDate; 
-            document.getElementById('rAmount').innerText = "₹" + data.amount;
-            
+            document.getElementById('appUserName').innerText = data.name; document.getElementById('appUserEnroll').innerText = data.enrollNo; document.getElementById('appUserExpiry').innerText = data.expiryDate; document.getElementById('appCourseTitle').innerText = data.courseName;
+            document.getElementById('rName').innerText = data.name; document.getElementById('rMobile').innerText = data.mobile; document.getElementById('rEnroll').innerText = data.enrollNo; document.getElementById('rCourse').innerText = data.courseName; document.getElementById('rDate').innerText = data.purchaseDate; document.getElementById('rAmount').innerText = "₹" + data.amount;
             document.getElementById('appMyBatchModal').classList.add('show');
         }
-
-        function logout() { 
-            document.getElementById('appMyBatchModal').classList.remove('show'); 
-            showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.', true); 
-        }
+        function logout() { document.getElementById('appMyBatchModal').classList.remove('show'); showCustomAlert('LOGGED OUT', 'YOU HAVE BEEN LOGGED OUT SUCCESSFULLY.', true); }
 
         function getSyllabus(courseName) {
             const name = courseName.toUpperCase();
-            if (name.includes("MATHEMATICS SPECIAL")) {
-                return [
-                    { title: "ARITHMETIC MATHS", icon: "M", vids: 100, img: "maths.png" },
-                    { title: "ADVANCE MATHS", icon: "A", vids: 150, img: "maths.png" }
-                ];
-            } else if (name.includes("REASONING SPECIAL")) {
-                return [
-                    { title: "REASONING", icon: "R", vids: 100, img: "reasoning.png" }
-                ];
-            } else if (name.includes("SCIENCE SPECIAL")) {
-                return [
-                    { title: "PHYSICS", icon: "P", vids: 20, img: "physics.png" },
-                    { title: "CHEMISTRY", icon: "C", vids: 20, img: "chemistry.png" },
-                    { title: "BIOLOGY", icon: "B", vids: 20, img: "biology.png" }
-                ];
-            } else {
-                return [
-                    { title: "ARITHMETIC MATHS", icon: "M", vids: 100, img: "maths.png" },
-                    { title: "ADVANCE MATHS", icon: "A", vids: 150, img: "maths.png" },
-                    { title: "REASONING", icon: "R", vids: 100, img: "reasoning.png" },
-                    { title: "PHYSICS", icon: "P", vids: 20, img: "physics.png" },
-                    { title: "CHEMISTRY", icon: "C", vids: 20, img: "chemistry.png" },
-                    { title: "BIOLOGY", icon: "B", vids: 20, img: "biology.png" },
-                    { title: "ENGLISH GRAMMAR", icon: "E", vids: 100, img: "english.png" },
-                    { title: "ENGLISH VOCAB", icon: "V", vids: 50, img: "english.png" },
-                    { title: "ENGLISH COMPREHENSION", icon: "C", vids: 20, img: "english.png" }
-                ];
-            }
+            if (name.includes("MATHEMATICS SPECIAL")) { return [{ title: "ARITHMETIC MATHS", icon: "M", vids: 100, img: "maths.png" }, { title: "ADVANCE MATHS", icon: "A", vids: 150, img: "maths.png" }]; } 
+            else if (name.includes("REASONING SPECIAL")) { return [{ title: "REASONING", icon: "R", vids: 100, img: "reasoning.png" }]; } 
+            else if (name.includes("SCIENCE SPECIAL")) { return [{ title: "PHYSICS", icon: "P", vids: 20, img: "physics.png" }, { title: "CHEMISTRY", icon: "C", vids: 20, img: "chemistry.png" }, { title: "BIOLOGY", icon: "B", vids: 20, img: "biology.png" }]; } 
+            else { return [{ title: "ARITHMETIC MATHS", icon: "M", vids: 100, img: "maths.png" }, { title: "REASONING", icon: "R", vids: 100, img: "reasoning.png" }, { title: "GENERAL SCIENCE", icon: "S", vids: 60, img: "physics.png" }]; }
         }
 
         function openAppSubjects() { 
-            document.getElementById('appMyBatchModal').classList.remove('show'); 
-            let cName = document.getElementById('appCourseTitle').innerText;
-            document.getElementById('appSubCourseTitle').innerText = cName; 
-            
-            const syllabus = getSyllabus(cName);
-            let html = '';
+            document.getElementById('appMyBatchModal').classList.remove('show'); let cName = document.getElementById('appCourseTitle').innerText; document.getElementById('appSubCourseTitle').innerText = cName; 
+            const syllabus = getSyllabus(cName); let html = '';
             syllabus.forEach(sub => {
-                html += `
-                <div class="sub-card" onclick="openAppVideoList('${sub.title}', ${sub.vids}, '${sub.img}')">
-                    <div class="sub-icon"><img src="${sub.img}" onerror="this.src='m.png'"></div>
-                    <div class="sub-info">
-                        <div class="sub-title">${sub.title}</div>
-                        <div class="sub-meta"><span><i class="fas fa-video"></i> Class: ${sub.vids}</span><span><i class="fas fa-file-pdf"></i> Note: ${sub.vids}</span></div>
-                    </div>
-                    <i class="fas fa-play sub-arrow"></i>
-                </div>
-                `;
+                html += `<div class="sub-card" onclick="openAppVideoList('${sub.title}', ${sub.vids}, '${sub.img}')"><div class="sub-icon"><img src="${sub.img}" onerror="this.src='m.png'"></div><div class="sub-info"><div class="sub-title">${sub.title}</div><div class="sub-meta"><span><i class="fas fa-video"></i> Class: ${sub.vids}</span><span><i class="fas fa-file-pdf"></i> Note: ${sub.vids}</span></div></div><i class="fas fa-play sub-arrow"></i></div>`;
             });
-            document.getElementById('appSubjectsBody').innerHTML = html;
-            
-            document.getElementById('appSubjectsModal').classList.add('show'); 
+            document.getElementById('appSubjectsBody').innerHTML = html; document.getElementById('appSubjectsModal').classList.add('show'); 
         }
-        
-        function closeAppSubjects() { 
-            document.getElementById('appSubjectsModal').classList.remove('show'); 
-            document.getElementById('appMyBatchModal').classList.add('show'); 
-        }
+        function closeAppSubjects() { document.getElementById('appSubjectsModal').classList.remove('show'); document.getElementById('appMyBatchModal').classList.add('show'); }
 
-        function openAppVideoList(subjectName, totalVids, imgName) { 
-            document.getElementById('appSubjectsModal').classList.remove('show'); 
-            document.getElementById('appListSubjectTitle').innerText = subjectName; 
-            generateAppVideoList(subjectName, totalVids, imgName); 
-            document.getElementById('appVideoListModal').classList.add('show'); 
-        }
-        
-        function closeAppVideoList() { 
-            document.getElementById('appVideoListModal').classList.remove('show'); 
-            document.getElementById('appSubjectsModal').classList.add('show'); 
-        }
+        function openAppVideoList(subjectName, totalVids, imgName) { document.getElementById('appSubjectsModal').classList.remove('show'); document.getElementById('appListSubjectTitle').innerText = subjectName; generateAppVideoList(subjectName, totalVids, imgName); document.getElementById('appVideoListModal').classList.add('show'); }
+        function closeAppVideoList() { document.getElementById('appVideoListModal').classList.remove('show'); document.getElementById('appSubjectsModal').classList.add('show'); }
 
         function generateAppVideoList(subject, totalVids, imgName) {
-            const container = document.getElementById('appVideoContainer'); 
-            container.innerHTML = "";
-            
-            let topics = [];
-            let s = subject.toUpperCase();
-            if(s.includes("MATHS")) topics = ["Number System", "Percentage", "Profit & Loss", "Ratio & Proportion", "Algebra", "Geometry", "Trigonometry", "Mensuration", "SI & CI", "Time & Work"];
-            else if(s.includes("REASONING")) topics = ["Coding-Decoding", "Blood Relation", "Syllogism", "Number Series", "Dice", "Venn Diagram", "Non-Verbal", "Mirror Images", "Puzzles", "Seating Arrangement"];
-            else if(s.includes("PHYSICS")) topics = ["Motion", "Force & Laws", "Gravitation", "Work & Energy", "Sound", "Light Reflection", "Electricity", "Magnetism", "Heat", "Thermodynamics"];
-            else if(s.includes("CHEMISTRY")) topics = ["Matter", "Atoms & Molecules", "Structure of Atom", "Chemical Reactions", "Acids & Bases", "Metals & Non-Metals", "Carbon Compounds", "Periodic Table"];
-            else if(s.includes("BIOLOGY")) topics = ["Cell", "Tissues", "Diversity in Organisms", "Why Do We Fall Ill", "Natural Resources", "Life Processes", "Control & Coordination", "Reproduction"];
-            else if(s.includes("ENGLISH")) topics = ["Noun", "Pronoun", "Tense", "Active-Passive", "Direct-Indirect", "Subject-Verb Agreement", "Vocabulary Set", "Reading Comprehension", "Cloze Test"];
-            else topics = ["Introduction", "Basic Concepts", "Practice Questions", "Previous Year Papers", "Doubt Class", "Mock Test Analysis"];
-
+            const container = document.getElementById('appVideoContainer'); container.innerHTML = "";
+            let topics = ["Introduction", "Basic Concepts", "Practice Questions", "Previous Year Papers", "Doubt Class", "Mock Test Analysis"];
             for(let i = 1; i <= totalVids; i++) {
-                let iconClass = isCourseActivated ? "fas fa-play-circle" : "fas fa-lock";
-                let topicName = topics[(i - 1) % topics.length];
-                
-                let itemHTML = `
-                    <div class="vid-card" onclick="openAppVideoPlayer('${subject}', ${i}, '${topicName}')">
-                        <div class="vid-flex">
-                            <div class="vid-thumb">
-                                <div class="vid-badge">Class ${i}</div>
-                                <img src="${imgName}" onerror="this.src='m.png'">
-                                <i class="${iconClass} play-icon"></i>
-                            </div>
-                            <div class="vid-info">
-                                <div class="vid-title">CHAPTER ${i}: ${topicName}</div>
-                                <div class="vid-meta">
-                                    <span><i class="far fa-calendar-alt"></i> Recent</span>
-                                    <span><i class="far fa-clock"></i> 01:15:00</span>
-                                </div>
-                            </div>
-                            <div style="display:flex; align-items:center; color:var(--text-dim);">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                let iconClass = isCourseActivated ? "fas fa-play-circle" : "fas fa-lock"; let topicName = topics[(i - 1) % topics.length];
+                let itemHTML = `<div class="vid-card" onclick="openAppVideoPlayer('${subject}', ${i}, '${topicName}')"><div class="vid-flex"><div class="vid-thumb"><div class="vid-badge">Class ${i}</div><img src="${imgName}" onerror="this.src='m.png'"><i class="${iconClass} play-icon"></i></div><div class="vid-info"><div class="vid-title">CHAPTER ${i}: ${topicName}</div><div class="vid-meta"><span><i class="far fa-calendar-alt"></i> Recent</span><span><i class="far fa-clock"></i> 01:15:00</span></div></div><div style="display:flex; align-items:center; color:var(--text-dim);"><i class="fas fa-ellipsis-v"></i></div></div></div>`;
                 container.innerHTML += itemHTML;
             }
         }
 
         function openAppVideoPlayer(subject, classNum, topicName) {
-            document.getElementById('appVideoListModal').classList.remove('show'); 
-            document.getElementById('appPlayerTitle').innerText = `CLASS ${classNum} | ${subject}`;
-            
-            const realPlayer = document.getElementById('realVideoPlayer'); 
-            const fakeUI = document.getElementById('fakeVideoUI'); 
-            const activateBox = document.getElementById('activationBox');
-            
+            document.getElementById('appVideoListModal').classList.remove('show'); document.getElementById('appPlayerTitle').innerText = `CLASS ${classNum} | ${subject}`;
+            const realPlayer = document.getElementById('realVideoPlayer'); const fakeUI = document.getElementById('fakeVideoUI'); const activateBox = document.getElementById('activationBox');
             if(!isCourseActivated) {
-                realPlayer.style.display = 'none'; 
-                fakeUI.style.display = 'flex'; 
-                activateBox.style.display = 'block';
-                document.getElementById('playerIcon').className = "fas fa-lock"; 
-                document.getElementById('playerIcon').style.color = "var(--gold)"; 
-                document.getElementById('playerHeading').innerText = "COURSE LOCKED"; 
-                document.getElementById('playerSubHeading').innerText = "Please activate your course to watch videos.";
-                document.getElementById('appVideoPlayerModal').classList.add('show'); 
-                return;
+                realPlayer.style.display = 'none'; fakeUI.style.display = 'flex'; activateBox.style.display = 'block'; document.getElementById('playerIcon').className = "fas fa-lock"; document.getElementById('playerIcon').style.color = "var(--gold)"; document.getElementById('playerHeading').innerText = "COURSE LOCKED"; document.getElementById('playerSubHeading').innerText = "Please activate your course to watch videos."; document.getElementById('appVideoPlayerModal').classList.add('show'); return;
             }
-
-            let videoUrl = ""; 
-            
-            if(videoUrl === "" || videoUrl === "#") {
-                realPlayer.style.display = 'none'; 
-                fakeUI.style.display = 'flex'; 
-                activateBox.style.display = 'none';
-                
-                document.getElementById('playerIcon').className = "fas fa-spinner fa-spin"; 
-                document.getElementById('playerIcon').style.color = "var(--gold)"; 
-                document.getElementById('playerHeading').innerText = "CONNECTING..."; 
-                document.getElementById('playerSubHeading').innerText = "Fetching class data.";
-                
-                setTimeout(() => { 
-                    document.getElementById('playerIcon').className = "fas fa-cloud-upload-alt"; 
-                    document.getElementById('playerIcon').style.color = "var(--pink)"; 
-                    document.getElementById('playerHeading').innerText = "CONTENT UPLOADING SOON"; 
-                    document.getElementById('playerSubHeading').innerText = `Faculty is preparing high-quality material for ${topicName}. Please check back later.`; 
-                }, 1500);
-            } else {
-                fakeUI.style.display = 'none'; 
-                activateBox.style.display = 'none'; 
-                realPlayer.style.display = 'block';
-                document.getElementById('realVideoSource').src = videoUrl; 
-                realPlayer.load(); 
-                realPlayer.play().catch(e => console.log(e));
-            }
-            
+            realPlayer.style.display = 'none'; fakeUI.style.display = 'flex'; activateBox.style.display = 'none'; document.getElementById('playerIcon').className = "fas fa-spinner fa-spin"; document.getElementById('playerIcon').style.color = "var(--gold)"; document.getElementById('playerHeading').innerText = "CONNECTING..."; document.getElementById('playerSubHeading').innerText = "Fetching class data.";
+            setTimeout(() => { document.getElementById('playerIcon').className = "fas fa-cloud-upload-alt"; document.getElementById('playerIcon').style.color = "var(--pink)"; document.getElementById('playerHeading').innerText = "CONTENT UPLOADING SOON"; document.getElementById('playerSubHeading').innerText = `Faculty is preparing high-quality material for ${topicName}. Please check back later.`; }, 1500);
             document.getElementById('appVideoPlayerModal').classList.add('show');
         }
-
-        function closeAppVideoPlayer() { 
-            document.getElementById('realVideoPlayer').pause(); 
-            document.getElementById('appVideoPlayerModal').classList.remove('show'); 
-            document.getElementById('appVideoListModal').classList.add('show'); 
-        }
+        function closeAppVideoPlayer() { document.getElementById('realVideoPlayer').pause(); document.getElementById('appVideoPlayerModal').classList.remove('show'); document.getElementById('appVideoListModal').classList.add('show'); }
 
         function activateCourseKey() {
             const key = document.getElementById('activationKeyInput').value.trim().toUpperCase();
             if(key === "MYSTIC2027") {
-                isCourseActivated = true; 
-                showCustomAlert("✅ UNLOCKED", "COURSE ACTIVATED SUCCESSFULLY!", true);
-                let title = document.getElementById('appPlayerTitle').innerText; 
-                let sub = title.split(' | ')[1]; 
-                let num = title.split(' | ')[0].replace('CLASS ', '');
-                
-                closeAppVideoPlayer(); 
-                openAppVideoPlayer(sub, num, "Chapter Activated");
-            } else { 
-                showCustomAlert("INVALID KEY", "PLEASE ENTER A VALID ACTIVATION KEY (MYSTIC2027)."); 
-            }
+                isCourseActivated = true; showCustomAlert("✅ UNLOCKED", "COURSE ACTIVATED SUCCESSFULLY!", true);
+                let title = document.getElementById('appPlayerTitle').innerText; let sub = title.split(' | ')[1]; let num = title.split(' | ')[0].replace('CLASS ', '');
+                closeAppVideoPlayer(); openAppVideoPlayer(sub, num, "Chapter Activated");
+            } else { showCustomAlert("INVALID KEY", "PLEASE ENTER A VALID ACTIVATION KEY (MYSTIC2027)."); }
         }
     </script>
 </body>
