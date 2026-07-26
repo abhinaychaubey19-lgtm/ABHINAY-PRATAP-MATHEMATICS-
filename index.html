@@ -550,19 +550,35 @@
         .r-footer { margin-top: 20px; border-top: 3px solid #000; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; font-weight: 900; color: #000 !important; background: rgba(255,255,255,0.85);}
 
         /* ========================================== */
-        /* --- NO INTERNET / OFFLINE OVERLAY --- */
+        /* --- APP-LIKE FULL PAGE OFFLINE SCREEN --- */
         /* ========================================== */
-        .offline-overlay { position: fixed; inset: 0; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(15px); z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: 0.4s ease; }
-        .offline-overlay.active { opacity: 1; visibility: visible; }
-        .offline-box { background: var(--bg-card); border: 2px solid var(--border-dark); border-top: 5px solid var(--pink); padding: 40px 30px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); transform: translateY(20px); transition: 0.4s ease; }
-        .offline-overlay.active .offline-box { transform: translateY(0); }
-        .wifi-icon-wrapper { width: 90px; height: 90px; background: rgba(255, 42, 117, 0.1); color: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 20px auto; position: relative; }
-        .wifi-icon-wrapper i { animation: blinkIcon 1.5s infinite; }
-        @keyframes blinkIcon { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        .offline-box h2 { color: #fff; font-size: 1.6rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; }
-        .offline-box p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; text-transform: none; margin-bottom: 25px; }
-        .retry-btn { background: linear-gradient(45deg, var(--gold), #ffdf00); color: #000; border: none; padding: 12px 30px; border-radius: 30px; font-size: 1rem; font-weight: 900; cursor: pointer; width: 100%; transition: 0.3s; box-shadow: 0 5px 15px rgba(234, 179, 8, 0.3); }
-        .retry-btn:hover { background: #fff; box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4); transform: translateY(-3px); }
+        .offline-page { 
+            position: fixed; inset: 0; background: var(--bg-main); z-index: 999999; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            opacity: 0; visibility: hidden; transition: opacity 0.3s ease; 
+        }
+        .offline-page.active { opacity: 1; visibility: visible; }
+        
+        .offline-illustration { 
+            position: relative; font-size: 7rem; margin-bottom: 30px; 
+            display: flex; align-items: center; justify-content: center; gap: 5px; 
+        }
+        .offline-illustration .man { color: var(--gold); animation: floatMan 3s ease-in-out infinite; }
+        .offline-illustration .plug { color: var(--pink); animation: unplug 1.5s infinite alternate; margin-top: 20px;}
+        
+        @keyframes floatMan { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes unplug { 0% { transform: translateX(0) rotate(0deg); } 100% { transform: translateX(15px) rotate(15deg); opacity: 0.7; } }
+        
+        .offline-page h1 { font-size: 2.2rem; color: #fff; font-weight: 900; letter-spacing: 2px; text-align: center; margin-bottom: 15px; }
+        .offline-page p { color: var(--text-dim); font-size: 1.05rem; text-align: center; max-width: 85%; font-weight: 600; text-transform: none; margin-bottom: 35px; line-height: 1.6; }
+        
+        .offline-btn { 
+            background: linear-gradient(45deg, var(--pink), #ff0055); color: #fff; border: none; 
+            padding: 16px 40px; border-radius: 30px; font-size: 1.1rem; font-weight: 900; 
+            cursor: pointer; box-shadow: 0 10px 30px rgba(255, 42, 117, 0.4); 
+            transition: 0.3s; letter-spacing: 1px;
+        }
+        .offline-btn:hover { background: #fff; color: var(--pink); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2); }
     </style>
 </head>
 <body>
@@ -690,7 +706,7 @@
         </div>
     </div>
 
-    <!-- MAIN BANNER SLIDER (RESTORED MULTI-VIEW & AUTO-SLIDE FIX) -->
+    <!-- MAIN BANNER SLIDER -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
@@ -707,7 +723,7 @@
         <div class="dots-container" id="dotsContainer"></div>
     </section>
 
-    <!-- HOME PAGE BATCH (ONLY 1 COURSE VISIBLE) -->
+    <!-- HOME PAGE BATCH -->
     <section class="courses-section" id="courses">
         <h2 class="section-title">FEATURED <span>BATCH</span></h2>
         <div class="course-list" style="display: flex; justify-content: center;">
@@ -1161,16 +1177,17 @@
         </div>
     </footer>
 
-    <!-- NO INTERNET / OFFLINE OVERLAY -->
-    <div class="offline-overlay" id="offlineScreen">
-        <div class="offline-box">
-            <div class="wifi-icon-wrapper">
-                <i class="fas fa-wifi-slash"></i>
-            </div>
-            <h2>NO INTERNET</h2>
-            <p>You seem to be offline. Please check your internet connection and try again.</p>
-            <button class="retry-btn" onclick="checkConnection()">TRY AGAIN</button>
+    <!-- ========================================== -->
+    <!-- --- APP-LIKE FULL PAGE OFFLINE SCREEN --- -->
+    <!-- ========================================== -->
+    <div class="offline-page" id="offlineScreen">
+        <div class="offline-illustration">
+            <i class="fas fa-user-astronaut man"></i>
+            <i class="fas fa-plug plug"></i>
         </div>
+        <h1>NO INTERNET</h1>
+        <p>Please connect to the internet to access AP Mathematics. Your session will resume automatically once connected.</p>
+        <button class="offline-btn" onclick="checkConnection()">RETRY CONNECTION</button>
     </div>
 
     <script>
@@ -1653,26 +1670,23 @@
             }
         }
 
-        // Manual Retry Button Logic
         function checkConnection() {
-            const btn = document.querySelector('.retry-btn');
-            btn.innerText = "CHECKING...";
+            const btn = document.querySelector('.offline-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "CHECKING CONNECTION...";
             
             setTimeout(() => {
                 if (navigator.onLine) {
                     updateNetworkStatus();
                 } else {
                     btn.innerText = "STILL OFFLINE";
-                    setTimeout(() => { btn.innerText = "TRY AGAIN"; }, 1500);
+                    setTimeout(() => { btn.innerText = originalText; }, 1500);
                 }
             }, 800);
         }
 
-        // Automatically listen for internet connection changes (App-like feel)
         window.addEventListener('online', updateNetworkStatus);
         window.addEventListener('offline', updateNetworkStatus);
-
-        // Initial check when page loads
         updateNetworkStatus();
     </script>
 </body>
