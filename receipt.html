@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAMEDGE INSTITUTE - Registration Form</title>
+    <style>
+        /* Base Settings */
+        body {
+            background-color: #525659; /* PDF viewer jaisa background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Download Button */
+        .btn-container {
+            margin-bottom: 20px;
+        }
+        .action-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .action-btn:hover { background-color: #b71c1c; }
+
+        /* A4 Page Setup - Fix width & height */
+        .a4-page {
+            width: 210mm;
+            height: 297mm; /* Strictly A4 */
+            background-color: white;
+            box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 10mm;
+            position: relative;
+            overflow: hidden; /* Watermark bahar na jaye */
+            z-index: 1;
+        }
+
+        /* Double Border Box */
+        .border-box {
+            border: 4px double #000;
+            height: 100%;
+            padding: 8mm;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Bold Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 65px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.06); /* Bahut light transparent black */
+            white-space: nowrap;
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .reg-no {
+            width: 20%;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .reg-no span {
+            border-bottom: 1px dashed #000;
+            display: inline-block;
+            width: 80px;
+            min-height: 18px;
+        }
+
+        .institute-info {
+            width: 60%;
+            text-align: center;
+        }
+        .institute-info h1 {
+            margin: 0;
+            font-size: 34px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: 1px;
+        }
+        .institute-info p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo-box {
+            width: 20%;
+            text-align: right;
+        }
+        /* Logo Image */
+        .logo-box img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        /* Form Title & Photo Section */
+        .title-photo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .form-title {
+            background-color: #000;
+            color: #fff;
+            padding: 8px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+        /* Perfect Passport Photo Box (35mm x 45mm) */
+        .photo-box {
+            width: 35mm;
+            height: 45mm;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            color: #555;
+            background-color: #f9f9f9;
+        }
+
+        /* Form Fields Layout */
+        .form-body {
+            flex-grow: 1;
+        }
+
+        .form-row {
+            display: flex;
+            margin-bottom: 18px;
+            align-items: flex-end;
+        }
+
+        .form-label {
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        /* Editable Dashed Lines */
+        .input-line {
+            flex-grow: 1;
+            border-bottom: 1px dashed #000;
+            font-size: 15px;
+            font-family: monospace;
+            color: #000;
+            padding-bottom: 2px;
+            outline: none;
+            min-height: 20px;
+        }
+        .input-line:focus {
+            border-bottom: 1px solid #d32f2f;
+            background-color: rgba(211, 47, 47, 0.05);
+        }
+
+        /* Instructions Section */
+        .instructions {
+            border: 1px solid #000;
+            padding: 10px;
+            font-size: 12px;
+            background-color: #f9f9f9;
+            margin-top: 15px;
+        }
+        .instructions h4 {
+            margin: 0 0 5px 0;
+            font-size: 13px;
+            text-decoration: underline;
+        }
+        .instructions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .instructions ul li {
+            margin-bottom: 3px;
+        }
+
+        /* Signatures */
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding: 0 10px;
+        }
+        .sign-box {
+            text-align: center;
+            width: 28%;
+        }
+        .sign-line {
+            border-bottom: 1px solid #000;
+            margin-bottom: 5px;
+            height: 30px;
+        }
+        .sign-text {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+            .btn-container { display: none; }
+            .a4-page {
+                box-shadow: none;
+                margin: 0;
+                width: 210mm;
+                height: 297mm;
+                page-break-after: avoid;
+            }
+            /* To ensure watermark prints properly */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Button -->
+    <div class="btn-container">
+        <button class="action-btn" onclick="window.print()">🖨️ Download / Print Form</button>
+    </div>
+
+    <!-- A4 Page Container -->
+    <div class="a4-page">
+        <!-- Background Watermark -->
+        <div class="watermark">EXAMEDGE INSTITUTE</div>
+
+        <div class="border-box">
+            
+            <!-- Header (Reg No, Institute Name, Logo) -->
+            <div class="header">
+                <div class="reg-no">
+                    Reg. No: <span contenteditable="true"></span>
+                </div>
+                <div class="institute-info">
+                    <h1>EXAMEDGE INSTITUTE</h1>
+                    <p>ADDRESS: CHAUPARIYA DHARAMPUR RAVINDRANAGAR KUSHINAGAR</p>
+                </div>
+                <div class="logo-box">
+                    <!-- Right Side Logo -->
+                    <img src="abhinay.png" alt="Logo">
+                </div>
+            </div>
+
+            <!-- Title and Passport Photo Box -->
+            <div class="title-photo-row">
+                <div class="form-title">STUDENT REGISTRATION FORM</div>
+                
+                <div class="photo-box">
+                    Affix Recent<br>Passport Size<br>Photograph
+                </div>
+            </div>
+
+            <!-- Form Fields (Fixed Layout) -->
+            <div class="form-body">
+                
+                <div class="form-row">
+                    <div class="form-label">1. Full Name of the Student:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label" style="width: 20%;">2. Date of Birth:</div>
+                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
+                    
+                    <div class="form-label">Gender:</div>
+                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
+                    
+                    <div class="form-label">Blood Group:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">3. Father's Name:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">4. Mother's Name:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label" style="width: 25%;">5. Category (Gen/OBC/SC/ST):</div>
+                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
+                    
+                    <div class="form-label">Nationality:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label" style="width: 20%;">6. Mobile Number:</div>
+                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
+                    
+                    <div class="form-label">WhatsApp No:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">7. Email Address:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label">8. Complete Address:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+                <div class="form-row">
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label" style="width: 35%;">9. Course / Class Applying For:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-label" style="width: 30%;">10. Previous School Name:</div>
+                    <div class="input-line" contenteditable="true"></div>
+                </div>
+            </div>
+
+            <!-- Instructions Section -->
+            <div class="instructions">
+                <h4>IMPORTANT INSTRUCTIONS:</h4>
+                <ul>
+                    <li>Please fill out the form carefully in <strong>BLOCK (Capital) letters</strong> only.</li>
+                    <li>Paste one recent passport-size color photograph in the given box (do not staple).</li>
+                    <li>Submit a photocopy of your Aadhar Card and previous year's marksheet along with this form.</li>
+                    <li>Fees once paid will not be refunded or transferred under any circumstances.</li>
+                    <li>The institute reserves the right to cancel the admission in case of indiscipline.</li>
+                </ul>
+            </div>
+
+            <!-- Signatures Section -->
+            <div class="signature-row">
+                <div class="sign-box">
+                    <div class="sign-line"></div>
+                    <div class="sign-text">Date & Place</div>
+                </div>
+                <div class="sign-box">
+                    <div class="sign-line"></div>
+                    <div class="sign-text">Student's Signature</div>
+                </div>
+                <div class="sign-box">
+                    <div class="sign-line"></div>
+                    <div class="sign-text">Parent's / Guardian's Signature</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
