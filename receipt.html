@@ -3,394 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXAMEDGE INSTITUTE - Registration Form</title>
+    <title>ExamEdge Institute - Registration Form</title>
     <style>
-        /* Base Settings */
-        body {
-            background-color: #525659; /* PDF viewer jaisa background */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
-        /* Download Button */
-        .btn-container {
-            margin-bottom: 20px;
-        }
-        .action-btn {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-        .action-btn:hover { background-color: #b71c1c; }
-
-        /* A4 Page Setup - Fix width & height */
-        .a4-page {
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #e0e0e0; margin: 0; padding: 20px; }
+        
+        /* A4 Page Layout */
+        .page {
             width: 210mm;
-            height: 297mm; /* Strictly A4 */
-            background-color: white;
-            box-sizing: border-box;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            padding: 10mm;
+            min-height: 297mm;
+            background: white;
+            margin: 0 auto 20px auto;
+            padding: 15mm;
             position: relative;
-            overflow: hidden; /* Watermark bahar na jaye */
-            z-index: 1;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border: 2px solid #000;
         }
-
-        /* Double Border Box */
-        .border-box {
-            border: 4px double #000;
-            height: 100%;
-            padding: 8mm;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Bold Watermark */
-        .watermark {
+        .page::after {
+            content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 65px;
-            font-weight: 900;
-            color: rgba(0, 0, 0, 0.06); /* Bahut light transparent black */
-            white-space: nowrap;
-            z-index: -1;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid #000;
             pointer-events: none;
-            user-select: none;
+        }
+
+        /* WATERMARK STYLES - Single Line */
+        .watermark-container {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .watermark {
+            font-size: 60px; 
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            transform: rotate(-45deg);
+            background: linear-gradient(45deg, #cc0000, #0000cc); 
+            -webkit-background-clip: text;
+            color: transparent;
+            opacity: 0.18;
+            white-space: nowrap; 
         }
 
         /* Header Section */
         .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #000;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .reg-no {
-            width: 20%;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .reg-no span {
-            border-bottom: 1px dashed #000;
-            display: inline-block;
-            width: 80px;
-            min-height: 18px;
-        }
-
-        .institute-info {
-            width: 60%;
-            text-align: center;
-        }
-        .institute-info h1 {
-            margin: 0;
-            font-size: 34px;
-            font-weight: 900;
-            color: #000;
-            letter-spacing: 1px;
-        }
-        .institute-info p {
-            margin: 5px 0 0;
-            font-size: 13px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .logo-box {
-            width: 20%;
-            text-align: right;
-        }
-        /* Logo Image */
-        .logo-box img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        /* Form Title & Photo Section */
-        .title-photo-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            padding-bottom: 15px;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1; 
         }
         
-        .form-title {
-            background-color: #000;
-            color: #fff;
-            padding: 8px 15px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 3px;
-            margin-top: 10px;
+        /* Logo and Header Spacing */
+        .header-logo { 
+            width: 140px; 
+            flex-shrink: 0; 
         }
+        .header-logo img { 
+            width: 130px; 
+            height: 130px; 
+            border-radius: 50%; 
+            border: 2px solid #000; 
+            object-fit: cover; 
+            background: #fff;
+        }
+        
+        .header-content { 
+            flex-grow: 1; 
+            text-align: center; 
+            padding-right: 60px; /* Balances the center alignment */
+        }
+        /* UPDATED: Bigger Size and Forced Single Line */
+        .header-content h1 { 
+            margin: 0; 
+            font-size: 38px; /* Increased size */
+            font-weight: 900; 
+            letter-spacing: 1px; 
+            color: #000; 
+            white-space: nowrap; /* Forces to single line */
+        }
+        .header-content p.powered { margin: 3px 0 8px 0; font-size: 12px; font-weight: bold; }
+        
+        /* Bold Address & Contact */
+        .header-info {
+            font-size: 12.5px;
+            font-weight: 900; 
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .header-info svg { width: 16px; height: 16px; }
 
-        /* Perfect Passport Photo Box (35mm x 45mm) */
+        /* Black Box Title */
+        .black-box-wrapper { margin-bottom: 20px; position: relative; z-index: 1; }
+        .black-box { background: #000; color: #fff; display: inline-block; padding: 8px 15px; font-weight: bold; font-size: 14px; border-radius: 2px; }
+
+        /* Content Area */
+        .content-wrapper { position: relative; display: flex; flex-direction: column; flex: 1; z-index: 1; }
+        
+        /* Photo Box */
         .photo-box {
-            width: 35mm;
-            height: 45mm;
-            border: 2px solid #000;
+            width: 130px;
+            height: 165px;
+            border: 1.5px solid #000;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-size: 11px;
-            font-weight: bold;
-            color: #555;
-            background-color: #f9f9f9;
-        }
-
-        /* Form Fields Layout */
-        .form-body {
-            flex-grow: 1;
-        }
-
-        .form-row {
-            display: flex;
-            margin-bottom: 18px;
-            align-items: flex-end;
-        }
-
-        .form-label {
-            font-size: 15px;
-            font-weight: bold;
-            margin-right: 10px;
-            white-space: nowrap;
-        }
-
-        /* Editable Dashed Lines */
-        .input-line {
-            flex-grow: 1;
-            border-bottom: 1px dashed #000;
-            font-size: 15px;
-            font-family: monospace;
-            color: #000;
-            padding-bottom: 2px;
-            outline: none;
-            min-height: 20px;
-        }
-        .input-line:focus {
-            border-bottom: 1px solid #d32f2f;
-            background-color: rgba(211, 47, 47, 0.05);
-        }
-
-        /* Instructions Section */
-        .instructions {
-            border: 1px solid #000;
-            padding: 10px;
             font-size: 12px;
-            background-color: #f9f9f9;
-            margin-top: 15px;
-        }
-        .instructions h4 {
-            margin: 0 0 5px 0;
-            font-size: 13px;
-            text-decoration: underline;
-        }
-        .instructions ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        .instructions ul li {
-            margin-bottom: 3px;
+            padding: 10px;
+            background: #fff;
+            margin-left: 15px;
         }
 
-        /* Signatures */
-        .signature-row {
+        /* Form Fields */
+        .form-group { display: flex; align-items: flex-end; margin-bottom: 20px; width: 100%; }
+        .form-group label { font-weight: bold; font-size: 14px; margin-right: 10px; white-space: nowrap; }
+        .form-line { flex: 1; border-bottom: 1px dashed #000; height: 20px; }
+        
+        .row { display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px; }
+        .row .form-group { margin-bottom: 0; }
+        
+        /* Signature Area */
+        .signature-section {
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
             padding: 0 10px;
+            position: relative;
+            z-index: 1;
         }
-        .sign-box {
-            text-align: center;
-            width: 28%;
+        .sig-box { text-align: center; width: 28%; font-weight: bold; font-size: 14px; border-top: 1.5px solid #000; padding-top: 5px; }
+
+        /* ======== Page 2 Specifics ======== */
+        .info-box { border: 1.5px solid #000; padding: 15px; margin-bottom: 20px; position: relative; z-index: 1; }
+        .info-box h2 { margin-top: 0; font-size: 16px; text-decoration: underline; text-transform: uppercase; margin-bottom: 10px; }
+        .info-box ul { margin: 0; padding-left: 20px; }
+        .info-box li { font-size: 14px; margin-bottom: 8px; line-height: 1.5; font-weight: 500; }
+
+        /* Social Footer & Banner */
+        .social-footer { margin-top: auto; position: relative; z-index: 1; }
+        .social-links { 
+            display: flex; 
+            justify-content: space-between; 
+            border: 1.5px solid #000; 
+            padding: 15px 10px; 
+            background: #f9f9f9; 
+            margin-bottom: 15px;
         }
-        .sign-line {
-            border-bottom: 1px solid #000;
-            margin-bottom: 5px;
-            height: 30px;
+        .social-item { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            font-size: 12px;
+            gap: 5px;
         }
-        .sign-text {
-            font-size: 13px;
-            font-weight: bold;
+        .social-item svg { width: 26px; height: 26px; }
+        .social-item span { font-weight: bold; font-size: 11px; margin-top: 3px; }
+        
+        /* Dual Banner Box */
+        .banner-box { 
+            width: 100%; 
+            height: 220px; 
+            border: 1.5px solid #000; 
+            display: flex; 
+            background: #fff;
+        }
+        .banner-box img { 
+            width: 50%; 
+            height: 100%; 
+            object-fit: contain; 
+        }
+        .banner-box img:first-child {
+            border-right: 1.5px solid #000; 
         }
 
-        /* Print Settings */
         @media print {
-            body {
-                background-color: white;
-                padding: 0;
-                margin: 0;
-            }
-            .btn-container { display: none; }
-            .a4-page {
-                box-shadow: none;
-                margin: 0;
-                width: 210mm;
-                height: 297mm;
-                page-break-after: avoid;
-            }
-            /* To ensure watermark prints properly */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
+            body { background: none; padding: 0; }
+            .page { box-shadow: none; margin: 0; page-break-after: always; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Print Button -->
-    <div class="btn-container">
-        <button class="action-btn" onclick="window.print()">🖨️ Download / Print Form</button>
-    </div>
+    <!-- ================= PAGE 1 ================= -->
+    <div class="page" style="display: flex; flex-direction: column;">
+        
+        <!-- Watermark -->
+        <div class="watermark-container">
+            <div class="watermark">EXAMEDGE INSTITUTE</div>
+        </div>
 
-    <!-- A4 Page Container -->
-    <div class="a4-page">
-        <!-- Background Watermark -->
-        <div class="watermark">EXAMEDGE INSTITUTE</div>
-
-        <div class="border-box">
+        <div class="header">
+            <!-- Left Logo -->
+            <div class="header-logo">
+                <img src="abhi.png" alt="Institute Logo">
+            </div>
             
-            <!-- Header (Reg No, Institute Name, Logo) -->
-            <div class="header">
-                <div class="reg-no">
-                    Reg. No: <span contenteditable="true"></span>
+            <!-- Centered Content -->
+            <div class="header-content">
+                <!-- Name Updated for Bigger Size & Single Line -->
+                <h1>EXAMEDGE INSTITUTE</h1>
+                <p class="powered">POWERED BY ABHINAY PRATAP (MATHS MYSTIC)</p>
+                
+                <!-- BOLD Address with SVG Icon -->
+                <div class="header-info">
+                    <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    ADDRESS: CHAUPARIYA DHARAMPUR RAVINDRANAGAR KUSHINAGAR
                 </div>
-                <div class="institute-info">
-                    <h1>EXAMEDGE INSTITUTE</h1>
-                    <p>ADDRESS: CHAUPARIYA DHARAMPUR RAVINDRANAGAR KUSHINAGAR</p>
-                </div>
-                <div class="logo-box">
-                    <!-- Right Side Logo -->
-                    <img src="abhinay.png" alt="Logo">
+                
+                <!-- BOLD Contact with SVG Icon -->
+                <div class="header-info">
+                    <svg viewBox="0 0 24 24" fill="#000"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    CONTACT: 9670078465 , 9670078464
                 </div>
             </div>
+        </div>
 
-            <!-- Title and Passport Photo Box -->
-            <div class="title-photo-row">
-                <div class="form-title">STUDENT REGISTRATION FORM</div>
+        <div class="content-wrapper">
+            <div class="black-box-wrapper">
+                <div class="black-box">STUDENT REGISTRATION FORM</div>
+            </div>
+
+            <!-- Top Form Area (Lines stop at photo box) -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                 
+                <div style="width: calc(100% - 145px);">
+                    <div class="form-group">
+                        <label>1. Full Name of the Student:</label>
+                        <div class="form-line"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group" style="width: 45%;">
+                            <label>2. Date of Birth:</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group" style="width: 25%;">
+                            <label>Gender:</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group" style="width: 25%;">
+                            <label>Blood Group:</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>3. Father's Name:</label>
+                        <div class="form-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>4. Mother's Name:</label>
+                        <div class="form-line"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group" style="width: 48%;">
+                            <label>5. Category (Gen/OBC/SC/ST):</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group" style="width: 48%;">
+                            <label>Nationality:</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passport Size Photo Box -->
                 <div class="photo-box">
                     Affix Recent<br>Passport Size<br>Photograph
                 </div>
             </div>
 
-            <!-- Form Fields (Fixed Layout) -->
-            <div class="form-body">
+            <!-- Bottom Form Area (Lines go full width to the right end) -->
+            <div style="width: 100%; margin-top: 5px;">
                 
-                <div class="form-row">
-                    <div class="form-label">1. Full Name of the Student:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="row">
+                    <div class="form-group" style="width: 48%;">
+                        <label>6. Aadhar Number:</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group" style="width: 48%;">
+                        <label>7. Medium of Study (Hindi/Eng):</label>
+                        <div class="form-line"></div>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label" style="width: 20%;">2. Date of Birth:</div>
-                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
-                    
-                    <div class="form-label">Gender:</div>
-                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
-                    
-                    <div class="form-label">Blood Group:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="row">
+                    <div class="form-group" style="width: 48%;">
+                        <label>8. Mobile Number:</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group" style="width: 48%;">
+                        <label>WhatsApp No:</label>
+                        <div class="form-line"></div>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label">3. Father's Name:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="form-group">
+                    <label>9. Email Address:</label>
+                    <div class="form-line"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label>10. Complete Address:</label>
+                    <div class="form-line"></div>
+                </div>
+                <div class="form-group"><div class="form-line"></div></div>
+
+                <div class="row">
+                    <div class="form-group" style="width: 55%;">
+                        <label>11. Course / Class Applying For:</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group" style="width: 42%;">
+                        <label>Target Exam:</label>
+                        <div class="form-line"></div>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label">4. Mother's Name:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="form-group">
+                    <label>12. Previous School/College Name:</label>
+                    <div class="form-line"></div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label" style="width: 25%;">5. Category (Gen/OBC/SC/ST):</div>
-                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
-                    
-                    <div class="form-label">Nationality:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="row">
+                    <div class="form-group" style="width: 48%;">
+                        <label>13. Year of Passing:</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group" style="width: 48%;">
+                        <label>Percentage / Grade Obtained:</label>
+                        <div class="form-line"></div>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label" style="width: 20%;">6. Mobile Number:</div>
-                    <div class="input-line" contenteditable="true" style="margin-right: 15px;"></div>
-                    
-                    <div class="form-label">WhatsApp No:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="row">
+                    <div class="form-group" style="width: 48%;">
+                        <label>14. Father's Occupation:</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group" style="width: 48%;">
+                        <label>Annual Family Income:</label>
+                        <div class="form-line"></div>
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label">7. Email Address:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <div class="form-group">
+                    <label>15. Subjects Opted for Study:</label>
+                    <div class="form-line"></div>
+                </div>
+                <div class="form-group"><div class="form-line"></div></div>
+
+            </div>
+            
+            <div style="flex: 1;"></div> <!-- Spacer pushes signatures to bottom -->
+
+            <div class="signature-section">
+                <div class="sig-box">Date & Place</div>
+                <div class="sig-box">Student's Signature</div>
+                <div class="sig-box">Parent's / Guardian's Signature</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2 ================= -->
+    <div class="page" style="display: flex; flex-direction: column;">
+        
+        <!-- Watermark for Page 2 -->
+        <div class="watermark-container">
+            <div class="watermark">EXAMEDGE INSTITUTE</div>
+        </div>
+
+        <div class="header" style="justify-content: center; border-bottom: 2px solid #000;">
+            <div class="header-content" style="padding: 0;">
+                <!-- Updated Name Here As Well -->
+                <h1 style="white-space: nowrap; font-size: 38px;">EXAMEDGE INSTITUTE</h1>
+                <p style="font-size: 16px; font-weight: bold; margin-top: 5px;">INSTITUTE INSTRUCTIONS & FACILITIES</p>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 10px;">
+            <h2>Important Instructions:</h2>
+            <ul>
+                <li>Please fill out the form carefully in <strong>BLOCK (Capital) letters</strong> only.</li>
+                <li>Paste one recent passport-size color photograph in the given box (do not staple).</li>
+                <li>Submit a photocopy of your Aadhar Card and previous year's marksheet along with this form.</li>
+                <li>Fees once paid will not be refunded or transferred under any circumstances.</li>
+                <li>The institute reserves the right to cancel the admission in case of indiscipline.</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h2>Our Facilities:</h2>
+            <ul>
+                <li>Specialized foundation batches (Prakram, Sankalp, Lakshya) for competitive & board exams.</li>
+                <li>Expert faculty guidance including General Studies and Science by Bholu Chaubey.</li>
+                <li>Automated multiple-choice test papers and customized digital formula sheets.</li>
+                <li>Doubt-solving sessions, career counseling, and smart study materials provided.</li>
+                <li>Merchandise available for top-performing students.</li>
+            </ul>
+        </div>
+
+        <div style="flex: 1;"></div> <!-- Spacer pushes footer to bottom -->
+
+        <!-- Bottom Footer with Image Icons -->
+        <div class="social-footer">
+            <div class="social-links">
+                <!-- YouTube -->
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg>
+                    <span>ABHINAY_PRATAP_MATHS</span>
+                </div>
+                
+                <!-- Telegram -->
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24" fill="#0088cc"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.96 1.25-5.54 3.67-.52.36-1 .54-1.42.53-.47-.01-1.37-.26-2.03-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.98-.75 3.84-1.67 6.4-2.77 7.68-3.3 3.65-1.51 4.41-1.78 4.9-1.79.11 0 .36.03.5.15.11.1.15.23.16.35-.01.07-.01.18-.03.3z"/></svg>
+                    <span>ABHINAY PRATAP MATHS</span>
+                </div>
+                
+                <!-- WhatsApp -->
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.46 14.18c-.23.65-1.32 1.23-1.85 1.35-.5.11-1.15.22-3.39-.7-2.69-1.11-4.41-3.87-4.55-4.05-.13-.18-1.08-1.44-1.08-2.75s.68-1.96.93-2.23c.25-.27.54-.34.72-.34.18 0 .36 0 .52.02.18.02.43-.07.65.48.23.57.77 1.88.84 2.02.07.13.11.29.02.48-.09.18-.13.29-.27.45-.13.16-.29.34-.41.48-.13.14-.27.29-.11.57.16.27.7 1.15 1.5 1.87.97.88 1.84 1.15 2.11 1.29.27.13.43.11.59-.07.16-.18.7-81.82 1.04.82.23.23.23.63-.09.75-.32.11-2.02.95-2.02.95"/></svg>
+                    <span>ABHINAY PRATAP CHAUBEY</span>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-label">8. Complete Address:</div>
-                    <div class="input-line" contenteditable="true"></div>
-                </div>
-                <div class="form-row">
-                    <div class="input-line" contenteditable="true"></div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-label" style="width: 35%;">9. Course / Class Applying For:</div>
-                    <div class="input-line" contenteditable="true"></div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-label" style="width: 30%;">10. Previous School Name:</div>
-                    <div class="input-line" contenteditable="true"></div>
+                <!-- Website -->
+                <div class="social-item">
+                    <svg viewBox="0 0 24 24" fill="#555"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.23-1.79l4.77 4.77V16c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.36-.28-.82-.4-1.3-.4H15v-3c0-.55-.45-1-1-1h-4v-2h2c1.1 0 2-.9 2-2V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
+                    <span>EXAMEDGE INSTITUTE.IN</span>
                 </div>
             </div>
-
-            <!-- Instructions Section -->
-            <div class="instructions">
-                <h4>IMPORTANT INSTRUCTIONS:</h4>
-                <ul>
-                    <li>Please fill out the form carefully in <strong>BLOCK (Capital) letters</strong> only.</li>
-                    <li>Paste one recent passport-size color photograph in the given box (do not staple).</li>
-                    <li>Submit a photocopy of your Aadhar Card and previous year's marksheet along with this form.</li>
-                    <li>Fees once paid will not be refunded or transferred under any circumstances.</li>
-                    <li>The institute reserves the right to cancel the admission in case of indiscipline.</li>
-                </ul>
+            
+            <!-- Dual Banner Box (Half-Half) -->
+            <div class="banner-box">
+                <img src="ca1.png" alt="AP Mathematics Banner Left">
+                <img src="ca1.png" alt="AP Mathematics Banner Right">
             </div>
-
-            <!-- Signatures Section -->
-            <div class="signature-row">
-                <div class="sign-box">
-                    <div class="sign-line"></div>
-                    <div class="sign-text">Date & Place</div>
-                </div>
-                <div class="sign-box">
-                    <div class="sign-line"></div>
-                    <div class="sign-text">Student's Signature</div>
-                </div>
-                <div class="sign-box">
-                    <div class="sign-line"></div>
-                    <div class="sign-text">Parent's / Guardian's Signature</div>
-                </div>
-            </div>
-
         </div>
     </div>
 
