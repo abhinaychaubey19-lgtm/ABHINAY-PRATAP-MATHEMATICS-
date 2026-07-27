@@ -3,460 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExamEdge Institute - Registration Form</title>
+    <title>Simplification Smart Board PPT - AP Maths</title>
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #e0e0e0; margin: 0; padding: 20px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* A4 Page Layout */
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            background: white;
-            margin: 0 auto 20px auto;
-            padding: 15mm;
-            position: relative;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            border: 2px solid #000;
-        }
-        .page::after {
-            content: "";
-            position: absolute;
-            top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 1px solid #000;
-            pointer-events: none;
+        /* Base Dark Theme */
+        body { 
+            background-color: #111; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: #fff; 
+            overflow: hidden; 
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* WATERMARK STYLES - Single Line */
-        .watermark-container {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+        /* 16:9 Aspect Ratio for Smart Board */
+        .board-container {
+            width: 100vw;
+            height: 56.25vw; /* 16:9 aspect ratio */
+            max-height: 100vh;
+            max-width: 177.78vh;
+            background: radial-gradient(circle at center, #1C2541 0%, #0B132B 100%);
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+            transition: background 0.5s ease;
+        }
+
+        /* ================= LIGHT THEME (WHITE) ================= */
+        body.light-mode { background-color: #fff; color: #000; }
+        .light-mode .board-container { background: #f8f9fa; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
+        .light-mode .q-english { color: #d32f2f; text-shadow: none; }
+        .light-mode .q-hindi { color: #111; text-shadow: none; }
+        .light-mode .question-number { color: #1976d2; text-shadow: none; }
+        .light-mode .option { background: #fff; border-color: #ccc; color: #000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .light-mode .option:hover, .light-mode .option.selected { background: #ffe0b2; border-color: #f57c00; color: #000; box-shadow: 0 0 10px rgba(245, 124, 0, 0.4); }
+        .light-mode .watermark { background: none; -webkit-text-fill-color: #000; opacity: 0.05; }
+        .light-mode .welcome-brand, .light-mode .welcome-small, .light-mode .chapter-title { color: #111; text-shadow: none; }
+        .light-mode .social-item { color: #111; text-shadow: none; }
+        .light-mode .slide-logo { border-color: #000; }
+
+        /* Floating Print & Settings Buttons */
+        .btn-group {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            background: linear-gradient(45deg, #00C9FF, #92FE9D);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
-            justify-content: center;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
+            gap: 8px;
+            transition: transform 0.2s;
         }
+        .action-btn:active { transform: scale(0.95); }
+        .settings-btn { background: linear-gradient(45deg, #ff9966, #ff5e62); color: #fff; }
+
+        /* Settings Panel */
+        .settings-panel {
+            position: fixed;
+            bottom: 120px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #ff5e62;
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1001;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            max-width: 320px;
+        }
+        .settings-panel.active { display: flex; }
+        .settings-panel h4 { color: #FCA311; margin-bottom: 5px; font-size: 14px; text-transform: uppercase; }
+        .theme-options { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+        .theme-btn { padding: 5px 10px; border: 1px solid #fff; background: transparent; color: #fff; border-radius: 5px; cursor: pointer; font-size: 12px; transition: 0.2s; }
+        .theme-btn:hover { background: #fff; color: #000; }
+
+        /* Full Screen Button */
+        .fs-btn { 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            z-index: 10; 
+            background: #E0E1DD; 
+            color: #000; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 40px Small Logo on Right Side */
+        .slide-logo {
+            position: absolute;
+            top: 2vw;
+            right: 2.5vw;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            z-index: 20;
+            background: #fff;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Colorful Diagonal Watermark */
         .watermark {
-            font-size: 60px; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 7vw;
             font-weight: 900;
-            text-transform: uppercase;
-            text-align: center;
-            transform: rotate(-45deg);
-            background: linear-gradient(45deg, #cc0000, #0000cc); 
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            background: linear-gradient(45deg, #FF512F, #DD2476, #4776E6, #8E54E9);
             -webkit-background-clip: text;
             color: transparent;
-            opacity: 0.18;
-            white-space: nowrap; 
+            opacity: 0.12;
         }
 
-        /* Header Section */
-        .header {
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1; 
-        }
+        /* Slides Layout */
+        #slides-container { width: 100%; height: 100%; }
         
-        /* Logo and Header Spacing */
-        .header-logo { 
-            width: 140px; 
-            flex-shrink: 0; 
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 3vw 6vw 5vw 6vw; 
+            flex-direction: column;
+            z-index: 2;
         }
-        .header-logo img { 
-            width: 130px; 
-            height: 130px; 
-            border-radius: 50%; 
-            border: 2px solid #000; 
-            object-fit: cover; 
-            background: #fff;
-        }
-        
-        .header-content { 
-            flex-grow: 1; 
-            text-align: center; 
-            padding-right: 60px; /* Balances the center alignment */
-        }
-        /* UPDATED: Bigger Size and Forced Single Line */
-        .header-content h1 { 
-            margin: 0; 
-            font-size: 38px; /* Increased size */
-            font-weight: 900; 
-            letter-spacing: 1px; 
-            color: #000; 
-            white-space: nowrap; /* Forces to single line */
-        }
-        .header-content p.powered { margin: 3px 0 8px 0; font-size: 12px; font-weight: bold; }
-        
-        /* Bold Address & Contact */
-        .header-info {
-            font-size: 12.5px;
-            font-weight: 900; 
-            margin: 5px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .header-info svg { width: 16px; height: 16px; }
+        .slide.active { display: flex; }
 
-        /* Black Box Title */
-        .black-box-wrapper { margin-bottom: 20px; position: relative; z-index: 1; }
-        .black-box { background: #000; color: #fff; display: inline-block; padding: 8px 15px; font-weight: bold; font-size: 14px; border-radius: 2px; }
+        /* Welcome & Thank You Slide Styling */
+        .center-slide { align-items: center; justify-content: center; padding: 0 !important; z-index: 5; text-align: center; }
 
-        /* Content Area */
-        .content-wrapper { position: relative; display: flex; flex-direction: column; flex: 1; z-index: 1; }
-        
-        /* Photo Box */
-        .photo-box {
-            width: 130px;
-            height: 165px;
-            border: 1.5px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 12px;
-            padding: 10px;
-            background: #fff;
-            margin-left: 15px;
-        }
+        .welcome-small { font-size: 2.5vw; color: #E0E1DD; letter-spacing: 2px; font-weight: bold; margin-bottom: 0.5vw; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .welcome-brand { font-size: 4.5vw; color: #fff; font-weight: 900; margin-bottom: 2.5vw; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .chapter-tag { font-size: 2.5vw; color: #FCA311; font-weight: bold; margin-bottom: 1vw; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .chapter-title { font-size: 7vw; background: linear-gradient(90deg, #FCA311, #ffeb3b, #FCA311); -webkit-background-clip: text; color: transparent; text-shadow: 2px 2px 20px rgba(252, 163, 17, 0.4); text-transform: uppercase; font-weight: 900; }
 
-        /* Form Fields */
-        .form-group { display: flex; align-items: flex-end; margin-bottom: 20px; width: 100%; }
-        .form-group label { font-weight: bold; font-size: 14px; margin-right: 10px; white-space: nowrap; }
-        .form-line { flex: 1; border-bottom: 1px dashed #000; height: 20px; }
-        
-        .row { display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px; }
-        .row .form-group { margin-bottom: 0; }
-        
-        /* Signature Area */
-        .signature-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            padding: 0 10px;
-            position: relative;
-            z-index: 1;
-        }
-        .sig-box { text-align: center; width: 28%; font-weight: bold; font-size: 14px; border-top: 1.5px solid #000; padding-top: 5px; }
+        .social-list { text-align: left; display: inline-flex; flex-direction: column; gap: 1.5vw; font-size: 2.2vw; margin-top: 2vw; font-weight: bold; }
+        .social-item { display: flex; align-items: center; color: #fff; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
 
-        /* ======== Page 2 Specifics ======== */
-        .info-box { border: 1.5px solid #000; padding: 15px; margin-bottom: 20px; position: relative; z-index: 1; }
-        .info-box h2 { margin-top: 0; font-size: 16px; text-decoration: underline; text-transform: uppercase; margin-bottom: 10px; }
-        .info-box ul { margin: 0; padding-left: 20px; }
-        .info-box li { font-size: 14px; margin-bottom: 8px; line-height: 1.5; font-weight: 500; }
-
-        /* Social Footer & Banner */
-        .social-footer { margin-top: auto; position: relative; z-index: 1; }
-        .social-links { 
-            display: flex; 
-            justify-content: space-between; 
-            border: 1.5px solid #000; 
-            padding: 15px 10px; 
-            background: #f9f9f9; 
-            margin-bottom: 15px;
-        }
-        .social-item { 
+        /* Scrollable Question Area */
+        .question-scroll-area {
             flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            font-size: 12px;
-            gap: 5px;
+            overflow-y: auto; 
+            padding-right: 1vw;
+            margin-bottom: 1.5vw;
         }
-        .social-item svg { width: 26px; height: 26px; }
-        .social-item span { font-weight: bold; font-size: 11px; margin-top: 3px; }
+        .question-scroll-area::-webkit-scrollbar { width: 0px; }
         
-        /* Dual Banner Box */
-        .banner-box { 
-            width: 100%; 
-            height: 220px; 
-            border: 1.5px solid #000; 
-            display: flex; 
-            background: #fff;
+        .q-english { 
+            font-size: clamp(2.2vw, 2.6vw, 3.2vw); 
+            color: #FCA311; 
+            font-weight: 900;
+            text-align: justify;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+            margin-bottom: 0.8vw;
+            line-height: 1.4;
         }
-        .banner-box img { 
-            width: 50%; 
-            height: 100%; 
-            object-fit: contain; 
+        
+        .q-hindi { 
+            font-size: clamp(2.5vw, 3vw, 3.8vw); 
+            color: #ffffff; 
+            font-weight: bold;
+            text-align: justify;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+            line-height: 1.5;
         }
-        .banner-box img:first-child {
-            border-right: 1.5px solid #000; 
+        
+        .question-number { color: #00C9FF; font-size: 1.1em; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-right: 8px; }
+
+        /* Premium Exam Tag at the End */
+        .exam-tag {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, #ff0844 0%, #ffb199 100%);
+            color: #fff;
+            font-size: 1.3vw;
+            padding: 0.3vw 1.2vw;
+            border-radius: 30px;
+            font-weight: 900;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+            margin-left: 15px;
+            vertical-align: middle;
+            white-space: nowrap;
+            border: 1px solid rgba(255,255,255,0.5);
+            text-shadow: none;
         }
 
+        /* Fixed Options Area */
+        .options-area { flex-shrink: 0; margin-bottom: 1vw; z-index: 10; }
+
+        /* 1. Vertical Layout */
+        .options-list { display: flex; flex-direction: column; gap: 0.6vw; width: fit-content; }
+        .options-list .option { min-width: 25vw; text-align: left; padding: 0.6vw 1.5vw; font-size: clamp(1.5vw, 2vw, 2.5vw); }
+
+        /* 2. Horizontal Layout */
+        .options-inline { display: flex; flex-direction: row; justify-content: space-between; gap: 1vw; width: 100%; }
+        .options-inline .option { flex: 1; text-align: center; padding: 0.8vw 0.5vw; font-size: clamp(1.4vw, 1.8vw, 2.2vw); }
+
+        .option { 
+            background: rgba(255, 255, 255, 0.08); 
+            border: 2px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 0.8vw; 
+            font-weight: bold;
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        .option:hover, .option.selected { 
+            background: rgba(252, 163, 17, 0.25); 
+            border-color: #FCA311; 
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(252, 163, 17, 0.3);
+        }
+
+        /* Author Tag */
+        .author-tag {
+            position: absolute; bottom: 3vw; left: 0;
+            background: linear-gradient(90deg, #FCA311, #d48100);
+            color: #000; padding: 0.6vw 2vw 0.6vw 2.5vw;
+            border-radius: 0 30px 30px 0; font-weight: 900;
+            font-size: 1.2vw; box-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+            border-left: 6px solid #fff; z-index: 10;
+        }
+
+        /* Controls */
+        .controls { position: absolute; bottom: 3vw; right: 3vw; z-index: 10; display: flex; gap: 1vw; }
+        .nav-btn { background: #FCA311; color: #000; border: none; padding: 1vw 2vw; font-size: 1.5vw; font-weight: bold; border-radius: 0.5vw; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .nav-btn:hover { background: #e59400; }
+        .nav-btn:disabled { background: #555; color: #888; cursor: not-allowed; }
+
+        /* Magic PDF Print Setting */
         @media print {
-            body { background: none; padding: 0; }
-            .page { box-shadow: none; margin: 0; page-break-after: always; }
+            @page { size: 16in 9in landscape; margin: 0; }
+            body, html { height: auto !important; overflow: visible !important; display: block !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .board-container { width: 100vw !important; max-width: none !important; height: auto !important; max-height: none !important; box-shadow: none !important; display: block !important; overflow: visible !important; }
+            #slides-container { display: block !important; overflow: visible !important; }
+            .slide { display: flex !important; page-break-after: always !important; break-after: page !important; page-break-inside: avoid !important; width: 100vw !important; height: 100vh !important; position: relative !important; overflow: hidden !important; }
+            .controls, .fs-btn, .btn-group, .settings-panel { display: none !important; }
+            .slide-logo { position: fixed !important; }
+            .watermark { position: fixed !important; }
+            .question-scroll-area { overflow-y: visible !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ================= PAGE 1 ================= -->
-    <div class="page" style="display: flex; flex-direction: column;">
-        
-        <!-- Watermark -->
-        <div class="watermark-container">
-            <div class="watermark">EXAMEDGE INSTITUTE</div>
+    <div class="btn-group">
+        <button class="action-btn settings-btn" onclick="toggleSettings()">⚙️ Theme Settings</button>
+        <button class="action-btn" onclick="window.print()">
+            <svg fill="#000" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 8H5V3H19V8ZM16 5H8V6H16V5ZM21 10C19.895 10 19 10.895 19 12C19 13.105 19.895 14 21 14C22.105 14 23 13.105 23 12C23 10.895 22.105 10 21 10ZM18 19H6V14H18V19ZM3 10C1.343 10 0 11.343 0 13V17H4V21H20V17H24V13C24 11.343 22.657 10 21 10H3Z"/></svg>
+            Download PPT (PDF)
+        </button>
+    </div>
+
+    <div class="settings-panel" id="settingsMenu">
+        <h4>Background Color</h4>
+        <div class="theme-options">
+            <button class="theme-btn" onclick="setBg('radial-gradient(circle at center, #1C2541 0%, #0B132B 100%)', false)">Blue</button>
+            <button class="theme-btn" onclick="setBg('radial-gradient(circle at center, #111 0%, #000 100%)', false)">Black</button>
+            <button class="theme-btn" onclick="setBg('radial-gradient(circle at center, #1E3B20 0%, #0A170B 100%)', false)">Green</button>
+            <button class="theme-btn" onclick="setBg('radial-gradient(circle at center, #3a0000 0%, #1a0000 100%)', false)">Dark Red</button>
+            <button class="theme-btn" onclick="setBg('radial-gradient(circle at center, #2b003a 0%, #0a001a 100%)', false)">Purple</button>
+            <button class="theme-btn" onclick="setBg('#ffffff', true)" style="background:#fff; color:#000; font-weight:bold;">White ☀️</button>
         </div>
-
-        <div class="header">
-            <!-- Left Logo -->
-            <div class="header-logo">
-                <img src="abhi.png" alt="Institute Logo">
-            </div>
-            
-            <!-- Centered Content -->
-            <div class="header-content">
-                <!-- Name Updated for Bigger Size & Single Line -->
-                <h1>EXAMEDGE INSTITUTE</h1>
-                <p class="powered">POWERED BY ABHINAY PRATAP (MATHS MYSTIC)</p>
-                
-                <!-- BOLD Address with SVG Icon -->
-                <div class="header-info">
-                    <svg viewBox="0 0 24 24" fill="#000"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    ADDRESS: CHAUPARIYA DHARAMPUR RAVINDRANAGAR KUSHINAGAR
-                </div>
-                
-                <!-- BOLD Contact with SVG Icon -->
-                <div class="header-info">
-                    <svg viewBox="0 0 24 24" fill="#000"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    CONTACT: 9670078465 , 9670078464
-                </div>
-            </div>
-        </div>
-
-        <div class="content-wrapper">
-            <div class="black-box-wrapper">
-                <div class="black-box">STUDENT REGISTRATION FORM</div>
-            </div>
-
-            <!-- Top Form Area (Lines stop at photo box) -->
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                
-                <div style="width: calc(100% - 145px);">
-                    <div class="form-group">
-                        <label>1. Full Name of the Student:</label>
-                        <div class="form-line"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group" style="width: 45%;">
-                            <label>2. Date of Birth:</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group" style="width: 25%;">
-                            <label>Gender:</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group" style="width: 25%;">
-                            <label>Blood Group:</label>
-                            <div class="form-line"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>3. Father's Name:</label>
-                        <div class="form-line"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>4. Mother's Name:</label>
-                        <div class="form-line"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group" style="width: 48%;">
-                            <label>5. Category (Gen/OBC/SC/ST):</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group" style="width: 48%;">
-                            <label>Nationality:</label>
-                            <div class="form-line"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passport Size Photo Box -->
-                <div class="photo-box">
-                    Affix Recent<br>Passport Size<br>Photograph
-                </div>
-            </div>
-
-            <!-- Bottom Form Area (Lines go full width to the right end) -->
-            <div style="width: 100%; margin-top: 5px;">
-                
-                <div class="row">
-                    <div class="form-group" style="width: 48%;">
-                        <label>6. Aadhar Number:</label>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group" style="width: 48%;">
-                        <label>7. Medium of Study (Hindi/Eng):</label>
-                        <div class="form-line"></div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group" style="width: 48%;">
-                        <label>8. Mobile Number:</label>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group" style="width: 48%;">
-                        <label>WhatsApp No:</label>
-                        <div class="form-line"></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>9. Email Address:</label>
-                    <div class="form-line"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label>10. Complete Address:</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group"><div class="form-line"></div></div>
-
-                <div class="row">
-                    <div class="form-group" style="width: 55%;">
-                        <label>11. Course / Class Applying For:</label>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group" style="width: 42%;">
-                        <label>Target Exam:</label>
-                        <div class="form-line"></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>12. Previous School/College Name:</label>
-                    <div class="form-line"></div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group" style="width: 48%;">
-                        <label>13. Year of Passing:</label>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group" style="width: 48%;">
-                        <label>Percentage / Grade Obtained:</label>
-                        <div class="form-line"></div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group" style="width: 48%;">
-                        <label>14. Father's Occupation:</label>
-                        <div class="form-line"></div>
-                    </div>
-                    <div class="form-group" style="width: 48%;">
-                        <label>Annual Family Income:</label>
-                        <div class="form-line"></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>15. Subjects Opted for Study:</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group"><div class="form-line"></div></div>
-
-            </div>
-            
-            <div style="flex: 1;"></div> <!-- Spacer pushes signatures to bottom -->
-
-            <div class="signature-section">
-                <div class="sig-box">Date & Place</div>
-                <div class="sig-box">Student's Signature</div>
-                <div class="sig-box">Parent's / Guardian's Signature</div>
-            </div>
+        <h4>Font Style</h4>
+        <div class="theme-options">
+            <button class="theme-btn" onclick="setFont('Segoe UI, sans-serif')">Sans (Modern)</button>
+            <button class="theme-btn" onclick="setFont('Georgia, serif')">Serif (Classic)</button>
+            <button class="theme-btn" onclick="setFont('Courier New, monospace')">Mono (Typewriter)</button>
         </div>
     </div>
 
-    <!-- ================= PAGE 2 ================= -->
-    <div class="page" style="display: flex; flex-direction: column;">
-        
-        <!-- Watermark for Page 2 -->
-        <div class="watermark-container">
-            <div class="watermark">EXAMEDGE INSTITUTE</div>
+    <div class="board-container" id="board">
+        <img src="abhinay.png" alt="Logo" class="slide-logo" onerror="this.style.display='none'">
+        <div class="watermark">ABHINAY PRATAP MATHS</div>
+        <button class="fs-btn" onclick="toggleFullScreen()">⛶ Full Screen</button>
+
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">◀ Prev</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next ▶</button>
         </div>
 
-        <div class="header" style="justify-content: center; border-bottom: 2px solid #000;">
-            <div class="header-content" style="padding: 0;">
-                <!-- Updated Name Here As Well -->
-                <h1 style="white-space: nowrap; font-size: 38px;">EXAMEDGE INSTITUTE</h1>
-                <p style="font-size: 16px; font-weight: bold; margin-top: 5px;">INSTITUTE INSTRUCTIONS & FACILITIES</p>
-            </div>
-        </div>
-
-        <div class="info-box" style="margin-top: 10px;">
-            <h2>Important Instructions:</h2>
-            <ul>
-                <li>Please fill out the form carefully in <strong>BLOCK (Capital) letters</strong> only.</li>
-                <li>Paste one recent passport-size color photograph in the given box (do not staple).</li>
-                <li>Submit a photocopy of your Aadhar Card and previous year's marksheet along with this form.</li>
-                <li>Fees once paid will not be refunded or transferred under any circumstances.</li>
-                <li>The institute reserves the right to cancel the admission in case of indiscipline.</li>
-            </ul>
-        </div>
-
-        <div class="info-box">
-            <h2>Our Facilities:</h2>
-            <ul>
-                <li>Specialized foundation batches (Prakram, Sankalp, Lakshya) for competitive & board exams.</li>
-                <li>Expert faculty guidance including General Studies and Science by Bholu Chaubey.</li>
-                <li>Automated multiple-choice test papers and customized digital formula sheets.</li>
-                <li>Doubt-solving sessions, career counseling, and smart study materials provided.</li>
-                <li>Merchandise available for top-performing students.</li>
-            </ul>
-        </div>
-
-        <div style="flex: 1;"></div> <!-- Spacer pushes footer to bottom -->
-
-        <!-- Bottom Footer with Image Icons -->
-        <div class="social-footer">
-            <div class="social-links">
-                <!-- YouTube -->
-                <div class="social-item">
-                    <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg>
-                    <span>ABHINAY_PRATAP_MATHS</span>
-                </div>
-                
-                <!-- Telegram -->
-                <div class="social-item">
-                    <svg viewBox="0 0 24 24" fill="#0088cc"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.96 1.25-5.54 3.67-.52.36-1 .54-1.42.53-.47-.01-1.37-.26-2.03-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.98-.75 3.84-1.67 6.4-2.77 7.68-3.3 3.65-1.51 4.41-1.78 4.9-1.79.11 0 .36.03.5.15.11.1.15.23.16.35-.01.07-.01.18-.03.3z"/></svg>
-                    <span>ABHINAY PRATAP MATHS</span>
-                </div>
-                
-                <!-- WhatsApp -->
-                <div class="social-item">
-                    <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.46 14.18c-.23.65-1.32 1.23-1.85 1.35-.5.11-1.15.22-3.39-.7-2.69-1.11-4.41-3.87-4.55-4.05-.13-.18-1.08-1.44-1.08-2.75s.68-1.96.93-2.23c.25-.27.54-.34.72-.34.18 0 .36 0 .52.02.18.02.43-.07.65.48.23.57.77 1.88.84 2.02.07.13.11.29.02.48-.09.18-.13.29-.27.45-.13.16-.29.34-.41.48-.13.14-.27.29-.11.57.16.27.7 1.15 1.5 1.87.97.88 1.84 1.15 2.11 1.29.27.13.43.11.59-.07.16-.18.7-81.82 1.04.82.23.23.23.63-.09.75-.32.11-2.02.95-2.02.95"/></svg>
-                    <span>ABHINAY PRATAP CHAUBEY</span>
-                </div>
-
-                <!-- Website -->
-                <div class="social-item">
-                    <svg viewBox="0 0 24 24" fill="#555"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.23-1.79l4.77 4.77V16c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.36-.28-.82-.4-1.3-.4H15v-3c0-.55-.45-1-1-1h-4v-2h2c1.1 0 2-.9 2-2V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
-                    <span>EXAMEDGE INSTITUTE.IN</span>
-                </div>
-            </div>
-            
-            <!-- Dual Banner Box (Half-Half) -->
-            <div class="banner-box">
-                <img src="ca1.png" alt="AP Mathematics Banner Left">
-                <img src="ca1.png" alt="AP Mathematics Banner Right">
-            </div>
-        </div>
+        <div id="slides-container"></div>
     </div>
 
+    <script>
+        // 40 Real Exam Simplification Questions (Bilingual)
+        const questions = [
+            { exam: "SSC CGL 2023", q_en: "Find the value of: 25 × 4 - 30 ÷ 5", q_hi: "मान ज्ञात कीजिए: 25 × 4 - 30 ÷ 5", opt: ["A) 94", "B) 90", "C) 100", "D) 84"] },
+            { exam: "SSC CHSL 2022", q_en: "Simplify: 108 ÷ 36 × 4 + 2.5 × 4", q_hi: "सरल करें: 108 ÷ 36 × 4 + 2.5 × 4", opt: ["A) 12", "B) 22", "C) 32", "D) 42"] },
+            { exam: "RRB NTPC 2021", q_en: "What is the value of 72 ÷ 9 of 2 + 14?", q_hi: "72 ÷ 9 of 2 + 14 का मान क्या है?", opt: ["A) 18", "B) 22", "C) 30", "D) 46"] },
+            { exam: "UP Police 2024", q_en: "Calculate: (1/2) of 500 + 20% of 150", q_hi: "गणना करें: 500 का (1/2) + 150 का 20%", opt: ["A) 270", "B) 280", "C) 290", "D) 300"] },
+            { exam: "SSC MTS 2021", q_en: "Solve: 45 - [38 - {60 ÷ 3 - (6 - 9 ÷ 3) ÷ 3}]", q_hi: "हल करें: 45 - [38 - {60 ÷ 3 - (6 - 9 ÷ 3) ÷ 3}]", opt: ["A) 21", "B) 24", "C) 26", "D) 29"] },
+            { exam: "DSSSB 2022", q_en: "Find the sum of: 0.08 × 0.2 + 0.004", q_hi: "योग ज्ञात कीजिए: 0.08 × 0.2 + 0.004", opt: ["A) 0.012", "B) 0.020", "C) 0.016", "D) 0.200"] },
+            { exam: "SSC CPO 2023", q_en: "Evaluate: 5(1/2) + 3(1/4) - 2(1/8)", q_hi: "मूल्यांकन करें: 5(1/2) + 3(1/4) - 2(1/8)", opt: ["A) 6(3/8)", "B) 6(5/8)", "C) 7(1/8)", "D) 7(3/8)"] },
+            { exam: "IBPS Clerk 2021", q_en: "Simplify: 3.5 × 1.4 ÷ 0.7", q_hi: "सरल करें: 3.5 × 1.4 ÷ 0.7", opt: ["A) 7", "B) 7.5", "C) 8", "D) 8.5"] },
+            { exam: "SSC CGL Mains", q_en: "Find the value of: 1/(1×2) + 1/(2×3) + 1/(3×4)", q_hi: "मान ज्ञात करें: 1/(1×2) + 1/(2×3) + 1/(3×4)", opt: ["A) 1/2", "B) 2/3", "C) 3/4", "D) 4/5"] },
+            { exam: "RRB Group D", q_en: "Calculate: 0.6 × 0.6 + 0.4 × 0.4 + 2 × 0.6 × 0.4", q_hi: "गणना करें: 0.6 × 0.6 + 0.4 × 0.4 + 2 × 0.6 × 0.4", opt: ["A) 0.5", "B) 1", "C) 1.5", "D) 2"] },
+            { exam: "UP SI 2021", q_en: "Evaluate: √1024 + √576 - √256", q_hi: "मूल्यांकन करें: √1024 + √576 - √256", opt: ["A) 30", "B) 40", "C) 50", "D) 60"] },
+            { exam: "SSC CHSL 2023", q_en: "Find the value: 12³ + 5³ - 10³", q_hi: "मान ज्ञात करें: 12³ + 5³ - 10³", opt: ["A) 753", "B) 853", "C) 953", "D) 1053"] },
+            { exam: "SSC CGL 2022", q_en: "If √(1 + 25/144) = 1 + x/12, find x.", q_hi: "यदि √(1 + 25/144) = 1 + x/12 है, तो x का मान ज्ञात करें।", opt: ["A) 1", "B) 2", "C) 3", "D) 5"] },
+            { exam: "Delhi Police", q_en: "Simplify: ³√512 + √169", q_hi: "सरल करें: ³√512 + √169", opt: ["A) 21", "B) 23", "C) 25", "D) 27"] },
+            { exam: "SSC MTS 2022", q_en: "Find the value of (16² - 12²) / 4", q_hi: "(16² - 12²) / 4 का मान ज्ञात करें", opt: ["A) 22", "B) 24", "C) 26", "D) 28"] },
+            { exam: "RRB ALP 2022", q_en: "If x + 1/x = 4, find the value of x² + 1/x².", q_hi: "यदि x + 1/x = 4 है, तो x² + 1/x² का मान ज्ञात करें।", opt: ["A) 12", "B) 14", "C) 16", "D) 18"] },
+            { exam: "SSC CGL 2021", q_en: "If a = 10, b = 12, find (a³ + b³) / (a² - ab + b²)", q_hi: "यदि a = 10, b = 12, तो (a³ + b³) / (a² - ab + b²) का मान ज्ञात करें।", opt: ["A) 20", "B) 22", "C) 24", "D) 26"] },
+            { exam: "Banking Exams", q_en: "Solve: 999 1/7 + 999 2/7 + 999 3/7 + 999 4/7 + 999 5/7 + 999 6/7", q_hi: "हल करें: 999 1/7 + 999 2/7 + ... + 999 6/7", opt: ["A) 5994", "B) 5997", "C) 5999", "D) 6000"] },
+            { exam: "SSC CHSL 2021", q_en: "Evaluate: [(999+555)² - (999-555)²] / (999×555)", q_hi: "मूल्यांकन करें: [(999+555)² - (999-555)²] / (999×555)", opt: ["A) 2", "B) 4", "C) 6", "D) 8"] },
+            { exam: "RRB NTPC 2021", q_en: "Find the value: 1.05 × 1.05 - 0.95 × 0.95", q_hi: "मान ज्ञात करें: 1.05 × 1.05 - 0.95 × 0.95", opt: ["A) 0.1", "B) 0.2", "C) 0.3", "D) 0.4"] },
+            { exam: "UP Police 2024", q_en: "Simplify: 450 ÷ 15 × 3 + 20", q_hi: "सरल करें: 450 ÷ 15 × 3 + 20", opt: ["A) 90", "B) 100", "C) 110", "D) 120"] },
+            { exam: "SSC CPO 2022", q_en: "Find x if 25% of 400 + 30% of x = 160", q_hi: "यदि 400 का 25% + x का 30% = 160 है, तो x ज्ञात करें।", opt: ["A) 150", "B) 200", "C) 250", "D) 300"] },
+            { exam: "SSC MTS 2023", q_en: "Evaluate: (15 × 15 + 10 × 10 - 15 × 10) / (15³ + 10³)", q_hi: "(15 × 15 + 10 × 10 - 15 × 10) / (15³ + 10³) का मान क्या है?", opt: ["A) 1/5", "B) 1/15", "C) 1/25", "D) 1/35"] },
+            { exam: "Railway Group D", q_en: "Solve: √144 × √81 - √225", q_hi: "हल करें: √144 × √81 - √225", opt: ["A) 83", "B) 93", "C) 103", "D) 113"] },
+            { exam: "DSSSB 2022", q_en: "Calculate: 18.5 × 14 - 15.5 × 14", q_hi: "गणना करें: 18.5 × 14 - 15.5 × 14", opt: ["A) 30", "B) 35", "C) 42", "D) 45"] },
+            { exam: "SSC CGL Mains", q_en: "If x - 1/x = 3, find x² + 1/x²", q_hi: "यदि x - 1/x = 3, तो x² + 1/x² का मान ज्ञात करें", opt: ["A) 7", "B) 9", "C) 11", "D) 13"] },
+            { exam: "SSC CHSL 2023", q_en: "Find the value of: 8³ ÷ 8² × 8", q_hi: "मान ज्ञात करें: 8³ ÷ 8² × 8", opt: ["A) 16", "B) 32", "C) 64", "D) 128"] },
+            { exam: "UP SI 2021", q_en: "Simplify: 0.125 + 0.027", q_hi: "सरल करें: 0.125 + 0.027", opt: ["A) 0.152", "B) 0.162", "C) 0.172", "D) 0.182"] },
+            { exam: "Bank Clerk", q_en: "What is 15% of 15% of 10000?", q_hi: "10000 के 15% का 15% कितना होगा?", opt: ["A) 175", "B) 200", "C) 225", "D) 250"] },
+            { exam: "SSC CPO 2021", q_en: "Solve: (3/4 + 1/2) ÷ (5/4 - 1/2)", q_hi: "हल करें: (3/4 + 1/2) ÷ (5/4 - 1/2)", opt: ["A) 1", "B) 1.5", "C) 1.66", "D) 2"] },
+            { exam: "SSC CGL 2022", q_en: "Find the value of x: 4^x = 1024", q_hi: "x का मान ज्ञात करें: 4^x = 1024", opt: ["A) 4", "B) 5", "C) 6", "D) 7"] },
+            { exam: "RRB NTPC", q_en: "Evaluate: 1111 ÷ 11 × 5", q_hi: "मूल्यांकन करें: 1111 ÷ 11 × 5", opt: ["A) 505", "B) 555", "C) 105", "D) 501"] },
+            { exam: "Delhi Police", q_en: "Calculate: 2.5% of 4000", q_hi: "गणना करें: 4000 का 2.5%", opt: ["A) 50", "B) 75", "C) 100", "D) 125"] },
+            { exam: "SSC MTS 2021", q_en: "Simplify: 1 - [1 - {1 - (1 - 1)}]", q_hi: "सरल करें: 1 - [1 - {1 - (1 - 1)}]", opt: ["A) 0", "B) 1", "C) 2", "D) -1"] },
+            { exam: "UP Police Const.", q_en: "Find the sum: 1 + 2 + 3 + ... + 100", q_hi: "योग ज्ञात करें: 1 + 2 + 3 + ... + 100", opt: ["A) 5000", "B) 5050", "C) 5100", "D) 5150"] },
+            { exam: "SSC CGL 2023", q_en: "What is the square root of 0.000144?", q_hi: "0.000144 का वर्गमूल क्या है?", opt: ["A) 0.12", "B) 0.012", "C) 0.0012", "D) 1.2"] },
+            { exam: "IBPS PO", q_en: "Solve: (8 + 4 - 2) × (17 - 12) × 10", q_hi: "हल करें: (8 + 4 - 2) × (17 - 12) × 10", opt: ["A) 400", "B) 450", "C) 500", "D) 550"] },
+            { exam: "SSC CHSL 2022", q_en: "Evaluate: 45% of 300 + 30% of 450", q_hi: "मूल्यांकन करें: 300 का 45% + 450 का 30%", opt: ["A) 240", "B) 250", "C) 260", "D) 270"] },
+            { exam: "DSSSB 2021", q_en: "Simplify: 2/3 of 3/4 of 4/5 of 500", q_hi: "सरल करें: 500 के 4/5 के 3/4 का 2/3", opt: ["A) 150", "B) 200", "C) 250", "D) 300"] },
+            { exam: "SSC CGL Mains", q_en: "Find the value of: 9.6 × 9.6 - 0.4 × 0.4", q_hi: "मान ज्ञात करें: 9.6 × 9.6 - 0.4 × 0.4", opt: ["A) 90", "B) 92", "C) 94", "D) 96"] }
+        ];
+
+        const container = document.getElementById('slides-container');
+        let currentSlide = 0;
+        let totalSlides = questions.length + 2; 
+
+        // Welcome Slide
+        let html = `
+            <div class="slide center-slide active" id="slide-0">
+                <div class="welcome-small">WELCOME TO</div>
+                <div class="welcome-brand">ABHINAY PRATAP MATHS</div>
+                <div class="chapter-tag">CHAPTER 02</div>
+                <div class="chapter-title">SIMPLIFICATION</div>
+            </div>
+        `;
+
+        // Question Slides
+        questions.forEach((item, index) => {
+            let totalLength = item.q_hi.length + item.q_en.length;
+            let optionsClass = (totalLength > 150) ? 'options-inline' : 'options-list';
+            
+            html += `
+                <div class="slide q-slide" id="slide-${index + 1}">
+                    <div class="question-scroll-area">
+                        <div class="q-english"><span class="question-number">Q${index + 1}.</span> ${item.q_en}</div>
+                        <div class="q-hindi">${item.q_hi} <span class="exam-tag">📌 ${item.exam}</span></div>
+                    </div>
+                    <div class="teaching-space"></div>
+                    <div class="options-area ${optionsClass}">
+                        <div class="option" onclick="selectOption(this)">1) ${item.opt[0].replace('A) ','')}</div>
+                        <div class="option" onclick="selectOption(this)">2) ${item.opt[1].replace('B) ','')}</div>
+                        <div class="option" onclick="selectOption(this)">3) ${item.opt[2].replace('C) ','')}</div>
+                        <div class="option" onclick="selectOption(this)">4) ${item.opt[3].replace('D) ','')}</div>
+                    </div>
+                    <div class="author-tag">ABHINAY PRATAP (MATHS EXPERT)</div>
+                </div>
+            `;
+        });
+
+        // Thank You Slide
+        html += `
+            <div class="slide center-slide" id="slide-${totalSlides - 1}">
+                <h1 class="chapter-title" style="font-size: 7vw; margin-bottom: 2vw;">THANK YOU</h1>
+                <p style="font-size: 2.8vw; color: #FCA311; margin-bottom: 1vw; font-weight: bold; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);">FOLLOW US ON</p>
+                <div class="social-list">
+                    <div class="social-item"><svg viewBox="0 0 24 24" fill="#FF0000" width="3.5vw" height="3.5vw" style="margin-right: 1.5vw;"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg>ABHINAY PRATAP MATHS</div>
+                    <div class="social-item"><svg viewBox="0 0 24 24" fill="#0088cc" width="3.5vw" height="3.5vw" style="margin-right: 1.5vw;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.96 1.25-5.54 3.67-.52.36-1 .54-1.42.53-.47-.01-1.37-.26-2.03-.48-.81-.27-1.45-.41-1.39-.87.03-.24.36-.49.98-.75 3.84-1.67 6.4-2.77 7.68-3.3 3.65-1.51 4.41-1.78 4.9-1.79.11 0 .36.03.5.15.11.1.15.23.16.35-.01.07-.01.18-.03.3z"/></svg>ABHINAY PRATAP MATHS</div>
+                    <div class="social-item"><svg viewBox="0 0 24 24" fill="#25D366" width="3.5vw" height="3.5vw" style="margin-right: 1.5vw;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m5.46 14.18c-.23.65-1.32 1.23-1.85 1.35-.5.11-1.15.22-3.39-.7-2.69-1.11-4.41-3.87-4.55-4.05-.13-.18-1.08-1.44-1.08-2.75s.68-1.96.93-2.23c.25-.27.54-.34.72-.34.18 0 .36 0 .52.02.18.02.43-.07.65.48.23.57.77 1.88.84 2.02.07.13.11.29.02.48-.09.18-.13.29-.27.45-.13.16-.29.34-.41.48-.13.14-.27.29-.11.57.16.27.7 1.15 1.5 1.87.97.88 1.84 1.15 2.11 1.29.27.13.43.11.59-.07.16-.18.7-81.82 1.04.82.23.23.23.63-.09.75-.32.11-2.02.95-2.02.95"/></svg>ABHINAY PRATAP CHAUBEY</div>
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = html;
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+                currentSlide++;
+                document.getElementById(`slide-${currentSlide}`).classList.add('active');
+                updateButtons();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+                currentSlide--;
+                document.getElementById(`slide-${currentSlide}`).classList.add('active');
+                updateButtons();
+            }
+        }
+
+        function selectOption(element) {
+            let siblings = element.parentElement.children;
+            for(let i=0; i<siblings.length; i++) {
+                siblings[i].classList.remove('selected');
+                siblings[i].style.backgroundColor = "";
+                siblings[i].style.borderColor = "";
+                siblings[i].style.boxShadow = "none";
+            }
+            element.classList.add('selected');
+            if(!document.body.classList.contains('light-mode')) {
+                element.style.backgroundColor = "rgba(252, 163, 17, 0.25)";
+                element.style.borderColor = "#FCA311";
+                element.style.boxShadow = "0 0 15px rgba(252, 163, 17, 0.3)";
+            }
+        }
+
+        function toggleFullScreen() {
+            let elem = document.documentElement;
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else { document.exitFullscreen(); }
+        }
+
+        function toggleSettings() {
+            const menu = document.getElementById('settingsMenu');
+            menu.classList.toggle('active');
+        }
+
+        function setBg(bgValue, isLight) {
+            document.getElementById('board').style.background = bgValue;
+            if(isLight) document.body.classList.add('light-mode');
+            else document.body.classList.remove('light-mode');
+        }
+
+        function setFont(fontValue) { document.body.style.fontFamily = fontValue; }
+
+        document.addEventListener('keydown', function(event) {
+            if(event.key === "ArrowRight") nextSlide();
+            if(event.key === "ArrowLeft") prevSlide();
+        });
+
+        updateButtons();
+    </script>
 </body>
 </html>
