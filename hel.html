@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | ABHINAY PRATAP MATHS</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Premium Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        /* --- Dark Theme Colors --- */
+        :root {
+            --primary-bg: #0f172a; 
+            --secondary-bg: #1e293b;
+            --accent-color: #f59e0b; /* Golden Yellow */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --header-shadow: rgba(0,0,0,0.4);
+            --card-shadow: rgba(0,0,0,0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Full Width Header & Slim Box Styling --- */
+        header {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .title-box {
+            background-color: var(--secondary-bg);
+            border-bottom: 4px solid var(--accent-color);
+            padding: 15px 30px;
+            width: 100%;
+            box-shadow: 0 4px 20px var(--header-shadow);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Left side logo with moving dotted border animation */
+        .logo-container {
+            position: relative;
+            padding: 4px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .header-logo {
+            height: 55px;
+            width: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px dotted var(--accent-color);
+            border-radius: 50%;
+            animation: rotateDotted 6s linear infinite;
+        }
+
+        @keyframes rotateDotted {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .title-text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .title-box h1 {
+            font-size: 1.35rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .institute-brand-title {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* --- Proper Spacing for Student Gallery & Back Button --- */
+        .nav-spacing-box {
+            max-width: 900px;
+            margin: 0 auto 15px auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .gallery-heading {
+            color: var(--text-main); 
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-heading i {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            padding: 10px 24px;
+            background: var(--accent-color);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.2s;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile adjustments for header */
+        @media (max-width: 600px) {
+            .title-box {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+            .title-box h1 {
+                font-size: 1rem;
+            }
+            .institute-brand-title {
+                font-size: 0.8rem;
+            }
+            .header-logo {
+                height: 45px;
+                width: 45px;
+            }
+            .nav-spacing-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        /* --- Gallery Section (5 items max per page) --- */
+        .gallery-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 5px 15px var(--card-shadow);
+            background-color: #0b1120;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Real Size Image Container without cropping */
+        .image-wrapper {
+            width: 100%;
+            max-height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Bottom Yellow Stripe for Image Name/Description */
+        .gallery-stripe {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 10px 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        /* --- Pagination Controls (Previous / See More) --- */
+        .pagination-container {
+            max-width: 900px;
+            margin: 30px auto 50px auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-btn {
+            padding: 10px 24px;
+            background-color: var(--secondary-bg);
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background-color: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        #page-indicator {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section (Full Width Fixed Box) -->
+    <header>
+        <div class="title-box">
+            <div class="logo-container">
+                <img src="abhinay.png" alt="Logo" class="header-logo">
+            </div>
+            
+            <div class="title-text-group">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <div class="institute-brand-title">EXAMEDGE INSTITUTE</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Student Gallery Title & Back Button Section -->
+    <div class="nav-spacing-box">
+        <div class="gallery-heading">
+            <i class="fa-solid fa-graduation-cap"></i> STUDENT GALLERY
+        </div>
+        <div>
+            <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Gallery Container (5 items per page, static display) -->
+    <div class="gallery-container" id="gallery-grid">
+        <!-- JavaScript will insert images here -->
+    </div>
+
+    <!-- Pagination Buttons -->
+    <div class="pagination-container">
+        <button id="prev-btn" class="page-btn" onclick="changePage(-1)" disabled>
+            <i class="fa-solid fa-arrow-left"></i> Previous
+        </button>
+        <span id="page-indicator">Page 1 of 1</span>
+        <button id="next-btn" class="page-btn" onclick="changePage(1)">
+            See More <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript for Pagination, Static Real Size Display & Heavy 1-Minute All-Sides Celebration -->
+    <script>
+        // --- YAHAN APNI IMAGES AUR UNKE NAAM (TITLES) ADD KAREIN ---
+        const galleryData = [
+            { src: "i3.png", title: "SELECTION FRAME 2026" },
+            { src: "i5.png", title: "MATHEMATICS ONE SHOT SOLUTION" },
+            { src: "ca1.png", title: "MATHEMATICS SPECIAL BATCH" },
+            { src: "abhinay.png", title: "ABHINAY CHAUBEY(FOUNDER)" },
+            { src: "cab.png", title: "FREE VANDE BHARAT BATCH" },
+            { src: "ca1.png", title: "SELECTION = MATHS SPECIAL BATCH" },
+        ];
+
+        const itemsPerPage = 5;
+        let currentPage = 1;
+
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = "";
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const currentItems = galleryData.slice(startIndex, endIndex);
+
+            currentItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'gallery-item';
+                
+                itemDiv.innerHTML = `
+                    <div class="image-wrapper">
+                        <img src="${item.src}" alt="${item.title}">
+                    </div>
+                    <div class="gallery-stripe">${item.title}</div>
+                `;
+                grid.appendChild(itemDiv);
+            });
+
+            const totalPages = Math.ceil(galleryData.length / itemsPerPage) || 1;
+            document.getElementById('page-indicator').innerText = `Page ${currentPage} of ${totalPages}`;
+            
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage >= totalPages;
+        }
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(galleryData.length / itemsPerPage);
+            currentPage += direction;
+            
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            
+            renderGallery();
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+        }
+
+        // --- Function for Heavy 1-Minute Non-Stop All-Sides Celebration ---
+        function triggerHeavyCelebration() {
+            var duration = 60 * 1000; // Exact 1 Minute Non-Stop
+            var animationEnd = Date.now() + duration;
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                // Bhari matra me charo taraf se (Left, Right, Top, Bottom)
+                confetti({
+                    particleCount: 35,
+                    angle: 60,
+                    spread: 80,
+                    origin: { x: 0, y: Math.random() },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+                confetti({
+                    particleCount: 35,
+                    angle: 120,
+                    spread: 80,
+                    origin: { x: 1, y: Math.random() },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+                confetti({
+                    particleCount: 25,
+                    angle: 90,
+                    spread: 100,
+                    origin: { x: Math.random(), y: 0 },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+                confetti({
+                    particleCount: 25,
+                    angle: 270,
+                    spread: 100,
+                    origin: { x: Math.random(), y: 1 },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+            }, 250);
+        }
+
+        // Initial Load of Gallery
+        renderGallery();
+
+        // Page khulne ke exact 1 minute (60,000 ms) baad heavy celebration start hogi
+        setTimeout(() => {
+            triggerHeavyCelebration();
+        }, 60 * 1000);
+
+        // Har 5 minutes me automatic repeat hogi
+        setInterval(() => {
+            triggerHeavyCelebration();
+        }, 5 * 60 * 1000);
+    </script>
+
+</body>
+</html>

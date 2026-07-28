@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpline & Support | ABHINAY PRATAP MATHS</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Premium Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        /* --- Dark Theme Colors --- */
+        :root {
+            --primary-bg: #0f172a; 
+            --secondary-bg: #1e293b;
+            --accent-color: #f59e0b; /* Golden Yellow */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --header-shadow: rgba(0,0,0,0.4);
+            --card-shadow: rgba(0,0,0,0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Full Width Header & Slim Box Styling --- */
+        header {
+            width: 100%;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .title-box {
+            background-color: var(--secondary-bg);
+            border-bottom: 4px solid var(--accent-color);
+            padding: 15px 30px;
+            width: 100%;
+            box-shadow: 0 4px 20px var(--header-shadow);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Left side logo with moving dotted border animation */
+        .logo-container {
+            position: relative;
+            padding: 4px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .header-logo {
+            height: 55px;
+            width: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px dotted var(--accent-color);
+            border-radius: 50%;
+            animation: rotateDotted 6s linear infinite;
+        }
+
+        @keyframes rotateDotted {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .title-text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .title-box h1 {
+            font-size: 1.35rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .institute-brand-title {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* --- Proper Spacing for Title & Back Button --- */
+        .nav-spacing-box {
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .gallery-heading {
+            color: var(--text-main); 
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-heading i {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            padding: 10px 24px;
+            background: var(--accent-color);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.2s;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        /* --- Helpline Buttons Container --- */
+        .helpline-container {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Individual Friendly Helpline Card / Button */
+        .helpline-card {
+            background-color: var(--secondary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 5px 15px var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .helpline-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.25);
+            background-color: #24324a;
+        }
+
+        .helpline-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .helpline-icon {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            width: 50px;
+            text-align: center;
+        }
+
+        .helpline-text h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .helpline-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .action-arrow {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+        }
+
+        .helpline-card:hover .action-arrow {
+            transform: translateX(6px);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .title-box {
+                padding: 12px 15px;
+                gap: 12px;
+            }
+            .title-box h1 {
+                font-size: 1rem;
+            }
+            .institute-brand-title {
+                font-size: 0.8rem;
+            }
+            .header-logo {
+                height: 45px;
+                width: 45px;
+            }
+            .nav-spacing-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .helpline-card {
+                padding: 15px;
+            }
+            .helpline-icon {
+                font-size: 1.8rem;
+            }
+            .helpline-text h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section (Full Width Fixed Box) -->
+    <header>
+        <div class="title-box">
+            <div class="logo-container">
+                <img src="abhinay.png" alt="Logo" class="header-logo">
+            </div>
+            
+            <div class="title-text-group">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <div class="institute-brand-title">EXAMEDGE INSTITUTE</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title & Back Button Section -->
+    <div class="nav-spacing-box">
+        <div class="gallery-heading">
+            <i class="fa-solid fa-headset"></i> HELPLINE & SUPPORT
+        </div>
+        <div>
+            <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Helpline & Support Clickable Links Container -->
+    <div class="helpline-container">
+        
+        <!-- 1. WhatsApp Support -->
+        <a href="https://whatsapp.com/channel/0029VbDH9btBqbr9vzxVm02e" target="_blank" class="helpline-card">
+            <div class="helpline-info">
+                <div class="helpline-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="helpline-text">
+                    <h3>EXAMEDGE INSTITUTE </h3>
+                    <p> JOIN WHATSAPP FOR BATCH ENROLLMENT </p>
+                </div>
+            </div>
+            <div class="action-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </a>
+
+        <!-- 2. Calling Helpline -->
+        <a href="tel:9670078465" class="helpline-card">
+            <div class="helpline-info">
+                <div class="helpline-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="helpline-text">
+                    <h3>HELPLINE CALLING NUMBER</h3>
+                    <p>CALL TIME: 9:00 AM to 7:00 PM</p>
+                </div>
+            </div>
+            <div class="action-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </a>
+
+        <!-- 3. Telegram Group / Channel -->
+        <a href="https://t.me/abhinaypratapmaths" target="_blank" class="helpline-card">
+            <div class="helpline-info">
+                <div class="helpline-icon"><i class="fa-brands fa-telegram"></i></div>
+                <div class="helpline-text">
+                    <h3>ABHINAY PRATAP MATHS</h3>
+                    <p>FREE PDF NOTES AND YOUTUBE CLASS SHEET</p>
+                </div>
+            </div>
+            <div class="action-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </a>
+
+        <!-- 4. YouTube Channel -->
+        <a href="https://www.youtube.com/@abhinaypratapmaths" target="_blank" class="helpline-card">
+            <div class="helpline-info">
+                <div class="helpline-icon"><i class="fa-brands fa-youtube"></i></div>
+                <div class="helpline-text">
+                    <h3>ABHINAY PRATAP MATHS</h3>
+                    <p>SUBSCRIBE FOR LETEST UPDATE AND CLASSES</p>
+                </div>
+            </div>
+            <div class="action-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </a>
+
+        <!-- 5. Email Support -->
+        <a href="mailto:abhinaychaubey83@gmail.com" class="helpline-card">
+            <div class="helpline-info">
+                <div class="helpline-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="helpline-text">
+                    <h3>EMAIL SUPPORT TEAM </h3>
+                    <p>OFFICIAL QUERY OR TECHNICAL ISSUE </p>
+                </div>
+            </div>
+            <div class="action-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </a>
+
+    </div>
+
+    <!-- JavaScript for Heavy Celebration Animation -->
+    <script>
+        function triggerHeavyCelebration() {
+            var duration = 60 * 1000; // Exact 1 Minute Non-Stop
+            var animationEnd = Date.now() + duration;
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                confetti({
+                    particleCount: 35,
+                    angle: 60,
+                    spread: 80,
+                    origin: { x: 0, y: Math.random() },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+                confetti({
+                    particleCount: 35,
+                    angle: 120,
+                    spread: 80,
+                    origin: { x: 1, y: Math.random() },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+                confetti({
+                    particleCount: 25,
+                    angle: 90,
+                    spread: 100,
+                    origin: { x: Math.random(), y: 0 },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+                confetti({
+                    particleCount: 25,
+                    angle: 270,
+                    spread: 100,
+                    origin: { x: Math.random(), y: 1 },
+                    colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6', '#ffffff']
+                });
+            }, 250);
+        }
+
+        // Page khulne ke exact 1 minute baad celebration start hogi
+        setTimeout(() => {
+            triggerHeavyCelebration();
+        }, 60 * 1000);
+
+        // Har 5 minutes me automatic repeat hogi
+        setInterval(() => {
+            triggerHeavyCelebration();
+        }, 5 * 60 * 1000);
+    </script>
+
+</body>
+</html>
