@@ -115,7 +115,7 @@
             margin-top: 2px;
         }
 
-        /* --- Proper Spacing for Title & Back Button --- */
+        /* --- Proper Spacing for Title & Close Button --- */
         .nav-spacing-box {
             max-width: 900px;
             margin: 0 auto 20px auto;
@@ -123,7 +123,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 15px;
         }
 
@@ -141,26 +140,30 @@
             color: var(--accent-color);
         }
 
-        .btn {
-            padding: 10px 24px;
-            background: var(--accent-color);
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s, transform 0.2s;
-            font-size: 0.95rem;
-            display: inline-flex;
+        /* Circular Yellow Close Button Styling */
+        .close-circle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-color); /* Yellow/Gold Circle */
+            border: 2px solid var(--accent-color);
+            color: #000; /* Black Cross for clear visibility */
+            display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4); /* Yellow glow shadow */
         }
 
-        .btn:hover {
-            opacity: 0.85;
-            transform: translateY(-2px);
+        .close-circle-btn:hover {
+            background-color: #ef4444; /* Red color on hover for closing feel */
+            color: #fff;
+            border-color: #ef4444;
+            transform: scale(1.1) rotate(90deg); /* Smooth spin effect */
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
         }
 
         /* --- Helpline Buttons Container --- */
@@ -246,10 +249,8 @@
                 height: 45px;
                 width: 45px;
             }
-            .nav-spacing-box {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .gallery-heading {
+                font-size: 1.1rem;
             }
             .helpline-card {
                 padding: 15px;
@@ -279,13 +280,16 @@
         </div>
     </header>
 
-    <!-- Page Title & Back Button Section -->
+    <!-- Page Title & Circular Yellow Close Button Section -->
     <div class="nav-spacing-box">
         <div class="gallery-heading">
             <i class="fa-solid fa-headset"></i> HELPLINE & SUPPORT
         </div>
         <div>
-            <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            <!-- Directly linking to index.html with ?home=true to bypass splash -->
+            <a href="index.html?home=true" class="close-circle-btn" title="Back to Home">
+                <i class="fa-solid fa-times"></i>
+            </a>
         </div>
     </div>
 
@@ -334,7 +338,7 @@
                 <div class="helpline-icon"><i class="fa-brands fa-youtube"></i></div>
                 <div class="helpline-text">
                     <h3>ABHINAY PRATAP MATHS</h3>
-                    <p>SUBSCRIBE FOR LETEST UPDATE AND CLASSES</p>
+                    <p>SUBSCRIBE FOR LATEST UPDATE AND CLASSES</p>
                 </div>
             </div>
             <div class="action-arrow"><i class="fa-solid fa-chevron-right"></i></div>

@@ -17,6 +17,9 @@
             --primary-bg: #0f172a; 
             --secondary-bg: #1e293b;
             --accent-color: #f59e0b; /* Golden Yellow */
+            --pink: #ff2a75;
+            --app-blue: #00bcd4;
+            --green: #22c55e;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #334155;
@@ -76,13 +79,14 @@
         .logo-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 3px dotted var(--accent-color);
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 3px dotted;
+            border-color: var(--pink) var(--app-blue) var(--accent-color) var(--green);
             border-radius: 50%;
-            animation: rotateDotted 6s linear infinite;
+            animation: rotateDotted 5s linear infinite;
         }
 
         @keyframes rotateDotted {
@@ -115,7 +119,7 @@
             margin-top: 2px;
         }
 
-        /* --- Proper Spacing for Student Gallery & Back Button --- */
+        /* --- Proper Spacing for Student Gallery & X Button --- */
         .nav-spacing-box {
             max-width: 900px;
             margin: 0 auto 15px auto;
@@ -123,7 +127,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 15px;
         }
 
@@ -141,26 +144,30 @@
             color: var(--accent-color);
         }
 
-        .btn {
-            padding: 10px 24px;
-            background: var(--accent-color);
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s, transform 0.2s;
-            font-size: 0.95rem;
-            display: inline-flex;
+        /* Circular Yellow Close Button Styling */
+        .close-circle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-color); /* Yellow/Gold Circle */
+            border: 2px solid var(--accent-color);
+            color: #000; /* Black Cross for clear visibility */
+            display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
         }
 
-        .btn:hover {
-            opacity: 0.85;
-            transform: translateY(-2px);
+        .close-circle-btn:hover {
+            background-color: #ef4444; /* Red color on hover */
+            color: #fff;
+            border-color: #ef4444;
+            transform: scale(1.1) rotate(90deg); /* Smooth spin effect */
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
         }
 
         /* Mobile adjustments for header */
@@ -179,10 +186,8 @@
                 height: 45px;
                 width: 45px;
             }
-            .nav-spacing-box {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .gallery-heading {
+                font-size: 1.1rem;
             }
         }
 
@@ -296,13 +301,16 @@
         </div>
     </header>
 
-    <!-- Student Gallery Title & Back Button Section -->
+    <!-- Student Gallery Title & Circular Yellow X Button -->
     <div class="nav-spacing-box">
         <div class="gallery-heading">
             <i class="fa-solid fa-graduation-cap"></i> STUDENT GALLERY
         </div>
         <div>
-            <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            <!-- Link to index.html directly bypassing splash screen -->
+            <a href="index.html?home=true" class="close-circle-btn" title="Back to Home">
+                <i class="fa-solid fa-times"></i>
+            </a>
         </div>
     </div>
 
