@@ -67,16 +67,15 @@
             position: relative; width: 200px; height: 200px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px;
         }
 
-        /* Colorful Mixed Larger Rotating Dotted Border */
+        /* Colorful Rotating Dotted Border */
         .splash-logo-container::before {
             content: '';
             position: absolute;
             top: -20px; left: -20px; right: -20px; bottom: -20px;
             border: 8px dotted;
-            /* 4 vibrant colors assigned to top, right, bottom, left */
             border-color: var(--pink) var(--app-blue) var(--gold) var(--green);
             border-radius: 50%;
-            animation: rotateDottedSplash 6s linear infinite;
+            animation: rotateDottedSplash 4s linear infinite;
             z-index: 1;
         }
 
@@ -85,7 +84,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Single Abhinay Logo */
         .splash-main-logo { 
             width: 160px; height: 160px; border-radius: 50%; background: #000; border: 4px solid #ffffff; object-fit: cover; z-index: 10; box-shadow: 0 0 40px rgba(234, 179, 8, 0.6); 
         }
@@ -99,8 +97,8 @@
         /* --- 5 Blinking Dotted Points Under Red Box --- */
         .splash-dots-wrapper {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 25px;
             justify-content: center;
         }
 
@@ -152,10 +150,10 @@
         
         /* Nav Logo Colorful Rotating Border */
         .logo-box::after { 
-            content: ''; position: absolute; inset: -5px; border-radius: 50%; 
+            content: ''; position: absolute; inset: -6px; border-radius: 50%; 
             border: 3px dotted; 
             border-color: var(--pink) var(--app-blue) var(--gold) var(--green);
-            animation: spinRing 6s linear infinite; 
+            animation: spinRing 5s linear infinite; 
         }
         @keyframes spinRing { 100% { transform: rotate(360deg); } }
 
@@ -330,7 +328,7 @@
         .faq-answer p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; font-weight: 600; text-transform: none; padding-bottom: 20px; margin-top: 5px; }
 
         /* ========================================== */
-        /* --- HORIZONTAL UNIFORM SLIDERS --- */
+        /* --- HORIZONTAL UNIFORM SLIDERS (UPDATED REVIEWS) --- */
         /* ========================================== */
         .uniform-section { padding: 40px 0 30px; }
         .uniform-section .section-title { margin-left: 5%; }
@@ -855,23 +853,24 @@
         </div>
     </section>
 
+    <!-- STUDENT REVIEWS UPDATED -->
     <section class="uniform-section">
         <h2 class="section-title">STUDENT <span>REVIEWS</span></h2>
         <div class="uniform-wrapper" id="reviewsWrapper">
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-desc">"PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED FOR BOARD EXAMS!"</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>AYUSHI CHAUBEY</h5><span>95% IN BOARDS</span></div></div>
+                <p class="review-desc">"PRATAP MATHS KE NUMERICAL SOLUTION APPROACH SE MERA CONCEPTUAL LOGIC BAHUT IMPROVE HUA. HIGHLY RECOMMENDED FOR KVS EXAMS!"</p>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>AYUSHI CHAUBEY</h5><span>SELECTED KVS</span></div></div>
             </div>
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"BHOLU SIR KI GS AUR SCIENCE CLASSES BILKUL POINT-TO-POINT NOTES KE SATH MILTI HAIN JO EXAMS KE LIYE SOLID HAIN."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>VIKAS TIWARI</h5><span>DISTRICT TOPPER</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>VIKAS TIWARI</h5><span>82% IN 10TH BOARD</span></div></div>
             </div>
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"BEST PLATFORM FOR BOARDS EXAM PREPARATION. PDF NOTES AND MOCK TESTS ARE EXACTLY MATCHING THE EXAM PATTERN."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>92% IN 12TH</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="m.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>RAHUL SHUKLA</h5><span>84% IN 12TH BOARD</span></div></div>
             </div>
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -881,7 +880,7 @@
             <div class="review-card">
                 <div class="stars-box"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-desc">"LIVE CLASSES ARE HIGHLY INTERACTIVE. SIR DOUBTS KO BAHUT PATIENCE KE SATH CLEAR KARTE HAIN. COMPLETELY SATISFIED."</p>
-                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>NEHA RAI</h5><span>STATE MERIT</span></div></div>
+                <div class="reviewer-meta"><div class="rev-avatar"><img src="t2.png" onerror="this.src='m.png'"></div><div class="rev-name"><h5>NEHA RAI</h5><span>81% IN BOARDS</span></div></div>
             </div>
         </div>
         <div class="dots-container" id="reviewDotsContainer"></div>
@@ -1267,7 +1266,7 @@
             if (urlParams.get('home') === 'true' || sessionStorage.getItem('splashShown') === 'true') {
                 splash.style.display = 'none';
             } else {
-                // Show splash for 10 seconds on fresh load
+                // Show splash for exactly 10 seconds on fresh load
                 setTimeout(() => { 
                     splash.style.opacity = '0'; 
                     setTimeout(() => { splash.style.display = 'none'; }, 1000); 
