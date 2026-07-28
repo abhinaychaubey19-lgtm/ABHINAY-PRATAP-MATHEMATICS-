@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Batches | ABHINAY PRATAP MATHS</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Premium Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        /* ========================================== */
+        /* --- DYNAMIC THEME VARIABLES --- */
+        /* ========================================== */
+        :root {
+            --bg-main: #050505; 
+            --bg-card: #111111;
+            --secondary-bg: #1e293b;
+            --bg-header: rgba(5, 5, 5, 0.98);
+            --text-light: #ffffff; 
+            --text-dim: #a3a3a3;
+            --border-dark: #262626;
+            --item-bg: #1a1a1a;
+            --shadow-color: rgba(0, 0, 0, 0.8);
+            
+            --gold: #eab308; 
+            --pink: #ff2a75; 
+            --green: #22c55e; 
+            --red-brand: #dc2626; 
+            --app-blue: #00bcd4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
+
+        body { 
+            background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; 
+        }
+
+        /* --- Full Width Header --- */
+        header { width: 100%; padding: 0; margin-bottom: 25px; }
+        .title-box {
+            background-color: var(--secondary-bg);
+            border-bottom: 4px solid var(--gold);
+            padding: 15px 30px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container { position: relative; padding: 4px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+        .header-logo { height: 55px; width: 55px; object-fit: cover; border-radius: 50%; display: block; }
+
+        /* Colorful Rotating Border */
+        .logo-container::before {
+            content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border: 3px dotted; border-color: var(--pink) var(--app-blue) var(--gold) var(--green);
+            border-radius: 50%; animation: rotateDotted 5s linear infinite; z-index: 1;
+        }
+        @keyframes rotateDotted { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .title-text-group { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+        .title-box h1 { font-size: 1.35rem; color: var(--gold); letter-spacing: 1.2px; margin: 0; font-weight: 700; }
+        .institute-brand-title { font-size: 0.95rem; color: var(--text-dim); font-weight: 600; letter-spacing: 1.5px; margin-top: 2px; }
+
+        /* --- Page Title & Close Button --- */
+        .nav-spacing-box {
+            max-width: 1200px; margin: 0 auto 20px auto; padding: 0 5%;
+            display: flex; justify-content: space-between; align-items: center; gap: 15px;
+        }
+        .gallery-heading { color: var(--text-light); font-weight: 700; font-size: 1.4rem; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px; }
+        .gallery-heading i { color: var(--gold); }
+
+        .close-circle-btn {
+            width: 40px; height: 40px; border-radius: 50%; background-color: var(--gold);
+            border: 2px solid var(--gold); color: #000; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 10px rgba(234, 179, 8, 0.4);
+        }
+        .close-circle-btn:hover { background-color: #ef4444; color: #fff; border-color: #ef4444; transform: scale(1.1) rotate(90deg); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5); }
+
+        /* ========================================== */
+        /* --- CATEGORY FILTERS (PREMIUM 3D LOOK) --- */
+        /* ========================================== */
+        .category-scroll-wrapper { 
+            width: 100%; max-width: 1200px; margin: 0 auto 30px auto; overflow-x: auto; 
+            padding: 10px 5% 20px 5%; scrollbar-width: none; 
+        }
+        .category-scroll-wrapper::-webkit-scrollbar { display: none; }
+        
+        /* Inner Container for Tabs */
+        .category-tabs { 
+            display: inline-flex; gap: 15px; width: max-content; 
+            background: rgba(30, 41, 59, 0.6); /* Deep blue-gray glass background */
+            padding: 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.6);
+        }
+        
+        .cat-tab { 
+            padding: 12px 28px; border-radius: 40px; border: none; 
+            background: transparent; color: #94a3b8; font-size: 0.95rem; font-weight: 800; 
+            cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            white-space: nowrap; letter-spacing: 0.5px;
+        }
+        
+        /* Active Tab with Glow & Scale */
+        .cat-tab.active { 
+            background: linear-gradient(135deg, var(--gold), #facc15); 
+            color: #000; 
+            box-shadow: 0 5px 15px rgba(234, 179, 8, 0.5); 
+            transform: scale(1.05); 
+        }
+        .cat-tab:hover:not(.active) { 
+            color: #fff; background: rgba(255,255,255,0.1); 
+        }
+
+        /* ========================================== */
+        /* --- COURSE CARDS & 1000x500px BANNER FIX --- */
+        /* ========================================== */
+        .courses-section { padding: 10px 5% 50px; max-width: 1200px; margin: 0 auto; }
+        .course-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 10px; }
+        
+        .course-card { width: 100%; max-width: 400px; position: relative; background: var(--bg-card); border-radius: 20px; border: 2px solid var(--border-dark); box-shadow: 0 10px 30px var(--shadow-color); transition: 0.3s; overflow: hidden;}
+        .course-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 40px rgba(234, 179, 8, 0.25); }
+        
+        /* Exact 1000x500px aspect ratio (2:1) */
+        .course-img-box { 
+            position: relative; width: 100%; 
+            aspect-ratio: 2 / 1; 
+            background-color: var(--bg-main); border-bottom: 3px solid var(--gold); overflow: hidden; 
+        }
+        /* Forces image to completely fill the space without cutting */
+        .course-img { 
+            width: 100%; height: 100%; 
+            object-fit: fill; 
+            display: block; transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        }
+        .course-img-box:hover .course-img { filter: brightness(0.85); }
+        
+        .course-info { padding: 25px 20px; }
+        .course-title { font-size: 1.25rem; font-weight: 900; margin-bottom: 8px; color: var(--text-light); letter-spacing: 0.5px;}
+        .course-faculty { color: var(--gold); font-size: 0.9rem; font-weight: 800; margin-bottom: 25px; letter-spacing: 1px; }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .btn { width: 100%; padding: 14px; border-radius: 10px; font-weight: 800; font-size: 1rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; outline: none; letter-spacing: 1px; text-transform: uppercase; }
+        .btn-features { background: var(--item-bg); color: var(--text-light); border: 1px solid var(--border-dark); }
+        .btn-features:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-buy { background: linear-gradient(90deg, var(--gold), #facc15); color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
+        .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(234, 179, 8, 0.5); }
+
+        .features-box { display: none; padding: 15px; background: rgba(0,0,0,0.3); margin-top: 15px; border-radius: 12px; }
+        .features-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .features-box ul li { background: var(--bg-card); padding: 10px; border-radius: 8px; border: 1px solid var(--border-dark); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 10px; color: var(--text-light); transition: 0.3s; }
+        .features-box ul li:hover { border-color: var(--gold); transform: translateX(5px); background: var(--item-bg); }
+        .features-box ul li i { color: var(--gold); font-size: 1.1rem; min-width: 20px; text-align: center; }
+
+        /* --- Modals --- */
+        .global-modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 5000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+        .global-modal.show { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-dark); border-top: 5px solid var(--gold); padding: 30px; border-radius: 20px; max-width: 450px; width: 95%; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; scrollbar-width: none; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
+        .modal-content::-webkit-scrollbar { display: none; }
+        
+        .modal-close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-dim); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--item-bg); z-index: 10; transition: 0.2s;}
+        .modal-close-btn:hover { color: #fff; background: var(--red-brand); }
+        
+        .payment-box { background: var(--bg-main); border: 1px solid var(--border-dark); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
+        .payment-box label { color: var(--gold); font-size: 0.85rem; font-weight: 700; margin-bottom: 5px; display: block; }
+        .input-field { width: 100%; padding: 14px; background: var(--bg-card); border: 1px solid var(--border-dark); color: var(--text-light); border-radius: 8px; font-size: 0.95rem; font-weight: 600; outline: none; margin-bottom: 10px; transition: 0.3s;}
+        .input-field:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);}
+        
+        /* VERIFY & CONTINUE BUTTON STYLE (BADHIYA) */
+        .verify-btn {
+            background: linear-gradient(45deg, #10b981, #22c55e);
+            color: #fff; font-size: 1.2rem; font-weight: 900;
+            padding: 16px; border-radius: 12px;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+            border: 2px solid #4ade80; cursor: pointer;
+            width: 100%; margin-top: 15px; transition: 0.3s;
+            animation: pulseBtn 2s infinite;
+        }
+        .verify-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.6);
+        }
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .loader-spinner { border: 4px solid var(--border-dark); border-top: 4px solid var(--green); border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* QR */
+        .qr-area { text-align: center; margin: 15px 0; display: none; }
+        .qr-wrapper { position: relative; width: 240px; height: 240px; margin: 0 auto 15px; padding: 10px; background: #fff; border-radius: 15px; border: 4px solid var(--gold); display: flex; align-items: center; justify-content: center; }
+        .qr-wrapper img#qrImage { width: 100%; height: 100%; border-radius: 8px; }
+        .qr-center-logo { position: absolute; width: 50px; height: 50px; background: #fff; border-radius: 50%; border: 2px solid var(--gold); padding: 3px; z-index: 5; object-fit: contain; }
+
+        @media (max-width: 600px) {
+            .title-box { padding: 12px 15px; gap: 12px; }
+            .title-box h1 { font-size: 1rem; }
+            .institute-brand-title { font-size: 0.8rem; }
+            .header-logo { height: 45px; width: 45px; }
+            .gallery-heading { font-size: 1.1rem; }
+            .course-list { gap: 25px; }
+            .verify-btn { font-size: 1rem; padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="title-box">
+            <div class="logo-container">
+                <img src="abhinay.png" alt="Logo" class="header-logo" onerror="this.src='https://via.placeholder.com/60'">
+            </div>
+            <div class="title-text-group">
+                <h1>ABHINAY PRATAP MATHS</h1>
+                <div class="institute-brand-title">EXAMEDGE INSTITUTE</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title & Circular Close Button -->
+    <div class="nav-spacing-box">
+        <div class="gallery-heading">
+            <i class="fas fa-gem"></i> EXCLUSIVE BATCHES
+        </div>
+        <div>
+            <a href="index.html?home=true" class="close-circle-btn" title="Back to Home">
+                <i class="fa-solid fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- 🌟 PREMIUM 3D CATEGORY TABS 🌟 -->
+    <div class="category-scroll-wrapper">
+        <div class="category-tabs" id="categoryTabs">
+            <div class="cat-tab active" onclick="filterPremiumCourses('ALL BATCH', this)">ALL BATCH</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('KENDRIYA VIDYALAYA', this)">KENDRIYA VIDYALAYA</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('NAVODAYA VIDYALAYA', this)">NAVODAYA VIDYALAYA</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('PRISHRAM FOUNDATION', this)"> CLASS 9TH</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('SANKALP FOUNDATION', this)"> CLASS 10TH</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('LAKSHAY FOUNDATION', this)">CLASS 11TH</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('SARTHI FOUNDATION', this)">CLASS 12TH</div>
+            <div class="cat-tab" onclick="filterPremiumCourses('SUBJECT SPECIAL', this)">SUBJECT SPECIAL</div>
+        </div>
+    </div>
+
+    <!-- Courses Grid -->
+    <section class="courses-section">
+        <div class="course-list" id="premiumCourseList">
+            <!-- Courses dynamically injected here -->
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MODALS FOR PAYMENT & ALERTS -->
+    <!-- ========================================== -->
+    
+    <!-- Custom Alert -->
+    <div class="global-modal" id="customAlertModal">
+        <div class="modal-content" style="text-align: center; max-width: 350px;">
+            <div style="width: 70px; height: 70px; margin: 0 auto 15px; background: rgba(234, 179, 8, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;" id="customAlertIconBox">
+                <i class="fas fa-bell" id="customAlertIcon" style="font-size: 2rem; color: var(--gold);"></i>
+            </div>
+            <h3 id="customAlertTitle" style="color:var(--gold);">TITLE</h3>
+            <p id="customAlertText" style="color: var(--text-light); font-size: 0.95rem; font-weight: 600; line-height: 1.5; margin-top:10px; text-transform:none;"></p>
+            <button class="modal-btn" onclick="document.getElementById('customAlertModal').classList.remove('show')" style="margin-top: 20px;">OKAY, GOT IT!</button>
+        </div>
+    </div>
+
+    <!-- Payment Modal (Updated with UTR Only) -->
+    <div class="global-modal" id="paymentModal">
+        <div class="modal-content" style="text-align: left; padding: 25px;">
+            <div class="modal-close-btn" onclick="closePaymentModal()">&times;</div>
+            <h3 style="margin-top: 15px; text-align: center; border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; color: var(--text-light);">COMPLETE PURCHASE</h3>
+            
+            <div id="paymentFormArea">
+                <div class="payment-box" style="border: 1px solid var(--gold);">
+                    <h4 id="modalCourseName" style="color: var(--gold); font-size: 1.1rem; font-weight: 900; margin-bottom: 8px;">COURSE NAME</h4>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 5px; color: var(--text-light);">
+                        <span>COURSE FEE:</span> <span id="modalOriginalFee" style="font-weight: bold;">₹0</span>
+                    </div>
+                    <div id="modalDiscountRow" style="display: none; justify-content: space-between; font-size: 0.95rem; color: var(--green); margin-bottom: 5px;">
+                        <span>DISCOUNT:</span> <span id="modalDiscountAmount" style="font-weight: bold;">-₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; border-top: 1px dashed var(--border-dark); padding-top: 8px; margin-top: 5px; color: var(--text-light);">
+                        <span>TOTAL PAYABLE:</span> <span id="modalPayableAmount" style="color: var(--gold);">₹0</span>
+                    </div>
+                </div>
+
+                <div class="payment-box">
+                    <label>PAYMENT OPTION 1: UPI ID</label>
+                    <div style="background: var(--bg-main); padding: 10px; border-radius: 5px; color: var(--gold); border: 1px solid var(--border-dark); font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: 15px;">
+                        7705042892@axl
+                    </div>
+                    <label>PAYMENT OPTION 2: SCAN QR</label>
+                    <button class="modal-btn" style="background: var(--item-bg); color: var(--text-light); border: 1px solid var(--gold); padding: 10px;" onclick="generateQR()">GENERATE FULL QR FOR PAYMENT</button>
+                    
+                    <div class="qr-area" id="qrContainer">
+                        <p style="color: var(--gold); margin-bottom: 10px; font-weight:bold;">SCAN WITH ANY UPI APP</p>
+                        <div class="qr-wrapper">
+                            <img id="qrImage" src="" alt="QR CODE">
+                            <img src="abhinay.png" class="qr-center-logo" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-box">
+                    <label>HAVE A COUPON CODE?</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="couponInput" class="input-field" placeholder="ENTER CODE" style="margin-bottom:0;">
+                        <button class="modal-btn" style="width: auto; margin-top: 0; background: var(--bg-main); color: var(--text-light);" onclick="applyCoupon()">APPLY</button>
+                    </div>
+                </div>
+
+                <!-- ONLY UTR INPUT NOW -->
+                <div class="payment-box" style="border-color: var(--gold); padding: 20px;">
+                    <label style="color: var(--gold); font-size: 1.1rem; text-align: center; display: block; border-bottom: 1px dashed var(--border-dark); padding-bottom: 8px; margin-bottom: 15px;">PAYMENT VERIFICATION</label>
+                    <label style="text-align: center; font-size: 0.9rem;">ENTER 12 OR 14-DIGIT UTR / REF NO.</label>
+                    <input type="text" id="utrInput" class="input-field" placeholder="E.g. 3123456789012" minlength="12" maxlength="14" style="text-align: center; font-size: 1.1rem; letter-spacing: 2px; border-color: var(--gold); margin-top: 5px;">
+                </div>
+
+                <!-- ANIMATED GLOWING BUTTON -->
+                <button class="verify-btn" onclick="verifyPaymentSubmit()">
+                    <i class="fas fa-check-circle"></i> VERIFY & CONTINUE
+                </button>
+            </div>
+
+            <div id="loadingArea" style="display: none; text-align: center; padding: 40px 0;">
+                <div class="loader-spinner"></div>
+                <p style="color: var(--green); font-size: 1.2rem; font-weight: 900; letter-spacing: 1.5px;">VERIFYING PAYMENT...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Details Modal for Receipt -->
+    <div class="global-modal" id="detailsModal">
+        <div class="modal-content" style="text-align: center;">
+            <h3 style="margin-top: 15px; color: var(--text-light);">STUDENT DETAILS</h3>
+            <p style="margin-bottom: 15px; font-size: 0.85rem; color: var(--gold);">ENTER DETAILS FOR ENROLLMENT</p>
+            <div style="text-align: left;">
+                <input type="text" id="stuName" class="input-field" placeholder="STUDENT FULL NAME" required>
+                <input type="number" id="stuMobile" class="input-field" placeholder="MOBILE NUMBER (For Login)" required>
+                <input type="text" id="stuFather" class="input-field" placeholder="FATHER'S NAME" required>
+                <textarea id="stuAddress" class="input-field" placeholder="FULL ADDRESS" rows="3" required></textarea>
+            </div>
+            <button class="verify-btn" style="animation: none;" onclick="finishEnrollment()">COMPLETE ENROLLMENT</button>
+        </div>
+    </div>
+
+
+    <script>
+        // ==========================================
+        // --- EXACT COURSE DATA & FILTER LOGIC ---
+        // ==========================================
+        const premiumCoursesData = [
+            { 
+                title: "KENDRIYA VIDYALAYA BATCH", 
+                category: ["ALL BATCH", "KENDRIYA VIDYALAYA"],
+                faculty: "BY BHOLU CHAUBEY & TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "kendriya.png", 
+                price: 1199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["KVS EXAM TARGETED SYLLABUS", "LIVE & RECORDED CLASSES", "WEEKLY MOCK TESTS", "PRINTED NOTES MODULES"] 
+            },
+            { 
+                title: "NAVODAYA VIDYALAYA BATCH", 
+                category: ["ALL BATCH", "NAVODAYA VIDYALAYA"],
+                faculty: "BY ABHINAY PRATAP & TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "navodaya.png", 
+                price: 1299, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["ZERO TO HERO LEVEL", "ALL SUBJECTS IN ONE PACK", "MENTORSHIP BY TOPPERS", "FULL LENGTH TEST SERIES"] 
+            },
+            { 
+                title: "PRISHRAM FOUNDATION BATCH", 
+                category: ["ALL BATCH", "PRISHRAM FOUNDATION"],
+                faculty: "FOR CLASS 9TH STUDENTS", 
+                facultyColor: "var(--app-blue)", 
+                img: "prishram.png", 
+                price: 1499, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["COMPLETE NCERT SYLLABUS", "CHAPTER-WISE PDF NOTES", "DAILY PRACTICE SHEETS (DPP)", "MONTHLY PARENT TEACHER MEET"] 
+            },
+            { 
+                title: "SANKALP FOUNDATION BATCH", 
+                category: ["ALL BATCH", "SANKALP FOUNDATION"],
+                faculty: "FOR CLASS 10TH BOARDS", 
+                facultyColor: "var(--app-blue)", 
+                img: "sankalp.png", 
+                price: 1599, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["10TH BOARD EXAM SPECIAL", "PREVIOUS YEAR QUESTIONS", "REVISION SHORT NOTES", "EXAM STRATEGY SESSIONS"] 
+            },
+            { 
+                title: "LAKSHAY FOUNDATION BATCH", 
+                category: ["ALL BATCH", "LAKSHAY FOUNDATION"],
+                faculty: "FOR CLASS 11TH STUDENTS", 
+                facultyColor: "var(--pink)", 
+                img: "lakshay.png", 
+                price: 1899, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["DEEP CONCEPTUAL CLARITY", "COMPETITIVE EXAM BASE", "INTERACTIVE 3D CLASSES", "DOUBT SOLVING ENGINE"] 
+            },
+            { 
+                title: "SARTHI FOUNDATION BATCH", 
+                category: ["ALL BATCH", "SARTHI FOUNDATION"],
+                faculty: "FOR CLASS 12TH BOARDS", 
+                facultyColor: "var(--pink)", 
+                img: "sarthi.png", 
+                price: 1999, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["12TH BOARD TOPPER BATCH", "NCERT LINE BY LINE", "SAMPLE PAPER SOLUTIONS", "MOCK BOARD EXAMS"] 
+            },
+            { 
+                title: "MATHS SPECIAL BATCH", 
+                category: ["ALL BATCH", "SUBJECT SPECIAL"],
+                faculty: "BY ABHINAY PRATAP SIR", 
+                facultyColor: "var(--gold)", 
+                img: "ca1.png", 
+                price: 2199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["PRE + MAINS LEVEL MATHS", "SHORT TRICKS & LOGIC", "TOPIC WISE CALCULATION PDF", "1-YEAR VALIDITY"] 
+            },
+            { 
+                title: "REASONING SPECIAL BATCH", 
+                category: ["ALL BATCH", "SUBJECT SPECIAL"],
+                faculty: "BY RAHUL SIR", 
+                facultyColor: "var(--green)", 
+                img: "ca6.png", 
+                price: 699, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["VERBAL & NON-VERBAL", "ANALYTICAL REASONING", "LATEST TCS PATTERN", "100+ SECTIONAL MOCK TESTS"] 
+            },
+            { 
+                title: "G.S SPECIAL BATCH", 
+                category: ["ALL BATCH", "SUBJECT SPECIAL"],
+                faculty: "BY BHOLU CHAUBEY & TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "ca7.png", 
+                price: 599, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["HISTORY, POLITY & GEO", "ECONOMICS & SCIENCE", "STATIC GK & CA", "MIND MAPS NOTES"] 
+            }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadPremiumCourses('ALL BATCH');
+        });
+
+        function filterPremiumCourses(category, btnElement) {
+            const tabs = document.getElementById('categoryTabs').children;
+            for(let i=0; i<tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            btnElement.classList.add('active');
+            loadPremiumCourses(category);
+        }
+
+        function loadPremiumCourses(filterCategory) {
+            const list = document.getElementById('premiumCourseList');
+            let html = '';
+            
+            let filteredData = premiumCoursesData.filter(c => c.category.includes(filterCategory));
+
+            if(filteredData.length === 0) {
+                html = `<div style="text-align:center; width:100%; color:var(--text-dim); padding:40px 0;">
+                            <i class="fas fa-box-open" style="font-size:3rem; color:var(--border-dark); margin-bottom:15px;"></i>
+                            <h3>NO BATCHES FOUND IN THIS CATEGORY</h3>
+                        </div>`;
+            } else {
+                filteredData.forEach(c => {
+                    let featuresHTML = c.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('');
+                    html += `
+                    <div class="course-card">
+                        <div class="course-img-box"><img src="${c.img}" alt="${c.title}" class="course-img" onerror="this.src='https://via.placeholder.com/400x200'"></div>
+                        <div class="course-info">
+                            <h3 class="course-title">${c.title}</h3>
+                            <p class="course-faculty" style="color: ${c.facultyColor};">${c.faculty}</p>
+                            <div class="btn-group">
+                                <button class="btn btn-features" onclick="toggleFeatures(this)">VIEW COURSE FEATURES <i class="fas fa-chevron-down"></i></button>
+                                <button class="btn ${c.btnClass}" onclick="openPaymentModal('${c.title}', ${c.price})">${c.btnText}</button>
+                            </div>
+                            <div class="features-box"><ul>${featuresHTML}</ul></div>
+                        </div>
+                    </div>`;
+                });
+            }
+            list.innerHTML = html;
+        }
+
+        function toggleFeatures(btn) { 
+            let box = btn.parentElement.nextElementSibling; let icon = btn.querySelector('i'); 
+            if(box.style.display === "block") { box.style.display = "none"; icon.className = "fas fa-chevron-down"; } 
+            else { box.style.display = "block"; icon.className = "fas fa-chevron-up"; } 
+        }
+
+        // ==========================================
+        // --- PAYMENT & MODALS LOGIC ---
+        // ==========================================
+        let currentCoursePrice = 0;
+        
+        function showCustomAlert(title, text, isSuccess = false) {
+            const modal = document.getElementById('customAlertModal');
+            document.getElementById('customAlertTitle').innerText = title; document.getElementById('customAlertText').innerHTML = text;
+            const iconBox = document.getElementById('customAlertIconBox'); const icon = document.getElementById('customAlertIcon');
+            if(isSuccess) { iconBox.style.background = "rgba(34, 197, 94, 0.1)"; document.getElementById('customAlertTitle').style.color = "#22c55e"; icon.className = "fas fa-gift"; icon.style.color = "#22c55e"; } 
+            else { iconBox.style.background = "rgba(234, 179, 8, 0.1)"; document.getElementById('customAlertTitle').style.color = "var(--gold)"; icon.className = "fas fa-bell"; icon.style.color = "var(--gold)"; }
+            modal.classList.add('show');
+        }
+
+        function openPaymentModal(cName, price) {
+            currentCoursePrice = price; 
+            document.getElementById('modalCourseName').innerText = cName; 
+            document.getElementById('modalOriginalFee').innerText = price > 0 ? "₹" + price : "FREE";
+            document.getElementById('modalPayableAmount').innerText = price > 0 ? "₹" + price : "FREE";
+            
+            document.getElementById('utrInput').value = "";
+            document.getElementById('qrContainer').style.display = "none"; 
+            document.getElementById('paymentFormArea').style.display = 'block'; 
+            document.getElementById('loadingArea').style.display = 'none'; 
+            document.getElementById('paymentModal').classList.add('show');
+        }
+        function closePaymentModal() { document.getElementById('paymentModal').classList.remove('show'); }
+
+        function generateQR() {
+            if(currentCoursePrice === 0) { showCustomAlert("FREE BATCH", "NO PAYMENT REQUIRED."); return; }
+            const accNo = "520102120008909"; const ifsc = "UBIN0552011"; const payeeName = "ABHINAY CHAUBEY"; 
+            const upiId = `${accNo}@${ifsc}.ifsc.npci`;
+            const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${currentCoursePrice}&cu=INR`;
+            const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(upiUrl)}&size=250&margin=1`;
+            document.getElementById('qrImage').src = qrApiUrl; 
+            document.getElementById('qrContainer').style.display = "block";
+        }
+
+        function verifyPaymentSubmit() {
+            if(currentCoursePrice === 0) {
+                document.getElementById('paymentFormArea').style.display = 'none'; document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => { closePaymentModal(); setTimeout(() => { document.getElementById('detailsModal').classList.add('show'); }, 500); }, 1000); return;
+            }
+            
+            const utrValue = document.getElementById('utrInput').value.trim().toUpperCase(); 
+            // Ensures minimum 12 digits for valid UTR Check
+            if (utrValue.length >= 12) {
+                document.getElementById('paymentFormArea').style.display = 'none'; document.getElementById('loadingArea').style.display = 'block';
+                setTimeout(() => { closePaymentModal(); showCustomAlert("🎉 VERIFIED!", "PAYMENT DETAILS RECORDED.<br>PLEASE FILL YOUR DETAILS.", true); setTimeout(() => { document.getElementById('customAlertModal').classList.remove('show'); document.getElementById('detailsModal').classList.add('show'); }, 2000); }, 1500);
+            } else { 
+                showCustomAlert("VERIFICATION FAILED", "PLEASE ENTER A VALID 12 OR 14-DIGIT UTR / REFERENCE NUMBER."); 
+            }
+        }
+
+        function finishEnrollment() {
+            const name = document.getElementById('stuName').value.trim();
+            const mobile = document.getElementById('stuMobile').value.trim();
+            if(!name || !mobile) { showCustomAlert("DETAILS MISSING", "PLEASE FILL FULL NAME AND MOBILE NO."); return; }
+            document.getElementById('detailsModal').classList.remove('show');
+            const enrollNo = "EE-APM-" + Math.floor(100000 + Math.random() * 900000);
+            showCustomAlert("✅ REGISTRATION COMPLETE", `WELCOME ${name.toUpperCase()}!<br>YOUR INSTITUTE ID IS: <b>${enrollNo}</b><br>USE THIS TO LOGIN IN MY BATCH.`, true);
+        }
+
+        // ==========================================
+        // --- CELEBRATION ANIMATION (1 MIN DELAY) ---
+        // ==========================================
+        function triggerHeavyCelebration() {
+            var duration = 60 * 1000; // 1 Minute
+            var animationEnd = Date.now() + duration;
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) { return clearInterval(interval); }
+                confetti({ particleCount: 25, angle: 60, spread: 80, origin: { x: 0, y: Math.random() }, colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6'] });
+                confetti({ particleCount: 25, angle: 120, spread: 80, origin: { x: 1, y: Math.random() }, colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6'] });
+                confetti({ particleCount: 20, angle: 90, spread: 100, origin: { x: Math.random(), y: 0 }, colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6'] });
+                confetti({ particleCount: 20, angle: 270, spread: 100, origin: { x: Math.random(), y: 1 }, colors: ['#f59e0b', '#2563eb', '#10b981', '#ef4444', '#8b5cf6'] });
+            }, 250);
+        }
+
+        setTimeout(() => { triggerHeavyCelebration(); }, 60 * 1000);
+        setInterval(() => { triggerHeavyCelebration(); }, 5 * 60 * 1000);
+
+    </script>
+</body>
+</html>
