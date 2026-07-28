@@ -57,26 +57,71 @@
         /* ========================================== */
         .splash-screen { 
             position: fixed; inset: 0; z-index: 9999; 
-            background: linear-gradient(135deg, #0f172a, #020617); 
+            background: radial-gradient(circle at center, #1e293b 0%, #050505 70%, #000000 100%); 
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             transition: opacity 0.8s ease; 
         }
         .splash-content-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: popIn 1s ease-out forwards; }
-        .splash-logo-container { position: relative; width: 250px; height: 250px; display: flex; justify-content: center; align-items: center; }
-        .splash-main-logo { width: 160px; height: 160px; border-radius: 50%; background: #000; border: 5px solid #ffffff; object-fit: contain; z-index: 10; box-shadow: 0 0 40px rgba(255, 255, 255, 0.4); }
-        .splash-orbit-logo { position: absolute; width: 75px; height: 75px; border-radius: 50%; background: #fff; border: 2px solid var(--gold); object-fit: contain; z-index: 5; opacity: 0; animation: splashOrbit 4.5s ease-in-out forwards; }
-
-        @keyframes splashOrbit {
-            0% { opacity: 0; transform: translateY(0px) rotate(0deg); }
-            10% { opacity: 1; transform: translateY(135px) rotate(0deg); }
-            90% { opacity: 1; transform: rotate(1080deg) translateY(135px) rotate(-1080deg); }
-            100% { opacity: 0; transform: rotate(1080deg) translateY(0px) rotate(-1080deg); }
+        
+        .splash-logo-container { 
+            position: relative; width: 200px; height: 200px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px;
         }
+
+        /* Colorful Mixed Larger Rotating Dotted Border */
+        .splash-logo-container::before {
+            content: '';
+            position: absolute;
+            top: -20px; left: -20px; right: -20px; bottom: -20px;
+            border: 8px dotted;
+            /* 4 vibrant colors assigned to top, right, bottom, left */
+            border-color: var(--pink) var(--app-blue) var(--gold) var(--green);
+            border-radius: 50%;
+            animation: rotateDottedSplash 6s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateDottedSplash {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Single Abhinay Logo */
+        .splash-main-logo { 
+            width: 160px; height: 160px; border-radius: 50%; background: #000; border: 4px solid #ffffff; object-fit: cover; z-index: 10; box-shadow: 0 0 40px rgba(234, 179, 8, 0.6); 
+        }
+
         @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-        .splash-text { margin-top: 30px; text-align: center; }
+        .splash-text { text-align: center; }
         .splash-text h1 { color: var(--gold); font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; text-shadow: 0 4px 15px rgba(234, 179, 8, 0.4); }
         .splash-text p { color: #fff; font-size: 0.95rem; font-weight: 700; letter-spacing: 2px; background: var(--red-brand); padding: 5px 18px; border-radius: 20px; display: inline-block; box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4); }
+
+        /* --- 5 Blinking Dotted Points Under Red Box --- */
+        .splash-dots-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .splash-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #333;
+            animation: blinkDot 1.5s infinite ease-in-out;
+        }
+
+        .splash-dot:nth-child(1) { background-color: var(--gold); animation-delay: 0s; }
+        .splash-dot:nth-child(2) { background-color: var(--pink); animation-delay: 0.3s; }
+        .splash-dot:nth-child(3) { background-color: var(--green); animation-delay: 0.6s; }
+        .splash-dot:nth-child(4) { background-color: var(--app-blue); animation-delay: 0.9s; }
+        .splash-dot:nth-child(5) { background-color: #a855f7; animation-delay: 1.2s; }
+
+        @keyframes blinkDot {
+            0%, 100% { transform: scale(0.6); opacity: 0.3; box-shadow: none; }
+            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px currentColor; }
+        }
 
         /* ========================================== */
         /* --- NAVIGATION BAR & ROTATING LOGO --- */
@@ -104,7 +149,14 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
         }
         .logo-box:hover { transform: scale(1.1) rotate(6deg); border-color: var(--pink); box-shadow: 0 0 25px rgba(255, 42, 117, 0.7); }
-        .logo-box::after { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px dashed rgba(234, 179, 8, 0.4); animation: spinRing 10s linear infinite; }
+        
+        /* Nav Logo Colorful Rotating Border */
+        .logo-box::after { 
+            content: ''; position: absolute; inset: -5px; border-radius: 50%; 
+            border: 3px dotted; 
+            border-color: var(--pink) var(--app-blue) var(--gold) var(--green);
+            animation: spinRing 6s linear infinite; 
+        }
         @keyframes spinRing { 100% { transform: rotate(360deg); } }
 
         /* ========================================== */
@@ -180,7 +232,7 @@
         .timed-banner-close:hover { background: #fff; color: var(--pink); transform: rotate(90deg) scale(1.1); }
 
         /* ========================================== */
-        /* --- MAIN BANNER SLIDER --- */
+        /* --- MAIN BANNER SLIDER (FIT ANY IMAGE) --- */
         /* ========================================== */
         .slider-section { margin-top: 75px; padding: 25px 0 10px; position: relative; }
         .slider-wrapper { 
@@ -190,7 +242,10 @@
         .slider-wrapper::-webkit-scrollbar { display: none; }
         .banner-slide { 
             min-width: 90vw; aspect-ratio: 21/9; border-radius: 15px; scroll-snap-align: center; 
-            background-color: var(--bg-card); display: block; flex-shrink: 0; background-size: cover; 
+            background-color: var(--bg-card); display: block; flex-shrink: 0; 
+            
+            /* FORCE IMAGE TO FIT PERFECTLY INSIDE THE BOX */
+            background-size: 100% 100%; 
             background-position: center; background-repeat: no-repeat; cursor: pointer; 
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
             box-shadow: 0 10px 25px var(--shadow-color);
@@ -441,7 +496,8 @@
             cursor: pointer; transition: 0.3s; white-space: nowrap; box-shadow: 0 2px 5px var(--shadow-color);
         }
         .cat-tab.active { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 4px 10px rgba(234, 179, 8, 0.3); }
-        .cat-tab:hover:not(.active) { color: var(--gold); border-color: var(--gold); }
+        .cat-tab.active:hover { color: #000; }
+        .cat-tab:hover { color: var(--gold); border-color: var(--gold); }
 
         /* MY BATCH SPECIFIC */
         .batch-list-card { background: var(--bg-card); border-radius: 14px; padding: 18px; margin-bottom: 15px; display: flex; gap: 15px; align-items: center; border: 1px solid var(--border-dark); cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px var(--shadow-color);}
@@ -583,15 +639,23 @@
 </head>
 <body>
 
+    <!-- ================= SPLASH SCREEN ================= -->
     <div class="splash-screen" id="splashScreen">
         <div class="splash-content-wrapper">
             <div class="splash-logo-container">
-                <img src="m.png" alt="Logo" class="splash-main-logo" onerror="this.src='https://via.placeholder.com/160'">
-                <img src="abhinay.png" alt="Abhinay Logo" class="splash-orbit-logo" onerror="this.src='https://via.placeholder.com/75'">
+                <img src="abhinay.png" alt="Logo" class="splash-main-logo" onerror="this.src='https://via.placeholder.com/160'">
             </div>
             <div class="splash-text">
                 <h1>ABHINAY PRATAP MATHS</h1>
                 <p>BY EXAMEDGE ONLINE INSTITUTE</p>
+                <!-- 5 Blinking Dotted Points Under Red Box -->
+                <div class="splash-dots-wrapper">
+                    <div class="splash-dot"></div>
+                    <div class="splash-dot"></div>
+                    <div class="splash-dot"></div>
+                    <div class="splash-dot"></div>
+                    <div class="splash-dot"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -707,7 +771,7 @@
         </div>
     </div>
 
-    <!-- MAIN BANNER SLIDER -->
+    <!-- MAIN BANNER SLIDER (FIT ANY IMAGE) -->
     <section class="slider-section">
         <div class="slider-wrapper" id="sliderWrapper">
             <div class="banner-slide" data-link="https://abhinaypratapmaths-a11y.github.io/abhinaypratapmaths/" style="background-image: url('i1.png');"></div>
@@ -1193,6 +1257,35 @@
 
     <script>
         // ==========================================
+        // --- SPLASH SCREEN & URL PARAMS ---
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", () => {
+            const splash = document.getElementById('splashScreen');
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Hide splash directly if ?home=true or sessionStorage says it's already shown
+            if (urlParams.get('home') === 'true' || sessionStorage.getItem('splashShown') === 'true') {
+                splash.style.display = 'none';
+            } else {
+                // Show splash for 10 seconds on fresh load
+                setTimeout(() => { 
+                    splash.style.opacity = '0'; 
+                    setTimeout(() => { splash.style.display = 'none'; }, 1000); 
+                }, 10000); // 10 SECONDS TIMER
+                
+                // Set session storage so it doesn't show again
+                sessionStorage.setItem('splashShown', 'true');
+            }
+            
+            const navLogos = ['m.png', 'logo2.png', 'logo3.png', 'logo4.png', 'logo5.png', 'logo6.png', 'logo7.png', 'logo8.png', 'logo9.png', 'logo10.png'];
+            let logoIndex = 0;
+            const navLogoBox = document.querySelector('.logo-box');
+            if (navLogoBox) { setInterval(() => { logoIndex = (logoIndex + 1) % navLogos.length; navLogoBox.style.backgroundImage = `url('${navLogos[logoIndex]}')`; }, 2000); }
+
+            loadPremiumCourses('ALL');
+        });
+
+        // ==========================================
         // --- THEME TOGGLE LOGIC (DARK/LIGHT) ---
         // ==========================================
         function toggleTheme() {
@@ -1310,20 +1403,6 @@
                 features: ["HISTORY, POLITY & GEOGRAPHY", "ECONOMICS & STATIC GK", "DAILY CURRENT AFFAIRS", "NCERT BASED FOUNDATION", "MIND MAPS & FLOW CHARTS", "COMPREHENSIVE PDF NOTES"] 
             }
         ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-            setTimeout(() => { 
-                const splash = document.getElementById('splashScreen');
-                if(splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; }, 1000); }
-            }, 4500); 
-            
-            const navLogos = ['m.png', 'logo2.png', 'logo3.png', 'logo4.png', 'logo5.png', 'logo6.png', 'logo7.png', 'logo8.png', 'logo9.png', 'logo10.png'];
-            let logoIndex = 0;
-            const navLogoBox = document.querySelector('.logo-box');
-            if (navLogoBox) { setInterval(() => { logoIndex = (logoIndex + 1) % navLogos.length; navLogoBox.style.backgroundImage = `url('${navLogos[logoIndex]}')`; }, 2000); }
-
-            loadPremiumCourses('ALL');
-        });
 
         // ==========================================
         // --- PREMIUM BATCHES MODAL & FILTERS ---
