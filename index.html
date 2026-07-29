@@ -14,7 +14,6 @@
         /* --- DYNAMIC THEME VARIABLES --- */
         /* ========================================== */
         :root {
-            /* DARK MODE (DEFAULT) */
             --bg-main: #050505; 
             --bg-card: #111111;
             --bg-header: rgba(5, 5, 5, 0.98);
@@ -24,7 +23,6 @@
             --item-bg: #1a1a1a;
             --shadow-color: rgba(0, 0, 0, 0.8);
             
-            /* BRAND COLORS */
             --gold: #eab308; 
             --gold-hover: #ca8a04;
             --pink: #ff2a75; 
@@ -33,7 +31,6 @@
             --app-blue: #00bcd4;
         }
 
-        /* LIGHT MODE OVERRIDES */
         body.light-mode {
             --bg-main: #f8fafc; 
             --bg-card: #ffffff;
@@ -48,7 +45,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; text-transform: uppercase; }
 
         body { 
-            background-color: var(--bg-main); color: var(--text-light); overflow-x: hidden; scroll-behavior: smooth; 
+            background-color: var(--bg-main); 
+            color: var(--text-light); 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
@@ -61,13 +61,14 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             transition: opacity 0.8s ease; 
         }
-        .splash-content-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: popIn 1s ease-out forwards; }
+        .splash-content-wrapper { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; animation: popIn 1s ease-out forwards; 
+        }
         
         .splash-logo-container { 
             position: relative; width: 200px; height: 200px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px;
         }
 
-        /* Colorful Rotating Dotted Border */
         .splash-logo-container::before {
             content: '';
             position: absolute;
@@ -94,22 +95,8 @@
         .splash-text h1 { color: var(--gold); font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; text-shadow: 0 4px 15px rgba(234, 179, 8, 0.4); }
         .splash-text p { color: #fff; font-size: 0.95rem; font-weight: 700; letter-spacing: 2px; background: var(--red-brand); padding: 5px 18px; border-radius: 20px; display: inline-block; box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4); }
 
-        /* --- 5 Blinking Dotted Points Under Red Box --- */
-        .splash-dots-wrapper {
-            display: flex;
-            gap: 12px;
-            margin-top: 25px;
-            justify-content: center;
-        }
-
-        .splash-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #333;
-            animation: blinkDot 1.5s infinite ease-in-out;
-        }
-
+        .splash-dots-wrapper { display: flex; gap: 12px; margin-top: 25px; justify-content: center; }
+        .splash-dot { width: 12px; height: 12px; border-radius: 50%; background-color: #333; animation: blinkDot 1.5s infinite ease-in-out; }
         .splash-dot:nth-child(1) { background-color: var(--gold); animation-delay: 0s; }
         .splash-dot:nth-child(2) { background-color: var(--pink); animation-delay: 0.3s; }
         .splash-dot:nth-child(3) { background-color: var(--green); animation-delay: 0.6s; }
@@ -148,7 +135,6 @@
         }
         .logo-box:hover { transform: scale(1.1) rotate(6deg); border-color: var(--pink); box-shadow: 0 0 25px rgba(255, 42, 117, 0.7); }
         
-        /* Nav Logo Colorful Rotating Border */
         .logo-box::after { 
             content: ''; position: absolute; inset: -6px; border-radius: 50%; 
             border: 3px dotted; 
@@ -241,15 +227,15 @@
         .banner-slide { 
             min-width: 90vw; aspect-ratio: 21/9; border-radius: 15px; scroll-snap-align: center; 
             background-color: var(--bg-card); display: block; flex-shrink: 0; 
-            
-            /* FORCE IMAGE TO FIT PERFECTLY INSIDE THE BOX */
             background-size: 100% 100%; 
             background-position: center; background-repeat: no-repeat; cursor: pointer; 
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
             box-shadow: 0 10px 25px var(--shadow-color);
         }
         .banner-slide:active { transform: scale(0.98); }
-        @media(min-width: 768px) { .banner-slide { min-width: 75vw; aspect-ratio: 24/9; } }
+        @media(min-width: 768px) { 
+            .banner-slide { min-width: 75vw; aspect-ratio: 24/9; } 
+        }
 
         /* ========================================== */
         /* --- PREMIUM COURSES SECTION (HOME PAGE) --- */
@@ -477,25 +463,50 @@
         .app-modal.show { display: flex; animation: slideUp 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         
-        .app-header { background: var(--bg-card); padding: 18px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: sticky; top:0; z-index:10; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+        .app-header { background: var(--bg-card); padding: 18px 20px; display: flex; align-items: center; gap: 15px; position: relative; z-index:10;}
         .app-back-btn { background: transparent; border: none; color: var(--text-light); font-size: 1.3rem; cursor: pointer; padding: 5px; }
         .app-header-title { color: var(--text-light); font-size: 1.3rem; font-weight: 900; flex:1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: 0.5px;}
-        .app-body { flex: 1; overflow-y: auto; padding: 20px 5%; scrollbar-width: none;}
-        .app-body::-webkit-scrollbar { display: none; }
-        @media(min-width: 768px) { .app-body { padding: 20px 15%; } }
-
-        /* Premium Categories Tab Scroll */
-        .category-scroll-wrapper { width: 100%; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; scrollbar-width: none; }
-        .category-scroll-wrapper::-webkit-scrollbar { display: none; }
-        .category-tabs { display: flex; gap: 12px; width: max-content; }
-        .cat-tab { 
-            padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border-dark); 
-            background: var(--bg-card); color: var(--text-dim); font-size: 0.85rem; font-weight: 800; 
-            cursor: pointer; transition: 0.3s; white-space: nowrap; box-shadow: 0 2px 5px var(--shadow-color);
+        
+        /* NEW WHITE STRIPE WITH RED ACTIVE LINE CSS */
+        .category-scroll-wrapper { 
+            width: 100%; 
+            overflow-x: auto; 
+            padding: 0;
+            background: #ffffff; /* PURE WHITE STRIP */
+            border-bottom: 2px solid var(--gold); 
+            scrollbar-width: none; 
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }
-        .cat-tab.active { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 4px 10px rgba(234, 179, 8, 0.3); }
-        .cat-tab.active:hover { color: #000; }
-        .cat-tab:hover { color: var(--gold); border-color: var(--gold); }
+        .category-scroll-wrapper::-webkit-scrollbar { display: none; }
+        .category-tabs { 
+            display: flex; 
+            width: max-content; 
+            padding: 0 15px;
+        }
+        .cat-tab { 
+            padding: 15px 12px; 
+            background: transparent; 
+            color: #333333; /* Dark text for white background */
+            font-size: 0.9rem; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            white-space: nowrap; 
+            border: none;
+            border-bottom: 3px solid transparent; /* Space for active line */
+        }
+        .cat-tab.active { 
+            color: #dc2626; /* RED text */
+            border-bottom: 3px solid #dc2626; /* RED LINE UNDER ACTIVE TAB */
+        }
+        .cat-tab:hover { 
+            color: #dc2626; 
+        }
+
+        .app-body { flex: 1; overflow-y: auto; padding: 20px 5%;}
+        @media(min-width: 768px) { .app-body { padding: 20px 15%; } }
 
         /* MY BATCH SPECIFIC */
         .batch-list-card { background: var(--bg-card); border-radius: 14px; padding: 18px; margin-bottom: 15px; display: flex; gap: 15px; align-items: center; border: 1px solid var(--border-dark); cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px var(--shadow-color);}
@@ -705,7 +716,7 @@
         </div>
         <ul>
             <li><a href="#" onclick="openAuthModal()"><i class="fas fa-user-circle"></i> MY BATCH (LOGIN)</a></li>
-            <li><a href="premium.html" onclick="toggleMenu()"><i class="fas fa-gem"></i> PREMIUM BATCHES</a></li>
+            <li><a href="#" onclick="openPremiumBatches()"><i class="fas fa-gem"></i> PREMIUM BATCHES</a></li>
             <li><a href="pdf.html" onclick="toggleMenu()"><i class="fas fa-file-pdf"></i> PDF MATERIALS</a></li>
             <li><a href="book.html" onclick="toggleMenu()"><i class="fas fa-book"></i> BOOK STORE</a></li>
             <li><a href="mock.html" onclick="toggleMenu()"><i class="fas fa-tasks"></i> MOCK TESTS</a></li>
@@ -726,27 +737,26 @@
 
     <!-- PREMIUM BATCHES MODAL WITH CATEGORY FILTER -->
     <div class="app-modal" id="premiumBatchesModal">
-        <div class="app-header">
+        <div class="app-header" style="border-bottom: none;">
             <h3 class="app-header-title" style="color:var(--gold);"><i class="fas fa-gem"></i> PREMIUM BATCHES</h3>
             <button class="app-back-btn" onclick="closePremiumBatches()"><i class="fas fa-times"></i></button>
         </div>
-        <div class="app-body">
-            
-            <!-- HORIZONTAL CATEGORY TABS -->
-            <div class="category-scroll-wrapper">
-                <div class="category-tabs" id="categoryTabs">
-                    <div class="cat-tab active" onclick="filterPremiumCourses('ALL', this)">ALL BATCHES</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('FREE BATCH', this)">FREE BATCH</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('9TH TO 12TH', this)">9TH TO 12TH</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('KVS / NVS', this)">KVS & NVS ENTRANCE</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('MATHS SPECIAL', this)">MATHS SPECIAL</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('AIRFORCE X/Y', this)">AIRFORCE X/Y</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('DEFENCE', this)">DEFENCE</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('STATE EXAM', this)">STATE EXAM</div>
-                    <div class="cat-tab" onclick="filterPremiumCourses('BANK EXAM', this)">BANK EXAM</div>
-                </div>
+        
+        <!-- WHITE STRIPE WITH RED ACTIVE LINE -->
+        <div class="category-scroll-wrapper">
+            <div class="category-tabs" id="categoryTabs">
+                <div class="cat-tab active" onclick="filterPremiumCourses('HOME', this)">HOME</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('FREE BATCH', this)">FREE BATCH</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('CLASS 9TH', this)">CLASS 9TH</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('CLASS 10TH', this)">CLASS 10TH</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('CLASS 11TH', this)">CLASS 11TH</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('CLASS 12TH', this)">CLASS 12TH</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('KVS & NVS', this)">KVS & NVS</div>
+                <div class="cat-tab" onclick="filterPremiumCourses('SUBJECT SPECIAL', this)">SUBJECT SPECIAL</div>
             </div>
+        </div>
 
+        <div class="app-body" style="padding-top: 20px;">
             <div class="course-list" id="premiumCourseList">
                 <!-- Courses injected via JS based on filter -->
             </div>
@@ -1262,17 +1272,13 @@
             const splash = document.getElementById('splashScreen');
             const urlParams = new URLSearchParams(window.location.search);
 
-            // Hide splash directly if ?home=true or sessionStorage says it's already shown
             if (urlParams.get('home') === 'true' || sessionStorage.getItem('splashShown') === 'true') {
                 splash.style.display = 'none';
             } else {
-                // Show splash for exactly 10 seconds on fresh load
                 setTimeout(() => { 
                     splash.style.opacity = '0'; 
                     setTimeout(() => { splash.style.display = 'none'; }, 1000); 
-                }, 10000); // 10 SECONDS TIMER
-                
-                // Set session storage so it doesn't show again
+                }, 10000); 
                 sessionStorage.setItem('splashShown', 'true');
             }
             
@@ -1281,12 +1287,10 @@
             const navLogoBox = document.querySelector('.logo-box');
             if (navLogoBox) { setInterval(() => { logoIndex = (logoIndex + 1) % navLogos.length; navLogoBox.style.backgroundImage = `url('${navLogos[logoIndex]}')`; }, 2000); }
 
-            loadPremiumCourses('ALL');
+            // Load HOME tab initially for Premium Modal
+            loadPremiumCourses('HOME');
         });
 
-        // ==========================================
-        // --- THEME TOGGLE LOGIC (DARK/LIGHT) ---
-        // ==========================================
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('themeIcon');
@@ -1311,22 +1315,11 @@
             document.getElementById('themeText').innerText = "DARK MODE";
         }
 
-        // --- Course Data for Premium Batches Modal (With Categories) ---
+        // --- Course Data for Premium Batches Modal ---
         const premiumCoursesData = [
             { 
-                title: "VANDE BHARAT BATCH", 
-                category: ["ALL", "FREE BATCH", "9TH TO 12TH"],
-                faculty: "FREE FOR GOVT SCHOOL STUDENTS", 
-                facultyColor: "var(--green)", 
-                img: "cab.png", 
-                price: 0, 
-                btnText: "ENROLL FOR FREE", 
-                btnClass: "btn-free", 
-                features: ["100% FREE FOR GOVT STUDENTS", "COMPLETE NCERT SYLLABUS", "DAILY LIVE CLASSES", "BILINGUAL (HINDI/ENGLISH)", "FREE PDF NOTES & TESTS", "DEDICATED DOUBT SESSIONS"] 
-            },
-            { 
                 title: "MATHEMATICS SPECIAL BATCH", 
-                category: ["ALL", "MATHS SPECIAL", "STATE EXAM", "BANK EXAM"],
+                category: ["HOME", "SUBJECT SPECIAL"],
                 faculty: "BY ABHINAY PRATAP SIR", 
                 facultyColor: "var(--gold)", 
                 img: "ca1.png", 
@@ -1336,55 +1329,99 @@
                 features: ["COMPLETE PRE + MAINS SYLLABUS", "LIVE INTERACTIVE CLASSES", "RECORDED VIDEOS AVAILABILITY", "TOPIC-WISE PDF NOTES", "WEEKLY MOCK TESTS", "1-YEAR COURSE VALIDITY"] 
             },
             { 
-                title: "COMPLETE SCIENCE SPECIAL", 
-                category: ["ALL", "9TH TO 12TH", "DEFENCE"],
-                faculty: "AKSHIT SIR (SCIENCE EXPERT)", 
+                title: "VANDE BHARAT BATCH", 
+                category: ["HOME", "FREE BATCH"],
+                faculty: "FREE FOR GOVT SCHOOL STUDENTS", 
+                facultyColor: "var(--green)", 
+                img: "cab.png", 
+                price: 0, 
+                btnText: "ENROLL FOR FREE", 
+                btnClass: "btn-free", 
+                features: ["100% FREE FOR GOVT STUDENTS", "COMPLETE NCERT SYLLABUS", "DAILY LIVE CLASSES", "BILINGUAL (HINDI/ENGLISH)", "FREE PDF NOTES & TESTS", "DEDICATED DOUBT SESSIONS"] 
+            },
+            { 
+                title: "CLASS 9TH FOUNDATION BATCH", 
+                category: ["CLASS 9TH"],
+                faculty: "EXAMEDGE EXPERTS", 
                 facultyColor: "var(--gold)", 
+                img: "ca2.png", 
+                price: 1499, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["NCERT FULL SYLLABUS", "MATHS, SCIENCE & ENGLISH", "LIVE & RECORDED CLASSES", "CHAPTER-WISE PDF NOTES", "MONTHLY MOCK TESTS", "VALID TILL FINAL EXAM"] 
+            },
+            { 
+                title: "CLASS 10TH BOARD TARGET", 
+                category: ["CLASS 10TH"],
+                faculty: "EXAMEDGE EXPERTS", 
+                facultyColor: "var(--app-blue)", 
+                img: "ca1.png", 
+                price: 1999, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["TARGET 95%+ IN BOARDS", "ALL SUBJECTS COVERED", "PREVIOUS YEAR QUESTIONS", "MIND MAPS & REVISION NOTES", "ALL INDIA TEST SERIES", "VALID TILL BOARD EXAM"] 
+            },
+            { 
+                title: "CLASS 11TH FOUNDATION BATCH", 
+                category: ["CLASS 11TH"],
+                faculty: "EXAMEDGE EXPERTS", 
+                facultyColor: "var(--pink)", 
+                img: "ca3.png", 
+                price: 2499, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["PCM / PCB COMPLETE BATCH", "CORE CONCEPT BUILDING", "COMPETITIVE EXAM APPROACH", "DAILY PRACTICE PAPERS", "DOUBT CLEARING SESSIONS", "1 YEAR VALIDITY"] 
+            },
+            { 
+                title: "CLASS 12TH BOARD SPECIAL", 
+                category: ["CLASS 12TH"],
+                faculty: "EXAMEDGE EXPERTS", 
+                facultyColor: "var(--gold)", 
+                img: "ca4.png", 
+                price: 2999, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["STRICTLY BOARD PATTERN", "PCM / PCB EXPERT GUIDANCE", "SAMPLE PAPER SOLVING", "MOST EXPECTED QUESTIONS", "PERSONAL MENTORSHIP", "VALID TILL EXAM"] 
+            },
+            { 
+                title: "KVS ENTRANCE EXAM BATCH", 
+                category: ["KVS & NVS"],
+                faculty: "BHOLU CHAUBEY AND TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "ca6.png", 
+                price: 2199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["KVS TARGETED SYLLABUS", "MATHS & REASONING SHORT TRICKS", "GENERAL AWARENESS & LANGUAGE", "FULL LENGTH MOCK TESTS", "INTERVIEW GUIDANCE", "TILL SELECTION VALIDITY"] 
+            },
+            { 
+                title: "JAWAHAR NAVODAYA (NVS) EXAM", 
+                category: ["KVS & NVS"],
+                faculty: "ABHINAY PRATAP AND TEAM", 
+                facultyColor: "var(--gold)", 
+                img: "ca7.png", 
+                price: 2199, 
+                btnText: "BUY NOW COURSE", 
+                btnClass: "btn-buy", 
+                features: ["ZERO TO HERO LEVEL TARGET", "ALL SUBJECTS IN ONE PACK", "DAILY LIVE CLASSES", "MENTORSHIP BY SELECTED CANDIDATES", "FULL LENGTH SECTIONAL TESTS", "VALID TILL ENTRANCE EXAM"] 
+            },
+            { 
+                title: "SCIENCE SPECIAL BATCH", 
+                category: ["SUBJECT SPECIAL"],
+                faculty: "AKSHIT SIR (SCIENCE EXPERT)", 
+                facultyColor: "var(--app-blue)", 
                 img: "ca2.png", 
                 price: 999, 
                 btnText: "BUY NOW COURSE", 
                 btnClass: "btn-buy", 
-                features: ["PHYSICS, CHEMISTRY, BIOLOGY COVERED", "COMPLETE HISTORY, POLITY, GEO", "BILINGUAL CONTENT", "CLASS NOTES PDF", "5000+ MCQS PRACTICE", "TILL SELECTION VALIDITY"] 
-            },
-            { 
-                title: "JAWAHAR NAVODAYA EXAM", 
-                category: ["ALL", "KVS / NVS"],
-                faculty: "ABHINAY PRATAP AND TEAM", 
-                facultyColor: "var(--gold)", 
-                img: "ca3.png", 
-                price: 2199, 
-                btnText: "BUY NOW COURSE", 
-                btnClass: "btn-buy", 
-                features: ["ZERO TO HERO LEVEL TARGET", "ALL SUBJECTS IN ONE PACK", "DAILY 4 HOURS LIVE CLASS", "MENTORSHIP BY SELECTED CANDIDATES", "FULL LENGTH SECTIONAL TESTS", "VALID TILL ENTRANCE EXAM"] 
-            },
-            { 
-                title: "KENDRIYA VIDYALAYA EXAM", 
-                category: ["ALL", "KVS / NVS"],
-                faculty: "BHOLU CHAUBEY AND TEAM", 
-                facultyColor: "var(--gold)", 
-                img: "ca4.png", 
-                price: 1199, 
-                btnText: "BUY NOW COURSE", 
-                btnClass: "btn-buy", 
-                features: ["SPECIAL FOCUS ON ENTRANCE EXAMS", "KVS & NVS SYLLABUS", "STATIC GK & UP GK", "PRINTED NOTES DELIVERY OPTION", "SPEED TEST MODULES", "12 MONTHS VALIDITY"] 
-            },
-            { 
-                title: "AIRFORCE X/Y GROUP", 
-                category: ["ALL", "AIRFORCE X/Y", "DEFENCE"],
-                faculty: "DEFENCE EXPERTS", 
-                facultyColor: "var(--app-blue)", 
-                img: "ca1.png", 
-                price: 899, 
-                btnText: "BUY NOW COURSE", 
-                btnClass: "btn-buy", 
-                features: ["COMPLETE TECHNICAL MATHS", "PHYSICS & ENGLISH INCLUDED", "RAGA SECTION COVERED", "ONLINE MOCK TESTS", "PHYSICAL & MEDICAL GUIDANCE", "TILL EXAM VALIDITY"] 
+                features: ["PHYSICS, CHEMISTRY, BIOLOGY", "COMPREHENSIVE THEORY", "NUMERICAL PRACTICE", "BILINGUAL CONTENT", "5000+ MCQS PRACTICE", "TILL SELECTION VALIDITY"] 
             },
             { 
                 title: "REASONING SPECIAL BATCH", 
-                category: ["ALL", "STATE EXAM", "BANK EXAM"],
+                category: ["SUBJECT SPECIAL"],
                 faculty: "RAHUL SIR (REASONING EXPERT)", 
-                facultyColor: "var(--gold)", 
-                img: "ca6.png", 
+                facultyColor: "var(--pink)", 
+                img: "ca3.png", 
                 price: 699, 
                 btnText: "BUY NOW COURSE", 
                 btnClass: "btn-buy", 
@@ -1392,10 +1429,10 @@
             },
             { 
                 title: "G.S SPECIAL BATCH", 
-                category: ["ALL", "STATE EXAM", "BANK EXAM"],
+                category: ["SUBJECT SPECIAL"],
                 faculty: "BHOLU CHAUBEY & TEAM", 
                 facultyColor: "var(--gold)", 
-                img: "ca7.png", 
+                img: "ca4.png", 
                 price: 599, 
                 btnText: "BUY NOW COURSE", 
                 btnClass: "btn-buy", 
@@ -1411,9 +1448,8 @@
             document.getElementById('overlay').classList.remove('active');
             document.getElementById('premiumBatchesModal').classList.add('show');
             
-            // Reset to ALL tab
             const tabs = document.getElementById('categoryTabs').children;
-            filterPremiumCourses('ALL', tabs[0]);
+            filterPremiumCourses('HOME', tabs[0]);
         }
         
         function closePremiumBatches() { 
@@ -1522,9 +1558,6 @@
         if (!sessionStorage.getItem('banner1MinShown')) { setTimeout(() => { document.getElementById('timedBanner2min').classList.add('show'); sessionStorage.setItem('banner1MinShown', 'true'); }, 60000); }
         if (!sessionStorage.getItem('banner3MinShown')) { setTimeout(() => { document.getElementById('timedBanner5min').classList.add('show'); sessionStorage.setItem('banner3MinShown', 'true'); }, 180000); }
 
-        // ==========================================
-        // --- FIXED BANNER SLIDER LOGIC ---
-        // ==========================================
         const sliderWrapper = document.getElementById('sliderWrapper'); 
         const bannerSlides = document.querySelectorAll('.banner-slide'); 
         const bannerDotsContainer = document.getElementById('dotsContainer');
@@ -1535,15 +1568,12 @@
             autoSlideInterval = setInterval(() => { 
                 currentSlide++; 
                 if (currentSlide >= bannerSlides.length) { currentSlide = 0; } 
-                // Scroll accounting for 15px gap
                 const slideWidth = bannerSlides[0].clientWidth + 15;
                 sliderWrapper.scrollTo({ left: slideWidth * currentSlide, behavior: 'smooth' }); 
-            }, 10000); // 10 SECONDS
+            }, 10000);
         }
 
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
+        function stopAutoSlide() { clearInterval(autoSlideInterval); }
 
         if(sliderWrapper && bannerSlides.length > 0) {
             bannerSlides.forEach((slide, i) => {
@@ -1736,16 +1766,13 @@
             } else { showCustomAlert("INVALID KEY", "PLEASE ENTER A VALID ACTIVATION KEY (MYSTIC2027)."); }
         }
 
-        // ==========================================
-        // --- OFFLINE/ONLINE DETECTION LOGIC ---
-        // ==========================================
         const offlineScreen = document.getElementById('offlineScreen');
 
         function updateNetworkStatus() {
             if (navigator.onLine) {
-                offlineScreen.classList.remove('active'); // Internet is Back
+                offlineScreen.classList.remove('active'); 
             } else {
-                offlineScreen.classList.add('active'); // No Internet
+                offlineScreen.classList.add('active'); 
             }
         }
 
